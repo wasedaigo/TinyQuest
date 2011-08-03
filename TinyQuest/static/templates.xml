@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<templates>
+
+<template key="beforeLogin">
+<![CDATA[
+<div id="loginContainer">
+	<h1>Login</h1>
+	<div id='providerList'></div>
+</div>
+]]>
+</template>
+
+<template key="afterLogin">
+<![CDATA[
+  <div class="header">
+  	<div class="left">
+  		<button id="homeButton" onClick="loadState('home')">Home</button>
+  	</div>
+	<div class="middle"><div id="title"></div></div>
+	<div class="right">
+		<button class="logout" onClick="window.location = gLoginInfo.logoutURL">Logout</button>
+	</div>
+  </div>
+  <div class="content"></div>
+]]>
+</template>
+
+<template key="home">
+<![CDATA[
+<div id="homeScreen">
+	<div class="info">
+		<canvas width="320px" height="360px" class="avatar">
+		</canvas>
+		<div class="status">
+			<table>
+			<tr><td class="first">Strength</td><td>320</td></tr>
+			<tr><td class="first">Defense</td><td>220</td></tr>
+			<tr><td class="first">Weapon</td><td>Gold Sword</td></tr>
+			<tr><td class="first">Armor</td><td>Silver Armor</td></tr>
+			<tr><td class="first">Ring</td><td>Flare Ring</td></tr>
+			</table>
+		</div>
+	</div>
+	<div class="menu">
+		<button onClick="loadState('adventure')">Adventure</button>
+		<button onClick="loadState('arena')">Arena</button>
+		<button onClick="loadState('items')">Items</button>
+		<button onClick="loadState('status')">Status</button>
+	</div>
+</div>
+]]>
+</template>
+<template key="adventure">
+<![CDATA[
+<div id="adventureScreen">
+	<canvas width="640px" height="364px" class="mainPanel">
+	</canvas>
+	<div class="menu">
+        ${message}
+        <div class="status">
+        HP=${hp} ATK=${attack} DEF=${defense} STEP=${step} FLOOR=${floor} ENERGY=${energy} EHP=${enemy_hp}
+        </div>
+        <div class="buttons">
+            <button onClick="go();">Go!</button><button onClick="charge_energy();">Charge Eneergy</button>
+        </div>
+	</div>
+</div>
+	
+]]>
+</template>
+<template key="arena">
+<![CDATA[
+]]>
+</template>
+<template key="items">
+<![CDATA[
+]]>
+</template>
+<template key="status">
+<![CDATA[
+]]>
+</template>
+</templates>
