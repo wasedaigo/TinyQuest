@@ -1,0 +1,9 @@
+* How to Install
+
+1. Download and install Google App Engine SDK for Python
+
+- http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Python
+
+2. Add application; the path is /path/to/TinyQuest/TinyQuest
+
+
