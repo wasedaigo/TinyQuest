@@ -4,6 +4,5 @@
 
 - http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Python
 
-2. Add application; the path is /path/to/TinyQuest/TinyQuest
-
-
+2. Add application to GoogleAppEngineLauncher; the path is
+/path/to/TinyQuest/TinyQuest
