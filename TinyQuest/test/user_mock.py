@@ -1,4 +1,4 @@
-class UserMock:
+class UserMock(object):
     
     def __init__(self, user_id, nickname):
         self._user_id = user_id

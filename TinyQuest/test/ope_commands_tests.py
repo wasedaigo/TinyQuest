@@ -17,4 +17,3 @@ class OpeCommandTest(unittest.TestCase):
 
     def test_create_master_data(self):
         pass
-        
