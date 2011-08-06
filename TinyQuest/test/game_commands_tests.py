@@ -83,6 +83,13 @@ class GameCommandTest(unittest.TestCase):
         player = GameCommands.setup_new_account(self.user)
         self.assertEquals(player.user_id, self.user.user_id())
 
+    def test_charge_energy(self):
+        player = GameCommands.setup_new_account(self.user)
+        
+        player.energy = -1;
+        GameCommands.charge_energy(player);
+        self.assertEquals( player.energy,  player.max_energy)
+
     def test_get_enemy(self):
         self.fail()
 

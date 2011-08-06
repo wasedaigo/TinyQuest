@@ -64,22 +64,23 @@ class ApiServer(webapp.RequestHandler):
         if adventure_scene.scene_type == "enemy":
             enemy = adventure_scene.target
             player.energy -= 1
-            GameCommands.proceed_combat(enemy, player)
+            result["combat_result"] = GameCommands.proceed_combat(enemy, player)
 
             if enemy.hp <= 0:
                 GameCommands.proceed_step(player, adventure_scene.step)
-                result["enemy_life"] = 0
-                result["success"] = True
-            else:
-                result["enemy_life"] = enemy.hp / float(enemy.max_hp)
-                result["success"] = True
+            #else if player.hp <= 0:
+                # Game Over
+                #GameCommands.game_over(player)
+
+            result["enemy_hp"] = enemy.hp
+            result["success"] = True
             enemy.put()
             player.put()
 
     self.response.out.write(simplejson.dumps(result))
   
   def charge_energy(self, player):
-    player.energy = player.max_energy
+    GameCommands.charge_energy(player)
     player.put()
     self.response.out.write(simplejson.dumps({"success" : True}))
     
@@ -91,14 +92,19 @@ class ApiServer(webapp.RequestHandler):
         adventure_scene = GameCommands.update_adventure_scene_with_player(player, "enemy", enemy, 1, 1)
 
     result = {}
-    result["hp"] = player.hp
-    result["energy"] = player.energy
-    result["floor"] = adventure_scene.floor
-    result["step"] = adventure_scene.step
-    result["scene_type"] = adventure_scene.scene_type
+    
+    result = {
+        "hp": player.hp,
+        "energy": player.energy,
+        "floor": adventure_scene.floor,
+        "step": adventure_scene.step,
+        "scene_type": adventure_scene.scene_type,
+        "success": True,
+    
+    }
+    
     if adventure_scene.scene_type == "enemy":
         result["target"] = SerializeCommands.serialize_enemy(adventure_scene.target)
-    result["success"] = True;
 
     self.response.out.write(simplejson.dumps(result))
 
