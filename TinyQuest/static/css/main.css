@@ -1,27 +1,27 @@
 /*  ---------------------
 
-	General
-	
+    General
+    
  ---------------------*/
 html
 {
-	width: 100%;
-	height: 100%;
-	background-color: #FFF;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
 } 
 
 body 
 {
-	margin:0px 0px 0px 0px;
-	font-family: Verdana, Helvetica, sans-serif;
-	width: 100%;
-	height: 100%;
-	font-family: sans-serif;
-	margin: 0px;
-	padding: 0px;
-	color: #000;
-	background-color: #FFF;
-	font-size: 0.7em;
+    margin:0px 0px 0px 0px;
+    font-family: Verdana, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #000;
+    background-color: #FFF;
+    font-size: 0.7em;
 }
 
 #main
@@ -34,75 +34,68 @@ body
 
 /*  ---------------------
 
-	Main Container 
-	
+    Main Container 
+    
  ---------------------*/
 #title
 {
-	text-align:center;
-	font-size: 24px;
+    text-align:center;
+    font-size: 24px;
 }
 
 #mainContainer
 {
-  width:640px;
-  height:640px;
-  border:solid;
-  border-width:4px;
-  margin:auto;
-  background-color:#ba9;
+    width:640px;
+    height:640px;
+    border:solid;
+    border-width:4px;
+    margin:auto;
+    background-color:#ba9;
 }
 
 #mainContainer .header
 {
-  width:640px;
-  height:40px;
+    width:640px;
+    height:40px;
 }
 
 #mainContainer .header .left
 {
-	width:200px;
-	height:100%;
-	float:left;
-}
-
-#mainContainer .header .middle
-{
-	width:240px;
-	padding-top:10px;
-	float:left;
+    width:540px;
+    height:100%;
+    float:left;
 }
 
 #mainContainer .header .right
 {
-  	width:200px;
-  	height:100%;
-  	float:right;
+    width:100px;
+    height:100%;
+    float:right;
 }
 
 #mainContainer .content
 {
-	width:640px;
-	height:600px;
-	padding-top:20px;
+    width:640px;
+    height:600px;
+    padding-top:20px;
 }
 
 /*  ---------------------
 
-	Home Screen
-	
+    Home Screen
+    
  ---------------------*/
 #homeScreen .info
 {
-	width:100%;
-	height:360px;
+    width:100%;
+    height:360px;
 }
 
 #homeScreen .info .avatar
 {
-	width:320px;
-	height:360px;
-	float:left;
+    width:320px;
+    height:360px;
+    float:left;
 }
 
 #homeScreen .info .avatar
@@ -111,40 +104,40 @@ body
 
 canvas
 {
-	-ms-interpolation-mode: nearest-neighbor; //IE8+
-	image-rendering: -moz-crisp-edges; //FF3.6+
-	image-rendering: -webkit-optimize-contrast; //WebKit v?+
+    -ms-interpolation-mode: nearest-neighbor; //IE8+
+    image-rendering: -moz-crisp-edges; //FF3.6+
+    image-rendering: -webkit-optimize-contrast; //WebKit v?+
 }
 
 #homeScreen .info .status
 {
-	width:300px;
-	padding:10px;
-	float:left;
-	background-color:#ddd;
+    width:300px;
+    padding:10px;
+    float:left;
+    background-color:#ddd;
 }
 
 #homeScreen .info .status table
 {
-	font-size:24px;
+    font-size:24px;
 }
 
 #homeScreen .info .status table tr td.first
 {
-	width:150px;
+    width:150px;
 }
 
 #homeScreen .menu
 {
-	width:100%;
-	height:60px;
-	padding:10px;
+    width:100%;
+    height:60px;
+    padding:10px;
 }
 
 /*  ---------------------
 
-	Adventure Screen
-	
+    Adventure Screen
+    
  ---------------------*/
 #adventureScreen .mainPanel
 {
@@ -153,7 +146,7 @@ canvas
 #adventureScreen .menu
 {
     font-size:20px;
-	text-align:center;
+    text-align:center;
 }
 
 #adventureScreen .menu .status
@@ -169,8 +162,8 @@ canvas
 
 /*  ---------------------
 
-	Login Screen
-	
+    Login Screen
+    
  ---------------------*/
 #loginContainer
 {
@@ -179,8 +172,8 @@ canvas
 
 /*  ---------------------
 
-	Widgets
-	
+    Widgets
+    
  ---------------------*/
 button
 {
@@ -222,23 +215,4 @@ border-top:3px double #4A2570;
 border-left:3px double #4A2570;
 border-right:3px double #8A50C5;
 border-bottom:3px double #8A50C5;
-}
-
-#homeButton
-{
-float:left;
-background: #FFBB77;
-border-top:3px double #cf9;
-border-left:3px double #cf9;
-border-right:3px double #80BF40;
-border-bottom:3px double #80BF40;
-}
-
-#homeButton:active
-{
-background: #985;
-border-top:3px double #4A7025;
-border-left:3px double #4A7025;
-border-right:3px double #8AC550;
-border-bottom:3px double #8AC550;
 }
