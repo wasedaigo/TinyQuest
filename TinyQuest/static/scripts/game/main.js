@@ -1,8 +1,8 @@
 function loadState(state_id)
 {
-	templateHtml = gTemplates[state_id];
-	if(state_id == "adventure")
-	{
+    templateHtml = gTemplates[state_id];
+    if(state_id == "adventure")
+    {
         getCurrentAdventureScene(function(obj)
         {
             if (obj.success)
@@ -10,11 +10,11 @@ function loadState(state_id)
               loadAdventure(obj);
             }
         })
-	}
-	else if (state_id == "home")
-	{
-		loadHome();
-	}
+    }
+    else if (state_id == "profile")
+    {
+        loadProfile();
+    }
 }
 
 function loadAdventure(obj)
@@ -32,59 +32,63 @@ function loadAdventure(obj)
     $.template( "template", templateHtml );
     templateHtml = $.tmpl( "template", templates );
     $('#mainContainer div.content').html(templateHtml);
-	drawBG($("#adventureScreen .mainPanel"));
-	$("#homeButton").show();
-	$("#title").text("Adventure");
-	if (gLoginInfo.admin)
-	{
-		$("#Admin").show();
-	}
+    drawBG($("#adventureScreen .mainPanel"));
+    $("#profileButton").attr("disabled","");
+    $("#adventureButton").attr("disabled","disabled");
+    $("#arenaButton").attr("disabled","");
+    $("#friendsButton").attr("disabled","");
+    if (gLoginInfo.admin)
+    {
+        $("#Admin").show();
+    }
 }
 
-function loadHome(obj)
+function loadProfile(obj)
 {
     $.template( "template", templateHtml );
     templateHtml = $.tmpl( "template", templates );
     $('#mainContainer div.content').html(templateHtml);
-	drawAvatar($("#homeScreen .info .avatar"));
-	$("#homeButton").hide();
-	$("#title").text("Home");
-	if (gLoginInfo.admin)
-	{
-		$("#Admin").show();
-	}
+    drawAvatar($("#homeScreen .info .avatar"));
+    $("#profileButton").attr("disabled","disabled");
+    $("#adventureButton").attr("disabled","");
+    $("#arenaButton").attr("disabled","");
+    $("#friendsButton").attr("disabled","");
+    if (gLoginInfo.admin)
+    {
+        $("#Admin").show();
+    }
 }
 
 function drawAvatar(canvas) {
-	canvas.drawImage({
-	  source: "/static/images/avatar/chara.png",
-	  x: 50, y: 0,
-	  width: 256,
-	  height: 256,
-	  fromCenter: false
-	});
+    canvas.drawImage({
+      source: "/static/images/avatar/chara.png",
+      x: 50, y: 0,
+      width: 256,
+      height: 256,
+      fromCenter: false
+    });
 }
 
 function drawBG(canvas) {
-	canvas.drawImage({
-	  source: "/static/images/bg/bg0001.png",
-	  x: 0, y: 0,
-	  width: 640,
-	  height: 364,
-	  fromCenter: false
-	}).drawImage({
-	  source: "/static/images/avatar/chara.png",
-	  x: 50, y: 200,
-	  width: 128,
-	  height: 128,
-	  fromCenter: false
-	}).drawImage({
-	  source: "/static/images/monster/enemy0001.png",
-	  x: 256, y: 0,
-	  width: 384,
-	  height: 384,
-	  fromCenter: false
-	});
+    canvas.drawImage({
+      source: "/static/images/bg/bg0001.png",
+      x: 0, y: 0,
+      width: 640,
+      height: 364,
+      fromCenter: false
+    }).drawImage({
+      source: "/static/images/avatar/chara.png",
+      x: 50, y: 200,
+      width: 128,
+      height: 128,
+      fromCenter: false
+    }).drawImage({
+      source: "/static/images/monster/enemy0001.png",
+      x: 256, y: 0,
+      width: 384,
+      height: 384,
+      fromCenter: false
+    });
 }
 
 setLoadFlag("main");

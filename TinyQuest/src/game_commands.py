@@ -100,7 +100,22 @@ class GameCommands:
     @classmethod
     def proceed_combat(cls, enemy, player):
         """Proceed current combat"""
-        enemy.hp -= player.attack
+        
+        result = {}
+        enemy_damage = player.attack
+        enemy.hp -= enemy_damage
+        result["enemy"] = {}
+        result["enemy"]["type"] = "damage"
+        result["enemy"]["value"] = enemy_damage
+        
+        if enemy.hp > 0:
+            player_damage = enemy.attack
+            player.hp -= player_damage
+            result["player"] = {}
+            result["player"]["type"] = "damage"
+            result["player"]["value"] = player_damage
+
+        return result
 
     @classmethod
     def simulate_combat(cls, player, enemy):
@@ -114,3 +129,7 @@ class GameCommands:
         }
         
         return result
+        
+    @classmethod
+    def charge_energy(cls, player):
+        player.energy = player.max_energy
