@@ -39,17 +39,9 @@ function checkAllLoaded()
 	{
 		// Not logged in yet, it needs to login the game!
 		$('#mainContainer').html(gTemplates["beforeLogin"]);
-		
-		$('#providerList').append("<ul></ul>");
-		var providers = gLoginInfo.providers;
-		for (var i = 0; i < providers.length; i++)
-		{
-		  var provider = providers[i];
-		  var element = $("<li></li>");
-		  var link = $("<a></a>").attr("href", provider.url).text(provider.name);
-		  element.append(link);
-		  $('#providerList').append(element);
-		}
+
+		var link = $("<a></a>").attr("href", gLoginInfo.loginURL).text("Login");
+		$('#loginURL').append(link);
 	}
 }
 

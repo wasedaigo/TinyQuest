@@ -5,7 +5,7 @@
 <![CDATA[
 <div id="loginContainer">
     <h1>Login</h1>
-    <div id='providerList'></div>
+    <div id='loginURL'></div>
 </div>
 ]]>
 </template>

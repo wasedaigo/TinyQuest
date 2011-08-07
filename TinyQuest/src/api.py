@@ -44,7 +44,7 @@ class ApiServer(webapp.RequestHandler):
     result["admin"] = users.IsCurrentUserAdmin()
     result["login"] = True
     result["player"] = SerializeCommands.serialize_player(player)
-    result["logoutURL"] = users.CreateLogoutURL("/")
+    result["logoutURL"] = users.create_logout_url("/")
     
     self.response.out.write(simplejson.dumps(result))
 
@@ -52,7 +52,7 @@ class ApiServer(webapp.RequestHandler):
     result = {}
     result["success"] = True
     result["login"] = False
-    result["providers"] = get_provider_list()
+    result["loginURL"] = users.create_login_url("/")
     
     self.response.out.write(simplejson.dumps(result))
 

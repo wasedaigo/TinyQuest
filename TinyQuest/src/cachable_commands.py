@@ -4,6 +4,7 @@ from serialize_commands import *
 import const
 import logging
 
+"""
 def get_provider_list():
   key = "provider_list"
   data = memcache.get(key)
@@ -20,3 +21,4 @@ def get_provider_list():
       logging.error("[get_provider_list] Memcache failed")
     
   return data
+"""
