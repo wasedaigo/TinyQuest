@@ -15,13 +15,13 @@ class AdminServer(webapp.RequestHandler):
       loginUrl = users.CreateLoginURL(self.request.uri)
       self.response.out.write('<a href="%s">Login</a>' % loginUrl)
       return
- 
+    
     if not users.IsCurrentUserAdmin():
       logoutUrl = users.CreateLogoutURL("/")
       text = '<a href="%s">Logout</a>' % logoutUrl
       self.response.out.write(text + 'You must be an admin to view this page.')
       return
- 
+    
     self._handleRequest()
 
   def _handleRequest(self):

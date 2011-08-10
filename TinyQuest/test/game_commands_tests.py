@@ -95,4 +95,3 @@ class GameCommandTest(unittest.TestCase):
 
     def test_proceed_combat(self):
         self.fail()
-
