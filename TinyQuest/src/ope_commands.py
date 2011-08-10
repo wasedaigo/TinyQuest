@@ -23,7 +23,7 @@ class OpeCommands:
     cls.clean_up_entity(PlayerModel)
     cls.clean_up_entity(ItemModel)
     cls.clean_up_entity(LocalizedStringModel)
-    cls.clean_up_entity(AdventureSceneModel)
+    cls.clean_up_entity(ActiveSceneModel)
     cls.clean_up_entity(EnemyModel)
     memcache.flush_all()
 

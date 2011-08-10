@@ -9,35 +9,35 @@ from enemy_factory import *
 class GameCommands:
 
     @classmethod
-    def get_adventure_scene_by_player(cls, player):
+    def get_active_scene_by_player(cls, player):
         """Return adventure scene where player is currently on"""
-        adventure_scenes = AdventureSceneModel.all().filter('player = ', player).fetch(1)
-        if adventure_scenes:
-            return adventure_scenes[0]
+        active_scenes = ActiveSceneModel.all().filter('player = ', player).fetch(1)
+        if active_scenes:
+            return active_scenes[0]
         else:
             return None
 
     @classmethod
-    def update_adventure_scene_with_player(cls, player, scene_type, target, floor, step):
+    def update_active_scene_with_player(cls, player, scene_type, target, floor, step):
         """update current player scene"""
-        adventure_scene = cls.get_adventure_scene_by_player(player)
-        if adventure_scene:
-            adventure_scene.scene_type = scene_type;
-            adventure_scene.target = target;
-            adventure_scene.floor = floor;
-            adventure_scene.step = step;
-            adventure_scene.put()
+        active_scene = cls.get_active_scene_by_player(player)
+        if active_scene:
+            active_scene.scene_type = scene_type;
+            active_scene.target = target;
+            active_scene.floor = floor;
+            active_scene.step = step;
+            active_scene.put()
         else:
-            adventure_scene = AdventureSceneModel(
+            active_scene = ActiveSceneModel(
                 player = player,
                 scene_type = scene_type,
                 target = target,
                 floor = floor,
                 step = step
             )
-            adventure_scene.put()
+            active_scene.put()
             
-        return adventure_scene
+        return active_scene
 
     @classmethod
     def get_player(cls, user):
@@ -64,8 +64,8 @@ class GameCommands:
                 money = const.INITIAL_PLAYER_PARAMS["money"], 
                 level = const.INITIAL_PLAYER_PARAMS["level"],
                 total_xp = const.INITIAL_PLAYER_PARAMS["total_xp"],
-                hp = const.INITIAL_PLAYER_PARAMS["hp"],
-                max_hp = const.INITIAL_PLAYER_PARAMS["max_hp"],
+                life = const.INITIAL_PLAYER_PARAMS["life"],
+                max_life = const.INITIAL_PLAYER_PARAMS["max_life"],
                 attack = const.INITIAL_PLAYER_PARAMS["attack"],
                 defense = const.INITIAL_PLAYER_PARAMS["defense"]
             )
@@ -94,8 +94,8 @@ class GameCommands:
     @classmethod
     def proceed_step(cls, player, step):
         """Proceed the player to next scene"""
-        enemy = EnemyFactory.build_enemy("dragon", 13, 120, 234, 134)
-        cls.update_adventure_scene_with_player(player, "enemy", enemy, 1, step + 1)
+        enemy = EnemyFactory.build_enemy("dragon", 120, 234, 134)
+        cls.update_active_scene_with_player(player, "enemy", enemy, 1, step + 1)
 
     @classmethod
     def proceed_combat(cls, enemy, player):
@@ -103,14 +103,14 @@ class GameCommands:
         
         result = {}
         enemy_damage = player.attack
-        enemy.hp -= enemy_damage
+        enemy.life -= enemy_damage
         result["enemy"] = {}
         result["enemy"]["type"] = "damage"
         result["enemy"]["value"] = enemy_damage
         
-        if enemy.hp > 0:
+        if enemy.life > 0:
             player_damage = enemy.attack
-            player.hp -= player_damage
+            player.life -= player_damage
             result["player"] = {}
             result["player"]["type"] = "damage"
             result["player"]["value"] = player_damage
@@ -121,10 +121,10 @@ class GameCommands:
     def simulate_combat(cls, player, enemy):
         """Simulate combat and return result"""
         damage = player.attack
-        enemy.hp -= player.attack
+        enemy.life -= player.attack
         result = {
-        "player_hp":player.hp,
-        "enemy_hp":enemy.hp,
+        "player_hp":player.life,
+        "enemy_hp":enemy.life,
         "damage":damage
         }
         

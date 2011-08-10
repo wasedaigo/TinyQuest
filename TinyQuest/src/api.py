@@ -59,20 +59,20 @@ class ApiServer(webapp.RequestHandler):
   def go(self, player):   
     
     result = {"success" : False}
-    adventure_scene = GameCommands.get_adventure_scene_by_player(player)
-    if adventure_scene and player.energy >= 1:
-        if adventure_scene.scene_type == "enemy":
-            enemy = adventure_scene.target
+    active_scene = GameCommands.get_active_scene_by_player(player)
+    if active_scene and player.energy >= 1:
+        if active_scene.scene_type == "enemy":
+            enemy = active_scene.target
             player.energy -= 1
             result["combat_result"] = GameCommands.proceed_combat(enemy, player)
 
-            if enemy.hp <= 0:
-                GameCommands.proceed_step(player, adventure_scene.step)
-            #else if player.hp <= 0:
+            if enemy.life <= 0:
+                GameCommands.proceed_step(player, active_scene.step)
+            #else if player.life <= 0:
                 # Game Over
                 #GameCommands.game_over(player)
 
-            result["enemy_hp"] = enemy.hp
+            result["enemy_hp"] = enemy.life
             result["success"] = True
             enemy.put()
             player.put()
@@ -84,27 +84,27 @@ class ApiServer(webapp.RequestHandler):
     player.put()
     self.response.out.write(simplejson.dumps({"success" : True}))
     
-  def get_current_adventure_scene(self, player):
-    adventure_scene = GameCommands.get_adventure_scene_by_player(player)
+  def get_current_active_scene(self, player):
+    active_scene = GameCommands.get_active_scene_by_player(player)
 
-    if not adventure_scene:
-        enemy = EnemyFactory.build_enemy("dragon", 13, 120, 234, 134)
-        adventure_scene = GameCommands.update_adventure_scene_with_player(player, "enemy", enemy, 1, 1)
+    if not active_scene:
+        enemy = EnemyFactory.build_enemy("dragon", 120, 234, 134)
+        active_scene = GameCommands.update_active_scene_with_player(player, "enemy", enemy, 1, 1)
 
     result = {}
     
     result = {
-        "hp": player.hp,
+        "life": player.life,
         "energy": player.energy,
-        "floor": adventure_scene.floor,
-        "step": adventure_scene.step,
-        "scene_type": adventure_scene.scene_type,
+        "floor": active_scene.floor,
+        "step": active_scene.step,
+        "scene_type": active_scene.scene_type,
         "success": True,
     
     }
     
-    if adventure_scene.scene_type == "enemy":
-        result["target"] = SerializeCommands.serialize_enemy(adventure_scene.target)
+    if active_scene.scene_type == "enemy":
+        result["target"] = SerializeCommands.serialize_enemy(active_scene.target)
 
     self.response.out.write(simplejson.dumps(result))
 
@@ -124,8 +124,8 @@ class ApiServer(webapp.RequestHandler):
           if player:
             if self.request.path.startswith('/api/GetLoginInfo'):
               self.get_login_success_info(player)
-            elif self.request.path.startswith('/api/GetCurrentAdventureScene'):
-              self.get_current_adventure_scene(player)
+            elif self.request.path.startswith('/api/GetCurrentActiveScene'):
+              self.get_current_active_scene(player)
             elif self.request.path.startswith('/api/Go'):
               self.go(player)
             elif self.request.path.startswith('/api/ChargeEnergy'):

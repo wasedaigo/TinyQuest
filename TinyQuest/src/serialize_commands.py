@@ -24,8 +24,7 @@ class SerializeCommands:
     def serialize_enemy(cls, enemy):
       return {
         "tag":enemy.tag,
-        "lv":enemy.lv,
-        "hp":enemy.hp,
+        "life":enemy.life,
         "attack":enemy.attack,
         "defense":enemy.defense
       }

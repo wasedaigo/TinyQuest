@@ -13,9 +13,8 @@ class EnemyFactoryTest(unittest.TestCase):
         pass
 
     def test_build_enemy(self):
-        enemy = EnemyFactory.build_enemy("dragon", 13, 1025, 234, 134)
+        enemy = EnemyFactory.build_enemy("dragon", 1025, 234, 134)
         self.assertEquals(enemy.tag, "dragon")
-        self.assertEquals(enemy.lv, 13)
-        self.assertEquals(enemy.hp, 1025)
+        self.assertEquals(enemy.life, 1025)
         self.assertEquals(enemy.attack, 234)
         self.assertEquals(enemy.defense, 134)

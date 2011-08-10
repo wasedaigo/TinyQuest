@@ -6,14 +6,13 @@ from db_model import *
 class EnemyFactory:
 
     @classmethod
-    def build_enemy(cls, tag, lv, hp, attack, defense):
+    def build_enemy(cls, tag, life, attack, defense):
         """Build an enemy and return it"""
         
         enemy = EnemyModel(
             tag = tag,
-            lv = lv,
-            hp = hp,
-            max_hp = hp,
+            life = life,
+            max_life = life,
             attack = attack,
             defense = defense
         )

@@ -3,7 +3,7 @@ function loadState(state_id)
     templateHtml = gTemplates[state_id];
     if(state_id == "adventure")
     {
-        getCurrentAdventureScene(function(obj)
+        getCurrentActiveScene(function(obj)
         {
             if (obj.success)
             {

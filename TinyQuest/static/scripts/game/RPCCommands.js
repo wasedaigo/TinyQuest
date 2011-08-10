@@ -20,7 +20,7 @@ function charge_energy()
   })
 }
 
-function getCurrentAdventureScene(cb)
+function getCurrentActiveScene(cb)
 {
-  loadJSON("api/GetCurrentAdventureScene", cb);
+  loadJSON("api/GetCurrentActiveScene", cb);
 }

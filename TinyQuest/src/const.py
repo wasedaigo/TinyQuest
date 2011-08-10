@@ -13,8 +13,8 @@ INITIAL_PLAYER_PARAMS = {
     "money": 100,
     "level": 1,
     "total_xp": 0,
-    "hp": 50,
-    "max_hp": 50,
+    "life": 50,
+    "max_life": 50,
     "attack": 23,
     "defense": 14
 }

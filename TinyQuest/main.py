@@ -13,7 +13,7 @@ application = webapp.WSGIApplication(
                                      ('/api/GetLoginInfo',  ApiServer),
                                      ('/api/Go', ApiServer),
                                      ('/api/ChargeEnergy', ApiServer),
-                                     ('/api/GetCurrentAdventureScene', ApiServer),
+                                     ('/api/GetCurrentActiveScene', ApiServer),
                                      ('/api/CheckStats', ApiServer),
                                      ('/api/ClearCache', ApiServer)
                                      ],
