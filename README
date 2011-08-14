@@ -17,5 +17,5 @@
   2. Input localhost/test
   3. See the test result
   
-* remove_temp
+* clean_up
  * Before commit, you can remove all temporary files for a clean environment
