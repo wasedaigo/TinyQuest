@@ -1,4 +1,4 @@
-describe("Player", function() {
+describe("Geom", function() {
 
   var point = new enchant.geom.Point(30, -226);
   describe("Rectangle(30, -226)", function() {

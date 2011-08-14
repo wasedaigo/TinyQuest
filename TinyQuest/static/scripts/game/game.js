@@ -1,11 +1,10 @@
-enchant('geom');
+enchant();
 
 window.onload = function() {
     var game = new Game(640, 480);
     game.fps = 60;
-    game.preload('static/map1.gif', 'static/chara0.gif');
+    game.preload();
     game.onload = function() {
-        var rect = new Rectangle(0, 0, 640, 480);
         var stage = new Group();
         var s = new Sprite(640,480);
 
