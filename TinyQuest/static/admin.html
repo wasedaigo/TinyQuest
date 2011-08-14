@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+  <link type="text/css" rel="stylesheet" href="/static/css/main.css" /> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="/static/scripts/lib/enchant.js"></script>
+  <script type="text/javascript" src="/static/scripts/lib/geom.enchant.js"></script>
+  <script type="text/javascript" src="/static/scripts/game/game.js"></script> 
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
+  <link rel="apple-touch-startup-image" href="/static/images/default.png" />
+  <link rel="apple-touch-icon" href="/static/images/icon.png"/>
+
+</head>
+
+<body>
+<div id="main">
+  <div id="header">
+  <h1>Admin Panel</h1>
+  </div>
+  <div id="enchant-stage" style="width: 640px; height: 480px;">
+  </div>
+  <button id="Admin" onClick="window.location = './admin'">Admin Panel</button>
+</div>
+</body>   
+  <script type="text/javascript">
+  //<![CDATA[
+    var url = document.URL.split("//")[1].split("/")[0];
+    var redirectURL = "http://" + url + "/";
+    if (document.URL != redirectURL)
+    {
+      window.location = redirectURL;
+    }
+
+    $(function() {
+      $('#accordion').accordion();  
+    });
+  //]]>
+  </script>                                                              
+</html>

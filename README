@@ -6,3 +6,16 @@
 
 2. Add application to GoogleAppEngineLauncher; the path is
 /path/to/TinyQuest/TinyQuest
+
+* How to Test
+ * client
+  1. Open test/client/SpecRUnner.html
+  2. See the test result
+
+ * server
+  1. Run GoogleAppEngine
+  2. Input localhost/test
+  3. See the test result
+  
+* remove_temp
+ * Before commit, you can remove all temporary files for a clean environment
