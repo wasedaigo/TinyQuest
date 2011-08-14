@@ -9,7 +9,7 @@ describe("canvas.Sprite", function() {
     });
 
     describe("SceneGraph children", function() {
-        var sceneGraph = new enchant.canvas.SceneGraph(surface);
+        var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
         it("addChild()", function() {
             sceneGraph.addChild(sprite);
             expect(sceneGraph._children.length).toBe(1);
