@@ -4,6 +4,7 @@ runtime: python
 api_version: 1
 
 handlers:
+  
 - url: /test.*
   script: gaeunit.py
 
@@ -17,5 +18,6 @@ handlers:
   script: main.py
   
 - url: /.*
-  static_files: static/index.html
-  upload: static/index.html
+  static_files: static/admin.html
+  upload: static/admin.html
+
