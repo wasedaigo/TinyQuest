@@ -67,7 +67,7 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
             latestSourceData["textureRect"] = keyframe_set["textureRect"]
             latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
             if keyframe_set["textureRect"]
-                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "textureRect" => keyframe_set["textureRect"]}
+                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "rect" => keyframe_set["textureRect"]}
             end
         end
         

@@ -20,15 +20,12 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 
 enchant.canvas.Node = enchant.Class.create({
     initialize: function() {
-        this.x = 0;
-        this.y = 0;
-        this.scale = new enchant.geom.Point(1, 1);
+        this.pos = [0, 0];
+        this.scale = [1, 1];
         this.alpha = 0.0;
         this.priority = 0.5;
-        this.hueR = 0;
-        this.hueG = 0;
-        this.hueB = 0;
-        this.angle = 0.0;
+        this.hue = [0, 0, 0];
+        this.rotation = 0;
 
         this._children = [];
     },
@@ -51,9 +48,9 @@ enchant.canvas.Node = enchant.Class.create({
 
     draw: function(assets, surface) {
         surface.context.save();
-        surface.context.translate(this.x, this.y);
+        surface.context.translate(this.pos[0], this.pos[1]);
         surface.context.rotate(this.angle * Math.PI / 180);
-        surface.context.scale(this.scale.x, this.scale.y);
+        surface.context.scale(this.scale[0], this.scale[1]);
         for (var key in this._children) {
             var node = this._children[key];
             node.draw(assets, surface);
@@ -63,16 +60,16 @@ enchant.canvas.Node = enchant.Class.create({
 });
 
 enchant.canvas.Sprite = enchant.Class.create(enchant.canvas.Node, {
-    initialize: function(filename, size, srcRect) {
-        this.super = Node.call(this);
+    initialize: function(srcPath, size, srcRect) {
+        this.super = enchant.canvas.Node.call(this);
 
-        this._filename = filename;
+        this.srcPath = srcPath;
         this.size = size;
 
-        this._srcRect = srcRect;
+        this.srcRect = srcRect;
         this._anchor = new enchant.geom.Point(0.5, 0.5);
-        this._centerX = this._anchor.x * this.size.width;
-        this._centerY = this._anchor.y * this.size.height;
+        this._centerX = this._anchor.x * this.size[0];
+        this._centerY = this._anchor.y * this.size[1];
         this._children = [];
     },
 
@@ -80,7 +77,7 @@ enchant.canvas.Sprite = enchant.Class.create(enchant.canvas.Node, {
     },
 
     draw: function(assets, surface) {
-        var key = '../../static/assets/images/' + this._filename;
+        var key = '../../static/assets/images/' + this.srcPath;
         var src = assets[key];
         assert(src);
         var radian = this.angle * Math.PI / 180;
@@ -90,7 +87,7 @@ enchant.canvas.Sprite = enchant.Class.create(enchant.canvas.Node, {
         surface.context.rotate(this.angle * Math.PI / 180);
         surface.context.translate(-this._centerX, -this._centerY);
         surface.context.scale(this.scale.x, this.scale.y);
-        surface.draw(src, this._srcRect.x, this._srcRect.y, this._srcRect.width, this._srcRect.height, this.x, this.y, this.size.width, this.size.height);
+        surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.x, this.y, this.size[0], this.size[1]);
         surface.context.restore();
     }
 });
