@@ -45,6 +45,24 @@ enchant.animation.interval.Interval = enchant.Class.create({
     }
 });
 
+// Wait component of intervals
+enchant.animation.interval.Wait = enchant.Class.create({
+    initialize: function(duration) {
+        this._duration = duration;
+        this._frameNo = 0;
+    },
+    isDone: function() {
+        return this._frameNo >= this._duration
+    },
+    start: function() {
+    },
+    update: function() {
+        if (!this.isDone()) {
+            this._frameNo++;
+        }
+    }
+});
+
 // Source file keyframes, this changes image and source rect of sprites
 enchant.animation.interval.SourceInterval = enchant.Class.create({
     initialize: function(sprite, sourceKeyframes) {
@@ -141,6 +159,7 @@ enchant.animation.interval.Parallel = enchant.Class.create({
         }
     }
 });
+
 
 // Static methods
 enchant.animation.Animation = 

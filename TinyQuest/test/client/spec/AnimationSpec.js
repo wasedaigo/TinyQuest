@@ -117,6 +117,28 @@ describe("Animation", function() {
             expect(interval.isDone()).toBe(true);
         }); 
         
+        it("Wait", function() {
+
+            var interval = new enchant.animation.interval.Wait(5);
+
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(interval.isDone()).toBe(false);
+
+            interval.update();
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+           expect(interval.isDone()).toBe(true);
+        });
+        
         it("SourceInterval", function() {
             
             var sprite = new enchant.canvas.Sprite("", [10, 20], [5, 14, 25, 30]);
