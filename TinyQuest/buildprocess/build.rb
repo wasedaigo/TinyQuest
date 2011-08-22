@@ -52,8 +52,12 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
                 latestSourceData["textureRect"] = nil
                 latestSourceData["sourcePath"] = nil
                 last_obj["duration"] = frameNo - last_obj["frameNo"]
+                last_obj["tween"] = false;
+                
             end
         end
+        
+        result["source"] << {"frameNo" => frameNo, "path" => ""}
     else
         # Add keyframe for each attribute in this keyframe set
         createAttributeKey(result, "alpha", keyframe_set, frameNo, 1.0)
@@ -88,7 +92,7 @@ end
 
 def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     data = {}
-    
+
     value = keyframe_set[key]
     tweenType = keyframe_set[key + "Tween"]
 
