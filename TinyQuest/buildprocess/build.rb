@@ -8,16 +8,19 @@ def build_animation_file(filename)
     end
     json = JSON.parse(data)
 
-    result = parse_timelines(json["keyframes"])
-    File.open("test.json", 'w') do |f|
+    result = {}
+    result["timelines"] = parse_timelines(json["keyframes"])
+    
+    outputFilename = filename.split(".")[0] + ".json"
+    File.open(outputFilename, 'w') do |f|
        f.write(result.to_json)
     end
 end
 
 def parse_timelines(timelines)
-    result = {}
+    result = []
     timelines.each do |timelineIndex, timeline|
-        result[timelineIndex] = parse_timeline(timeline)
+        result << parse_timeline(timeline)
     end
     
     return result
@@ -47,13 +50,14 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
     if (keyframe_set["isEmpty"])
         # When an empty keyframe appears, duration of all latest keyframes have to be updated.
         result.each do |key, obj|
-            last_obj = obj.last
-            if last_obj && last_obj["duration"] == nil
-                latestSourceData["textureRect"] = nil
-                latestSourceData["sourcePath"] = nil
-                last_obj["duration"] = frameNo - last_obj["frameNo"]
-                last_obj["tween"] = false;
-                
+            if key != "source"
+                last_obj = obj.last
+                if last_obj && last_obj["duration"] == nil
+                    latestSourceData["textureRect"] = nil
+                    latestSourceData["sourcePath"] = nil
+                    #last_obj["duration"] = frameNo - last_obj["frameNo"]
+                    last_obj["tween"] = false;
+                end
             end
         end
         
@@ -76,17 +80,21 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
         end
         
         # setup duration
+=begin
         result.each do |key, obj|
-            if (obj.count > 1)
-                curr_keyframe = obj[obj.count - 1]
-                if (curr_keyframe["frameNo"] == frameNo)
-                    prev_keyframe = obj[obj.count - 2]
-                    unless prev_keyframe["duration"]
-                        prev_keyframe["duration"] = curr_keyframe["frameNo"] - prev_keyframe["frameNo"]
+            if key != "source"
+                if (obj.count > 1)
+                    curr_keyframe = obj[obj.count - 1]
+                    if (curr_keyframe["frameNo"] == frameNo)
+                        prev_keyframe = obj[obj.count - 2]
+                        unless prev_keyframe["duration"]
+                            prev_keyframe["duration"] = curr_keyframe["frameNo"] - prev_keyframe["frameNo"]
+                        end
                     end
                 end
             end
         end
+=end
     end
 end
 

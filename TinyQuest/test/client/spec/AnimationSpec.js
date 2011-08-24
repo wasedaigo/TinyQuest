@@ -223,9 +223,10 @@ describe("Animation", function() {
         it("Sequence", function() {
             var node = new enchant.canvas.Node();
             var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3);
-            var interval2 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 2);
+            var interval2 = new enchant.animation.interval.Wait(2);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 2);
             
-            var sequence = new enchant.animation.interval.Sequence([interval1, interval2]);
+            var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
             
             sequence.start();
             expect(node.alpha).toBe(0.1);
@@ -242,7 +243,15 @@ describe("Animation", function() {
             sequence.update();
             expect(node.alpha).toBe(1.0);
             expect(sequence.isDone()).toBe(false);
-    
+            
+            sequence.update();
+            expect(node.alpha).toBe(1.0);
+            expect(sequence.isDone()).toBe(false);
+            
+            sequence.update();
+            expect(node.alpha).toBe(1.0);
+            expect(sequence.isDone()).toBe(false);
+            
             sequence.update();
             expect(node.alpha).toBe(0.35);
             expect(sequence.isDone()).toBe(false);
@@ -289,5 +298,15 @@ describe("Animation", function() {
             expect(node.rotation).toBe(180);
             expect(parallel.isDone()).toBe(true);
         });  
+        
+         
+        it("AnimationTest1", function() {
+            var testData = {"timelines":[{"position":[],"scale":[{"duration":5,"tween":true,"value":[0.5,0.5],"frameNo":0},{"duration":4,"tween":false,"value":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"value":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":9,"tween":false,"path":"Images/Battle/Skills/Effect_Special01.png","frameNo":0,"rect":[0,0,32,32]},{"duration":5,"path":"","frameNo":9},{"duration":1,"tween":false,"path":"Images/Battle/Skills/Effect_Special01.png","frameNo":14,"rect":[0,0,32,32]},{"path":"","frameNo":15}],"rotation":[{"duration":9,"tween":false,"value":0,"frameNo":0},{"duration":1,"tween":false,"value":30,"frameNo":14}],"alpha":[{"duration":9,"tween":false,"value":1.0,"frameNo":0},{"duration":1,"tween":false,"value":0.0,"frameNo":14}]}]};
+
+            enchant.animation.loader.CreateAnimation(testData);
+            
+    
+        }); 
+        
     });
 });

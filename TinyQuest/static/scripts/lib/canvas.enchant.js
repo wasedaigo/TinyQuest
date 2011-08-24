@@ -63,10 +63,10 @@ enchant.canvas.Sprite = enchant.Class.create(enchant.canvas.Node, {
     initialize: function(srcPath, size, srcRect) {
         this.super = enchant.canvas.Node.call(this);
 
-        this.srcPath = srcPath;
-        this.size = size;
+        this.srcPath = srcPath ? srcPath : "";
+        this.size = size ? size : [0, 0];
+        this.srcRect = srcRect ? srcRect : [0, 0, 0, 0];
 
-        this.srcRect = srcRect;
         this._anchor = new enchant.geom.Point(0.5, 0.5);
         this._centerX = this._anchor.x * this.size[0];
         this._centerY = this._anchor.y * this.size[1];

@@ -63,24 +63,24 @@ enchant.animation.interval.Wait = enchant.Class.create({
     }
 });
 
-// Source file keyframes, this changes image and source rect of sprites
+// Source file keykeyframes, this changes image and source rect of sprites
 enchant.animation.interval.SourceInterval = enchant.Class.create({
-    initialize: function(sprite, sourceKeyframes) {
+    initialize: function(sprite, sourceKeykeyframes) {
         this._sprite = sprite;
-        this._sourceKeyframes = sourceKeyframes;
+        this._sourceKeykeyframes = sourceKeykeyframes;
         this._frameNo = 0;
         this._index = 0;
         this._duration = 0;
         this._frameDuration = 0;
-        for (var key in sourceKeyframes) {
-            this._duration += sourceKeyframes[key].duration;  
+        for (var key in sourceKeykeyframes) {
+            this._duration += sourceKeykeyframes[key].duration;  
         }
     },
     isDone: function() {
         return this._frameNo >= this._duration;
     },
     start: function() {
-        var keyframe = this._sourceKeyframes[0];
+        var keyframe = this._sourceKeykeyframes[0];
 
         this._sprite.srcPath = keyframe.path;
         this._sprite.srcRect = keyframe.rect;
@@ -90,7 +90,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._frameDuration++;
             this._frameNo++;
 
-            var keyframe = this._sourceKeyframes[this._index];
+            var keyframe = this._sourceKeykeyframes[this._index];
         
             this._sprite.srcPath = keyframe.path;
             this._sprite.srcRect = keyframe.rect;
@@ -160,27 +160,53 @@ enchant.animation.interval.Parallel = enchant.Class.create({
     }
 });
 
-
 // Static methods
-enchant.animation.Animation = 
+enchant.animation.loader = 
 {
-    LoadAnimation: function (data) {
+    CreateAnimation: function (data) {
+        var timelines = data["timelines"];
         
-        for (var timelineNo in data) {
-            var keyframeset = data[timelineNo];
+        var parallels = [];
+        for (var timelineNo in timelines) {
+            var timeline = timelines[timelineNo];
             
-            var alphaKeyframes = keyframeset.alpha;
-            for (var keyframeNo in alphaKeyframes) {
-                var alphaKeyframe = alphaKeyframes[keyframeNo];
-                
-                var startValue = alphaKeyframe.value;
-                var endValue = 0;
-                if (alphaKeyframe.tween && alphaKeyframes.length < keyframeNo) {
-                    endValue = alphaKeyframes[keyframeNo + 1].value;
-                } else {
-                    endValue = startValue;
+            var sprite = new enchant.animation.interval.Interval();
+            var sequences = [];
+            var attributes = ["rotation", "position", "alpha", "scale", "source"];
+            for (var i in attributes) {
+                var attribute = attributes[i];
+                var sequence = enchant.animation.loader.CreateAttributeTween(sprite, attribute, timeline[attribute]);
+                if (sequence) {
+                    sequences.push(sequence);
                 }
             }
+            parallels.push(new enchant.animation.interval.Parallel(sequences));
+        }
+
+        return new enchant.animation.interval.Parallel(parallels);
+    },
+    // Create attribute tween out of given keyframe data
+    CreateAttributeTween: function (node, attribute, keyframes) {
+        if (keyframes.length == 0) {
+            return null;
+        } else {
+            var intervals = [];
+            for(var i = 0; i < keyframes.length; i++) {
+                var frame = keyframes[i];
+                var startValue = frame.value;
+                endValue = frame.value;
+                var duration = frame.duration;
+                if (i < keyframes[i].length - 1 && frame.tween) {
+                    // If not the last frame
+                    duration = keyframes[i + 1].frameNo - frame.frameNo;
+                    endValue = keyframes[i + 1].value;
+                }
+
+                var interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
+                intervals.push(interval);
+            }
+
+            return new enchant.animation.interval.Sequence(intervals);
         }
     }  
 }
