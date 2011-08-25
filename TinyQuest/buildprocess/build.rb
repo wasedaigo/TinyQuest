@@ -39,9 +39,10 @@ def parse_timeline(timeline)
     latestSourceData = {"textureRect" => nil, "sourcePath" => nil}
     timeline.each do |keyframe_set|
         parse_keyframes(latestSourceData, keyframe_set, result)
-        if (result["source"].last["path"] == "") 
-        	result["source"].pop();
-        end
+    end
+    
+    if (result["source"].last["path"] == "") 
+        result["source"].pop();
     end
 
     return result
@@ -73,11 +74,28 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
         createAttributeKey(result, "hue", keyframe_set, frameNo, [0, 0, 0])
 
         # Source is somewhat special (Like, no lenear tween)
-        if (latestSourceData["textureRect"] != keyframe_set["textureRect"]) || (latestSourceData["sourcePath"] != keyframe_set["sourcePath"] )
+        rectDiff = keyframe_set["textureRect"] == nil || latestSourceData["textureRect"] != keyframe_set["textureRect"]
+        pathDiff = latestSourceData["sourcePath"] != keyframe_set["sourcePath"]
+        if rectDiff || pathDiff
             latestSourceData["textureRect"] = keyframe_set["textureRect"]
             latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
+            
+            # Relative
+            relativeToTarget = false
+            if (keyframe_set["positionType"] == "relativeToTarget")
+                relativeToTarget = true
+            end
+            
+            # Anchor
+            anchor = [0, 0]
+            if (keyframe_set["center"])
+                anchor = keyframe_set["center"]
+            end
+
             if keyframe_set["textureRect"]
-                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "rect" => keyframe_set["textureRect"]}
+                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "anchor"=> anchor, "rect" => keyframe_set["textureRect"], "relative" => relativeToTarget}
+            else
+                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "anchor"=> anchor, "relative" => relativeToTarget}
             end
         end
         

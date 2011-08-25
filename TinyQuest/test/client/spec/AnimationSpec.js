@@ -14,6 +14,15 @@ function testRound(value) {
 	return value;
 }
 
+function testFrame(root, interval, testData, i) {
+    expect(root._children[0].position).toEqual(testData.position[i]);
+    expect(testRound(root._children[0].scale)).toEqual(testData.scale[i]);
+    expect(testRound(root._children[0].alpha)).toEqual(testData.alpha[i]);
+    expect(root._children[0].hue).toEqual(testData.hue[i]);
+    expect(testRound(root._children[0].rotation)).toEqual(testData.rotation[i]);
+    expect(interval.isDone()).toBe(testData.isDone[i]);
+}
+
 describe("Animation", function() {
 
     describe("TestInterval", function() {
@@ -344,6 +353,7 @@ describe("Animation", function() {
          
         it("AnimationTest1", function() {
         	var root = new enchant.canvas.Node();
+        	// Smoke01
             var testData = {"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"path":"test.png","frameNo":0,"rect":[0,0,32,32]}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]};
             var interval = enchant.animation.loader.CreateAnimation(root, testData);
             expect(root._children.length).toBe(1);
@@ -360,21 +370,47 @@ describe("Animation", function() {
 			}
 
 			interval.start();
-			for (var i = 0; i <= 15; i++) {
-				if (i == 0) {
-					interval.start();
-				} else {
-					interval.update();
-				}
-				expect(root._children[0].position).toEqual(testData.position[i]);
-				expect(testRound(root._children[0].scale)).toEqual(testData.scale[i]);
-				expect(testRound(root._children[0].alpha)).toEqual(testData.alpha[i]);
-				expect(root._children[0].hue).toEqual(testData.hue[i]);
-				expect(testRound(root._children[0].rotation)).toEqual(testData.rotation[i]);
-				
-				expect(interval.isDone()).toBe(testData.isDone[i]);
+			
+            for (var i = 0; i <= 15; i++) {
+                if (i == 0) {
+                    interval.start();
+                } else {
+                    interval.update();
+                }
+                testFrame(root, interval, testData, i);
             }
         }); 
         
+        it("AnimationTest2", function() {
+        	var root = new enchant.canvas.Node();
+        	// Smoke01
+        	var testData1 = {"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"path":"test.png","frameNo":0,"rect":[0,0,32,32]}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]};
+            // SmokeRing
+            var testData2 = {"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"anchor":[0,0],"path":"Smoke01.ani","frameNo":0,"relative":false},{"duration":11,"anchor":[0,0],"path":"Smoke01.ani","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]};
+
+            var interval = enchant.animation.loader.CreateAnimation(root, testData1);
+            expect(root._children.length).toBe(1);
+
+			var testData = {
+				"position":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+				"scale":[[0.5, 0.5], [0.62, 0.62], [0.74, 0.74], [0.86, 0.86], [0.98, 0.98], [1.1, 1.1], [1.14, 1.14], [1.19, 1.19], [1.23, 1.23], [1.28, 1.28], [1.32, 1.32], [1.37, 1.37], [1.41, 1.41], [1.46, 1.46],[1.5, 1.5],[1.5, 1.5]],
+				"alpha":[1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0],
+				"hue":[[0,0,0], [0,0,0], [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],
+				"rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
+				"srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
+				"srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
+				"isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+			}
+
+			interval.start();
+            for (var i = 0; i <= 15; i++) {
+                if (i == 0) {
+                    interval.start();
+                } else {
+                    interval.update();
+                }
+                testFrame(root, interval, testData, i);
+            }
+        }); 
     });
 });
