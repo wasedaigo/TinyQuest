@@ -20,10 +20,6 @@
             "textureRect" : [ 0, 0, 32, 32 ]
          },
          {
-            "frameNo" : 9,
-            "isEmpty" : true
-         },
-         {
             "alpha" : 0.0,
             "alphaTween" : "fix",
             "frameNo" : 14,

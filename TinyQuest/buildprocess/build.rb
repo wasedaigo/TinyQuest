@@ -11,7 +11,7 @@ def build_animation_file(filename)
     result = {}
     result["timelines"] = parse_timelines(json["keyframes"])
     
-    outputFilename = filename.split(".")[0] + ".json"
+    outputFilename = File.dirname(filename) + "/" + File.basename(filename).split(".")[0] + ".json"
     File.open(outputFilename, 'w') do |f|
        f.write(result.to_json)
     end
@@ -39,6 +39,9 @@ def parse_timeline(timeline)
     latestSourceData = {"textureRect" => nil, "sourcePath" => nil}
     timeline.each do |keyframe_set|
         parse_keyframes(latestSourceData, keyframe_set, result)
+        if (result["source"].last["path"] == "") 
+        	result["source"].pop();
+        end
     end
 
     return result
@@ -50,17 +53,16 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
     if (keyframe_set["isEmpty"])
         # When an empty keyframe appears, duration of all latest keyframes have to be updated.
         result.each do |key, obj|
-            if key != "source"
-                last_obj = obj.last
-                if last_obj && last_obj["duration"] == nil
-                    latestSourceData["textureRect"] = nil
-                    latestSourceData["sourcePath"] = nil
-                    #last_obj["duration"] = frameNo - last_obj["frameNo"]
-                    last_obj["tween"] = false;
-                end
-            end
+			last_obj = obj.last
+			if last_obj && last_obj["duration"] == nil
+				last_obj["duration"] = frameNo - last_obj["frameNo"]
+				if key != "source"
+					last_obj["tween"] = false;
+				end
+			end
         end
-        
+		latestSourceData["textureRect"] = nil
+		latestSourceData["sourcePath"] = nil
         result["source"] << {"frameNo" => frameNo, "path" => ""}
     else
         # Add keyframe for each attribute in this keyframe set
@@ -80,21 +82,21 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
         end
         
         # setup duration
-=begin
         result.each do |key, obj|
-            if key != "source"
-                if (obj.count > 1)
-                    curr_keyframe = obj[obj.count - 1]
-                    if (curr_keyframe["frameNo"] == frameNo)
-                        prev_keyframe = obj[obj.count - 2]
-                        unless prev_keyframe["duration"]
-                            prev_keyframe["duration"] = curr_keyframe["frameNo"] - prev_keyframe["frameNo"]
-                        end
-                    end
-                end
-            end
+			if (obj.count > 1)
+				curr_keyframe = obj[obj.count - 1]
+				if (curr_keyframe["frameNo"] == frameNo)
+					prev_keyframe = obj[obj.count - 2]
+					unless prev_keyframe["duration"]
+						prev_keyframe["duration"] = curr_keyframe["frameNo"] - prev_keyframe["frameNo"]
+						if key != "source"
+							prev_keyframe["endValue"] = curr_keyframe["startValue"]
+						end
+					end
+				end
+			end
         end
-=end
+
     end
 end
 
@@ -110,7 +112,8 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
       
     if tweenType && tweenType != "none"
         data["frameNo"] = frameNo
-        data["value"] = (value != nil) ? value : defaultValue
+        data["startValue"] = (value != nil) ? value : defaultValue
+        data["endValue"] = data["startValue"]
     end
 
     unless data.empty?

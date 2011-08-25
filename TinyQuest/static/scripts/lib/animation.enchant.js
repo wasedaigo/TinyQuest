@@ -136,19 +136,17 @@ enchant.animation.interval.Parallel = enchant.Class.create({
     // Check whether all intervals are done
     isDone: function() {
         var isDone = true;
-        
         for (var i in this._intervals) {
             if (!this._intervals[i].isDone()) {
                 isDone = false;
                 break;
             }
         }
-
         return isDone;
     },
     start: function() {
-        for (var interval in this._intervals) {
-            this._intervals[0].start();
+        for (var i in this._intervals) {
+            this._intervals[i].start();
         }
     },
     update: function() {
@@ -163,16 +161,16 @@ enchant.animation.interval.Parallel = enchant.Class.create({
 // Static methods
 enchant.animation.loader = 
 {
-    CreateAnimation: function (data) {
+    CreateAnimation: function (root, data) {
         var timelines = data["timelines"];
         
         var parallels = [];
         for (var timelineNo in timelines) {
             var timeline = timelines[timelineNo];
             
-            var sprite = new enchant.animation.interval.Interval();
+            var sprite = new enchant.canvas.Sprite();
             var sequences = [];
-            var attributes = ["rotation", "position", "alpha", "scale", "source"];
+            var attributes = ["rotation", "position", "alpha", "scale"];
             for (var i in attributes) {
                 var attribute = attributes[i];
                 var sequence = enchant.animation.loader.CreateAttributeTween(sprite, attribute, timeline[attribute]);
@@ -180,7 +178,10 @@ enchant.animation.loader =
                     sequences.push(sequence);
                 }
             }
+			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"]);
+			sequences.push(sourceInterval);
             parallels.push(new enchant.animation.interval.Parallel(sequences));
+            root.addChild(sprite);
         }
 
         return new enchant.animation.interval.Parallel(parallels);
@@ -193,14 +194,9 @@ enchant.animation.loader =
             var intervals = [];
             for(var i = 0; i < keyframes.length; i++) {
                 var frame = keyframes[i];
-                var startValue = frame.value;
-                endValue = frame.value;
+                var startValue = frame.startValue;
+                var endValue = frame.endValue;
                 var duration = frame.duration;
-                if (i < keyframes[i].length - 1 && frame.tween) {
-                    // If not the last frame
-                    duration = keyframes[i + 1].frameNo - frame.frameNo;
-                    endValue = keyframes[i + 1].value;
-                }
 
                 var interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
                 intervals.push(interval);

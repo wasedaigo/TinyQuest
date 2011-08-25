@@ -1,3 +1,19 @@
+function testRound(value) {
+	if (typeof(value) == "object") {
+		for (var i in value) {
+			value[i] *= 100;
+			value[i] = Math.round(value[i]);
+			value[i] /= 100;
+		}
+
+	} else {
+		value *= 100;
+		value = Math.round(value);
+		value /= 100;
+	}
+	return value;
+}
+
 describe("Animation", function() {
 
     describe("TestInterval", function() {
@@ -36,7 +52,33 @@ describe("Animation", function() {
             expect(node.alpha).toBe(1.0);
             expect(interval.isDone()).toBe(true);
         });
+        it("PositionInterval", function() {
+            var node = new enchant.canvas.Node();
+            var interval = new enchant.animation.interval.Interval(node, "position", [10, 10], [2, 6], 4);
 
+            expect(node.position).toEqual([0, 0]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.start();
+            expect(node.position).toEqual([10, 10]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([8, 9]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([6, 8]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([4, 7]);
+            expect(interval.isDone()).toBe(false);
+
+            interval.update();
+            expect(node.position).toEqual([2, 6]);
+            expect(interval.isDone()).toBe(true);
+        }); 
         it("ScaleInterval", function() {
             var node = new enchant.canvas.Node();
             var interval = new enchant.animation.interval.Interval(node, "scale", [10, 10], [2, 6], 4);
@@ -301,11 +343,37 @@ describe("Animation", function() {
         
          
         it("AnimationTest1", function() {
-            var testData = {"timelines":[{"position":[],"scale":[{"duration":5,"tween":true,"value":[0.5,0.5],"frameNo":0},{"duration":4,"tween":false,"value":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"value":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":9,"tween":false,"path":"Images/Battle/Skills/Effect_Special01.png","frameNo":0,"rect":[0,0,32,32]},{"duration":5,"path":"","frameNo":9},{"duration":1,"tween":false,"path":"Images/Battle/Skills/Effect_Special01.png","frameNo":14,"rect":[0,0,32,32]},{"path":"","frameNo":15}],"rotation":[{"duration":9,"tween":false,"value":0,"frameNo":0},{"duration":1,"tween":false,"value":30,"frameNo":14}],"alpha":[{"duration":9,"tween":false,"value":1.0,"frameNo":0},{"duration":1,"tween":false,"value":0.0,"frameNo":14}]}]};
+        	var root = new enchant.canvas.Node();
+            var testData = {"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"path":"test.png","frameNo":0,"rect":[0,0,32,32]}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]};
+            var interval = enchant.animation.loader.CreateAnimation(root, testData);
+            expect(root._children.length).toBe(1);
 
-            enchant.animation.loader.CreateAnimation(testData);
-            
-    
+			var testData = {
+				"position":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+				"scale":[[0.5, 0.5], [0.62, 0.62], [0.74, 0.74], [0.86, 0.86], [0.98, 0.98], [1.1, 1.1], [1.14, 1.14], [1.19, 1.19], [1.23, 1.23], [1.28, 1.28], [1.32, 1.32], [1.37, 1.37], [1.41, 1.41], [1.46, 1.46],[1.5, 1.5],[1.5, 1.5]],
+				"alpha":[1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0],
+				"hue":[[0,0,0], [0,0,0], [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],
+				"rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
+				"srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
+				"srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
+				"isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+			}
+
+			interval.start();
+			for (var i = 0; i <= 15; i++) {
+				if (i == 0) {
+					interval.start();
+				} else {
+					interval.update();
+				}
+				expect(root._children[0].position).toEqual(testData.position[i]);
+				expect(testRound(root._children[0].scale)).toEqual(testData.scale[i]);
+				expect(testRound(root._children[0].alpha)).toEqual(testData.alpha[i]);
+				expect(root._children[0].hue).toEqual(testData.hue[i]);
+				expect(testRound(root._children[0].rotation)).toEqual(testData.rotation[i]);
+				
+				expect(interval.isDone()).toBe(testData.isDone[i]);
+            }
         }); 
         
     });

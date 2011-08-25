@@ -20,7 +20,7 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 
 enchant.canvas.Node = enchant.Class.create({
     initialize: function() {
-        this.pos = [0, 0];
+        this.position = [0, 0];
         this.scale = [1, 1];
         this.alpha = 0.0;
         this.priority = 0.5;
