@@ -40,8 +40,8 @@ def parse_timeline(timeline)
     timeline.each do |keyframe_set|
         parse_keyframes(latestSourceData, keyframe_set, result)
     end
-    
-    if (result["source"].last["path"] == "") 
+
+    if (!result["source"].empty? && result["source"].last["id"] == "") 
         result["source"].pop();
     end
 
@@ -64,7 +64,7 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
         end
 		latestSourceData["textureRect"] = nil
 		latestSourceData["sourcePath"] = nil
-        result["source"] << {"frameNo" => frameNo, "path" => ""}
+        result["source"] << {"frameNo" => frameNo, "id" => ""}
     else
         # Add keyframe for each attribute in this keyframe set
         createAttributeKey(result, "alpha", keyframe_set, frameNo, 1.0)
@@ -85,20 +85,33 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
             if (keyframe_set["positionType"] == "relativeToTarget")
                 relativeToTarget = true
             end
-            
-            # Anchor
-            anchor = [0, 0]
-            if (keyframe_set["center"])
-                anchor = keyframe_set["center"]
-            end
 
+            sourceKeyFrame = {"frameNo" => frameNo, "id" => keyframe_set["sourcePath"].split(".")[0], "relative" => relativeToTarget}
             if keyframe_set["textureRect"]
-                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "anchor"=> anchor, "rect" => keyframe_set["textureRect"], "relative" => relativeToTarget}
+                sourceKeyFrame["type"] = "image"
+                sourceKeyFrame["rect"] = keyframe_set["textureRect"]
+                # Anchor
+                anchor = [0, 0]
+                if (keyframe_set["center"])
+                    anchor = keyframe_set["center"]
+                end
+                sourceKeyFrame["anchor"] = anchor
             else
-                result["source"] << {"frameNo" => frameNo, "path" => keyframe_set["sourcePath"], "anchor"=> anchor, "relative" => relativeToTarget}
+                 sourceKeyFrame["type"] = "animation"
+                if keyframe_set["emitter"]
+                    sourceKeyFrame["emitter"] = true
+                    sourceKeyFrame["maxEmitAngle"] = keyframe_set["maxEmitAngle"]
+                    sourceKeyFrame["maxEmitSpeed"] = keyframe_set["maxEmitSpeed"]
+                    sourceKeyFrame["minEmitAngle"] = keyframe_set["minEmitAngle"]
+                    sourceKeyFrame["minEmitSpeed"] = keyframe_set["minEmitSpeed"]
+                else
+                    sourceKeyFrame["emitter"] = false
+                end
             end
+            
+            result["source"] << sourceKeyFrame
         end
-        
+
         # setup duration
         result.each do |key, obj|
 			if (obj.count > 1)

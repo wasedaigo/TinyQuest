@@ -81,8 +81,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
     },
     start: function() {
         var keyframe = this._sourceKeykeyframes[0];
-
-        this._sprite.srcPath = keyframe.path;
+        this._sprite.srcPath = keyframe.id + ".png";
         this._sprite.srcRect = keyframe.rect;
     },
     update: function() {
@@ -91,8 +90,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._frameNo++;
 
             var keyframe = this._sourceKeykeyframes[this._index];
-        
-            this._sprite.srcPath = keyframe.path;
+            
+            this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
             if (this._frameDuration >= keyframe.duration) {
                 this._index++;

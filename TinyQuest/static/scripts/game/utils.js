@@ -32,42 +32,6 @@ function loadJSONWithData(name, data, callback)
   }
 }
 
-
-
-function showModalDialog(x, y, body)
-{
-  var dialog = $("#dialog");
-  var mask = $("#mask");
-
-  mask.fadeTo("slow",0.3);	
-  mask.click(closeDialog);
-
-  updateDialog(body);
-  
-  dialog.css('left',  x - 50);
-  dialog.css('top', y - 50);
-  dialog.fadeIn(300); 
-}
-
-function updateDialog(body)
-{
-  var dialog = $("#dialog");
-
-  dialog.empty();
-  dialog.append(body);
-  body.hide();
-  body.fadeIn(300);
-}
-
-function closeDialog()
-{
-  var dialog = $("#dialog");
-  var mask = $("#mask");
-  
-  mask.fadeOut(300);
-  dialog.fadeOut(300);
-}
-
 // Helper methods
 function getMouseLocalPosition(e) 
 {
@@ -77,11 +41,3 @@ function getMouseLocalPosition(e)
     'y' : (e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop)))
   }
 };
-
-function getContainerSize()
-{
-  return {
-    "width":$("#scrollMapViewer").width(), 
-    "height":$("#scrollMapViewer").height()
-  };
-}
