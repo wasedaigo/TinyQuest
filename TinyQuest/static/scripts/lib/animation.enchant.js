@@ -67,6 +67,7 @@ enchant.animation.interval.Wait = enchant.Class.create({
 enchant.animation.interval.SourceInterval = enchant.Class.create({
     initialize: function(sprite, sourceKeykeyframes) {
         this._sprite = sprite;
+        this._interval = null;
         this._sourceKeykeyframes = sourceKeykeyframes;
         this._frameNo = 0;
         this._index = 0;
@@ -79,10 +80,30 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
     isDone: function() {
         return this._frameNo >= this._duration;
     },
+    _updateKeyframe: function(keyframe) {
+        // Empty frame found, reset the setting
+        if (keyframe.id == "") {
+            this._interval = null;
+            this._sprite.removeAllChilden();
+        }
+        
+        if (keyframe.type == "image") {
+            // Display static image
+            this._sprite.srcPath = keyframe.id + ".png";
+            this._sprite.srcRect = keyframe.rect;
+        } else {
+            // Display nested animations
+            if (this._interval) {
+                this._interval.update();
+            } else {
+                // No animation node is generaetd yet, let's generate it
+                this._interval = enchant.animation.loader.CreateAnimation(this._sprite, enchant.resourceManager.get(keyframe.id));
+            }
+        }
+    },      
     start: function() {
         var keyframe = this._sourceKeykeyframes[0];
-        this._sprite.srcPath = keyframe.id + ".png";
-        this._sprite.srcRect = keyframe.rect;
+        this._updateKeyframe(keyframe);
     },
     update: function() {
             if (!this.isDone()) {
@@ -90,9 +111,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._frameNo++;
 
             var keyframe = this._sourceKeykeyframes[this._index];
-            
-            this._sprite.srcPath = keyframe.id + ".png";
-            this._sprite.srcRect = keyframe.rect;
+            this._updateKeyframe(keyframe);
+
             if (this._frameDuration >= keyframe.duration) {
                 this._index++;
                 this._frameDuration = 0;

@@ -14,28 +14,30 @@ function testRound(value) {
 	return value;
 }
 
-function testFrame(root, interval, testData, i) {
-    expect(root._children[0].position).toEqual(testData.position[i]);
-    expect(testRound(root._children[0].scale)).toEqual(testData.scale[i]);
-    expect(testRound(root._children[0].alpha)).toEqual(testData.alpha[i]);
-    expect(root._children[0].hue).toEqual(testData.hue[i]);
-    expect(testRound(root._children[0].rotation)).toEqual(testData.rotation[i]);
-    expect(testRound(root._children[0].srcRect)).toEqual(testData.srcRect[i]);
-    expect(root._children[0].srcPath).toEqual(testData.srcPath[i]);
-    expect(interval.isDone()).toBe(testData.isDone[i]);
+function testFrame(root, interval, testData, i, j) {
+    expect(root._children[j].position).toEqual(testData[j].position[i]);
+    expect(testRound(root._children[j].scale)).toEqual(testData[j].scale[i]);
+    expect(testRound(root._children[j].alpha)).toEqual(testData[j].alpha[i]);
+    expect(root._children[j].hue).toEqual(testData[j].hue[i]);
+    expect(testRound(root._children[j].rotation)).toEqual(testData[j].rotation[i]);
+
+    if (root._children[j].srcRect) {
+        expect(testRound(root._children[j].srcRect)).toEqual(testData[j].srcRect[i]);
+    } else {
+        expect(root._children[j].srcRect).toEqual(null);
+    }
+    expect(root._children[j].srcPath).toEqual(testData[j].srcPath[i]);
+    expect(interval.isDone()).toBe(testData[j].isDone[i]);
 }
 
 describe("Animation", function() {
-    var animationTestData = {
-        "Smoke01" : {"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"anchor":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]},
-        "SmokeRing" : {"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[{"duration":11,"tween":false,"endValue":[1,1],"startValue":[1,1],"frameNo":4}],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"GameData/Animations/Battle/Skills/Effect/Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]}
-    };
+    
     describe("TestInterval", function() {
         it("AlphaInterval", function() {
             var node = new enchant.canvas.Node();
             var interval = new enchant.animation.interval.Interval(node, "alpha", 0.0, 1.0, 5);
 
-            expect(node.alpha).toBe(0);
+            expect(node.alpha).toBe(1);
             expect(interval.isDone()).toBe(false);
             
             interval.start();
@@ -197,37 +199,41 @@ describe("Animation", function() {
         
         it("SourceInterval", function() {
             
-            var sprite = new enchant.canvas.Sprite("", [10, 20], [5, 14, 25, 30]);
+            var sprite = new enchant.canvas.Sprite(null, [5, 14, 25, 30]);
             var keyframes = [
                 {
                     "frameNo" : 0,
                     "rect" : [10, 10, 32, 48],
                     "id" : "test",
-                    "duration" : 3
+                    "duration" : 3,
+                    "type" : "image"
                 },
                 {
                     "frameNo" : 3,
                     "rect" : [20, 10, 22, 48],
                     "id" : "test2",
-                    "duration" : 2
+                    "duration" : 2,
+                    "type" : "image"
                 },
                 {
                     "frameNo" : 5,
                     "rect" : [20, 20, 22, 48],
                     "id" : "test3",
-                    "duration" : 1
+                    "duration" : 1,
+                    "type" : "image"
                 },
                 {
                     "frameNo" : 6,
                     "rect" : [20, 20, 22, 48],
                     "id" : "test4",
-                    "duration" : 2
+                    "duration" : 2,
+                    "type" : "image"
                 }
             ];
 
             var interval = new enchant.animation.interval.SourceInterval(sprite, keyframes);
 
-            expect(sprite.srcPath).toEqual("");
+            expect(sprite.srcPath).toEqual(null);
             expect(interval.isDone()).toBe(false);
 
             interval.start();
@@ -355,23 +361,26 @@ describe("Animation", function() {
             expect(parallel.isDone()).toBe(true);
         });  
         
-         
+        enchant.resourceManager.load("Smoke01", {"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"anchor":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]});
+        enchant.resourceManager.load("SmokeRing", {"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]});
+        var animationTestResult = {
+            "Smoke01" : [{
+                
+                    "position":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                    "scale":[[0.5, 0.5], [0.62, 0.62], [0.74, 0.74], [0.86, 0.86], [0.98, 0.98], [1.1, 1.1], [1.14, 1.14], [1.19, 1.19], [1.23, 1.23], [1.28, 1.28], [1.32, 1.32], [1.37, 1.37], [1.41, 1.41], [1.46, 1.46],[1.5, 1.5],[1.5, 1.5]],
+                    "alpha":[1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0],
+                    "hue":[[0,0,0], [0,0,0], [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],
+                    "rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
+                    "srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
+                    "srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
+                    "isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+            }]
+        }
         it("AnimationTest1", function() {
         	var root = new enchant.canvas.Node();
 
-            var interval = enchant.animation.loader.CreateAnimation(root, animationTestData["Smoke01"]);
+            var interval = enchant.animation.loader.CreateAnimation(root, enchant.resourceManager.get("Smoke01"));
             expect(root._children.length).toBe(1);
-
-			var testData = {
-				"position":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-				"scale":[[0.5, 0.5], [0.62, 0.62], [0.74, 0.74], [0.86, 0.86], [0.98, 0.98], [1.1, 1.1], [1.14, 1.14], [1.19, 1.19], [1.23, 1.23], [1.28, 1.28], [1.32, 1.32], [1.37, 1.37], [1.41, 1.41], [1.46, 1.46],[1.5, 1.5],[1.5, 1.5]],
-				"alpha":[1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0],
-				"hue":[[0,0,0], [0,0,0], [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],
-				"rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
-				"srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
-				"srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
-				"isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
-			}
 
 			interval.start();
 			
@@ -381,35 +390,69 @@ describe("Animation", function() {
                 } else {
                     interval.update();
                 }
-                testFrame(root, interval, testData, i);
+                testFrame(root, interval, animationTestResult["Smoke01"], i, 0);
             }
         }); 
 
         it("AnimationTest2", function() {
         	var root = new enchant.canvas.Node();
-            var interval = enchant.animation.loader.CreateAnimation(root, animationTestData["Smoke01"]);
-            expect(root._children.length).toBe(1);
+            var interval = enchant.animation.loader.CreateAnimation(root, enchant.resourceManager.get("SmokeRing"));
+            expect(root._children.length).toBe(8);
 
-			var testData = {
-				"position":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-				"scale":[[0.5, 0.5], [0.62, 0.62], [0.74, 0.74], [0.86, 0.86], [0.98, 0.98], [1.1, 1.1], [1.14, 1.14], [1.19, 1.19], [1.23, 1.23], [1.28, 1.28], [1.32, 1.32], [1.37, 1.37], [1.41, 1.41], [1.46, 1.46],[1.5, 1.5],[1.5, 1.5]],
-				"alpha":[1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0],
-				"hue":[[0,0,0], [0,0,0], [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],
-				"rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
-				"srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
-				"srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
-				"isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+			var frameCount = 16;
+			var timelineCount = 8;
+            var temp = [[22, 22], [-22, 22], [0, 30], [0, -30], [22, -22], [30, 0], [-30, 0], [-22, -22]];
+ 			var testData = [];
+ 			for (var j = 0; j < timelineCount; j++) {
+                var t = {
+                    "position":[],
+                    "scale":[],
+                    "alpha":[],
+                    "hue":[],
+                    "rotation":[],
+                    "srcRect":[],
+                    "srcPath":[],
+                    "isDone": []
+                }
+                testData.push(t);
 			}
 
-			interval.start();
-            for (var i = 0; i <= 15; i++) {
+			for (var i = 0; i < frameCount; i++) {
+                for (var j = 0; j < timelineCount; j++) {
+                    if (i < 4) {
+                        testData[j]["position"].push([temp[j][0] * i / 4, temp[j][1] * i / 4]);
+                    } else {
+                        testData[j]["position"].push([temp[j][0], temp[j][1]]);
+                    }
+
+                    testData[j]["scale"].push([1, 1]);
+                    testData[j]["alpha"].push(1);
+                    testData[j]["hue"].push([0, 0, 0]);
+                    testData[j]["rotation"].push(0);
+                    testData[j]["srcPath"].push(null);
+                    testData[j]["srcRect"].push(null);
+                    testData[j]["isDone"].push(i == frameCount - 1);
+                }
+            }
+            
+            
+			for (var i = 0; i < frameCount; i++) {
                 if (i == 0) {
                     interval.start();
                 } else {
                     interval.update();
                 }
-                testFrame(root, interval, testData, i);
+                for (var j = 0; j < timelineCount; j++) {
+                    testFrame(root, interval, testData, i, j);
+                }
             }
+
+            for (var j = 0; j < timelineCount; j++) {
+               expect(interval._intervals[j]._intervals[1]._interval.isDone()).toBe(true);
+            }
+            
         }); 
     });
 });
+var root = new enchant.canvas.Node();
+var interval = enchant.animation.loader.CreateAnimation(root, enchant.resourceManager.get("Smoke01"));
