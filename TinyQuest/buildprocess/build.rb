@@ -96,12 +96,12 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
                 end
                 sourceKeyFrame["type"] = "image"
                 sourceKeyFrame["rect"] = keyframe_set["textureRect"] ? keyframe_set["textureRect"] : [0,0,0,0]
-                # Anchor
-                anchor = [0, 0]
+                # Center
+                center = [0, 0]
                 if (keyframe_set["center"])
-                    anchor = keyframe_set["center"]
+                    center = keyframe_set["center"]
                 end
-                sourceKeyFrame["anchor"] = anchor
+                sourceKeyFrame["center"] = center
             else
                 unless dependencies["animations"].index(id)
                     dependencies["animations"] << id
@@ -134,6 +134,19 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
 						end
 					end
 				end
+			else if (obj.count == 1)
+                    curr_keyframe = obj[obj.count - 1]
+                    if curr_keyframe["frameNo"] > 0
+                        padding_key_frame = {
+                            "duration"=>curr_keyframe["frameNo"] + 1, 
+                            "startValue"=>curr_keyframe["startValue"], 
+                            "endValue"=>curr_keyframe["startValue"], 
+                            "frameNo"=>0, 
+                            "tween"=>false
+                        }
+                        obj.insert(0, padding_key_frame)
+                    end
+			    end
 			end
         end
 
