@@ -8,6 +8,7 @@ var interval = null;
 var root = new enchant.canvas.Node();
 window.onload = function() {
     game.fps = 30;
+
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
         var stage = new Group();
@@ -16,6 +17,7 @@ window.onload = function() {
         var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
         
         root.position = [160, 160];
+        root.scale = [2, 2];
         sceneGraph.setRoot(root);
 
         var s = new enchant.Sprite(320,320);
