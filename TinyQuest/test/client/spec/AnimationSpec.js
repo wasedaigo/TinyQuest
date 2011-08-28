@@ -27,6 +27,7 @@ function testFrame(root, interval, testData, i, j) {
         expect(root._children[j].srcRect).toEqual(null);
     }
     expect(root._children[j].srcPath).toEqual(testData[j].srcPath[i]);
+    expect(testRound(root._children[j].center)).toEqual(testData[j].center[i]);
     expect(interval.isDone()).toBe(testData[j].isDone[i]);
 }
 
@@ -208,28 +209,32 @@ describe("Animation", function() {
                     "rect" : [10, 10, 32, 48],
                     "id" : "test",
                     "duration" : 3,
-                    "type" : "image"
+                    "type" : "image",
+                    "center" : [1, 1]
                 },
                 {
                     "frameNo" : 3,
                     "rect" : [20, 10, 22, 48],
                     "id" : "test2",
                     "duration" : 2,
-                    "type" : "image"
+                    "type" : "image",
+                    "center" : [2, 2]
                 },
                 {
                     "frameNo" : 5,
                     "rect" : [20, 20, 22, 48],
                     "id" : "test3",
                     "duration" : 1,
-                    "type" : "image"
+                    "type" : "image",
+                    "center" : [3, 3]
                 },
                 {
                     "frameNo" : 6,
                     "rect" : [20, 20, 22, 48],
                     "id" : "test4",
                     "duration" : 2,
-                    "type" : "image"
+                    "type" : "image",
+                    "center" : [4, 4]
                 }
             ];
 
@@ -241,46 +246,55 @@ describe("Animation", function() {
             interval.start();
             expect(sprite.srcPath).toEqual("test.png");
             expect(sprite.srcRect).toEqual([10, 10, 32, 48]);
+            expect(sprite.center).toEqual([1, 1]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test.png");
             expect(sprite.srcRect).toEqual([10, 10, 32, 48]);
+            expect(sprite.center).toEqual([1, 1]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test.png");
             expect(sprite.srcRect).toEqual([10, 10, 32, 48]);
+            expect(sprite.center).toEqual([1, 1]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test.png");
             expect(sprite.srcRect).toEqual([10, 10, 32, 48]);
+            expect(sprite.center).toEqual([1, 1]);
             expect(interval.isDone()).toBe(false);
 
             interval.update();
             expect(sprite.srcPath).toEqual("test2.png");
             expect(sprite.srcRect).toEqual([20, 10, 22, 48]);
+            expect(sprite.center).toEqual([2, 2]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test2.png");
             expect(sprite.srcRect).toEqual([20, 10, 22, 48]);
+            expect(sprite.center).toEqual([2, 2]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test3.png");
             expect(sprite.srcRect).toEqual([20, 20, 22, 48]);
+            expect(sprite.center).toEqual([3, 3]);
             expect(interval.isDone()).toBe(false);
             
             interval.update();
             expect(sprite.srcPath).toEqual("test4.png");
             expect(sprite.srcRect).toEqual([20, 20, 22, 48]);
+            expect(sprite.center).toEqual([4, 4]);
             expect(interval.isDone()).toBe(false);
                
             interval.update();
             expect(sprite.srcPath).toEqual("test4.png");
             expect(sprite.srcRect).toEqual([20, 20, 22, 48]);
+            expect(sprite.center).toEqual([4, 4]);
             expect(interval.isDone()).toBe(true);
         });
         
@@ -363,7 +377,7 @@ describe("Animation", function() {
             expect(parallel.isDone()).toBe(true);
         });  
 
-        enchant.loader.setAnimation("Smoke01", {"dependencies":{"animations":[],"images":["test"]},"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"anchor":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]});
+        enchant.loader.setAnimation("Smoke01", {"dependencies":{"animations":[],"images":["test"]},"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"tween":false,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"center":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"tween":false,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"tween":false,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]});
         enchant.loader.setAnimation("SmokeRing", {"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]});
         var animationTestResult = {
             "Smoke01" : [{
@@ -375,7 +389,8 @@ describe("Animation", function() {
                     "rotation":[0, 2.14,4.29,6.43,8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30,  30],
                     "srcRect":[[0, 0, 32, 32], [0, 0, 32, 32], [0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32],[0, 0, 32, 32]],
                     "srcPath":["test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png","test.png"],
-                    "isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+                    "isDone": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true],
+                    "center":[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
             }]
         }
         it("AnimationTest1", function() {
@@ -414,6 +429,7 @@ describe("Animation", function() {
                     "rotation":[],
                     "srcRect":[],
                     "srcPath":[],
+                    "center":[],
                     "isDone": []
                 }
                 testData.push(t);
@@ -430,6 +446,7 @@ describe("Animation", function() {
                     testData[j]["scale"].push([1, 1]);
                     testData[j]["alpha"].push(1);
                     testData[j]["hue"].push([0, 0, 0]);
+                    testData[j]["center"].push([0, 0]);
                     testData[j]["rotation"].push(0);
                     testData[j]["srcPath"].push(null);
                     testData[j]["srcRect"].push(null);

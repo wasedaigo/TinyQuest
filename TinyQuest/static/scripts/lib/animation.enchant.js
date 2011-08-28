@@ -134,19 +134,33 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         
         if (keyframe.type == "image") {
             // Display static image
+            if (this._interval) {
+                this._interval = null;
+                this._sprite.removeAllChildren();
+            }
+            
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
+            this._sprite.center = keyframe.center;
+            console.log(keyframe.id + " : " + keyframe.rect + " : " + keyframe.center);
+            
         } else {
             // Display nested animations
             if (this._interval) {
                 this._interval.update();
             } else {
+                this._sprite.srcRect = null;
+                this._sprite.srcPath = null;
+                
                 if (keyframe.emitter) {
                     
                 } else {
                     // No animation node is generaetd yet, let's generate it
-                    console.log(keyframe);
-                    this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id));
+                    // If no ID exists, ignore it (Which usually means an empty keyframe)
+                    if (keyframe.id) {
+                        this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id));
+                        this._interval.start();
+                    }
                 }
             }
         }
