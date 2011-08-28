@@ -9,7 +9,7 @@ def build_animation_file(filename)
     json = JSON.parse(data)
 
     result = {}
-    result["timelines"] = parse_timelines(json["keyframes"])
+    result["timelines"], result["dependencies"] = parse_timelines(json["keyframes"])
     
     outputFilename = File.dirname(filename) + "/" + File.basename(filename).split(".")[0] + ".json"
     File.open(outputFilename, 'w') do |f|
@@ -19,14 +19,15 @@ end
 
 def parse_timelines(timelines)
     result = []
+    dependencies = []
     timelines.each do |timelineIndex, timeline|
-        result << parse_timeline(timeline)
+        result << parse_timeline(timeline, dependencies)
     end
     
-    return result
+    return result, dependencies
 end
 
-def parse_timeline(timeline)
+def parse_timeline(timeline, dependencies)
     result = {
         "alpha" => [],
         "position" => [],
@@ -38,7 +39,7 @@ def parse_timeline(timeline)
 
     latestSourceData = {"textureRect" => nil, "sourcePath" => nil}
     timeline.each do |keyframe_set|
-        parse_keyframes(latestSourceData, keyframe_set, result)
+        parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     end
 
     if (!result["source"].empty? && result["source"].last["id"] == "") 
@@ -48,7 +49,7 @@ def parse_timeline(timeline)
     return result
 end
 
-def parse_keyframes(latestSourceData, keyframe_set, result)
+def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     frameNo = keyframe_set["frameNo"]
 
     if (keyframe_set["isEmpty"])
@@ -86,7 +87,8 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
                 relativeToTarget = true
             end
 
-            sourceKeyFrame = {"frameNo" => frameNo, "id" => keyframe_set["sourcePath"].split(".")[0], "relative" => relativeToTarget}
+            id = keyframe_set["sourcePath"].split(".")[0]
+            sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
             if keyframe_set["textureRect"]
                 sourceKeyFrame["type"] = "image"
                 sourceKeyFrame["rect"] = keyframe_set["textureRect"]
@@ -97,7 +99,10 @@ def parse_keyframes(latestSourceData, keyframe_set, result)
                 end
                 sourceKeyFrame["anchor"] = anchor
             else
-                 sourceKeyFrame["type"] = "animation"
+                unless dependencies.index(id)
+                    dependencies << id
+                end
+                sourceKeyFrame["type"] = "animation"
                 if keyframe_set["emitter"]
                     sourceKeyFrame["emitter"] = true
                     sourceKeyFrame["maxEmitAngle"] = keyframe_set["maxEmitAngle"]
