@@ -1,4 +1,50 @@
-enchant.animation = {};
+enchant.animation = 
+{
+    CreateAnimation: function (root, data) {
+        var timelines = data["timelines"];
+        
+        var parallels = [];
+        for (var timelineNo in timelines) {
+            var timeline = timelines[timelineNo];
+            
+            var sprite = new enchant.canvas.Sprite();
+            var sequences = [];
+            var attributes = ["rotation", "position", "alpha", "scale"];
+            for (var i in attributes) {
+                var attribute = attributes[i];
+                var sequence = enchant.animation.CreateAttributeTween(sprite, attribute, timeline[attribute]);
+                if (sequence) {
+                    sequences.push(sequence);
+                }
+            }
+			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"]);
+			sequences.push(sourceInterval);
+            parallels.push(new enchant.animation.interval.Parallel(sequences));
+            root.addChild(sprite);
+        }
+
+        return new enchant.animation.interval.Parallel(parallels);
+    },
+    // Create attribute tween out of given keyframe data
+    CreateAttributeTween: function (node, attribute, keyframes) {
+        if (keyframes.length == 0) {
+            return null;
+        } else {
+            var intervals = [];
+            for(var i = 0; i < keyframes.length; i++) {
+                var frame = keyframes[i];
+                var startValue = frame.startValue;
+                var endValue = frame.endValue;
+                var duration = frame.duration;
+
+                var interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
+                intervals.push(interval);
+            }
+
+            return new enchant.animation.interval.Sequence(intervals);
+        }
+    }  
+}
 
 // Interval helper modules
 enchant.animation.interval  = 
@@ -100,7 +146,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     
                 } else {
                     // No animation node is generaetd yet, let's generate it
-                    this._interval = enchant.animation.loader.CreateAnimation(this._sprite, enchant.resourceManager.get(keyframe.id));
+                    this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.get(keyframe.id));
                 }
             }
         }
@@ -180,53 +226,3 @@ enchant.animation.interval.Parallel = enchant.Class.create({
         }
     }
 });
-
-// Static methods
-enchant.animation.loader = 
-{
-    CreateAnimation: function (root, data) {
-        var timelines = data["timelines"];
-        
-        var parallels = [];
-        for (var timelineNo in timelines) {
-            var timeline = timelines[timelineNo];
-            
-            var sprite = new enchant.canvas.Sprite();
-            var sequences = [];
-            var attributes = ["rotation", "position", "alpha", "scale"];
-            for (var i in attributes) {
-                var attribute = attributes[i];
-                var sequence = enchant.animation.loader.CreateAttributeTween(sprite, attribute, timeline[attribute]);
-                if (sequence) {
-                    sequences.push(sequence);
-                }
-            }
-			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"]);
-			sequences.push(sourceInterval);
-            parallels.push(new enchant.animation.interval.Parallel(sequences));
-            root.addChild(sprite);
-        }
-
-        return new enchant.animation.interval.Parallel(parallels);
-    },
-    // Create attribute tween out of given keyframe data
-    CreateAttributeTween: function (node, attribute, keyframes) {
-        if (keyframes.length == 0) {
-            return null;
-        } else {
-            var intervals = [];
-            for(var i = 0; i < keyframes.length; i++) {
-                var frame = keyframes[i];
-                var startValue = frame.startValue;
-                var endValue = frame.endValue;
-                var duration = frame.duration;
-
-                var interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
-                intervals.push(interval);
-            }
-
-            return new enchant.animation.interval.Sequence(intervals);
-        }
-    }  
-}
-

@@ -27,7 +27,6 @@ enchant.canvas.Node = enchant.Class.create({
         this.hue = [0, 0, 0];
         this.rotation = 0;
         this.parent = null;
-
         this._children = [];
     },
 
@@ -46,7 +45,7 @@ enchant.canvas.Node = enchant.Class.create({
         }
     },
 
-    removeAllChilden: function(node) {
+    removeAllChilden: function() {
         for(i = 0; i < this._children.length; i++){
             this._children[i].parent = null;
         }
@@ -71,39 +70,108 @@ enchant.canvas.Node = enchant.Class.create({
     }
 });
 
-enchant.canvas.Sprite = enchant.Class.create(enchant.canvas.Node, {
+enchant.canvas.Sprite = enchant.Class.create({
     initialize: function(srcPath, srcRect) {
-        this.super = enchant.canvas.Node.call(this);
-
+        this.node = new enchant.canvas.Node();
         this.srcPath = srcPath ? srcPath : null;
         this.srcRect = srcRect ? srcRect : null;
 
         this._center = [0, 0];
         if (this.srcRect) {
-            this._anchor = new enchant.geom.Point(0.5, 0.5);
-            this._centerX = this._anchor.x * this.srcRect[2];
-            this._centerY = this._anchor.y * this.srcRect[3];
+            this._anchor = [0.5, 0.5];
+            this._center = [this._anchor[0] * this.srcRect[2], this._anchor[1] * this.srcRect[3]];
         }
-        this._children = [];
     },
 
+    addChild: function(node) {
+        this.node.addChild(node);
+    },
+
+    removeChild: function(node) {
+        this.node.removeChild(node);
+    },
+
+    removeAllChilden: function() {
+        this.node.removeAllChilden();
+    },
+    
     update: function(context) { 
     },
-
+    position: {
+        get: function() {
+            return this.node.position;
+        },
+        set: function(value) {
+            this.node.position = value;
+        }
+    },   
+    alpha: {
+        get: function() {
+            return this.node.alpha;
+        },
+        set: function(value) {
+            this.node.alpha = value;
+        }
+    },    
+    priority: {
+        get: function() {
+            return this.node.priority;
+        },
+        set: function(value) {
+            this.node.priority = value;
+        }
+    },
+    hue: {
+        get: function() {
+            return this.node.hue;
+        },
+        set: function(value) {
+            this.node.hue = value;
+        }
+    }, 
+    parent: {
+        get: function() {
+            return this.node.parent;
+        },
+        set: function(value) {
+            this.node.parent = value;
+        }
+    },  
+    rotation: {
+        get: function() {
+            return this.node.rotation;
+        },
+        set: function(value) {
+            return this.node.rotation = value;
+        }
+    },
+    scale: {
+        get: function() {
+            return this.node.scale;
+        },
+        set: function(value) {
+            this.node.scale = value;
+        }
+    },
     draw: function(assets, surface) {
-        this.super = enchant.canvas.Node.draw(this);
-
         var key = '../../static/assets/images/' + this.srcPath;
         var src = assets[key];
         assert(src);
-        var radian = this.angle * Math.PI / 180;
 
         surface.context.save();
-        surface.context.translate(this._centerX, this._centerY);
-        surface.context.rotate(this.angle * Math.PI / 180);
-        surface.context.translate(-this._centerX, -this._centerY);
-        surface.context.scale(this.scale.x, this.scale.y);
-        surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.x, this.y, this.srcRect[2], this.srcRect[3]);
+        surface.context.translate(this._center[0], this._center[1]);
+        surface.context.rotate(this.rotation * Math.PI / 180);
+        surface.context.scale(this.scale[0], this.scale[1]);
+        surface.context.translate(-this._center[0], -this._center[1]);
+        
+        assert(typeof(this.srcRect[0]) == "number", "1");
+        assert(typeof(this.srcRect[1]) == "number", "2");
+        assert(typeof(this.srcRect[2]) == "number", "3");
+        assert(typeof(this.srcRect[3]) == "number", "4");
+        assert(typeof(this.position[0]) == "number", "5");
+        assert(typeof(this.position[1]) == "number", "6");
+        
+        surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0], this.position[1], this.srcRect[2], this.srcRect[3]);
         surface.context.restore();
     }
 });
