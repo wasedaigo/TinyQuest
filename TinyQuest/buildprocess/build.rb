@@ -140,6 +140,7 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     end
 end
 
+# Create keyframe for attributes(Scale, Alpha, Rotation ... )
 def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     data = {}
 
@@ -161,6 +162,7 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     end
 end
 
+# Recursively gather image dependency information
 def retrieveAllImageDependencies(animation_data, root_id)
     root = animation_data[root_id]
     if root["processed"]
@@ -178,25 +180,31 @@ def retrieveAllImageDependencies(animation_data, root_id)
     end
 end 
 
+#----------------------------------------------------------------------------
+# Build Process Start
+#----------------------------------------------------------------------------
 animation_data = {}
 list = Dir["#{INPUT_PATH}/**/*.ani"]
 list.each do |filename|
     # Convert Splash animation file into lightweight json object
     result = build_animation_file(filename)
-    
 
-    # Create directories
+    # Get ID from file path
     id = filename.gsub(%r{^#{INPUT_PATH}/}, "").split(".")[0];
     animation_data[id] = {"data" => result, "processed" => false}
-    output_path = filename.gsub(%r{^#{INPUT_PATH}}, OUTPUT_PATH);
-    FileUtils.mkpath File.dirname(output_path)
 end
 
 animation_data.keys.each do |id|
+    # recursively gather image dependency information and add it to the animation data itself
     retrieveAllImageDependencies(animation_data, id)
     
-    # Save
+    # Get output filename
     outputFilename = OUTPUT_PATH + "/" + id + ".json"
+    
+    # Create directories
+    FileUtils.mkpath File.dirname(outputFilename)
+    
+    # Save it as a file
     File.open(outputFilename, 'w') do |f|
        f.write(animation_data[id].to_json)
     end
@@ -205,5 +213,3 @@ end
 File.open(OUTPUT_PATH + "animations.json", 'w') do |f|
    f.write(animation_data.keys.to_json)
 end
-
-
