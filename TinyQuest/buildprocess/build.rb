@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'json'
 
+INPUT_PATH = "buildprocess/rawassets/animations/"
+OUTPUT_PATH = "static/assets/animations/"
+
 def build_animation_file(filename)
     data = ""
     File.open(filename, 'r') do |f|
@@ -11,15 +14,12 @@ def build_animation_file(filename)
     result = {}
     result["timelines"], result["dependencies"] = parse_timelines(json["keyframes"])
     
-    outputFilename = File.dirname(filename) + "/" + File.basename(filename).split(".")[0] + ".json"
-    File.open(outputFilename, 'w') do |f|
-       f.write(result.to_json)
-    end
+    return result
 end
 
 def parse_timelines(timelines)
     result = []
-    dependencies = []
+    dependencies = {"images"=>[], "animations"=>[]}
     timelines.each do |timelineIndex, timeline|
         result << parse_timeline(timeline, dependencies)
     end
@@ -88,8 +88,12 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
             end
 
             id = keyframe_set["sourcePath"].split(".")[0]
+
             sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
             if keyframe_set["textureRect"]
+                unless dependencies["images"].index(id)
+                    dependencies["images"] << id
+                end
                 sourceKeyFrame["type"] = "image"
                 sourceKeyFrame["rect"] = keyframe_set["textureRect"]
                 # Anchor
@@ -99,8 +103,8 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
                 end
                 sourceKeyFrame["anchor"] = anchor
             else
-                unless dependencies.index(id)
-                    dependencies << id
+                unless dependencies["animations"].index(id)
+                    dependencies["animations"] << id
                 end
                 sourceKeyFrame["type"] = "animation"
                 if keyframe_set["emitter"]
@@ -157,7 +161,27 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     end
 end
 
-filename = ARGV[0]
-if filename
-    build_animation_file(filename)
+animation_ids = []
+list = Dir["**/*.ani"]
+list.each do |filename|
+    # Convert Splash animation file into lightweight json object
+    result = build_animation_file(filename)
+    
+    # Create directories
+    id = filename.gsub(%r{^#{INPUT_PATH}}, "").split(".")[0];
+    animation_ids << id
+    output_path = filename.gsub(%r{^#{INPUT_PATH}}, OUTPUT_PATH);
+    FileUtils.mkpath File.dirname(output_path)
+    
+    # Save
+    outputFilename = File.dirname(output_path) + "/" + File.basename(output_path).split(".")[0] + ".json"
+    File.open(outputFilename, 'w') do |f|
+       f.write(result.to_json)
+    end
 end
+
+File.open(OUTPUT_PATH + "animations.json", 'w') do |f|
+   f.write(animation_ids.to_json)
+end
+
+

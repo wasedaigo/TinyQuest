@@ -96,8 +96,12 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             if (this._interval) {
                 this._interval.update();
             } else {
-                // No animation node is generaetd yet, let's generate it
-                this._interval = enchant.animation.loader.CreateAnimation(this._sprite, enchant.resourceManager.get(keyframe.id));
+                if (keyframe.emitter) {
+                    
+                } else {
+                    // No animation node is generaetd yet, let's generate it
+                    this._interval = enchant.animation.loader.CreateAnimation(this._sprite, enchant.resourceManager.get(keyframe.id));
+                }
             }
         }
     },      
