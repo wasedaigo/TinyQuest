@@ -45,7 +45,7 @@ enchant.canvas.Node = enchant.Class.create({
         }
     },
 
-    removeAllChilden: function() {
+    removeAllChildren: function() {
         for(i = 0; i < this._children.length; i++){
             this._children[i].parent = null;
         }
@@ -58,8 +58,8 @@ enchant.canvas.Node = enchant.Class.create({
     draw: function(assets, surface) {
         if (this._children.length > 0) {
             surface.context.save();
-            surface.context.translate(this.pos[0], this.pos[1]);
-            surface.context.rotate(this.angle * Math.PI / 180);
+            surface.context.translate(this.position[0], this.position[1]);
+            surface.context.rotate(this.rotation * Math.PI / 180);
             surface.context.scale(this.scale[0], this.scale[1]);
             for (var key in this._children) {
                 var node = this._children[key];
@@ -91,8 +91,8 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node.removeChild(node);
     },
 
-    removeAllChilden: function() {
-        this.node.removeAllChilden();
+    removeAllChildren: function() {
+        this.node.removeAllChildren();
     },
     
     update: function(context) { 
@@ -155,23 +155,27 @@ enchant.canvas.Sprite = enchant.Class.create({
     },
     draw: function(assets, surface) {
         var key = '../../static/assets/images/' + this.srcPath;
-        var src = assets[key];
-        assert(src);
 
-        surface.context.save();
-        surface.context.translate(this._center[0], this._center[1]);
-        surface.context.rotate(this.rotation * Math.PI / 180);
-        surface.context.scale(this.scale[0], this.scale[1]);
-        surface.context.translate(-this._center[0], -this._center[1]);
-        
-        assert(typeof(this.srcRect[0]) == "number", "1");
-        assert(typeof(this.srcRect[1]) == "number", "2");
-        assert(typeof(this.srcRect[2]) == "number", "3");
-        assert(typeof(this.srcRect[3]) == "number", "4");
-        assert(typeof(this.position[0]) == "number", "5");
-        assert(typeof(this.position[1]) == "number", "6");
-        
-        surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0], this.position[1], this.srcRect[2], this.srcRect[3]);
-        surface.context.restore();
+        var src = assets[key];
+        if (src) {
+            surface.context.save();
+            surface.context.translate(this._center[0], this._center[1]);
+            surface.context.rotate(this.rotation * Math.PI / 180);
+            surface.context.scale(this.scale[0], this.scale[1]);
+            surface.context.translate(-this._center[0], -this._center[1]);
+            surface.context.globalAlpha = this.alpha;
+
+            assert(typeof(this.srcRect[0]) == "number", "1");
+            assert(typeof(this.srcRect[1]) == "number", "2");
+            assert(typeof(this.srcRect[2]) == "number", "3");
+            assert(typeof(this.srcRect[3]) == "number", "4");
+            assert(typeof(this.position[0]) == "number", "5");
+            assert(typeof(this.position[1]) == "number", "6");
+            
+            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0], this.position[1], this.srcRect[2], this.srcRect[3]);
+            surface.context.restore();
+        } else {
+            this.node.draw(assets, surface);
+        }
     }
 });

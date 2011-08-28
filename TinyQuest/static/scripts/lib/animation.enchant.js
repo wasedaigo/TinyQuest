@@ -2,7 +2,6 @@ enchant.animation =
 {
     CreateAnimation: function (root, data) {
         var timelines = data["timelines"];
-        
         var parallels = [];
         for (var timelineNo in timelines) {
             var timeline = timelines[timelineNo];
@@ -130,7 +129,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         // Empty frame found, reset the setting
         if (keyframe.id == "") {
             this._interval = null;
-            this._sprite.removeAllChilden();
+            this._sprite.removeAllChildren();
         }
         
         if (keyframe.type == "image") {
@@ -146,7 +145,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     
                 } else {
                     // No animation node is generaetd yet, let's generate it
-                    this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.get(keyframe.id));
+                    console.log(keyframe);
+                    this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id));
                 }
             }
         }

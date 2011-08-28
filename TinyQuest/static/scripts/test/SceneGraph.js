@@ -1,41 +1,74 @@
 enchant();
 
+
+var game = new enchant.Game(320, 320);
+enchant.loader.setRootPath('../../static/assets');
 var currentAnimation = null;
-var game = new enchant.Game(640, 480);
+var interval = null;
+var root = new enchant.canvas.Node();
 window.onload = function() {
-    game.fps = 60;
+    game.fps = 30;
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
         var stage = new Group();
 
-        var surface = new Surface(640,480);
+        var surface = new Surface(320,320);
         var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
-        var glSprite = new enchant.canvas.Sprite("bg/bg0001.png", [0, 0, 32, 32]);
-        sceneGraph.setRoot(glSprite);
+        
+        root.position = [160, 160];
+        sceneGraph.setRoot(root);
 
-        var s = new enchant.Sprite(640,480);
+        var s = new enchant.Sprite(320,320);
         s.image = surface
         stage.addChild(s);
         game.rootScene.addChild(stage);
 
         // Update
+        
         this.addEventListener('enterframe', function() {
-            surface.context.clearRect(0, 0,640, 480);
-            //if (currentAnimation) {
+            surface.context.clearRect(0, 0,320, 320);
+            if (currentAnimation) {
                 sceneGraph.update();
-                glSprite.rotation += 1;
-                glSprite.scale = [1, 1];
-            //}
+                if (!interval) {
+                    interval = enchant.animation.CreateAnimation(root, enchant.loader.get(currentAnimation));
+                    interval.start();
+                } else {
+                    interval.update();
+                }
+            }
         });
     };
     game.pause();
 };
 
-var playAnimation = function(data) {
-    currentAnimation = data;
+var playAnimation = function(id) {
     
-    enchant.loader.load([], function() {
-        enchant.Game.instance.start();
+    var filename = '../../static/assets/animations/' + id + ".json"
+    currentAnimation = filename;
+
+    // Load animation file
+    enchant.loader.load([filename], function() {
+        json = enchant.loader.get(filename);
+
+        var files = [];
+        
+        // List all animations to be loaded
+        var animations = json.dependencies.animations;
+        for (var i = 0; i < animations.length; i++) {
+            files.push('../../static/assets/animations/' + animations[i] + ".json");
+        }
+        // List all images to be loaded
+        var images = json.dependencies.images;
+        for (var i = 0; i < images.length; i++) {
+            files.push('../../static/assets/images/' + images[i] + ".png");
+        }
+
+        enchant.loader.load(files, function() {
+            interval = null;
+            root.removeAllChildren();
+            enchant.Game.instance.start();
+        });
+        
     });
     
 };

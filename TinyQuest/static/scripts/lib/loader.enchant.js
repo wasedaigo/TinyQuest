@@ -1,6 +1,9 @@
 // Interval helper modules
 enchant.loader  = 
 {
+    setRootPath : function(rootPath) {
+        this.rootPath = rootPath;
+    },
     cache: {},
     pendingRequest: {},
     loadJSON: function(name, callback) {
@@ -30,6 +33,12 @@ enchant.loader  =
         });
         }
     },
+    setAnimation: function(path, data) {
+        this.set(this.rootPath + "/animations/" + path + ".json", data);
+    },
+    getAnimation: function(path) {
+        return this.get(this.rootPath + "/animations/" + path + ".json");
+    },
     set: function(path, data) {
         enchant.Game.instance.assets[path] = data;
     },
@@ -42,6 +51,7 @@ enchant.loader  =
     },
     load: function(assets, cb) {
         if (assets.length > 0) {
+            var loaded = 0;
             for (var i = 0, len = assets.length; i < len; i++) {
                 enchant.Game.instance.load(assets[i], function() {
                     loaded = ++loaded;

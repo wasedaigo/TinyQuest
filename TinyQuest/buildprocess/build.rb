@@ -206,7 +206,7 @@ animation_data.keys.each do |id|
     
     # Save it as a file
     File.open(outputFilename, 'w') do |f|
-       f.write(animation_data[id].to_json)
+       f.write(animation_data[id]["data"].to_json)
     end
 end
 
