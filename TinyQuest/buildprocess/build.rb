@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'json'
 
-INPUT_PATH = "buildprocess/rawassets/animations/"
-OUTPUT_PATH = "static/assets/animations/"
+INPUT_PATH = "buildprocess/rawassets/animations"
+OUTPUT_PATH = "static/assets/animations"
 
 def build_animation_file(filename)
     data = ""
@@ -88,14 +88,14 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
             end
 
             id = keyframe_set["sourcePath"].split(".")[0]
-
+            ext = keyframe_set["sourcePath"].split(".")[1]
             sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
-            if keyframe_set["textureRect"]
+            if ext == "png"
                 unless dependencies["images"].index(id)
                     dependencies["images"] << id
                 end
                 sourceKeyFrame["type"] = "image"
-                sourceKeyFrame["rect"] = keyframe_set["textureRect"]
+                sourceKeyFrame["rect"] = keyframe_set["textureRect"] ? keyframe_set["textureRect"] : [0,0,0,0]
                 # Anchor
                 anchor = [0, 0]
                 if (keyframe_set["center"])
@@ -161,27 +161,49 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     end
 end
 
-animation_ids = []
-list = Dir["**/*.ani"]
+def retrieveAllImageDependencies(animation_data, root_id)
+    root = animation_data[root_id]
+    if root["processed"]
+        return root["data"]["dependencies"]["images"]
+    else
+        image_dependencies = root["data"]["dependencies"]["images"]
+        root["data"]["dependencies"]["animations"].each do |child_id|
+            child_image_dependencies = retrieveAllImageDependencies(animation_data, child_id)
+            image_dependencies = image_dependencies | child_image_dependencies
+        end
+
+        root["data"]["dependencies"]["images"] = image_dependencies
+        root["processed"] = true
+        return image_dependencies
+    end
+end 
+
+animation_data = {}
+list = Dir["#{INPUT_PATH}/**/*.ani"]
 list.each do |filename|
     # Convert Splash animation file into lightweight json object
     result = build_animation_file(filename)
     
+
     # Create directories
-    id = filename.gsub(%r{^#{INPUT_PATH}}, "").split(".")[0];
-    animation_ids << id
+    id = filename.gsub(%r{^#{INPUT_PATH}/}, "").split(".")[0];
+    animation_data[id] = {"data" => result, "processed" => false}
     output_path = filename.gsub(%r{^#{INPUT_PATH}}, OUTPUT_PATH);
     FileUtils.mkpath File.dirname(output_path)
+end
+
+animation_data.keys.each do |id|
+    retrieveAllImageDependencies(animation_data, id)
     
     # Save
-    outputFilename = File.dirname(output_path) + "/" + File.basename(output_path).split(".")[0] + ".json"
+    outputFilename = OUTPUT_PATH + "/" + id + ".json"
     File.open(outputFilename, 'w') do |f|
-       f.write(result.to_json)
+       f.write(animation_data[id].to_json)
     end
 end
 
 File.open(OUTPUT_PATH + "animations.json", 'w') do |f|
-   f.write(animation_ids.to_json)
+   f.write(animation_data.keys.to_json)
 end
 
 
