@@ -42,30 +42,57 @@ def parse_timeline(timeline, dependencies)
         parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     end
 
-    if (!result["source"].empty? && result["source"].last["id"] == "") 
-        result["source"].pop();
-    end
+    # setup duration
+    setup_tweens(result)
 
     return result
+end
+
+def setup_tweens(result)
+    result.each do |key, keyframes|
+        keyFrameCount = keyframes.count
+        keyframes.each_with_index do |keyframe, i| 
+            if (i == 0)
+                if keyframe["frameNo"] > 0
+                    # Add padding if the frame starts in the middle
+                    padding_key_frame = {
+                        "duration"=>keyframe["frameNo"], 
+                        "wait"=> true, 
+                        "frameNo"=>0
+                    }
+                    keyframes.insert(0, padding_key_frame)
+                end
+            else
+                # Decide duration and end-value of the last keyframe
+                prev_keyframe = keyframes[i - 1]
+                prev_keyframe["duration"] = keyframe["frameNo"] - prev_keyframe["frameNo"]
+                if prev_keyframe["tween"]
+                    prev_keyframe["endValue"] = keyframe["startValue"]
+                end
+            end
+        end
+    
+        # last frame
+        if keyframes.last
+            if keyframes.last["wait"]
+                keyframes.delete(keyframes.last)
+            else
+                keyframes.last["duration"] = 1
+            end
+        end
+        
+    end
 end
 
 def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     frameNo = keyframe_set["frameNo"]
 
     if (keyframe_set["isEmpty"])
-        # When an empty keyframe appears, duration of all latest keyframes have to be updated.
         result.each do |key, obj|
-			last_obj = obj.last
-			if last_obj && last_obj["duration"] == nil
-				last_obj["duration"] = frameNo - last_obj["frameNo"]
-				if key != "source"
-					last_obj["tween"] = false;
-				end
-			end
+            if result[key].length > 0
+                result[key] << {"frameNo" => frameNo, "wait" => true}
+            end
         end
-		latestSourceData["textureRect"] = nil
-		latestSourceData["sourcePath"] = nil
-        result["source"] << {"frameNo" => frameNo, "id" => ""}
     else
         # Add keyframe for each attribute in this keyframe set
         createAttributeKey(result, "alpha", keyframe_set, frameNo, 1.0)
@@ -73,83 +100,7 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
         createAttributeKey(result, "rotation", keyframe_set, frameNo, 0)
         createAttributeKey(result, "scale", keyframe_set, frameNo, [1, 1])
         createAttributeKey(result, "hue", keyframe_set, frameNo, [0, 0, 0])
-
-        # Source is somewhat special (Like, no lenear tween)
-        rectDiff = keyframe_set["textureRect"] == nil || latestSourceData["textureRect"] != keyframe_set["textureRect"]
-        pathDiff = latestSourceData["sourcePath"] != keyframe_set["sourcePath"]
-        if rectDiff || pathDiff
-            latestSourceData["textureRect"] = keyframe_set["textureRect"]
-            latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
-            
-            # Relative
-            relativeToTarget = false
-            if (keyframe_set["positionType"] == "relativeToTarget")
-                relativeToTarget = true
-            end
-
-            id = keyframe_set["sourcePath"].split(".")[0]
-            ext = keyframe_set["sourcePath"].split(".")[1]
-            sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
-            if ext == "png"
-                unless dependencies["images"].index(id)
-                    dependencies["images"] << id
-                end
-                sourceKeyFrame["type"] = "image"
-                sourceKeyFrame["rect"] = keyframe_set["textureRect"] ? keyframe_set["textureRect"] : [0,0,0,0]
-                # Center
-                center = [0, 0]
-                if (keyframe_set["center"])
-                    center = keyframe_set["center"]
-                end
-                sourceKeyFrame["center"] = center
-            else
-                unless dependencies["animations"].index(id)
-                    dependencies["animations"] << id
-                end
-                sourceKeyFrame["type"] = "animation"
-                if keyframe_set["emitter"]
-                    sourceKeyFrame["emitter"] = true
-                    sourceKeyFrame["maxEmitAngle"] = keyframe_set["maxEmitAngle"]
-                    sourceKeyFrame["maxEmitSpeed"] = keyframe_set["maxEmitSpeed"]
-                    sourceKeyFrame["minEmitAngle"] = keyframe_set["minEmitAngle"]
-                    sourceKeyFrame["minEmitSpeed"] = keyframe_set["minEmitSpeed"]
-                else
-                    sourceKeyFrame["emitter"] = false
-                end
-            end
-            
-            result["source"] << sourceKeyFrame
-        end
-
-        # setup duration
-        result.each do |key, obj|
-			if (obj.count > 1)
-				curr_keyframe = obj[obj.count - 1]
-				if (curr_keyframe["frameNo"] == frameNo)
-					prev_keyframe = obj[obj.count - 2]
-					unless prev_keyframe["duration"]
-						prev_keyframe["duration"] = curr_keyframe["frameNo"] - prev_keyframe["frameNo"]
-						if key != "source"
-							prev_keyframe["endValue"] = curr_keyframe["startValue"]
-						end
-					end
-				end
-			else if (obj.count == 1)
-                    curr_keyframe = obj[obj.count - 1]
-                    if curr_keyframe["frameNo"] > 0
-                        padding_key_frame = {
-                            "duration"=>curr_keyframe["frameNo"] + 1, 
-                            "startValue"=>curr_keyframe["startValue"], 
-                            "endValue"=>curr_keyframe["startValue"], 
-                            "frameNo"=>0, 
-                            "tween"=>false
-                        }
-                        obj.insert(0, padding_key_frame)
-                    end
-			    end
-			end
-        end
-
+        createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencies);
     end
 end
 
@@ -172,6 +123,58 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
 
     unless data.empty?
         result[key] << data
+    end
+end
+
+# Create keyframe for source key
+def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencies)
+    # Source is somewhat special (Like, no lenear tween)
+    rectDiff = latestSourceData["textureRect"] != keyframe_set["textureRect"]
+    pathDiff = latestSourceData["sourcePath"] != keyframe_set["sourcePath"]
+    if rectDiff || pathDiff
+        latestSourceData["textureRect"] = keyframe_set["textureRect"]
+        latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
+        
+        # Relative
+        relativeToTarget = false
+        if (keyframe_set["positionType"] == "relativeToTarget")
+            relativeToTarget = true
+        end
+
+        id = keyframe_set["sourcePath"].split(".")[0]
+        ext = keyframe_set["sourcePath"].split(".")[1]
+        sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
+        if ext == "png"
+            #Images
+            unless dependencies["images"].index(id)
+                dependencies["images"] << id
+            end
+            sourceKeyFrame["type"] = "image"
+            sourceKeyFrame["rect"] = keyframe_set["textureRect"] ? keyframe_set["textureRect"] : [0,0,0,0]
+            # Center
+            center = [0, 0]
+            if (keyframe_set["center"])
+                center = keyframe_set["center"]
+            end
+            sourceKeyFrame["center"] = center
+        else
+            # Animations
+            unless dependencies["animations"].index(id)
+                dependencies["animations"] << id
+            end
+            sourceKeyFrame["type"] = "animation"
+            if keyframe_set["emitter"]
+                sourceKeyFrame["emitter"] = true
+                sourceKeyFrame["maxEmitAngle"] = keyframe_set["maxEmitAngle"]
+                sourceKeyFrame["maxEmitSpeed"] = keyframe_set["maxEmitSpeed"]
+                sourceKeyFrame["minEmitAngle"] = keyframe_set["minEmitAngle"]
+                sourceKeyFrame["minEmitSpeed"] = keyframe_set["minEmitSpeed"]
+            else
+                sourceKeyFrame["emitter"] = false
+            end
+        end
+        
+        result["source"] << sourceKeyFrame
     end
 end
 

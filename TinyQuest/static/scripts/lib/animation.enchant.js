@@ -32,11 +32,19 @@ enchant.animation =
             var intervals = [];
             for(var i = 0; i < keyframes.length; i++) {
                 var frame = keyframes[i];
-                var startValue = frame.startValue;
-                var endValue = frame.endValue;
-                var duration = frame.duration;
+                
+                var interval = null;
+                if (frame.wait) {
+                    var duration = frame.duration;
 
-                var interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
+                    interval = new enchant.animation.interval.Wait(duration);
+                } else {
+                    var startValue = frame.startValue;
+                    var endValue = frame.endValue;
+                    var duration = frame.duration;
+    
+                    interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
+                }
                 intervals.push(interval);
             }
 
@@ -142,7 +150,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
             this._sprite.center = keyframe.center;
-            console.log(keyframe.id + " : " + keyframe.rect + " : " + keyframe.center);
             
         } else {
             // Display nested animations
