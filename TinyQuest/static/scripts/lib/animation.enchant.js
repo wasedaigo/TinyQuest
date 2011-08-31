@@ -1,6 +1,6 @@
 enchant.animation = 
 {
-    CreateAnimation: function (root, data) {
+    CreateAnimation: function (root, data, isSubAnimation) {
         var timelines = data["timelines"];
         var parallels = [];
         for (var timelineNo in timelines) {
@@ -21,8 +21,15 @@ enchant.animation =
             parallels.push(new enchant.animation.interval.Parallel(sequences));
             root.addChild(sprite);
         }
-
-        return new enchant.animation.interval.Parallel(parallels);
+        var parallelInterval = new enchant.animation.interval.Parallel(parallels);
+        
+        var interval = null;
+        if (isSubAnimation) {
+            interval = new enchant.animation.interval.Loop(parallelInterval, 0);
+        } else {
+            interval = parallelInterval;
+        }
+        return interval;
     },
     // Create attribute tween out of given keyframe data
     CreateAttributeTween: function (node, attribute, keyframes) {
@@ -79,12 +86,16 @@ enchant.animation.interval.Interval = enchant.Class.create({
         this._startValue = startValue;
         this._endValue = endValue;
         this._duration = duration;
-        this._attribute = attribute;
+        this._attribute = attribute;    
         this._frameNo = 0;
     },
     isDone: function() {
         return this._frameNo >= this._duration
     },
+    reset: function() {
+        this._frameNo = 0;
+        this.start();
+    }, 
     start: function() {
         this._node[this._attribute] = this._startValue;
         this._frameNo = 0;
@@ -107,7 +118,12 @@ enchant.animation.interval.Wait = enchant.Class.create({
     isDone: function() {
         return this._frameNo >= this._duration
     },
+    reset: function() {
+        this._frameNo = 0;
+        this.start();
+    }, 
     start: function() {
+        this._frameNo = 0;
     },
     update: function() {
         if (!this.isDone()) {
@@ -124,8 +140,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         this._sourceKeykeyframes = sourceKeykeyframes;
         this._frameNo = 0;
         this._index = 0;
-        this._duration = 0;
         this._frameDuration = 0;
+        this._duration = 0;
         for (var key in sourceKeykeyframes) {
             this._duration += sourceKeykeyframes[key].duration;  
         }
@@ -133,19 +149,23 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
     isDone: function() {
         return this._frameNo >= this._duration;
     },
+    _clearSetting: function() {
+        this._sprite.srcRect = null;
+        this._sprite.srcPath = null;
+        if (this._interval) {
+            this._interval = null;
+            this._sprite.removeAllChildren();
+        }
+    },
     _updateKeyframe: function(keyframe) {
         // Empty frame found, reset the setting
         if (keyframe.id == "") {
-            this._interval = null;
-            this._sprite.removeAllChildren();
+            this._clearSetting();
         }
         
         if (keyframe.type == "image") {
             // Display static image
-            if (this._interval) {
-                this._interval = null;
-                this._sprite.removeAllChildren();
-            }
+            this._clearSetting();
             
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
@@ -156,28 +176,37 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             if (this._interval) {
                 this._interval.update();
             } else {
-                this._sprite.srcRect = null;
-                this._sprite.srcPath = null;
+                this._clearSetting();
                 
                 if (keyframe.emitter) {
-                    
+                    // Emit new animation (emitted animation won't be controled by this instance anymore)
                 } else {
                     // No animation node is generaetd yet, let's generate it
                     // If no ID exists, ignore it (Which usually means an empty keyframe)
                     if (keyframe.id) {
-                        this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id));
+                        this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id), true);
                         this._interval.start();
                     }
                 }
             }
         }
-    },      
+    },
+    reset: function() {
+        this._frameNo = 0;
+        this._index = 0;
+        this._frameDuration = 0;
+        if (this._interval) {
+            this._interval.reset();
+        }
+    }, 
     start: function() {
         var keyframe = this._sourceKeykeyframes[0];
         this._updateKeyframe(keyframe);
     },
     update: function() {
-            if (!this.isDone()) {
+       if (this.isDone()) {
+            this._clearSetting();
+        } else {
             this._frameDuration++;
             this._frameNo++;
 
@@ -203,6 +232,13 @@ enchant.animation.interval.Sequence = enchant.Class.create({
     isDone: function() {
         return this._lastInterval.isDone();
     },
+    reset: function() {
+        this._index = 0;
+        for (var i in this._intervals) {
+            this._intervals[i].reset();
+        }
+        this.start();
+    }, 
     start: function() {
         this._intervals[0].start();
     },
@@ -212,6 +248,46 @@ enchant.animation.interval.Sequence = enchant.Class.create({
             currentInterval.update();
             if (currentInterval.isDone()) {
                 this._index++;
+            }
+        }
+    }
+});
+
+// Specify loop time of intervals
+enchant.animation.interval.Loop = enchant.Class.create({
+    initialize: function(interval, loopCount) {
+        this._loopCounter = 0;
+        this._loopCount = loopCount;
+        this._interval = interval;
+    },
+    isDone: function() {
+        var _isDone = false;
+        if (this._loopCount == 0) {
+            // Infinite loop never ends
+            _isDone = false
+        } else {
+            // This is how to determine whether the interval is in the last frame or not
+            _isDone = this._interval.isDone() && this._loopCounter >= this._loopCount - 1;
+        }
+        return _isDone;
+    },
+    reset: function() {
+        this._loopCounter = 0;
+        this._interval.reset();
+    }, 
+    start: function() {
+        this._interval.start();
+    },
+    update: function() {
+        if (!this.isDone()) {
+            if (this._interval.isDone()) {
+                this._loopCounter++;
+                if (this._loopCount == 0 || this._loopCounter < this._loopCount) {
+                    // Repeat this interval again, since this is a subanimation
+                    this._interval.reset();
+                }
+            } else {
+                this._interval.update();
             }
         }
     }
@@ -234,6 +310,12 @@ enchant.animation.interval.Parallel = enchant.Class.create({
         }
         return isDone;
     },
+    reset: function() {
+        for (var i in this._intervals) {
+            this._intervals[i].reset();
+        }
+        this.start();
+    }, 
     start: function() {
         for (var i in this._intervals) {
             this._intervals[i].start();

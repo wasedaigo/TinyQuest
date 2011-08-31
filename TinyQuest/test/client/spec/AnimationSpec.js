@@ -33,6 +33,20 @@ function testFrame(root, interval, testData, i, j) {
 
 enchant.loader.setRootPath("");
 
+enchant.loader.setAnimation("Smoke01", 
+    {"dependencies":{"animations":[],"images":["test"]},"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"center":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]}
+);
+enchant.loader.setAnimation("SmokeRing", 
+    {"dependencies":{"animations":["Smoke01"],"images":[]},"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]}
+);
+enchant.loader.setAnimation("SingleSpinAxe", 
+    {"dependencies":{"animations":[],"images":["Battle/Skills/Weapon_AxeBase"]},"timelines":[{"position":[{"duration":7,"endValue":[0,0],"startValue":[0,0],"frameNo":0},{"duration":7,"endValue":[0,0],"startValue":[0,0],"frameNo":7}],"scale":[],"hue":[],"source":[{"duration":7,"center":[0,0],"id":"Battle/Skills/Weapon_AxeBase","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":7,"endValue":315,"tween":true,"startValue":0,"frameNo":0},{"duration":7,"endValue":315,"startValue":315,"frameNo":7}],"alpha":[]}]}
+);
+enchant.loader.setAnimation("CycloneAxe", 
+    {"dependencies":{"animations":["Battle/Skills/Battler/SmallJump","Battle/Skills/Axe/SpinAxeY"],"images":["Battle/Skills/Battler_Base","Battle/Skills/Weapon_AxeBase"]},"timelines":[{"position":[{"duration":2,"endValue":[0,0],"startValue":[0,0],"frameNo":0},{"duration":10,"endValue":[-16,0],"tween":true,"startValue":[0,0],"frameNo":2},{"duration":5,"endValue":[-16,0],"startValue":[-16,0],"frameNo":12},{"duration":10,"endValue":[0,0],"tween":true,"startValue":[-16,0],"frameNo":17},{"duration":19,"endValue":[0,0],"startValue":[0,0],"frameNo":27}],"scale":[],"hue":[],"source":[{"duration":28,"emitter":false,"id":"Battle/Skills/Battler/SmallJump","type":"animation","frameNo":0,"relative":false},{"duration":18,"center":[0,0],"id":"Battle/Skills/Battler_Base","type":"image","frameNo":28,"rect":[288,0,32,32],"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":7,"wait":true,"frameNo":0},{"duration":13,"endValue":[0,0],"tween":true,"startValue":[-8,-36],"frameNo":7},{"duration":21,"endValue":[0,0],"tween":true,"startValue":[0,0],"frameNo":20},{"duration":41,"endValue":[0,0],"tween":true,"startValue":[0,0],"frameNo":41}],"scale":[],"hue":[],"source":[{"duration":7,"wait":true,"frameNo":0},{"duration":41,"emitter":false,"id":"Battle/Skills/Axe/SpinAxeY","type":"animation","frameNo":7,"relative":false}],"rotation":[],"alpha":[]}]}
+);
+
+
 describe("Animation", function() {
     
     describe("TestInterval", function() {
@@ -70,6 +84,10 @@ describe("Animation", function() {
             interval.update();
             expect(node.alpha).toBe(1.0);
             expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.alpha).toEqual(0.0);
+            expect(interval.isDone()).toBe(false);
         });
         it("PositionInterval", function() {
             var node = new enchant.canvas.Node();
@@ -97,6 +115,10 @@ describe("Animation", function() {
             interval.update();
             expect(node.position).toEqual([2, 6]);
             expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.position).toEqual([10, 10]);
+            expect(interval.isDone()).toBe(false);
         }); 
         it("ScaleInterval", function() {
             var node = new enchant.canvas.Node();
@@ -124,6 +146,10 @@ describe("Animation", function() {
             interval.update();
             expect(node.scale).toEqual([2, 6]);
             expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.scale).toEqual([10, 10]);
+            expect(interval.isDone()).toBe(false);
         });   
 
         it("HueInterval", function() {
@@ -152,6 +178,10 @@ describe("Animation", function() {
             interval.update();
             expect(node.hue).toEqual([2, 6, 40]);
             expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.hue).toEqual([10, 10, 20]);
+            expect(interval.isDone()).toBe(false);
         });  
         
         it("RotationInterval", function() {
@@ -176,6 +206,10 @@ describe("Animation", function() {
             interval.update();
             expect(node.rotation).toBe(0);
             expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.rotation).toEqual(360);
+            expect(interval.isDone()).toBe(false);
         }); 
         
         it("Wait", function() {
@@ -197,9 +231,12 @@ describe("Animation", function() {
             expect(interval.isDone()).toBe(false);
             
             interval.update();
-           expect(interval.isDone()).toBe(true);
+            expect(interval.isDone()).toBe(true);
+           
+            interval.reset();
+            expect(interval.isDone()).toBe(false);
         });
-        
+
         it("SourceInterval", function() {
             
             var sprite = new enchant.canvas.Sprite(null, [5, 14, 25, 30]);
@@ -297,7 +334,6 @@ describe("Animation", function() {
             expect(sprite.center).toEqual([4, 4]);
             expect(interval.isDone()).toBe(true);
         });
-        
         it("Sequence", function() {
             var node = new enchant.canvas.Node();
             var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3);
@@ -337,6 +373,11 @@ describe("Animation", function() {
             sequence.update();
             expect(node.alpha).toBe(0.0);
             expect(sequence.isDone()).toBe(true);
+            
+            sequence.reset();
+            expect(node.alpha).toBe(0.1);
+            expect(sequence.isDone()).toBe(false);
+            
         }); 
          
         it("Parallel", function() {
@@ -375,14 +416,84 @@ describe("Animation", function() {
             expect(node.alpha).toBe(1.0);
             expect(node.rotation).toBe(180);
             expect(parallel.isDone()).toBe(true);
-        });  
+            
+            parallel.reset();
+            expect(node.alpha).toBe(0.1);
+            expect(node.rotation).toBe(0);
+            expect(parallel.isDone()).toBe(false);
+        }); 
+        it("Loop count 1", function() {
+            var node = new enchant.canvas.Node();
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1);
+            var interval2 = new enchant.animation.interval.Wait(1);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1);
+            
+            var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
+            var loop = new enchant.animation.interval.Loop(sequence, 2);
+            loop.start();
+            expect(node.alpha).toBe(0.1);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(1.0);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(1.0);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(0.0);
+            expect(loop.isDone()).toBe(false);
 
-        enchant.loader.setAnimation("Smoke01", 
-            {"dependencies":{"animations":[],"images":["test"]},"timelines":[{"position":[],"scale":[{"duration":5,"endValue":[1.10000002384186,1.10000002384186],"tween":true,"startValue":[0.5,0.5],"frameNo":0},{"duration":9,"endValue":[1.5,1.5],"tween":true,"startValue":[1.10000002384186,1.10000002384186],"frameNo":5},{"duration":1,"endValue":[1.5,1.5],"startValue":[1.5,1.5],"frameNo":14}],"hue":[],"source":[{"duration":15,"center":[0,0],"id":"test","type":"image","frameNo":0,"rect":[0,0,32,32],"relative":false}],"rotation":[{"duration":14,"endValue":30,"tween":true,"startValue":0,"frameNo":0},{"duration":1,"endValue":30,"startValue":30,"frameNo":14}],"alpha":[{"duration":14,"endValue":0.0,"tween":true,"startValue":1.0,"frameNo":0},{"duration":1,"endValue":0.0,"startValue":0.0,"frameNo":14}]}]}
-        );
-        enchant.loader.setAnimation("SmokeRing", 
-            {"dependencies":{"animations":["Smoke01"],"images":[]},"timelines":[{"position":[{"duration":4,"endValue":[22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,22],"startValue":[22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,22],"startValue":[-22,22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,30],"startValue":[0,30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[0,-30],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[0,-30],"startValue":[0,-30],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[22,-22],"startValue":[22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[30,0],"startValue":[30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-30,0],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-30,0],"startValue":[-30,0],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]},{"position":[{"duration":4,"endValue":[-22,-22],"tween":true,"startValue":[0,0],"frameNo":0},{"duration":11,"tween":false,"endValue":[-22,-22],"startValue":[-22,-22],"frameNo":4}],"scale":[],"hue":[],"source":[{"duration":4,"emitter":false,"id":"Smoke01","type":"animation","frameNo":0,"relative":false},{"duration":11,"emitter":false,"id":"Smoke01","type":"animation","frameNo":4,"relative":false}],"rotation":[],"alpha":[]}]}
-        );
+            loop.update();
+            expect(node.alpha).toBe(0.1);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(1.0);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(1.0);
+            expect(loop.isDone()).toBe(false);
+            
+            loop.update();
+            expect(node.alpha).toBe(0.0);
+            expect(loop.isDone()).toBe(true);
+            
+        });
+        it("Loop count infinite", function() {
+            var node = new enchant.canvas.Node();
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1);
+            var interval2 = new enchant.animation.interval.Wait(1);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1);
+            
+            var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
+            var loop = new enchant.animation.interval.Loop(sequence, 0);
+            loop.start();
+            expect(node.alpha).toBe(0.1);
+            expect(loop.isDone()).toBe(false);
+            
+            for (var i = 0; i < 1; i++) {
+                loop.update();
+                expect(node.alpha).toBe(1.0);
+                expect(loop.isDone()).toBe(false);
+                
+                loop.update();
+                expect(node.alpha).toBe(1.0);
+                expect(loop.isDone()).toBe(false);
+                
+                loop.update();
+                expect(node.alpha).toBe(0.0);
+                expect(loop.isDone()).toBe(false);
+                    
+                loop.update();
+                expect(node.alpha).toBe(0.1);
+                expect(loop.isDone()).toBe(false);
+            }
+            
+        });
         var animationTestResult = {
             "Smoke01" : [{
                 
@@ -400,7 +511,7 @@ describe("Animation", function() {
         it("AnimationTest1", function() {
         	var root = new enchant.canvas.Node();
 
-            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"));
+            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"), false);
             expect(root._children.length).toBe(1);
 
 			interval.start();
@@ -418,7 +529,7 @@ describe("Animation", function() {
 
         it("AnimationTest2", function() {
         	var root = new enchant.canvas.Node();
-            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("SmokeRing"));
+            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("SmokeRing"), false);
             expect(root._children.length).toBe(8);
 
 			var frameCount = 16;
@@ -467,17 +578,17 @@ describe("Animation", function() {
                     interval.update();
                 }
                 for (var j = 0; j < timelineCount; j++) {
-                    console.log(interval);
                     testFrame(root, interval, testData, i, j);
                 }
             }
 
             for (var j = 0; j < timelineCount; j++) {
-               expect(interval._intervals[j]._intervals[1]._interval.isDone()).toBe(true);
+               expect(interval._intervals[j]._intervals[1]._interval.isDone()).toBe(false);
             }
             
         }); 
+        
     });
 });
 var root = new enchant.canvas.Node();
-var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"));
+var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"), false);

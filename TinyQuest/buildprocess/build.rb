@@ -37,18 +37,18 @@ def parse_timeline(timeline, dependencies)
         "source" => []
     }
 
-    latestSourceData = {"textureRect" => nil, "sourcePath" => nil}
+    latestSourceData = {"textureRect" => nil, "sourcePath" => nil, "maxFrame" => 1}
     timeline.each do |keyframe_set|
         parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
     end
 
     # setup duration
-    setup_tweens(result)
+    setup_tweens(result, latestSourceData)
 
     return result
 end
 
-def setup_tweens(result)
+def setup_tweens(result, latestSourceData)
     result.each do |key, keyframes|
         keyFrameCount = keyframes.count
         keyframes.each_with_index do |keyframe, i| 
@@ -77,7 +77,11 @@ def setup_tweens(result)
             if keyframes.last["wait"]
                 keyframes.delete(keyframes.last)
             else
-                keyframes.last["duration"] = 1
+                if (key == "source")
+                    keyframes.last["duration"] = latestSourceData["maxFrame"]
+                else
+                    keyframes.last["duration"] = 1
+                end
             end
         end
         
@@ -131,6 +135,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
     # Source is somewhat special (Like, no lenear tween)
     rectDiff = latestSourceData["textureRect"] != keyframe_set["textureRect"]
     pathDiff = latestSourceData["sourcePath"] != keyframe_set["sourcePath"]
+    latestSourceData["maxFrame"] = frameNo
     if rectDiff || pathDiff
         latestSourceData["textureRect"] = keyframe_set["textureRect"]
         latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
@@ -222,7 +227,8 @@ animation_data.keys.each do |id|
     
     # Save it as a file
     File.open(outputFilename, 'w') do |f|
-       f.write(animation_data[id]["data"].to_json)
+        #f.write(animation_data[id]["data"].to_json)
+        f.write(JSON.pretty_generate(animation_data[id]["data"]))
     end
 end
 

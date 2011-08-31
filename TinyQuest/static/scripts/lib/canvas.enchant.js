@@ -159,12 +159,13 @@ enchant.canvas.Sprite = enchant.Class.create({
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
             surface.context.save();
-            var dx = this.srcRect[2] / 2 + this.center[0];
-            var dy = this.srcRect[3] / 2 + this.center[1];
+            var dx = this.position[0] + this.srcRect[2] / 2;
+            var dy = this.position[1] + this.srcRect[3] / 2;
             surface.context.translate(dx, dy);
             surface.context.rotate(this.rotation * Math.PI / 180);
             surface.context.scale(this.scale[0], this.scale[1]);
             surface.context.translate(-dx, -dy);
+            
             surface.context.globalAlpha = this.alpha;
 
             assert(typeof(this.srcRect[0]) == "number", "1");
@@ -174,7 +175,7 @@ enchant.canvas.Sprite = enchant.Class.create({
             assert(typeof(this.position[0]) == "number", "5");
             assert(typeof(this.position[1]) == "number", "6");
             
-            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0], this.position[1], this.srcRect[2], this.srcRect[3]);
+            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0] - this.center[0], this.position[1] - this.center[1], this.srcRect[2], this.srcRect[3]);
             surface.context.restore();
         } else {
             this.node.draw(assets, surface);
