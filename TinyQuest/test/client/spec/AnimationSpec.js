@@ -422,7 +422,7 @@ describe("Animation", function() {
             expect(node.rotation).toBe(0);
             expect(parallel.isDone()).toBe(false);
         }); 
-        it("Loop count 1", function() {
+        it("Loop count 2", function() {
             var node = new enchant.canvas.Node();
             var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1);
             var interval2 = new enchant.animation.interval.Wait(1);
@@ -443,10 +443,6 @@ describe("Animation", function() {
             expect(loop.isDone()).toBe(false);
             
             loop.update();
-            expect(node.alpha).toBe(0.0);
-            expect(loop.isDone()).toBe(false);
-
-            loop.update();
             expect(node.alpha).toBe(0.1);
             expect(loop.isDone()).toBe(false);
             
@@ -461,7 +457,6 @@ describe("Animation", function() {
             loop.update();
             expect(node.alpha).toBe(0.0);
             expect(loop.isDone()).toBe(true);
-            
         });
         it("Loop count infinite", function() {
             var node = new enchant.canvas.Node();
@@ -482,10 +477,6 @@ describe("Animation", function() {
                 
                 loop.update();
                 expect(node.alpha).toBe(1.0);
-                expect(loop.isDone()).toBe(false);
-                
-                loop.update();
-                expect(node.alpha).toBe(0.0);
                 expect(loop.isDone()).toBe(false);
                     
                 loop.update();

@@ -221,38 +221,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
     }
 });
 
-// Run intervals in sequence
-enchant.animation.interval.Sequence = enchant.Class.create({
-    initialize: function(intervals) {
-        this._intervals = intervals;
-        this._index = 0;
-        var length = this._intervals.length;
-        this._lastInterval = this._intervals[length - 1];
-    },
-    isDone: function() {
-        return this._lastInterval.isDone();
-    },
-    reset: function() {
-        this._index = 0;
-        for (var i in this._intervals) {
-            this._intervals[i].reset();
-        }
-        this.start();
-    }, 
-    start: function() {
-        this._intervals[0].start();
-    },
-    update: function() {
-        if (!this.isDone()) {
-            var currentInterval = this._intervals[this._index];
-            currentInterval.update();
-            if (currentInterval.isDone()) {
-                this._index++;
-            }
-        }
-    }
-});
-
 // Specify loop time of intervals
 enchant.animation.interval.Loop = enchant.Class.create({
     initialize: function(interval, loopCount) {
@@ -280,14 +248,45 @@ enchant.animation.interval.Loop = enchant.Class.create({
     },
     update: function() {
         if (!this.isDone()) {
+            this._interval.update();
             if (this._interval.isDone()) {
                 this._loopCounter++;
                 if (this._loopCount == 0 || this._loopCounter < this._loopCount) {
                     // Repeat this interval again, since this is a subanimation
                     this._interval.reset();
                 }
-            } else {
-                this._interval.update();
+            }
+        }
+    }
+});
+
+// Run intervals in sequence
+enchant.animation.interval.Sequence = enchant.Class.create({
+    initialize: function(intervals) {
+        this._intervals = intervals;
+        this._index = 0;
+        var length = this._intervals.length;
+        this._lastInterval = this._intervals[length - 1];
+    },
+    isDone: function() {
+        return this._lastInterval.isDone();
+    },
+    reset: function() {
+        this._index = 0;
+        for (var i in this._intervals) {
+            this._intervals[i].reset();
+        }
+        this.start();
+    }, 
+    start: function() {
+        this._intervals[0].start();
+    },
+    update: function() {
+        if (!this.isDone()) {
+            var currentInterval = this._intervals[this._index];
+            currentInterval.update();
+            if (currentInterval.isDone()) {
+                this._index++;
             }
         }
     }
