@@ -39,7 +39,7 @@ enchant.animation =
             var intervals = [];
             for(var i = 0; i < keyframes.length; i++) {
                 var frame = keyframes[i];
-                
+                var tween = frame.tween;
                 var interval = null;
                 if (frame.wait) {
                     var duration = frame.duration;
@@ -50,7 +50,7 @@ enchant.animation =
                     var endValue = frame.endValue;
                     var duration = frame.duration;
     
-                    interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration);
+                    interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration, tween);
                 }
                 intervals.push(interval);
             }
@@ -81,13 +81,14 @@ enchant.animation.interval  =
 
 // Linear interval for simple parameter
 enchant.animation.interval.Interval = enchant.Class.create({
-    initialize: function(node, attribute, startValue, endValue, duration) {
+    initialize: function(node, attribute, startValue, endValue, duration, tween) {
         this._node = node;
         this._startValue = startValue;
         this._endValue = endValue;
         this._duration = duration;
         this._attribute = attribute;    
         this._frameNo = 0;
+        this._tween = tween;
     },
     isDone: function() {
         return this._frameNo >= this._duration
@@ -103,7 +104,15 @@ enchant.animation.interval.Interval = enchant.Class.create({
     update: function() {
         if (!this.isDone()) {
             this._frameNo++;
-            var value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
+            
+            var value = this._startValue;
+            if (this._tween) {
+                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
+            } else {
+                if (this._frameNo == this._duration) {
+                    value = this._endValue;
+                }
+            }
             this._node[this._attribute] = value;
         }
     }

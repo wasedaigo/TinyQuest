@@ -66,7 +66,9 @@ def setup_tweens(result, latestSourceData)
                 # Decide duration and end-value of the last keyframe
                 prev_keyframe = keyframes[i - 1]
                 prev_keyframe["duration"] = keyframe["frameNo"] - prev_keyframe["frameNo"]
-                if prev_keyframe["tween"]
+                if keyframe["wait"]
+                    prev_keyframe["endValue"] = prev_keyframe["startValue"]
+                else
                     prev_keyframe["endValue"] = keyframe["startValue"]
                 end
             end
@@ -84,7 +86,6 @@ def setup_tweens(result, latestSourceData)
                 end
             end
         end
-        
     end
 end
 
@@ -184,20 +185,21 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
 end
 
 # Recursively gather image dependency information
-def retrieveAllImageDependencies(animation_data, root_id)
+def retrieveAllDependencies(animation_data, root_id)
     root = animation_data[root_id]
     if root["processed"]
-        return root["data"]["dependencies"]["images"]
+        return root["data"]["dependencies"]
     else
-        image_dependencies = root["data"]["dependencies"]["images"]
+        dependencies = root["data"]["dependencies"]
         root["data"]["dependencies"]["animations"].each do |child_id|
-            child_image_dependencies = retrieveAllImageDependencies(animation_data, child_id)
-            image_dependencies = image_dependencies | child_image_dependencies
+            child_dependencies = retrieveAllDependencies(animation_data, child_id)
+            dependencies["animations"] = dependencies["animations"] | child_dependencies["animations"]
+            dependencies["images"] = dependencies["images"] | child_dependencies["images"]
         end
 
-        root["data"]["dependencies"]["images"] = image_dependencies
+        root["data"]["dependencies"] = dependencies
         root["processed"] = true
-        return image_dependencies
+        return dependencies
     end
 end 
 
@@ -217,7 +219,7 @@ end
 
 animation_data.keys.each do |id|
     # recursively gather image dependency information and add it to the animation data itself
-    retrieveAllImageDependencies(animation_data, id)
+    retrieveAllDependencies(animation_data, id)
     
     # Get output filename
     outputFilename = OUTPUT_PATH + "/" + id + ".json"

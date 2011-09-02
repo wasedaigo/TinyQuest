@@ -52,7 +52,7 @@ describe("Animation", function() {
     describe("TestInterval", function() {
         it("AlphaInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.Interval(node, "alpha", 0.0, 1.0, 5);
+            var interval = new enchant.animation.interval.Interval(node, "alpha", 0.0, 1.0, 5, true);
 
             expect(node.alpha).toBe(1);
             expect(interval.isDone()).toBe(false);
@@ -89,9 +89,10 @@ describe("Animation", function() {
             expect(node.alpha).toEqual(0.0);
             expect(interval.isDone()).toBe(false);
         });
+
         it("PositionInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.Interval(node, "position", [10, 10], [2, 6], 4);
+            var interval = new enchant.animation.interval.Interval(node, "position", [10, 10], [2, 6], 4, true);
 
             expect(node.position).toEqual([0, 0]);
             expect(interval.isDone()).toBe(false);
@@ -122,7 +123,7 @@ describe("Animation", function() {
         }); 
         it("ScaleInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.Interval(node, "scale", [10, 10], [2, 6], 4);
+            var interval = new enchant.animation.interval.Interval(node, "scale", [10, 10], [2, 6], 4, true);
 
             expect(node.scale).toEqual([1, 1]);
             expect(interval.isDone()).toBe(false);
@@ -154,7 +155,7 @@ describe("Animation", function() {
 
         it("HueInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.Interval(node, "hue", [10, 10, 20], [2, 6, 40], 4);
+            var interval = new enchant.animation.interval.Interval(node, "hue", [10, 10, 20], [2, 6, 40], 4, true);
 
             expect(node.hue).toEqual([0, 0, 0]);
             expect(interval.isDone()).toBe(false);
@@ -186,7 +187,7 @@ describe("Animation", function() {
         
         it("RotationInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.Interval(node, "rotation", 360, 0, 3);
+            var interval = new enchant.animation.interval.Interval(node, "rotation", 360, 0, 3, true);
 
             expect(node.rotation).toBe(0);
             expect(interval.isDone()).toBe(false);
@@ -334,11 +335,11 @@ describe("Animation", function() {
             expect(sprite.center).toEqual([4, 4]);
             expect(interval.isDone()).toBe(true);
         });
-        it("Sequence", function() {
+        it("Sequence1", function() {
             var node = new enchant.canvas.Node();
-            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3);
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3, true);
             var interval2 = new enchant.animation.interval.Wait(2);
-            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 2);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 2, true);
             
             var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
             
@@ -379,11 +380,39 @@ describe("Animation", function() {
             expect(sequence.isDone()).toBe(false);
             
         }); 
-         
+        it("Sequence2", function() {
+            var node = new enchant.canvas.Node();
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 1, 0.5, 1, false);
+            var interval2 = new enchant.animation.interval.Interval(node, "alpha", 0.5, 0.3, 1, false);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.3, 0.1, 1, true);
+            var interval4 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 0.1, 1, true);
+
+            var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3, interval4]);
+            
+            sequence.start();
+            expect(node.alpha).toBe(1);
+            expect(sequence.isDone()).toBe(false);
+            
+            sequence.update();
+            expect(node.alpha).toBe(0.5);
+            expect(sequence.isDone()).toBe(false);
+            
+            sequence.update();
+            expect(node.alpha).toBe(0.3);
+            expect(sequence.isDone()).toBe(false);
+   
+            sequence.update();
+            expect(node.alpha).toBe(0.1);
+            expect(sequence.isDone()).toBe(false);    
+                     
+            sequence.update();
+            expect(node.alpha).toBe(0.1);
+            expect(sequence.isDone()).toBe(true);    
+        }); 
         it("Parallel", function() {
             var node = new enchant.canvas.Node();
-            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3);
-            var interval2 = new enchant.animation.interval.Interval(node, "rotation", 0, 180, 5);
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 3, true);
+            var interval2 = new enchant.animation.interval.Interval(node, "rotation", 0, 180, 5, true);
             
             var parallel = new enchant.animation.interval.Parallel([interval1, interval2]);
             
@@ -424,9 +453,9 @@ describe("Animation", function() {
         }); 
         it("Loop count 2", function() {
             var node = new enchant.canvas.Node();
-            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1);
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1, true);
             var interval2 = new enchant.animation.interval.Wait(1);
-            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1, true);
             
             var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
             var loop = new enchant.animation.interval.Loop(sequence, 2);
@@ -460,9 +489,9 @@ describe("Animation", function() {
         });
         it("Loop count infinite", function() {
             var node = new enchant.canvas.Node();
-            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1);
+            var interval1 = new enchant.animation.interval.Interval(node, "alpha", 0.1, 1.0, 1, true);
             var interval2 = new enchant.animation.interval.Wait(1);
-            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1);
+            var interval3 = new enchant.animation.interval.Interval(node, "alpha", 0.7, 0.0, 1, true);
             
             var sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
             var loop = new enchant.animation.interval.Loop(sequence, 0);
