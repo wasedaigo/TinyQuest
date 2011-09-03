@@ -276,7 +276,7 @@ describe("Animation", function() {
                 }
             ];
 
-            var interval = new enchant.animation.interval.SourceInterval(sprite, keyframes);
+            var interval = new enchant.animation.interval.SourceInterval(sprite, sprite, keyframes);
 
             expect(sprite.srcPath).toEqual(null);
             expect(interval.isDone()).toBe(false);
@@ -530,7 +530,7 @@ describe("Animation", function() {
         it("AnimationTest1", function() {
         	var root = new enchant.canvas.Node();
 
-            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"), false);
+            var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("Smoke01"), false);
             expect(root._children.length).toBe(1);
 
 			interval.start();
@@ -549,7 +549,7 @@ describe("Animation", function() {
 
         it("AnimationTest2", function() {
         	var root = new enchant.canvas.Node();
-            var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("SmokeRing"), false);
+            var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("SmokeRing"), false);
             expect(root._children.length).toBe(8);
 
 			var frameCount = 17;
@@ -611,4 +611,4 @@ describe("Animation", function() {
     });
 });
 var root = new enchant.canvas.Node();
-var interval = enchant.animation.CreateAnimation(root, enchant.loader.getAnimation("Smoke01"), false);
+var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("Smoke01"), false);

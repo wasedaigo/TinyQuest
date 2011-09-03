@@ -25,8 +25,9 @@ window.onload = function() {
         stage.addChild(s);
         game.rootScene.addChild(stage);
 
+        enchant.animation.animationManager.initialize(root);
+
         // Update
-        
         this.addEventListener('enterframe', function() {
             surface.context.clearRect(0, 0,320, 320);
 
@@ -41,14 +42,15 @@ window.onload = function() {
             s.image.context.moveTo(159.5, 0);
             s.image.context.lineTo(159.5, 320);
             s.image.context.stroke();
-        
+
             if (currentAnimation) {
                 sceneGraph.update();
                 if (!interval) {
-                    interval = enchant.animation.CreateAnimation(root, enchant.loader.get(currentAnimation));
-                    interval.start();
+                    var node = new enchant.canvas.Node();
+                    interval = enchant.animation.animationManager.CreateAnimation(node, node, enchant.loader.get(currentAnimation));
+                    enchant.animation.animationManager.start(interval, node);
                 } else {
-                    interval.update();
+                    enchant.animation.animationManager.update();
                 }
             }
         });

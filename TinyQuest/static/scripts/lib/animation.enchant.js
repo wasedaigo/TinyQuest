@@ -11,9 +11,29 @@ enchant.utils =
     }
 };
 
-enchant.animation = 
+enchant.animation = {};
+enchant.animation.animationManager = 
 {
-    CreateAnimation: function (root, data, isSubAnimation) {
+    initialize: function (root) {
+        this.root = root;
+        this.instances = [];
+    },
+    start: function (interval, node) {
+        this.root.addChild(node);
+        this.instances.push({"interval":interval, "node":node});
+        interval.start();
+    },
+    update: function () {
+        for (var i = this.instances.length - 1; i >= 0; i-- ) {
+            var instance = this.instances[i];
+            instance.interval.update();
+            if (instance.interval.isDone()) {
+                this.root.removeChild(instance.node);
+                this.instances.splice(i, 1);
+            }
+        }
+    },
+    CreateAnimation: function (parent, root, data, isSubAnimation) {
         var timelines = data["timelines"];
         var parallels = [];
         for (var timelineNo in timelines) {
@@ -24,15 +44,15 @@ enchant.animation =
             var attributes = ["rotation", "position", "alpha", "scale"];
             for (var i in attributes) {
                 var attribute = attributes[i];
-                var sequence = enchant.animation.CreateAttributeTween(sprite, attribute, timeline[attribute]);
+                var sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute]);
                 if (sequence) {
                     sequences.push(sequence);
                 }
             }
-			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"]);
+			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, root, timeline["source"]);
 			sequences.push(sourceInterval);
             parallels.push(new enchant.animation.interval.Parallel(sequences));
-            root.addChild(sprite);
+            parent.addChild(sprite);
         }
         var parallelInterval = new enchant.animation.interval.Parallel(parallels);
         
@@ -71,7 +91,7 @@ enchant.animation =
             return new enchant.animation.interval.Sequence(intervals);
         }
     }  
-}
+};
 
 // Interval helper modules
 enchant.animation.interval  = 
@@ -156,8 +176,9 @@ enchant.animation.interval.Wait = enchant.Class.create({
 
 // Source file keykeyframes, this changes image and source rect of sprites
 enchant.animation.interval.SourceInterval = enchant.Class.create({
-    initialize: function(sprite, sourceKeykeyframes) {
+    initialize: function(sprite, root, sourceKeykeyframes) {
         this._sprite = sprite;
+        this._root = root;
         this._interval = null;
         this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
         this._frameNo = 0;
@@ -167,9 +188,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         for (var key in this._sourceKeykeyframes) {
             this._duration += this._sourceKeykeyframes[key].duration;  
         }
-        // Add an extra frame to clean up the sprite
-        //this._sourceKeykeyframes.push({"frameNo": this._duration,"rect" : "", "id" : null, "duration" : 1});
-        //this._duration += 1;
     },
     isDone: function() {
         return this._frameNo >= this._duration;
@@ -205,11 +223,13 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 
                 if (keyframe.emitter) {
                     // Emit new animation (emitted animation won't be controled by this instance anymore)
+                    var interval = enchant.animation.animationManager.CreateAnimation(this._root, this._root, enchant.loader.getAnimation(keyframe.id), false);
+                    enchant.animation.animationManager.start(interval, this._sprite);
                 } else {
                     // No animation node is generaetd yet, let's generate it
                     // If no ID exists, ignore it (Which usually means an empty keyframe)
                     if (keyframe.id) {
-                        this._interval = enchant.animation.CreateAnimation(this._sprite, enchant.loader.getAnimation(keyframe.id), true);
+                        this._interval = enchant.animation.animationManager.CreateAnimation(this._sprite, this._root, enchant.loader.getAnimation(keyframe.id), true);
                         this._interval.start();
                     }
                 }
@@ -242,7 +262,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 this._index++;
                 this._frameDuration = 0;
             }
-
         }
     }
 });

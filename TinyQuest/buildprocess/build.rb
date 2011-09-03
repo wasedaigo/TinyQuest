@@ -86,7 +86,7 @@ def setup_tweens(result, latestSourceData)
                 end
             else
                 if (key == "source")
-                    keyframes.last["duration"] = latestSourceData["maxFrame"] - keyframes.last["frameNo"]
+                    keyframes.last["duration"] = latestSourceData["maxFrame"] - keyframes.last["frameNo"] + 1
                 else
                     keyframes.last["duration"] = 1
                 end
