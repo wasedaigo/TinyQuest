@@ -7,7 +7,7 @@ var currentAnimation = null;
 var interval = null;
 var root = new enchant.canvas.Node();
 window.onload = function() {
-    game.fps = 30;
+    game.fps = 45;
 
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
@@ -29,6 +29,19 @@ window.onload = function() {
         
         this.addEventListener('enterframe', function() {
             surface.context.clearRect(0, 0,320, 320);
+
+            s.image.context.beginPath();
+            s.image.context.lineWidth = 1.0;
+            s.image.context.moveTo(0, 159.5);
+            s.image.context.lineTo(320, 159.5);
+            s.image.context.stroke();
+
+            s.image.context.beginPath();
+            s.image.context.lineWidth = 1.0;
+            s.image.context.moveTo(159.5, 0);
+            s.image.context.lineTo(159.5, 320);
+            s.image.context.stroke();
+        
             if (currentAnimation) {
                 sceneGraph.update();
                 if (!interval) {
@@ -44,7 +57,6 @@ window.onload = function() {
 };
 
 var playAnimation = function(id) {
-    
     var filename = '../../static/assets/animations/' + id + ".json"
     currentAnimation = filename;
 
