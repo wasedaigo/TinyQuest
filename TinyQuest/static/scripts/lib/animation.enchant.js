@@ -1,3 +1,16 @@
+enchant.utils = 
+{
+    clone : function(src) {
+      var newObj = (src instanceof Array) ? [] : {};
+      for (i in src) {
+        if (i == 'clone') continue;
+        if (src[i] && typeof src[i] == "object") {
+          newObj[i] = enchant.utils.clone(src[i]);
+        } else newObj[i] = src[i]
+      } return newObj;
+    }
+};
+
 enchant.animation = 
 {
     CreateAnimation: function (root, data, isSubAnimation) {
@@ -146,14 +159,17 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
     initialize: function(sprite, sourceKeykeyframes) {
         this._sprite = sprite;
         this._interval = null;
-        this._sourceKeykeyframes = sourceKeykeyframes;
+        this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
         this._frameNo = 0;
         this._index = 0;
         this._frameDuration = 0;
         this._duration = 0;
-        for (var key in sourceKeykeyframes) {
-            this._duration += sourceKeykeyframes[key].duration;  
+        for (var key in this._sourceKeykeyframes) {
+            this._duration += this._sourceKeykeyframes[key].duration;  
         }
+        // Add an extra frame to clean up the sprite
+        //this._sourceKeykeyframes.push({"frameNo": this._duration,"rect" : "", "id" : null, "duration" : 1});
+        //this._duration += 1;
     },
     isDone: function() {
         return this._frameNo >= this._duration;
@@ -226,6 +242,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 this._index++;
                 this._frameDuration = 0;
             }
+
         }
     }
 });

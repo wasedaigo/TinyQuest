@@ -175,7 +175,11 @@ enchant.canvas.Sprite = enchant.Class.create({
             assert(typeof(this.position[0]) == "number", "5");
             assert(typeof(this.position[1]) == "number", "6");
             
-            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], this.position[0] - this.center[0], this.position[1] - this.center[1], this.srcRect[2], this.srcRect[3]);
+            // Displaying floating point position can potentially blur the image on Canvas Element.
+            // Here we are rounding floating point position into integer.
+            var posX = Math.floor(this.position[0] - this.center[0]);
+            var posY = Math.floor(this.position[1] - this.center[1]);
+            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], posX, posY, this.srcRect[2], this.srcRect[3]);
             surface.context.restore();
         } else {
             this.node.draw(assets, surface);

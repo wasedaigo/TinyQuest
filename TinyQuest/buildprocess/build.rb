@@ -66,10 +66,13 @@ def setup_tweens(result, latestSourceData)
                 # Decide duration and end-value of the last keyframe
                 prev_keyframe = keyframes[i - 1]
                 prev_keyframe["duration"] = keyframe["frameNo"] - prev_keyframe["frameNo"]
-                if keyframe["wait"]
-                    prev_keyframe["endValue"] = prev_keyframe["startValue"]
-                else
-                    prev_keyframe["endValue"] = keyframe["startValue"]
+                
+                if key != "source"
+                    if keyframe["wait"]
+                        prev_keyframe["endValue"] = prev_keyframe["startValue"]
+                    else
+                        prev_keyframe["endValue"] = keyframe["startValue"]
+                    end
                 end
             end
         end
@@ -78,15 +81,20 @@ def setup_tweens(result, latestSourceData)
         if keyframes.last
             if keyframes.last["wait"]
                 keyframes.delete(keyframes.last)
+                if (key == "source")
+                    keyframes << {"duration" => 1, "id"=>"", "rect"=>nil}
+                end
             else
                 if (key == "source")
-                    keyframes.last["duration"] = latestSourceData["maxFrame"]
+                    keyframes.last["duration"] = latestSourceData["maxFrame"] - keyframes.last["frameNo"]
                 else
                     keyframes.last["duration"] = 1
                 end
             end
         end
     end
+    
+    
 end
 
 def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
