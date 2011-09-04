@@ -43,6 +43,7 @@ window.onload = function() {
             s.image.context.lineTo(159.5, 320);
             s.image.context.stroke();
 
+            surface.context.save();
             if (currentAnimation) {
                 sceneGraph.update();
                 if (!interval) {
@@ -53,6 +54,7 @@ window.onload = function() {
                     enchant.animation.animationManager.update();
                 }
             }
+            surface.context.restore();
         });
     };
     game.pause();

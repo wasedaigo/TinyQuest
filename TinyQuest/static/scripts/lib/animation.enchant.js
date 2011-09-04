@@ -220,7 +220,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 this._interval.update();
             } else {
                 this._clearSetting();
-                
                 if (keyframe.emitter) {
                     // Emit new animation (emitted animation won't be controled by this instance anymore)
                     var interval = enchant.animation.animationManager.CreateAnimation(this._root, this._root, enchant.loader.getAnimation(keyframe.id), false);
