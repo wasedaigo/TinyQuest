@@ -28,6 +28,7 @@ enchant.canvas.Node = enchant.Class.create({
         this.rotation = 0;
         this.parent = null;
         this._children = [];
+        this._transform = null;
     },
 
     addChild: function(node) {
@@ -51,16 +52,19 @@ enchant.canvas.Node = enchant.Class.create({
         }
         this._children = [];
     },
-    
-    update: function(context) { 
+    updateTransform: function() { 
+        this._transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
     },
-
+    applyTransform: function(context) { 
+        var t = this._transform;
+        context.transform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
+    },
     draw: function(assets, surface) {
         if (this._children.length > 0) {
             surface.context.save();
-            surface.context.translate(this.position[0], this.position[1]);
-            surface.context.rotate(this.rotation * Math.PI / 180);
-            surface.context.scale(this.scale[0], this.scale[1]);
+            this.updateTransform();
+            this.applyTransform(surface.context);
+
             for (var key in this._children) {
                 var node = this._children[key];
                 node.draw(assets, surface);
@@ -75,7 +79,6 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node = new enchant.canvas.Node();
         this.srcPath = srcPath ? srcPath : null;
         this.srcRect = srcRect ? srcRect : null;
-
         this.center = [0, 0];
         if (this.srcRect) {
             this._anchor = [0.5, 0.5];
@@ -153,19 +156,22 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.scale = value;
         }
     },
+    updateTransform: function() { 
+        this._transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
+    },
+    applyTransform: function(context) { 
+        var t = this._transform;
+        context.transform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
+    },
     draw: function(assets, surface) {
 
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
             surface.context.save();
-            var dx = this.position[0];
-            var dy = this.position[1];
-            surface.context.translate(dx, dy);
-            surface.context.rotate(this.rotation * Math.PI / 180);
-            surface.context.scale(this.scale[0], this.scale[1]);
-            surface.context.translate(-dx, -dy);
-            
+
+            this.updateTransform();
+            this.applyTransform(surface.context);
             surface.context.globalAlpha = this.alpha;
 
             assert(typeof(this.srcRect[0]) == "number", "1");
