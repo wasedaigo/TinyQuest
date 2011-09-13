@@ -119,14 +119,14 @@ function addLog(categoryName, message)
 
 function addCurrentStepLog() {
     switch (mapdataCache[currentStep]) {
-        case 0: // Start
+        case 0: // Nothing
+            addLog("Nothing", "");
+        break;
+        case 1: // Start
             addLog("Start", "The start point");
         break;
-        case 1: // Goal
+        case 2: // Goal
             addLog("Stair", "Found a stair to go down");
-        break;
-        case 2: // Nothing
-            addLog("Nothing", "");
         break;
         case 3: // Monster
             addLog("Monster", "Encountered a monster");
@@ -231,17 +231,17 @@ function updateActionButtons()
     
     var data = "";
     switch (mapdataCache[currentStep]) {
-        case 0: // Start
+        case 0: // Nothing
+            data += "<button onClick='onAction(\"goBack\");'>back</button>";
+            data += "<button onClick='onAction(\"goForward\");'>go</button>";
+        break;
+        case 1: // Start
             data += "<button onClick='onAction(\"goHome\");'>goHome</button>";
             data += "<button onClick='onAction(\"goForward\");'>go</button>";
         break;
-        case 1: // Goal
+        case 2: // Goal
             data += "<button onClick='onAction(\"goBack\");'>back</button>";
             data += "<button onClick='onAction(\"stairDown\");'>go down</button>";
-        break;
-        case 2: // Nothing
-            data += "<button onClick='onAction(\"goBack\");'>back</button>";
-            data += "<button onClick='onAction(\"goForward\");'>go</button>";
         break;
         case 3: // Monster
             data += "<button onClick='onAction(\"monsterEscape\");'>escape</button>";

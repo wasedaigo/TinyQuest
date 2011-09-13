@@ -35,9 +35,9 @@ function generatemapdata()
 {
     var size = 10 + Math.floor(Math.random() * 11);
     mapdata = new Array(size);
-    mapdata[0] = 0;
-    mapdata[size - 1] = 1;
-    var randomSeeds = [2, 2, 2, 2, 2, 3, 4, 5, 6];
+    mapdata[0] = 1;
+    mapdata[size - 1] = 0;
+    var randomSeeds = [0, 0, 0, 0, 0, 3, 4, 5, 6];
     for (var i = 1; i < size - 1; i++) {
         mapdata[i] = randomSeeds[Math.floor(Math.random() * randomSeeds.length)];
     }
@@ -50,7 +50,7 @@ var rpc = {
         cb.call(this, obj);
     },
     battleAttack : function(cb) {
-        mapdata[currentStep] = 2;
+        mapdata[currentStep] = 0;
         var obj = {};
         obj.enemy = {damage : 32, exp : 128, dead : true};
         obj.self = {damage : 15, dead : false};
@@ -66,7 +66,7 @@ var rpc = {
         var data = itemMaster.treasure;
         var index = Math.floor(Math.random() * data.length);
         obj.data = data[index];
-        mapdata[currentStep] = 2;
+        mapdata[currentStep] = 0;
         obj.mapType = mapdata[currentStep];
         cb.call(this, obj);
     },
@@ -75,7 +75,7 @@ var rpc = {
         var data = itemMaster.metal;
         var index = Math.floor(Math.random() * data.length);
         obj.data = data[index];
-        mapdata[currentStep] = 2;
+        mapdata[currentStep] = 0;
         obj.mapType = mapdata[currentStep];
         cb.call(this, obj);
     },
@@ -84,7 +84,7 @@ var rpc = {
         var data = itemMaster.herb;
         var index = Math.floor(Math.random() * data.length);
         obj.data = data[index];
-        mapdata[currentStep] = 2;
+        mapdata[currentStep] = 0;
         obj.mapType = mapdata[currentStep];
         cb.call(this, obj);
     },

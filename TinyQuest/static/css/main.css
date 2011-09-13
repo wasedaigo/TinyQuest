@@ -24,6 +24,11 @@ body
     font-size: 0.7em;
 }
 
+button
+{
+    width : 100px;
+}
+
 #main
 {
   width:640px;
