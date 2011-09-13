@@ -36,7 +36,7 @@ function generatemapdata()
     var size = 10 + Math.floor(Math.random() * 11);
     mapdata = new Array(size);
     mapdata[0] = 1;
-    mapdata[size - 1] = 0;
+    mapdata[size - 1] = 2;
     var randomSeeds = [0, 0, 0, 0, 0, 3, 4, 5, 6];
     for (var i = 1; i < size - 1; i++) {
         mapdata[i] = randomSeeds[Math.floor(Math.random() * randomSeeds.length)];

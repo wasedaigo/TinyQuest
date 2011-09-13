@@ -68,7 +68,7 @@ function updatePlayerInfo(name, hp, maxHP, atk, def, hit)
 function updateMap() {
     $("#mapBar").empty();
     
-    var symbols = ["S", "G", "○", "M", "T", "R", "H"];
+    var symbols = ["○", "S", "G", "M", "T", "R", "H"];
     var data = "";
     for (var i = 0; i < mapdataCache.length; i++) {
         
@@ -284,7 +284,7 @@ function setupMockScreen(obj)
 function goForwardHandler(obj) {
     currentFloor = obj.floor;
     currentStep = obj.step;
-    if (obj.mapType) {
+    if (obj.mapType !== undefined) {
         mapdataCache.push(obj.mapType);
     }
     addCurrentStepLog();
