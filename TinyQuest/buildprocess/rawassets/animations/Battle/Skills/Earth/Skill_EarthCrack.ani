@@ -1,0 +1,35 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "2" : [ "goto:0" ],
+      "21" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -155, 8 ],
+            "priority" : 0.3000000119209290,
+            "sourcePath" : "Battle/Skills/Earth/EarthCrack.ani"
+         }
+      ]
+   }
+}

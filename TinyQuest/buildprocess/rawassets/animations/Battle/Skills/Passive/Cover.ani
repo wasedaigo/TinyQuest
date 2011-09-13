@@ -1,0 +1,49 @@
+{
+   "camera_timeline" : [
+      {
+         "frameNo" : 0,
+         "positionTween" : "linear",
+         "sourcePath" : "Battle/System/Camera.ani"
+      },
+      {
+         "frameNo" : 12,
+         "position" : [ -16, 0 ],
+         "positionTween" : "fix",
+         "positionType" : "relativeToTarget",
+         "sourcePath" : "Battle/System/Camera.ani"
+      },
+      {
+         "frameNo" : 19,
+         "isEmpty" : true
+      }
+   ],
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 14,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 19,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

@@ -1,0 +1,75 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SmallJump"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 2,
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            -16,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -16,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 11
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SmallJump",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

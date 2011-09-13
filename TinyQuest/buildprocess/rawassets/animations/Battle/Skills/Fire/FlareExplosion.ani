@@ -1,0 +1,210 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/bom10" ],
+      "12" : [ "snd:MMS/bom07" ],
+      "16" : [ "snd:MMS/bosu12" ],
+      "20" : [ "snd:MMS/bosu12" ],
+      "24" : [ "snd:MMS/bosu12" ],
+      "4" : [ "snd:MMS/bosu12" ],
+      "8" : [ "snd:MMS/bosu12" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 8, -12 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 1,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 2,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -27, -1 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 3,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 23, 15 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 5,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 6,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -3, -21 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 7,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 8,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -19, 24 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 9,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 10,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -7, -5 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 11,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 12,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 2, 36 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 13,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 14,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 16, -23 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 16,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 36, 4 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 17,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 18,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -8, -1 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 19,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 20,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 4, -16 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 21,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 22,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -23, 25 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 23,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 24,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -26, -20 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareExploder.ani"
+         },
+         {
+            "frameNo" : 25,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

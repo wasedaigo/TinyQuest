@@ -1,0 +1,204 @@
+{
+   "events" : {
+      "60" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 7,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 23,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 25,
+            "position" : [ 8, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 32,
+            "position" : [ 8, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 35,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 53,
+            "position" : [ -16, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 57,
+            "position" : [ -24, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerLeft",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 68,
+            "position" : [ -24, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerLeft",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 75,
+            "position" : [ -24, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerLeft",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 91,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 94,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 25,
+            "position" : [ -12, 7 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 32,
+            "position" : [ -12, 7 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 35,
+            "position" : [ -36, 7 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 53,
+            "position" : [ -36, 7 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerRight",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 57,
+            "position" : [ -44, 7 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerLeft",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 62,
+            "position" : [ -44, 7 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "centerLeft",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 32,
+            "position" : [ -4, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Blood03.ani"
+         },
+         {
+            "frameNo" : 36,
+            "isEmpty" : true
+         }
+      ],
+      "3" : [
+         {
+            "emitter" : true,
+            "frameNo" : 54,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 0, 6 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "scale" : [ 2.0, 2.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Thrust01.ani"
+         }
+      ]
+   }
+}

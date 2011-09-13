@@ -1,0 +1,92 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "hideActor" : true,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -32, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 1,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 5,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 8,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 32, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 9,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 12,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 64, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 13,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 16,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 96, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 17,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 20,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 128, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         }
+      ]
+   }
+}

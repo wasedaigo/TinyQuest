@@ -1,0 +1,112 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -19,
+            9
+          ],
+          "startValue": [
+            -19,
+            9
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_SpearBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": -90,
+          "startValue": -90,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

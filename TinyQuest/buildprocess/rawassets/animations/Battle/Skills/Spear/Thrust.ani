@@ -1,0 +1,98 @@
+{
+   "events" : {
+      "20" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/Running.ani"
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -16, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "position" : [ -21, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 31,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallBack.ani"
+         },
+         {
+            "frameNo" : 46,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 12,
+            "position" : [ -22, 10 ],
+            "positionTween" : "linear",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "position" : [ -38, 10 ],
+            "positionTween" : "linear",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 20,
+            "position" : [ -36, 10 ],
+            "positionTween" : "fix",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 30,
+            "position" : [ -36, 10 ],
+            "positionTween" : "fix",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 31,
+            "isEmpty" : true
+         }
+      ],
+      "2" : [
+         {
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 30, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Thrust01.ani"
+         }
+      ]
+   }
+}

@@ -1,0 +1,99 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Freeze01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Freeze01",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            192,
+            0,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Freeze01",
+          "type": "image",
+          "frameNo": 1,
+          "rect": [
+            288,
+            0,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Freeze01",
+          "type": "image",
+          "frameNo": 2,
+          "rect": [
+            384,
+            0,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Freeze01",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            0,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

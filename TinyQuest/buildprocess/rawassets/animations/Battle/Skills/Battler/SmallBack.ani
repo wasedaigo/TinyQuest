@@ -1,0 +1,31 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "27" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ -16, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 11,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 14,
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         }
+      ]
+   }
+}

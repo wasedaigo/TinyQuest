@@ -1,0 +1,47 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "position" : [ -2, -5 ],
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Blood.png",
+            "textureRect" : [ 0, 0, 48, 48 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 1,
+            "position" : [ 0, -3 ],
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Blood.png",
+            "textureRect" : [ 48, 0, 48, 48 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 2,
+            "position" : [ -2, -5 ],
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Blood.png",
+            "textureRect" : [ 96, 0, 48, 48 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 3,
+            "position" : [ 0, -2 ],
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Blood.png",
+            "textureRect" : [ 144, 0, 48, 48 ]
+         }
+      ]
+   },
+   "name" : "Blood"
+}

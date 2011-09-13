@@ -1,0 +1,505 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Bow/ArrowShootBomb"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_BowBase",
+      "Battle/Skills/Effect_Special01",
+      "Battle/Skills/Effect_Explosion01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 38,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            384,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 29,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 38,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            -5,
+            -2
+          ],
+          "tween": true,
+          "startValue": [
+            -5,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            -5,
+            -3
+          ],
+          "tween": true,
+          "startValue": [
+            -5,
+            -2
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            -5,
+            -3
+          ],
+          "tween": true,
+          "startValue": [
+            -5,
+            -3
+          ],
+          "frameNo": 10
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            -6,
+            -4
+          ],
+          "tween": true,
+          "startValue": [
+            -5,
+            -3
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 18,
+          "endValue": [
+            -6,
+            -4
+          ],
+          "startValue": [
+            -6,
+            -4
+          ],
+          "frameNo": 20
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 5,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 10,
+          "rect": [
+            64,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 15,
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 20,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 29,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 5,
+          "endValue": 15,
+          "tween": true,
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": 30,
+          "tween": true,
+          "startValue": 15,
+          "frameNo": 5
+        },
+        {
+          "duration": 5,
+          "endValue": 45,
+          "tween": true,
+          "startValue": 30,
+          "frameNo": 10
+        },
+        {
+          "duration": 5,
+          "endValue": 60,
+          "tween": true,
+          "startValue": 45,
+          "frameNo": 15
+        },
+        {
+          "duration": 18,
+          "endValue": 60,
+          "startValue": 60,
+          "frameNo": 20
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 29,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 29
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 29,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 30.0,
+          "minEmitAngle": -90,
+          "id": "Battle/Skills/Bow/ArrowShootBomb",
+          "maxEmitAngle": -90,
+          "type": "animation",
+          "maxEmitSpeed": 30.0,
+          "frameNo": 29,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 5,
+          "endValue": 105,
+          "tween": true,
+          "startValue": 90,
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": 120,
+          "tween": true,
+          "startValue": 105,
+          "frameNo": 5
+        },
+        {
+          "duration": 5,
+          "endValue": 135,
+          "tween": true,
+          "startValue": 120,
+          "frameNo": 10
+        },
+        {
+          "duration": 5,
+          "endValue": 150,
+          "tween": true,
+          "startValue": 135,
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endValue": 0,
+          "startValue": 150,
+          "frameNo": 20
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 29
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 10,
+          "endValue": [
+            -15,
+            -4
+          ],
+          "tween": true,
+          "startValue": [
+            -16,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            -14,
+            -11
+          ],
+          "tween": true,
+          "startValue": [
+            -15,
+            -4
+          ],
+          "frameNo": 10
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -14,
+            -11
+          ],
+          "startValue": [
+            -14,
+            -11
+          ],
+          "frameNo": 20
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 21,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Special01",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 10,
+          "endValue": 1.0,
+          "tween": true,
+          "startValue": 0.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": 0.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 10
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 20
+        }
+      ]
+    }
+  ]
+}

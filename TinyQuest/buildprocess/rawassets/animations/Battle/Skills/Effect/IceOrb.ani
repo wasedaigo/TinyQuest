@@ -1,0 +1,26 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "Battle/Skills/Effect_Freeze01.png",
+            "textureRect" : [ 192, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "sourcePath" : "Battle/Skills/Effect_Freeze01.png",
+            "textureRect" : [ 288, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "sourcePath" : "Battle/Skills/Effect_Freeze01.png",
+            "textureRect" : [ 384, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "sourcePath" : "Battle/Skills/Effect_Freeze01.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         }
+      ]
+   }
+}

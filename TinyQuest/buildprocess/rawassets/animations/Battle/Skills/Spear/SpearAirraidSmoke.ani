@@ -1,0 +1,68 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 3,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 11,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani",
+            "swapTargetType" : "character"
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 21,
+            "rotation" : -405,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 23,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "rotation" : -405,
+            "scale" : [ 0.50, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/SmokeRing.ani",
+            "swapTargetType" : "character"
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 28,
+            "rotation" : -405,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 29,
+            "position" : [ 1, 1 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : -405,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani",
+            "swapTargetType" : "character"
+         }
+      ]
+   }
+}

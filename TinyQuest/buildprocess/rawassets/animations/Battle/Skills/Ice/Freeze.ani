@@ -1,0 +1,29 @@
+{
+   "events" : {
+      "33" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "Battle/Skills/Battler/MagicCasting.ani"
+         },
+         {
+            "frameNo" : 42,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Ice01.ani"
+         }
+      ]
+   }
+}

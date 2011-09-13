@@ -1,0 +1,168 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SwordCharge",
+      "Battle/Skills/Battler/Jump",
+      "Battle/Skills/Effect/Slash03",
+      "Battle/Skills/Battler/SwordDashUpper",
+      "Battle/Skills/Battler/SwordUpper"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Effect_Slash2"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 21,
+          "endValue": [
+            -64,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            -64,
+            0
+          ],
+          "startValue": [
+            -64,
+            0
+          ],
+          "frameNo": 21
+        },
+        {
+          "duration": 16,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -64,
+            0
+          ],
+          "frameNo": 28
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 44
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 46
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Battler/SwordCharge",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 16,
+          "wait": true,
+          "frameNo": 5
+        },
+        {
+          "duration": 26,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "animation",
+          "frameNo": 21,
+          "relative": true
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 4,
+          "endValue": 0.699999988079071,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.699999988079071,
+          "startValue": 0.699999988079071,
+          "frameNo": 4
+        }
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 13,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Slash03",
+          "type": "animation",
+          "frameNo": 13,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+   "events" : {
+      "7" : [ "snd:MMS/hit_s13" ],
+      "9" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "colorTween" : "fix",
+            "frameNo" : 0,
+            "hideActor" : true,
+            "position" : [ -56, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 0, 48, 48, 48 ]
+         },
+         {
+            "color" : [ 0.0, 1.0, 0.0 ],
+            "frameNo" : 3,
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 48, 48, 48, 48 ]
+         },
+         {
+            "frameNo" : 6,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 96, 48, 48, 48 ]
+         },
+         {
+            "frameNo" : 18,
+            "isEmpty" : true
+         }
+      ]
+   },
+   "name" : "Monster Bite Attack"
+}

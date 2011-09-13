@@ -1,0 +1,33 @@
+{
+   "events" : {
+      "65" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 73,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Fire/FlareEffect.ani"
+         }
+      ]
+   }
+}

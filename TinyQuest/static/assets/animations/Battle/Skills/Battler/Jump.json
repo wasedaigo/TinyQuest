@@ -1,0 +1,128 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "endValue": [
+            0,
+            -48
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 8,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -48
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 23
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            608,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 16,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 7,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 23,
+          "rect": [
+            608,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

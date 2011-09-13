@@ -1,0 +1,59 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Enemies/death_wind"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Enemies/death_wind",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

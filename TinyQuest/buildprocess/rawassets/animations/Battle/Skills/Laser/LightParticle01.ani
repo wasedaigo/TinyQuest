@@ -1,0 +1,38 @@
+{
+   "events" : {
+      "0" : [ "" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "blendType" : "add",
+            "frameNo" : 0,
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Light.png",
+            "textureRect" : [ 0, 0, 64, 64 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "frameNo" : 4,
+            "positionTween" : "linear",
+            "rotation" : 360,
+            "scale" : [ 4.0, 4.0 ],
+            "sourcePath" : "Battle/Skills/Effect_Light.png",
+            "textureRect" : [ 0, 0, 64, 64 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "blendType" : "add",
+            "frameNo" : 8,
+            "positionTween" : "linear",
+            "rotation" : 360,
+            "scale" : [ 4.0, 4.0 ],
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Light.png",
+            "textureRect" : [ 0, 0, 64, 64 ]
+         }
+      ]
+   }
+}

@@ -1,0 +1,21 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 7,
+            "positionTween" : "fix",
+            "rotation" : 315,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ]
+   }
+}

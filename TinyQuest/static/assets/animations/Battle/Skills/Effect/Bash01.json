@@ -1,0 +1,132 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Weapon07"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Weapon07",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            288,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Weapon07",
+          "type": "image",
+          "frameNo": 1,
+          "rect": [
+            96,
+            288,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Weapon07",
+          "type": "image",
+          "frameNo": 2,
+          "rect": [
+            192,
+            288,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Weapon07",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            288,
+            288,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Weapon07",
+          "type": "image",
+          "frameNo": 4,
+          "rect": [
+            384,
+            288,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

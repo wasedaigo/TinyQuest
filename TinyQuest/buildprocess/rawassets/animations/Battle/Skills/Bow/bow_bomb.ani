@@ -1,0 +1,174 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/power11" ],
+      "30" : [ "goto:29" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 384, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 38,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 67,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -5, 0 ],
+            "positionTween" : "linear",
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 5,
+            "position" : [ -5, -2 ],
+            "positionTween" : "linear",
+            "rotation" : 15,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 10,
+            "position" : [ -5, -3 ],
+            "positionTween" : "linear",
+            "rotation" : 30,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 64, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "position" : [ -5, -3 ],
+            "positionTween" : "linear",
+            "rotation" : 45,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 20,
+            "position" : [ -6, -4 ],
+            "positionTween" : "fix",
+            "rotation" : 60,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 29,
+            "position" : [ -78, 67 ],
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 38,
+            "isEmpty" : true
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -4, -1 ],
+            "rotation" : 90,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 5,
+            "position" : [ -4, -1 ],
+            "rotation" : 105,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 10,
+            "position" : [ -4, -1 ],
+            "rotation" : 120,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "position" : [ -4, -1 ],
+            "rotation" : 135,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 20,
+            "position" : [ -4, -1 ],
+            "rotation" : 150,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 29,
+            "maxEmitAngle" : -90,
+            "maxEmitSpeed" : 30.0,
+            "minEmitAngle" : -90,
+            "minEmitSpeed" : 30.0,
+            "positionTween" : "linear",
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Bow/ArrowShootBomb.ani"
+         },
+         {
+            "frameNo" : 30,
+            "isEmpty" : true
+         }
+      ],
+      "3" : [
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "position" : [ -16, 0 ],
+            "positionTween" : "linear",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect_Special01.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 10,
+            "position" : [ -15, -4 ],
+            "positionTween" : "linear",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect_Special01.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 20,
+            "position" : [ -14, -11 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect_Special01.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

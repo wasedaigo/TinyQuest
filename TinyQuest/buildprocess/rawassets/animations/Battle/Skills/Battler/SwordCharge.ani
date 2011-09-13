@@ -1,0 +1,23 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SwordDashUpper.ani"
+         },
+         {
+            "frameNo" : 16,
+            "position" : [ -64, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomCenter",
+            "sourcePath" : "Battle/Skills/Battler/SwordDashUpper.ani"
+         },
+         {
+            "frameNo" : 20,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

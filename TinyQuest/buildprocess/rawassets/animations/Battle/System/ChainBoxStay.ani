@@ -1,0 +1,24 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alpha" : 0.50,
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "UI/UI_ChainBox.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ],
+      "1" : [
+         {
+            "alpha" : 0.2000000029802322,
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "UI/UI_ChainBox.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         }
+      ]
+   }
+}

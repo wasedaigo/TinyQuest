@@ -1,0 +1,54 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 10,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 11,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 14, 8 ],
+            "positionTween" : "linear",
+            "rotation" : 90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 10,
+            "position" : [ 14, 8 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "rotation" : 90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 11,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

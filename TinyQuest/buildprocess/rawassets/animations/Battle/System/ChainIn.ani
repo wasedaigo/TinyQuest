@@ -1,0 +1,33 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/power03", "" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alpha" : 0.750,
+            "alphaTween" : "linear",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/System/ChainInBox.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 5,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/System/ChainInBox.ani"
+         }
+      ]
+   }
+}

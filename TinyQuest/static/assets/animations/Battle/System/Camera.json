@@ -1,0 +1,59 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "UI/Cursor"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "UI/Cursor",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

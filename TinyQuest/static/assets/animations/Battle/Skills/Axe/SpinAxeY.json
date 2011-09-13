@@ -1,0 +1,103 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Axe/SingleSpinAxe"
+    ],
+    "images": [
+      "Battle/Skills/Weapon_AxeBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            -36
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            2
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -36
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            0,
+            40
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            2
+          ],
+          "frameNo": 14
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            40
+          ],
+          "frameNo": 24
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 34
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 35,
+          "emitter": false,
+          "id": "Battle/Skills/Axe/SingleSpinAxe",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

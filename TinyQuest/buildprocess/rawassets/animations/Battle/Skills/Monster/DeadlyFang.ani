@@ -1,0 +1,47 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "hideActor" : true,
+            "positionTween" : "linear",
+            "scale" : [ -0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ -97, -10 ],
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ -97, -10 ],
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 192, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ -97, -10 ],
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 288, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "scale" : [ -0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Monster_Attack1.png",
+            "textureRect" : [ 384, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 5,
+            "isEmpty" : true
+         }
+      ]
+   },
+   "name" : "Monster Fang Attack"
+}

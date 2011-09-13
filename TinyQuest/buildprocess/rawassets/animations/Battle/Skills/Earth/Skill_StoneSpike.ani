@@ -1,0 +1,32 @@
+{
+   "events" : {
+      "4" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
+         },
+         {
+            "frameNo" : 22,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 22,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

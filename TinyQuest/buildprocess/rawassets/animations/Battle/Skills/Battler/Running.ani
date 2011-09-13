@@ -1,0 +1,43 @@
+{
+   "events" : {
+      "0" : [ "swaptex:Battle/Skills/Battler_Base.png,character" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 480, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 8,
+            "position" : [ -143, -111 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 544, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 12,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         }
+      ]
+   }
+}

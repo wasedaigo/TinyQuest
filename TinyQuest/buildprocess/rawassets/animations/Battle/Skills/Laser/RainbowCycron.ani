@@ -1,0 +1,248 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 70,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 70,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "1" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.2000000029802322, 0.0, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 30,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 30,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.2000000029802322, 0.0, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 30,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 30,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "2" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.50, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 45,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 45,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.50, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 45,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 45,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "3" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.0, 1.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 80,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 80,
+            "minEmitSpeed" : 5.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.0, 1.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 80,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 80,
+            "minEmitSpeed" : 5.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "4" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.8000000119209290, 0.8999999761581421, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 75,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 75,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.8000000119209290, 0.8999999761581421, 0.0 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 75,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 75,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "5" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.8000000119209290, 0.8999999761581421 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.8000000119209290, 0.8999999761581421 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "6" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.8000000119209290, 0.0, 0.8999999761581421 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 105,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 105,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.8000000119209290, 0.0, 0.8999999761581421 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 105,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 105,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "7" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.8000000119209290, 0.6999999880790710 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 120,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 120,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "color" : [ 0.0, 0.8000000119209290, 0.6999999880790710 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 120,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 120,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ]
+   }
+}

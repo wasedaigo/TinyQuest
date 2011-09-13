@@ -1,0 +1,90 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 16,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 16
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 20,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 16,
+          "endValue": 0,
+          "tween": true,
+          "startValue": -405,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 16
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

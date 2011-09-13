@@ -1,0 +1,371 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Fire/FlareExploder"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash3"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            8,
+            -12
+          ],
+          "startValue": [
+            8,
+            -12
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -27,
+            -1
+          ],
+          "wait": true,
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -27,
+            -1
+          ],
+          "startValue": [
+            -27,
+            -1
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            23,
+            15
+          ],
+          "wait": true,
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            23,
+            15
+          ],
+          "startValue": [
+            23,
+            15
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -3,
+            -21
+          ],
+          "wait": true,
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -3,
+            -21
+          ],
+          "startValue": [
+            -3,
+            -21
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -19,
+            24
+          ],
+          "wait": true,
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -19,
+            24
+          ],
+          "startValue": [
+            -19,
+            24
+          ],
+          "frameNo": 8
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -7,
+            -5
+          ],
+          "wait": true,
+          "frameNo": 9
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -7,
+            -5
+          ],
+          "startValue": [
+            -7,
+            -5
+          ],
+          "frameNo": 10
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            2,
+            36
+          ],
+          "wait": true,
+          "frameNo": 11
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            2,
+            36
+          ],
+          "startValue": [
+            2,
+            36
+          ],
+          "frameNo": 12
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            16,
+            -23
+          ],
+          "wait": true,
+          "frameNo": 13
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            16,
+            -23
+          ],
+          "startValue": [
+            16,
+            -23
+          ],
+          "frameNo": 14
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            36,
+            4
+          ],
+          "wait": true,
+          "frameNo": 15
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            36,
+            4
+          ],
+          "startValue": [
+            36,
+            4
+          ],
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -8,
+            -1
+          ],
+          "wait": true,
+          "frameNo": 17
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -8,
+            -1
+          ],
+          "startValue": [
+            -8,
+            -1
+          ],
+          "frameNo": 18
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            4,
+            -16
+          ],
+          "wait": true,
+          "frameNo": 19
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            4,
+            -16
+          ],
+          "startValue": [
+            4,
+            -16
+          ],
+          "frameNo": 20
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -23,
+            25
+          ],
+          "wait": true,
+          "frameNo": 21
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -23,
+            25
+          ],
+          "startValue": [
+            -23,
+            25
+          ],
+          "frameNo": 22
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -26,
+            -20
+          ],
+          "wait": true,
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -26,
+            -20
+          ],
+          "startValue": [
+            -26,
+            -20
+          ],
+          "frameNo": 24
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 1
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 3
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 5
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 7
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 9
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 11
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 13
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 15
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 17
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 19
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 21
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

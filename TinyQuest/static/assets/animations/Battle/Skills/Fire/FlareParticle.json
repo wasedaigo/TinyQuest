@@ -1,0 +1,96 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash3"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            48
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 7
+        }
+      ],
+      "scale": [
+        {
+          "duration": 7,
+          "endValue": [
+            0.100000001490116,
+            0.100000001490116
+          ],
+          "tween": true,
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.100000001490116,
+            0.100000001490116
+          ],
+          "startValue": [
+            0.100000001490116,
+            0.100000001490116
+          ],
+          "frameNo": 7
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            80,
+            112,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

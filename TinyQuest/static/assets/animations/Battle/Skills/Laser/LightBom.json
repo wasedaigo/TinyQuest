@@ -1,0 +1,258 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Laser/LightParticle01"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Light"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            3,
+            -16
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -14,
+            -7
+          ],
+          "startValue": [
+            3,
+            -16
+          ],
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            7,
+            15
+          ],
+          "startValue": [
+            -14,
+            -7
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -5,
+            12
+          ],
+          "startValue": [
+            7,
+            15
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -9,
+            -14
+          ],
+          "startValue": [
+            -5,
+            12
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            8,
+            -7
+          ],
+          "startValue": [
+            -9,
+            -14
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            12
+          ],
+          "startValue": [
+            8,
+            -7
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            0
+          ],
+          "startValue": [
+            1,
+            12
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            0
+          ],
+          "startValue": [
+            1,
+            0
+          ],
+          "frameNo": 8
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "startValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "frameNo": 8
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Laser/LightParticle01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

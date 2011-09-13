@@ -1,0 +1,83 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_BowBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 8,
+          "endValue": [
+            10,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            10,
+            0
+          ],
+          "startValue": [
+            10,
+            0
+          ],
+          "frameNo": 8
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 8,
+          "endValue": -90,
+          "startValue": -90,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": -90,
+          "startValue": -90,
+          "frameNo": 8
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

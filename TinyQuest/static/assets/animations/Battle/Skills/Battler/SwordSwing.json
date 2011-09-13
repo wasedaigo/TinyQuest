@@ -1,0 +1,295 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SwordDown02"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 11,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 11
+        }
+      ],
+      "scale": [
+        {
+          "duration": 11,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 11
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 11,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 11,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 13,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordDown02",
+          "type": "animation",
+          "frameNo": 20,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 11,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 11
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 11,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 11
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endValue": [
+            -6,
+            9
+          ],
+          "startValue": [
+            -6,
+            9
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            4,
+            -5
+          ],
+          "tween": true,
+          "startValue": [
+            -6,
+            9
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            4,
+            -5
+          ],
+          "startValue": [
+            4,
+            -5
+          ],
+          "frameNo": 17
+        }
+      ],
+      "scale": [
+        {
+          "duration": 7,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 17
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 20,
+          "center": [
+            0.0,
+            11.0
+          ],
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 7,
+          "endValue": 310,
+          "tween": true,
+          "startValue": 220,
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": 380,
+          "tween": true,
+          "startValue": 310,
+          "frameNo": 7
+        },
+        {
+          "duration": 3,
+          "endValue": 380,
+          "startValue": 380,
+          "frameNo": 17
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 7,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 7
+        },
+        {
+          "duration": 3,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 17
+        }
+      ]
+    }
+  ]
+}

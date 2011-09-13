@@ -1,0 +1,224 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/Stab01"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_AxeBase",
+      "Battle/Skills/Effect_Weapon03"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 14,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 12,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -6,
+            6
+          ],
+          "startValue": [
+            -6,
+            6
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 19,
+          "center": [
+            -1.0,
+            13.0
+          ],
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 3,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": 30,
+          "tween": true,
+          "startValue": 0,
+          "frameNo": 3
+        },
+        {
+          "duration": 4,
+          "endValue": 30,
+          "startValue": 30,
+          "frameNo": 8
+        },
+        {
+          "duration": 6,
+          "endValue": -160,
+          "tween": true,
+          "startValue": 30,
+          "frameNo": 12
+        },
+        {
+          "duration": 1,
+          "endValue": -160,
+          "tween": true,
+          "startValue": -160,
+          "frameNo": 18
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 12,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 12
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 12,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Stab01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 12,
+          "relative": true
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

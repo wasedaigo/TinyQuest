@@ -1,0 +1,68 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Spear/DrillAction",
+      "Battle/Skills/Effect/WindSpiralBottom",
+      "Battle/Skills/Spear/SpearHold",
+      "Battle/Skills/Effect/WindSpiralTop"
+    ],
+    "images": [
+      "Battle/Skills/Effect_WindSpiral",
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 12,
+          "endValue": [
+            -60,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -60,
+            0
+          ],
+          "startValue": [
+            -60,
+            0
+          ],
+          "frameNo": 12
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 13,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/DrillAction",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

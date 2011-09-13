@@ -1,0 +1,124 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/hit14" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 1,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 3, -16 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 2,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -14, -7 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 3,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 7, 15 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -5, 12 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.4000000059604645, 0.4000000059604645 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 5,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -9, -14 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 6,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 8, -7 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.6999999880790710, 0.6999999880790710 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 7,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 1, 12 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.50, 0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 8,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 1, 0 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.6999999880790710, 0.6999999880790710 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Laser/LightParticle01.ani"
+         }
+      ]
+   }
+}

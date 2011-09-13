@@ -1,0 +1,17 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/knife/SingleKnifeRotating.ani"
+         },
+         {
+            "frameNo" : 13,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/knife/SingleKnifeRotating.ani"
+         }
+      ]
+   }
+}

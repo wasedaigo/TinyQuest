@@ -1,0 +1,139 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_WindSpiral"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 4
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "type": "image",
+          "frameNo": 1,
+          "rect": [
+            96,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "type": "image",
+          "frameNo": 2,
+          "rect": [
+            192,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            288,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "type": "image",
+          "frameNo": 4,
+          "rect": [
+            384,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

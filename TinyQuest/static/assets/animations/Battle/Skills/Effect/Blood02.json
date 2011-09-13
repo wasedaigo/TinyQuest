@@ -1,0 +1,271 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/Blood01"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Blood"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -14,
+            -37
+          ],
+          "startValue": [
+            -14,
+            -37
+          ],
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": true
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -18,
+            -23
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -18,
+            -23
+          ],
+          "startValue": [
+            -18,
+            -23
+          ],
+          "frameNo": 1
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 1
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 1,
+          "relative": true
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 1
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 1
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 2,
+          "endValue": [
+            -17,
+            -7
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -17,
+            -7
+          ],
+          "startValue": [
+            -17,
+            -7
+          ],
+          "frameNo": 2
+        }
+      ],
+      "scale": [
+        {
+          "duration": 2,
+          "endValue": [
+            1,
+            1
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 2
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 2,
+          "relative": true
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 2,
+          "endValue": 0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 2
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 2,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 2
+        }
+      ]
+    }
+  ]
+}

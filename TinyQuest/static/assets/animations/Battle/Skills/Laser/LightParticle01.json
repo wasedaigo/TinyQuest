@@ -1,0 +1,125 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Light"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 8
+        }
+      ],
+      "scale": [
+        {
+          "duration": 8,
+          "endValue": [
+            4.0,
+            4.0
+          ],
+          "tween": true,
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            4.0,
+            4.0
+          ],
+          "tween": true,
+          "startValue": [
+            4.0,
+            4.0
+          ],
+          "frameNo": 8
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Light",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 4,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": 0.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 8
+        }
+      ]
+    }
+  ]
+}

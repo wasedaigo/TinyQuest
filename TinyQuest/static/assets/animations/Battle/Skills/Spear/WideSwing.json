@@ -1,0 +1,319 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SmallJump",
+      "Battle/Skills/Effect/Slash04"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Effect_Weapon03"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            -16,
+            24
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            -16,
+            24
+          ],
+          "startValue": [
+            -16,
+            24
+          ],
+          "frameNo": 12
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            -16,
+            -24
+          ],
+          "tween": true,
+          "startValue": [
+            -16,
+            24
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 17,
+          "endValue": [
+            -16,
+            -24
+          ],
+          "startValue": [
+            -16,
+            -24
+          ],
+          "frameNo": 21
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            -16,
+            -24
+          ],
+          "startValue": [
+            -16,
+            -24
+          ],
+          "frameNo": 38
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -16,
+            -24
+          ],
+          "frameNo": 40
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 50
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SmallJump",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 7,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 15,
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 16,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 22,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 15,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SmallJump",
+          "type": "animation",
+          "frameNo": 38,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 15,
+          "endValue": [
+            -26,
+            14
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            -22,
+            -36
+          ],
+          "tween": true,
+          "startValue": [
+            -26,
+            14
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -22,
+            -36
+          ],
+          "startValue": [
+            -22,
+            -36
+          ],
+          "frameNo": 21
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_SpearBase",
+          "type": "image",
+          "frameNo": 15,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 15,
+          "endValue": -90,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 6,
+          "endValue": -90,
+          "startValue": -90,
+          "frameNo": 15
+        },
+        {
+          "duration": 1,
+          "endValue": -90,
+          "startValue": -90,
+          "frameNo": 21
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 30,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Slash04",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 30,
+          "relative": true
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

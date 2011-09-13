@@ -1,0 +1,12 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Enemies/death_wind.png",
+            "textureRect" : [ 0, 0, 96, 96 ]
+         }
+      ]
+   }
+}

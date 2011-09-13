@@ -1,0 +1,237 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Spear/SpearHold",
+      "Battle/Skills/Effect/SmokeRing",
+      "Battle/Skills/Effect/Smoke01"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Effect_Special01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 26,
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 29
+        }
+      ],
+      "scale": [
+        {
+          "duration": 23,
+          "endValue": [
+            0.5,
+            1.0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            1.0
+          ],
+          "startValue": [
+            0.5,
+            1.0
+          ],
+          "frameNo": 23
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 10,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "animation",
+          "frameNo": 11,
+          "relative": false
+        },
+        {
+          "duration": 2,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 21,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/SmokeRing",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 23,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 28,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "animation",
+          "frameNo": 29,
+          "relative": true
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 11,
+          "endValue": 0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "endValue": -405,
+          "tween": true,
+          "startValue": 0,
+          "frameNo": 11
+        },
+        {
+          "duration": 8,
+          "endValue": -405,
+          "startValue": -405,
+          "frameNo": 21
+        },
+        {
+          "duration": 1,
+          "endValue": -405,
+          "startValue": -405,
+          "frameNo": 29
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 3,
+          "endValue": 0.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 3
+        },
+        {
+          "duration": 10,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 11
+        },
+        {
+          "duration": 2,
+          "endValue": 1.0,
+          "startValue": 0.0,
+          "frameNo": 21
+        },
+        {
+          "duration": 5,
+          "endValue": 0.0,
+          "startValue": 1.0,
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 28
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 29
+        }
+      ]
+    }
+  ]
+}

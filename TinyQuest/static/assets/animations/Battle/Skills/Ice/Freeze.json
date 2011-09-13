@@ -1,0 +1,78 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/MagicCasting",
+      "Battle/Skills/Effect/Ice01",
+      "Battle/Skills/Effect/IceOrb"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Effect_Freeze01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 42,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/MagicCasting",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Ice01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": true
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

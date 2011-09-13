@@ -1,0 +1,451 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/Jump"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_KnifeBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 17,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 23
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 26
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            10,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 31
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            10,
+            0
+          ],
+          "frameNo": 34
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 37
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 43
+        },
+        {
+          "duration": 18,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 49
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 67
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 70
+        }
+      ],
+      "scale": [
+        {
+          "duration": 31,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 31
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 34
+        },
+        {
+          "duration": 38,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 37
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 75
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 28,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 28,
+          "rect": [
+            256,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 12,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 31,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": true
+        },
+        {
+          "duration": 28,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "animation",
+          "frameNo": 43,
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 71,
+          "rect": [
+            608,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 72,
+          "rect": [
+            256,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 4,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 75,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 31,
+          "endValue": [
+            -2,
+            7
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            8,
+            7
+          ],
+          "tween": true,
+          "startValue": [
+            -2,
+            7
+          ],
+          "frameNo": 31
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            -2,
+            7
+          ],
+          "tween": true,
+          "startValue": [
+            8,
+            7
+          ],
+          "frameNo": 34
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            -2,
+            7
+          ],
+          "startValue": [
+            -2,
+            7
+          ],
+          "frameNo": 37
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 31,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 12,
+          "center": [
+            0.0,
+            15.0
+          ],
+          "id": "Battle/Skills/Weapon_KnifeBase",
+          "type": "image",
+          "frameNo": 31,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 31,
+          "endValue": 90,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 3,
+          "endValue": 90,
+          "tween": true,
+          "startValue": 90,
+          "frameNo": 31
+        },
+        {
+          "duration": 3,
+          "endValue": 90,
+          "tween": true,
+          "startValue": 90,
+          "frameNo": 34
+        },
+        {
+          "duration": 6,
+          "endValue": 90,
+          "startValue": 90,
+          "frameNo": 37
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 10,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 10
+        }
+      ],
+      "scale": [
+        {
+          "duration": 4,
+          "endValue": [
+            1.0,
+            0.5
+          ],
+          "tween": true,
+          "startValue": [
+            0.200000002980232,
+            0.100000001490116
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            1.39999997615814,
+            0.699999988079071
+          ],
+          "tween": true,
+          "startValue": [
+            1.0,
+            0.5
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1.39999997615814,
+            0.699999988079071
+          ],
+          "startValue": [
+            1.39999997615814,
+            0.699999988079071
+          ],
+          "frameNo": 10
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 11,
+          "center": [
+            0.0,
+            24.0
+          ],
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            96,
+            96,
+            48
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 4,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 6,
+          "endValue": 0.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 10
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+   "events" : {
+      "0" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "Blank.png",
+            "swapTargetType" : "character"
+         }
+      ]
+   }
+}

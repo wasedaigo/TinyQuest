@@ -1,0 +1,44 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/swing38" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 0, 112, 192, 16 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ -103, -29 ],
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 192, 112, 192, 16 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ 9, -72 ],
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 384, 112, 192, 16 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 3,
+            "position" : [ -69, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 0, 304, 192, 16 ]
+         },
+         {
+            "alpha" : 0.2000000029802322,
+            "alphaTween" : "linear",
+            "frameNo" : 6,
+            "position" : [ -130, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 0, 304, 192, 16 ]
+         }
+      ]
+   }
+}

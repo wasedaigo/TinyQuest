@@ -1,0 +1,41 @@
+{
+   "keyframes" : {
+      "1" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect_WindSpiral.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ -181, -96 ],
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect_WindSpiral.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ -146, -142 ],
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect_WindSpiral.png",
+            "textureRect" : [ 192, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ -169, -143 ],
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect_WindSpiral.png",
+            "textureRect" : [ 288, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect_WindSpiral.png",
+            "textureRect" : [ 384, 96, 96, 96 ]
+         }
+      ]
+   }
+}

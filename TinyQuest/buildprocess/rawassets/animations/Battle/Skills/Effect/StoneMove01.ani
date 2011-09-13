@@ -1,0 +1,84 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ 0, -10 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ 0, -17 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 0, -22 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 0, -25 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 5,
+            "position" : [ 0, -26 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 6,
+            "position" : [ 0, -25 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 7,
+            "position" : [ 0, -22 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 8,
+            "position" : [ 0, -17 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 9,
+            "position" : [ 0, -10 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         },
+         {
+            "frameNo" : 10,
+            "positionTween" : "fix",
+            "rotation" : 60,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 0, 384, 16, 16 ]
+         }
+      ]
+   }
+}

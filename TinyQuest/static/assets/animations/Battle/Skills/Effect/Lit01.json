@@ -1,0 +1,189 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Lightning02"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -108
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 4
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 4,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Lightning02",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            384,
+            0,
+            96,
+            96
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Lightning02",
+          "type": "image",
+          "frameNo": 4,
+          "rect": [
+            0,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            -108
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -108
+          ],
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 6
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 6,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Effect_Lightning02",
+          "type": "image",
+          "frameNo": 1,
+          "rect": [
+            96,
+            96,
+            96,
+            96
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

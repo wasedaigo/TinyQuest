@@ -1,0 +1,108 @@
+{
+   "events" : {
+      "34" : [ "goto:30" ],
+      "35" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 2,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -16, 24 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 15,
+            "position" : [ -16, 24 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "position" : [ -16, -24 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 22,
+            "position" : [ -90, -24 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 38,
+            "position" : [ -16, -24 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 40,
+            "position" : [ -16, -24 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 50,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallJump.ani"
+         },
+         {
+            "frameNo" : 53,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 15,
+            "position" : [ -26, 14 ],
+            "positionTween" : "linear",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "position" : [ -22, -36 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 22,
+            "isEmpty" : true
+         }
+      ],
+      "2" : [
+         {
+            "emitter" : true,
+            "frameNo" : 30,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Slash04.ani"
+         }
+      ]
+   }
+}

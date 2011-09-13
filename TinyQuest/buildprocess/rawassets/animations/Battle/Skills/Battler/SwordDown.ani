@@ -1,0 +1,73 @@
+{
+   "events" : {
+      "0" : [ "swaptex:Battle/Skills/Battler_Base.png,character" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 544, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 512, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 6,
+            "position" : [ 4, -2 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 480, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 28,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 0,
+            "position" : [ -6, 8 ],
+            "positionTween" : "linear",
+            "priority" : 0.3000000119209290,
+            "rotation" : 360,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 3,
+            "position" : [ 5, 9 ],
+            "priority" : 0.6000000238418579,
+            "rotation" : 90,
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 6,
+            "position" : [ 2, 8 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "rotation" : 90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 28,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

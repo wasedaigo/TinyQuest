@@ -1,0 +1,281 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SwordSwing",
+      "Battle/Skills/Battler/Back",
+      "Battle/Skills/Effect/Slash01",
+      "Battle/Skills/Battler/SwordDown02",
+      "Battle/Skills/Battler/Jump"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Effect_Slash"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 21,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            32,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 21
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            32,
+            0
+          ],
+          "frameNo": 26
+        },
+        {
+          "duration": 26,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 32
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 58
+        }
+      ],
+      "scale": [
+        {
+          "duration": 26,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 32,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 58
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 32,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordSwing",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 27,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Back",
+          "type": "animation",
+          "frameNo": 32,
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 26,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "duration": 32,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 58
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 26,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 32,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 58
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 26,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 26
+        }
+      ],
+      "scale": [
+        {
+          "duration": 26,
+          "endValue": [
+            1,
+            1
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 26
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 26,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Slash01",
+          "type": "animation",
+          "frameNo": 26,
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 26,
+          "endValue": 0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 26
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 26,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 7,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 26
+        }
+      ]
+    }
+  ]
+}

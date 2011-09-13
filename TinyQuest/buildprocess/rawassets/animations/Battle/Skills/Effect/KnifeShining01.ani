@@ -1,0 +1,39 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/chari14_a" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 32, 128, 32, 32 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ -128, -107 ],
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 128, 128, 32, 32 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ -136, -97 ],
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 224, 128, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ -118, -17 ],
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 320, 128, 32, 32 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 416, 128, 32, 32 ]
+         }
+      ]
+   }
+}

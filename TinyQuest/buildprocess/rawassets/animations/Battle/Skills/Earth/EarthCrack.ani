@@ -1,0 +1,66 @@
+{
+   "events" : {
+      "0" : [ "snd:Other/Slash03" ],
+      "12" : [ "damage:0" ],
+      "15" : [ "" ],
+      "6" : [ "damage:0" ],
+      "9" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "position" : [ 0, 20 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 0, 192, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ -50, 17 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 32, 160, 32 ]
+         },
+         {
+            "frameNo" : 6,
+            "position" : [ -11, -1 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 64, 160, 32 ]
+         },
+         {
+            "frameNo" : 9,
+            "position" : [ -169, 16 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 96, 160, 32 ]
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -92, 26 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 128, 160, 32 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 15,
+            "position" : [ 53, 62 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 160, 160, 32 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 20,
+            "position" : [ 53, 62 ],
+            "sourcePath" : "Battle/Skills/Earth_Crack.png",
+            "textureRect" : [ 0, 160, 160, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

@@ -1,0 +1,49 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/hit_s03_c" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 0, 1 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 0, 192, 96, 96 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 1,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 96, 192, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 192, 192, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ -101, -82 ],
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 288, 192, 96, 96 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 4,
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 384, 192, 96, 96 ]
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "frameNo" : 8,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
+            "textureRect" : [ 384, 192, 96, 96 ]
+         }
+      ]
+   }
+}

@@ -1,0 +1,308 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash3"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+        {
+          "duration": 6,
+          "endValue": [
+            1.29999995231628,
+            1.29999995231628
+          ],
+          "tween": true,
+          "startValue": [
+            0.200000002980232,
+            0.200000002980232
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1.29999995231628,
+            1.29999995231628
+          ],
+          "startValue": [
+            1.29999995231628,
+            1.29999995231628
+          ],
+          "frameNo": 6
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "center": [
+            2.0,
+            1.0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            64,
+            288,
+            64,
+            64
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 6,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
+          "frameNo": 6
+        }
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+        {
+          "duration": 2,
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "tween": true,
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": true,
+          "startValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.850000023841858,
+            0.850000023841858
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            0.850000023841858,
+            0.850000023841858
+          ],
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.899999976158142,
+            0.899999976158142
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 8
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": true,
+          "startValue": [
+            0.899999976158142,
+            0.899999976158142
+          ],
+          "frameNo": 9
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 13
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "center": [
+            -6.0,
+            2.0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 2,
+          "rect": [
+            832,
+            272,
+            48,
+            48
+          ],
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "center": [
+            3.0,
+            -2.0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 6,
+          "rect": [
+            256,
+            288,
+            48,
+            48
+          ],
+          "relative": false
+        },
+        {
+          "duration": 2,
+          "center": [
+            3.0,
+            -2.0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 7,
+          "rect": [
+            416,
+            272,
+            80,
+            80
+          ],
+          "relative": false
+        },
+        {
+          "duration": 5,
+          "center": [
+            2.0,
+            5.0
+          ],
+          "id": "Battle/Skills/Effect_Slash3",
+          "type": "image",
+          "frameNo": 9,
+          "rect": [
+            624,
+            256,
+            80,
+            80
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 2,
+          "endValue": 0.200000002980232,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 3,
+          "endValue": 1.0,
+          "tween": true,
+          "startValue": 0.200000002980232,
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 5
+        },
+        {
+          "duration": 3,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 6
+        },
+        {
+          "duration": 4,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 9
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
+          "frameNo": 13
+        }
+      ]
+    }
+  ]
+}

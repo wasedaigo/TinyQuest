@@ -1,0 +1,47 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/hit_s07_a" ],
+      "6" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "linear",
+            "color" : [ 0.2000000029802322, 0.0, 0.0 ],
+            "colorTween" : "linear",
+            "emitter" : true,
+            "frameNo" : 0,
+            "hideActor" : true,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Monster/DeadlyFang.ani"
+         },
+         {
+            "alpha" : 0.50,
+            "alphaTween" : "fix",
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 6,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Monster/DeadlyFang.ani"
+         },
+         {
+            "frameNo" : 7,
+            "isEmpty" : true
+         },
+         {
+            "frameNo" : 9,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

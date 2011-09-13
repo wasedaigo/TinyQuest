@@ -1,0 +1,24 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -19, 9 ],
+            "positionTween" : "fix",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SpearBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ]
+   }
+}

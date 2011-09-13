@@ -1,0 +1,63 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/knife/SingleKnifeRotating"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Weapon05"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 14,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 14
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "emitter": false,
+          "id": "Battle/Skills/knife/SingleKnifeRotating",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

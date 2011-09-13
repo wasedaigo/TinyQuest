@@ -1,0 +1,29 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 32, -32 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotation" : -405,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 16,
+            "positionTween" : "linear",
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 20,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

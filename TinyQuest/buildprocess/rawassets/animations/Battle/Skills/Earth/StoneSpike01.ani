@@ -1,0 +1,140 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/bosu22" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 16 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ 0, -10 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 32 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ 0, -20 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 48 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 0, -30 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 64 ]
+         },
+         {
+            "frameNo" : 19,
+            "position" : [ 0, -20 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 48 ]
+         },
+         {
+            "frameNo" : 20,
+            "position" : [ 0, -10 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 32 ]
+         },
+         {
+            "frameNo" : 21,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Stone01.png",
+            "textureRect" : [ 224, 224, 32, 16 ]
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 5.0,
+            "position" : [ -10, 8 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "2" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ -10, 8 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "3" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ 7, 5 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "4" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ -7, 5 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "5" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ 1, 7 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "6" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ 1, 12 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ],
+      "7" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 180,
+            "maxEmitSpeed" : 5.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 2.0,
+            "position" : [ 13, 8 ],
+            "sourcePath" : "Battle/Skills/Effect/StoneMove01.ani"
+         }
+      ]
+   }
+}

@@ -1,0 +1,33 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "27" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 32, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 8,
+            "position" : [ 32, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 23,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 27,
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         }
+      ]
+   }
+}

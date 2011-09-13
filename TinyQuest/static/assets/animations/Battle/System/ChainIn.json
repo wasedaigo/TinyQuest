@@ -1,0 +1,79 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/System/ChainInBox",
+      "Battle/System/ChainInLine"
+    ],
+    "images": [
+      "UI/UI_ChainLine"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 5
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 6,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/System/ChainInBox",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 5,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 0.75,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
+          "frameNo": 5
+        }
+      ]
+    }
+  ]
+}

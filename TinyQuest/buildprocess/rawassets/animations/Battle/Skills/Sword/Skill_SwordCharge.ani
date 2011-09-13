@@ -1,0 +1,75 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "16" : [ "damage:0" ],
+      "47" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "linear",
+            "colorTween" : "linear",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "sourcePath" : "Battle/Skills/Battler/SwordCharge.ani"
+         },
+         {
+            "alpha" : 0.6999999880790710,
+            "alphaTween" : "fix",
+            "color" : [ -0.6000000238418579, -0.6000000238418579, 0.6000000238418579 ],
+            "colorTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "sourcePath" : "Battle/Skills/Battler/SwordCharge.ani"
+         },
+         {
+            "frameNo" : 5,
+            "isEmpty" : true
+         },
+         {
+            "frameNo" : 21,
+            "position" : [ -64, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomCenter",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 28,
+            "position" : [ -64, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomCenter",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 44,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 46,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 13,
+            "sourcePath" : "Battle/Skills/Effect/Slash03.ani"
+         },
+         {
+            "frameNo" : 20,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

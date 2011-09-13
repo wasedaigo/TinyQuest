@@ -1,0 +1,29 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/Arrow01" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "facingOption" : "faceToMov",
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "facingOption" : "faceToMov",
+            "frameNo" : 8,
+            "position" : [ 10, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : -90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         }
+      ]
+   }
+}

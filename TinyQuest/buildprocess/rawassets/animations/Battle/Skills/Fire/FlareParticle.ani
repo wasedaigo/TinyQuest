@@ -1,0 +1,22 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 0, 48 ],
+            "positionTween" : "linear",
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Slash3.png",
+            "textureRect" : [ 80, 112, 32, 32 ]
+         },
+         {
+            "frameNo" : 7,
+            "positionTween" : "fix",
+            "scale" : [ 0.1000000014901161, 0.1000000014901161 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Slash3.png",
+            "textureRect" : [ 80, 112, 32, 32 ]
+         }
+      ]
+   }
+}

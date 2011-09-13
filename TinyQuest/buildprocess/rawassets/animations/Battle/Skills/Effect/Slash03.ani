@@ -1,0 +1,55 @@
+{
+   "events" : {
+      "0" : [ "snd:Other/Slash01" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -16, 6 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "scale" : [ 0.250, 0.250 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 0, 1344, 192, 192 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ 0, 2 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 416, 1344, 192, 192 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 0, -2 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 768, 1344, 192, 192 ]
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 10, -14 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 0, 1536, 192, 192 ]
+         },
+         {
+            "frameNo" : 5,
+            "position" : [ 16, -24 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 384, 1536, 192, 192 ]
+         },
+         {
+            "frameNo" : 6,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

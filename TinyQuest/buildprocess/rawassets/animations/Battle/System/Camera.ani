@@ -1,0 +1,11 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "UI/Cursor.png"
+         }
+      ]
+   }
+}

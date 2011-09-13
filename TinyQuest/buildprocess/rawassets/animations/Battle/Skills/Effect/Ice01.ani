@@ -1,0 +1,31 @@
+{
+   "events" : {
+      "4" : [ "snd:MMS/Freeze02" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "scale" : [ 0.0, 0.0 ],
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/IceOrb.ani"
+         },
+         {
+            "frameNo" : 9,
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/IceOrb.ani"
+         },
+         {
+            "frameNo" : 29,
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/IceOrb.ani"
+         },
+         {
+            "frameNo" : 34,
+            "scale" : [ 0.0, 0.0 ],
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/IceOrb.ani"
+         }
+      ]
+   }
+}

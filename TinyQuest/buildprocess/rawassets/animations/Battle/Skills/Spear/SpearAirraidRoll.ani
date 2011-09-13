@@ -1,0 +1,46 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 608, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 11,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 20,
+            "rotation" : -405,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani"
+         },
+         {
+            "frameNo" : 25,
+            "position" : [ 32, -32 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : -405,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani"
+         },
+         {
+            "frameNo" : 32,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

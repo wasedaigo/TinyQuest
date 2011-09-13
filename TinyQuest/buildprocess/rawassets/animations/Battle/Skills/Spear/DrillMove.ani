@@ -1,0 +1,17 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Spear/DrillAction.ani"
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -60, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/DrillAction.ani"
+         }
+      ]
+   }
+}

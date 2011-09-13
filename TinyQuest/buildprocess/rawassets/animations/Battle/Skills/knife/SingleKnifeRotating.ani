@@ -1,0 +1,35 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 0, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 96, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "positionTween" : "fix",
+            "rotation" : 90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 0, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "positionTween" : "fix",
+            "rotation" : 90,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Weapon05.png",
+            "textureRect" : [ 96, 0, 96, 96 ]
+         }
+      ]
+   },
+   "name" : "One dancing knife!"
+}

@@ -1,0 +1,80 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 13,
+            "positionTween" : "linear",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         }
+      ],
+      "1" : [
+         {
+            "alphaTween" : "fix",
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 0,
+            "position" : [ 4, -5 ],
+            "positionTween" : "linear",
+            "priority" : 0.4000000059604645,
+            "rotation" : 380,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 5,
+            "position" : [ -6, 9 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "rotation" : 220,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "alphaTween" : "fix",
+            "center" : [ 0.0, 11.0 ],
+            "frameNo" : 13,
+            "position" : [ -6, 9 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "rotation" : 220,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_SwordBase.png",
+            "swapTargetType" : "weapon",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ]
+   }
+}

@@ -1,0 +1,96 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "UI/UI_ChainLine"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 14,
+          "endValue": [
+            -13,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -64,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -13,
+            0
+          ],
+          "startValue": [
+            -13,
+            0
+          ],
+          "frameNo": 14
+        }
+      ],
+      "scale": [
+        {
+          "duration": 14,
+          "endValue": [
+            1.0,
+            0.100000001490116
+          ],
+          "tween": true,
+          "startValue": [
+            1.0,
+            0.5
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1.0,
+            0.100000001490116
+          ],
+          "startValue": [
+            1.0,
+            0.100000001490116
+          ],
+          "frameNo": 14
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "center": [
+            0,
+            0
+          ],
+          "id": "UI/UI_ChainLine",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

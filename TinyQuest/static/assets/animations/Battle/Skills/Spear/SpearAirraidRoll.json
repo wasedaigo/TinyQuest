@@ -1,0 +1,156 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Spear/SpearHold"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": [
+            32,
+            -32
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            32,
+            -32
+          ],
+          "startValue": [
+            32,
+            -32
+          ],
+          "frameNo": 25
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            608,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Battler_Base",
+          "type": "image",
+          "frameNo": 11,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        },
+        {
+          "duration": 12,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "animation",
+          "frameNo": 20,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 11,
+          "endValue": 0,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 9,
+          "endValue": -405,
+          "tween": true,
+          "startValue": 0,
+          "frameNo": 11
+        },
+        {
+          "duration": 5,
+          "endValue": -405,
+          "startValue": -405,
+          "frameNo": 20
+        },
+        {
+          "duration": 7,
+          "endValue": -405,
+          "startValue": -405,
+          "frameNo": 25
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+   "events" : {
+      "0" : [ "hide", "" ],
+      "45" : [ "show" ],
+      "9" : [ "snd:MMS/Warp02" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/Walking.ani"
+         },
+         {
+            "colorTween" : "linear",
+            "frameNo" : 9,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "color" : [ -0.2000000029802322, -0.2000000029802322, 1.0 ],
+            "colorTween" : "fix",
+            "frameNo" : 15,
+            "position" : [ -16, 0 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "color" : [ -0.2000000029802322, -0.2000000029802322, 1.0 ],
+            "colorTween" : "linear",
+            "frameNo" : 37,
+            "position" : [ -16, 0 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "colorTween" : "fix",
+            "frameNo" : 44,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         }
+      ],
+      "2" : [
+         {
+            "alphaTween" : "fix",
+            "blendType" : "add",
+            "frameNo" : 9,
+            "position" : [ -17, 3 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Common/MagicCastingRingTop.ani"
+         },
+         {
+            "frameNo" : 38,
+            "isEmpty" : true
+         }
+      ],
+      "3" : [
+         {
+            "alphaTween" : "fix",
+            "blendType" : "add",
+            "frameNo" : 9,
+            "position" : [ -17, 3 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Common/MagicCastingRingBottom.ani"
+         },
+         {
+            "frameNo" : 38,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

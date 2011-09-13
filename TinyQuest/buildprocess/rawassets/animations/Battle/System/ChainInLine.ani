@@ -1,0 +1,23 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -64, 0 ],
+            "positionTween" : "linear",
+            "scale" : [ 1.0, 0.50 ],
+            "scaleTween" : "linear",
+            "sourcePath" : "UI/UI_ChainLine.png"
+         },
+         {
+            "frameNo" : 14,
+            "position" : [ -13, 0 ],
+            "positionTween" : "fix",
+            "rotation" : 360,
+            "scale" : [ 1.0, 0.1000000014901161 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "UI/UI_ChainLine.png"
+         }
+      ]
+   }
+}

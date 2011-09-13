@@ -1,0 +1,34 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SingleSpinAxe.ani"
+         },
+         {
+            "frameNo" : 7,
+            "position" : [ 0, -36 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SingleSpinAxe.ani"
+         },
+         {
+            "frameNo" : 14,
+            "position" : [ 0, 2 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SingleSpinAxe.ani"
+         },
+         {
+            "frameNo" : 24,
+            "position" : [ 0, 40 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SingleSpinAxe.ani"
+         },
+         {
+            "frameNo" : 34,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SingleSpinAxe.ani"
+         }
+      ]
+   }
+}

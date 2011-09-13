@@ -1,0 +1,59 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/power07" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -8, -12 ],
+            "sourcePath" : "Battle/Skills/Effect/HealShining02.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 1,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 6, 0 ],
+            "sourcePath" : "Battle/Skills/Effect/HealShining02.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 2,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 5, -10 ],
+            "sourcePath" : "Battle/Skills/Effect/HealShining02.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 3,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -10, 6 ],
+            "sourcePath" : "Battle/Skills/Effect/HealShining02.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 8, -10 ],
+            "sourcePath" : "Battle/Skills/Effect/HealShining02.ani"
+         }
+      ]
+   }
+}

@@ -1,0 +1,135 @@
+{
+   "events" : {
+      "14" : [ "" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 9, -41 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 12,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 18,
+            "position" : [ 0, -48 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 25,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 26,
+            "position" : [ -24, -32 ],
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 608, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 32,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 0,
+            "position" : [ -6, 6 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "rotation" : 180,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 3,
+            "position" : [ -6, 6 ],
+            "priority" : 0.4000000059604645,
+            "rotation" : 180,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 8,
+            "position" : [ -6, 6 ],
+            "priority" : 0.4000000059604645,
+            "rotation" : 150,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 12,
+            "position" : [ -6, 6 ],
+            "positionTween" : "linear",
+            "priority" : 0.4000000059604645,
+            "rotation" : 150,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 18,
+            "position" : [ -6, -42 ],
+            "positionTween" : "linear",
+            "rotation" : 300,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 25,
+            "position" : [ -6, 6 ],
+            "positionTween" : "fix",
+            "rotation" : 360,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ],
+      "2" : [
+         {
+            "emitter" : true,
+            "frameNo" : 12,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 180,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Slash02.ani"
+         }
+      ]
+   }
+}

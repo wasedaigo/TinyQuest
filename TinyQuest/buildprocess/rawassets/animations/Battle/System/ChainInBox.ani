@@ -1,0 +1,71 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         },
+         {
+            "frameNo" : 14,
+            "positionTween" : "fix",
+            "rotation" : 90,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotation" : 90,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         },
+         {
+            "frameNo" : 14,
+            "positionTween" : "fix",
+            "rotation" : 180,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotation" : 180,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         },
+         {
+            "frameNo" : 14,
+            "positionTween" : "fix",
+            "rotation" : 270,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         }
+      ],
+      "3" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotation" : 270,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         },
+         {
+            "frameNo" : 14,
+            "positionTween" : "fix",
+            "rotation" : 360,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/System/ChainInLine.ani"
+         }
+      ]
+   }
+}

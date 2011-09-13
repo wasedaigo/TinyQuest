@@ -1,0 +1,149 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/knife/SingleDancingKnifeGo",
+      "Battle/Skills/knife/SingleDancingKnifeBack",
+      "Battle/Skills/knife/SingleKnifeRotating"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Weapon05"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 8,
+          "endValue": [
+            0,
+            -140
+          ],
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            -140
+          ],
+          "startValue": [
+            0,
+            -140
+          ],
+          "frameNo": 14
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            -140
+          ],
+          "startValue": [
+            0,
+            -140
+          ],
+          "frameNo": 19
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 6,
+          "emitter": true,
+          "minEmitSpeed": 10.0,
+          "minEmitAngle": 90,
+          "id": "Battle/Skills/knife/SingleDancingKnifeGo",
+          "maxEmitAngle": 90,
+          "type": "animation",
+          "maxEmitSpeed": 10.0,
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 8,
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "duration": 6,
+          "emitter": true,
+          "minEmitSpeed": 10.0,
+          "minEmitAngle": 90,
+          "id": "Battle/Skills/knife/SingleDancingKnifeBack",
+          "maxEmitAngle": 90,
+          "type": "animation",
+          "maxEmitSpeed": 10.0,
+          "frameNo": 14,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 5,
+          "endValue": 0.5,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.5,
+          "startValue": 0.5,
+          "frameNo": 5
+        },
+        {
+          "duration": 8,
+          "endValue": 1.0,
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "duration": 5,
+          "endValue": 0.5,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 14
+        },
+        {
+          "duration": 1,
+          "endValue": 0.5,
+          "startValue": 0.5,
+          "frameNo": 19
+        }
+      ]
+    }
+  ]
+}

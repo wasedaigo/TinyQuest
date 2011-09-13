@@ -1,0 +1,39 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/hit_s07_c" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 0, -52 ],
+            "positionTween" : "linear",
+            "rotationTween" : "fix",
+            "scale" : [ 1.0, 0.3000000119209290 ],
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 646, 1216, 44, 98 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 5,
+            "position" : [ 0, 20 ],
+            "positionTween" : "linear",
+            "scaleTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 646, 1216, 44, 98 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 9,
+            "position" : [ 0, 60 ],
+            "positionTween" : "fix",
+            "scale" : [ 1.0, 0.3000000119209290 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Slash2.png",
+            "textureRect" : [ 646, 1216, 44, 98 ]
+         }
+      ]
+   }
+}

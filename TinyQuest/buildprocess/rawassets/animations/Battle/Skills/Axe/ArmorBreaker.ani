@@ -1,0 +1,104 @@
+{
+   "events" : {
+      "38" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 7,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 22,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 23,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "textureRect" : [ 320, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 41,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 48,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 64,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 65,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 26,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ -13, -10 ],
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
+         },
+         {
+            "frameNo" : 27,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 29,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 2, 12 ],
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
+         },
+         {
+            "frameNo" : 30,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 32,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 17, -17 ],
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
+         },
+         {
+            "frameNo" : 33,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

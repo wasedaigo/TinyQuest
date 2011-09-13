@@ -1,0 +1,49 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/shoot13" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "position" : [ 0, -108 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 384, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 384, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 1,
+            "position" : [ 0, -108 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 5,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 6,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Lightning02.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         }
+      ]
+   }
+}

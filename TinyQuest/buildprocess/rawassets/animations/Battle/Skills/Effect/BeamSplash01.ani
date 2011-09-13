@@ -1,0 +1,35 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Beam01.png",
+            "textureRect" : [ 384, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Beam01.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ -75, -29 ],
+            "sourcePath" : "Battle/Skills/Effect_Beam01.png",
+            "textureRect" : [ 96, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 3,
+            "sourcePath" : "Battle/Skills/Effect_Beam01.png",
+            "textureRect" : [ 192, 96, 96, 96 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Beam01.png",
+            "textureRect" : [ 288, 96, 96, 96 ]
+         }
+      ]
+   }
+}

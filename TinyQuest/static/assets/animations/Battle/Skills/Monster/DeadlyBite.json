@@ -1,0 +1,133 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Monster_Attack1"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -56,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 12,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 6
+        }
+      ],
+      "scale": [
+        {
+          "duration": 18,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            48,
+            48,
+            48
+          ],
+          "relative": true
+        },
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "image",
+          "frameNo": 3,
+          "rect": [
+            48,
+            48,
+            48,
+            48
+          ],
+          "relative": true
+        },
+        {
+          "duration": 12,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "image",
+          "frameNo": 6,
+          "rect": [
+            96,
+            48,
+            48,
+            48
+          ],
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 18,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 18,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        }
+      ]
+    }
+  ]
+}

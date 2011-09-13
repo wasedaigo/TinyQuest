@@ -1,0 +1,149 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/Running",
+      "Battle/Skills/Spear/SpearHold",
+      "Battle/Skills/Spear/DrillAction",
+      "Battle/Skills/Battler/Jump",
+      "Battle/Skills/Effect/WindSpiralBottom",
+      "Battle/Skills/Effect/WindSpiralTop"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Effect_WindSpiral"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 17,
+          "endValue": [
+            30,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 34,
+          "endValue": [
+            30,
+            0
+          ],
+          "startValue": [
+            30,
+            0
+          ],
+          "frameNo": 17
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            30,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            30,
+            0
+          ],
+          "frameNo": 51
+        },
+        {
+          "duration": 17,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            30,
+            0
+          ],
+          "frameNo": 57
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 74
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 76
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Running",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 2,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "animation",
+          "frameNo": 7,
+          "relative": false
+        },
+        {
+          "duration": 42,
+          "emitter": false,
+          "id": "Battle/Skills/Spear/DrillAction",
+          "type": "animation",
+          "frameNo": 9,
+          "relative": false
+        },
+        {
+          "duration": 26,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "animation",
+          "frameNo": 51,
+          "relative": true
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

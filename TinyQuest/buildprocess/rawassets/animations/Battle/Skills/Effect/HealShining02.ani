@@ -1,0 +1,33 @@
+{
+   "keyframes" : {
+      "1" : [
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Heal01.png",
+            "textureRect" : [ 0, 192, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "position" : [ -50, -25 ],
+            "sourcePath" : "Battle/Skills/Effect_Heal01.png",
+            "textureRect" : [ 96, 192, 96, 96 ]
+         },
+         {
+            "frameNo" : 2,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Heal01.png",
+            "textureRect" : [ 192, 192, 96, 96 ]
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "frameNo" : 6,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect_Heal01.png",
+            "textureRect" : [ 0, 192, 96, 96 ]
+         }
+      ]
+   }
+}

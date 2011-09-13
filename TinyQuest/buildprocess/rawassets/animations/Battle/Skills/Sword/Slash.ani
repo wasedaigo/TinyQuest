@@ -1,0 +1,60 @@
+{
+   "events" : {
+      "33" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SwordSwing.ani"
+         },
+         {
+            "frameNo" : 21,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/SwordSwing.ani"
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 26,
+            "position" : [ 32, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SwordSwing.ani"
+         },
+         {
+            "frameNo" : 32,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Back.ani"
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 58,
+            "positionTween" : "fix",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Back.ani"
+         }
+      ],
+      "1" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 26,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Slash01.ani"
+         },
+         {
+            "frameNo" : 33,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

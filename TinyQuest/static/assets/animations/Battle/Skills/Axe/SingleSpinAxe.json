@@ -1,0 +1,83 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_AxeBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 7
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "relative": false
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 7,
+          "endValue": 315,
+          "tween": true,
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 315,
+          "startValue": 315,
+          "frameNo": 7
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

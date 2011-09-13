@@ -1,0 +1,143 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 0, 30 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 0, -30 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 22, -22 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "3" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 30, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "4" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ -30, 0 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "5" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ -22, -22 ],
+            "positionTween" : "fix",
+            "scale" : [ 0.8999999761581421, 0.8999999761581421 ],
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "6" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ 22, 22 ],
+            "positionTween" : "fix",
+            "scale" : [ 1.100000023841858, 1.100000023841858 ],
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ],
+      "7" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ -22, 22 ],
+            "positionTween" : "fix",
+            "scale" : [ 1.100000023841858, 1.100000023841858 ],
+            "sourcePath" : "Battle/Skills/Effect/Smoke01.ani"
+         },
+         {
+            "frameNo" : 15,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

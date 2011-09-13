@@ -1,0 +1,65 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/swing06" ],
+      "12" : [ "snd:MMS/swing06" ],
+      "16" : [ "snd:MMS/swing06" ],
+      "4" : [ "snd:MMS/swing06" ],
+      "8" : [ "snd:MMS/swing06" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "linear",
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeGo.ani"
+         },
+         {
+            "alpha" : 0.50,
+            "alphaTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 5,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeGo.ani"
+         },
+         {
+            "frameNo" : 6,
+            "isEmpty" : true
+         },
+         {
+            "alphaTween" : "linear",
+            "emitter" : true,
+            "frameNo" : 14,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "position" : [ 0, -140 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeBack.ani"
+         },
+         {
+            "alpha" : 0.50,
+            "alphaTween" : "fix",
+            "emitter" : true,
+            "frameNo" : 19,
+            "maxEmitAngle" : 90,
+            "maxEmitSpeed" : 10.0,
+            "minEmitAngle" : 90,
+            "minEmitSpeed" : 10.0,
+            "position" : [ 0, -140 ],
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeBack.ani"
+         }
+      ]
+   }
+}

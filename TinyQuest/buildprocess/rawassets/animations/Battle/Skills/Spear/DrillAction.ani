@@ -1,0 +1,85 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "position" : [ -30, 7 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralBottom.ani"
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 7,
+            "position" : [ -45, 7 ],
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralBottom.ani"
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 28,
+            "position" : [ -45, 7 ],
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralBottom.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "frameNo" : 41,
+            "position" : [ -30, 7 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralBottom.ani"
+         }
+      ],
+      "1" : [
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani"
+         },
+         {
+            "frameNo" : 41,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani"
+         }
+      ],
+      "2" : [
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "position" : [ -30, 7 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralTop.ani"
+         },
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 7,
+            "position" : [ -45, 7 ],
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralBottom.ani"
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 28,
+            "position" : [ -45, 7 ],
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralTop.ani"
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "frameNo" : 41,
+            "position" : [ -30, 7 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "sourcePath" : "Battle/Skills/Effect/WindSpiralTop.ani"
+         }
+      ]
+   }
+}

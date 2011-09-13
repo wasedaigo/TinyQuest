@@ -1,0 +1,505 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SwordDash",
+      "Battle/Skills/Battler/SwordUpper",
+      "Battle/Skills/Battler/SwordDown",
+      "Battle/Skills/Battler/Jump",
+      "Battle/Skills/Effect/PlaneCutTop",
+      "Battle/Skills/Effect/PlaneCutBottom"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Effect_Slash"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 11,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 28,
+          "endValue": [
+            0,
+            -80
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 11
+        },
+        {
+          "duration": 10,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -80
+          ],
+          "frameNo": 39
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 49
+        },
+        {
+          "duration": 16,
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 56
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 72
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 75
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 11,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordDash",
+          "type": "animation",
+          "frameNo": 0,
+          "relative": false
+        },
+        {
+          "duration": 10,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordUpper",
+          "type": "animation",
+          "frameNo": 11,
+          "relative": true
+        },
+        {
+          "duration": 9,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordDown",
+          "type": "animation",
+          "frameNo": 21,
+          "relative": true
+        },
+        {
+          "duration": 9,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordUpper",
+          "type": "animation",
+          "frameNo": 30,
+          "relative": true
+        },
+        {
+          "duration": 10,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordDown",
+          "type": "animation",
+          "frameNo": 39,
+          "relative": true
+        },
+        {
+          "duration": 27,
+          "emitter": false,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "animation",
+          "frameNo": 49,
+          "relative": false
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 8,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Battler/SwordDash",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": false
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 7,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 0.100000001490116,
+          "frameNo": 7
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 15,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 35
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/PlaneCutTop",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 15,
+          "relative": true
+        },
+        {
+          "duration": 10,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 15,
+          "endValue": 45,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endValue": -45,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endValue": -45,
+          "startValue": -45,
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endValue": 45,
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "frameNo": 35
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 15,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 35
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/PlaneCutBottom",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 15,
+          "relative": true
+        },
+        {
+          "duration": 10,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 15,
+          "endValue": 45,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endValue": -45,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endValue": -45,
+          "startValue": -45,
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endValue": 45,
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "frameNo": 35
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

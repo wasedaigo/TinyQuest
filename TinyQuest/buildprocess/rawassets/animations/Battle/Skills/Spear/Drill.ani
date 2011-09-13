@@ -1,0 +1,67 @@
+{
+   "events" : {
+      "7" : [ "snd:MMS/mecha15" ],
+      "17" : [ "damage:0" ],
+      "19" : [ "damage:0" ],
+      "21" : [ "damage:0" ],
+      "23" : [ "damage:0" ],
+      "25" : [ "damage:0" ],
+      "27" : [ "damage:0" ],
+      "29" : [ "damage:0" ],
+      "31" : [ "damage:0" ],
+      "33" : [ "damage:0" ],
+      "35" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Battler/Running.ani"
+         },
+         {
+            "frameNo" : 7,
+            "sourcePath" : "Battle/Skills/Spear/SpearHold.ani"
+         },
+         {
+            "frameNo" : 9,
+            "sourcePath" : "Battle/Skills/Spear/DrillAction.ani"
+         },
+         {
+            "frameNo" : 17,
+            "position" : [ 30, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Spear/DrillAction.ani"
+         },
+         {
+            "frameNo" : 51,
+            "position" : [ 30, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 57,
+            "position" : [ 30, 0 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 74,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 76,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Jump.ani"
+         },
+         {
+            "frameNo" : 77,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

@@ -1,0 +1,100 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Monster/DeadlyFang"
+    ],
+    "images": [
+      "Battle/Skills/Monster_Attack1"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 6
+        },
+        {
+          "duration": 2,
+          "endValue": null,
+          "wait": true,
+          "frameNo": 7
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Monster/DeadlyFang",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0,
+          "relative": true
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 6,
+          "endValue": 0.5,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.5,
+          "startValue": 0.5,
+          "frameNo": 6
+        },
+        {
+          "duration": 2,
+          "endValue": null,
+          "wait": true,
+          "frameNo": 7
+        }
+      ]
+    }
+  ]
+}
