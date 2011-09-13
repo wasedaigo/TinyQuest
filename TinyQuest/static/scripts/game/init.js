@@ -75,21 +75,7 @@ function loadTemplate()
 // Load resources
 function loadResources()
 {
-  var myLoader = new html5Preloader();
-  myLoader.addFiles(
-  	'/static/images/avatar/chara.png',
-  	'/static/images/bg/bg0001.png',
-  	'/static/images/monster/enemy0001.png'
-  );
-  myLoader.onfinish = function()
-  {
-  	setLoadFlag("resource");
-  };
-  myLoader.onerror = function(e)
-  {
-  	alert('Error occured while loading '+this.loadingFile); 
-  	return true; 
-  };
+  setLoadFlag("resource");
 }
 
 // Acquire login information

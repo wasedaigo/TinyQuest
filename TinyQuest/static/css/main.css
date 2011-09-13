@@ -28,19 +28,25 @@ body
 {
   width:640px;
   margin:auto;
+  font-size:16px;
+  font-family:Georgia,Serif;
 }
-
-
 
 /*  ---------------------
 
     Main Container 
     
  ---------------------*/
-#title
+
+.activeMarker
 {
-    text-align:center;
-    font-size: 24px;
+    color:#f42;
+    display:inline;
+}
+
+.column
+{
+ background-color:#ddd;
 }
 
 #mainContainer
@@ -53,166 +59,80 @@ body
     background-color:#ba9;
 }
 
-#mainContainer .header
+#progressBar
 {
-    width:640px;
-    height:40px;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    padding:3px;
+    margin: 5px;
 }
 
-#mainContainer .header .left
+#mapBar
 {
-    width:540px;
-    height:100%;
-    float:left;
+    font-size:16px;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    padding:3px;
+    margin: 5px;
+    overflow: auto;
 }
 
-#mainContainer .header .right
+#enemyBar
 {
-    width:100px;
-    height:100%;
-    float:right;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    padding:3px;
+    margin: 5px;
 }
 
-#mainContainer .content
+#statusBar
 {
-    width:640px;
-    height:600px;
-    padding-top:20px;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    padding:3px;
+    margin: 5px;
 }
 
-/*  ---------------------
-
-    Home Screen
-    
- ---------------------*/
-#homeScreen .info
+#logBox
 {
-    width:100%;
-    height:360px;
+    width:280px;
+    height:180px;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    overflow: auto;
+    float :left;
+    padding:3px;
+    margin: 5px;
 }
 
-#homeScreen .info .avatar
+#itemBox
 {
     width:320px;
-    height:360px;
-    float:left;
+    height:180px;
+    border:solid;
+    border-width:1px;
+    margin:auto;
+    background-color:#fff;
+    overflow: auto;
+    float :right;
+    padding:3px;
+    margin: 5px;
 }
 
-#homeScreen .info .avatar
+#itemBox .title
 {
+    width: 200px;
 }
 
-canvas
-{
-    -ms-interpolation-mode: nearest-neighbor; //IE8+
-    image-rendering: -moz-crisp-edges; //FF3.6+
-    image-rendering: -webkit-optimize-contrast; //WebKit v?+
-}
 
-#homeScreen .info .status
-{
-    width:300px;
-    padding:10px;
-    float:left;
-    background-color:#ddd;
-}
 
-#homeScreen .info .status table
-{
-    font-size:24px;
-}
-
-#homeScreen .info .status table tr td.first
-{
-    width:150px;
-}
-
-#homeScreen .menu
-{
-    width:100%;
-    height:60px;
-    padding:10px;
-}
-
-/*  ---------------------
-
-    Adventure Screen
-    
- ---------------------*/
-#adventureScreen .mainPanel
-{
-}
-
-#adventureScreen .menu
-{
-    font-size:20px;
-    text-align:center;
-}
-
-#adventureScreen .menu .status
-{
-    width:100%;
-    height:100px;
-}
-
-#adventureScreen .menu .buttons
-{
-    width:100%;
-}
-
-/*  ---------------------
-
-    Login Screen
-    
- ---------------------*/
-#loginContainer
-{
-  padding:20px;
-}
-
-/*  ---------------------
-
-    Widgets
-    
- ---------------------*/
-button
-{
-font-size:24px;
-color: #fff;
-border-top:3px double #9cf;
-border-left:3px double #9cf;
-border-right:3px double #4080BF;
-border-bottom:3px double #4080BF;
-background: #32A7CA;
-text-align: center;
-cursor: pointer;
-}
-
-button:active
-{
-color: #fff;
-border-top:3px double #254A70;
-border-left:3px double #254A70;
-border-right:3px double #508AC5;
-border-bottom:3px double #508AC5;
-background: #369;
-}
-
-button.logout
-{
-float:right;
-background: #FFAA99;
-border-top:3px double #c9f;
-border-left:3px double #c9f;
-border-right:3px double #8040BF;
-border-bottom:3px double #8040BF;
-}
-
-button.logout:active
-{
-background: #975;
-border-top:3px double #4A2570;
-border-left:3px double #4A2570;
-border-right:3px double #8A50C5;
-border-bottom:3px double #8A50C5;
-}
