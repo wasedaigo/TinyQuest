@@ -8,7 +8,7 @@ function loadState(state_id)
             if (obj.success)
             {
               loadAdventure(obj);
-              rpc.getCurrentState(setupMockScreen);
+              Rpc.getCurrentState(setupMockScreen);
             }
         })
     }
@@ -76,7 +76,7 @@ function updateMap(mapdata, step) {
 
 function clearEnemyInfo()
 {
-    $("#enemyTable").empty();
+    updateEnemyInfo("", "", "", "", "", "", "");
 }
 
 function updateEnemyInfo(name, exp, hp, maxHP, atk, def, hit)

@@ -33,6 +33,8 @@ var gItemMaster = {
      ]
 };
 
+var gMonsters = {};
+
 var gPlayerInfo = {
     "lv" : 12,
     "exp" : 125,
@@ -51,7 +53,7 @@ function generatemapdata()
     }
 }
 
-var rpc = {
+var Rpc = {
     getCurrentState : function(cb) {
         generatemapdata();
         var obj = {};
@@ -111,6 +113,13 @@ var rpc = {
             gExploredMapStep += 1;
         }
         
+        if (gMapdata[gCurrentStep] == Const.MapType.Enemy) {
+            if (gMonsters[gCurrentStep] === undefined) {
+                gMonsters[gCurrentStep] = {"name":"Green Dragon", "exp":30, "hp":100, "max_hp":100, "attack":120, "defense":100, "hit":68};
+            }
+            obj.enemy = gMonsters[gCurrentStep];
+        }
+        
         cb.call(this, obj);
     },
     goBack : function(cb) {
@@ -123,6 +132,7 @@ var rpc = {
         gCurrentStep = 0;
         gExploredMapStep = 0;
         generatemapdata();
+        gMonsters = {};
         var obj = {"floor":gCurrentFloor, "step":gCurrentStep, "mapType" : 1};
         cb.call(this, obj);
     }

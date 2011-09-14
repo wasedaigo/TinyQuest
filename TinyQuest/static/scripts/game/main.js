@@ -2,25 +2,25 @@ var cache = null;
 
 function addCurrentStepLog() {
     switch (cache.mapdata[cache.step]) {
-        case 0: // Nothing
+        case Const.MapType.Empty: // Nothing
             addLog("Nothing", "");
         break;
-        case 1: // Start
+        case Const.MapType.Start: // Start
             addLog("Start", "The start point");
         break;
-        case 2: // Goal
+        case Const.MapType.Goal: // Goal
             addLog("Stair", "Found a stair to go down");
         break;
-        case 3: // Monster
-            addLog("Monster", "Encountered a monster");
+        case Const.MapType.Enemy: // Enemy
+            addLog("Enemy", "Encountered a enemy");
         break;
-        case 4: // Treasure
+        case Const.MapType.Treasure: // Treasure
             addLog("Treasure", "Found a treasure chest");
         break;
-        case 5: // Metal
+        case Const.MapType.Metal: // Metal
             addLog("Metal", "Found Metal");
         break;
-        case 6: // Herbs
+        case Const.MapType.Herb: // Herbs
             addLog("Herbs", "Found herbs");
         break;
     }
@@ -52,7 +52,7 @@ function setupMockScreen(obj)
     updateMap(cache.mapdata, cache.step);
     updateProgressInfo(cache.floor, cache.step, cache.playerInfo.lv, cache.playerInfo.exp, cache.playerInfo.nextExp);
     updatePlayerInfo("Nakamura", 129, 200, 223, 123, 78);
-    updateEnemyInfo("Green Dragon", 53, 129, 150, 223, 123, 78);
+    clearEnemyInfo();
     addCurrentStepLog();
     updateItems(cache.itemdata);
 }
@@ -62,6 +62,9 @@ function goForwardHandler(obj) {
     cache.step = obj.step;
     if (obj.mapType !== undefined) {
         cache.mapdata.push(obj.mapType);
+    }
+    if (obj.enemy !== undefined) {
+        updateEnemyInfo(obj.enemy.name, obj.enemy.exp, obj.enemy.hp, obj.enemy.max_hp, obj.enemy.attack, obj.enemy.defense, obj.enemy.hit);
     }
     addCurrentStepLog();
 }
@@ -82,17 +85,19 @@ function goDownHandler(obj) {
 }
 
 function battleAttackHandler(obj) {
-    addLog("Monster", obj.self.damage + " damage to you!");
-    addLog("Monster", obj.enemy.damage + " damage to the monster!");
+    addLog("Enemy", obj.self.damage + " damage to you!");
+    addLog("Enemy", obj.enemy.damage + " damage to the enemy!");
     if (obj.enemy.dead) {
-        addLog("Monster", "Killed the monster");
-        addLog("Monster", "Gained " + obj.enemy.exp + " EXP");
+        addLog("Enemy", "Killed the enemy");
+        addLog("Enemy", "Gained " + obj.enemy.exp + " EXP");
         cache.mapdata[cache.step] = obj.mapType;
+        clearEnemyInfo();
     }
 }
 
 function battleEscapeHandler(obj) {
-    addLog("Monster", "Escaped from the monster");
+    addLog("Enemy", "Escaped from the enemy");
+    clearEnemyInfo();
     cache.floor = obj.floor;
     cache.step = obj.step;
 }
@@ -124,29 +129,29 @@ function onAction(type) {
             alert("not implemented");
         break;
         case "goBack":
-            rpc.goBack(goBackHandler);
+            Rpc.goBack(goBackHandler);
         break;
         case "goForward":
-            rpc.goForward(goForwardHandler);
+            Rpc.goForward(goForwardHandler);
         break;
         case "stairDown":
             addLog("Stair", "Going down");
-            rpc.goDown(goDownHandler);
+            Rpc.goDown(goDownHandler);
         break;
         case "monsterAttack":
-            rpc.battleAttack(battleAttackHandler);
+            Rpc.battleAttack(battleAttackHandler);
         break;
         case "monsterEscape":
-            rpc.battleEscape(battleEscapeHandler);
+            Rpc.battleEscape(battleEscapeHandler);
         break;
         case "treasureOpen":
-            rpc.openTreasureChest(treasureGetHandler);
+            Rpc.openTreasureChest(treasureGetHandler);
         break;
         case "metalDig":
-            rpc.digMetal(metalGetHandler);
+            Rpc.digMetal(metalGetHandler);
         break;
         case "herbHarvest":
-            rpc.harvestHerb(herbGetHandler);
+            Rpc.harvestHerb(herbGetHandler);
         break;
     }
     
