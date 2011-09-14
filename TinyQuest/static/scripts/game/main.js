@@ -12,7 +12,7 @@ function addCurrentStepLog() {
             addLog("Stair", "Found a stair to go down");
         break;
         case Const.MapType.Enemy: // Enemy
-            addLog("Enemy", "Encountered a enemy");
+            addLog("Enemy", "Encountered " + cache.enemy.name);
         break;
         case Const.MapType.Treasure: // Treasure
             addLog("Treasure", "Found a treasure chest");
@@ -45,13 +45,21 @@ function getCurrentMapType() {
     return cache.mapdata[cache.step];
 }
 
+function updateEnemyState() {
+    updateEnemyInfo(cache.enemy.name, cache.enemy.exp, cache.enemy.hp, cache.enemy.max_hp, cache.enemy.attack, cache.enemy.defense, cache.enemy.hit);
+}
+
+function updatePlayerState() {
+    updatePlayerInfo(cache.player.name, cache.player.hp, cache.player.max_hp, cache.player.attack, cache.player.defense, cache.player.hit);
+}
+
 function setupMockScreen(obj) 
 {
     cache = obj;
     updateActionButtons(getCurrentMapType());
     updateMap(cache.mapdata, cache.step);
-    updateProgressInfo(cache.floor, cache.step, cache.playerInfo.lv, cache.playerInfo.exp, cache.playerInfo.nextExp);
-    updatePlayerInfo("Nakamura", 129, 200, 223, 123, 78);
+    updateProgressInfo(cache.floor, cache.step, cache.player.lv, cache.player.exp, cache.player.next_exp);
+    updatePlayerState();
     clearEnemyInfo();
     addCurrentStepLog();
     updateItems(cache.itemdata);
@@ -64,7 +72,8 @@ function goForwardHandler(obj) {
         cache.mapdata.push(obj.mapType);
     }
     if (obj.enemy !== undefined) {
-        updateEnemyInfo(obj.enemy.name, obj.enemy.exp, obj.enemy.hp, obj.enemy.max_hp, obj.enemy.attack, obj.enemy.defense, obj.enemy.hit);
+        cache.enemy = obj.enemy;
+        updateEnemyState();
     }
     addCurrentStepLog();
 }
@@ -72,7 +81,6 @@ function goForwardHandler(obj) {
 function goBackHandler(obj) {
     cache.floor = obj.floor;
     cache.step = obj.step;
-    
     addCurrentStepLog();
 }
 
@@ -85,18 +93,35 @@ function goDownHandler(obj) {
 }
 
 function battleAttackHandler(obj) {
-    addLog("Enemy", obj.self.damage + " damage to you!");
+    addLog("Enemy", obj.player.damage + " damage to you!");
     addLog("Enemy", obj.enemy.damage + " damage to the enemy!");
-    if (obj.enemy.dead) {
-        addLog("Enemy", "Killed the enemy");
-        addLog("Enemy", "Gained " + obj.enemy.exp + " EXP");
-        cache.mapdata[cache.step] = obj.mapType;
-        clearEnemyInfo();
+
+    cache.enemy.hp = obj.enemy.hp;
+    cache.player.hp = obj.player.hp;
+    cache.player.exp = obj.player.exp ? obj.player.exp : cache.player.exp;
+    cache.player.next_exp = obj.player.next_exp ? obj.player.next_exp : cache.player.next_exp;
+    cache.player.lv = obj.player.lv ? obj.player.lv : cache.player.lv;
+    updateEnemyState();
+    updatePlayerState();
+
+    if (obj.player.hp <= 0) {
+        addLog("System", "GameOver");
+    } else {
+        if (obj.enemy.hp <= 0) {
+            addLog("Enemy", "Killed the enemy");
+            addLog("Enemy", "Gained " + obj.enemy.exp + " EXP");
+            if (obj.player.lv) {
+                addLog("System", "Level up to " + obj.player.lv + " !!");
+            }
+            cache.mapdata[cache.step] = obj.mapType;
+            clearEnemyInfo();
+        }
     }
 }
 
 function battleEscapeHandler(obj) {
     addLog("Enemy", "Escaped from the enemy");
+    cache.enemy = undefined;
     clearEnemyInfo();
     cache.floor = obj.floor;
     cache.step = obj.step;
@@ -155,7 +180,7 @@ function onAction(type) {
         break;
     }
     
-    updateProgressInfo(cache.floor, cache.step, cache.playerInfo.lv, cache.playerInfo.exp, cache.playerInfo.nextExp);
+    updateProgressInfo(cache.floor, cache.step, cache.player.lv, cache.player.exp, cache.player.next_exp);
     updateActionButtons(getCurrentMapType());
     updateMap(cache.mapdata, cache.step);
 }

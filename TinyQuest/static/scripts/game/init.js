@@ -81,7 +81,7 @@ function loadResources()
 // Acquire login information
 function loadLoginInfo()
 {
-  loadJSON("api/GetLoginInfo", function(json)
+  Utils.loadJSON("api/GetLoginInfo", function(json)
   {
     gLoginInfo = json;
     setLoadFlag("login");

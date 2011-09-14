@@ -33,12 +33,25 @@ var gItemMaster = {
      ]
 };
 
-var gMonsters = {};
+var gEnemyMaster = [
+    {"name":"Green Dragon", "exp":500, "hp":1000, "max_hp":1000, "attack":120, "defense":100, "hit":68},
+    {"name":"Goblin", "exp":80, "hp":200, "max_hp":200, "attack":30, "defense":100, "hit":68},
+    {"name":"Naga", "exp":120, "hp":700, "max_hp":700, "attack":90, "defense":100, "hit":68},
+    {"name":"Cyclops", "exp":60, "hp":800, "max_hp":800, "attack":80, "defense":100, "hit":68}
+];
 
-var gPlayerInfo = {
-    "lv" : 12,
-    "exp" : 125,
-    "nextExp" : 200
+var gEnemies = {};
+
+var gPlayer = {
+    "lv" : 1,
+    "exp" : 0,
+    "next_exp" : 200,
+    "name" : "Nakamura", 
+    "hp" : 2000, 
+    "max_hp" : 2000, 
+    "attack" : 223, 
+    "defense" : 123, 
+    "hit" : 78
 }
 
 function generatemapdata() 
@@ -60,17 +73,52 @@ var Rpc = {
         obj.floor = gCurrentFloor;
         obj.step = gCurrentStep;
         obj.mapdata = [gMapdata[0]];
-        obj.playerInfo = gPlayerInfo;
+        obj.player = gPlayer;
         obj.itemdata = gItemData;
         obj.buffdata = gBuffData;
         cb.call(this, obj);
     },
     battleAttack : function(cb) {
-        gMapdata[gCurrentStep] = 0;
+        var enemy = gEnemies[gCurrentStep];
         var obj = {};
-        obj.enemy = {damage : 32, exp : 128, dead : true};
-        obj.self = {damage : 15, dead : false};
-        obj.mapType = gMapdata[gCurrentStep];
+        obj.success = false;
+        if (enemy) {
+            obj.success = true;
+            obj.mapType = gMapdata[gCurrentStep];
+            
+            enemy.hp -= gPlayer.attack;
+            gPlayer.hp -= enemy.attack;
+       
+            obj.enemy = {damage : gPlayer.attack, hp : enemy.hp};
+            obj.player = {damage : enemy.attack, hp : gPlayer.hp};
+    
+            if (gPlayer.hp <= 0) {
+                // Initialize all params
+                // gCurrentFloor = 0;
+                // gCurrentStep = 0;
+                // gExploredMapStep = 0;
+                // generatemapdata();
+                // gEnemies = {};
+            } else {
+                if (enemy.hp <= 0) {
+                    gEnemies[gCurrentStep] = undefined;
+                    gMapdata[gCurrentStep] = 0;
+                    obj.mapType = 0;
+                    gPlayer.exp += enemy.exp;
+                    
+                    // Level UP!
+                    while (gPlayer.exp >= gPlayer.next_exp) {
+                        gPlayer.lv += 1;
+                        gPlayer.exp -= gPlayer.next_exp;
+                        obj.player.lv = gPlayer.lv;
+                        // TODO add levelup event to the queue
+                    }
+
+                    obj.player.exp = gPlayer.exp;
+                    obj.enemy.exp = enemy.exp;
+                }
+            }
+        }
         cb.call(this, obj);
     },
     battleEscape : function(cb) {
@@ -114,10 +162,11 @@ var Rpc = {
         }
         
         if (gMapdata[gCurrentStep] == Const.MapType.Enemy) {
-            if (gMonsters[gCurrentStep] === undefined) {
-                gMonsters[gCurrentStep] = {"name":"Green Dragon", "exp":30, "hp":100, "max_hp":100, "attack":120, "defense":100, "hit":68};
+            if (gEnemies[gCurrentStep] === undefined) {
+                var index = Math.floor(Math.random() * gEnemyMaster.length);
+                gEnemies[gCurrentStep] = Utils.clone(gEnemyMaster[index]);
             }
-            obj.enemy = gMonsters[gCurrentStep];
+            obj.enemy = gEnemies[gCurrentStep];
         }
         
         cb.call(this, obj);
@@ -132,7 +181,7 @@ var Rpc = {
         gCurrentStep = 0;
         gExploredMapStep = 0;
         generatemapdata();
-        gMonsters = {};
+        gEnemies = {};
         var obj = {"floor":gCurrentFloor, "step":gCurrentStep, "mapType" : 1};
         cb.call(this, obj);
     }
@@ -151,7 +200,7 @@ function go()
 
 function charge_energy()
 {
-  loadJSON("api/ChargeEnergy", function(json)
+  logEnemiesadJSON("api/ChargeEnergy", function(json)
   {
     if (json["success"])
     {
@@ -162,5 +211,5 @@ function charge_energy()
 
 function getCurrentActiveScene(cb)
 {
-  loadJSON("api/GetCurrentActiveScene", cb);
+  Utils.loadJSON("api/GetCurrentActiveScene", cb);
 }
