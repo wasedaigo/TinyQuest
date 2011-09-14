@@ -93,8 +93,8 @@ function goDownHandler(obj) {
 }
 
 function battleAttackHandler(obj) {
-    addLog("Enemy", obj.player.damage + " damage to you!");
-    addLog("Enemy", obj.enemy.damage + " damage to the enemy!");
+    addLog("Battle", obj.player.damage + " damage to you!");
+    addLog("Battle", obj.enemy.damage + " damage to the enemy!");
 
     cache.enemy.hp = obj.enemy.hp;
     cache.player.hp = obj.player.hp;
@@ -108,8 +108,8 @@ function battleAttackHandler(obj) {
         addLog("System", "GameOver");
     } else {
         if (obj.enemy.hp <= 0) {
-            addLog("Enemy", "Killed the enemy");
-            addLog("Enemy", "Gained " + obj.enemy.exp + " EXP");
+            addLog("Battle", "Killed the enemy");
+            addLog("Battle", "Gained " + obj.enemy.exp + " EXP");
             if (obj.player.lv) {
                 addLog("System", "Level up to " + obj.player.lv + " !!");
             }
