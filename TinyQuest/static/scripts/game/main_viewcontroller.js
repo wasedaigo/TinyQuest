@@ -1,4 +1,4 @@
-var MainViewController = {    
+var MainView = {    
     loadAdventure : function()
     {
         templates = {};
@@ -10,7 +10,7 @@ var MainViewController = {
             $("#Admin").show();
         }
     },
-    
+
     updateProgressInfo : function(floor, step, lv, exp, nextExp)
     {
         $("#progressTable").empty();
@@ -24,7 +24,7 @@ var MainViewController = {
         data += "</tr>";
         $("#progressTable").append(data); 
     },
-    
+
     updatePlayerInfo : function(name, hp, maxHP, atk, def, hit)
     {
         $("#playerTable").empty();
@@ -96,7 +96,7 @@ var MainViewController = {
         var itemDesc = cache.itemdata[no];
         $("#itemTable").empty();
         var data = "";
-        data += "<button onclick='MainViewController.updateItems()'>←</button>";
+        data += "<button onclick='MainView.updateItems()'>←</button>";
         data += "<table>";
         data += "<tr>";
         data += "<td class='column'>Name</td>";
@@ -144,7 +144,7 @@ var MainViewController = {
         }
         data += "<td class='column'>" + categoryName + "</td>";
         data += "<td class='title'>" + itemName + "</td>";
-        data += "<td><button onclick='MainViewController.showItemDesc(" + no + ")'>→</button></td>";
+        data += "<td><button onclick='MainView.showItemDesc(" + no + ")'>→</button></td>";
         data += "</tr>";
     
         $("#itemTable").append(data);
