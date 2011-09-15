@@ -33,7 +33,7 @@ function checkAllLoaded()
 	{
 		// Already logged in
 		$('#mainContainer').html(gTemplates["afterLogin"]);
-		loadState("adventure");
+		Main.loadState("adventure");
 	}
 	else
 	{

@@ -208,8 +208,3 @@ function charge_energy()
     }
   })
 }
-
-function getCurrentActiveScene(cb)
-{
-  Utils.loadJSON("api/GetCurrentActiveScene", cb);
-}
