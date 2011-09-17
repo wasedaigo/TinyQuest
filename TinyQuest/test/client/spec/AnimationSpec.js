@@ -1,3 +1,4 @@
+// In order to compare two values, we need to round them to ignore floating number errors
 function testRound(value) {
 	if (typeof(value) == "object") {
 		for (var i in value) {
