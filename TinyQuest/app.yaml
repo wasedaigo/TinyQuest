@@ -16,7 +16,12 @@ handlers:
   
 - url: /api/.* 
   script: main.py
-  
+ 
+ 
+- url: /animationDemo.*
+  static_files: static/SceneGraph.html
+  upload: static/SceneGraph.html
+ 
 - url: /.*
   static_files: static/index.html
   upload: static/index.html
