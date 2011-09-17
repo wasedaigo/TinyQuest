@@ -134,6 +134,8 @@ enchant.animation.interval.Interval = enchant.Class.create({
         this._node[this._attribute] = this._startValue;
         this._frameNo = 0;
     },
+    finish: function() {
+    },
     update: function() {
         if (!this.isDone()) {
             this._frameNo++;
@@ -166,6 +168,8 @@ enchant.animation.interval.Wait = enchant.Class.create({
     }, 
     start: function() {
         this._frameNo = 0;
+    },
+    finish: function() {
     },
     update: function() {
         if (!this.isDone()) {
@@ -247,16 +251,19 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         var keyframe = this._sourceKeykeyframes[0];
         this._updateKeyframe(keyframe);
     },
+    finish: function() {
+        this._clearSetting();
+    },
     update: function() {
-       if (this.isDone()) {
+        if (this.isDone()) {
             this._clearSetting();
         } else {
             this._frameDuration++;
             this._frameNo++;
-
+        
             var keyframe = this._sourceKeykeyframes[this._index];
             this._updateKeyframe(keyframe);
-
+        
             if (this._frameDuration >= keyframe.duration) {
                 this._index++;
                 this._frameDuration = 0;
@@ -289,6 +296,9 @@ enchant.animation.interval.Loop = enchant.Class.create({
     }, 
     start: function() {
         this._interval.start();
+    },
+    finish: function() {
+        this._interval.finish();
     },
     update: function() {
         if (!this.isDone()) {
@@ -325,11 +335,16 @@ enchant.animation.interval.Sequence = enchant.Class.create({
     start: function() {
         this._intervals[0].start();
     },
+    finish: function() {
+        this._intervals[this._index].finish();
+    },
     update: function() {
         if (!this.isDone()) {
             var currentInterval = this._intervals[this._index];
             currentInterval.update();
-            if (currentInterval.isDone()) {
+            if (this.isDone()) {
+                this.finish();
+            } else if (currentInterval.isDone()) {
                 this._index++;
             }
         }
@@ -364,10 +379,18 @@ enchant.animation.interval.Parallel = enchant.Class.create({
             this._intervals[i].start();
         }
     },
+    finish: function() {
+        for (var i in this._intervals) {
+            this._intervals[i].finish();
+        }
+    },
     update: function() {
         if (!this.isDone()) {
             for (var i in this._intervals) {
                 this._intervals[i].update();
+            }
+            if (this.isDone()) {
+                this.finish();
             }
         }
     }
