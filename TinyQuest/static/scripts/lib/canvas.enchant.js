@@ -88,6 +88,10 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.srcPath = srcPath ? srcPath : null;
         this.srcRect = srcRect ? srcRect : null;
         this.center = [0, 0];
+        
+        // If srcRect is not there, it means this is a node
+        // (For convinience, Sprite can be used as a node right now)
+        // TODO: Sprite should not act as a Node, right?
         if (this.srcRect) {
             this._anchor = [0.5, 0.5];
             this.center = [this._anchor[0] * this.srcRect[2], this._anchor[1] * this.srcRect[3]];
@@ -218,7 +222,7 @@ enchant.canvas.Sprite = enchant.Class.create({
             } else { 
                 surface.context.globalCompositeOperation = "source-over";
             }
-            
+
             assert(typeof(this.srcRect[0]) == "number", "1");
             assert(typeof(this.srcRect[1]) == "number", "2");
             assert(typeof(this.srcRect[2]) == "number", "3");
