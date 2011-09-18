@@ -1,20 +1,3 @@
-// In order to compare two values, we need to round them to ignore floating number errors
-function testRound(value) {
-	if (typeof(value) == "object") {
-		for (var i in value) {
-			value[i] *= 100;
-			value[i] = Math.round(value[i]);
-			value[i] /= 100;
-		}
-
-	} else {
-		value *= 100;
-		value = Math.round(value);
-		value /= 100;
-	}
-	return value;
-}
-
 function testFrame(root, interval, testData, i, j) {
     expect(root._children[j].position).toEqual(testData[j].position[i]);
     expect(testRound(root._children[j].scale)).toEqual(testData[j].scale[i]);
@@ -277,7 +260,7 @@ describe("Animation", function() {
                 }
             ];
 
-            var interval = new enchant.animation.interval.SourceInterval(sprite, sprite, keyframes);
+            var interval = new enchant.animation.interval.SourceInterval(sprite, keyframes);
 
             expect(sprite.srcPath).toEqual(null);
             expect(interval.isDone()).toBe(false);
@@ -529,9 +512,10 @@ describe("Animation", function() {
             }]
         }
         it("AnimationTest1", function() {
-        	var root = new enchant.canvas.Node();
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("Smoke01"), false);
+            var interval = animation.interval;
+            var root = animation.node;
 
-            var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("Smoke01"), false);
             expect(root._children.length).toBe(1);
 
 			interval.start();
@@ -549,8 +533,10 @@ describe("Animation", function() {
         }); 
 
         it("AnimationTest2", function() {
-        	var root = new enchant.canvas.Node();
-            var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("SmokeRing"), false);
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("SmokeRing"), false);
+            var interval = animation.interval;
+            var root = animation.node;
+            
             expect(root._children.length).toBe(8);
 
 			var frameCount = 17;
@@ -591,7 +577,6 @@ describe("Animation", function() {
                 }
             }
             
-            
 			for (var i = 0; i < frameCount; i++) {
                 if (i == 0) {
                     interval.start();
@@ -611,5 +596,3 @@ describe("Animation", function() {
         
     });
 });
-var root = new enchant.canvas.Node();
-var interval = enchant.animation.animationManager.CreateAnimation(root, root, enchant.loader.getAnimation("Smoke01"), false);

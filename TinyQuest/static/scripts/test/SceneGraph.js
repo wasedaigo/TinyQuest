@@ -3,8 +3,8 @@ enchant();
 
 var game = new enchant.Game(320, 320);
 enchant.loader.setRootPath('../../static/assets');
+var currentAnimationFileName = null;
 var currentAnimation = null;
-var interval = null;
 var root = new enchant.canvas.Node();
 window.onload = function() {
     game.fps = 45;
@@ -26,7 +26,6 @@ window.onload = function() {
         game.rootScene.addChild(stage);
 
         enchant.animation.animationManager.initialize(root);
-
         // Update
         this.addEventListener('enterframe', function() {
             
@@ -45,29 +44,22 @@ window.onload = function() {
             s.image.context.lineTo(159.5, 320);
             s.image.context.stroke();
 
-            if (currentAnimation) {
+            if (currentAnimationFileName) {
                 sceneGraph.update();
-                if (!interval) {
-                    var node = new enchant.canvas.Node();
-                    interval = enchant.animation.animationManager.CreateAnimation(node, node, enchant.loader.get(currentAnimation));
-                    enchant.animation.animationManager.start(interval, node);
-                } else {
-                    enchant.animation.animationManager.update();
-                }
+                enchant.animation.animationManager.update();
             }
         });
     };
-    game.pause();
+    enchant.Game.instance.start();
 };
 
 var playAnimation = function(id) {
     var filename = '../../static/assets/animations/' + id + ".json"
-    currentAnimation = filename;
-
+    currentAnimationFileName = null;
+    currentAnimation = null;
     // Load animation file
     enchant.loader.load([filename], function() {
         json = enchant.loader.get(filename);
-
         var files = [];
         
         // List all animations to be loaded
@@ -80,13 +72,14 @@ var playAnimation = function(id) {
         for (var i = 0; i < images.length; i++) {
             files.push('../../static/assets/images/' + images[i] + ".png");
         }
+        currentAnimationFileName = filename;
 
         enchant.loader.load(files, function() {
             interval = null;
             root.removeAllChildren();
-            enchant.Game.instance.start();
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName));
+            enchant.animation.animationManager.start(animation); 
         });
-        
     });
     
 };

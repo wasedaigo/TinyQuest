@@ -71,6 +71,7 @@ enchant.canvas.Node = enchant.Class.create({
 
             for (var key in this._children) {
                 var node = this._children[key];
+                
                 node.draw(assets, surface);
             }
         }
@@ -175,7 +176,6 @@ enchant.canvas.Sprite = enchant.Class.create({
         context.setTransform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
     },
     draw: function(assets, surface) {
-
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];

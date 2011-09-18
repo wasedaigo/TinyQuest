@@ -5,7 +5,7 @@ var Utils = {
       for (i in src) {
         if (i == 'clone') continue;
         if (src[i] && typeof src[i] == "object") {
-          newObj[i] = enchant.utils.clone(src[i]);
+          newObj[i] = this.clone(src[i]);
         } else newObj[i] = src[i]
       } return newObj;
     },

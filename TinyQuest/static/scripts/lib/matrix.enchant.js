@@ -1,14 +1,47 @@
 enchant.matrix = {};
 
 // Static function
-enchant.matrix.createMatrixIdentity = function() {
-  return [
-    [1, 0, 0],
-    [0, 1, 0],
-    [0, 0, 1]
-  ];
+enchant.matrix.createMatrixIdentity = function(n) {
+    var matrix = new Array(n);
+    for (var i = 0; i < n; i++) {
+        matrix[i] = new Array(n);
+    }
+    for(i=0; i < n;i++){
+      for(j = 0;j < n;j++){
+        matrix[i][j] = (i==j) ? 1.0 : 0.0;
+      }
+    }
+    
+  return matrix;
 }
 
+// Calculate inverse matrix
+enchant.matrix.createInverseMatrix = function(srcMatrix, n) {
+    var matrix = Utils.clone(srcMatrix);
+    var invertMatrix = enchant.matrix.createMatrixIdentity(n);
+    var buf = 0; // Store temporary data
+    var i, j, k = 0; // Counters
+
+    // Gauss–Jordan elimination
+    for(i = 0; i < n; i++){
+      buf = 1 / matrix[i][i];
+      for(j = 0; j < n; j++){
+        matrix[i][j] *= buf;
+        invertMatrix[i][j] *= buf;
+      }
+      for(j = 0;j < n; j++){
+        if(i != j){
+          buf = matrix[j][i];
+          for(k=0; k<n; k++){
+            matrix[j][k] -= matrix[i][k]*buf;
+            invertMatrix[j][k] -= invertMatrix[i][k] * buf;
+          }
+        }
+      }
+    }
+
+    return invertMatrix;
+}
 // Transformation 
 // 1. Rotate at origin
 // 2. Scale at origin
@@ -41,18 +74,18 @@ enchant.matrix.getImageTransformMatirx = function (dx, dy, rotation, scaleX, sca
 };
 
 enchant.matrix.matrixMultiply = function (m1, m2) {
-  var result = enchant.matrix.createMatrixIdentity();
-
-  for (var x = 0; x < 3; x++) {
+    var result = enchant.matrix.createMatrixIdentity(3);
+    
+    for (var x = 0; x < 3; x++) {
     for (var y = 0; y < 3; y++) {
       var sum = 0;
-
+    
       for (var z = 0; z < 3; z++) {
         sum += m1[x][z] * m2[z][y];
       }
-
+    
       result[x][y] = sum;
     }
-  }
-  return result;
+    }
+    return result;
 };
