@@ -80,9 +80,10 @@ def setup_tweens(result, latestSourceData)
         # last frame
         if keyframes.last
             if keyframes.last["wait"]
+                frameNo = keyframes.last["frameNo"]
                 keyframes.delete(keyframes.last)
                 if (key == "source")
-                    keyframes << {"duration" => 1, "id"=>"", "rect"=>nil}
+                    keyframes << {"frameNo" => frameNo, "duration" => 1, "id"=>"", "rect"=>nil}
                 end
             else
                 if (key == "source")
@@ -106,6 +107,8 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
                 result[key] << {"frameNo" => frameNo, "wait" => true}
             end
         end
+        latestSourceData["textureRect"] = nil
+        latestSourceData["sourcePath"] = nil
     else
         # Add keyframe for each attribute in this keyframe set
         createAttributeKey(result, "alpha", keyframe_set, frameNo, 1.0)
