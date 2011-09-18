@@ -64,10 +64,11 @@ enchant.canvas.Node = enchant.Class.create({
     },
     update: function(parentTransform) {
         this.sortByPriority();
-        this._transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
+        var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
         if (parentTransform) {
-            this._transform = enchant.matrix.matrixMultiply(this._transform, parentTransform);
+            transform = enchant.matrix.matrixMultiply(transform, parentTransform);
         }
+        this._transform = transform;
         for (var i = 0; i < this._children.length; i++) {
             this._children[i].update(this._transform);
         }
@@ -198,10 +199,11 @@ enchant.canvas.Sprite = enchant.Class.create({
     update: function(parentTransform) {
         this.node.sortByPriority();
         if (this.srcPath) {
-            this.transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
+            var transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
             if (parentTransform) {
-                this.transform = enchant.matrix.matrixMultiply(this.transform, parentTransform);
+                transform = enchant.matrix.matrixMultiply(transform, parentTransform);
             }
+            this.transform = transform;
             for (var i = 0; i < this.children.length; i++) {
                 this.children[i].update(this.transform);
             }
