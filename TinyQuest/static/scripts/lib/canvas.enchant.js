@@ -230,7 +230,10 @@ enchant.canvas.Sprite = enchant.Class.create({
             // Here we are rounding floating point position into integer.
             var posX = Math.floor(this.position[0] - this.center[0] - this.srcRect[2] / 2);
             var posY = Math.floor(this.position[1] - this.center[1] - this.srcRect[3] / 2);
-            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], posX, posY, this.srcRect[2], this.srcRect[3]);
+            // Hack: UV clips one extra pixel on the right, temporary workaround is here
+            var uvCutX = 1;
+            var uvCutY = 0;
+            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
         } else {
             this.node.draw(assets, surface);
         }
