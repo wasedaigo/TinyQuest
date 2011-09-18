@@ -33,10 +33,10 @@ enchant.animation.animationManager =
             }
         }
     },
-    CreateAnimation: function (data, isSubAnimation) {
+    CreateAnimation: function (data, isSubAnimation, baseTransform) {
         var timelines = data["timelines"];
         var parallels = [];
-        var node = new enchant.canvas.Node();
+        var node = new enchant.canvas.Node(baseTransform);
         for (var timelineNo in timelines) {
             var timeline = timelines[timelineNo];
             
@@ -228,7 +228,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 this._clearSetting();
                 if (keyframe.emitter) {
                     // Emit new animation (emitted animation won't be controled by this instance anymore)
-                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false);
+                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, this._sprite.transform);
                     enchant.animation.animationManager.start(animation);
                 } else {
                     // No animation node is generaetd yet, let's generate it

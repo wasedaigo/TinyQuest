@@ -24,7 +24,7 @@ enchant.canvas.Node = enchant.Class.create({
     prioritySortFunc: function(a, b) {
         return a.priority - b.priority;
     },
-    initialize: function() {
+    initialize: function(baseTransform) {
         this.position = [0, 0];
         this.scale = [1, 1];
         this.alpha = 1.0;
@@ -35,6 +35,20 @@ enchant.canvas.Node = enchant.Class.create({
         this.parent = null;
         this._children = [];
         this._transform = null;
+        this._hasBaseTransform = false;
+        
+        if (baseTransform) {
+            this._hasBaseTransform = true;
+            this._transform = baseTransform;
+        }
+    },
+    transform: { 
+        get: function() {
+            return this._transform;
+        },
+        set: function(transform) {
+            this._transform = transform;
+        }
     },
     addChild: function(node) {
         this._children.push(node);
@@ -64,11 +78,14 @@ enchant.canvas.Node = enchant.Class.create({
     },
     update: function(parentTransform) {
         this.sortByPriority();
-        var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
-        if (parentTransform) {
-            transform = enchant.matrix.matrixMultiply(transform, parentTransform);
+        if (!this._hasBaseTransform) {
+            var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
+            if (parentTransform) {
+                transform = enchant.matrix.matrixMultiply(transform, parentTransform);
+            }
+            this._transform = transform;
         }
-        this._transform = transform;
+        
         for (var i = 0; i < this._children.length; i++) {
             this._children[i].update(this._transform);
         }
@@ -187,10 +204,10 @@ enchant.canvas.Sprite = enchant.Class.create({
     },
     transform: { 
         get: function() {
-            return this.node._transform;
+            return this.node.transform;
         },
         set: function(transform) {
-            this.node._transform = transform;
+            this.node.transform = transform;
         }
     },
     applyTransform: function(context) { 
