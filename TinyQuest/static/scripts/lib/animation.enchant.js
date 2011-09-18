@@ -217,6 +217,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
             this._sprite.center = keyframe.center;
+            this._sprite.priority = keyframe.priority;
+            this._sprite.blendType = keyframe.blendType;
             
         } else {
             // Display nested animations

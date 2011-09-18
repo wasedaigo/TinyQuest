@@ -158,6 +158,12 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
         id = keyframe_set["sourcePath"].split(".")[0]
         ext = keyframe_set["sourcePath"].split(".")[1]
         sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
+        sourceKeyFrame["priority"] = keyframe_set["priority"] ? keyframe_set["priority"] : 0.5
+        
+        if keyframe_set["blendType"]
+            sourceKeyFrame["blendType"] = keyframe_set["blendType"]
+        end
+
         if ext == "png"
             #Images
             unless dependencies["images"].index(id)
@@ -171,6 +177,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
                 center = keyframe_set["center"]
             end
             sourceKeyFrame["center"] = center
+            
         else
             # Animations
             unless dependencies["animations"].index(id)

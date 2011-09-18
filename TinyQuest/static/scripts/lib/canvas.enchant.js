@@ -1,5 +1,6 @@
 enchant.canvas = {};
 
+
 enchant.canvas.SceneGraph = enchant.Class.create({
     initialize: function(game, surface) {
         assert(surface);
@@ -20,11 +21,15 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 });
 
 enchant.canvas.Node = enchant.Class.create({
+    prioritySortFunc: function(a, b) {
+        return a.priority - b.priority;
+    },
     initialize: function() {
         this.position = [0, 0];
         this.scale = [1, 1];
         this.alpha = 1.0;
         this.priority = 0.5;
+        this.blendType = null;
         this.hue = [0, 0, 0];
         this.rotation = 0;
         this.parent = null;
@@ -54,7 +59,11 @@ enchant.canvas.Node = enchant.Class.create({
         var t = this._transform;
         context.setTransform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
     },
+    sortByPriority: function() {
+        this._children.sort(this.prioritySortFunc);
+    },
     update: function(parentTransform) {
+        this.sortByPriority();
         this._transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
         if (parentTransform) {
             this._transform = enchant.matrix.matrixMultiply(this._transform, parentTransform);
@@ -114,7 +123,15 @@ enchant.canvas.Sprite = enchant.Class.create({
         set: function(value) {
             this.node.alpha = value;
         }
-    },    
+    },  
+    blendType: {
+        get: function() {
+            return this.node.blendType;
+        },
+        set: function(value) {
+            this.node.blendType = value;
+        }
+    },  
     priority: {
         get: function() {
             return this.node.priority;
@@ -175,6 +192,7 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node.applyTransform(context);
     },
     update: function(parentTransform) {
+        this.node.sortByPriority();
         if (this.srcPath) {
             this.transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
             if (parentTransform) {
@@ -194,7 +212,13 @@ enchant.canvas.Sprite = enchant.Class.create({
 
             this.applyTransform(surface.context);
             surface.context.globalAlpha = this.alpha;
-
+            
+            if (this.blendType == "add") {
+                surface.context.globalCompositeOperation = "lighter";
+            } else { 
+                surface.context.globalCompositeOperation = "source-over";
+            }
+            
             assert(typeof(this.srcRect[0]) == "number", "1");
             assert(typeof(this.srcRect[1]) == "number", "2");
             assert(typeof(this.srcRect[2]) == "number", "3");
