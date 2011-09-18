@@ -14,6 +14,7 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 
     update: function() {
         assert(this._root);
+        this._root.update(null);
         this._root.draw(this._game.assets, this._surface);
     }
 });
@@ -47,32 +48,26 @@ enchant.canvas.Node = enchant.Class.create({
         for(i = 0; i < this._children.length; i++){
             this._children[i].parent = null;
         }
-        this._children = [];
-    },
-    updateTransform: function() { 
-        var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
-        if (this.parent) {
-            this._transform = enchant.matrix.matrixMultiply(transform, this.parent.getTransform());
-        } else {
-            this._transform = transform;
-        }
-    },
-    getTransform: function(context) { 
-        return this._transform;
+        this._children.length = 0;
     },
     applyTransform: function(context) { 
         var t = this._transform;
         context.setTransform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
     },
+    update: function(parentTransform) {
+        this._transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
+        if (parentTransform) {
+            this._transform = enchant.matrix.matrixMultiply(this._transform, parentTransform);
+        }
+        for (var i = 0; i < this._children.length; i++) {
+            this._children[i].update(this._transform);
+        }
+    },
     draw: function(assets, surface) {
         if (this._children.length > 0) {
-            this.updateTransform();
             this.applyTransform(surface.context);
-
-            for (var key in this._children) {
-                var node = this._children[key];
-                
-                node.draw(assets, surface);
+            for (var i = 0; i < this._children.length; i++) {
+                this._children[i].draw(assets, surface);
             }
         }
     }
@@ -160,27 +155,43 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.scale = value;
         }
     },
-    updateTransform: function() { 
-        var transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
-        if (this.parent) {
-            this._transform = enchant.matrix.matrixMultiply(transform, this.parent.getTransform());
-        } else {
-            this._transform = transform;
+    children: { 
+        get: function() {
+            return this.node._children;
+        },
+        set: function(children) {
+            console.log("Sprite : children cannot be directly set!");
         }
     },
-    getTransform: function(context) { 
-        return this._transform;
+    transform: { 
+        get: function() {
+            return this.node._transform;
+        },
+        set: function(transform) {
+            this.node._transform = transform;
+        }
     },
     applyTransform: function(context) { 
-        var t = this._transform;
-        context.setTransform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
+        this.node.applyTransform(context);
+    },
+    update: function(parentTransform) {
+        if (this.srcPath) {
+            this.transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
+            if (parentTransform) {
+                this.transform = enchant.matrix.matrixMultiply(this.transform, parentTransform);
+            }
+            for (var i = 0; i < this.children.length; i++) {
+                this.children[i].update(this.transform);
+            }
+        } else {
+            this.node.update(parentTransform);
+        }
     },
     draw: function(assets, surface) {
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
 
-            this.updateTransform();
             this.applyTransform(surface.context);
             surface.context.globalAlpha = this.alpha;
 
@@ -190,13 +201,12 @@ enchant.canvas.Sprite = enchant.Class.create({
             assert(typeof(this.srcRect[3]) == "number", "4");
             assert(typeof(this.position[0]) == "number", "5");
             assert(typeof(this.position[1]) == "number", "6");
-            
+
             // Displaying floating point position can potentially blur the image on Canvas Element.
             // Here we are rounding floating point position into integer.
             var posX = Math.floor(this.position[0] - this.center[0] - this.srcRect[2] / 2);
             var posY = Math.floor(this.position[1] - this.center[1] - this.srcRect[3] / 2);
             surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2], this.srcRect[3], posX, posY, this.srcRect[2], this.srcRect[3]);
-
         } else {
             this.node.draw(assets, surface);
         }
