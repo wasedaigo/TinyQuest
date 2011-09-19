@@ -21,6 +21,14 @@ describe("Matrix", function() {
             expect(testRound(matrix[3][3])).toEqual(1);
         });
     });
+    describe("transformPoint", function() {
+        it("Return value is correct", function() {
+            var matrix = [[0, 1], [-1, 0]];
+            var point = enchant.matrix.multiplyToPoint([1, 0], matrix);
+            expect(point[0]).toEqual(0);
+            expect(point[1]).toEqual(1);
+        });
+    });
     describe("createInverseMatrix", function() {
         it("Return value is correct", function() {
             var matrix = [[1,2,0,-1],[-1,1,2,0],[2,0,1,1],[1,-2,-1,1]];

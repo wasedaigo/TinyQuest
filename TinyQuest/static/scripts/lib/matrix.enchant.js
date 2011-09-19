@@ -73,6 +73,16 @@ enchant.matrix.getImageTransformMatirx = function (dx, dy, rotation, scaleX, sca
   return result;
 };
 
+// Multiply 3x3 matrix to 2 point
+enchant.matrix.multiplyToPoint = function(point, matrix) {
+    var newPoint = new Array(2);
+    newPoint[0] = point[0] * matrix[0][0] + point[1] * matrix[1][0];
+    newPoint[1] = point[0] * matrix[0][1] + point[1] * matrix[1][1];
+    
+    return newPoint;
+}
+
+// Multiply 3x3 matrix by 3x3 matrix
 enchant.matrix.matrixMultiply = function (m1, m2) {
     var result = enchant.matrix.createMatrixIdentity(3);
     
