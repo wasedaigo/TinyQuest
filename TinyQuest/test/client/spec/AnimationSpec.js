@@ -76,7 +76,7 @@ describe("Animation", function() {
 
         it("PositionInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.AttributeInterval(node, "position", [10, 10], [2, 6], 4, true);
+            var interval = new enchant.animation.interval.AttributeInterval(node, "position", [10, 10], [2, 6], 4, true, {"startRelative":false, "endRelative":false, "target":null});
 
             expect(node.position).toEqual([0, 0]);
             expect(interval.isDone()).toBe(false);
@@ -105,6 +105,44 @@ describe("Animation", function() {
             expect(node.position).toEqual([10, 10]);
             expect(interval.isDone()).toBe(false);
         }); 
+        
+        it("PositionIntervalRelative", function() {
+            var target = new enchant.canvas.Node();
+            target.position = [16, 8];
+            target.update();
+            var node = new enchant.canvas.Node();
+            node.update();
+
+            var interval = new enchant.animation.interval.AttributeInterval(node, "position", [10, 10], [2, 6], 4, true, {"startRelative":false, "endRelative":true, "target":target});
+
+            expect(node.position).toEqual([0, 0]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.start();
+            expect(node.position).toEqual([10, 10]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([12, 11]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([14, 12]);
+            expect(interval.isDone()).toBe(false);
+            
+            interval.update();
+            expect(node.position).toEqual([16, 13]);
+            expect(interval.isDone()).toBe(false);
+
+            interval.update();
+            expect(node.position).toEqual([18, 14]);
+            expect(interval.isDone()).toBe(true);
+            
+            interval.reset();
+            expect(node.position).toEqual([10, 10]);
+            expect(interval.isDone()).toBe(false);
+        }); 
+
         it("ScaleInterval", function() {
             var node = new enchant.canvas.Node();
             var interval = new enchant.animation.interval.AttributeInterval(node, "scale", [10, 10], [2, 6], 4, true);

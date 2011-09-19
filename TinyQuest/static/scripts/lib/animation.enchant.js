@@ -97,14 +97,18 @@ enchant.animation.animationManager =
 // Interval helper modules
 enchant.animation.interval  = 
 {
-    Completement: function (startValue, endValue, proportion) {
+    Completement: function (startValue, endValue, proportion, startOffset, endOffset) {
         var result = null;
         if (typeof(startValue) == "number") {
-            result = startValue + (endValue - startValue) * proportion;
+            var tempStartValue = startValue + (startOffset ? startOffset : 0);
+            var tempEndValue = endValue + (endOffset ? endOffset : 0);
+            result = tempStartValue + (tempEndValue - tempStartValue) * proportion;
         } else if (typeof(startValue) == "object") {
             result = [];
             for (var i = 0; i < startValue.length; i++) {
-                var value = startValue[i] + (endValue[i] - startValue[i]) * proportion;
+                var tempStartValue = startValue[i] + (startOffset ? startOffset[i] : 0);
+                var tempEndValue = endValue[i] + (endOffset ? endOffset[i] : 0);
+                value = tempStartValue + (tempEndValue - tempStartValue) * proportion;
                 result.push(value);
             } 
         }
@@ -115,7 +119,7 @@ enchant.animation.interval  =
 
 // Linear interval for simple parameter
 enchant.animation.interval.AttributeInterval = enchant.Class.create({
-    initialize: function(node, attribute, startValue, endValue, duration, tween) {
+    initialize: function(node, attribute, startValue, endValue, duration, tween, options) {
         this._node = node;
         this._startValue = startValue;
         this._endValue = endValue;
@@ -123,6 +127,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         this._attribute = attribute;    
         this._frameNo = 0;
         this._tween = tween;
+        this._options = options ? options : {"startRelative":false, "endRelative":false }
     },
     isDone: function() {
         return this._frameNo >= this._duration
@@ -143,7 +148,19 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
             
             var value = this._startValue;
             if (this._tween) {
-                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
+                var startOffset = null;
+                var endOffset = null;
+                // Hacky: Position specific code inside a general class.
+                if (this._attribute == "position") {
+                    if (this._options.startRelative) {
+                        startOffset = enchant.matrix.transformPoint(this._options.target.position, this._node.transform);
+                    }
+                    if (this._options.endRelative) {
+                        endOffset = enchant.matrix.transformPoint(this._options.target.position, this._node.transform);
+                    }
+                }
+                
+                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration, startOffset, endOffset);
             } else {
                 if (this._frameNo == this._duration) {
                     value = this._endValue;
