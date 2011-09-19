@@ -84,7 +84,7 @@ enchant.animation.animationManager =
                     var endValue = frame.endValue;
                     var duration = frame.duration;
     
-                    interval = new enchant.animation.interval.Interval(node, attribute, startValue, endValue, duration, tween);
+                    interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween);
                 }
                 intervals.push(interval);
             }
@@ -114,7 +114,7 @@ enchant.animation.interval  =
 }
 
 // Linear interval for simple parameter
-enchant.animation.interval.Interval = enchant.Class.create({
+enchant.animation.interval.AttributeInterval = enchant.Class.create({
     initialize: function(node, attribute, startValue, endValue, duration, tween) {
         this._node = node;
         this._startValue = startValue;
