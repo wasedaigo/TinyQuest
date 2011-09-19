@@ -70,8 +70,14 @@ def setup_tweens(result, latestSourceData)
                 if key != "source"
                     if keyframe["wait"]
                         prev_keyframe["endValue"] = prev_keyframe["startValue"]
+                        if key == "position"
+                            prev_keyframe["endRelative"] = prev_keyframe["startRelative"] ? prev_keyframe["startRelative"] : false
+                        end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
+                        if key == "position"
+                            prev_keyframe["endRelative"] = keyframe["startRelative"] ? keyframe["startRelative"] : false
+                        end
                     end
                 end
             end
@@ -135,8 +141,19 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
         data["frameNo"] = frameNo
         data["startValue"] = (value != nil) ? value : defaultValue
         data["endValue"] = data["startValue"]
+        
+        # Position attribute has special options
+        if key == "position"
+            # Relative
+            relative = (keyframe_set["positionType"] == "relativeToTarget")
+            data["startRelative"] = relative
+            data["endRelative"] = relative
+        end
+        
     end
 
+
+    
     unless data.empty?
         result[key] << data
     end
@@ -151,16 +168,10 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
     if rectDiff || pathDiff
         latestSourceData["textureRect"] = keyframe_set["textureRect"]
         latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
-        
-        # Relative
-        relativeToTarget = false
-        if (keyframe_set["positionType"] == "relativeToTarget")
-            relativeToTarget = true
-        end
 
         id = keyframe_set["sourcePath"].split(".")[0]
         ext = keyframe_set["sourcePath"].split(".")[1]
-        sourceKeyFrame = {"frameNo" => frameNo, "id" => id, "relative" => relativeToTarget}
+        sourceKeyFrame = {"frameNo" => frameNo, "id" => id}
         sourceKeyFrame["priority"] = keyframe_set["priority"] ? keyframe_set["priority"] : 0.5
         
         if keyframe_set["blendType"]
