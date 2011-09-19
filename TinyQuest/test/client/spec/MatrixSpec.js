@@ -23,10 +23,10 @@ describe("Matrix", function() {
     });
     describe("transformPoint", function() {
         it("Return value is correct", function() {
-            var matrix = [[0, 1], [-1, 0]];
+            var matrix = [[0, 1, 0], [-1, 0, 1], [3, 4, 1]];
             var point = enchant.matrix.multiplyToPoint([1, 0], matrix);
-            expect(point[0]).toEqual(0);
-            expect(point[1]).toEqual(1);
+            expect(point[0]).toEqual(3);
+            expect(point[1]).toEqual(5);
         });
     });
     describe("createInverseMatrix", function() {
