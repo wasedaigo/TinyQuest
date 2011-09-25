@@ -142,35 +142,43 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
     start: function() {
         this._node[this._attribute] = this._startValue;
         this._frameNo = 0;
+        this.updateValue();
     },
     finish: function() {
+    },
+    updateValue : function() {
+        // Note: Position specific code inside a general class.
+        if (this._attribute == "position" && this._options.target  && this._node.parent) {
+            
+            var invertMatrix = null;
+            if (this._options.startRelative) {
+                
+                invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
+                this._startValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+            }
+            if (this._options.endRelative) {
+                invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
+                this._endValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+            }
+        }
+        
+        var value = this._startValue;
+        if (this._tween) {
+            value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
+        } else {
+            if (this._frameNo == this._duration) {
+                value = this._endValue;
+            }
+        }
+        this._node[this._attribute] = value;
+        if (this._attribute == "position") {
+            console.log(value);
+        }
     },
     update: function() {
         if (!this.isDone()) {
             this._frameNo++;
-
-            // Note: Position specific code inside a general class.
-            if (this._attribute == "position" && this._options.target) {
-                var invertMatrix = null;
-                if (this._options.startRelative) {
-                    invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
-                    this._startValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
-                }
-                if (this._options.endRelative) {
-                    invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
-                    this._endValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
-                }
-            }
-            
-            var value = this._startValue;
-            if (this._tween) {
-                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
-            } else {
-                if (this._frameNo == this._duration) {
-                    value = this._endValue;
-                }
-            }
-            this._node[this._attribute] = value;
+            this.updateValue();
         }
     }
 });
@@ -211,6 +219,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         this._frameDuration = 0;
         this._duration = 0;
         this._target = target;
+        this._lastAnimationId = "";
         for (var key in this._sourceKeykeyframes) {
             this._duration += this._sourceKeykeyframes[key].duration;  
         }
@@ -227,11 +236,10 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         }
     },
     _updateKeyframe: function(keyframe) {
-        // Empty frame found, reset the setting
-        if (keyframe.id == "") {
+        if (this._lastAnimationId != keyframe.id) {
             this._clearSetting();
         }
-        
+        this._lastAnimationId = keyframe.id;
         if (keyframe.type == "image") {
             // Display static image
             this._clearSetting();
@@ -249,8 +257,17 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             } else {
                 this._clearSetting();
                 if (keyframe.emitter) {
-                    // Emit new animation (emitted animation won't be controled by this instance anymore)
-                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, this._sprite.transform, this._target);
+                    
+                    // Calculate a new transformation matrix, at which the new animation to be emitted
+                    var transform = null;
+                    if (this._sprite.parent) {
+                        var transform = this._sprite.parent.transform;
+                        transform = enchant.matrix.getNodeTransformMatirx(this._sprite.position[0], this._sprite.position[1], this._sprite.rotation * Math.PI / 180, this._sprite.scale[0], this._sprite.scale[1]);       
+                        transform = enchant.matrix.matrixMultiply(transform, this._sprite.parent.transform);
+                    }
+
+                    // Emit the new animation (emitted animation won't be controled by this instance anymore)
+                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._target);
                     enchant.animation.animationManager.start(animation);
                 } else {
                     // No animation node is generaetd yet, let's generate it
