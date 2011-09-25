@@ -130,6 +130,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         this._attribute = attribute;    
         this._frameNo = 0;
         this._tween = tween;
+        
         this._options = options ? options : {"startRelative":false, "endRelative":false }
     },
     isDone: function() {
@@ -148,32 +149,31 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
     },
     updateValue : function() {
         // Note: Position specific code inside a general class.
+        var startValue = this._startValue;
+        var endValue = this._endValue;
         if (this._attribute == "position" && this._options.target  && this._node.parent) {
-            
             var invertMatrix = null;
             if (this._options.startRelative) {
-                
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
-                this._startValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+                var targetPosition = [this._options.target.position[0] + this._startValue[0], this._options.target.position[1] + this._startValue[1]];
+                startValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
             }
             if (this._options.endRelative) {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
-                this._endValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+                var targetPosition = [this._options.target.position[0] + this._endValue[0], this._options.target.position[1] + this._endValue[1]];
+                endValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
             }
         }
         
-        var value = this._startValue;
+        var value = startValue;
         if (this._tween) {
-            value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
+            value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
         } else {
             if (this._frameNo == this._duration) {
-                value = this._endValue;
+                value = endValue;
             }
         }
         this._node[this._attribute] = value;
-        if (this._attribute == "position") {
-            console.log(value);
-        }
     },
     update: function() {
         if (!this.isDone()) {
@@ -257,7 +257,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             } else {
                 this._clearSetting();
                 if (keyframe.emitter) {
-                    
                     // Calculate a new transformation matrix, at which the new animation to be emitted
                     var transform = null;
                     if (this._sprite.parent) {
