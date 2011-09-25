@@ -171,7 +171,6 @@ enchant.animation.interval  =
                     
                     startValue = (Math.atan2(dy,dx) / Math.PI)  * 180 + 90;
                     endValue = startValue;
-                    console.log(dx + ", " + dy + ", " + startValue);
                 }
             }
         }
@@ -316,7 +315,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             if (this._interval) {
                 this._interval.update();
             } else {
-                this._clearSetting();
                 if (keyframe.emitter) {
                     // Calculate a new transformation matrix, at which the new animation to be emitted
                     var transform = null;
