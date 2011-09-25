@@ -33,7 +33,7 @@ enchant.animation.animationManager =
             }
         }
     },
-    CreateAnimation: function (data, isSubAnimation, baseTransform) {
+    CreateAnimation: function (data, isSubAnimation, baseTransform, target) {
         var timelines = data["timelines"];
         var parallels = [];
         var node = new enchant.canvas.Node(baseTransform);
@@ -45,12 +45,12 @@ enchant.animation.animationManager =
             var attributes = ["rotation", "position", "alpha", "scale"];
             for (var i in attributes) {
                 var attribute = attributes[i];
-                var sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute]);
+                var sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target);
                 if (sequence) {
                     sequences.push(sequence);
                 }
             }
-			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"]);
+			var sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"], target);
 			sequences.push(sourceInterval);
             parallels.push(new enchant.animation.interval.Parallel(sequences));
             node.addChild(sprite);
@@ -66,7 +66,7 @@ enchant.animation.animationManager =
         return {"interval" : interval, "node" : node};
     },
     // Create attribute tween out of given keyframe data
-    CreateAttributeTween: function (node, attribute, keyframes) {
+    CreateAttributeTween: function (node, attribute, keyframes, target) {
         if (keyframes.length == 0) {
             return null;
         } else {
@@ -83,8 +83,15 @@ enchant.animation.animationManager =
                     var startValue = frame.startValue;
                     var endValue = frame.endValue;
                     var duration = frame.duration;
-    
-                    interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween);
+                    var options = {};
+                    // PositionTween does something special
+                    if (attribute == "position") {
+                        options.startRelative = frame.startRelative;
+                        options.endRelative = frame.endRelative;
+                        options.target = target;
+                    }
+                    
+                    interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options);
                 }
                 intervals.push(interval);
             }
@@ -97,18 +104,14 @@ enchant.animation.animationManager =
 // Interval helper modules
 enchant.animation.interval  = 
 {
-    Completement: function (startValue, endValue, proportion, startOffset, endOffset) {
+    Completement: function (startValue, endValue, proportion) {
         var result = null;
         if (typeof(startValue) == "number") {
-            var tempStartValue = startValue + (startOffset ? startOffset : 0);
-            var tempEndValue = endValue + (endOffset ? endOffset : 0);
-            result = tempStartValue + (tempEndValue - tempStartValue) * proportion;
+            result = startValue + (endValue - startValue) * proportion;
         } else if (typeof(startValue) == "object") {
             result = [];
             for (var i = 0; i < startValue.length; i++) {
-                var tempStartValue = startValue[i] + (startOffset ? startOffset[i] : 0);
-                var tempEndValue = endValue[i] + (endOffset ? endOffset[i] : 0);
-                value = tempStartValue + (tempEndValue - tempStartValue) * proportion;
+                value = startValue[i] + (endValue[i] - startValue[i]) * proportion;
                 result.push(value);
             } 
         }
@@ -145,22 +148,23 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
     update: function() {
         if (!this.isDone()) {
             this._frameNo++;
+
+            // Note: Position specific code inside a general class.
+            if (this._attribute == "position" && this._options.target) {
+                var invertMatrix = null;
+                if (this._options.startRelative) {
+                    invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
+                    this._startValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+                }
+                if (this._options.endRelative) {
+                    invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(this._node.parent.transform, 3);
+                    this._endValue = enchant.matrix.transformPoint(this._options.target.position, invertMatrix);
+                }
+            }
             
             var value = this._startValue;
             if (this._tween) {
-                var startOffset = null;
-                var endOffset = null;
-                // Hacky: Position specific code inside a general class.
-                if (this._attribute == "position") {
-                    if (this._options.startRelative) {
-                        startOffset = enchant.matrix.transformPoint(this._options.target.position, this._node.transform);
-                    }
-                    if (this._options.endRelative) {
-                        endOffset = enchant.matrix.transformPoint(this._options.target.position, this._node.transform);
-                    }
-                }
-                
-                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration, startOffset, endOffset);
+                value = enchant.animation.interval.Completement(this._startValue, this._endValue, this._frameNo / this._duration);
             } else {
                 if (this._frameNo == this._duration) {
                     value = this._endValue;
@@ -198,7 +202,7 @@ enchant.animation.interval.Wait = enchant.Class.create({
 
 // Source file keykeyframes, this changes image and source rect of sprites
 enchant.animation.interval.SourceInterval = enchant.Class.create({
-    initialize: function(sprite, sourceKeykeyframes) {
+    initialize: function(sprite, sourceKeykeyframes, target) {
         this._sprite = sprite;
         this._interval = null;
         this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
@@ -206,6 +210,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         this._index = 0;
         this._frameDuration = 0;
         this._duration = 0;
+        this._target = target;
         for (var key in this._sourceKeykeyframes) {
             this._duration += this._sourceKeykeyframes[key].duration;  
         }
@@ -245,13 +250,13 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                 this._clearSetting();
                 if (keyframe.emitter) {
                     // Emit new animation (emitted animation won't be controled by this instance anymore)
-                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, this._sprite.transform);
+                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, this._sprite.transform, this._target);
                     enchant.animation.animationManager.start(animation);
                 } else {
                     // No animation node is generaetd yet, let's generate it
                     // If no ID exists, ignore it (Which usually means an empty keyframe)
                     if (keyframe.id) {
-                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true);
+                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, this._target);
                         this._sprite.addChild(animation.node);
                         this._interval = animation.interval;
                         this._interval.start();
