@@ -37,6 +37,9 @@ enchant.canvas.Node = enchant.Class.create({
         this._transform = null;
         this._hasBaseTransform = false;
         
+        // Store whatever data you want to store
+        this.dataStore = {};
+        
         if (baseTransform) {
             this._hasBaseTransform = true;
             this._transform = baseTransform;
@@ -135,8 +138,15 @@ enchant.canvas.Sprite = enchant.Class.create({
     removeAllChildren: function() {
         this.node.removeAllChildren();
     },
-    
     update: function(context) { 
+    },
+    dataStore: {
+        get: function() {
+            return this.node.dataStore;
+        },
+        set: function(value) {
+            this.node.dataStore = value;
+        }
     },
     position: {
         get: function() {
