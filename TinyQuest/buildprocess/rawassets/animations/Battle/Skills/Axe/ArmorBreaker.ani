@@ -62,6 +62,7 @@
             "minEmitAngle" : 0,
             "minEmitSpeed" : 0.0,
             "position" : [ -13, -10 ],
+            "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
          },
@@ -77,6 +78,7 @@
             "minEmitAngle" : 0,
             "minEmitSpeed" : 0.0,
             "position" : [ 2, 12 ],
+            "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
          },
@@ -92,6 +94,7 @@
             "minEmitAngle" : 0,
             "minEmitSpeed" : 0.0,
             "position" : [ 17, -17 ],
+            "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "sourcePath" : "Battle/Skills/Effect/Bash01.ani"
          },

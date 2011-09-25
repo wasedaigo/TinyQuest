@@ -8,7 +8,7 @@ var currentAnimationFileName = null;
 var currentAnimation = null;
 
 var target = new enchant.canvas.Node();
-target.position = [60, 160];
+target.position = [60, 130];
 target.update();
 
 var root = new enchant.canvas.Node();
@@ -24,7 +24,6 @@ window.onload = function() {
         
         root.position = [GAME_WIDTH / 2, 160];
         root.scale = [2, 2];
-        root.update();
         sceneGraph.setRoot(root);
 
         var s = new enchant.Sprite(GAME_WIDTH,GAME_HEIGHT);
