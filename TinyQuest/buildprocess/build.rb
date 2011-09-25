@@ -136,7 +136,7 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     if tweenType == "linear"
         data["tween"] = true
     end
-      
+
     if tweenType && tweenType != "none"
         data["frameNo"] = frameNo
         data["startValue"] = (value != nil) ? value : defaultValue
@@ -148,6 +148,9 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
             relative = (keyframe_set["positionType"] == "relativeToTarget")
             data["startRelative"] = relative
             data["endRelative"] = relative
+        end
+        if key == "rotation"
+            data["facingOption"] = keyframe_set["facingOption"] ? keyframe_set["facingOption"] : "none"
         end
         
     end
