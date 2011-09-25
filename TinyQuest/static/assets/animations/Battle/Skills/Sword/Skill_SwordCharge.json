@@ -23,7 +23,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 7,
@@ -35,7 +36,9 @@
             -64,
             0
           ],
-          "frameNo": 21
+          "startRelative": true,
+          "frameNo": 21,
+          "endRelative": true
         },
         {
           "duration": 16,
@@ -48,7 +51,9 @@
             -64,
             0
           ],
-          "frameNo": 28
+          "startRelative": true,
+          "frameNo": 28,
+          "endRelative": false
         },
         {
           "duration": 2,
@@ -60,7 +65,9 @@
             0,
             0
           ],
-          "frameNo": 44
+          "startRelative": false,
+          "frameNo": 44,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -72,7 +79,9 @@
             0,
             0
           ],
-          "frameNo": 46
+          "startRelative": false,
+          "frameNo": 46,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -86,13 +95,13 @@
           "duration": 5,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Battler/SwordCharge",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 16,
@@ -102,10 +111,10 @@
         {
           "duration": 26,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 21,
-          "relative": true
+          "frameNo": 21
         }
       ],
       "rotation": [
@@ -146,14 +155,15 @@
         {
           "duration": 7,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Effect/Slash03",
           "type": "animation",
-          "frameNo": 13,
-          "relative": false
+          "frameNo": 13
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 20,
           "rect": null
         }
       ],

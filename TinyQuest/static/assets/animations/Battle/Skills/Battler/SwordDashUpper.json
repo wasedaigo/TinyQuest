@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -37,6 +39,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -45,20 +48,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 10,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordUpper",
           "type": "animation",
-          "frameNo": 10,
-          "relative": false
+          "frameNo": 10
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 20,
           "rect": null
         }
       ],
@@ -81,7 +84,9 @@
             14,
             8
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -97,6 +102,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "image",
           "frameNo": 0,
@@ -105,12 +111,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 10,
           "rect": null
         }
       ],
@@ -119,6 +125,7 @@
           "duration": 10,
           "endValue": 90,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 0
         }
       ],

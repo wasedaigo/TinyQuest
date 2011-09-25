@@ -20,7 +20,9 @@
             8,
             -12
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -29,7 +31,8 @@
             -1
           ],
           "wait": true,
-          "frameNo": 1
+          "frameNo": 1,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -41,7 +44,9 @@
             -27,
             -1
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -50,7 +55,8 @@
             15
           ],
           "wait": true,
-          "frameNo": 3
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -62,7 +68,9 @@
             23,
             15
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -71,7 +79,8 @@
             -21
           ],
           "wait": true,
-          "frameNo": 5
+          "frameNo": 5,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -83,7 +92,9 @@
             -3,
             -21
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -92,7 +103,8 @@
             24
           ],
           "wait": true,
-          "frameNo": 7
+          "frameNo": 7,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -104,7 +116,9 @@
             -19,
             24
           ],
-          "frameNo": 8
+          "startRelative": false,
+          "frameNo": 8,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -113,7 +127,8 @@
             -5
           ],
           "wait": true,
-          "frameNo": 9
+          "frameNo": 9,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -125,7 +140,9 @@
             -7,
             -5
           ],
-          "frameNo": 10
+          "startRelative": false,
+          "frameNo": 10,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -134,7 +151,8 @@
             36
           ],
           "wait": true,
-          "frameNo": 11
+          "frameNo": 11,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -146,7 +164,9 @@
             2,
             36
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -155,7 +175,8 @@
             -23
           ],
           "wait": true,
-          "frameNo": 13
+          "frameNo": 13,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -167,7 +188,9 @@
             16,
             -23
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -176,7 +199,8 @@
             4
           ],
           "wait": true,
-          "frameNo": 15
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -188,7 +212,9 @@
             36,
             4
           ],
-          "frameNo": 16
+          "startRelative": false,
+          "frameNo": 16,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -197,7 +223,8 @@
             -1
           ],
           "wait": true,
-          "frameNo": 17
+          "frameNo": 17,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -209,7 +236,9 @@
             -8,
             -1
           ],
-          "frameNo": 18
+          "startRelative": false,
+          "frameNo": 18,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -218,7 +247,8 @@
             -16
           ],
           "wait": true,
-          "frameNo": 19
+          "frameNo": 19,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -230,7 +260,9 @@
             4,
             -16
           ],
-          "frameNo": 20
+          "startRelative": false,
+          "frameNo": 20,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -239,7 +271,8 @@
             25
           ],
           "wait": true,
-          "frameNo": 21
+          "frameNo": 21,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -251,7 +284,9 @@
             -23,
             25
           ],
-          "frameNo": 22
+          "startRelative": false,
+          "frameNo": 22,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -260,7 +295,8 @@
             -20
           ],
           "wait": true,
-          "frameNo": 23
+          "frameNo": 23,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -272,7 +308,9 @@
             -26,
             -20
           ],
-          "frameNo": 24
+          "startRelative": false,
+          "frameNo": 24,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -286,77 +324,222 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Fire/FlareExploder",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
-          "duration": 2,
+          "duration": 1,
           "wait": true,
           "frameNo": 1
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 3
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 5
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 7
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 8
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 9
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 10
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 11
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 12
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 13
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 14
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 15
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 17
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 18
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 19
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 20
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 21
         },
         {
-          "duration": 2,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 22
+        },
+        {
+          "duration": 1,
           "wait": true,
           "frameNo": 23
         },
         {
           "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 24
+        },
+        {
+          "duration": 1,
           "id": "",
+          "frameNo": 25,
           "rect": null
         }
       ],

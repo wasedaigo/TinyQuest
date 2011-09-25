@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 22,
@@ -34,7 +36,9 @@
             0,
             0
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": true
         },
         {
           "duration": 7,
@@ -46,7 +50,9 @@
             32,
             -32
           ],
-          "frameNo": 25
+          "startRelative": true,
+          "frameNo": 25,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -62,6 +68,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -70,8 +77,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 8,
@@ -79,6 +85,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 3,
@@ -87,8 +94,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 9,
@@ -96,6 +102,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 11,
@@ -104,20 +111,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 12,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearHold",
           "type": "animation",
-          "frameNo": 20,
-          "relative": false
+          "frameNo": 20
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 32,
           "rect": null
         }
       ],
@@ -133,18 +140,21 @@
           "endValue": -405,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 11
         },
         {
           "duration": 5,
           "endValue": -405,
           "startValue": -405,
+          "facingOption": "none",
           "frameNo": 20
         },
         {
           "duration": 7,
           "endValue": -405,
           "startValue": -405,
+          "facingOption": "none",
           "frameNo": 25
         }
       ],

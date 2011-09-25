@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 22,
@@ -33,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 11
+          "startRelative": false,
+          "frameNo": 11,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -72,6 +76,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -80,8 +85,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 9,
@@ -89,6 +93,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 11,
@@ -97,20 +102,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 13,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordDown02",
           "type": "animation",
-          "frameNo": 20,
-          "relative": false
+          "frameNo": 20
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 33,
           "rect": null
         }
       ],
@@ -119,12 +124,14 @@
           "duration": 11,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 22,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 11
         }
       ],
@@ -155,7 +162,9 @@
             -6,
             9
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -168,7 +177,9 @@
             -6,
             9
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -180,7 +191,9 @@
             4,
             -5
           ],
-          "frameNo": 17
+          "startRelative": false,
+          "frameNo": 17,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -231,6 +244,7 @@
             0.0,
             11.0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "image",
           "frameNo": 0,
@@ -239,12 +253,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 20,
           "rect": null
         }
       ],
@@ -254,6 +268,7 @@
           "endValue": 310,
           "tween": true,
           "startValue": 220,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
@@ -261,12 +276,14 @@
           "endValue": 380,
           "tween": true,
           "startValue": 310,
+          "facingOption": "none",
           "frameNo": 7
         },
         {
           "duration": 3,
           "endValue": 380,
           "startValue": 380,
+          "facingOption": "none",
           "frameNo": 17
         }
       ],

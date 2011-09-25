@@ -16,8 +16,13 @@
             0,
             0
           ],
-          "wait": true,
-          "frameNo": 0
+          "startValue": [
+            0,
+            0
+          ],
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 8,
@@ -30,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": false
         },
         {
           "duration": 8,
@@ -43,7 +50,9 @@
             0,
             -48
           ],
-          "frameNo": 15
+          "startRelative": false,
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -55,7 +64,9 @@
             0,
             0
           ],
-          "frameNo": 23
+          "startRelative": false,
+          "frameNo": 23,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -71,6 +82,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -79,8 +91,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 16,
@@ -88,6 +99,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 7,
@@ -96,8 +108,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 5,
@@ -105,6 +116,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 23,
@@ -113,8 +125,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

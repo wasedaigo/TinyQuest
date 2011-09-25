@@ -25,7 +25,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -37,7 +39,9 @@
             0,
             0
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 32,
@@ -46,7 +50,8 @@
             -124
           ],
           "wait": true,
-          "frameNo": 4
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -59,7 +64,9 @@
             0,
             -124
           ],
-          "frameNo": 36
+          "startRelative": false,
+          "frameNo": 36,
+          "endRelative": false
         },
         {
           "duration": 19,
@@ -68,7 +75,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 37
+          "frameNo": 37,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -80,7 +88,9 @@
             0,
             0
           ],
-          "frameNo": 56
+          "startRelative": false,
+          "frameNo": 56,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -94,13 +104,13 @@
           "duration": 4,
           "emitter": true,
           "minEmitSpeed": 15.0,
+          "priority": 0.5,
           "minEmitAngle": 270,
           "id": "Battle/Skills/Spear/SpearAirraidRoll",
           "maxEmitAngle": 270,
           "type": "animation",
           "maxEmitSpeed": 15.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 32,
@@ -111,13 +121,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 6.0,
+          "priority": 0.5,
           "minEmitAngle": 90,
           "id": "Battle/Skills/Battler/RollBack",
           "maxEmitAngle": 90,
           "type": "animation",
           "maxEmitSpeed": 6.0,
-          "frameNo": 36,
-          "relative": false
+          "frameNo": 36
         },
         {
           "duration": 19,
@@ -127,10 +137,10 @@
         {
           "duration": 1,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearAirraidRoll",
           "type": "animation",
-          "frameNo": 56,
-          "relative": false
+          "frameNo": 56
         }
       ],
       "rotation": [
@@ -186,7 +196,8 @@
             -32
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -198,7 +209,9 @@
             32,
             -32
           ],
-          "frameNo": 25
+          "startRelative": true,
+          "frameNo": 25,
+          "endRelative": true
         },
         {
           "duration": 2,
@@ -207,7 +220,8 @@
             -32
           ],
           "wait": true,
-          "frameNo": 26
+          "frameNo": 26,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -219,7 +233,9 @@
             32,
             -32
           ],
-          "frameNo": 28
+          "startRelative": true,
+          "frameNo": 28,
+          "endRelative": true
         },
         {
           "duration": 2,
@@ -228,7 +244,8 @@
             -32
           ],
           "wait": true,
-          "frameNo": 29
+          "frameNo": 29,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -240,7 +257,9 @@
             32,
             -32
           ],
-          "frameNo": 31
+          "startRelative": true,
+          "frameNo": 31,
+          "endRelative": true
         },
         {
           "duration": 2,
@@ -249,7 +268,8 @@
             -32
           ],
           "wait": true,
-          "frameNo": 32
+          "frameNo": 32,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -261,7 +281,9 @@
             32,
             -32
           ],
-          "frameNo": 34
+          "startRelative": true,
+          "frameNo": 34,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -280,28 +302,64 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/BeamSplash01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 25,
-          "relative": true
+          "frameNo": 25
         },
         {
-          "duration": 3,
+          "duration": 2,
           "wait": true,
           "frameNo": 26
         },
         {
-          "duration": 3,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 28
+        },
+        {
+          "duration": 2,
           "wait": true,
           "frameNo": 29
         },
         {
           "duration": 1,
-          "id": "",
-          "rect": null
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 31
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 32
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 34
         }
       ],
       "rotation": [
@@ -315,6 +373,7 @@
           "duration": 1,
           "endValue": 45,
           "startValue": 45,
+          "facingOption": "none",
           "frameNo": 25
         },
         {
@@ -327,6 +386,7 @@
           "duration": 1,
           "endValue": 45,
           "startValue": 45,
+          "facingOption": "none",
           "frameNo": 28
         },
         {
@@ -339,6 +399,7 @@
           "duration": 1,
           "endValue": 45,
           "startValue": 45,
+          "facingOption": "none",
           "frameNo": 31
         },
         {
@@ -351,6 +412,7 @@
           "duration": 1,
           "endValue": 45,
           "startValue": 45,
+          "facingOption": "none",
           "frameNo": 34
         }
       ],

@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 10
+          "startRelative": false,
+          "frameNo": 10,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -85,6 +89,7 @@
             0.0,
             -24.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash",
           "type": "image",
           "frameNo": 0,
@@ -93,8 +98,7 @@
             144,
             96,
             48
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -102,6 +106,7 @@
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         }
       ],

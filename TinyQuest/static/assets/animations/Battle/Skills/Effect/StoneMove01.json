@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             -10
           ],
-          "frameNo": 1
+          "startRelative": false,
+          "frameNo": 1,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -44,7 +48,9 @@
             0,
             -17
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -56,7 +62,9 @@
             0,
             -22
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -68,7 +76,9 @@
             0,
             -25
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -80,7 +90,9 @@
             0,
             -26
           ],
-          "frameNo": 5
+          "startRelative": false,
+          "frameNo": 5,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -92,7 +104,9 @@
             0,
             -25
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -104,7 +118,9 @@
             0,
             -22
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -116,7 +132,9 @@
             0,
             -17
           ],
-          "frameNo": 8
+          "startRelative": false,
+          "frameNo": 8,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -128,7 +146,9 @@
             0,
             -10
           ],
-          "frameNo": 9
+          "startRelative": false,
+          "frameNo": 9,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -140,7 +160,9 @@
             0,
             0
           ],
-          "frameNo": 10
+          "startRelative": false,
+          "frameNo": 10,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -156,6 +178,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 0,
@@ -164,8 +187,7 @@
             384,
             16,
             16
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -174,12 +196,14 @@
           "endValue": 60,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 60,
           "startValue": 60,
+          "facingOption": "none",
           "frameNo": 10
         }
       ],

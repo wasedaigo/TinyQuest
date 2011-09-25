@@ -20,7 +20,9 @@
             32,
             0
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 15,
@@ -33,7 +35,9 @@
             32,
             0
           ],
-          "frameNo": 8
+          "startRelative": true,
+          "frameNo": 8,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -45,7 +49,9 @@
             0,
             0
           ],
-          "frameNo": 23
+          "startRelative": false,
+          "frameNo": 23,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -58,10 +64,10 @@
         {
           "duration": 28,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": true
+          "frameNo": 0
         }
       ],
       "rotation": [

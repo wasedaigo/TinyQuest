@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 8,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -44,7 +48,9 @@
             0,
             0
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -60,6 +66,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -68,8 +75,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 4,
@@ -77,6 +83,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 4,
@@ -85,8 +92,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 4,
@@ -94,6 +100,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 8,
@@ -102,8 +109,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 4,
@@ -111,6 +117,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 12,
@@ -119,8 +126,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

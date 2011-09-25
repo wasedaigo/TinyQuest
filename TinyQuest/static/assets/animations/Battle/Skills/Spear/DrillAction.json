@@ -24,7 +24,9 @@
             -30,
             7
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -36,7 +38,9 @@
             -30,
             7
           ],
-          "frameNo": 41
+          "startRelative": false,
+          "frameNo": 41,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -49,10 +53,10 @@
         {
           "duration": 42,
           "emitter": false,
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Effect/WindSpiralBottom",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -99,7 +103,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -111,7 +117,9 @@
             0,
             0
           ],
-          "frameNo": 41
+          "startRelative": false,
+          "frameNo": 41,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -124,10 +132,10 @@
         {
           "duration": 42,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearHold",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -155,7 +163,9 @@
             -30,
             7
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -167,7 +177,9 @@
             -30,
             7
           ],
-          "frameNo": 41
+          "startRelative": false,
+          "frameNo": 41,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -180,26 +192,26 @@
         {
           "duration": 7,
           "emitter": false,
+          "priority": 0.600000023841858,
           "id": "Battle/Skills/Effect/WindSpiralTop",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 21,
           "emitter": false,
+          "priority": 0.600000023841858,
           "id": "Battle/Skills/Effect/WindSpiralBottom",
           "type": "animation",
-          "frameNo": 7,
-          "relative": false
+          "frameNo": 7
         },
         {
           "duration": 14,
           "emitter": false,
+          "priority": 0.600000023841858,
           "id": "Battle/Skills/Effect/WindSpiralTop",
           "type": "animation",
-          "frameNo": 28,
-          "relative": false
+          "frameNo": 28
         }
       ],
       "rotation": [

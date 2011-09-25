@@ -21,7 +21,9 @@
             32,
             -32
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 4,
@@ -34,7 +36,9 @@
             0,
             0
           ],
-          "frameNo": 16
+          "startRelative": false,
+          "frameNo": 16,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -50,6 +54,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -58,12 +63,12 @@
             0,
             32,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 20,
           "rect": null
         }
       ],
@@ -73,12 +78,14 @@
           "endValue": 0,
           "tween": true,
           "startValue": -405,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 4,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 16
         }
       ],

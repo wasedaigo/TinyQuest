@@ -22,7 +22,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -35,14 +37,15 @@
         {
           "duration": 22,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Earth/StoneSpike01",
           "type": "animation",
-          "frameNo": 0,
-          "relative": true
+          "frameNo": 0
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 22,
           "rect": null
         }
       ],
@@ -65,7 +68,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -81,6 +86,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -89,12 +95,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 22,
           "rect": null
         }
       ],

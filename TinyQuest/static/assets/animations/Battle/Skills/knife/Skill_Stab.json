@@ -22,7 +22,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -35,7 +37,9 @@
             -5,
             -8
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -48,7 +52,9 @@
             -10,
             -12
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -61,7 +67,9 @@
             -15,
             -8
           ],
-          "frameNo": 9
+          "startRelative": false,
+          "frameNo": 9,
+          "endRelative": false
         },
         {
           "duration": 6,
@@ -74,7 +82,9 @@
             -20,
             0
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -87,7 +97,9 @@
             -20,
             0
           ],
-          "frameNo": 18
+          "startRelative": false,
+          "frameNo": 18,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -100,7 +112,9 @@
             -15,
             -8
           ],
-          "frameNo": 21
+          "startRelative": false,
+          "frameNo": 21,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -113,7 +127,9 @@
             -10,
             -12
           ],
-          "frameNo": 24
+          "startRelative": false,
+          "frameNo": 24,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -126,7 +142,9 @@
             -5,
             -8
           ],
-          "frameNo": 27
+          "startRelative": false,
+          "frameNo": 27,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -138,7 +156,9 @@
             0,
             0
           ],
-          "frameNo": 30
+          "startRelative": false,
+          "frameNo": 30,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -154,6 +174,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -162,8 +183,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 9,
@@ -171,6 +191,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 12,
@@ -179,8 +200,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 9,
@@ -188,6 +208,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 21,
@@ -196,8 +217,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -205,6 +225,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 30,
@@ -213,8 +234,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -233,7 +253,8 @@
             6
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 2,
@@ -246,7 +267,9 @@
             -17,
             6
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 4,
@@ -258,7 +281,9 @@
             -28,
             6
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -271,7 +296,9 @@
             -28,
             6
           ],
-          "frameNo": 18
+          "startRelative": false,
+          "frameNo": 18,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -292,6 +319,7 @@
             -1.0,
             13.0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_KnifeBase",
           "type": "image",
           "frameNo": 12,
@@ -300,8 +328,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -315,18 +342,21 @@
           "duration": 2,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 12
         },
         {
           "duration": 4,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 14
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 18
         }
       ],

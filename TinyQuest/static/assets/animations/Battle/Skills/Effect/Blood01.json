@@ -20,7 +20,9 @@
             -2,
             -5
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             -3
           ],
-          "frameNo": 1
+          "startRelative": false,
+          "frameNo": 1,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -44,7 +48,9 @@
             -2,
             -5
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -56,7 +62,9 @@
             0,
             -2
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -119,6 +127,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Blood",
           "type": "image",
           "frameNo": 0,
@@ -127,8 +136,7 @@
             0,
             48,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -136,6 +144,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Blood",
           "type": "image",
           "frameNo": 1,
@@ -144,8 +153,7 @@
             0,
             48,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -153,6 +161,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Blood",
           "type": "image",
           "frameNo": 2,
@@ -161,8 +170,7 @@
             0,
             48,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -170,6 +178,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Blood",
           "type": "image",
           "frameNo": 3,
@@ -178,8 +187,7 @@
             0,
             48,
             48
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -187,24 +195,28 @@
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 1
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 2
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 3
         }
       ],

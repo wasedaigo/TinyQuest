@@ -22,7 +22,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 17,
@@ -35,7 +37,9 @@
             0,
             0
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": true
         },
         {
           "duration": 3,
@@ -48,7 +52,9 @@
             0,
             0
           ],
-          "frameNo": 23
+          "startRelative": true,
+          "frameNo": 23,
+          "endRelative": true
         },
         {
           "duration": 5,
@@ -60,7 +66,9 @@
             0,
             0
           ],
-          "frameNo": 26
+          "startRelative": true,
+          "frameNo": 26,
+          "endRelative": true
         },
         {
           "duration": 3,
@@ -73,7 +81,9 @@
             0,
             0
           ],
-          "frameNo": 31
+          "startRelative": true,
+          "frameNo": 31,
+          "endRelative": true
         },
         {
           "duration": 3,
@@ -86,7 +96,9 @@
             10,
             0
           ],
-          "frameNo": 34
+          "startRelative": true,
+          "frameNo": 34,
+          "endRelative": true
         },
         {
           "duration": 6,
@@ -99,7 +111,9 @@
             0,
             0
           ],
-          "frameNo": 37
+          "startRelative": true,
+          "frameNo": 37,
+          "endRelative": true
         },
         {
           "duration": 6,
@@ -112,7 +126,9 @@
             0,
             0
           ],
-          "frameNo": 43
+          "startRelative": true,
+          "frameNo": 43,
+          "endRelative": true
         },
         {
           "duration": 18,
@@ -125,7 +141,9 @@
             0,
             0
           ],
-          "frameNo": 49
+          "startRelative": true,
+          "frameNo": 49,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -138,7 +156,9 @@
             0,
             0
           ],
-          "frameNo": 67
+          "startRelative": false,
+          "frameNo": 67,
+          "endRelative": false
         },
         {
           "duration": 9,
@@ -150,7 +170,9 @@
             0,
             0
           ],
-          "frameNo": 70
+          "startRelative": false,
+          "frameNo": 70,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -219,10 +241,10 @@
         {
           "duration": 28,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 3,
@@ -230,6 +252,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 28,
@@ -238,8 +261,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 12,
@@ -247,6 +269,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 31,
@@ -255,16 +278,15 @@
             0,
             32,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 28,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 43,
-          "relative": true
+          "frameNo": 43
         },
         {
           "duration": 1,
@@ -272,6 +294,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 71,
@@ -280,8 +303,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 3,
@@ -289,6 +311,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 72,
@@ -297,8 +320,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 4,
@@ -306,6 +328,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 75,
@@ -314,12 +337,12 @@
             0,
             32,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 79,
           "rect": null
         }
       ],
@@ -339,7 +362,8 @@
             7
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 3,
@@ -352,7 +376,9 @@
             -2,
             7
           ],
-          "frameNo": 31
+          "startRelative": true,
+          "frameNo": 31,
+          "endRelative": true
         },
         {
           "duration": 3,
@@ -365,7 +391,9 @@
             8,
             7
           ],
-          "frameNo": 34
+          "startRelative": true,
+          "frameNo": 34,
+          "endRelative": true
         },
         {
           "duration": 6,
@@ -377,7 +405,9 @@
             -2,
             7
           ],
-          "frameNo": 37
+          "startRelative": true,
+          "frameNo": 37,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -398,6 +428,7 @@
             0.0,
             15.0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_KnifeBase",
           "type": "image",
           "frameNo": 31,
@@ -406,12 +437,12 @@
             0,
             32,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 43,
           "rect": null
         }
       ],
@@ -427,6 +458,7 @@
           "endValue": 90,
           "tween": true,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 31
         },
         {
@@ -434,12 +466,14 @@
           "endValue": 90,
           "tween": true,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 34
         },
         {
           "duration": 6,
           "endValue": 90,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 37
         }
       ],

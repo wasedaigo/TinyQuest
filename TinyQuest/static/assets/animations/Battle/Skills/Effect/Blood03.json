@@ -20,7 +20,9 @@
             11,
             7
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -45,13 +47,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Blood01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -59,6 +61,7 @@
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         }
       ],
@@ -83,7 +86,9 @@
             19,
             4
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -108,13 +113,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Blood01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -122,6 +127,7 @@
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         }
       ],
@@ -146,7 +152,9 @@
             3,
             11
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -171,13 +179,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Blood01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -185,6 +193,7 @@
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         }
       ],

@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -33,7 +35,9 @@
             -69,
             0
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -45,7 +49,9 @@
             -130,
             0
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -61,6 +67,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash2",
           "type": "image",
           "frameNo": 0,
@@ -69,8 +76,7 @@
             112,
             192,
             16
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -78,6 +84,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash2",
           "type": "image",
           "frameNo": 1,
@@ -86,8 +93,7 @@
             112,
             192,
             16
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -95,6 +101,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash2",
           "type": "image",
           "frameNo": 2,
@@ -103,8 +110,7 @@
             112,
             192,
             16
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 4,
@@ -112,6 +118,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash2",
           "type": "image",
           "frameNo": 3,
@@ -120,8 +127,7 @@
             304,
             192,
             16
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

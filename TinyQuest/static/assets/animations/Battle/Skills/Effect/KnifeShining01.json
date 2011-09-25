@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -48,6 +52,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
           "type": "image",
           "frameNo": 0,
@@ -56,8 +61,7 @@
             128,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -65,6 +69,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
           "type": "image",
           "frameNo": 1,
@@ -73,8 +78,7 @@
             128,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -82,6 +86,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
           "type": "image",
           "frameNo": 2,
@@ -90,8 +95,7 @@
             128,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -99,6 +103,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
           "type": "image",
           "frameNo": 3,
@@ -107,8 +112,7 @@
             128,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -116,6 +120,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
           "type": "image",
           "frameNo": 4,
@@ -124,8 +129,7 @@
             128,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

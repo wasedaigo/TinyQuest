@@ -23,13 +23,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -54,13 +54,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -82,7 +82,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -94,7 +96,9 @@
             0,
             -10
           ],
-          "frameNo": 1
+          "startRelative": false,
+          "frameNo": 1,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -106,7 +110,9 @@
             0,
             -20
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 16,
@@ -118,7 +124,9 @@
             0,
             -30
           ],
-          "frameNo": 3
+          "startRelative": false,
+          "frameNo": 3,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -130,7 +138,9 @@
             0,
             -20
           ],
-          "frameNo": 19
+          "startRelative": false,
+          "frameNo": 19,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -142,7 +152,9 @@
             0,
             -10
           ],
-          "frameNo": 20
+          "startRelative": false,
+          "frameNo": 20,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -154,7 +166,9 @@
             0,
             0
           ],
-          "frameNo": 21
+          "startRelative": false,
+          "frameNo": 21,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -170,6 +184,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 0,
@@ -178,8 +193,7 @@
             224,
             32,
             16
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -187,6 +201,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 1,
@@ -195,8 +210,7 @@
             224,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -204,6 +218,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 2,
@@ -212,8 +227,7 @@
             224,
             32,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 16,
@@ -221,6 +235,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 3,
@@ -229,8 +244,7 @@
             224,
             32,
             64
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -238,6 +252,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 19,
@@ -246,8 +261,7 @@
             224,
             32,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -255,6 +269,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 20,
@@ -263,8 +278,7 @@
             224,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -272,6 +286,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Stone01",
           "type": "image",
           "frameNo": 21,
@@ -280,8 +295,7 @@
             224,
             32,
             16
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -306,13 +320,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 5.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 10.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -337,13 +351,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -368,13 +382,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -399,13 +413,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -430,13 +444,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 2.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/StoneMove01",
           "maxEmitAngle": 180,
           "type": "animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [

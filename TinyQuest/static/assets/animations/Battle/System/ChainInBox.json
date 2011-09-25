@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -45,14 +49,15 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/System/ChainInLine",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 15,
           "rect": null
         }
       ],
@@ -62,6 +67,7 @@
           "endValue": 90,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
@@ -69,6 +75,7 @@
           "endValue": 90,
           "tween": true,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],
@@ -88,7 +95,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -100,7 +109,9 @@
             0,
             0
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -113,10 +124,10 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/System/ChainInLine",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -125,6 +136,7 @@
           "endValue": 180,
           "tween": true,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
@@ -132,6 +144,7 @@
           "endValue": 180,
           "tween": true,
           "startValue": 180,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],
@@ -151,7 +164,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -163,7 +178,9 @@
             0,
             0
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -176,10 +193,10 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/System/ChainInLine",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -188,6 +205,7 @@
           "endValue": 270,
           "tween": true,
           "startValue": 180,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
@@ -195,6 +213,7 @@
           "endValue": 270,
           "tween": true,
           "startValue": 270,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],
@@ -214,7 +233,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -226,7 +247,9 @@
             0,
             0
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -239,10 +262,10 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/System/ChainInLine",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -251,6 +274,7 @@
           "endValue": 360,
           "tween": true,
           "startValue": 270,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
@@ -258,6 +282,7 @@
           "endValue": 360,
           "tween": true,
           "startValue": 360,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],

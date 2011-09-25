@@ -25,6 +25,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Freeze01",
           "type": "image",
           "frameNo": 0,
@@ -33,8 +34,7 @@
             0,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -42,6 +42,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Freeze01",
           "type": "image",
           "frameNo": 1,
@@ -50,8 +51,7 @@
             0,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -59,6 +59,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Freeze01",
           "type": "image",
           "frameNo": 2,
@@ -67,8 +68,7 @@
             0,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -76,6 +76,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Freeze01",
           "type": "image",
           "frameNo": 3,
@@ -84,8 +85,7 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -36,6 +38,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "UI/UI_ChainBox",
           "type": "image",
           "frameNo": 0,
@@ -44,12 +47,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 12,
           "rect": null
         }
       ],
@@ -72,7 +75,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 9,
@@ -84,7 +89,9 @@
             0,
             0
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -96,7 +103,9 @@
             0,
             0
           ],
-          "frameNo": 11
+          "startRelative": false,
+          "frameNo": 11,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -112,6 +121,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "UI/UI_ChainBox",
           "type": "image",
           "frameNo": 0,
@@ -120,8 +130,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

@@ -1,0 +1,18 @@
+{
+   "keyframes" : {
+      "2" : [
+         {
+            "emitter" : true,
+            "frameNo" : 12,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 8, 50 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Effect/Stab01.ani"
+         }
+      ]
+   }
+}

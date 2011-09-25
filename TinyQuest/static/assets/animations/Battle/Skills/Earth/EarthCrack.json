@@ -20,7 +20,9 @@
             0,
             20
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -36,6 +38,7 @@
             0,
             0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 0,
@@ -44,8 +47,7 @@
             0,
             192,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 3,
@@ -53,6 +55,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 3,
@@ -61,8 +64,7 @@
             32,
             160,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 3,
@@ -70,6 +72,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 6,
@@ -78,8 +81,7 @@
             64,
             160,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 3,
@@ -87,6 +89,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 9,
@@ -95,8 +98,7 @@
             96,
             160,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 3,
@@ -104,6 +106,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 12,
@@ -112,8 +115,7 @@
             128,
             160,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 6,
@@ -121,6 +123,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
           "type": "image",
           "frameNo": 15,
@@ -129,12 +132,12 @@
             160,
             160,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 21,
           "rect": null
         }
       ],

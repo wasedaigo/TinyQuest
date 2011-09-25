@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 7,
@@ -34,7 +36,9 @@
             0,
             -36
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -47,7 +51,9 @@
             0,
             2
           ],
-          "frameNo": 14
+          "startRelative": false,
+          "frameNo": 14,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -60,7 +66,9 @@
             0,
             40
           ],
-          "frameNo": 24
+          "startRelative": false,
+          "frameNo": 24,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -73,7 +81,9 @@
             0,
             0
           ],
-          "frameNo": 34
+          "startRelative": false,
+          "frameNo": 34,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -86,10 +96,10 @@
         {
           "duration": 35,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Axe/SingleSpinAxe",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [

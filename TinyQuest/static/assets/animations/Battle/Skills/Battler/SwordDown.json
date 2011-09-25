@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -37,6 +39,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -45,8 +48,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 3,
@@ -54,6 +56,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 3,
@@ -62,8 +65,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 22,
@@ -71,6 +73,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 6,
@@ -79,12 +82,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 28,
           "rect": null
         }
       ],
@@ -108,7 +111,9 @@
             -6,
             8
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 22,
@@ -120,7 +125,9 @@
             2,
             8
           ],
-          "frameNo": 6
+          "startRelative": false,
+          "frameNo": 6,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -136,6 +143,7 @@
             0.0,
             11.0
           ],
+          "priority": 0.300000011920929,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "image",
           "frameNo": 0,
@@ -144,12 +152,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 28,
           "rect": null
         }
       ],
@@ -159,12 +167,14 @@
           "endValue": 90,
           "tween": true,
           "startValue": 360,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 22,
           "endValue": 90,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 6
         }
       ],

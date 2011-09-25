@@ -26,7 +26,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -39,7 +41,9 @@
             -16,
             0
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 16,
@@ -51,7 +55,9 @@
             -21,
             0
           ],
-          "frameNo": 15
+          "startRelative": false,
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 15,
@@ -63,7 +69,9 @@
             0,
             0
           ],
-          "frameNo": 31
+          "startRelative": false,
+          "frameNo": 31,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -76,10 +84,10 @@
         {
           "duration": 12,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Running",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 19,
@@ -87,6 +95,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 12,
@@ -95,20 +104,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallBack",
           "type": "animation",
-          "frameNo": 31,
-          "relative": false
+          "frameNo": 31
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 46,
           "rect": null
         }
       ],
@@ -128,7 +137,8 @@
             10
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -141,7 +151,9 @@
             -22,
             10
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 5,
@@ -154,7 +166,9 @@
             -38,
             10
           ],
-          "frameNo": 15
+          "startRelative": false,
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -166,7 +180,9 @@
             -36,
             10
           ],
-          "frameNo": 20
+          "startRelative": false,
+          "frameNo": 20,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -178,7 +194,9 @@
             -36,
             10
           ],
-          "frameNo": 30
+          "startRelative": false,
+          "frameNo": 30,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -199,6 +217,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Weapon_SpearBase",
           "type": "image",
           "frameNo": 12,
@@ -207,12 +226,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 31,
           "rect": null
         }
       ],
@@ -227,24 +246,28 @@
           "duration": 3,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 12
         },
         {
           "duration": 5,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 15
         },
         {
           "duration": 10,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 20
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 30
         }
       ],
@@ -261,7 +284,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -273,7 +297,9 @@
             30,
             0
           ],
-          "frameNo": 15
+          "startRelative": true,
+          "frameNo": 15,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -292,13 +318,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Thrust01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 15,
-          "relative": true
+          "frameNo": 15
         }
       ],
       "rotation": [

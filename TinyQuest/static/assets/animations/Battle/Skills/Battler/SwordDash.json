@@ -22,7 +22,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -34,7 +36,9 @@
             0,
             0
           ],
-          "frameNo": 10
+          "startRelative": true,
+          "frameNo": 10,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -50,6 +54,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -58,12 +63,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 11,
           "rect": null
         }
       ],
@@ -87,7 +92,9 @@
             14,
             8
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -99,7 +106,9 @@
             14,
             8
           ],
-          "frameNo": 10
+          "startRelative": true,
+          "frameNo": 10,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -115,6 +124,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "image",
           "frameNo": 0,
@@ -123,12 +133,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 11,
           "rect": null
         }
       ],
@@ -137,12 +147,14 @@
           "duration": 10,
           "endValue": 90,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 90,
           "startValue": 90,
+          "facingOption": "none",
           "frameNo": 10
         }
       ],

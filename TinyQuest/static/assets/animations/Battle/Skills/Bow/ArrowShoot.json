@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -33,7 +35,9 @@
             10,
             0
           ],
-          "frameNo": 8
+          "startRelative": true,
+          "frameNo": 8,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -49,6 +53,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
           "type": "image",
           "frameNo": 0,
@@ -57,8 +62,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -66,12 +70,14 @@
           "duration": 8,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "faceToMov",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "faceToMov",
           "frameNo": 8
         }
       ],

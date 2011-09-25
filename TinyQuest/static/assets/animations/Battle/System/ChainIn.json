@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -33,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 5
+          "startRelative": false,
+          "frameNo": 5,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -47,13 +51,13 @@
           "duration": 6,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/System/ChainInBox",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [

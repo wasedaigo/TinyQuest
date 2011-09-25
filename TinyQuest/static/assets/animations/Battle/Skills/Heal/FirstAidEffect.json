@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 2,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -48,6 +52,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Heal01",
           "type": "image",
           "frameNo": 0,
@@ -56,8 +61,7 @@
             192,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 2,
@@ -65,6 +69,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Heal01",
           "type": "image",
           "frameNo": 2,
@@ -73,8 +78,7 @@
             192,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 2,
@@ -82,6 +86,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Heal01",
           "type": "image",
           "frameNo": 4,
@@ -90,12 +95,12 @@
             192,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 6,
           "rect": null
         }
       ],

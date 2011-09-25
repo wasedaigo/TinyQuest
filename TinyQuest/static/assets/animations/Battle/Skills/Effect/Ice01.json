@@ -73,10 +73,10 @@
         {
           "duration": 35,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Effect/IceOrb",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [

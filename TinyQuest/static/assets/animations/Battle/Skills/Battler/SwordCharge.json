@@ -23,7 +23,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 4,
@@ -35,7 +37,9 @@
             -64,
             0
           ],
-          "frameNo": 16
+          "startRelative": true,
+          "frameNo": 16,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -48,14 +52,15 @@
         {
           "duration": 20,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordDashUpper",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 20,
           "rect": null
         }
       ],

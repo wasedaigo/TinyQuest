@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -32,7 +34,9 @@
             0,
             0
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -48,6 +52,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Weapon_AxeBase",
           "type": "image",
           "frameNo": 0,
@@ -56,8 +61,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -66,12 +70,14 @@
           "endValue": 315,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 315,
           "startValue": 315,
+          "facingOption": "none",
           "frameNo": 7
         }
       ],

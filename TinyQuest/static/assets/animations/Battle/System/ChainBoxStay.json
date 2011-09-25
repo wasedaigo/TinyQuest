@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -36,6 +38,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "UI/UI_ChainBox",
           "type": "image",
           "frameNo": 0,
@@ -44,8 +47,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -72,7 +74,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -88,6 +92,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "UI/UI_ChainBox",
           "type": "image",
           "frameNo": 0,
@@ -96,8 +101,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

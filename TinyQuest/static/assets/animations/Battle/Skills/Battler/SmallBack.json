@@ -20,7 +20,9 @@
             -16,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 9,
@@ -33,7 +35,9 @@
             -16,
             0
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -45,7 +49,9 @@
             0,
             0
           ],
-          "frameNo": 11
+          "startRelative": false,
+          "frameNo": 11,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -58,10 +64,10 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [

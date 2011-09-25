@@ -49,6 +49,7 @@
             2.0,
             1.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
           "type": "image",
           "frameNo": 0,
@@ -57,8 +58,7 @@
             288,
             64,
             64
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -197,6 +197,7 @@
             -6.0,
             2.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
           "type": "image",
           "frameNo": 2,
@@ -205,8 +206,7 @@
             272,
             48,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -214,6 +214,7 @@
             3.0,
             -2.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
           "type": "image",
           "frameNo": 6,
@@ -222,8 +223,7 @@
             288,
             48,
             48
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 2,
@@ -231,6 +231,7 @@
             3.0,
             -2.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
           "type": "image",
           "frameNo": 7,
@@ -239,8 +240,7 @@
             272,
             80,
             80
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 5,
@@ -248,6 +248,7 @@
             2.0,
             5.0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
           "type": "image",
           "frameNo": 9,
@@ -256,8 +257,7 @@
             256,
             80,
             80
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

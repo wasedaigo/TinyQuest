@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -33,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 21
+          "startRelative": true,
+          "frameNo": 21,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -73,6 +77,8 @@
             0,
             0
           ],
+          "blendType": "add",
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Special01",
           "type": "image",
           "frameNo": 0,
@@ -81,8 +87,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -90,12 +95,14 @@
           "duration": 21,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "faceToMov",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
+          "facingOption": "faceToMov",
           "frameNo": 21
         }
       ],

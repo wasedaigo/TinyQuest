@@ -62,6 +62,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Special01",
           "type": "image",
           "frameNo": 0,
@@ -70,12 +71,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 15,
           "rect": null
         }
       ],
@@ -85,12 +86,14 @@
           "endValue": 30,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 30,
           "startValue": 30,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],

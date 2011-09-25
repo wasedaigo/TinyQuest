@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -32,13 +34,16 @@
             0,
             0
           ],
-          "frameNo": 6
+          "startRelative": true,
+          "frameNo": 6,
+          "endRelative": true
         },
         {
           "duration": 2,
           "endValue": null,
           "wait": true,
-          "frameNo": 7
+          "frameNo": 7,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -52,13 +57,13 @@
           "duration": 7,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Monster/DeadlyFang",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": true
+          "frameNo": 0
         },
         {
           "duration": 2,
@@ -68,6 +73,7 @@
         {
           "duration": 1,
           "id": "",
+          "frameNo": 9,
           "rect": null
         }
       ],

@@ -25,7 +25,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 35,
@@ -37,7 +39,9 @@
             -16,
             0
           ],
-          "frameNo": 9
+          "startRelative": false,
+          "frameNo": 9,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -49,7 +53,9 @@
             -16,
             0
           ],
-          "frameNo": 44
+          "startRelative": false,
+          "frameNo": 44,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -62,10 +68,10 @@
         {
           "duration": 9,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Walking",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 36,
@@ -73,6 +79,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 9,
@@ -81,8 +88,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [
@@ -101,7 +107,8 @@
             3
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 29,
@@ -113,7 +120,9 @@
             -17,
             3
           ],
-          "frameNo": 9
+          "startRelative": false,
+          "frameNo": 9,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -130,15 +139,17 @@
         },
         {
           "duration": 29,
+          "blendType": "add",
           "emitter": false,
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Common/MagicCastingRingTop",
           "type": "animation",
-          "frameNo": 9,
-          "relative": false
+          "frameNo": 9
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 38,
           "rect": null
         }
       ],
@@ -169,7 +180,8 @@
             3
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 29,
@@ -181,7 +193,9 @@
             -17,
             3
           ],
-          "frameNo": 9
+          "startRelative": false,
+          "frameNo": 9,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -198,15 +212,17 @@
         },
         {
           "duration": 29,
+          "blendType": "add",
           "emitter": false,
+          "priority": 0.600000023841858,
           "id": "Battle/Skills/Common/MagicCastingRingBottom",
           "type": "animation",
-          "frameNo": 9,
-          "relative": false
+          "frameNo": 9
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 38,
           "rect": null
         }
       ],

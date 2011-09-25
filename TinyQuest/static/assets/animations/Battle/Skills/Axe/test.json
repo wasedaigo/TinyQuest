@@ -1,42 +1,37 @@
 {
   "dependencies": {
     "animations": [
-      "Battle/Skills/knife/SingleKnifeRotating"
+      "Battle/Skills/Effect/Stab01"
     ],
     "images": [
-      "Battle/Skills/Effect_Weapon05"
+      "Battle/Skills/Effect_Weapon03"
     ]
   },
   "timelines": [
     {
       "position": [
         {
-          "duration": 14,
+          "duration": 12,
           "endValue": [
-            0,
-            0
+            8,
+            50
           ],
-          "tween": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "startRelative": false,
+          "wait": true,
           "frameNo": 0,
           "endRelative": true
         },
         {
           "duration": 1,
           "endValue": [
-            0,
-            0
+            8,
+            50
           ],
           "startValue": [
-            0,
-            0
+            8,
+            50
           ],
           "startRelative": true,
-          "frameNo": 14,
+          "frameNo": 12,
           "endRelative": true
         }
       ],
@@ -48,12 +43,21 @@
       ],
       "source": [
         {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/knife/SingleKnifeRotating",
-          "type": "animation",
+          "duration": 12,
+          "wait": true,
           "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Stab01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 12
         }
       ],
       "rotation": [

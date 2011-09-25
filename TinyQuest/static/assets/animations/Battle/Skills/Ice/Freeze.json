@@ -25,14 +25,15 @@
         {
           "duration": 42,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/MagicCasting",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 42,
           "rect": null
         }
       ],
@@ -58,13 +59,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Ice01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": true
+          "frameNo": 0
         }
       ],
       "rotation": [

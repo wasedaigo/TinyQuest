@@ -20,7 +20,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -36,6 +38,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon03",
           "type": "image",
           "frameNo": 0,
@@ -44,8 +47,7 @@
             288,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -53,6 +55,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon03",
           "type": "image",
           "frameNo": 1,
@@ -61,8 +64,7 @@
             288,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -70,6 +72,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon03",
           "type": "image",
           "frameNo": 2,
@@ -78,8 +81,7 @@
             288,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -87,6 +89,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon03",
           "type": "image",
           "frameNo": 3,
@@ -95,8 +98,7 @@
             288,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -104,6 +106,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon03",
           "type": "image",
           "frameNo": 4,
@@ -112,12 +115,12 @@
             288,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 5,
           "rect": null
         }
       ],

@@ -1,0 +1,25 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "fix",
+            "frameNo" : 0,
+            "position" : [ 32, 0 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SwordSwing.ani"
+         },
+         {
+            "frameNo" : 1,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/Back.ani"
+         },
+         {
+            "frameNo" : 2,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

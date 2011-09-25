@@ -25,13 +25,13 @@
           "duration": 15,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Fire/FlareParticle",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -40,12 +40,14 @@
           "endValue": 1957,
           "tween": true,
           "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 1957,
           "startValue": 1957,
+          "facingOption": "none",
           "frameNo": 14
         }
       ],
@@ -73,13 +75,13 @@
           "duration": 15,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Fire/FlareParticle",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 1,
-          "relative": false
+          "frameNo": 1
         }
       ],
       "rotation": [
@@ -94,12 +96,14 @@
           "endValue": -503,
           "tween": true,
           "startValue": 1381,
+          "facingOption": "none",
           "frameNo": 1
         },
         {
           "duration": 1,
           "endValue": -503,
           "startValue": -503,
+          "facingOption": "none",
           "frameNo": 15
         }
       ],
@@ -126,14 +130,15 @@
         {
           "duration": 26,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Fire/FlareExplosion",
           "type": "animation",
-          "frameNo": 27,
-          "relative": false
+          "frameNo": 27
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 53,
           "rect": null
         }
       ],

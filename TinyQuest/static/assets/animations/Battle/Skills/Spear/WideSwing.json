@@ -23,7 +23,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -36,7 +38,9 @@
             0,
             0
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -48,7 +52,9 @@
             -16,
             24
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 6,
@@ -61,7 +67,9 @@
             -16,
             24
           ],
-          "frameNo": 15
+          "startRelative": false,
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 17,
@@ -73,7 +81,9 @@
             -16,
             -24
           ],
-          "frameNo": 21
+          "startRelative": false,
+          "frameNo": 21,
+          "endRelative": false
         },
         {
           "duration": 2,
@@ -85,7 +95,9 @@
             -16,
             -24
           ],
-          "frameNo": 38
+          "startRelative": false,
+          "frameNo": 38,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -98,7 +110,9 @@
             -16,
             -24
           ],
-          "frameNo": 40
+          "startRelative": false,
+          "frameNo": 40,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -110,7 +124,9 @@
             0,
             0
           ],
-          "frameNo": 50
+          "startRelative": false,
+          "frameNo": 50,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -123,10 +139,10 @@
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 7,
@@ -134,6 +150,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 15,
@@ -142,8 +159,7 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 16,
@@ -151,6 +167,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 22,
@@ -159,20 +176,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "animation",
-          "frameNo": 38,
-          "relative": false
+          "frameNo": 38
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 53,
           "rect": null
         }
       ],
@@ -192,7 +209,8 @@
             14
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 6,
@@ -205,7 +223,9 @@
             -26,
             14
           ],
-          "frameNo": 15
+          "startRelative": false,
+          "frameNo": 15,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -217,7 +237,9 @@
             -22,
             -36
           ],
-          "frameNo": 21
+          "startRelative": false,
+          "frameNo": 21,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -238,6 +260,7 @@
             0,
             0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_SpearBase",
           "type": "image",
           "frameNo": 15,
@@ -246,12 +269,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 22,
           "rect": null
         }
       ],
@@ -266,12 +289,14 @@
           "duration": 6,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 15
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
+          "facingOption": "none",
           "frameNo": 21
         }
       ],
@@ -299,13 +324,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Slash04",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 30,
-          "relative": true
+          "frameNo": 30
         }
       ],
       "rotation": [

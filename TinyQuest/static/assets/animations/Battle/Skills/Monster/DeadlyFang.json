@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -33,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -72,6 +76,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Monster_Attack1",
           "type": "image",
           "frameNo": 0,
@@ -80,8 +85,7 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -89,6 +93,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Monster_Attack1",
           "type": "image",
           "frameNo": 1,
@@ -97,8 +102,7 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -106,6 +110,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Monster_Attack1",
           "type": "image",
           "frameNo": 2,
@@ -114,8 +119,7 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -123,6 +127,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Monster_Attack1",
           "type": "image",
           "frameNo": 3,
@@ -131,8 +136,7 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
@@ -140,6 +144,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Monster_Attack1",
           "type": "image",
           "frameNo": 4,
@@ -148,12 +153,12 @@
             96,
             96,
             96
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 5,
           "rect": null
         }
       ],

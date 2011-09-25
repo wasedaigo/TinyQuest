@@ -8,7 +8,7 @@ var currentAnimationFileName = null;
 var currentAnimation = null;
 
 var target = new enchant.canvas.Node();
-target.position = [60, 130];
+target.position = [60, 160];
 target.update();
 
 var root = new enchant.canvas.Node();

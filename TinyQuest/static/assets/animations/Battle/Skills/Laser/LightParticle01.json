@@ -17,7 +17,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 4,
@@ -30,7 +31,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -43,7 +46,9 @@
             0,
             0
           ],
-          "frameNo": 8
+          "startRelative": false,
+          "frameNo": 8,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -84,6 +89,8 @@
             0,
             0
           ],
+          "blendType": "add",
+          "priority": 0.5,
           "id": "Battle/Skills/Effect_Light",
           "type": "image",
           "frameNo": 0,
@@ -92,8 +99,7 @@
             0,
             64,
             64
-          ],
-          "relative": false
+          ]
         }
       ],
       "rotation": [

@@ -1,0 +1,106 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/SwordSwing",
+      "Battle/Skills/Battler/Back",
+      "Battle/Skills/Battler/SwordDown02",
+      "Battle/Skills/Battler/Jump"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            32,
+            0
+          ],
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": false
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "startRelative": false,
+          "frameNo": 1,
+          "endRelative": false
+        }
+      ],
+      "scale": [
+        {
+          "duration": 2,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordSwing",
+          "type": "animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Back",
+          "type": "animation",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 2,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 2,
+          "endValue": 0,
+          "startValue": 0,
+          "facingOption": "none",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 2,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        }
+      ]
+    }
+  ]
+}

@@ -22,7 +22,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 15,
@@ -35,7 +37,9 @@
             0,
             0
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -48,7 +52,9 @@
             0,
             0
           ],
-          "frameNo": 22
+          "startRelative": true,
+          "frameNo": 22,
+          "endRelative": true
         },
         {
           "duration": 18,
@@ -60,7 +66,9 @@
             0,
             0
           ],
-          "frameNo": 23
+          "startRelative": true,
+          "frameNo": 23,
+          "endRelative": true
         },
         {
           "duration": 7,
@@ -72,7 +80,9 @@
             0,
             0
           ],
-          "frameNo": 41
+          "startRelative": true,
+          "frameNo": 41,
+          "endRelative": true
         },
         {
           "duration": 16,
@@ -85,7 +95,9 @@
             0,
             0
           ],
-          "frameNo": 48
+          "startRelative": true,
+          "frameNo": 48,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -97,7 +109,9 @@
             0,
             0
           ],
-          "frameNo": 64
+          "startRelative": false,
+          "frameNo": 64,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -110,10 +124,10 @@
         {
           "duration": 23,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 18,
@@ -121,6 +135,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 23,
@@ -129,20 +144,20 @@
             0,
             32,
             32
-          ],
-          "relative": true
+          ]
         },
         {
           "duration": 24,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
           "type": "animation",
-          "frameNo": 41,
-          "relative": true
+          "frameNo": 41
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 65,
           "rect": null
         }
       ],
@@ -155,7 +170,78 @@
     },
     {
       "position": [
-
+        {
+          "duration": 26,
+          "endValue": [
+            -13,
+            -10
+          ],
+          "wait": true,
+          "frameNo": 0,
+          "endRelative": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -13,
+            -10
+          ],
+          "startValue": [
+            -13,
+            -10
+          ],
+          "startRelative": true,
+          "frameNo": 26,
+          "endRelative": true
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            2,
+            12
+          ],
+          "wait": true,
+          "frameNo": 27,
+          "endRelative": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            2,
+            12
+          ],
+          "startValue": [
+            2,
+            12
+          ],
+          "startRelative": true,
+          "frameNo": 29,
+          "endRelative": true
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            17,
+            -17
+          ],
+          "wait": true,
+          "frameNo": 30,
+          "endRelative": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            17,
+            -17
+          ],
+          "startValue": [
+            17,
+            -17
+          ],
+          "startRelative": true,
+          "frameNo": 32,
+          "endRelative": true
+        }
       ],
       "scale": [
 
@@ -173,27 +259,52 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Bash01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 26,
-          "relative": true
+          "frameNo": 26
         },
         {
-          "duration": 3,
+          "duration": 2,
           "wait": true,
           "frameNo": 27
         },
         {
-          "duration": 3,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Bash01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 29
+        },
+        {
+          "duration": 2,
           "wait": true,
           "frameNo": 30
         },
         {
           "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Bash01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 32
+        },
+        {
+          "duration": 1,
           "id": "",
+          "frameNo": 33,
           "rect": null
         }
       ],

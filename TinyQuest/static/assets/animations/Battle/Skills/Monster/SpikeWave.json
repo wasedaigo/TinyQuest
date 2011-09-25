@@ -21,7 +21,9 @@
             -32,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -30,7 +32,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 1
+          "frameNo": 1,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -42,7 +45,9 @@
             0,
             0
           ],
-          "frameNo": 4
+          "startRelative": false,
+          "frameNo": 4,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -51,7 +56,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 5
+          "frameNo": 5,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -63,7 +69,9 @@
             32,
             0
           ],
-          "frameNo": 8
+          "startRelative": false,
+          "frameNo": 8,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -72,7 +80,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 9
+          "frameNo": 9,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -84,7 +93,9 @@
             64,
             0
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -93,7 +104,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 13
+          "frameNo": 13,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -105,7 +117,9 @@
             96,
             0
           ],
-          "frameNo": 16
+          "startRelative": false,
+          "frameNo": 16,
+          "endRelative": false
         },
         {
           "duration": 3,
@@ -114,7 +128,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 17
+          "frameNo": 17,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -126,7 +141,9 @@
             128,
             0
           ],
-          "frameNo": 20
+          "startRelative": false,
+          "frameNo": 20,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -140,38 +157,98 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Earth/StoneSpike01",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
-          "duration": 4,
+          "duration": 3,
           "wait": true,
           "frameNo": 1
         },
         {
-          "duration": 4,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 4
+        },
+        {
+          "duration": 3,
           "wait": true,
           "frameNo": 5
         },
         {
-          "duration": 4,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 8
+        },
+        {
+          "duration": 3,
           "wait": true,
           "frameNo": 9
         },
         {
-          "duration": 4,
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 12
+        },
+        {
+          "duration": 3,
           "wait": true,
           "frameNo": 13
         },
         {
           "duration": 1,
-          "id": "",
-          "rect": null
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 16
+        },
+        {
+          "duration": 3,
+          "wait": true,
+          "frameNo": 17
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "maxEmitAngle": 0,
+          "type": "animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 20
         }
       ],
       "rotation": [

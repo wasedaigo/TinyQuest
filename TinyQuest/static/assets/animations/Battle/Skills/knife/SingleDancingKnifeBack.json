@@ -21,7 +21,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": true,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -33,7 +35,9 @@
             0,
             0
           ],
-          "frameNo": 13
+          "startRelative": false,
+          "frameNo": 13,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -46,10 +50,10 @@
         {
           "duration": 14,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/knife/SingleKnifeRotating",
           "type": "animation",
-          "frameNo": 0,
-          "relative": true
+          "frameNo": 0
         }
       ],
       "rotation": [

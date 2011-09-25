@@ -23,7 +23,8 @@
             0
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": true
         },
         {
           "duration": 1,
@@ -35,7 +36,9 @@
             0,
             0
           ],
-          "frameNo": 24
+          "startRelative": true,
+          "frameNo": 24,
+          "endRelative": true
         }
       ],
       "scale": [
@@ -54,13 +57,13 @@
           "duration": 1,
           "emitter": true,
           "minEmitSpeed": 0.0,
+          "priority": 0.5,
           "minEmitAngle": 0,
           "id": "Battle/Skills/Laser/LightBom",
           "maxEmitAngle": 0,
           "type": "animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 24,
-          "relative": true
+          "frameNo": 24
         }
       ],
       "rotation": [
@@ -82,7 +85,9 @@
             -16,
             -9
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -94,15 +99,16 @@
       "source": [
         {
           "duration": 22,
+          "blendType": "add",
           "emitter": true,
           "minEmitSpeed": 20.0,
+          "priority": 0.5,
           "minEmitAngle": -45,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": -45,
           "type": "animation",
           "maxEmitSpeed": 20.0,
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         }
       ],
       "rotation": [
@@ -143,7 +149,9 @@
             -16,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 15,
@@ -155,7 +163,9 @@
             0,
             0
           ],
-          "frameNo": 43
+          "startRelative": false,
+          "frameNo": 43,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -171,6 +181,7 @@
             0,
             0
           ],
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 0,
@@ -179,20 +190,20 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 15,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallBack",
           "type": "animation",
-          "frameNo": 43,
-          "relative": false
+          "frameNo": 43
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 58,
           "rect": null
         }
       ],

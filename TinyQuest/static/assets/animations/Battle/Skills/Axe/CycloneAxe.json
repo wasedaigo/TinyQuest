@@ -23,7 +23,9 @@
             0,
             0
           ],
-          "frameNo": 0
+          "startRelative": false,
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -36,7 +38,9 @@
             0,
             0
           ],
-          "frameNo": 2
+          "startRelative": false,
+          "frameNo": 2,
+          "endRelative": false
         },
         {
           "duration": 5,
@@ -48,7 +52,9 @@
             -16,
             0
           ],
-          "frameNo": 12
+          "startRelative": false,
+          "frameNo": 12,
+          "endRelative": false
         },
         {
           "duration": 10,
@@ -61,7 +67,9 @@
             -16,
             0
           ],
-          "frameNo": 17
+          "startRelative": false,
+          "frameNo": 17,
+          "endRelative": false
         },
         {
           "duration": 19,
@@ -73,7 +81,9 @@
             0,
             0
           ],
-          "frameNo": 27
+          "startRelative": false,
+          "frameNo": 27,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -86,10 +96,10 @@
         {
           "duration": 28,
           "emitter": false,
+          "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "animation",
-          "frameNo": 0,
-          "relative": false
+          "frameNo": 0
         },
         {
           "duration": 18,
@@ -97,6 +107,7 @@
             0,
             0
           ],
+          "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "image",
           "frameNo": 28,
@@ -105,12 +116,12 @@
             0,
             32,
             32
-          ],
-          "relative": false
+          ]
         },
         {
           "duration": 1,
           "id": "",
+          "frameNo": 46,
           "rect": null
         }
       ],
@@ -130,7 +141,8 @@
             -36
           ],
           "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "endRelative": false
         },
         {
           "duration": 13,
@@ -143,7 +155,9 @@
             -8,
             -36
           ],
-          "frameNo": 7
+          "startRelative": false,
+          "frameNo": 7,
+          "endRelative": true
         },
         {
           "duration": 21,
@@ -156,7 +170,9 @@
             0,
             0
           ],
-          "frameNo": 20
+          "startRelative": true,
+          "frameNo": 20,
+          "endRelative": false
         },
         {
           "duration": 1,
@@ -169,7 +185,9 @@
             0,
             0
           ],
-          "frameNo": 41
+          "startRelative": false,
+          "frameNo": 41,
+          "endRelative": false
         }
       ],
       "scale": [
@@ -187,10 +205,10 @@
         {
           "duration": 35,
           "emitter": false,
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Axe/SpinAxeY",
           "type": "animation",
-          "frameNo": 7,
-          "relative": false
+          "frameNo": 7
         }
       ],
       "rotation": [
