@@ -44,6 +44,14 @@ enchant.canvas.Node = enchant.Class.create({
     },
     transform: { 
         get: function() {
+            // Initialize transform if it is not generated yet
+            if (!this._transform) {
+                if (this.parent) {
+                    this.update(this.parent.transform);
+                } else {
+                    this.update(null);
+                }
+            }
             return this._transform;
         },
         set: function(transform) {

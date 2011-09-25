@@ -63,6 +63,7 @@ enchant.animation.animationManager =
         } else {
             interval = parallelInterval;
         }
+        
         return {"interval" : interval, "node" : node};
     },
     // Create attribute tween out of given keyframe data

@@ -24,6 +24,7 @@ window.onload = function() {
         
         root.position = [GAME_WIDTH / 2, 160];
         root.scale = [2, 2];
+        root.update();
         sceneGraph.setRoot(root);
 
         var s = new enchant.Sprite(GAME_WIDTH,GAME_HEIGHT);
