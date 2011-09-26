@@ -125,21 +125,27 @@ enchant.animation.interval  =
         return result;
     },
     CalculateRelativePosition: function (startValue, endValue, node, startRelative, endRelative, target) {
+        var resultStartValue = startValue;
+        var resultEndValue = endValue;
         if (target  && node.parent) {
             var invertMatrix = null;
             if (startRelative) {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-                var targetPosition = [target.position[0] + startValue[0], target.position[1] + startValue[1]];
-                startValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                var targetPosition = [target.position[0], target.position[1]];
+                resultStartValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                resultStartValue[0] += startValue[0];
+                resultStartValue[1] += startValue[1];
             }
             if (endRelative) {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
                 var targetPosition = [target.position[0] + endValue[0], target.position[1] + endValue[1]];
-                endValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                resultEndValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                resultEndValue[0] += endValue[0];
+                resultEndValue[1] += endValue[1];
             }
         }
 
-        return [startValue, endValue];
+        return [resultStartValue, resultEndValue];
     },
     CalculateDynamicRotation: function (startValue, endValue, node, facingOption, target) {
         if (target) {
@@ -217,7 +223,6 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
             var result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, this._node, this._options.startRelative, this._options.endRelative, this._options.target);
             startValue = result[0];
             endValue = result[1];
-            
             // Extra data for FaceToMov option
             this._node.dataStore.lastPosition = startValue;
             
