@@ -36,8 +36,8 @@ window.onload = function() {
         this.addEventListener('enterframe', function() {
             
             surface.context.setTransform(1, 0, 0, 1, 0, 0);
-            surface.context.clearRect(0, 0,GAME_WIDTH, GAME_HEIGHT);
-            
+            surface.context.fillStyle = 'rgba(120,120,120,1)';
+            surface.context.fillRect(0, 0,GAME_WIDTH, GAME_HEIGHT);
             s.image.context.beginPath();
             s.image.context.lineWidth = 1.0;
             s.image.context.moveTo(0, GAME_HEIGHT / 2 - 0.5);
@@ -54,6 +54,7 @@ window.onload = function() {
                 sceneGraph.update();
                 enchant.animation.animationManager.update();
             }
+            surface.context.globalCompositeOperation = "source-over";
         });
     };
     enchant.Game.instance.start();
