@@ -40,7 +40,7 @@
           "endRelative": false
         },
         {
-          "duration": 1,
+          "duration": 4,
           "endValue": [
             0,
             0
@@ -51,6 +51,20 @@
           ],
           "startRelative": false,
           "frameNo": 23,
+          "endRelative": false
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "startRelative": false,
+          "frameNo": 27,
           "endRelative": false
         }
       ],
