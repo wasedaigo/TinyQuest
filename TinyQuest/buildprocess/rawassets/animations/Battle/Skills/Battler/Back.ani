@@ -26,6 +26,7 @@
          },
          {
             "frameNo" : 27,
+            "positionTween" : "fix",
             "sourcePath" : "Battle/Skills/Battler/Jump.ani"
          }
       ]
