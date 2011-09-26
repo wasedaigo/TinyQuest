@@ -228,10 +228,6 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         var value = startValue;
         if (this._tween) {
             value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
-        } else {
-            if (this._frameNo == this._duration) {
-                value = endValue;
-            }
         }
         this._node[this._attribute] = value;
     },
@@ -323,7 +319,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                         transform = enchant.matrix.getNodeTransformMatirx(this._sprite.position[0], this._sprite.position[1], this._sprite.rotation * Math.PI / 180, this._sprite.scale[0], this._sprite.scale[1]);       
                         transform = enchant.matrix.matrixMultiply(transform, this._sprite.parent.transform);
                     }
-
                     // Emit the new animation (emitted animation won't be controled by this instance anymore)
                     var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._target);
                     enchant.animation.animationManager.start(animation);
@@ -331,6 +326,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     // No animation node is generaetd yet, let's generate it
                     // If no ID exists, ignore it (Which usually means an empty keyframe)
                     if (keyframe.id) {
+                        // Update the sprite's transform
+                        this._sprite.updateTransform(this._sprite.parent.transform);
                         var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, this._target);
                         this._sprite.addChild(animation.node);
                         this._interval = animation.interval;

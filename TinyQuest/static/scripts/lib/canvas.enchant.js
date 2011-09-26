@@ -50,9 +50,9 @@ enchant.canvas.Node = enchant.Class.create({
             // Initialize transform if it is not generated yet
             if (!this._transform) {
                 if (this.parent) {
-                    this.update(this.parent.transform);
+                    this.updateTransform(this.parent.transform);
                 } else {
-                    this.update(null);
+                    this.updateTransform(null);
                 }
             }
             return this._transform;
@@ -87,8 +87,7 @@ enchant.canvas.Node = enchant.Class.create({
     sortByPriority: function() {
         this._children.sort(this.prioritySortFunc);
     },
-    update: function(parentTransform) {
-        this.sortByPriority();
+    updateTransform: function(parentTransform) {
         if (!this._hasBaseTransform) {
             var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
             if (parentTransform) {
@@ -100,6 +99,10 @@ enchant.canvas.Node = enchant.Class.create({
         for (var i = 0; i < this._children.length; i++) {
             this._children[i].update(this._transform);
         }
+    },
+    update: function(parentTransform) {
+        this.sortByPriority();
+        this.updateTransform(parentTransform);
     },
     draw: function(assets, surface) {
         if (this._children.length > 0) {
@@ -231,8 +234,7 @@ enchant.canvas.Sprite = enchant.Class.create({
     applyTransform: function(context) { 
         this.node.applyTransform(context);
     },
-    update: function(parentTransform) {
-        this.node.sortByPriority();
+    updateTransform: function(parentTransform) {
         if (this.srcPath) {
             var transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
             if (parentTransform) {
@@ -245,6 +247,10 @@ enchant.canvas.Sprite = enchant.Class.create({
         } else {
             this.node.update(parentTransform);
         }
+    },
+    update: function(parentTransform) {
+        this.node.sortByPriority();
+        this.updateTransform(parentTransform);
     },
     draw: function(assets, surface) {
         if (this.srcPath) {
