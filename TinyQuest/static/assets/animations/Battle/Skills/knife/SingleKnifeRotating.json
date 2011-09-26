@@ -145,10 +145,18 @@
       ],
       "rotation": [
         {
-          "duration": 2,
-          "endValue": 90,
-          "wait": true,
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "facingOption": "none",
           "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 90,
+          "startValue": 0,
+          "facingOption": "none",
+          "frameNo": 1
         },
         {
           "duration": 1,

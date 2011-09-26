@@ -409,6 +409,7 @@ enchant.animation.interval.Loop = enchant.Class.create({
                 if (this._loopCount == 0 || this._loopCounter < this._loopCount) {
                     // Repeat this interval again, since this is a subanimation
                     this._interval.reset();
+                    this._interval.update();
                 }
             }
         }

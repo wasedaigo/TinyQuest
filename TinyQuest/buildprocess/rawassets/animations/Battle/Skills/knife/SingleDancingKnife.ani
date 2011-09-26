@@ -20,7 +20,7 @@
             "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeGo.ani"
          },
          {
-            "alpha" : 0.50,
+            "alpha" : 0.1000000014901161,
             "alphaTween" : "fix",
             "emitter" : true,
             "frameNo" : 5,
@@ -48,7 +48,7 @@
             "sourcePath" : "Battle/Skills/knife/SingleDancingKnifeBack.ani"
          },
          {
-            "alpha" : 0.50,
+            "alpha" : 0.1000000014901161,
             "alphaTween" : "fix",
             "emitter" : true,
             "frameNo" : 19,

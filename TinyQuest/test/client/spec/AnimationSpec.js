@@ -416,11 +416,11 @@ describe("Animation", function() {
             expect(sequence.isDone()).toBe(false);
             
             sequence.update();
-            expect(node.alpha).toBe(0.5);
+            expect(node.alpha).toBe(1);
             expect(sequence.isDone()).toBe(false);
             
             sequence.update();
-            expect(node.alpha).toBe(0.3);
+            expect(node.alpha).toBe(0.5);
             expect(sequence.isDone()).toBe(false);
    
             sequence.update();
@@ -494,7 +494,7 @@ describe("Animation", function() {
             expect(loop.isDone()).toBe(false);
             
             loop.update();
-            expect(node.alpha).toBe(0.1);
+            expect(node.alpha).toBe(1);
             expect(loop.isDone()).toBe(false);
             
             loop.update();
@@ -502,12 +502,9 @@ describe("Animation", function() {
             expect(loop.isDone()).toBe(false);
             
             loop.update();
-            expect(node.alpha).toBe(1.0);
-            expect(loop.isDone()).toBe(false);
-            
-            loop.update();
-            expect(node.alpha).toBe(0.0);
+            expect(node.alpha).toBe(0);
             expect(loop.isDone()).toBe(true);
+            
         });
         it("Loop count infinite", function() {
             var node = new enchant.canvas.Node();
@@ -521,7 +518,7 @@ describe("Animation", function() {
             expect(node.alpha).toBe(0.1);
             expect(loop.isDone()).toBe(false);
             
-            for (var i = 0; i < 1; i++) {
+            for (var i = 0; i < 4; i++) {
                 loop.update();
                 expect(node.alpha).toBe(1.0);
                 expect(loop.isDone()).toBe(false);
@@ -531,7 +528,7 @@ describe("Animation", function() {
                 expect(loop.isDone()).toBe(false);
 
                 loop.update();
-                expect(node.alpha).toBe(0.1);
+                expect(node.alpha).toBe(1);
                 expect(loop.isDone()).toBe(false);
             }            
         });
