@@ -296,6 +296,9 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._clearSetting();
         }
         this._lastAnimationId = keyframe.id;
+    
+        this._sprite.priority = keyframe.priority ? keyframe.priority : 0.5;
+        this._sprite.blendType = keyframe.blendType;
         if (keyframe.type == "image") {
             // Display static image
             this._clearSetting();
@@ -303,9 +306,6 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
             this._sprite.center = keyframe.center;
-            this._sprite.priority = keyframe.priority;
-            this._sprite.blendType = keyframe.blendType;
-            
         } else {
             // Display nested animations
             if (this._interval) {
