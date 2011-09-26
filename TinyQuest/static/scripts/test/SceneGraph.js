@@ -51,10 +51,12 @@ window.onload = function() {
             s.image.context.stroke();
 
             if (currentAnimationFileName) {
-                sceneGraph.update();
+                
                 enchant.animation.animationManager.update();
+                sceneGraph.update();
             }
             surface.context.globalCompositeOperation = "source-over";
+            surface.context.globalAlpha = 1;
         });
     };
     enchant.Game.instance.start();
@@ -84,7 +86,7 @@ var playAnimation = function(id) {
         enchant.loader.load(files, function() {
             interval = null;
             root.removeAllChildren();
-            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, target);
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, target);
             enchant.animation.animationManager.start(animation); 
         });
     });

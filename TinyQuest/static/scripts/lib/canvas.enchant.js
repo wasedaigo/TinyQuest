@@ -15,8 +15,9 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 
     update: function() {
         assert(this._root);
-        this._root.update(null);
-        this._root.draw(this._game.assets, this._surface);
+        this._root.updateTransform(null);
+        this._root.update();
+        this._root.draw(this._game.assets, this._surface, 1);
     }
 });
 
@@ -97,18 +98,20 @@ enchant.canvas.Node = enchant.Class.create({
         }
         
         for (var i = 0; i < this._children.length; i++) {
-            this._children[i].update(this._transform);
+            this._children[i].updateTransform(this._transform);
         }
     },
-    update: function(parentTransform) {
+    update: function() {
         this.sortByPriority();
-        this.updateTransform(parentTransform);
+        for (var i = 0; i < this._children.length; i++) {
+            this._children[i].update();
+        }
     },
-    draw: function(assets, surface) {
+    draw: function(assets, surface, alpha) {
         if (this._children.length > 0) {
             this.applyTransform(surface.context);
             for (var i = 0; i < this._children.length; i++) {
-                this._children[i].draw(assets, surface);
+                this._children[i].draw(assets, surface, alpha * this.alpha);
             }
         }
     }
@@ -242,23 +245,29 @@ enchant.canvas.Sprite = enchant.Class.create({
             }
             this.transform = transform;
             for (var i = 0; i < this.children.length; i++) {
-                this.children[i].update(this.transform);
+                this.children[i].updateTransform(this.transform);
             }
         } else {
-            this.node.update(parentTransform);
+            this.node.updateTransform(parentTransform);
         }
     },
-    update: function(parentTransform) {
+    update: function() {
         this.node.sortByPriority();
-        this.updateTransform(parentTransform);
+        if (this.srcPath) {
+            for (var i = 0; i < this.children.length; i++) {
+                this.children[i].update();
+            }
+        } else {
+            this.node.update();
+        }
     },
-    draw: function(assets, surface) {
+    draw: function(assets, surface, alpha) {
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
 
             this.applyTransform(surface.context);
-            surface.context.globalAlpha = this.alpha;
+            surface.context.globalAlpha = alpha;
             
             if (this.blendType == "add") {
                 surface.context.globalCompositeOperation = "lighter";
@@ -282,7 +291,7 @@ enchant.canvas.Sprite = enchant.Class.create({
             var uvCutY = 0;
             surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
         } else {
-            this.node.draw(assets, surface);
+            this.node.draw(assets, surface, alpha * this.node.alpha);
         }
     }
 });

@@ -33,10 +33,12 @@ enchant.animation.animationManager =
             }
         }
     },
-    CreateAnimation: function (data, isSubAnimation, baseTransform, target) {
+    CreateAnimation: function (data, isSubAnimation, baseTransform, baseAlpha, target) {
         var timelines = data["timelines"];
         var parallels = [];
         var node = new enchant.canvas.Node(baseTransform);
+        node.alpha = baseAlpha;
+        
         for (var timelineNo in timelines) {
             var timeline = timelines[timelineNo];
             
@@ -298,7 +300,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         this._lastAnimationId = keyframe.id;
     
         this._sprite.priority = keyframe.priority ? keyframe.priority : 0.5;
-        this._sprite.blendType = keyframe.blendType;
+        this._sprite.blendType = keyframe.blendType ? keyframe.blendType : "none";
         if (keyframe.type == "image") {
             // Display static image
             this._clearSetting();
@@ -319,8 +321,9 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                         transform = enchant.matrix.getNodeTransformMatirx(this._sprite.position[0], this._sprite.position[1], this._sprite.rotation * Math.PI / 180, this._sprite.scale[0], this._sprite.scale[1]);       
                         transform = enchant.matrix.matrixMultiply(transform, this._sprite.parent.transform);
                     }
+
                     // Emit the new animation (emitted animation won't be controled by this instance anymore)
-                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._target);
+                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.alpha, this._target);
                     enchant.animation.animationManager.start(animation);
                 } else {
                     // No animation node is generaetd yet, let's generate it
@@ -328,7 +331,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     if (keyframe.id) {
                         // Update the sprite's transform
                         this._sprite.updateTransform(this._sprite.parent.transform);
-                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, this._target);
+                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, this._target);
                         this._sprite.addChild(animation.node);
                         this._interval = animation.interval;
                         this._interval.start();
