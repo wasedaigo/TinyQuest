@@ -27,6 +27,7 @@ enchant.canvas.Node = enchant.Class.create({
     },
     initialize: function(baseTransform) {
         this.position = [0, 0];
+        this.velocity = [0, 0];
         this.scale = [1, 1];
         this.alpha = 1.0;
         this.priority = 0.5;
@@ -89,7 +90,17 @@ enchant.canvas.Node = enchant.Class.create({
         this._children.sort(this.prioritySortFunc);
     },
     updateTransform: function(parentTransform) {
-        if (!this._hasBaseTransform) {
+        if (this._hasBaseTransform) {
+            // Calculate a matrix to calculate world velocity
+            var matrix = enchant.matrix.createMatrixIdentity(3);
+            matrix[0][0] = parentTransform[0][0];
+            matrix[0][1] = parentTransform[0][1];
+            matrix[1][0] = parentTransform[1][0];
+            matrix[1][1] = parentTransform[1][1];
+            var velocity = enchant.matrix.transformPoint(this.velocity, matrix);
+            this._transform[2][0] +=  velocity[0];
+            this._transform[2][1] +=  velocity[1];
+        } else {
             var transform = enchant.matrix.getNodeTransformMatirx(this.position[0], this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);       
             if (parentTransform) {
                 transform = enchant.matrix.matrixMultiply(transform, parentTransform);
@@ -161,7 +172,7 @@ enchant.canvas.Sprite = enchant.Class.create({
         set: function(value) {
             this.node.position = value;
         }
-    },   
+    },
     alpha: {
         get: function() {
             return this.node.alpha;

@@ -329,6 +329,15 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
 
                     // Emit the new animation (emitted animation won't be controled by this instance anymore)
                     var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.alpha, this._target);
+                    
+                    // Apply emit velocity
+                    if (keyframe.maxEmitSpeed > 0) {
+                        var speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random();
+                        var angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random();
+                        var rad = (angle / 180) * Math.PI;
+                        animation.node.velocity[0] = speed * Math.cos(rad);
+                        animation.node.velocity[1] = speed * Math.sin(rad);
+                    }
                     enchant.animation.animationManager.start(animation);
                 } else {
                     // No animation node is generaetd yet, let's generate it
@@ -414,7 +423,7 @@ enchant.animation.interval.Loop = enchant.Class.create({
                 if (this._loopCount == 0 || this._loopCounter < this._loopCount) {
                     // Repeat this interval again, since this is a subanimation
                     this._interval.reset();
-                    this._interval.update();
+                    //this._interval.update();
                 }
             }
         }

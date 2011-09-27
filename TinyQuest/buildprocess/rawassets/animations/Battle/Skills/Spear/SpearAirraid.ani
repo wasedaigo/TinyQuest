@@ -47,7 +47,7 @@
             "minEmitAngle" : 90,
             "minEmitSpeed" : 6.0,
             "position" : [ 0, -124 ],
-            "positionTween" : "linear",
+            "positionTween" : "fix",
             "sourcePath" : "Battle/Skills/Battler/RollBack.ani"
          },
          {
