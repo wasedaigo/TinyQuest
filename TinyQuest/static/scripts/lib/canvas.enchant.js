@@ -116,6 +116,8 @@ enchant.canvas.Node = enchant.Class.create({
         }
     },
     draw: function(assets, surface, alpha) {
+        // If the node is not visible, simply skip all rendering for this
+        if (alpha == 0 ) {return;}
 
         if (this._children.length > 0) {
             this.applyTransform(surface.context);
@@ -227,6 +229,7 @@ enchant.canvas.Sprite = enchant.Class.create({
             console.log("Sprite : children cannot be directly set!");
         }
     },
+    
     transform: { 
         get: function() {
             return this.node.transform;

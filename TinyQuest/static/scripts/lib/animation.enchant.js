@@ -44,16 +44,11 @@ enchant.animation.animationManager =
             
             var sprite = new enchant.canvas.Sprite();
             var sequences = [];
-            var attributes = ["alpha", "scale", "rotation", "position"];
+            var attributes = ["alpha", "scale", "position", "rotation"];
             for (var i in attributes) {
                 var attribute = attributes[i];
                 
-                var dataStore = {};
-                if (baseTransform) {
-                    dataStore.lastAbsPosition = enchant.matrix.transformPoint([0, 0], baseTransform);
-                }
-                
-                var sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target, dataStore);
+                var sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target);
                 if (sequence) {
                     sequences.push(sequence);
                 }
@@ -75,7 +70,7 @@ enchant.animation.animationManager =
         return {"interval" : interval, "node" : node};
     },
     // Create attribute tween out of given keyframe data
-    CreateAttributeTween: function (node, attribute, keyframes, target, dataStore) {
+    CreateAttributeTween: function (node, attribute, keyframes, target) {
         if (keyframes.length == 0) {
             return null;
         } else {
@@ -95,15 +90,15 @@ enchant.animation.animationManager =
                     var options = {};
                     // PositionTween does something special
                     if (attribute == "position") {
-                        options.startRelative = frame.startRelative;
-                        options.endRelative = frame.endRelative;
+                        options.startPositionType = frame.startPositionType;
+                        options.endPositionType = frame.endPositionType;
                         options.target = target;
                     } else if (attribute == "rotation") {
                         options.facingOption = frame.facingOption;
                         options.target = target;
                     }
 
-                    interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options, dataStore);
+                    interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options);
                 }
                 intervals.push(interval);
             }
@@ -130,19 +125,19 @@ enchant.animation.interval  =
 
         return result;
     },
-    CalculateRelativePosition: function (startValue, endValue, node, startRelative, endRelative, target) {
+    CalculateRelativePosition: function (startValue, endValue, node, startPositionType, endPositionType, target) {
         var resultStartValue = startValue;
         var resultEndValue = endValue;
         if (target  && node.parent) {
             var invertMatrix = null;
-            if (startRelative) {
+            if (startPositionType == "relativeToTarget") {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
                 var targetPosition = [target.position[0], target.position[1]];
                 resultStartValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
                 resultStartValue[0] += startValue[0];
                 resultStartValue[1] += startValue[1];
             }
-            if (endRelative) {
+            if (endPositionType == "relativeToTarget") {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
                 var targetPosition = [target.position[0] + endValue[0], target.position[1] + endValue[1]];
                 resultEndValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
@@ -182,30 +177,27 @@ enchant.animation.interval  =
                 
                 startValue += (Math.atan2(dy,dx) / Math.PI)  * 180;
                 endValue = startValue;
-  
-                if (dataStore.counter !== undefined) {
-                    if (dataStore.counter > 0) {
-                        node.parent.alpha = dataStore.lastAlpha;
-                    } else {
-                        dataStore.counter++;
-                    }
+                if (dataStore.ignore) {
+                    node.parent.alpha = dataStore.lastAlpha;
+                    
                 } else {
-                    dataStore.counter = 0;
+                    dataStore.ignore = true;
                     dataStore.lastAlpha = node.parent.alpha;
                     node.parent.alpha = 0;
                 }
+
                 // Extra data for FaceToMov option
                 dataStore.lastAbsPosition = absTargetPosition;
             }
         }
 
         return [startValue, endValue]
-    }  
+    } 
 }
 
 // Linear interval for simple parameter
 enchant.animation.interval.AttributeInterval = enchant.Class.create({
-    initialize: function(node, attribute, startValue, endValue, duration, tween, options, dataStore) {
+    initialize: function(node, attribute, startValue, endValue, duration, tween, options) {
         this._node = node;
         this._startValue = startValue;
         this._endValue = endValue;
@@ -213,7 +205,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         this._attribute = attribute;    
         this._frameNo = 0;
         this._tween = tween;
-        this._dataStore = dataStore;
+        this._dataStore = {};
         this._options = options;
     },
     isDone: function() {
@@ -236,7 +228,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         
         // Note: Position specific code inside a general class.
         if (this._attribute == "position") {
-            var result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, this._node, this._options.startRelative, this._options.endRelative, this._options.target);
+            var result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, this._node, this._options.startPositionType, this._options.endPositionType, this._options.target);
             startValue = result[0];
             endValue = result[1];
         } else if (this._attribute == "rotation") {

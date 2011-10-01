@@ -71,12 +71,12 @@ def setup_tweens(result, latestSourceData)
                     if keyframe["wait"]
                         prev_keyframe["endValue"] = prev_keyframe["startValue"]
                         if key == "position"
-                            prev_keyframe["endRelative"] = prev_keyframe["startRelative"] ? prev_keyframe["startRelative"] : false
+                            prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? prev_keyframe["endPositionType"] : "none"
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
                         if key == "position"
-                            prev_keyframe["endRelative"] = keyframe["startRelative"] ? keyframe["startRelative"] : false
+                            prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? keyframe["startPositionType"] : "none"
                         end
                     end
                 end
@@ -144,10 +144,8 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
         
         # Position attribute has special options
         if key == "position"
-            # Relative
-            relative = (keyframe_set["positionType"] == "relativeToTarget")
-            data["startRelative"] = relative
-            data["endRelative"] = relative
+            data["startPositionType"] = keyframe_set["positionType"] ? keyframe_set["positionType"] : "none"
+            data["endPositionType"] = data["startPositionType"]
         end
         if key == "rotation"
             data["facingOption"] = keyframe_set["facingOption"] ? keyframe_set["facingOption"] : "none"
