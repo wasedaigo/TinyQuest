@@ -29,8 +29,13 @@ window.onload = function() {
         s.image = surface
         stage.addChild(s);
         game.rootScene.addChild(stage);
-        
-
+            target = new enchant.canvas.Sprite();
+            target.srcPath = 'Images/Enemies/death_wind.png';
+            target.srcRect = [0, 0, 90, 92];
+            target.size = [90, 92];
+            target.position = [60, GAME_HEIGHT / 4 - 60];
+        var moveVelocityX = 1;
+        var moveVelocityY = 1;
         enchant.animation.animationManager.initialize(root);
         // Update
         this.addEventListener('enterframe', function() {
@@ -51,6 +56,26 @@ window.onload = function() {
             s.image.context.stroke();
 
             if (currentAnimationFileName) {
+                if (target) {
+                    if (target.position[0] >= 120) {
+                        moveVelocityX *= -1;
+                    }
+                    
+                    if (target.position[0] <= 40) {
+                        moveVelocityX *= -1;
+                    }
+                    
+                    if (target.position[1] >= 240) {
+                        moveVelocityY *= -1;
+                    }
+                    
+                    if (target.position[1] <= 60) {
+                        moveVelocityY *= -1;
+                    }
+                    target.position[0] += moveVelocityX;
+                    target.position[1] += moveVelocityY;
+                }
+                
                 enchant.animation.animationManager.update();
                 sceneGraph.update();
             }
@@ -86,11 +111,7 @@ var playAnimation = function(id) {
             interval = null;
             root.removeAllChildren();
             
-            target = new enchant.canvas.Sprite();
-            target.srcPath = 'Images/Enemies/death_wind.png';
-            target.srcRect = [0, 0, 90, 92];
-            target.size = [90, 92];
-            target.position = [60, GAME_HEIGHT / 4 - 60];
+
             root.addChild(target);
             target.update(root.transform);
 
