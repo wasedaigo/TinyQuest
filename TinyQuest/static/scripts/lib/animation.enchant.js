@@ -132,15 +132,13 @@ enchant.animation.interval  =
             var invertMatrix = null;
             if (startPositionType == "relativeToTarget") {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-                var targetPosition = [target.position[0], target.position[1]];
-                resultStartValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                resultStartValue = enchant.matrix.transformPoint(target.position, invertMatrix);
                 resultStartValue[0] += startValue[0];
                 resultStartValue[1] += startValue[1];
             }
             if (endPositionType == "relativeToTarget") {
                 invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-                var targetPosition = [target.position[0] + endValue[0], target.position[1] + endValue[1]];
-                resultEndValue = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+                resultEndValue = enchant.matrix.transformPoint(target.position, invertMatrix);
                 resultEndValue[0] += endValue[0];
                 resultEndValue[1] += endValue[1];
             }
