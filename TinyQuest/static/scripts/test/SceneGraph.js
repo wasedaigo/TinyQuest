@@ -6,23 +6,22 @@ var game = new enchant.Game(GAME_WIDTH, GAME_HEIGHT);
 enchant.loader.setRootPath('../../static/assets');
 var currentAnimationFileName = null;
 var currentAnimation = null;
-
-var target = new enchant.canvas.Node();
-target.position = [120, GAME_HEIGHT / 2];
-target.update();
-
+var target;
 var root = new enchant.canvas.Node();
 window.onload = function() {
-    game.fps = 20;
+    game.fps = 40;
 
+    game.preload('../../static/assets/images/Images/Enemies/death_wind.png');
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
+
+
         var stage = new Group();
 
         var surface = new Surface(GAME_WIDTH,GAME_HEIGHT);
         var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
-        
-        root.position = [GAME_WIDTH / 2, GAME_HEIGHT / 2];
+
+        root.position = [0, 0];
         root.scale = [2, 2];
         sceneGraph.setRoot(root);
 
@@ -30,6 +29,7 @@ window.onload = function() {
         s.image = surface
         stage.addChild(s);
         game.rootScene.addChild(stage);
+        
 
         enchant.animation.animationManager.initialize(root);
         // Update
@@ -51,7 +51,6 @@ window.onload = function() {
             s.image.context.stroke();
 
             if (currentAnimationFileName) {
-                
                 enchant.animation.animationManager.update();
                 sceneGraph.update();
             }
@@ -82,11 +81,21 @@ var playAnimation = function(id) {
             files.push('../../static/assets/images/' + images[i] + ".png");
         }
         currentAnimationFileName = filename;
-
+        
         enchant.loader.load(files, function() {
             interval = null;
             root.removeAllChildren();
+            
+            target = new enchant.canvas.Sprite();
+            target.srcPath = 'Images/Enemies/death_wind.png';
+            target.srcRect = [0, 0, 90, 92];
+            target.size = [90, 92];
+            target.position = [60, GAME_HEIGHT / 4 - 60];
+            root.addChild(target);
+            target.update(root.transform);
+
             var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, target);
+            animation.node.position = [GAME_WIDTH / 4, GAME_HEIGHT / 4];
             enchant.animation.animationManager.start(animation); 
         });
     });

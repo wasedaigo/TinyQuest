@@ -125,22 +125,23 @@ enchant.animation.interval  =
 
         return result;
     },
+    _GetRelativePosition: function (node, target, offset) {
+        var targetPosition = enchant.matrix.transformPoint(target.position, target.transform);
+        var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
+        var result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+        result[0] += offset[0];
+        result[1] += offset[1];
+        return result;
+    },
     CalculateRelativePosition: function (startValue, endValue, node, startPositionType, endPositionType, target) {
         var resultStartValue = startValue;
         var resultEndValue = endValue;
         if (target  && node.parent) {
-            var invertMatrix = null;
             if (startPositionType == "relativeToTarget") {
-                invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-                resultStartValue = enchant.matrix.transformPoint(target.position, invertMatrix);
-                resultStartValue[0] += startValue[0];
-                resultStartValue[1] += startValue[1];
+                resultStartValue = _GetRelativePosition(node, target, startValue);
             }
             if (endPositionType == "relativeToTarget") {
-                invertMatrix = invertMatrix ? invertMatrix : enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-                resultEndValue = enchant.matrix.transformPoint(target.position, invertMatrix);
-                resultEndValue[0] += endValue[0];
-                resultEndValue[1] += endValue[1];
+                resultEndValue = _GetRelativePosition(node, target, endValue);
             }
         }
 

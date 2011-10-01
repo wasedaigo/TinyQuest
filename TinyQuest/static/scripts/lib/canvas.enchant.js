@@ -28,6 +28,7 @@ enchant.canvas.Node = enchant.Class.create({
     initialize: function(baseTransform) {
         this.position = [0, 0];
         this.velocity = [0, 0];
+        this.size = [1, 1];
         this.scale = [1, 1];
         this.alpha = 1.0;
         this.priority = 0.5;
@@ -42,6 +43,14 @@ enchant.canvas.Node = enchant.Class.create({
         if (baseTransform) {
             this._hasBaseTransform = true;
             this._transform = baseTransform;
+        }
+    },
+    children: { 
+        get: function() {
+            return this._children;
+        },
+        set: function(children) {
+            console.log("Sprite : children cannot be directly set!");
         }
     },
     transform: { 
@@ -134,14 +143,6 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.srcPath = srcPath ? srcPath : null;
         this.srcRect = srcRect ? srcRect : null;
         this.center = [0, 0];
-        
-        // If srcRect is not there, it means this is a node
-        // (For convinience, Sprite can be used as a node right now)
-        // TODO: Sprite should not act as a Node, right?
-        if (this.srcRect) {
-            this._anchor = [0.5, 0.5];
-            this.center = [this._anchor[0] * this.srcRect[2], this._anchor[1] * this.srcRect[3]];
-        }
     },
 
     addChild: function(node) {
@@ -156,6 +157,14 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node.removeAllChildren();
     },
     update: function(context) { 
+    },
+    size: {
+        get: function() {
+            return this.node.size;
+        },
+        set: function(value) {
+            this.node.size = value;
+        }
     },
     position: {
         get: function() {
@@ -223,10 +232,10 @@ enchant.canvas.Sprite = enchant.Class.create({
     },
     children: { 
         get: function() {
-            return this.node._children;
+            return this.node.children;
         },
         set: function(children) {
-            console.log("Sprite : children cannot be directly set!");
+            this.node.children = children;
         }
     },
     
@@ -272,7 +281,8 @@ enchant.canvas.Sprite = enchant.Class.create({
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
-
+            assert(src !== undefined, "No file found at path = " + key);
+            
             this.applyTransform(surface.context);
             surface.context.globalAlpha = alpha;
             
@@ -296,6 +306,7 @@ enchant.canvas.Sprite = enchant.Class.create({
             // Hack: UV clips one extra pixel on the right, temporary workaround is here
             var uvCutX = 1;
             var uvCutY = 0;
+
             surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
         } else {
             this.node.draw(assets, surface, alpha * this.node.alpha);
