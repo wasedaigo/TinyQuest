@@ -21,6 +21,7 @@ describe("canvas", function() {
             sprite.parent = 0;
             sprite.srcRect = [5, 2, 3, 2];
             sprite.srcPath = "tes";
+            sprite.size = [3, 5];
             
             expect(sprite.position).toEqual([5, 2]);
             expect(sprite.scale).toEqual([3, 2]);
@@ -31,6 +32,25 @@ describe("canvas", function() {
             expect(sprite.parent).toEqual(0);
             expect(sprite.srcRect).toEqual([5, 2, 3, 2]);
             expect(sprite.srcPath).toEqual("tes");
+            expect(sprite.size).toEqual([3, 5]);
+        });
+        
+        it("positionType check", function() {
+            var sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
+            sprite.size = [30, 50];
+            sprite.position = [0, 10];
+            sprite.scale = [2, 3];
+            sprite.center = [-5, 5]
+
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomLeft)).toEqual([-10, 100]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomCenter)).toEqual([20, 100]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomRight)).toEqual([50, 100]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.CenterLeft)).toEqual([-10, 25]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.Center)).toEqual([20, 25]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.CenterRight)).toEqual([50, 25]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopLeft)).toEqual([-10, -50]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopCenter)).toEqual([20, -50]);
+            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopRight)).toEqual([50, -50]);
         });
     });
 

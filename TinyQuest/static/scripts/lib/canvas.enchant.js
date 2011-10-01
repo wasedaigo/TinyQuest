@@ -26,7 +26,8 @@ enchant.canvas.Node = enchant.Class.create({
         return a.priority - b.priority;
     },
     initialize: function(baseTransform) {
-        this.position = [0, 0];
+        this._originalPosition = null;
+        this._position = [0, 0];
         this.velocity = [0, 0];
         this.size = [1, 1];
         this.scale = [1, 1];
@@ -39,7 +40,7 @@ enchant.canvas.Node = enchant.Class.create({
         this._children = [];
         this._transform = null;
         this._hasBaseTransform = false;
-        
+        this.center = [0, 0];
         if (baseTransform) {
             this._hasBaseTransform = true;
             this._transform = baseTransform;
@@ -52,6 +53,22 @@ enchant.canvas.Node = enchant.Class.create({
         set: function(children) {
             console.log("Sprite : children cannot be directly set!");
         }
+    },
+    position: {
+        get: function() {
+            return this._position;
+        },
+        set: function(value) {
+            this._position = value;
+        }
+    },
+    getPositionByPositionType: function(positionType) {
+        var centerX = this.size[0] / 2 + this.center[0];
+        var centerY = this.size[1] / 2 + this.center[1];
+        return [
+            this.position[0] + centerX + (positionType[0] * (this.size[0] / 2) - centerX) * this.scale[0],
+            this.position[1] + centerY + (positionType[1] * (this.size[1] / 2) - centerY) * this.scale[1]
+        ];
     },
     transform: { 
         get: function() {
@@ -136,13 +153,24 @@ enchant.canvas.Node = enchant.Class.create({
         }
     }
 });
+// Static consts
+enchant.canvas.Node.PositionType = {
+    "BottomLeft" : [0, 2],
+    "BottomCenter" : [1, 2],
+    "BottomRight" : [2, 2],
+    "CenterLeft" : [0, 1],
+    "Center" : [1, 1],
+    "CenterRight" : [2, 1],
+    "TopLeft" : [0, 0],
+    "TopCenter" : [1, 0],
+    "TopRight" : [2, 0]
+};
 
 enchant.canvas.Sprite = enchant.Class.create({
     initialize: function(srcPath, srcRect) {
         this.node = new enchant.canvas.Node();
         this.srcPath = srcPath ? srcPath : null;
         this.srcRect = srcRect ? srcRect : null;
-        this.center = [0, 0];
     },
 
     addChild: function(node) {
@@ -157,6 +185,9 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node.removeAllChildren();
     },
     update: function(context) { 
+    },
+    getPositionByPositionType: function(positionType) {
+        return this.node.getPositionByPositionType(positionType);
     },
     size: {
         get: function() {
@@ -188,6 +219,14 @@ enchant.canvas.Sprite = enchant.Class.create({
         },
         set: function(value) {
             this.node.blendType = value;
+        }
+    },
+    center: {
+        get: function() {
+            return this.node.center;
+        },
+        set: function(value) {
+            this.node.center = value;
         }
     },  
     priority: {
