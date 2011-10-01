@@ -1,19 +1,19 @@
 enchant();
 
-var GAME_WIDTH = 480;
-var GAME_HEIGHT = 320;
+var GAME_WIDTH = 640;
+var GAME_HEIGHT = 640;
 var game = new enchant.Game(GAME_WIDTH, GAME_HEIGHT);
 enchant.loader.setRootPath('../../static/assets');
 var currentAnimationFileName = null;
 var currentAnimation = null;
 
 var target = new enchant.canvas.Node();
-target.position = [60, 160];
+target.position = [120, GAME_HEIGHT / 2];
 target.update();
 
 var root = new enchant.canvas.Node();
 window.onload = function() {
-    game.fps = 40;
+    game.fps = 20;
 
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
@@ -22,7 +22,7 @@ window.onload = function() {
         var surface = new Surface(GAME_WIDTH,GAME_HEIGHT);
         var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
         
-        root.position = [GAME_WIDTH / 2, 160];
+        root.position = [GAME_WIDTH / 2, GAME_HEIGHT / 2];
         root.scale = [2, 2];
         sceneGraph.setRoot(root);
 

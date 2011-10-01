@@ -50,8 +50,8 @@ enchant.matrix.getNodeTransformMatirx = function (dx, dy, rotation, scaleX, scal
   var c = Math.cos(rotation);
   var s = Math.sin(rotation);
   var result = [
-                [c * scaleX, s * scaleY, 0],
-                [-s * scaleX, c * scaleY, 0],
+                [c * scaleX, s * scaleX, 0],
+                [-s * scaleY, c * scaleY, 0],
                 [dx, dy, 1]
                 ];
   return result;
@@ -66,9 +66,9 @@ enchant.matrix.getImageTransformMatirx = function (dx, dy, rotation, scaleX, sca
   var c = Math.cos(rotation);
   var s = Math.sin(rotation);
   var result = [
-                [c * scaleX, s * scaleY, 0],
-                [-s * scaleX, c * scaleY, 0],
-                [(c * dx - s * dy) * scaleX - dx, (s * dx + c * dy) * scaleY - dy, 1]
+                [c * scaleX, s * scaleX, 0],
+                [-s * scaleY, c * scaleY, 0],
+                [(c * dx * scaleX - s * dy * scaleY) - dx, (s * dx * scaleX + c * dy * scaleY) - dy, 1]
                 ];
   return result;
 };
@@ -79,6 +79,10 @@ enchant.matrix.transformPoint = function(point, matrix) {
     newPoint[0] = point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0];
     newPoint[1] = point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1];
     return newPoint;
+}
+
+enchant.matrix.getTranslationComponent = function(matrix) {
+    return [matrix[2][0], matrix[2][1]];
 }
 
 // Multiply 3x3 matrix by 3x3 matrix

@@ -39,9 +39,6 @@ enchant.canvas.Node = enchant.Class.create({
         this._transform = null;
         this._hasBaseTransform = false;
         
-        // Store whatever data you want to store
-        this.dataStore = {};
-        
         if (baseTransform) {
             this._hasBaseTransform = true;
             this._transform = baseTransform;
@@ -119,6 +116,7 @@ enchant.canvas.Node = enchant.Class.create({
         }
     },
     draw: function(assets, surface, alpha) {
+
         if (this._children.length > 0) {
             this.applyTransform(surface.context);
             for (var i = 0; i < this._children.length; i++) {
@@ -156,14 +154,6 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.node.removeAllChildren();
     },
     update: function(context) { 
-    },
-    dataStore: {
-        get: function() {
-            return this.node.dataStore;
-        },
-        set: function(value) {
-            this.node.dataStore = value;
-        }
     },
     position: {
         get: function() {
@@ -273,6 +263,9 @@ enchant.canvas.Sprite = enchant.Class.create({
         }
     },
     draw: function(assets, surface, alpha) {
+        // If the node is not visible, simply skip all rendering for this
+        if (alpha == 0 ) {return;}
+
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
