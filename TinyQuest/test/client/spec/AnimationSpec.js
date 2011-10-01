@@ -209,7 +209,7 @@ describe("Animation", function() {
         
         it("RotationInterval", function() {
             var node = new enchant.canvas.Node();
-            var interval = new enchant.animation.interval.AttributeInterval(node, "rotation", 360, 0, 3, true);
+            var interval = new enchant.animation.interval.AttributeInterval(node, "rotation", 360, 0, 3, true, {"facingOption":null});
 
             expect(node.rotation).toBe(0);
             expect(interval.isDone()).toBe(false);
@@ -434,7 +434,7 @@ describe("Animation", function() {
         it("Parallel", function() {
             var node = new enchant.canvas.Node();
             var interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 3, true);
-            var interval2 = new enchant.animation.interval.AttributeInterval(node, "rotation", 0, 180, 5, true);
+            var interval2 = new enchant.animation.interval.AttributeInterval(node, "rotation", 0, 180, 5, true, {"facingOption":null});
             
             var parallel = new enchant.animation.interval.Parallel([interval1, interval2]);
             
@@ -494,7 +494,7 @@ describe("Animation", function() {
             expect(loop.isDone()).toBe(false);
             
             loop.update();
-            expect(node.alpha).toBe(1);
+            expect(node.alpha).toBe(0.1);
             expect(loop.isDone()).toBe(false);
             
             loop.update();
@@ -502,9 +502,12 @@ describe("Animation", function() {
             expect(loop.isDone()).toBe(false);
             
             loop.update();
+            expect(node.alpha).toBe(1);
+            expect(loop.isDone()).toBe(false);
+ 
+            loop.update();
             expect(node.alpha).toBe(0);
-            expect(loop.isDone()).toBe(true);
-            
+            expect(loop.isDone()).toBe(true);           
         });
         it("Loop count infinite", function() {
             var node = new enchant.canvas.Node();
@@ -528,7 +531,7 @@ describe("Animation", function() {
                 expect(loop.isDone()).toBe(false);
 
                 loop.update();
-                expect(node.alpha).toBe(1);
+                expect(node.alpha).toBe(0.1);
                 expect(loop.isDone()).toBe(false);
             }            
         });
