@@ -18,7 +18,7 @@ enchant.canvas.SceneGraph = enchant.Class.create({
     update: function() {
         assert(this._root);
         this._root.updateTransform();
-        this._root.updateAlpha();
+        this._root.updateAttributes();
         var drawCommmands = [];
         this._root.registerDrawCommand(drawCommmands);
         drawCommmands.sort(this.prioritySortFunc);
@@ -141,14 +141,14 @@ enchant.canvas.Node = enchant.Class.create({
             this._children[i].updateTransform();
         }
     },
-    updateAlpha: function() {
+    updateAttributes: function() {
         if (this.parent) {
             this.absAlpha = this.alpha * this.parent.alpha;
         } else {
             this.absAlpha = this.alpha;
         }
         for (var i = 0; i < this._children.length; i++) {
-            this._children[i].updateAlpha(this.absAlpha);
+            this._children[i].updateAttributes();
         }
     },
     registerDrawCommand: function(drawCommands) {
@@ -307,8 +307,8 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.updateTransform();
         }
     },
-    updateAlpha: function() {
-        this.node.updateAlpha();
+    updateAttributes: function() {
+        this.node.updateAttributes();
     },
     registerDrawCommand: function(drawCommands) {
         if (this.absAlpha <= 0) { 
