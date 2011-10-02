@@ -17,7 +17,7 @@
           "endPositionType": "relativeToTarget",
           "startPositionAnchor": [
             0,
-            0
+            1
           ],
           "endValue": [
             0,
@@ -29,7 +29,7 @@
           ],
           "endPositionAnchor": [
             0,
-            0
+            1
           ],
           "frameNo": 0,
           "startPositionType": "relativeToTarget"

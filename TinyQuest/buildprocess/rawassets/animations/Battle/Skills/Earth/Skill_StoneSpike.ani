@@ -8,6 +8,7 @@
             "frameNo" : 0,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomCenter",
             "sourcePath" : "Battle/Skills/Earth/StoneSpike01.ani"
          },
          {
