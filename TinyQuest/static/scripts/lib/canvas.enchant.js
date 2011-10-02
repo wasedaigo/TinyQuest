@@ -61,12 +61,12 @@ enchant.canvas.Node = enchant.Class.create({
             this._position = value;
         }
     },
-    getPositionByPositionType: function(positionType) {
+    getOffsetByPositionAnchor: function(positionAnchor) {
         var centerX = this.size[0] / 2 + this.center[0];
         var centerY = this.size[1] / 2 + this.center[1];
         return [
-            this.position[0] + centerX + (positionType[0] * (this.size[0] / 2) - centerX) * this.scale[0],
-            this.position[1] + centerY + (positionType[1] * (this.size[1] / 2) - centerY) * this.scale[1]
+            centerX + (positionAnchor[0] * (this.size[0] / 2) - centerX) * this.scale[0],
+            centerY + (positionAnchor[1] * (this.size[1] / 2) - centerY) * this.scale[1]
         ];
     },
     transform: { 
@@ -152,18 +152,6 @@ enchant.canvas.Node = enchant.Class.create({
         }
     }
 });
-// Static consts
-enchant.canvas.Node.PositionType = {
-    "BottomLeft" : [0, 2],
-    "BottomCenter" : [1, 2],
-    "BottomRight" : [2, 2],
-    "CenterLeft" : [0, 1],
-    "Center" : [1, 1],
-    "CenterRight" : [2, 1],
-    "TopLeft" : [0, 0],
-    "TopCenter" : [1, 0],
-    "TopRight" : [2, 0]
-};
 
 enchant.canvas.Sprite = enchant.Class.create({
     initialize: function(srcPath, srcRect) {
@@ -185,8 +173,8 @@ enchant.canvas.Sprite = enchant.Class.create({
     },
     update: function(context) { 
     },
-    getPositionByPositionType: function(positionType) {
-        return this.node.getPositionByPositionType(positionType);
+    getOffsetByPositionAnchor: function(positionAnchor) {
+        return this.node.getOffsetByPositionAnchor(positionAnchor);
     },
     size: {
         get: function() {

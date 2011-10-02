@@ -40,17 +40,17 @@ describe("canvas", function() {
             sprite.size = [30, 50];
             sprite.position = [0, 10];
             sprite.scale = [2, 3];
-            sprite.center = [-5, 5]
+            sprite.center = [-5, 5]// Static consts
 
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomLeft)).toEqual([-10, 100]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomCenter)).toEqual([20, 100]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.BottomRight)).toEqual([50, 100]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.CenterLeft)).toEqual([-10, 25]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.Center)).toEqual([20, 25]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.CenterRight)).toEqual([50, 25]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopLeft)).toEqual([-10, -50]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopCenter)).toEqual([20, -50]);
-            expect(sprite.getPositionByPositionType(enchant.canvas.Node.PositionType.TopRight)).toEqual([50, -50]);
+            expect(sprite.getOffsetByPositionAnchor([-1, 1])).toEqual([-40, 15]);
+            expect(sprite.getOffsetByPositionAnchor([0, 1])).toEqual([-10, 15]);
+            expect(sprite.getOffsetByPositionAnchor([1, 1])).toEqual([20, 15]);
+            expect(sprite.getOffsetByPositionAnchor([-1, 0])).toEqual([-40, -60]);
+            expect(sprite.getOffsetByPositionAnchor([0, 0])).toEqual([-10, -60]);
+            expect(sprite.getOffsetByPositionAnchor([1, 0])).toEqual([20, -60]);
+            expect(sprite.getOffsetByPositionAnchor([-1, -1])).toEqual([-40, -135]);
+            expect(sprite.getOffsetByPositionAnchor([0, -1])).toEqual([-10, -135]);
+            expect(sprite.getOffsetByPositionAnchor([1, -1])).toEqual([20, -135]);
         });
     });
 

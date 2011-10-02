@@ -4,6 +4,19 @@ require 'json'
 INPUT_PATH = "buildprocess/rawassets/animations"
 OUTPUT_PATH = "static/assets/animations"
 
+AnchorData = {
+    "bottomLeft" => [-1, 1],
+    "bottomCenter" => [0, 1],
+    "BottomRight" => [1, 1],
+    "centerLeft" => [-1, 0],
+    "center" => [0, 0],
+    "centerRight" => [1, 0],
+    "topLeft" => [-1, -1],
+    "topCenter" => [0, -1],
+    "topRight" => [1, -1]
+};
+
+
 def build_animation_file(filename)
     data = ""
     File.open(filename, 'r') do |f|
@@ -72,13 +85,13 @@ def setup_tweens(result, latestSourceData)
                         prev_keyframe["endValue"] = prev_keyframe["startValue"]
                         if key == "position"
                             prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? prev_keyframe["endPositionType"] : "none"
-                            prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : "Center"
+                            prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : AnchorData["center"]
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
                         if key == "position"
                             prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? keyframe["startPositionType"] : "none"
-                            prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : "Center"
+                            prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : AnchorData["center"]
                         end
                     end
                 end
@@ -148,8 +161,8 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
         if key == "position"
             data["startPositionType"] = keyframe_set["positionType"] ? keyframe_set["positionType"] : "none"
             data["endPositionType"] = data["startPositionType"]
-           
-            data["startPositionAnchor"] = keyframe_set["positionTypeOption"] ? keyframe_set["positionTypeOption"] : "Center"
+
+            data["startPositionAnchor"] = AnchorData[keyframe_set["positionTypeOption"]] ? AnchorData[keyframe_set["positionTypeOption"]] : AnchorData["center"]
             data["endPositionAnchor"] = data["startPositionAnchor"] 
             
         end
