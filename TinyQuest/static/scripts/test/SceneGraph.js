@@ -1,14 +1,14 @@
 enchant();
+var GAME_WIDTH = parseInt($("#enchant-stage").width());
+var GAME_HEIGHT = parseInt($("#enchant-stage").height());
 
-var GAME_WIDTH = 640;
-var GAME_HEIGHT = 640;
 var game = new enchant.Game(GAME_WIDTH, GAME_HEIGHT);
 enchant.loader.setRootPath('../../static/assets');
 var currentAnimationFileName = null;
 var currentAnimation = null;
-var target;
 var root = new enchant.canvas.Node();
 window.onload = function() {
+
     game.fps = 40;
 
     game.preload('../../static/assets/images/Images/Enemies/death_wind.png');
@@ -20,7 +20,7 @@ window.onload = function() {
         var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
 
         root.position = [0, 0];
-        root.scale = [2, 2];
+        root.scale = [scale, scale];
         sceneGraph.setRoot(root);
 
         var s = new enchant.Sprite(GAME_WIDTH,GAME_HEIGHT);
@@ -31,8 +31,8 @@ window.onload = function() {
         target.srcPath = 'Images/Enemies/death_wind.png';
         target.srcRect = [0, 0, 90, 92];
         target.size = [90, 92];
-        target.position = [60, GAME_HEIGHT / 4 - 60];
-        target.priority = 0.5;
+        target.position = [GAME_WIDTH / (4 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1])];
+        target.priority = 0.49;
         var moveVelocityX = 1;
         var moveVelocityY = 1;
         enchant.animation.animationManager.initialize(root);
@@ -56,19 +56,19 @@ window.onload = function() {
 
             if (currentAnimationFileName) {
                 if (target) {
-                    if (target.position[0] >= 120) {
+                    if (target.position[0] >= GAME_WIDTH / (3 * root.scale[0])) {
                         moveVelocityX *= -1;
                     }
                     
-                    if (target.position[0] <= 40) {
+                    if (target.position[0] <= GAME_HEIGHT/ (8 * root.scale[0])) {
                         moveVelocityX *= -1;
                     }
                     
-                    if (target.position[1] >= 240) {
+                    if (target.position[1] >= GAME_HEIGHT/ (2 * root.scale[1])) {
                         moveVelocityY *= -1;
                     }
                     
-                    if (target.position[1] <= 60) {
+                    if (target.position[1] <= GAME_HEIGHT/ (8 * root.scale[1])) {
                         moveVelocityY *= -1;
                     }
                     target.position[0] += moveVelocityX;
@@ -111,7 +111,7 @@ var playAnimation = function(id) {
             root.removeAllChildren();
             root.addChild(target);
             var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {"node":target, "origin":enchant.utils.clone(target.position)});
-            animation.node.position = [GAME_WIDTH / 4, GAME_HEIGHT / 4];
+            animation.node.position = [GAME_WIDTH / (2 * root.scale[0]) , GAME_HEIGHT / (2 * root.scale[1])];
             enchant.animation.animationManager.start(animation); 
         });
     });
