@@ -17,8 +17,11 @@ enchant.canvas.SceneGraph = enchant.Class.create({
         assert(this._root);
         this._root.updateTransform(null);
         this._root.updateAlpha();
-        this._root.update();
-        this._root.draw(this._game.assets, this._surface);
+        var drawCommmands = [];
+        this._root.registerDrawCommand(drawCommmands);
+        for (var i = 0; i < drawCommmands.length; i++) {
+            drawCommmands[i].draw(this._game.assets, this._surface);
+        }
     }
 });
 
@@ -146,21 +149,12 @@ enchant.canvas.Node = enchant.Class.create({
             this._children[i].updateAlpha(this.absAlpha);
         }
     },
-    update: function() {
-        this.sortByPriority();
-        for (var i = 0; i < this._children.length; i++) {
-            this._children[i].update();
+    registerDrawCommand: function(drawCommands) {
+        if (this.absAlpha <= 0) { 
+            return;
         }
-    },
-    draw: function(assets, surface) {
-        // If the node is not visible, simply skip all rendering for this
-        if (this.absAlpha == 0 ) {return;}
-
-        if (this._children.length > 0) {
-            this.applyTransform(surface.context);
-            for (var i = 0; i < this._children.length; i++) {
-                this._children[i].draw(assets, surface);
-            }
+        for (var i = 0; i < this._children.length; i++) {
+            this._children[i].registerDrawCommand(drawCommands);
         }
     }
 });
@@ -182,8 +176,6 @@ enchant.canvas.Sprite = enchant.Class.create({
 
     removeAllChildren: function() {
         this.node.removeAllChildren();
-    },
-    update: function(context) { 
     },
     getOffsetByPositionAnchor: function(positionAnchor) {
         return this.node.getOffsetByPositionAnchor(positionAnchor);
@@ -313,51 +305,47 @@ enchant.canvas.Sprite = enchant.Class.create({
     updateAlpha: function() {
         this.node.updateAlpha();
     },
-    update: function() {
-        this.node.sortByPriority();
+    registerDrawCommand: function(drawCommands) {
+        if (this.absAlpha <= 0) { 
+            return;
+        }
         if (this.srcPath) {
-            for (var i = 0; i < this.children.length; i++) {
-                this.children[i].update();
-            }
+            drawCommands.push(this);
         } else {
-            this.node.update();
+            this.node.registerDrawCommand(drawCommands);
         }
     },
     draw: function(assets, surface) {
         // If the node is not visible, simply skip all rendering for this
         if (this.absAlpha == 0 ) {return;}
-        if (this.srcPath) {
-            var key = '../../static/assets/images/' + this.srcPath;
-            var src = assets[key];
-            assert(src !== undefined, "No file found at path = " + key);
-            
-            this.applyTransform(surface.context);
-            surface.context.globalAlpha = this.absAlpha;
-            
-            if (this.blendType == "add") {
-                surface.context.globalCompositeOperation = "lighter";
-            } else { 
-                surface.context.globalCompositeOperation = "source-over";
-            }
-
-            assert(typeof(this.srcRect[0]) == "number", "1");
-            assert(typeof(this.srcRect[1]) == "number", "2");
-            assert(typeof(this.srcRect[2]) == "number", "3");
-            assert(typeof(this.srcRect[3]) == "number", "4");
-            assert(typeof(this.position[0]) == "number", "5");
-            assert(typeof(this.position[1]) == "number", "6");
-
-            // Displaying floating point position can potentially blur the image on Canvas Element.
-            // Here we are rounding floating point position into integer.
-            var posX = Math.floor(this.position[0] - this.center[0] - this.srcRect[2] / 2);
-            var posY = Math.floor(this.position[1] - this.center[1] - this.srcRect[3] / 2);
-            // Hack: UV clips one extra pixel on the right, temporary workaround is here
-            var uvCutX = 1;
-            var uvCutY = 0;
-
-            surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
-        } else {
-            this.node.draw(assets, surface);
+        var key = '../../static/assets/images/' + this.srcPath;
+        var src = assets[key];
+        assert(src !== undefined, "No file found at path = " + key);
+        
+        this.applyTransform(surface.context);
+        surface.context.globalAlpha = this.absAlpha;
+        
+        if (this.blendType == "add") {
+            surface.context.globalCompositeOperation = "lighter";
+        } else { 
+            surface.context.globalCompositeOperation = "source-over";
         }
+
+        assert(typeof(this.srcRect[0]) == "number", "1");
+        assert(typeof(this.srcRect[1]) == "number", "2");
+        assert(typeof(this.srcRect[2]) == "number", "3");
+        assert(typeof(this.srcRect[3]) == "number", "4");
+        assert(typeof(this.position[0]) == "number", "5");
+        assert(typeof(this.position[1]) == "number", "6");
+
+        // Displaying floating point position can potentially blur the image on Canvas Element.
+        // Here we are rounding floating point position into integer.
+        var posX = Math.floor(this.position[0] - this.center[0] - this.srcRect[2] / 2);
+        var posY = Math.floor(this.position[1] - this.center[1] - this.srcRect[3] / 2);
+        // Hack: UV clips one extra pixel on the right, temporary workaround is here
+        var uvCutX = 1;
+        var uvCutY = 0;
+
+        surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
     }
 });
