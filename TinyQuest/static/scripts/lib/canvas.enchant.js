@@ -26,7 +26,6 @@ enchant.canvas.Node = enchant.Class.create({
         return a.priority - b.priority;
     },
     initialize: function(baseTransform) {
-        this._originalPosition = null;
         this._position = [0, 0];
         this.velocity = [0, 0];
         this.size = [1, 1];

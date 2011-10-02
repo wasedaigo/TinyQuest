@@ -115,7 +115,7 @@ var playAnimation = function(id) {
             root.addChild(target);
             target.update(root.transform);
 
-            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, target);
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, {"node":target, "origin":enchant.utils.clone(target.position)});
             animation.node.position = [GAME_WIDTH / 4, GAME_HEIGHT / 4];
             enchant.animation.animationManager.start(animation); 
         });

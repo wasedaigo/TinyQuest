@@ -21,6 +21,7 @@ $.getJSON('../../static/assets/animations/animations.json', function(data) {
     $('#animationSelect').append($('<option></option>').val(0).html("Battle/Skills/Spear/Thrust"));
     $('#animationSelect').append($('<option></option>').val(0).html("Battle/Skills/Sword/Slash"));
     $('#animationSelect').append($('<option></option>').val(0).html("Battle/Skills/Sword/Skill_CrossSlash"));
+    $('#animationSelect').append($('<option></option>').val(0).html("Battle/Skills/Sword/LeaveDance"));
 //    $('#animationSelect').append($('<option></option>').val(val).html(data[val]));
 //  });
 });

@@ -72,11 +72,13 @@ def setup_tweens(result, latestSourceData)
                         prev_keyframe["endValue"] = prev_keyframe["startValue"]
                         if key == "position"
                             prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? prev_keyframe["endPositionType"] : "none"
+                            prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : "Center"
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
                         if key == "position"
                             prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? keyframe["startPositionType"] : "none"
+                            prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : "Center"
                         end
                     end
                 end
@@ -146,6 +148,10 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
         if key == "position"
             data["startPositionType"] = keyframe_set["positionType"] ? keyframe_set["positionType"] : "none"
             data["endPositionType"] = data["startPositionType"]
+           
+            data["startPositionAnchor"] = keyframe_set["positionTypeOption"] ? keyframe_set["positionTypeOption"] : "Center"
+            data["endPositionAnchor"] = data["startPositionAnchor"] 
+            
         end
         if key == "rotation"
             data["facingOption"] = keyframe_set["facingOption"] ? keyframe_set["facingOption"] : "none"

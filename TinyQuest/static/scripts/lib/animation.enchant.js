@@ -125,24 +125,29 @@ enchant.animation.interval  =
 
         return result;
     },
-    _GetRelativePosition: function (node, target, offset) {
-        var targetPosition = enchant.matrix.transformPoint(target.position, target.transform);
-        var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
-        var result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
-        result[0] += offset[0];
-        result[1] += offset[1];
+    _GetRelativePosition: function (node, target, positionType, positionAnchor, offset) {
+        var result = offset;
+        if (positionType == "relativeToTarget") {
+            var targetPosition = enchant.matrix.transformPoint(target.node.position, target.node.parent.transform);
+            var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
+            result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+            result[0] += offset[0];
+            result[1] += offset[1];
+        } else if (positionType == "relativeToTargetOrigin") {
+            var targetPosition = enchant.matrix.transformPoint(target.origin, target.node.parent.transform);
+            var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
+            result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+            result[0] += offset[0];
+            result[1] += offset[1];
+        }
         return result;
     },
     CalculateRelativePosition: function (startValue, endValue, node, startPositionType, endPositionType, target) {
         var resultStartValue = startValue;
         var resultEndValue = endValue;
         if (target  && node.parent) {
-            if (startPositionType == "relativeToTarget") {
-                resultStartValue = _GetRelativePosition(node, target, startValue);
-            }
-            if (endPositionType == "relativeToTarget") {
-                resultEndValue = _GetRelativePosition(node, target, endValue);
-            }
+            resultStartValue = _GetRelativePosition(node, target, startPositionType, null, startValue);
+            resultEndValue = _GetRelativePosition(node, target, endPositionType, null, endValue);
         }
 
         return [resultStartValue, resultEndValue];
