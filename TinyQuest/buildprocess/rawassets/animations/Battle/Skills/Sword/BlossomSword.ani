@@ -25,13 +25,14 @@
          {
             "alpha" : 0.0,
             "alphaTween" : "fix",
+            "emitter" : true,
             "frameNo" : 5,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
             "positionTween" : "fix",
-            "positionType" : "relativeToTarget",
-            "positionTypeOption" : "bottomRight",
-            "sourcePath" : "Battle/Skills/Battler_Base.png",
-            "swapTargetType" : "character",
-            "textureRect" : [ 320, 0, 32, 32 ]
+            "sourcePath" : "Battle/Skills/Battler/SwordDash.ani"
          },
          {
             "frameNo" : 6,
