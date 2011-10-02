@@ -16,8 +16,9 @@ enchant.canvas.SceneGraph = enchant.Class.create({
     update: function() {
         assert(this._root);
         this._root.updateTransform(null);
+        this._root.updateAlpha();
         this._root.update();
-        this._root.draw(this._game.assets, this._surface, 1);
+        this._root.draw(this._game.assets, this._surface);
     }
 });
 
@@ -31,6 +32,7 @@ enchant.canvas.Node = enchant.Class.create({
         this.size = [1, 1];
         this.scale = [1, 1];
         this.alpha = 1.0;
+        this.absAlpha = 1.0;
         this.priority = 0.5;
         this.blendType = null;
         this.hue = [0, 0, 0];
@@ -134,20 +136,30 @@ enchant.canvas.Node = enchant.Class.create({
             this._children[i].updateTransform(this._transform);
         }
     },
+    updateAlpha: function() {
+        if (this.parent) {
+            this.absAlpha = this.alpha * this.parent.alpha;
+        } else {
+            this.absAlpha = this.alpha;
+        }
+        for (var i = 0; i < this._children.length; i++) {
+            this._children[i].updateAlpha(this.absAlpha);
+        }
+    },
     update: function() {
         this.sortByPriority();
         for (var i = 0; i < this._children.length; i++) {
             this._children[i].update();
         }
     },
-    draw: function(assets, surface, alpha) {
+    draw: function(assets, surface) {
         // If the node is not visible, simply skip all rendering for this
-        if (alpha == 0 ) {return;}
+        if (this.absAlpha == 0 ) {return;}
 
         if (this._children.length > 0) {
             this.applyTransform(surface.context);
             for (var i = 0; i < this._children.length; i++) {
-                this._children[i].draw(assets, surface, alpha * this.alpha);
+                this._children[i].draw(assets, surface);
             }
         }
     }
@@ -198,6 +210,14 @@ enchant.canvas.Sprite = enchant.Class.create({
         },
         set: function(value) {
             this.node.alpha = value;
+        }
+    },  
+    absAlpha: {
+        get: function() {
+            return this.node.absAlpha;
+        },
+        set: function(value) {
+            this.node.absAlpha = value;
         }
     },  
     blendType: {
@@ -290,6 +310,9 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.updateTransform(parentTransform);
         }
     },
+    updateAlpha: function() {
+        this.node.updateAlpha();
+    },
     update: function() {
         this.node.sortByPriority();
         if (this.srcPath) {
@@ -300,17 +323,16 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.update();
         }
     },
-    draw: function(assets, surface, alpha) {
+    draw: function(assets, surface) {
         // If the node is not visible, simply skip all rendering for this
-        if (alpha == 0 ) {return;}
-
+        if (this.absAlpha == 0 ) {return;}
         if (this.srcPath) {
             var key = '../../static/assets/images/' + this.srcPath;
             var src = assets[key];
             assert(src !== undefined, "No file found at path = " + key);
             
             this.applyTransform(surface.context);
-            surface.context.globalAlpha = alpha;
+            surface.context.globalAlpha = this.absAlpha;
             
             if (this.blendType == "add") {
                 surface.context.globalCompositeOperation = "lighter";
@@ -335,7 +357,7 @@ enchant.canvas.Sprite = enchant.Class.create({
 
             surface.draw(src, this.srcRect[0], this.srcRect[1], this.srcRect[2] - uvCutX, this.srcRect[3] - uvCutY, posX, posY, this.srcRect[2], this.srcRect[3]);
         } else {
-            this.node.draw(assets, surface, alpha * this.node.alpha);
+            this.node.draw(assets, surface);
         }
     }
 });
