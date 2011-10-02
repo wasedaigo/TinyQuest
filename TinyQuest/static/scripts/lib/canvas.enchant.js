@@ -13,7 +13,7 @@ enchant.canvas.SceneGraph = enchant.Class.create({
         this._root = node;
     },
     prioritySortFunc: function(a, b) {
-        return a.priority - b.priority;
+        return a.absPriority - b.absPriority;
     },
     update: function() {
         assert(this._root);
@@ -36,7 +36,9 @@ enchant.canvas.Node = enchant.Class.create({
         this.scale = [1, 1];
         this.alpha = 1.0;
         this.absAlpha = 1.0;
+        this.depth = 0;
         this.priority = 0.5;
+        this.absPriority = 0.5;
         this.blendType = null;
         this.hue = [0, 0, 0];
         this.rotation = 0;
@@ -143,10 +145,15 @@ enchant.canvas.Node = enchant.Class.create({
     },
     updateAttributes: function() {
         if (this.parent) {
+            this.depth = this.parent.depth + 1;
             this.absAlpha = this.alpha * this.parent.alpha;
+            this.absPriority = 2 * this.priority * this.parent.absPriority;
         } else {
+            this.depth = 0;
             this.absAlpha = this.alpha;
+            this.absPriority = this.priority;
         }
+
         for (var i = 0; i < this._children.length; i++) {
             this._children[i].updateAttributes();
         }
@@ -209,9 +216,6 @@ enchant.canvas.Sprite = enchant.Class.create({
     absAlpha: {
         get: function() {
             return this.node.absAlpha;
-        },
-        set: function(value) {
-            this.node.absAlpha = value;
         }
     },  
     blendType: {
@@ -229,13 +233,26 @@ enchant.canvas.Sprite = enchant.Class.create({
         set: function(value) {
             this.node.center = value;
         }
-    },  
+    }, 
+    depth: {
+        get: function() {
+            return this.node.depth;
+        },
+        set: function(value) {
+            this.node.depth = value;
+        }
+    }, 
     priority: {
         get: function() {
             return this.node.priority;
         },
         set: function(value) {
             this.node.priority = value;
+        }
+    },
+    absPriority: {
+        get: function() {
+            return this.node.absPriority;
         }
     },
     hue: {

@@ -33,11 +33,12 @@ enchant.animation.animationManager =
             }
         }
     },
-    CreateAnimation: function (data, isSubAnimation, baseTransform, baseAlpha, target) {
+    CreateAnimation: function (data, isSubAnimation, baseTransform, baseAlpha, basePriority, target) {
         var timelines = data["timelines"];
         var parallels = [];
         var node = new enchant.canvas.Node(baseTransform);
         node.alpha = baseAlpha;
+        node.priority = basePriority;
         
         for (var timelineNo in timelines) {
             var timeline = timelines[timelineNo];
@@ -345,7 +346,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     }
 
                     // Emit the new animation (emitted animation won't be controled by this instance anymore)
-                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.alpha, this._target);
+                    var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.alpha, this._sprite.priority, this._target);
                     
                     // Apply emit velocity
                     if (keyframe.maxEmitSpeed > 0) {
@@ -362,7 +363,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     if (keyframe.id) {
                         // Update the sprite's transform
                         this._sprite.updateTransform();
-                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, this._target);
+                        var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, this._target);
                         this._sprite.addChild(animation.node);
                         this._interval = animation.interval;
                         this._interval.start();
