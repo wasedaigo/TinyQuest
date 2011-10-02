@@ -293,7 +293,7 @@
       ],
       "source": [
         {
-          "duration": 26,
+          "duration": 18,
           "center": [
             -1.0,
             13.0
@@ -302,6 +302,23 @@
           "id": "Battle/Skills/Weapon_AxeBase",
           "type": "image",
           "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 8,
+          "center": [
+            -1.0,
+            13.0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "image",
+          "frameNo": 18,
           "rect": [
             0,
             0,

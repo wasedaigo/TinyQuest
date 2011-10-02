@@ -294,12 +294,20 @@
           "frameNo": 0
         },
         {
-          "duration": 35,
+          "duration": 1,
           "emitter": false,
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Axe/SpinAxeY",
           "type": "animation",
           "frameNo": 7
+        },
+        {
+          "duration": 34,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Axe/SpinAxeY",
+          "type": "animation",
+          "frameNo": 8
         }
       ],
       "rotation": [

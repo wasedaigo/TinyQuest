@@ -184,10 +184,15 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
     # Source is somewhat special (Like, no lenear tween)
     rectDiff = latestSourceData["textureRect"] != keyframe_set["textureRect"]
     pathDiff = latestSourceData["sourcePath"] != keyframe_set["sourcePath"]
+    priorityDiff = latestSourceData["priority"] != keyframe_set["priority"]
+    blendTypeDiff = latestSourceData["blendType"] != keyframe_set["blendType"]
+    
     latestSourceData["maxFrame"] = frameNo
-    if rectDiff || pathDiff
+    if rectDiff || pathDiff || priorityDiff || blendTypeDiff
         latestSourceData["textureRect"] = keyframe_set["textureRect"]
         latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
+        latestSourceData["priority"] = keyframe_set["priority"]
+        latestSourceData["blendType"] = keyframe_set["blendType"]
 
         id = keyframe_set["sourcePath"].split(".")[0]
         ext = keyframe_set["sourcePath"].split(".")[1]
