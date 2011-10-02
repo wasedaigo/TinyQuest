@@ -14,8 +14,6 @@ window.onload = function() {
     game.preload('../../static/assets/images/Images/Enemies/death_wind.png');
     game.preload('../../static/assets/images/bg/bg0001.png');
     game.onload = function() {
-
-
         var stage = new Group();
 
         var surface = new Surface(GAME_WIDTH,GAME_HEIGHT);
@@ -29,11 +27,12 @@ window.onload = function() {
         s.image = surface
         stage.addChild(s);
         game.rootScene.addChild(stage);
-            target = new enchant.canvas.Sprite();
-            target.srcPath = 'Images/Enemies/death_wind.png';
-            target.srcRect = [0, 0, 90, 92];
-            target.size = [90, 92];
-            target.position = [60, GAME_HEIGHT / 4 - 60];
+        target = new enchant.canvas.Sprite();
+        target.srcPath = 'Images/Enemies/death_wind.png';
+        target.srcRect = [0, 0, 90, 92];
+        target.size = [90, 92];
+        target.position = [60, GAME_HEIGHT / 4 - 60];
+        target.priority = 0.5;
         var moveVelocityX = 1;
         var moveVelocityY = 1;
         enchant.animation.animationManager.initialize(root);
@@ -110,11 +109,8 @@ var playAnimation = function(id) {
         enchant.loader.load(files, function() {
             interval = null;
             root.removeAllChildren();
-            
-
             root.addChild(target);
-
-            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, {"node":target, "origin":enchant.utils.clone(target.position)});
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {"node":target, "origin":enchant.utils.clone(target.position)});
             animation.node.position = [GAME_WIDTH / 4, GAME_HEIGHT / 4];
             enchant.animation.animationManager.start(animation); 
         });

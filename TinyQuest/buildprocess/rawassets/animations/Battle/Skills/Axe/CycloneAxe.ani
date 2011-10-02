@@ -57,6 +57,12 @@
             "sourcePath" : "Battle/Skills/Axe/SpinAxeY.ani"
          },
          {
+            "frameNo" : 8,
+            "position" : [ -8, -36 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Battle/Skills/Axe/SpinAxeY.ani"
+         },
+         {
             "frameNo" : 20,
             "positionTween" : "linear",
             "positionType" : "relativeToTarget",

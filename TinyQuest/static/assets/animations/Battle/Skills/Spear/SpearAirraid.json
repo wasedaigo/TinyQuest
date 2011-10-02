@@ -188,15 +188,15 @@
       "alpha": [
         {
           "duration": 3,
-          "endValue": 0.699999988079071,
+          "endValue": 0.100000001490116,
           "tween": true,
           "startValue": 1.0,
           "frameNo": 0
         },
         {
           "duration": 1,
-          "endValue": 0.699999988079071,
-          "startValue": 0.699999988079071,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
           "frameNo": 3
         },
         {
