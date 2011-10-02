@@ -12,6 +12,11 @@
       "position": [
         {
           "duration": 1,
+          "endPositionType": "relativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -14,
             -37
@@ -20,9 +25,12 @@
             -14,
             -37
           ],
-          "startRelative": true,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 0,
-          "endRelative": true
+          "startPositionType": "relativeToTarget"
         }
       ],
       "scale": [
@@ -78,16 +86,25 @@
       "position": [
         {
           "duration": 1,
+          "endPositionType": "relativeToTarget",
           "endValue": [
             -18,
             -23
           ],
           "wait": true,
-          "frameNo": 0,
-          "endRelative": true
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
           "duration": 1,
+          "endPositionType": "relativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -18,
             -23
@@ -96,9 +113,12 @@
             -18,
             -23
           ],
-          "startRelative": true,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 1,
-          "endRelative": true
+          "startPositionType": "relativeToTarget"
         }
       ],
       "scale": [
@@ -180,16 +200,25 @@
       "position": [
         {
           "duration": 2,
+          "endPositionType": "relativeToTarget",
           "endValue": [
             -17,
             -7
           ],
           "wait": true,
-          "frameNo": 0,
-          "endRelative": true
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
           "duration": 1,
+          "endPositionType": "relativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -17,
             -7
@@ -198,9 +227,12 @@
             -17,
             -7
           ],
-          "startRelative": true,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 2,
-          "endRelative": true
+          "startPositionType": "relativeToTarget"
         }
       ],
       "scale": [

@@ -117,13 +117,18 @@
             "isEmpty" : true
          },
          {
+            "emitter" : true,
             "frameNo" : 40,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
             "position" : [ -9, -2 ],
             "priority" : 0.6000000238418579,
             "sourcePath" : "Battle/Skills/knife/SingleDancingKnife.ani"
          },
          {
-            "frameNo" : 55,
+            "frameNo" : 41,
             "isEmpty" : true
          }
       ],
@@ -139,6 +144,7 @@
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "rotation" : 180,
+            "rotationTween" : "fix",
             "scale" : [ -1.0, 1.0 ],
             "scaleTween" : "fix",
             "sourcePath" : "Battle/Skills/Effect/Slash04.ani"

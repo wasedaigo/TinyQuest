@@ -81,10 +81,6 @@ enchant.matrix.transformPoint = function(point, matrix) {
     return newPoint;
 }
 
-enchant.matrix.getTranslationComponent = function(matrix) {
-    return [matrix[2][0], matrix[2][1]];
-}
-
 // Multiply 3x3 matrix by 3x3 matrix
 enchant.matrix.matrixMultiply = function (m1, m2) {
     var result = enchant.matrix.createMatrixIdentity(3);

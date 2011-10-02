@@ -17,6 +17,11 @@
       "position": [
         {
           "duration": 12,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -60,
             0
@@ -26,12 +31,20 @@
             0,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 0,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 1,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -60,
             0
@@ -40,9 +53,12 @@
             -60,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 12,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [

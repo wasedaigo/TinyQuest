@@ -16,6 +16,11 @@
       "position": [
         {
           "duration": 9,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -16,
             0
@@ -25,12 +30,20 @@
             0,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 0,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 35,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -16,
             0
@@ -39,12 +52,20 @@
             -16,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 9,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 1,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -16,
             0
@@ -53,9 +74,12 @@
             -16,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 44,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [
@@ -102,16 +126,25 @@
       "position": [
         {
           "duration": 9,
+          "endPositionType": "none",
           "endValue": [
             -17,
             3
           ],
           "wait": true,
-          "frameNo": 0,
-          "endRelative": false
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
           "duration": 29,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -17,
             3
@@ -120,9 +153,12 @@
             -17,
             3
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 9,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [
@@ -175,16 +211,25 @@
       "position": [
         {
           "duration": 9,
+          "endPositionType": "none",
           "endValue": [
             -17,
             3
           ],
           "wait": true,
-          "frameNo": 0,
-          "endRelative": false
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
           "duration": 29,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -17,
             3
@@ -193,9 +238,12 @@
             -17,
             3
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 9,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [

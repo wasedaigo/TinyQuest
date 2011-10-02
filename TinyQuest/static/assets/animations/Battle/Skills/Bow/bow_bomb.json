@@ -74,6 +74,11 @@
       "position": [
         {
           "duration": 5,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -5,
             -2
@@ -83,12 +88,20 @@
             -5,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 0,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 5,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -5,
             -3
@@ -98,12 +111,20 @@
             -5,
             -2
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 5,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 5,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -5,
             -3
@@ -113,12 +134,20 @@
             -5,
             -3
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 10,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 5,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -6,
             -4
@@ -128,12 +157,20 @@
             -5,
             -3
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 15,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 18,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -6,
             -4
@@ -142,9 +179,12 @@
             -6,
             -4
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 20,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [
@@ -312,16 +352,25 @@
       "position": [
         {
           "duration": 29,
+          "endPositionType": "none",
           "endValue": [
             0,
             0
           ],
           "wait": true,
-          "frameNo": 0,
-          "endRelative": false
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
           "duration": 1,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
@@ -331,9 +380,12 @@
             0,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 29,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [
@@ -435,6 +487,11 @@
       "position": [
         {
           "duration": 10,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -15,
             -4
@@ -444,12 +501,20 @@
             -16,
             0
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 0,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 10,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -14,
             -11
@@ -459,12 +524,20 @@
             -15,
             -4
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 10,
-          "endRelative": false
+          "startPositionType": "none"
         },
         {
           "duration": 1,
+          "endPositionType": "none",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -14,
             -11
@@ -473,9 +546,12 @@
             -14,
             -11
           ],
-          "startRelative": false,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
           "frameNo": 20,
-          "endRelative": false
+          "startPositionType": "none"
         }
       ],
       "scale": [
@@ -491,6 +567,7 @@
             0,
             0
           ],
+          "blendType": "add",
           "priority": 0.600000023841858,
           "id": "Battle/Skills/Effect_Special01",
           "type": "image",

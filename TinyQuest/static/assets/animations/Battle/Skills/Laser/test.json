@@ -87,28 +87,7 @@
     },
     {
       "position": [
-        {
-          "duration": 1,
-          "endPositionType": "none",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -16,
-            -9
-          ],
-          "startValue": [
-            -16,
-            -9
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "none"
-        }
+
       ],
       "scale": [
 
@@ -118,7 +97,12 @@
       ],
       "source": [
         {
-          "duration": 22,
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
           "blendType": "add",
           "emitter": true,
           "minEmitSpeed": 20.0,
@@ -128,7 +112,7 @@
           "maxEmitAngle": -45,
           "type": "animation",
           "maxEmitSpeed": 20.0,
-          "frameNo": 0
+          "frameNo": 1
         }
       ],
       "rotation": [
@@ -138,22 +122,15 @@
         {
           "duration": 1,
           "endValue": 1.0,
-          "startValue": 0.0,
+          "wait": true,
           "frameNo": 0
         },
         {
-          "duration": 20,
-          "endValue": 0.600000023841858,
+          "duration": 1,
+          "endValue": 1.0,
           "tween": true,
           "startValue": 1.0,
           "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "endValue": 0.600000023841858,
-          "tween": true,
-          "startValue": 0.600000023841858,
-          "frameNo": 21
         }
       ]
     },

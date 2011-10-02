@@ -1,0 +1,55 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/power03" ],
+      "26" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 24,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Laser/LightBom.ani"
+         }
+      ],
+      "1" : [
+         {
+            "alphaTween" : "linear",
+            "blendType" : "add",
+            "emitter" : true,
+            "frameNo" : 1,
+            "maxEmitAngle" : -45,
+            "maxEmitSpeed" : 20.0,
+            "minEmitAngle" : -45,
+            "minEmitSpeed" : 20.0,
+            "position" : [ -16, -9 ],
+            "sourcePath" : "Battle/Skills/Laser/StraightLaserBullet.ani"
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 0,
+            "position" : [ -16, 0 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 416, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 43,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler/SmallBack.ani"
+         },
+         {
+            "frameNo" : 58,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

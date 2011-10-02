@@ -139,6 +139,7 @@
          {
             "alpha" : 0.0,
             "alphaTween" : "linear",
+            "blendType" : "add",
             "frameNo" : 0,
             "position" : [ -16, 0 ],
             "positionTween" : "linear",
@@ -148,6 +149,7 @@
          },
          {
             "alphaTween" : "linear",
+            "blendType" : "add",
             "frameNo" : 10,
             "position" : [ -15, -4 ],
             "positionTween" : "linear",
@@ -158,6 +160,7 @@
          {
             "alpha" : 0.0,
             "alphaTween" : "fix",
+            "blendType" : "add",
             "frameNo" : 20,
             "position" : [ -14, -11 ],
             "positionTween" : "fix",
