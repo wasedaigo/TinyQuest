@@ -12,13 +12,16 @@ enchant.canvas.SceneGraph = enchant.Class.create({
     setRoot: function(node) {
         this._root = node;
     },
-
+    prioritySortFunc: function(a, b) {
+        return a.priority - b.priority;
+    },
     update: function() {
         assert(this._root);
-        this._root.updateTransform(null);
+        this._root.updateTransform();
         this._root.updateAlpha();
         var drawCommmands = [];
         this._root.registerDrawCommand(drawCommmands);
+        drawCommmands.sort(this.prioritySortFunc);
         for (var i = 0; i < drawCommmands.length; i++) {
             drawCommmands[i].draw(this._game.assets, this._surface);
         }
@@ -26,9 +29,6 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 });
 
 enchant.canvas.Node = enchant.Class.create({
-    prioritySortFunc: function(a, b) {
-        return a.priority - b.priority;
-    },
     initialize: function(baseTransform) {
         this._position = [0, 0];
         this.velocity = [0, 0];
@@ -79,9 +79,9 @@ enchant.canvas.Node = enchant.Class.create({
             // Initialize transform if it is not generated yet
             if (!this._transform) {
                 if (this.parent) {
-                    this.updateTransform(this.parent.transform);
+                    this.updateTransform();
                 } else {
-                    this.updateTransform(null);
+                    this.updateTransform();
                 }
             }
             return this._transform;
@@ -113,10 +113,12 @@ enchant.canvas.Node = enchant.Class.create({
         var t = this._transform;
         context.setTransform(t[0][0], t[0][1], t[1][0], t[1][1],t[2][0],t[2][1]);
     },
-    sortByPriority: function() {
-        this._children.sort(this.prioritySortFunc);
-    },
-    updateTransform: function(parentTransform) {
+    updateTransform: function() {
+        var parentTransform = null;
+        if (this.parent) {
+            parentTransform = this.parent.transform;
+        }
+        
         if (this._hasBaseTransform) {
             // Calculate a matrix to calculate world velocity
             var matrix = enchant.matrix.createMatrixIdentity(3);
@@ -136,7 +138,7 @@ enchant.canvas.Node = enchant.Class.create({
         }
         
         for (var i = 0; i < this._children.length; i++) {
-            this._children[i].updateTransform(this._transform);
+            this._children[i].updateTransform();
         }
     },
     updateAlpha: function() {
@@ -276,7 +278,6 @@ enchant.canvas.Sprite = enchant.Class.create({
             this.node.children = children;
         }
     },
-    
     transform: { 
         get: function() {
             return this.node.transform;
@@ -288,7 +289,11 @@ enchant.canvas.Sprite = enchant.Class.create({
     applyTransform: function(context) { 
         this.node.applyTransform(context);
     },
-    updateTransform: function(parentTransform) {
+    updateTransform: function() {
+        var parentTransform = null;
+        if (this.parent) {
+            parentTransform = this.parent.transform;
+        }
         if (this.srcPath) {
             var transform = enchant.matrix.getImageTransformMatirx(-this.position[0], -this.position[1], this.rotation * Math.PI / 180, this.scale[0], this.scale[1]);
             if (parentTransform) {
@@ -296,10 +301,10 @@ enchant.canvas.Sprite = enchant.Class.create({
             }
             this.transform = transform;
             for (var i = 0; i < this.children.length; i++) {
-                this.children[i].updateTransform(this.transform);
+                this.children[i].updateTransform();
             }
         } else {
-            this.node.updateTransform(parentTransform);
+            this.node.updateTransform();
         }
     },
     updateAlpha: function() {

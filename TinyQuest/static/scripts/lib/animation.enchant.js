@@ -361,7 +361,7 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
                     // If no ID exists, ignore it (Which usually means an empty keyframe)
                     if (keyframe.id) {
                         // Update the sprite's transform
-                        this._sprite.updateTransform(this._sprite.parent.transform);
+                        this._sprite.updateTransform();
                         var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, this._target);
                         this._sprite.addChild(animation.node);
                         this._interval = animation.interval;
