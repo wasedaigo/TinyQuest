@@ -32,6 +32,7 @@ window.onload = function() {
         target.srcRect = [0, 0, 90, 92];
         target.size = [90, 92];
         target.position = [GAME_WIDTH / (4 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1])];
+        target.origin = [GAME_WIDTH / (4 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1])];
         target.priority = 0.49;
         var moveVelocityX = 1;
         var moveVelocityY = 1;
@@ -110,7 +111,7 @@ var playAnimation = function(id) {
             interval = null;
             root.removeAllChildren();
             root.addChild(target);
-            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {"node":target, "origin":enchant.utils.clone(target.position)});
+            var animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {"node":target, "origin":enchant.utils.clone(target.origin)});
             animation.node.position = [GAME_WIDTH / (2 * root.scale[0]) , GAME_HEIGHT / (2 * root.scale[1])];
             enchant.animation.animationManager.start(animation); 
         });

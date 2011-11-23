@@ -142,12 +142,13 @@ enchant.animation.interval  =
 
         } else if (positionType == "relativeToTargetOrigin") {
             var anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
-            var targetPosition = enchant.matrix.transformPoint(target.origin, target.node.parent.transform);
+            var tempPos = [target.origin[0], target.origin[1]];
+            tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
+            tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1];
+            var targetPosition = enchant.matrix.transformPoint(tempPos, target.node.parent.transform);
             var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
             result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
             
-            result[0] = result[0] + offset[0];
-            result[1] = result[0] + offset[1];
         }
         return result;
     },

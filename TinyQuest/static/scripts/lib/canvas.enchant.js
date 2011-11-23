@@ -30,7 +30,7 @@ enchant.canvas.SceneGraph = enchant.Class.create({
 
 enchant.canvas.Node = enchant.Class.create({
     initialize: function(baseTransform) {
-        this._position = [0, 0];
+        this.position = [0, 0];
         this.velocity = [0, 0];
         this.size = [1, 1];
         this.scale = [1, 1];
@@ -58,14 +58,6 @@ enchant.canvas.Node = enchant.Class.create({
         },
         set: function(children) {
             console.log("Sprite : children cannot be directly set!");
-        }
-    },
-    position: {
-        get: function() {
-            return this._position;
-        },
-        set: function(value) {
-            this._position = value;
         }
     },
     getOffsetByPositionAnchor: function(positionAnchor) {
@@ -344,6 +336,15 @@ enchant.canvas.Sprite = enchant.Class.create({
         var src = assets[key];
         assert(src !== undefined, "No file found at path = " + key);
         
+        // Initialize values if they are not initialized yet
+        if (!this.srcRect) {
+            this.srcRect = [0, 0, src.width, src.height];
+            
+        }
+        if (!this.size) {
+            this.size = [this.srcRect[2], this.srcRect[3]];
+        }
+ 
         this.applyTransform(surface.context);
         surface.context.globalAlpha = this.absAlpha;
         
