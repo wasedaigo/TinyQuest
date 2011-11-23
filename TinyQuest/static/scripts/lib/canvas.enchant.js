@@ -1,6 +1,6 @@
 enchant.canvas = {};
 
-
+// Define a scene graph, which holds nodes and sprites.
 enchant.canvas.SceneGraph = enchant.Class.create({
     initialize: function(game, surface) {
         assert(surface);
@@ -347,10 +347,14 @@ enchant.canvas.Sprite = enchant.Class.create({
         this.applyTransform(surface.context);
         surface.context.globalAlpha = this.absAlpha;
         
+        var operation;
         if (this.blendType == "add") {
-            surface.context.globalCompositeOperation = "lighter";
+            operation = "lighter";
         } else { 
-            surface.context.globalCompositeOperation = "source-over";
+            operation = "source-over";
+        }
+        if (operation != surface.context.globalCompositeOperation) {
+            surface.context.globalCompositeOperation = operation;
         }
 
         assert(typeof(this.srcRect[0]) == "number", "1");

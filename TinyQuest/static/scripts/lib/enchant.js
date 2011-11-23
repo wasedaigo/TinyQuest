@@ -686,6 +686,7 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
          * ローディング時に表示されるScene.
          * @type {enchant.Scene}
          */
+         
         this.loadingScene = new enchant.Scene();
         this.loadingScene.backgroundColor = '#000';
         var barWidth = this.width * 0.9 | 0;
@@ -695,7 +696,7 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
         bar.x = (this.width - barWidth) / 2;
         bar.y = (this.height - barHeight) / 2;
         var image = new enchant.Surface(barWidth, barHeight);
-        image.context.fillStyle = '#fff';
+        image.context.fillStyle = '#aaa';
         image.context.fillRect(0, 0, barWidth, barHeight);
         image.context.fillStyle = '#000';
         image.context.fillRect(border, border, barWidth - border*2, barHeight - border*2);
@@ -769,6 +770,9 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
                     game.dispatchEvent(e);
                 }
             }, true);
+            
+            /*
+            Not using this feature right now - daigo
             if (TOUCH_ENABLED) {
                 document.addEventListener('touchstart', function(e) {
                     e.preventDefault();
@@ -796,7 +800,9 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
                     if (!game.running) e.stopPropagation();
                 }, true);
             }
+            */
         }
+        
     },
     /**
      * ファイルのプリロードを行う.
@@ -835,7 +841,10 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
      */
     load: function(src, callback) {
         if (callback == null) callback = function() {};
-
+        if (game.assets[src]) {
+            callback.call();
+            return;
+        }
         var ext = src.match(/\.\w+$/)[0];
         if (ext) ext = ext.slice(1).toLowerCase();
         switch (ext) {
@@ -869,8 +878,11 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
                         } else if (type.match(/^audio/)) {
                             game.assets[src] = enchant.Sound.load(src, type);
                             game.assets[src].addEventListener('load', callback);
+                        } else if (ext == 'json') {
+                            game.assets[src] =  $.parseJSON(req.responseText);
+                            callback();
                         } else {
-                            game.assets[asset] = req.responseText;
+                            game.assets[src] = req.responseText;
                             callback();
                         }
                     }
