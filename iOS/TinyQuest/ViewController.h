@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ItemDialogController;
 @interface ViewController : UIViewController
 {
     IBOutlet UIScrollView *scrollView;
+    ItemDialogController *itemDialogController;
 }
-
+@property(strong) ItemDialogController *itemDialogController;
 @end
 

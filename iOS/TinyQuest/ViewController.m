@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "ItemDialogController.h"
 
 @implementation ViewController
+@synthesize itemDialogController;
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -55,9 +58,13 @@
 
 - (void)buttonClick:(id)sender
 {
-    NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"ItemDetailView" owner:self options:nil];
-    UIView *nibView = [nibObjects objectAtIndex:0];
-    [self.view addSubview:nibView];
+    if (!self.itemDialogController)
+    {
+        self.itemDialogController = [[ItemDialogController alloc] init];
+        [self.view addSubview:self.itemDialogController.view];
+    }
+    
+    [self.itemDialogController slideIn];
 }
 
 - (void)viewDidUnload
