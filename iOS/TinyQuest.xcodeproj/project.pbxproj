@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		280146541483B5590041ACB1 /* WorldMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280146531483B5590041ACB1 /* WorldMapViewController.m */; };
-		28883C4D1482768300135585 /* ItemDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28883C4C1482768300135585 /* ItemDialogController.m */; };
-		2924DA681480C01800ECF827 /* adventure_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2924DA661480C01800ECF827 /* adventure_panel.png */; };
-		2924DA691480C01800ECF827 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 2924DA671480C01800ECF827 /* banner.png */; };
-		2924DA6F1480D6E700ECF827 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 2924DA6E1480D6E700ECF827 /* map.png */; };
-		2924DAB91480EBE100ECF827 /* slots.png in Resources */ = {isa = PBXBuildFile; fileRef = 2924DAB81480EBE100ECF827 /* slots.png */; };
-		2924DABB1481027100ECF827 /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2924DABA1481027100ECF827 /* item1.png */; };
-		2924DABD14810A9D00ECF827 /* ItemDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2924DABC14810A9D00ECF827 /* ItemDetailView.xib */; };
+		281D34BD1483C98D0032635F /* AdventureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281D34AF1483C98D0032635F /* AdventureViewController.m */; };
+		281D34BE1483C98D0032635F /* ItemDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281D34B11483C98D0032635F /* ItemDialogController.m */; };
+		281D34BF1483C98D0032635F /* WorldMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281D34B31483C98D0032635F /* WorldMapViewController.m */; };
+		281D34E81483CB300032635F /* adventure_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E01483CB300032635F /* adventure_panel.png */; };
+		281D34E91483CB300032635F /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E11483CB300032635F /* banner.png */; };
+		281D34EA1483CB300032635F /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E21483CB300032635F /* item1.png */; };
+		281D34EB1483CB300032635F /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E31483CB300032635F /* map.png */; };
+		281D34EC1483CB300032635F /* slots.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E41483CB300032635F /* slots.png */; };
+		281D34ED1483CB300032635F /* ItemDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E61483CB300032635F /* ItemDetailView.xib */; };
+		281D34EE1483CB300032635F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E71483CB300032635F /* MainStoryboard_iPad.storyboard */; };
+		281D34F21483CBA00032635F /* InventoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 281D34F11483CBA00032635F /* InventoryModel.m */; };
 		29C496211480966D001821A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496201480966D001821A6 /* UIKit.framework */; };
 		29C496231480966D001821A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496221480966D001821A6 /* Foundation.framework */; };
 		29C496251480966D001821A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496241480966D001821A6 /* CoreGraphics.framework */; };
 		29C4962B1480966D001821A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29C496291480966D001821A6 /* InfoPlist.strings */; };
 		29C4962D1480966D001821A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C4962C1480966D001821A6 /* main.m */; };
 		29C496311480966D001821A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C496301480966D001821A6 /* AppDelegate.m */; };
-		29C496341480966D001821A6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C496321480966D001821A6 /* MainStoryboard_iPhone.storyboard */; };
-		29C496371480966D001821A6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C496351480966D001821A6 /* MainStoryboard_iPad.storyboard */; };
-		29C4963A1480966D001821A6 /* AdventureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C496391480966D001821A6 /* AdventureViewController.m */; };
 		29C496421480966D001821A6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496411480966D001821A6 /* SenTestingKit.framework */; };
 		29C496431480966D001821A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496201480966D001821A6 /* UIKit.framework */; };
 		29C496441480966D001821A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496221480966D001821A6 /* Foundation.framework */; };
@@ -42,16 +42,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		280146521483B5590041ACB1 /* WorldMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorldMapViewController.h; path = TinyQuest/WorldMapViewController.h; sourceTree = SOURCE_ROOT; };
-		280146531483B5590041ACB1 /* WorldMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorldMapViewController.m; path = TinyQuest/WorldMapViewController.m; sourceTree = SOURCE_ROOT; };
-		28883C4B1482768300135585 /* ItemDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDialogController.h; path = TinyQuest/ItemDialogController.h; sourceTree = SOURCE_ROOT; };
-		28883C4C1482768300135585 /* ItemDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDialogController.m; path = TinyQuest/ItemDialogController.m; sourceTree = SOURCE_ROOT; };
-		2924DA661480C01800ECF827 /* adventure_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adventure_panel.png; sourceTree = "<group>"; };
-		2924DA671480C01800ECF827 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
-		2924DA6E1480D6E700ECF827 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
-		2924DAB81480EBE100ECF827 /* slots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slots.png; sourceTree = "<group>"; };
-		2924DABA1481027100ECF827 /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item1.png; sourceTree = "<group>"; };
-		2924DABC14810A9D00ECF827 /* ItemDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemDetailView.xib; path = ../ItemDetailView.xib; sourceTree = "<group>"; };
+		281D34AE1483C98D0032635F /* AdventureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdventureViewController.h; sourceTree = "<group>"; };
+		281D34AF1483C98D0032635F /* AdventureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdventureViewController.m; sourceTree = "<group>"; };
+		281D34B01483C98D0032635F /* ItemDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDialogController.h; sourceTree = "<group>"; };
+		281D34B11483C98D0032635F /* ItemDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDialogController.m; sourceTree = "<group>"; };
+		281D34B21483C98D0032635F /* WorldMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldMapViewController.h; sourceTree = "<group>"; };
+		281D34B31483C98D0032635F /* WorldMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldMapViewController.m; sourceTree = "<group>"; };
+		281D34E01483CB300032635F /* adventure_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adventure_panel.png; sourceTree = "<group>"; };
+		281D34E11483CB300032635F /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		281D34E21483CB300032635F /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item1.png; sourceTree = "<group>"; };
+		281D34E31483CB300032635F /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		281D34E41483CB300032635F /* slots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slots.png; sourceTree = "<group>"; };
+		281D34E61483CB300032635F /* ItemDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDetailView.xib; sourceTree = "<group>"; };
+		281D34E71483CB300032635F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		281D34F01483CBA00032635F /* InventoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryModel.h; sourceTree = "<group>"; };
+		281D34F11483CBA00032635F /* InventoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryModel.m; sourceTree = "<group>"; };
 		29C4961C1480966D001821A6 /* TInyQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TInyQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C496201480966D001821A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29C496221480966D001821A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,10 +67,6 @@
 		29C4962E1480966D001821A6 /* TInyQuest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TInyQuest-Prefix.pch"; sourceTree = "<group>"; };
 		29C4962F1480966D001821A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		29C496301480966D001821A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		29C496331480966D001821A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		29C496361480966D001821A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		29C496381480966D001821A6 /* AdventureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdventureViewController.h; sourceTree = "<group>"; };
-		29C496391480966D001821A6 /* AdventureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdventureViewController.m; sourceTree = "<group>"; };
 		29C496401480966D001821A6 /* TInyQuestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TInyQuestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C496411480966D001821A6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		29C496491480966D001821A6 /* TInyQuestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TInyQuestTests-Info.plist"; sourceTree = "<group>"; };
@@ -98,20 +99,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2924DA651480C01800ECF827 /* Resource */ = {
+		281D34AD1483C98D0032635F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				29C496321480966D001821A6 /* MainStoryboard_iPhone.storyboard */,
-				29C496351480966D001821A6 /* MainStoryboard_iPad.storyboard */,
-				2924DABC14810A9D00ECF827 /* ItemDetailView.xib */,
-				2924DABA1481027100ECF827 /* item1.png */,
-				2924DAB81480EBE100ECF827 /* slots.png */,
-				2924DA6E1480D6E700ECF827 /* map.png */,
-				2924DA661480C01800ECF827 /* adventure_panel.png */,
-				2924DA671480C01800ECF827 /* banner.png */,
+				281D34AE1483C98D0032635F /* AdventureViewController.h */,
+				281D34AF1483C98D0032635F /* AdventureViewController.m */,
+				281D34B01483C98D0032635F /* ItemDialogController.h */,
+				281D34B11483C98D0032635F /* ItemDialogController.m */,
+				281D34B21483C98D0032635F /* WorldMapViewController.h */,
+				281D34B31483C98D0032635F /* WorldMapViewController.m */,
 			);
-			path = Resource;
+			name = ViewControllers;
+			path = TinyQuest/ViewControllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		281D34DE1483CB300032635F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				281D34DF1483CB300032635F /* Images */,
+				281D34E51483CB300032635F /* Xib */,
+			);
+			name = Resource;
+			path = TinyQuest/Resource;
+			sourceTree = SOURCE_ROOT;
+		};
+		281D34DF1483CB300032635F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				281D34E01483CB300032635F /* adventure_panel.png */,
+				281D34E11483CB300032635F /* banner.png */,
+				281D34E21483CB300032635F /* item1.png */,
+				281D34E31483CB300032635F /* map.png */,
+				281D34E41483CB300032635F /* slots.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
+		};
+		281D34E51483CB300032635F /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				281D34E61483CB300032635F /* ItemDetailView.xib */,
+				281D34E71483CB300032635F /* MainStoryboard_iPad.storyboard */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		281D34EF1483CB8E0032635F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				281D34F01483CBA00032635F /* InventoryModel.h */,
+				281D34F11483CBA00032635F /* InventoryModel.m */,
+			);
+			name = Models;
+			path = TinyQuest/Models;
+			sourceTree = SOURCE_ROOT;
 		};
 		29C496111480966D001821A6 = {
 			isa = PBXGroup;
@@ -146,16 +187,12 @@
 		29C496261480966D001821A6 /* TinyQuest */ = {
 			isa = PBXGroup;
 			children = (
-				2924DA651480C01800ECF827 /* Resource */,
+				281D34EF1483CB8E0032635F /* Models */,
+				281D34DE1483CB300032635F /* Resource */,
+				281D34AD1483C98D0032635F /* ViewControllers */,
 				29C4962F1480966D001821A6 /* AppDelegate.h */,
 				29C496301480966D001821A6 /* AppDelegate.m */,
-				29C496381480966D001821A6 /* AdventureViewController.h */,
-				29C496391480966D001821A6 /* AdventureViewController.m */,
 				29C496271480966D001821A6 /* Supporting Files */,
-				28883C4B1482768300135585 /* ItemDialogController.h */,
-				28883C4C1482768300135585 /* ItemDialogController.m */,
-				280146521483B5590041ACB1 /* WorldMapViewController.h */,
-				280146531483B5590041ACB1 /* WorldMapViewController.m */,
 			);
 			name = TinyQuest;
 			path = TInyQuest;
@@ -263,14 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				29C4962B1480966D001821A6 /* InfoPlist.strings in Resources */,
-				29C496341480966D001821A6 /* MainStoryboard_iPhone.storyboard in Resources */,
-				29C496371480966D001821A6 /* MainStoryboard_iPad.storyboard in Resources */,
-				2924DA681480C01800ECF827 /* adventure_panel.png in Resources */,
-				2924DA691480C01800ECF827 /* banner.png in Resources */,
-				2924DA6F1480D6E700ECF827 /* map.png in Resources */,
-				2924DAB91480EBE100ECF827 /* slots.png in Resources */,
-				2924DABB1481027100ECF827 /* item1.png in Resources */,
-				2924DABD14810A9D00ECF827 /* ItemDetailView.xib in Resources */,
+				281D34E81483CB300032635F /* adventure_panel.png in Resources */,
+				281D34E91483CB300032635F /* banner.png in Resources */,
+				281D34EA1483CB300032635F /* item1.png in Resources */,
+				281D34EB1483CB300032635F /* map.png in Resources */,
+				281D34EC1483CB300032635F /* slots.png in Resources */,
+				281D34ED1483CB300032635F /* ItemDetailView.xib in Resources */,
+				281D34EE1483CB300032635F /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,9 +343,10 @@
 			files = (
 				29C4962D1480966D001821A6 /* main.m in Sources */,
 				29C496311480966D001821A6 /* AppDelegate.m in Sources */,
-				29C4963A1480966D001821A6 /* AdventureViewController.m in Sources */,
-				28883C4D1482768300135585 /* ItemDialogController.m in Sources */,
-				280146541483B5590041ACB1 /* WorldMapViewController.m in Sources */,
+				281D34BD1483C98D0032635F /* AdventureViewController.m in Sources */,
+				281D34BE1483C98D0032635F /* ItemDialogController.m in Sources */,
+				281D34BF1483C98D0032635F /* WorldMapViewController.m in Sources */,
+				281D34F21483CBA00032635F /* InventoryModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,24 +375,6 @@
 				29C4962A1480966D001821A6 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		29C496321480966D001821A6 /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29C496331480966D001821A6 /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		29C496351480966D001821A6 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29C496361480966D001821A6 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		29C4964A1480966D001821A6 /* InfoPlist.strings */ = {
