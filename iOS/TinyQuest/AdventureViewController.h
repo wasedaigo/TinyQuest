@@ -9,11 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class ItemDialogController;
-@interface ViewController : UIViewController
+@interface AdventureViewController : UIViewController
 {
     IBOutlet UIScrollView *scrollView;
     ItemDialogController *itemDialogController;
 }
-@property(strong) ItemDialogController *itemDialogController;
+- (void)slideIn;
+- (void)slideOut;
+- (IBAction)gotoProfile;
+
+@property(strong, nonatomic) ItemDialogController *itemDialogController;
+@property(weak, nonatomic) IBOutlet UIView *controlPanelView;
 @end
 

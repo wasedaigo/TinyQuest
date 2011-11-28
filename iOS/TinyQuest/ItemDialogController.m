@@ -9,7 +9,7 @@
 #import "ItemDialogController.h"
 
 @implementation ItemDialogController
-@synthesize view;
+@synthesize view, delegate;
 - (id)init {
     self = [super init];
     if (self != nil)
@@ -28,7 +28,10 @@
 
 - (void)slideIn
 {
+    self.view.userInteractionEnabled = NO;
     [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(onSlideFinished:finished:context:)];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
@@ -37,7 +40,10 @@
 
 - (void)slideOut
 {
+    self.view.userInteractionEnabled = NO;
     [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(onSlideFinished:finished:context:)];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     self.view.frame = CGRectMake(320, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
@@ -46,6 +52,12 @@
 
 - (IBAction)backButtonClicked:(id)sender
 {
-     [self slideOut];
+    [self slideOut];
+    [delegate slideIn];
+}
+
+-(void)onSlideFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    self.view.userInteractionEnabled = YES;
 }
 @end

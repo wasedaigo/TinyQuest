@@ -6,11 +6,11 @@
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AdventureViewController.h"
 #import "ItemDialogController.h"
 
-@implementation ViewController
-@synthesize itemDialogController;
+@implementation AdventureViewController
+@synthesize itemDialogController, controlPanelView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,7 +26,8 @@
     scrollView.contentSize=CGSizeMake(frameSize.width, frameSize.height * count);
     scrollView.contentInset=UIEdgeInsetsMake(0.0,0.0,0.0,0.0);
     scrollView.delaysContentTouches = YES;
-    
+
+    // Setup all item buttons
     UIImage *image = [UIImage imageNamed:@"slots.png"];
     for (NSInteger i = 0; i < count; i++) 
     {
@@ -38,7 +39,7 @@
             NSInteger ty = buttonIndex / 3;
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
+            [button addTarget:self action:@selector(gotoProfile) forControlEvents:UIControlEventTouchUpInside];
             UIImage *image = [UIImage imageNamed:@"item1.png"];
             [button setImage:image forState:UIControlStateNormal];
             [button setFrame:CGRectMake(5 + tx * 62, 5 + ty * 54, 55, 45)];
@@ -56,15 +57,17 @@
     [self setupInventory];
 }
 
-- (void)buttonClick:(id)sender
+- (IBAction)gotoProfile
 {
     if (!self.itemDialogController)
     {
         self.itemDialogController = [[ItemDialogController alloc] init];
+        self.itemDialogController.delegate = self;
         [self.view addSubview:self.itemDialogController.view];
     }
     
     [self.itemDialogController slideIn];
+    [self slideOut];
 }
 
 - (void)viewDidUnload
@@ -104,4 +107,32 @@
     }
 }
 
+- (void)slideIn
+{
+    self.controlPanelView.userInteractionEnabled = NO;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(onSlideFinished:finished:context:)];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.controlPanelView.frame = CGRectMake(0, self.controlPanelView.frame.origin.y, self.controlPanelView.frame.size.width, self.controlPanelView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void)slideOut
+{
+    self.controlPanelView.userInteractionEnabled = NO;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(onSlideFinished:finished:context:)];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    self.controlPanelView.frame = CGRectMake(-320, self.controlPanelView.frame.origin.y, self.controlPanelView.frame.size.width, self.controlPanelView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+-(void)onSlideFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    self.controlPanelView.userInteractionEnabled = YES;
+}
 @end

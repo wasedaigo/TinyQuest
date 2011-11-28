@@ -43,10 +43,9 @@
 							<object class="IBUILabel" id="250600926">
 								<reference key="NSNextResponder" ref="1062054870"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{130, 11}, {86, 21}}</string>
+								<string key="NSFrame">{{130, 20}, {86, 21}}</string>
 								<reference key="NSSuperview" ref="1062054870"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -73,7 +72,7 @@
 							<object class="IBUIButton" id="854749318">
 								<reference key="NSNextResponder" ref="1062054870"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 16}, {45, 180}}</string>
+								<string key="NSFrame">{{5, 13}, {71, 28}}</string>
 								<reference key="NSSuperview" ref="1062054870"/>
 								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -81,7 +80,7 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">&gt;</string>
+								<string key="IBUINormalTitle">Back</string>
 								<object class="NSColor" key="IBUIHighlightedTitleColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -105,13 +104,13 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrame">{{320, 280}, {320, 200}}</string>
+						<string key="NSFrame">{{320, 302}, {320, 178}}</string>
 						<reference key="NSSuperview" ref="264532076"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="250600926"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAwLjc0MzYxMDEyMSAwLjQ0NTEzMDczOTQAA</bytes>
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>

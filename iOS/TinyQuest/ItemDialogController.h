@@ -16,4 +16,5 @@
 - (void)slideOut;
 - (IBAction)backButtonClicked:(id)sender;
 @property(weak, nonatomic) IBOutlet UIView *view;
+@property(weak, nonatomic) id delegate;
 @end
