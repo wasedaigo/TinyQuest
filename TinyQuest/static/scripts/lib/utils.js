@@ -1,55 +1,46 @@
-var Utils = {
-    pendingRequest : {},
-    clone : function(src) {
-      var newObj = (src instanceof Array) ? [] : {};
-      for (i in src) {
-        if (i == 'clone') continue;
-        if (src[i] && typeof src[i] == "object") {
-          newObj[i] = this.clone(src[i]);
-        } else newObj[i] = src[i]
-      } return newObj;
-    },
 
-    loadJSON : function (name, callback)
-    {
-      this.loadJSONWithData(name, "", callback);
+  window.Utils = {
+    pendingRequest: {},
+    clone: function(src) {
+      var i, newObj;
+      newObj = (src instanceof Array ? [] : {});
+      for (i in src) {
+        if (i === "clone") continue;
+        if (src[i] && typeof src[i] === "object") {
+          newObj[i] = this.clone(src[i]);
+        } else {
+          newObj[i] = src[i];
+        }
+      }
+      return newObj;
     },
-    
-    loadJSONWithData : function (name, data, callback)
-    {
-      // Avoid multiple request at once
-      if (!this.pendingRequest[name])
-      {
+    loadJSON: function(name, callback) {
+      return this.loadJSONWithData(name, "", callback);
+    },
+    loadJSONWithData: function(name, data, callback) {
+      var self;
+      if (!this.pendingRequest[name]) {
         this.pendingRequest[name] = true;
-        var self = this;
-        $.ajax({
+        self = this;
+        return $.ajax({
           url: name,
-          type: 'GET',
+          type: "GET",
           data: data,
-          dataType: 'json',
+          dataType: "json",
           timeout: 5000,
-          error: function(data)
-          {
-            alert('Server Error: ' + name);
-            self.pendingRequest[name] = false;
+          error: function(data) {
+            alert("Server Error: " + name);
+            return self.pendingRequest[name] = false;
           },
-          success: function(json)
-          {
+          success: function(json) {
             callback(json);
-            self.pendingRequest[name] = false;
+            return self.pendingRequest[name] = false;
           }
         });
       }
     },
-    
-    visualizeSigned : function(value) 
-    {
-        if (value >= 0) {
-            value = "+" + value;
-        }
-        
-        return value;
+    visualizeSigned: function(value) {
+      if (value >= 0) value = "+" + value;
+      return value;
     }
-}
-
-
+  };

@@ -1,100 +1,98 @@
-enchant.matrix = {};
 
-// Static function
-enchant.matrix.createMatrixIdentity = function(n) {
-    var matrix = new Array(n);
-    for (var i = 0; i < n; i++) {
-        matrix[i] = new Array(n);
+  enchant.matrix = {};
+
+  enchant.matrix.createMatrixIdentity = function(n) {
+    var i, j, matrix;
+    matrix = new Array(n);
+    i = 0;
+    while (i < n) {
+      matrix[i] = new Array(n);
+      i++;
     }
-    for(i=0; i < n;i++){
-      for(j = 0;j < n;j++){
-        matrix[i][j] = (i==j) ? 1.0 : 0.0;
+    i = 0;
+    while (i < n) {
+      j = 0;
+      while (j < n) {
+        matrix[i][j] = (i === j ? 1.0 : 0.0);
+        j++;
       }
+      i++;
     }
-    
-  return matrix;
-}
+    return matrix;
+  };
 
-// Calculate inverse matrix
-enchant.matrix.createInverseMatrix = function(srcMatrix, n) {
-    var matrix = Utils.clone(srcMatrix);
-    var invertMatrix = enchant.matrix.createMatrixIdentity(n);
-    var buf = 0; // Store temporary data
-    var i, j, k = 0; // Counters
-
-    // Gauss–Jordan elimination
-    for(i = 0; i < n; i++){
+  enchant.matrix.createInverseMatrix = function(srcMatrix, n) {
+    var buf, i, invertMatrix, j, k, matrix;
+    matrix = Utils.clone(srcMatrix);
+    invertMatrix = enchant.matrix.createMatrixIdentity(n);
+    buf = 0;
+    i = void 0;
+    j = void 0;
+    k = 0;
+    i = 0;
+    while (i < n) {
       buf = 1 / matrix[i][i];
-      for(j = 0; j < n; j++){
+      j = 0;
+      while (j < n) {
         matrix[i][j] *= buf;
         invertMatrix[i][j] *= buf;
+        j++;
       }
-      for(j = 0;j < n; j++){
-        if(i != j){
+      j = 0;
+      while (j < n) {
+        if (i !== j) {
           buf = matrix[j][i];
-          for(k=0; k<n; k++){
-            matrix[j][k] -= matrix[i][k]*buf;
+          k = 0;
+          while (k < n) {
+            matrix[j][k] -= matrix[i][k] * buf;
             invertMatrix[j][k] -= invertMatrix[i][k] * buf;
+            k++;
           }
         }
+        j++;
       }
+      i++;
     }
-
     return invertMatrix;
-}
-// Transformation 
-// 1. Rotate at origin
-// 2. Scale at origin
-// 3. Translate to center point
-enchant.matrix.getNodeTransformMatirx = function (dx, dy, rotation, scaleX, scaleY) {
-  var c = Math.cos(rotation);
-  var s = Math.sin(rotation);
-  var result = [
-                [c * scaleX, s * scaleX, 0],
-                [-s * scaleY, c * scaleY, 0],
-                [dx, dy, 1]
-                ];
-  return result;
-};
+  };
 
-// Transformation
-// 1. Translate to center point
-// 2. Rotate
-// 3. Scale
-// 4. Translate back to the original point 
-enchant.matrix.getImageTransformMatirx = function (dx, dy, rotation, scaleX, scaleY) {
-  var c = Math.cos(rotation);
-  var s = Math.sin(rotation);
-  var result = [
-                [c * scaleX, s * scaleX, 0],
-                [-s * scaleY, c * scaleY, 0],
-                [(c * dx * scaleX - s * dy * scaleY) - dx, (s * dx * scaleX + c * dy * scaleY) - dy, 1]
-                ];
-  return result;
-};
+  enchant.matrix.getNodeTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
+    var c, s, _ref;
+    _ref = [Math.cos(rotation), Math.sin(rotation)], c = _ref[0], s = _ref[1];
+    return [[c * scaleX, s * scaleX, 0], [-s * scaleY, c * scaleY, 0], [dx, dy, 1]];
+  };
 
-// Multiply 3x3 matrix to 2 point
-enchant.matrix.transformPoint = function(point, matrix) {
-    var newPoint = new Array(2);
+  enchant.matrix.getImageTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
+    var c, s, _ref;
+    _ref = [Math.cos(rotation), Math.sin(rotation)], c = _ref[0], s = _ref[1];
+    return [[c * scaleX, s * scaleX, 0], [-s * scaleY, c * scaleY, 0], [(c * dx * scaleX - s * dy * scaleY) - dx, (s * dx * scaleX + c * dy * scaleY) - dy, 1]];
+  };
+
+  enchant.matrix.transformPoint = function(point, matrix) {
+    var newPoint;
+    newPoint = new Array(2);
     newPoint[0] = point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0];
     newPoint[1] = point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1];
     return newPoint;
-}
+  };
 
-// Multiply 3x3 matrix by 3x3 matrix
-enchant.matrix.matrixMultiply = function (m1, m2) {
-    var result = enchant.matrix.createMatrixIdentity(3);
-    
-    for (var x = 0; x < 3; x++) {
-    for (var y = 0; y < 3; y++) {
-      var sum = 0;
-    
-      for (var z = 0; z < 3; z++) {
-        sum += m1[x][z] * m2[z][y];
+  enchant.matrix.matrixMultiply = function(m1, m2) {
+    var result, sum, x, y, z;
+    result = enchant.matrix.createMatrixIdentity(3);
+    x = 0;
+    while (x < 3) {
+      y = 0;
+      while (y < 3) {
+        sum = 0;
+        z = 0;
+        while (z < 3) {
+          sum += m1[x][z] * m2[z][y];
+          z++;
+        }
+        result[x][y] = sum;
+        y++;
       }
-    
-      result[x][y] = sum;
-    }
+      x++;
     }
     return result;
-};
+  };
