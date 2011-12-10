@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface InventoryViewController : NSObject
+{
+}
 
+- (BOOL)setup;
+- (void)setupInventory;
+
+@property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @end

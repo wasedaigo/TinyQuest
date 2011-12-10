@@ -17,6 +17,10 @@
 		281D34EC1483CB300032635F /* slots.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E41483CB300032635F /* slots.png */; };
 		281D34ED1483CB300032635F /* ItemDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281D34E61483CB300032635F /* ItemDetailView.xib */; };
 		281D35051483CE480032635F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281D35041483CE480032635F /* MainStoryboard_iPhone.storyboard */; };
+		282EBAA31483D8DB009C5AF5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282EBAA21483D8DB009C5AF5 /* GLKit.framework */; };
+		282EBAA51483D976009C5AF5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282EBAA41483D976009C5AF5 /* OpenGLES.framework */; };
+		282EBAA71483DA9B009C5AF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282EBAA61483DA9B009C5AF5 /* QuartzCore.framework */; };
+		287C9B43148BB21300EBF333 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287C9B42148BB21300EBF333 /* InventoryViewController.m */; };
 		29C496211480966D001821A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496201480966D001821A6 /* UIKit.framework */; };
 		29C496231480966D001821A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496221480966D001821A6 /* Foundation.framework */; };
 		29C496251480966D001821A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C496241480966D001821A6 /* CoreGraphics.framework */; };
@@ -54,6 +58,11 @@
 		281D34E41483CB300032635F /* slots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slots.png; sourceTree = "<group>"; };
 		281D34E61483CB300032635F /* ItemDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemDetailView.xib; sourceTree = "<group>"; };
 		281D35041483CE480032635F /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		282EBAA21483D8DB009C5AF5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		282EBAA41483D976009C5AF5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		282EBAA61483DA9B009C5AF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		287C9B41148BB21300EBF333 /* InventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
+		287C9B42148BB21300EBF333 /* InventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		29C4961C1480966D001821A6 /* TInyQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TInyQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C496201480966D001821A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29C496221480966D001821A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282EBAA71483DA9B009C5AF5 /* QuartzCore.framework in Frameworks */,
+				282EBAA51483D976009C5AF5 /* OpenGLES.framework in Frameworks */,
+				282EBAA31483D8DB009C5AF5 /* GLKit.framework in Frameworks */,
 				29C496211480966D001821A6 /* UIKit.framework in Frameworks */,
 				29C496231480966D001821A6 /* Foundation.framework in Frameworks */,
 				29C496251480966D001821A6 /* CoreGraphics.framework in Frameworks */,
@@ -105,6 +117,8 @@
 				281D34B11483C98D0032635F /* ItemDialogController.m */,
 				281D34B21483C98D0032635F /* WorldMapViewController.h */,
 				281D34B31483C98D0032635F /* WorldMapViewController.m */,
+				287C9B41148BB21300EBF333 /* InventoryViewController.h */,
+				287C9B42148BB21300EBF333 /* InventoryViewController.m */,
 			);
 			name = ViewControllers;
 			path = TinyQuest/ViewControllers;
@@ -171,6 +185,9 @@
 		29C4961F1480966D001821A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				282EBAA61483DA9B009C5AF5 /* QuartzCore.framework */,
+				282EBAA41483D976009C5AF5 /* OpenGLES.framework */,
+				282EBAA21483D8DB009C5AF5 /* GLKit.framework */,
 				29C496201480966D001821A6 /* UIKit.framework */,
 				29C496221480966D001821A6 /* Foundation.framework */,
 				29C496241480966D001821A6 /* CoreGraphics.framework */,
@@ -341,6 +358,7 @@
 				281D34BD1483C98D0032635F /* AdventureViewController.m in Sources */,
 				281D34BE1483C98D0032635F /* ItemDialogController.m in Sources */,
 				281D34BF1483C98D0032635F /* WorldMapViewController.m in Sources */,
+				287C9B43148BB21300EBF333 /* InventoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

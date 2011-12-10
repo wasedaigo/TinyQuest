@@ -8,9 +8,11 @@
 
 #import "AdventureViewController.h"
 #import "ItemDialogController.h"
+#import "InventoryViewController.h"
 
 @implementation AdventureViewController
-@synthesize itemDialogController, controlPanelView;
+@synthesize itemDialogController, inventoryViewController;
+@synthesize controlPanelView, inventoryPanelView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -18,43 +20,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-- (void)setupInventory
-{
-    NSInteger count = 5;
-    CGSize frameSize = scrollView.frame.size;
-    scrollView.contentSize=CGSizeMake(frameSize.width, frameSize.height * count);
-    scrollView.contentInset=UIEdgeInsetsMake(0.0,0.0,0.0,0.0);
-    scrollView.delaysContentTouches = YES;
-
-    // Setup all item buttons
-    UIImage *image = [UIImage imageNamed:@"slots.png"];
-    for (NSInteger i = 0; i < count; i++) 
-    {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0,  i * frameSize.height, frameSize.width, frameSize.height);
-        imageView.userInteractionEnabled = YES;
-        for (NSInteger buttonIndex = 0; buttonIndex < 9; buttonIndex++) {
-            NSInteger tx = buttonIndex % 3;
-            NSInteger ty = buttonIndex / 3;
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button addTarget:self action:@selector(gotoProfile) forControlEvents:UIControlEventTouchUpInside];
-            UIImage *image = [UIImage imageNamed:@"item1.png"];
-            [button setImage:image forState:UIControlStateNormal];
-            [button setFrame:CGRectMake(5 + tx * 62, 5 + ty * 54, 55, 45)];
-            [imageView addSubview:button];
-        }
-        
-        [scrollView addSubview:imageView];  
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setupInventory];
+
+    // Initialize InventoryViewController
+    self.inventoryViewController = [[InventoryViewController alloc] init];
+    [self.inventoryPanelView addSubview:self.inventoryViewController.scrollView];
+    [self.inventoryViewController setupInventory];
 }
 
 - (IBAction)gotoProfile
@@ -135,4 +108,15 @@
 {
     self.controlPanelView.userInteractionEnabled = YES;
 }
+
+- (void)glkViewControllerUpdate:(GLKViewController*)controller
+{
+}
+
+- (void)glkView:(GLKView*)view drawInRect:(CGRect)rect
+{
+    
+}
+
+
 @end

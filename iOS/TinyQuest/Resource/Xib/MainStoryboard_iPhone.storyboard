@@ -44,14 +44,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="banner.png" id="pdZ-TF-7KQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" id="zon-i6-rdf">
-                                <rect key="frame" x="4" y="308" width="194" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
                             <view contentMode="scaleToFill" id="s00-OO-OyC">
                                 <rect key="frame" x="0.0" y="263" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,13 +93,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="WcX-IH-qs5">
+                                <rect key="frame" x="0.0" y="308" width="198" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="scrollView" destination="zon-i6-rdf" id="ayo-ah-Mdg"/>
+                        <outlet property="inventoryPanelView" destination="WcX-IH-qs5" id="eMj-cG-sVJ"/>
                     </connections>
                 </viewController>
             </objects>
@@ -153,7 +150,6 @@
     </scenes>
     <resources>
         <image name="adventure_panel.png" width="160" height="90"/>
-        <image name="banner.png" width="321" height="48"/>
         <image name="map.png" width="172" height="252"/>
     </resources>
     <classes>
@@ -162,7 +158,7 @@
             <relationships>
                 <relationship kind="action" name="gotoProfile"/>
                 <relationship kind="outlet" name="controlPanelView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="inventoryPanelView" candidateClass="UIView"/>
             </relationships>
         </class>
     </classes>
