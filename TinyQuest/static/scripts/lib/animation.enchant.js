@@ -207,7 +207,17 @@ enchant.animation.interval  =
         }
 
         return [startValue, endValue]
-    } 
+    },
+    CalculateAttributeValues: function (attribute, startValue, endValue, node, options, dataStore) {
+        var result = null;
+        if (attribute == "position") {
+            result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, node, options.startPositionType, options.endPositionType, options.startPositionAnchor, options.endPositionAnchor, options.target);
+        } else if (attribute == "rotation") {
+            result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore);
+        }
+        
+        return result
+    }
 }
 
 // Linear interval for simple parameter
@@ -241,13 +251,8 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create({
         var startValue = this._startValue;
         var endValue = this._endValue;
         
-        // Note: Position specific code inside a general class.
-        if (this._attribute == "position") {
-            var result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, this._node, this._options.startPositionType, this._options.endPositionType, this._options.startPositionAnchor, this._options.endPositionAnchor,this._options.target);
-            startValue = result[0];
-            endValue = result[1];
-        } else if (this._attribute == "rotation") {
-            var result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, this._node, this._options.facingOption, this._options.target, this._dataStore);
+        var result = enchant.animation.interval.CalculateAttributeValues(this._attribute, this._startValue, this._endValue, this._node, this._options, this._dataStore);
+        if (result) {
             startValue = result[0];
             endValue = result[1];
         }
