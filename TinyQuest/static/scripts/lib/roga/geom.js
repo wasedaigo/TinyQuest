@@ -1,5 +1,5 @@
 
-  this.module("enchant.geom", function() {
+  this.module("roga.geom", function() {
     this.Size = (function() {
 
       function Size(width, height) {

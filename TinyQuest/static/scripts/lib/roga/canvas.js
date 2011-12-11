@@ -1,7 +1,7 @@
 (function() {
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  this.module("enchant.canvas", function() {
+  this.module("roga.canvas", function() {
     this.SceneGraph = (function() {
 
       function SceneGraph(game, surface) {
@@ -248,18 +248,18 @@
         parentTransform = null;
         if (this._parent) parentTransform = this._parent.getTransform();
         if (this._hasBaseTransform) {
-          matrix = enchant.matrix.createMatrixIdentity(3);
+          matrix = roga.matrix.createMatrixIdentity(3);
           matrix[0][0] = parentTransform[0][0];
           matrix[0][1] = parentTransform[0][1];
           matrix[1][0] = parentTransform[1][0];
           matrix[1][1] = parentTransform[1][1];
-          velocity = enchant.matrix.transformPoint(this._velocity, matrix);
+          velocity = roga.matrix.transformPoint(this._velocity, matrix);
           this._transform[2][0] += velocity[0];
           this._transform[2][1] += velocity[1];
         } else {
-          transform = enchant.matrix.getNodeTransformMatirx(this._position[0], this._position[1], this._rotation * Math.PI / 180, this._scale[0], this._scale[1]);
+          transform = roga.matrix.getNodeTransformMatirx(this._position[0], this._position[1], this._rotation * Math.PI / 180, this._scale[0], this._scale[1]);
           if (parentTransform) {
-            transform = enchant.matrix.matrixMultiply(transform, parentTransform);
+            transform = roga.matrix.matrixMultiply(transform, parentTransform);
           }
           this._transform = transform;
         }
@@ -338,9 +338,9 @@
         parentTransform = null;
         if (this._parent) parentTransform = this._parent.getTransform();
         if (this._srcPath) {
-          transform = enchant.matrix.getImageTransformMatirx(-this._position[0], -this._position[1], this._rotation * Math.PI / 180, this._scale[0], this._scale[1]);
+          transform = roga.matrix.getImageTransformMatirx(-this._position[0], -this._position[1], this._rotation * Math.PI / 180, this._scale[0], this._scale[1]);
           if (parentTransform) {
-            transform = enchant.matrix.matrixMultiply(transform, parentTransform);
+            transform = roga.matrix.matrixMultiply(transform, parentTransform);
           }
           this._transform = transform;
           i = 0;

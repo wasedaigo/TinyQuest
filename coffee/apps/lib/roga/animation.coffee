@@ -1,15 +1,5 @@
-enchant.utils = clone: (src) ->
-  newObj = (if (src instanceof Array) then [] else {})
-  for i of src
-    continue  if i is "clone"
-    if src[i] and typeof src[i] is "object"
-      newObj[i] = enchant.utils.clone(src[i])
-    else
-      newObj[i] = src[i]
-  newObj
-
-enchant.animation = {}
-enchant.animation.animationManager =
+roga.animation = {}
+roga.animation.animationManager =
   initialize: (root) ->
     @root = root
     @instances = []
@@ -33,28 +23,28 @@ enchant.animation.animationManager =
   CreateAnimation: (data, isSubAnimation, baseTransform, baseAlpha, basePriority, target) ->
     timelines = data["timelines"]
     parallels = []
-    node = new enchant.canvas.Node(baseTransform)
+    node = new roga.canvas.Node(baseTransform)
     node.setAlpha baseAlpha
     node.setPriority  basePriority
 
     for timelineNo of timelines
       timeline = timelines[timelineNo]
-      sprite = new enchant.canvas.Sprite()
+      sprite = new roga.canvas.Sprite()
       sequences = []
       attributes = [ "alpha", "scale", "position", "rotation" ]
       for i of attributes
         attribute = attributes[i]
-        sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target)
+        sequence = roga.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target)
         sequences.push sequence  if sequence
-      sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"], target)
+      sourceInterval = new roga.animation.interval.SourceInterval(sprite, timeline["source"], target)
       sequences.push sourceInterval
-      parallels.push new enchant.animation.interval.Parallel(sequences)
+      parallels.push new roga.animation.interval.Parallel(sequences)
       node.addChild sprite
 
-    parallelInterval = new enchant.animation.interval.Parallel(parallels)
+    parallelInterval = new roga.animation.interval.Parallel(parallels)
     interval = null
     if isSubAnimation
-      interval = new enchant.animation.interval.Loop(parallelInterval, 0)
+      interval = new roga.animation.interval.Loop(parallelInterval, 0)
     else
       interval = parallelInterval
     
@@ -73,7 +63,7 @@ enchant.animation.animationManager =
         interval = null
         if frame.wait
           duration = frame.duration
-          interval = new enchant.animation.interval.Wait(duration)
+          interval = new roga.animation.interval.Wait(duration)
         else
           startValue = frame.startValue
           endValue = frame.endValue
@@ -88,12 +78,12 @@ enchant.animation.animationManager =
           else if attribute is "rotation"
             options.facingOption = frame.facingOption
             options.target = target
-          interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options)
+          interval = new roga.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options)
         intervals.push interval
         i++
-      new enchant.animation.interval.Sequence(intervals)
+      new roga.animation.interval.Sequence(intervals)
 
-enchant.animation.interval =
+roga.animation.interval =
   Completement: (startValue, endValue, proportion) ->
     result = null
     if typeof (startValue) is "number"
@@ -115,25 +105,25 @@ enchant.animation.interval =
       tempPos = [ target.node.getPosition()[0], target.node.getPosition()[1] ]
       tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0]
       tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1]
-      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
-      invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
-      result = enchant.matrix.transformPoint(targetPosition, invertMatrix)
+      targetPosition = roga.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
+      invertMatrix = roga.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
+      result = roga.matrix.transformPoint(targetPosition, invertMatrix)
     else if positionType is "relativeToTargetOrigin"
       anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor)
       tempPos = [ target.origin[0], target.origin[1] ]
       tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0]
       tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1]
-      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
-      invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
-      result = enchant.matrix.transformPoint(targetPosition, invertMatrix)
+      targetPosition = roga.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
+      invertMatrix = roga.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
+      result = roga.matrix.transformPoint(targetPosition, invertMatrix)
     result
 
   CalculateRelativePosition: (startValue, endValue, node, startPositionType, endPositionType, startPositionAnchor, endPositionAnchor, target) ->
     resultStartValue = startValue
     resultEndValue = endValue
     if target and node.getParent()
-      resultStartValue = _GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue)
-      resultEndValue = _GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue)
+      resultStartValue = @_GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue)
+      resultEndValue = @_GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue)
     [ resultStartValue, resultEndValue ]
 
   CalculateDynamicRotation: (startValue, endValue, node, facingOption, target, dataStore) ->
@@ -143,8 +133,8 @@ enchant.animation.interval =
         absStartPosition = undefined
         absTargetPosition = undefined
         if node.getParent()
-          absStartPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())
-          absTargetPosition = enchant.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform())
+          absStartPosition = roga.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())
+          absTargetPosition = roga.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform())
         else
           absStartPosition = node.getPosition()
           absTargetPosition = target.node.getPosition()
@@ -155,7 +145,7 @@ enchant.animation.interval =
       else if facingOption is "faceToMov"
         absStartPosition = (if dataStore.lastAbsPosition then dataStore.lastAbsPosition else [ 0, 0 ])
         absTargetPosition = node.getPosition()
-        absTargetPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())  if node.getParent()
+        absTargetPosition = roga.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())  if node.getParent()
         dx = absTargetPosition[0] - absStartPosition[0]
         dy = absTargetPosition[1] - absStartPosition[1]
         startValue += (Math.atan2(dy, dx) / Math.PI) * 180
@@ -172,11 +162,11 @@ enchant.animation.interval =
   CalculateAttributeValues: (attribute, startValue, endValue, node, options, dataStore) ->
     result = null
     if attribute is "position"
-      result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, node, options.startPositionType, options.endPositionType, options.startPositionAnchor, options.endPositionAnchor, options.target)
-    else result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore)  if attribute is "rotation"
+      result = roga.animation.interval.CalculateRelativePosition(startValue, endValue, node, options.startPositionType, options.endPositionType, options.startPositionAnchor, options.endPositionAnchor, options.target)
+    else result = roga.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore)  if attribute is "rotation"
     result
 
-@module "enchant.animation.interval", ->
+@module "roga.animation.interval", ->
   class @AttributeInterval
     constructor: (node, attribute, startValue, endValue, duration, tween, options) ->
       @_node = node
@@ -206,12 +196,12 @@ enchant.animation.interval =
     updateValue: ->
       startValue = @_startValue
       endValue = @_endValue
-      result = enchant.animation.interval.CalculateAttributeValues(@_attribute, @_startValue, @_endValue, @_node, @_options, @_dataStore)
+      result = roga.animation.interval.CalculateAttributeValues(@_attribute, @_startValue, @_endValue, @_node, @_options, @_dataStore)
       if result
         startValue = result[0]
         endValue = result[1]
       value = startValue
-      value = enchant.animation.interval.Completement(startValue, endValue, @_frameNo / @_duration)  if @_tween
+      value = roga.animation.interval.Completement(startValue, endValue, @_frameNo / @_duration)  if @_tween
       @_node.setAttribute @_attribute, value
   
     update: ->
@@ -243,7 +233,7 @@ enchant.animation.interval =
         constructor: (sprite, sourceKeykeyframes, target) ->
           @_sprite = sprite
           @_interval = null
-          @_sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes)
+          @_sourceKeykeyframes = roga.Helper.instance().clone(sourceKeykeyframes)
           @_frameNo = 0
           @_index = 0
           @_frameDuration = 0
@@ -280,10 +270,10 @@ enchant.animation.interval =
                 transform = null
                 if @_sprite.getParent()
                   transform = @_sprite.getParent().getTransform()
-                  transform = enchant.matrix.getNodeTransformMatirx(@_sprite.getPosition()[0], @_sprite.getPosition()[1], @_sprite.getRotation() * Math.PI / 180, @_sprite.getScale()[0], @_sprite.getScale()[1])
-                  transform = enchant.matrix.matrixMultiply(transform, @_sprite.getParent().getTransform())
-                
-                animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.getAlpha(), @_sprite.getPriority(), @_target)
+                  transform = roga.matrix.getNodeTransformMatirx(@_sprite.getPosition()[0], @_sprite.getPosition()[1], @_sprite.getRotation() * Math.PI / 180, @_sprite.getScale()[0], @_sprite.getScale()[1])
+                  transform = roga.matrix.matrixMultiply(transform, @_sprite.getParent().getTransform())
+      
+                animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.getAlpha(), @_sprite.getPriority(), @_target)
                 
                 if keyframe.maxEmitSpeed > 0
                   speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random()
@@ -291,12 +281,12 @@ enchant.animation.interval =
                   rad = (angle / 180) * Math.PI
                   animation.node.setVelocity [speed * Math.cos(rad), speed * Math.sin(rad)]
                 
-                enchant.animation.animationManager.start animation
+                roga.animation.animationManager.start animation
       
               else
                 if keyframe.id
                   @_sprite.updateTransform()
-                  animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, @_target)
+                  animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, @_target)
                   @_sprite.addChild animation.node
                   @_interval = animation.interval
                   @_interval.start()

@@ -5,7 +5,7 @@
     describe("Sprite", function() {
       it("property check", function() {
         var sprite;
-        sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
+        sprite = new roga.canvas.Sprite("", [5, 14, 25, 30]);
         expect(sprite.getSrcRect()[0]).toBe(5);
         expect(sprite.getSrcRect()[1]).toBe(14);
         expect(sprite.getSrcRect()[2]).toBe(25);
@@ -13,7 +13,7 @@
       });
       it("setter/geter check", function() {
         var sprite;
-        sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
+        sprite = new roga.canvas.Sprite("", [5, 14, 25, 30]);
         sprite.setPosition([5, 2]);
         sprite.setScale([3, 2]);
         sprite.setHue([2, 3, 2]);
@@ -37,7 +37,7 @@
       });
       return it("positionType check", function() {
         var sprite;
-        sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
+        sprite = new roga.canvas.Sprite("", [5, 14, 25, 30]);
         sprite.setSize([30, 50]);
         sprite.setPosition([0, 10]);
         sprite.setScale([2, 3]);
@@ -55,8 +55,8 @@
     });
     describe("SceneGraph children", function() {
       var sceneGraph, sprite;
-      sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
-      sceneGraph = new enchant.canvas.SceneGraph(game, surface);
+      sprite = new roga.canvas.Sprite("", [5, 14, 25, 30]);
+      sceneGraph = new roga.canvas.SceneGraph(game, surface);
       return it("addChild()", function() {
         sceneGraph.setRoot(sprite);
         return expect(sceneGraph._root).toBe(sprite);
@@ -64,8 +64,8 @@
     });
     return describe("Node children", function() {
       var node1, node2;
-      node1 = new enchant.canvas.Node();
-      node2 = new enchant.canvas.Node();
+      node1 = new roga.canvas.Node();
+      node2 = new roga.canvas.Node();
       it("addChild()", function() {
         node1.addChild(node2);
         expect(node2.getParent()).toBe(node1);

@@ -1,4 +1,4 @@
-@module "enchant.canvas", ->
+@module "roga.canvas", ->
  
   class @SceneGraph
     constructor: (game, surface) ->
@@ -181,17 +181,17 @@
       parentTransform = null
       parentTransform = @_parent.getTransform() if @_parent
       if @_hasBaseTransform
-        matrix = enchant.matrix.createMatrixIdentity(3)
+        matrix = roga.matrix.createMatrixIdentity(3)
         matrix[0][0] = parentTransform[0][0]
         matrix[0][1] = parentTransform[0][1]
         matrix[1][0] = parentTransform[1][0]
         matrix[1][1] = parentTransform[1][1]
-        velocity = enchant.matrix.transformPoint(@_velocity, matrix)
+        velocity = roga.matrix.transformPoint(@_velocity, matrix)
         @_transform[2][0] += velocity[0]
         @_transform[2][1] += velocity[1]
       else
-        transform = enchant.matrix.getNodeTransformMatirx(@_position[0], @_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
-        transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
+        transform = roga.matrix.getNodeTransformMatirx(@_position[0], @_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
+        transform = roga.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
         @_transform = transform
       i = 0
     
@@ -244,8 +244,8 @@
       parentTransform = null
       parentTransform = @_parent.getTransform()  if @_parent
       if @_srcPath
-        transform = enchant.matrix.getImageTransformMatirx(-@_position[0], -@_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
-        transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
+        transform = roga.matrix.getImageTransformMatirx(-@_position[0], -@_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
+        transform = roga.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
         @_transform = transform
         i = 0
       

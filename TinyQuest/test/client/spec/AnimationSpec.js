@@ -22,8 +22,8 @@
       var animationTestResult;
       it("AlphaInterval", function() {
         var interval, node;
-        node = new enchant.canvas.Node;
-        interval = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.0, 1.0, 5, true);
+        node = new roga.canvas.Node;
+        interval = new roga.animation.interval.AttributeInterval(node, "alpha", 0.0, 1.0, 5, true);
         expect(node.getAlpha()).toBe(1);
         expect(interval.isDone()).toBe(false);
         interval.start();
@@ -53,8 +53,8 @@
       });
       it("PositionInterval", function() {
         var interval, node;
-        node = new enchant.canvas.Node();
-        interval = new enchant.animation.interval.AttributeInterval(node, "position", [10, 10], [2, 6], 4, true, {
+        node = new roga.canvas.Node();
+        interval = new roga.animation.interval.AttributeInterval(node, "position", [10, 10], [2, 6], 4, true, {
           startRelative: false,
           endRelative: false,
           target: null
@@ -82,8 +82,8 @@
       });
       it("ScaleInterval", function() {
         var interval, node;
-        node = new enchant.canvas.Node();
-        interval = new enchant.animation.interval.AttributeInterval(node, "scale", [10, 10], [2, 6], 4, true);
+        node = new roga.canvas.Node();
+        interval = new roga.animation.interval.AttributeInterval(node, "scale", [10, 10], [2, 6], 4, true);
         expect(node.getScale()).toEqual([1, 1]);
         expect(interval.isDone()).toBe(false);
         interval.start();
@@ -107,8 +107,8 @@
       });
       it("HueInterval", function() {
         var interval, node;
-        node = new enchant.canvas.Node();
-        interval = new enchant.animation.interval.AttributeInterval(node, "hue", [10, 10, 20], [2, 6, 40], 4, true);
+        node = new roga.canvas.Node();
+        interval = new roga.animation.interval.AttributeInterval(node, "hue", [10, 10, 20], [2, 6, 40], 4, true);
         expect(node.getHue()).toEqual([0, 0, 0]);
         expect(interval.isDone()).toBe(false);
         interval.start();
@@ -132,8 +132,8 @@
       });
       it("RotationInterval", function() {
         var interval, node;
-        node = new enchant.canvas.Node();
-        interval = new enchant.animation.interval.AttributeInterval(node, "rotation", 360, 0, 3, true, {
+        node = new roga.canvas.Node();
+        interval = new roga.animation.interval.AttributeInterval(node, "rotation", 360, 0, 3, true, {
           facingOption: null
         });
         expect(node.getRotation()).toBe(0);
@@ -156,7 +156,7 @@
       });
       it("Wait", function() {
         var interval;
-        interval = new enchant.animation.interval.Wait(5);
+        interval = new roga.animation.interval.Wait(5);
         expect(interval.isDone()).toBe(false);
         interval.update();
         expect(interval.isDone()).toBe(false);
@@ -173,7 +173,7 @@
       });
       it("SourceInterval", function() {
         var interval, keyframes, sprite;
-        sprite = new enchant.canvas.Sprite(null, [5, 14, 25, 30]);
+        sprite = new roga.canvas.Sprite(null, [5, 14, 25, 30]);
         keyframes = [
           {
             frameNo: 0,
@@ -205,7 +205,7 @@
             center: [4, 4]
           }
         ];
-        interval = new enchant.animation.interval.SourceInterval(sprite, keyframes);
+        interval = new roga.animation.interval.SourceInterval(sprite, keyframes);
         expect(sprite.getSrcPath()).toEqual(null);
         expect(interval.isDone()).toBe(false);
         interval.start();
@@ -256,11 +256,11 @@
       });
       it("Sequence1", function() {
         var interval1, interval2, interval3, node, sequence;
-        node = new enchant.canvas.Node();
-        interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 3, true);
-        interval2 = new enchant.animation.interval.Wait(2);
-        interval3 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 2, true);
-        sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
+        node = new roga.canvas.Node();
+        interval1 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 3, true);
+        interval2 = new roga.animation.interval.Wait(2);
+        interval3 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 2, true);
+        sequence = new roga.animation.interval.Sequence([interval1, interval2, interval3]);
         sequence.start();
         expect(node.getAlpha()).toBe(0.1);
         expect(sequence.isDone()).toBe(false);
@@ -291,12 +291,12 @@
       });
       it("Sequence2", function() {
         var interval1, interval2, interval3, interval4, node, sequence;
-        node = new enchant.canvas.Node();
-        interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 1, 0.5, 1, false);
-        interval2 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.5, 0.3, 1, false);
-        interval3 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.3, 0.1, 1, true);
-        interval4 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 0.1, 1, true);
-        sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3, interval4]);
+        node = new roga.canvas.Node();
+        interval1 = new roga.animation.interval.AttributeInterval(node, "alpha", 1, 0.5, 1, false);
+        interval2 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.5, 0.3, 1, false);
+        interval3 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.3, 0.1, 1, true);
+        interval4 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.1, 0.1, 1, true);
+        sequence = new roga.animation.interval.Sequence([interval1, interval2, interval3, interval4]);
         sequence.start();
         expect(node.getAlpha()).toBe(1);
         expect(sequence.isDone()).toBe(false);
@@ -315,12 +315,12 @@
       });
       it("Parallel", function() {
         var interval1, interval2, node, parallel;
-        node = new enchant.canvas.Node();
-        interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 3, true);
-        interval2 = new enchant.animation.interval.AttributeInterval(node, "rotation", 0, 180, 5, true, {
+        node = new roga.canvas.Node();
+        interval1 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 3, true);
+        interval2 = new roga.animation.interval.AttributeInterval(node, "rotation", 0, 180, 5, true, {
           facingOption: null
         });
-        parallel = new enchant.animation.interval.Parallel([interval1, interval2]);
+        parallel = new roga.animation.interval.Parallel([interval1, interval2]);
         parallel.start();
         expect(node.getAlpha()).toBe(0.1);
         expect(node.getRotation()).toBe(0);
@@ -352,12 +352,12 @@
       });
       it("Loop count 2", function() {
         var interval1, interval2, interval3, loop_, node, sequence;
-        node = new enchant.canvas.Node();
-        interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 1, true);
-        interval2 = new enchant.animation.interval.Wait(1);
-        interval3 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 1, true);
-        sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
-        loop_ = new enchant.animation.interval.Loop(sequence, 2);
+        node = new roga.canvas.Node();
+        interval1 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 1, true);
+        interval2 = new roga.animation.interval.Wait(1);
+        interval3 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 1, true);
+        sequence = new roga.animation.interval.Sequence([interval1, interval2, interval3]);
+        loop_ = new roga.animation.interval.Loop(sequence, 2);
         loop_.start();
         expect(node.getAlpha()).toBe(0.1);
         expect(loop_.isDone()).toBe(false);
@@ -382,12 +382,12 @@
       });
       it("Loop count infinite", function() {
         var i, interval1, interval2, interval3, loop_, node, sequence, _results;
-        node = new enchant.canvas.Node();
-        interval1 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 1, true);
-        interval2 = new enchant.animation.interval.Wait(1);
-        interval3 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 1, true);
-        sequence = new enchant.animation.interval.Sequence([interval1, interval2, interval3]);
-        loop_ = new enchant.animation.interval.Loop(sequence, 0);
+        node = new roga.canvas.Node();
+        interval1 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.1, 1.0, 1, true);
+        interval2 = new roga.animation.interval.Wait(1);
+        interval3 = new roga.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 1, true);
+        sequence = new roga.animation.interval.Sequence([interval1, interval2, interval3]);
+        loop_ = new roga.animation.interval.Loop(sequence, 0);
         loop_.start();
         expect(node.getAlpha()).toBe(0.1);
         expect(loop_.isDone()).toBe(false);
@@ -424,7 +424,7 @@
       };
       it("AnimationTest1", function() {
         var animation, frameCount, i, interval, root, _results;
-        animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("Smoke01"), false);
+        animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("Smoke01"), false);
         interval = animation.interval;
         root = animation.node;
         expect(root._children.length).toBe(1);
@@ -445,7 +445,7 @@
       });
       return it("AnimationTest2", function() {
         var animation, frameCount, i, interval, j, root, t, temp, testData, timelineCount, _results;
-        animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("SmokeRing"), false);
+        animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation("SmokeRing"), false);
         interval = animation.interval;
         root = animation.node;
         expect(root._children.length).toBe(8);

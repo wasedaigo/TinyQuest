@@ -1,23 +1,7 @@
 
-  enchant.utils = {
-    clone: function(src) {
-      var i, newObj;
-      newObj = (src instanceof Array ? [] : {});
-      for (i in src) {
-        if (i === "clone") continue;
-        if (src[i] && typeof src[i] === "object") {
-          newObj[i] = enchant.utils.clone(src[i]);
-        } else {
-          newObj[i] = src[i];
-        }
-      }
-      return newObj;
-    }
-  };
+  roga.animation = {};
 
-  enchant.animation = {};
-
-  enchant.animation.animationManager = {
+  roga.animation.animationManager = {
     initialize: function(root) {
       this.root = root;
       return this.instances = [];
@@ -46,28 +30,28 @@
       var attribute, attributes, i, interval, node, parallelInterval, parallels, sequence, sequences, sourceInterval, sprite, timeline, timelineNo, timelines;
       timelines = data["timelines"];
       parallels = [];
-      node = new enchant.canvas.Node(baseTransform);
+      node = new roga.canvas.Node(baseTransform);
       node.setAlpha(baseAlpha);
       node.setPriority(basePriority);
       for (timelineNo in timelines) {
         timeline = timelines[timelineNo];
-        sprite = new enchant.canvas.Sprite();
+        sprite = new roga.canvas.Sprite();
         sequences = [];
         attributes = ["alpha", "scale", "position", "rotation"];
         for (i in attributes) {
           attribute = attributes[i];
-          sequence = enchant.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target);
+          sequence = roga.animation.animationManager.CreateAttributeTween(sprite, attribute, timeline[attribute], target);
           if (sequence) sequences.push(sequence);
         }
-        sourceInterval = new enchant.animation.interval.SourceInterval(sprite, timeline["source"], target);
+        sourceInterval = new roga.animation.interval.SourceInterval(sprite, timeline["source"], target);
         sequences.push(sourceInterval);
-        parallels.push(new enchant.animation.interval.Parallel(sequences));
+        parallels.push(new roga.animation.interval.Parallel(sequences));
         node.addChild(sprite);
       }
-      parallelInterval = new enchant.animation.interval.Parallel(parallels);
+      parallelInterval = new roga.animation.interval.Parallel(parallels);
       interval = null;
       if (isSubAnimation) {
-        interval = new enchant.animation.interval.Loop(parallelInterval, 0);
+        interval = new roga.animation.interval.Loop(parallelInterval, 0);
       } else {
         interval = parallelInterval;
       }
@@ -89,7 +73,7 @@
           interval = null;
           if (frame.wait) {
             duration = frame.duration;
-            interval = new enchant.animation.interval.Wait(duration);
+            interval = new roga.animation.interval.Wait(duration);
           } else {
             startValue = frame.startValue;
             endValue = frame.endValue;
@@ -105,17 +89,17 @@
               options.facingOption = frame.facingOption;
               options.target = target;
             }
-            interval = new enchant.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options);
+            interval = new roga.animation.interval.AttributeInterval(node, attribute, startValue, endValue, duration, tween, options);
           }
           intervals.push(interval);
           i++;
         }
-        return new enchant.animation.interval.Sequence(intervals);
+        return new roga.animation.interval.Sequence(intervals);
       }
     }
   };
 
-  enchant.animation.interval = {
+  roga.animation.interval = {
     Completement: function(startValue, endValue, proportion) {
       var i, result, value;
       result = null;
@@ -140,17 +124,17 @@
         tempPos = [target.node.getPosition()[0], target.node.getPosition()[1]];
         tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
         tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1];
-        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
-        invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
-        result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+        targetPosition = roga.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
+        invertMatrix = roga.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
+        result = roga.matrix.transformPoint(targetPosition, invertMatrix);
       } else if (positionType === "relativeToTargetOrigin") {
         anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
         tempPos = [target.origin[0], target.origin[1]];
         tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
         tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1];
-        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
-        invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
-        result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
+        targetPosition = roga.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
+        invertMatrix = roga.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
+        result = roga.matrix.transformPoint(targetPosition, invertMatrix);
       }
       return result;
     },
@@ -159,8 +143,8 @@
       resultStartValue = startValue;
       resultEndValue = endValue;
       if (target && node.getParent()) {
-        resultStartValue = _GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue);
-        resultEndValue = _GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue);
+        resultStartValue = this._GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue);
+        resultEndValue = this._GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue);
       }
       return [resultStartValue, resultEndValue];
     },
@@ -172,8 +156,8 @@
           absStartPosition = void 0;
           absTargetPosition = void 0;
           if (node.getParent()) {
-            absStartPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
-            absTargetPosition = enchant.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform());
+            absStartPosition = roga.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
+            absTargetPosition = roga.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform());
           } else {
             absStartPosition = node.getPosition();
             absTargetPosition = target.node.getPosition();
@@ -186,7 +170,7 @@
           absStartPosition = (dataStore.lastAbsPosition ? dataStore.lastAbsPosition : [0, 0]);
           absTargetPosition = node.getPosition();
           if (node.getParent()) {
-            absTargetPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
+            absTargetPosition = roga.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
           }
           dx = absTargetPosition[0] - absStartPosition[0];
           dy = absTargetPosition[1] - absStartPosition[1];
@@ -208,17 +192,17 @@
       var result;
       result = null;
       if (attribute === "position") {
-        result = enchant.animation.interval.CalculateRelativePosition(startValue, endValue, node, options.startPositionType, options.endPositionType, options.startPositionAnchor, options.endPositionAnchor, options.target);
+        result = roga.animation.interval.CalculateRelativePosition(startValue, endValue, node, options.startPositionType, options.endPositionType, options.startPositionAnchor, options.endPositionAnchor, options.target);
       } else {
         if (attribute === "rotation") {
-          result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore);
+          result = roga.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore);
         }
       }
       return result;
     }
   };
 
-  this.module("enchant.animation.interval", function() {
+  this.module("roga.animation.interval", function() {
     this.AttributeInterval = (function() {
 
       function AttributeInterval(node, attribute, startValue, endValue, duration, tween, options) {
@@ -254,14 +238,14 @@
         var endValue, result, startValue, value;
         startValue = this._startValue;
         endValue = this._endValue;
-        result = enchant.animation.interval.CalculateAttributeValues(this._attribute, this._startValue, this._endValue, this._node, this._options, this._dataStore);
+        result = roga.animation.interval.CalculateAttributeValues(this._attribute, this._startValue, this._endValue, this._node, this._options, this._dataStore);
         if (result) {
           startValue = result[0];
           endValue = result[1];
         }
         value = startValue;
         if (this._tween) {
-          value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
+          value = roga.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
         }
         return this._node.setAttribute(this._attribute, value);
       };
@@ -311,7 +295,7 @@
         var key;
         this._sprite = sprite;
         this._interval = null;
-        this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
+        this._sourceKeykeyframes = roga.Helper.instance().clone(sourceKeykeyframes);
         this._frameNo = 0;
         this._index = 0;
         this._frameDuration = 0;
@@ -354,21 +338,21 @@
               transform = null;
               if (this._sprite.getParent()) {
                 transform = this._sprite.getParent().getTransform();
-                transform = enchant.matrix.getNodeTransformMatirx(this._sprite.getPosition()[0], this._sprite.getPosition()[1], this._sprite.getRotation() * Math.PI / 180, this._sprite.getScale()[0], this._sprite.getScale()[1]);
-                transform = enchant.matrix.matrixMultiply(transform, this._sprite.getParent().getTransform());
+                transform = roga.matrix.getNodeTransformMatirx(this._sprite.getPosition()[0], this._sprite.getPosition()[1], this._sprite.getRotation() * Math.PI / 180, this._sprite.getScale()[0], this._sprite.getScale()[1]);
+                transform = roga.matrix.matrixMultiply(transform, this._sprite.getParent().getTransform());
               }
-              animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.getAlpha(), this._sprite.getPriority(), this._target);
+              animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.getAlpha(), this._sprite.getPriority(), this._target);
               if (keyframe.maxEmitSpeed > 0) {
                 speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random();
                 angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random();
                 rad = (angle / 180) * Math.PI;
                 animation.node.setVelocity([speed * Math.cos(rad), speed * Math.sin(rad)]);
               }
-              return enchant.animation.animationManager.start(animation);
+              return roga.animation.animationManager.start(animation);
             } else {
               if (keyframe.id) {
                 this._sprite.updateTransform();
-                animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, this._target);
+                animation = roga.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, this._target);
                 this._sprite.addChild(animation.node);
                 this._interval = animation.interval;
                 return this._interval.start();

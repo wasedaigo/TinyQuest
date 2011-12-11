@@ -2,14 +2,14 @@ describe "canvas", ->
   surface = new enchant.Surface(640, 480)
   describe "Sprite", ->
     it "property check", ->
-      sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
+      sprite = new roga.canvas.Sprite("", [ 5, 14, 25, 30 ])
       expect(sprite.getSrcRect()[0]).toBe 5
       expect(sprite.getSrcRect()[1]).toBe 14
       expect(sprite.getSrcRect()[2]).toBe 25
       expect(sprite.getSrcRect()[3]).toBe 30
 
     it "setter/geter check", ->
-      sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
+      sprite = new roga.canvas.Sprite("", [ 5, 14, 25, 30 ])
       sprite.setPosition [ 5, 2 ]
       sprite.setScale [ 3, 2 ]
       sprite.setHue [ 2, 3, 2 ]
@@ -32,7 +32,7 @@ describe "canvas", ->
       expect(sprite.getSize()).toEqual [ 3, 5 ]
 
     it "positionType check", ->
-      sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
+      sprite = new roga.canvas.Sprite("", [ 5, 14, 25, 30 ])
       sprite.setSize [ 30, 50 ]
       sprite.setPosition [ 0, 10 ]
       sprite.setScale [ 2, 3 ]
@@ -48,15 +48,15 @@ describe "canvas", ->
       expect(sprite.getOffsetByPositionAnchor([ 1, -1 ])).toEqual [ 20, -135 ]
 
   describe "SceneGraph children", ->
-    sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
-    sceneGraph = new enchant.canvas.SceneGraph(game, surface)
+    sprite = new roga.canvas.Sprite("", [ 5, 14, 25, 30 ])
+    sceneGraph = new roga.canvas.SceneGraph(game, surface)
     it "addChild()", ->
         sceneGraph.setRoot sprite
         expect(sceneGraph._root).toBe sprite
 
   describe "Node children", ->
-    node1 = new enchant.canvas.Node()
-    node2 = new enchant.canvas.Node()
+    node1 = new roga.canvas.Node()
+    node2 = new roga.canvas.Node()
     it "addChild()", ->
       node1.addChild node2
       expect(node2.getParent()).toBe node1

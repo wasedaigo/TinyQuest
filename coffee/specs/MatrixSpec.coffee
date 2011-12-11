@@ -1,8 +1,7 @@
 describe "Matrix", ->
-  surface = new enchant.Surface(640, 480)
   describe "createMatrixIdentity", ->
     it "Return value is correct", ->
-      matrix = enchant.matrix.createMatrixIdentity(4)
+      matrix = roga.matrix.createMatrixIdentity(4)
       expect(testRound(matrix[0][0])).toEqual 1
       expect(testRound(matrix[0][1])).toEqual 0
       expect(testRound(matrix[0][2])).toEqual 0
@@ -23,14 +22,14 @@ describe "Matrix", ->
   describe "transformPoint", ->
     it "Return value is correct", ->
       matrix = [ [ 0, 1, 0 ], [ -1, 0, 1 ], [ 3, 4, 1 ] ]
-      point = enchant.matrix.transformPoint([ 1, 0 ], matrix)
+      point = roga.matrix.transformPoint([ 1, 0 ], matrix)
       expect(point[0]).toEqual 3
       expect(point[1]).toEqual 5
 
   describe "createInverseMatrix", ->
     it "Return value is correct", ->
       matrix = [ [ 1, 2, 0, -1 ], [ -1, 1, 2, 0 ], [ 2, 0, 1, 1 ], [ 1, -2, -1, 1 ] ]
-      invertMatrix = enchant.matrix.createInverseMatrix(matrix, 4)
+      invertMatrix = roga.matrix.createInverseMatrix(matrix, 4)
       expect(testRound(invertMatrix[0][0])).toEqual 2.0
       expect(testRound(invertMatrix[0][1])).toEqual 2.0
       expect(testRound(invertMatrix[0][2])).toEqual -1.0
@@ -54,7 +53,7 @@ describe "Matrix", ->
       matrix2 = [[ 1, 1, 0], [ 0, 0, 1 ], [ 1, 1, 0 ]]
       matrixAnswer = [ [ 1, 1, 2 ], [ 0, 0, 1 ], [ 1, 1, 1 ] ]
       
-      resultMatrix = enchant.matrix.matrixMultiply(matrix1, matrix2)
+      resultMatrix = roga.matrix.matrixMultiply(matrix1, matrix2)
       
       for x in [0..2]
         for y in [0..2]

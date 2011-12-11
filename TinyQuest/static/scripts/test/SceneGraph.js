@@ -17,7 +17,7 @@
 
   target = null;
 
-  root = new enchant.canvas.Node();
+  root = new roga.canvas.Node();
 
   window.onload = function() {
     game.fps = 40;
@@ -27,7 +27,7 @@
       var moveVelocityX, moveVelocityY, s, sceneGraph, stage, surface;
       stage = new Group();
       surface = new Surface(GAME_WIDTH, GAME_HEIGHT);
-      sceneGraph = new enchant.canvas.SceneGraph(game, surface);
+      sceneGraph = new roga.canvas.SceneGraph(game, surface);
       root.setPosition = [0, 0];
       root.setScale([scale, scale]);
       sceneGraph.setRoot(root);
@@ -35,7 +35,7 @@
       s.image = surface;
       stage.addChild(s);
       game.rootScene.addChild(stage);
-      target = new enchant.canvas.Sprite();
+      target = new roga.canvas.Sprite();
       target.setSrcPath("Images/Enemies/death_wind.png");
       target.setSrcRect([0, 0, 90, 92]);
       target.setSize([90, 92]);
@@ -44,7 +44,7 @@
       target.setPriority(0.49);
       moveVelocityX = 1;
       moveVelocityY = 1;
-      enchant.animation.animationManager.initialize(root);
+      roga.animation.animationManager.initialize(root);
       surface.context.fillStyle = "rgba(120,120,120,1)";
       return this.addEventListener("enterframe", function() {
         surface.context.setTransform(1, 0, 0, 1, 0, 0);
@@ -76,7 +76,7 @@
             target.getPosition()[0] += moveVelocityX;
             target.getPosition()[1] += moveVelocityY;
           }
-          enchant.animation.animationManager.update();
+          roga.animation.animationManager.update();
           sceneGraph.update();
         }
         surface.context.globalCompositeOperation = "source-over";
@@ -113,12 +113,12 @@
         interval = null;
         root.removeAllChildren();
         root.addChild(target);
-        animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {
+        animation = roga.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5, {
           node: target,
-          origin: enchant.utils.clone(target.origin)
+          origin: roga.Helper.instance().clone(target.origin)
         });
         animation.node.setPosition([GAME_WIDTH / (2 * root.getScale()[0]), GAME_HEIGHT / (2 * root.getScale()[1])]);
-        return enchant.animation.animationManager.start(animation);
+        return roga.animation.animationManager.start(animation);
       });
     });
   };

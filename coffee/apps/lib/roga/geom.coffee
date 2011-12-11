@@ -1,4 +1,4 @@
-@module "enchant.geom", ->
+@module "roga.geom", ->
   class @Size
     constructor: (width, height) ->
       @width = width

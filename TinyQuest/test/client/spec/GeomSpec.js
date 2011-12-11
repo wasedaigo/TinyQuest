@@ -1,21 +1,21 @@
 
   describe("Geom", function() {
     var point, rectangle, size;
-    point = new enchant.geom.Point(30, -226);
+    point = new roga.geom.Point(30, -226);
     describe("Rectangle(30, -226)", function() {
       return it("property check", function() {
         expect(point.x).toBe(30);
         return expect(point.y).toBe(-226);
       });
     });
-    size = new enchant.geom.Size(20, 36);
+    size = new roga.geom.Size(20, 36);
     describe("Size(20, 36)", function() {
       return it("property check", function() {
         expect(size.width).toBe(20);
         return expect(size.height).toBe(36);
       });
     });
-    rectangle = new enchant.geom.Rectangle(10, 20, 240, 320);
+    rectangle = new roga.geom.Rectangle(10, 20, 240, 320);
     return describe("Rectangle(10, 20, 240, 320)", function() {
       return it("property check", function() {
         expect(rectangle.x).toBe(10);

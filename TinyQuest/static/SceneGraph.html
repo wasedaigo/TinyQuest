@@ -7,19 +7,22 @@
 <body style="background-color:#aaa">
     <div>
     <div id="enchant-stage" style="width: 960px; height: 640px;"></div>
+    <select id="animationSelect" style="font-size:48px;"></select>
     <script type="text/javascript">
         var scale = 2;
     </script>
-    <select id="animationSelect" style="font-size:48px;"></select>
     <button id="play" onclick="onPlayButtonClicked()" style="font-size:24px;">Play</button>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/scripts/lib/assert.js"></script>
     <script type="text/javascript" src="../../static/scripts/lib/enchant.js"></script>
     <script type="text/javascript" src="../../static/scripts/lib/utils.js"></script>
     <script type="text/javascript" src="../../static/scripts/lib/loader.enchant.js"></script>
-    <script type="text/javascript" src="../../static/scripts/lib/matrix.enchant.js"></script>
-    <script type="text/javascript" src="../../static/scripts/lib/animation.enchant.js"></script>
-    <script type="text/javascript" src="../../static/scripts/lib/canvas.enchant.js"></script>
+    
+    <script type="text/javascript" src="../../static/scripts/lib/roga/common.js"></script>
+    <script type="text/javascript" src="../../static/scripts/lib/roga/matrix.js"></script>
+    <script type="text/javascript" src="../../static/scripts/lib/roga/animation.js"></script>
+    <script type="text/javascript" src="../../static/scripts/lib/roga/canvas.js"></script>
+    
     <script type="text/javascript" src="../../static/scripts/test/SceneGraph.js"></script>
     <script type="text/javascript" src="../../static/scripts/test/AnimationSelect.js"></script>
 </body>

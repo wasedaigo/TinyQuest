@@ -1,7 +1,7 @@
 
-  enchant.matrix = {};
+  roga.matrix = {};
 
-  enchant.matrix.createMatrixIdentity = function(n) {
+  roga.matrix.createMatrixIdentity = function(n) {
     var i, j, matrix, _ref, _ref2, _ref3, _ref4;
     matrix = new Array(n);
     i = 0;
@@ -18,10 +18,10 @@
     return matrix;
   };
 
-  enchant.matrix.createInverseMatrix = function(srcMatrix, n) {
+  roga.matrix.createInverseMatrix = function(srcMatrix, n) {
     var buf, i, invertMatrix, j, k, matrix, _ref, _ref2, _ref3, _ref4;
     matrix = Utils.clone(srcMatrix);
-    invertMatrix = enchant.matrix.createMatrixIdentity(n);
+    invertMatrix = roga.matrix.createMatrixIdentity(n);
     for (i = 0, _ref = n - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
       buf = 1 / matrix[i][i];
       for (j = 0, _ref2 = n - 1; 0 <= _ref2 ? j <= _ref2 : j >= _ref2; 0 <= _ref2 ? j++ : j--) {
@@ -41,25 +41,25 @@
     return invertMatrix;
   };
 
-  enchant.matrix.getNodeTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
+  roga.matrix.getNodeTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
     var c, s, _ref;
     _ref = [Math.cos(rotation), Math.sin(rotation)], c = _ref[0], s = _ref[1];
     return [[c * scaleX, s * scaleX, 0], [-s * scaleY, c * scaleY, 0], [dx, dy, 1]];
   };
 
-  enchant.matrix.getImageTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
+  roga.matrix.getImageTransformMatirx = function(dx, dy, rotation, scaleX, scaleY) {
     var c, s, _ref;
     _ref = [Math.cos(rotation), Math.sin(rotation)], c = _ref[0], s = _ref[1];
     return [[c * scaleX, s * scaleX, 0], [-s * scaleY, c * scaleY, 0], [(c * dx * scaleX - s * dy * scaleY) - dx, (s * dx * scaleX + c * dy * scaleY) - dy, 1]];
   };
 
-  enchant.matrix.transformPoint = function(point, matrix) {
+  roga.matrix.transformPoint = function(point, matrix) {
     return [point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0], point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1]];
   };
 
-  enchant.matrix.matrixMultiply = function(m1, m2) {
+  roga.matrix.matrixMultiply = function(m1, m2) {
     var result, sum, x, y, z;
-    result = enchant.matrix.createMatrixIdentity(3);
+    result = roga.matrix.createMatrixIdentity(3);
     for (x = 0; x <= 2; x++) {
       for (y = 0; y <= 2; y++) {
         sum = 0;
