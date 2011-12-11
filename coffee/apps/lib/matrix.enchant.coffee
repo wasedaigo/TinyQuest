@@ -3,44 +3,34 @@ enchant.matrix.createMatrixIdentity = (n) ->
   matrix = new Array(n)
   i = 0
 
-  while i < n
+  for i in [0..n-1]
     matrix[i] = new Array(n)
-    i++
-  i = 0
-  while i < n
-    j = 0
-    while j < n
-      matrix[i][j] = (if (i is j) then 1.0 else 0.0)
-      j++
-    i++
+
+  for i in [0..n-1]
+    for j in [0..n-1]
+      matrix[i][j] = (i is j) ? 1.0 : 0.0
+
   matrix
 
 enchant.matrix.createInverseMatrix = (srcMatrix, n) ->
   matrix = Utils.clone(srcMatrix)
   invertMatrix = enchant.matrix.createMatrixIdentity(n)
-  buf = 0
-  i = undefined
-  j = undefined
-  k = 0
-  i = 0
-  while i < n
+
+  for i in [0..n-1]
     buf = 1 / matrix[i][i]
-    j = 0
-    while j < n
+
+    for j in [0..n-1]
       matrix[i][j] *= buf
       invertMatrix[i][j] *= buf
-      j++
-    j = 0
-    while j < n
+
+    for j in [0..n-1]
       unless i is j
         buf = matrix[j][i]
-        k = 0
-        while k < n
+
+        for k in [0..n-1]
           matrix[j][k] -= matrix[i][k] * buf
           invertMatrix[j][k] -= invertMatrix[i][k] * buf
-          k++
-      j++
-    i++
+
   invertMatrix
 
 enchant.matrix.getNodeTransformMatirx = (dx, dy, rotation, scaleX, scaleY) ->
@@ -56,26 +46,19 @@ enchant.matrix.getImageTransformMatirx = (dx, dy, rotation, scaleX, scaleY) ->
     ]
 
 enchant.matrix.transformPoint = (point, matrix) ->
-  newPoint = new Array(2)
-  newPoint[0] = point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0]
-  newPoint[1] = point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1]
-  newPoint
+  [
+    point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0],
+    point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1]
+  ]
 
 enchant.matrix.matrixMultiply = (m1, m2) ->
   result = enchant.matrix.createMatrixIdentity(3)
-  x = 0
 
-  while x < 3
-    y = 0
-
-    while y < 3
+  for x in [0..2]
+    for y in [0..2]
       sum = 0
-      z = 0
-
-      while z < 3
+      for z in [0..2]
         sum += m1[x][z] * m2[z][y]
-        z++
       result[x][y] = sum
-      y++
-    x++
+
   result

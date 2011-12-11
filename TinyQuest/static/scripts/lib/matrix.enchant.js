@@ -2,56 +2,41 @@
   enchant.matrix = {};
 
   enchant.matrix.createMatrixIdentity = function(n) {
-    var i, j, matrix;
+    var i, j, matrix, _ref, _ref2, _ref3, _ref4;
     matrix = new Array(n);
     i = 0;
-    while (i < n) {
+    for (i = 0, _ref = n - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
       matrix[i] = new Array(n);
-      i++;
     }
-    i = 0;
-    while (i < n) {
-      j = 0;
-      while (j < n) {
-        matrix[i][j] = (i === j ? 1.0 : 0.0);
-        j++;
+    for (i = 0, _ref2 = n - 1; 0 <= _ref2 ? i <= _ref2 : i >= _ref2; 0 <= _ref2 ? i++ : i--) {
+      for (j = 0, _ref3 = n - 1; 0 <= _ref3 ? j <= _ref3 : j >= _ref3; 0 <= _ref3 ? j++ : j--) {
+        matrix[i][j] = (_ref4 = i === j) != null ? _ref4 : {
+          1.0: 0.0
+        };
       }
-      i++;
     }
     return matrix;
   };
 
   enchant.matrix.createInverseMatrix = function(srcMatrix, n) {
-    var buf, i, invertMatrix, j, k, matrix;
+    var buf, i, invertMatrix, j, k, matrix, _ref, _ref2, _ref3, _ref4;
     matrix = Utils.clone(srcMatrix);
     invertMatrix = enchant.matrix.createMatrixIdentity(n);
-    buf = 0;
-    i = void 0;
-    j = void 0;
-    k = 0;
-    i = 0;
-    while (i < n) {
+    for (i = 0, _ref = n - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
       buf = 1 / matrix[i][i];
-      j = 0;
-      while (j < n) {
+      for (j = 0, _ref2 = n - 1; 0 <= _ref2 ? j <= _ref2 : j >= _ref2; 0 <= _ref2 ? j++ : j--) {
         matrix[i][j] *= buf;
         invertMatrix[i][j] *= buf;
-        j++;
       }
-      j = 0;
-      while (j < n) {
+      for (j = 0, _ref3 = n - 1; 0 <= _ref3 ? j <= _ref3 : j >= _ref3; 0 <= _ref3 ? j++ : j--) {
         if (i !== j) {
           buf = matrix[j][i];
-          k = 0;
-          while (k < n) {
+          for (k = 0, _ref4 = n - 1; 0 <= _ref4 ? k <= _ref4 : k >= _ref4; 0 <= _ref4 ? k++ : k--) {
             matrix[j][k] -= matrix[i][k] * buf;
             invertMatrix[j][k] -= invertMatrix[i][k] * buf;
-            k++;
           }
         }
-        j++;
       }
-      i++;
     }
     return invertMatrix;
   };
@@ -69,30 +54,20 @@
   };
 
   enchant.matrix.transformPoint = function(point, matrix) {
-    var newPoint;
-    newPoint = new Array(2);
-    newPoint[0] = point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0];
-    newPoint[1] = point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1];
-    return newPoint;
+    return [point[0] * matrix[0][0] + point[1] * matrix[1][0] + matrix[2][0], point[0] * matrix[0][1] + point[1] * matrix[1][1] + matrix[2][1]];
   };
 
   enchant.matrix.matrixMultiply = function(m1, m2) {
     var result, sum, x, y, z;
     result = enchant.matrix.createMatrixIdentity(3);
-    x = 0;
-    while (x < 3) {
-      y = 0;
-      while (y < 3) {
+    for (x = 0; x <= 2; x++) {
+      for (y = 0; y <= 2; y++) {
         sum = 0;
-        z = 0;
-        while (z < 3) {
+        for (z = 0; z <= 2; z++) {
           sum += m1[x][z] * m2[z][y];
-          z++;
         }
         result[x][y] = sum;
-        y++;
       }
-      x++;
     }
     return result;
   };

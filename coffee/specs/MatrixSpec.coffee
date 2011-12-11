@@ -47,3 +47,15 @@ describe "Matrix", ->
       expect(testRound(invertMatrix[3][1])).toEqual -8.0
       expect(testRound(invertMatrix[3][2])).toEqual 5.0
       expect(testRound(invertMatrix[3][3])).toEqual -11.0
+      
+  describe "matrixMultiply", ->
+    it "Return value is correct", ->
+      matrix1 = [[ 1, 2, 0], [ 0, 1, 0 ], [ 0, 1, 1 ]]
+      matrix2 = [[ 1, 1, 0], [ 0, 0, 1 ], [ 1, 1, 0 ]]
+      matrixAnswer = [ [ 1, 1, 2 ], [ 0, 0, 1 ], [ 1, 1, 1 ] ]
+      
+      resultMatrix = enchant.matrix.matrixMultiply(matrix1, matrix2)
+      
+      for x in [0..2]
+        for y in [0..2]
+          expect(testRound(resultMatrix[x][y])).toEqual matrixAnswer[x][y]

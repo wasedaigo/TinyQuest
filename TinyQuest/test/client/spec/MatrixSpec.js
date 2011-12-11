@@ -33,7 +33,7 @@
         return expect(point[1]).toEqual(5);
       });
     });
-    return describe("createInverseMatrix", function() {
+    describe("createInverseMatrix", function() {
       return it("Return value is correct", function() {
         var invertMatrix, matrix;
         matrix = [[1, 2, 0, -1], [-1, 1, 2, 0], [2, 0, 1, 1], [1, -2, -1, 1]];
@@ -54,6 +54,27 @@
         expect(testRound(invertMatrix[3][1])).toEqual(-8.0);
         expect(testRound(invertMatrix[3][2])).toEqual(5.0);
         return expect(testRound(invertMatrix[3][3])).toEqual(-11.0);
+      });
+    });
+    return describe("matrixMultiply", function() {
+      return it("Return value is correct", function() {
+        var matrix1, matrix2, matrixAnswer, resultMatrix, x, y, _results;
+        matrix1 = [[1, 2, 0], [0, 1, 0], [0, 1, 1]];
+        matrix2 = [[1, 1, 0], [0, 0, 1], [1, 1, 0]];
+        matrixAnswer = [[1, 1, 2], [0, 0, 1], [1, 1, 1]];
+        resultMatrix = enchant.matrix.matrixMultiply(matrix1, matrix2);
+        _results = [];
+        for (x = 0; x <= 2; x++) {
+          _results.push((function() {
+            var _results2;
+            _results2 = [];
+            for (y = 0; y <= 2; y++) {
+              _results2.push(expect(testRound(resultMatrix[x][y])).toEqual(matrixAnswer[x][y]));
+            }
+            return _results2;
+          })());
+        }
+        return _results;
       });
     });
   });
