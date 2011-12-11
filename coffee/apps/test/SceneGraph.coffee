@@ -14,10 +14,10 @@ window.onload = ->
   game.onload = ->
     stage = new Group()
     surface = new Surface(GAME_WIDTH, GAME_HEIGHT)
-    sceneGraph = new enchant.canvas.SceneGraph(game, surface)
+    Stage = new enchant.canvas.Stage(game, surface)
     root.setPosition = [ 0, 0 ]
     root.setScale [ scale, scale ]
-    sceneGraph.setRoot root
+    Stage.setRoot root
     s = new enchant.Sprite(GAME_WIDTH, GAME_HEIGHT)
     s.image = surface
     stage.addChild s
@@ -55,7 +55,7 @@ window.onload = ->
           target.getPosition()[0] += moveVelocityX
           target.getPosition()[1] += moveVelocityY
         enchant.animation.animationManager.update()
-        sceneGraph.update()
+        Stage.update()
       surface.context.globalCompositeOperation = "source-over"
       surface.context.globalAlpha = 1
 

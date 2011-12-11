@@ -53,13 +53,13 @@
         return expect(sprite.getOffsetByPositionAnchor([1, -1])).toEqual([20, -135]);
       });
     });
-    describe("SceneGraph children", function() {
-      var sceneGraph, sprite;
+    describe("Stage children", function() {
+      var Stage, sprite;
       sprite = new roga.canvas.Sprite("", [5, 14, 25, 30]);
-      sceneGraph = new roga.canvas.SceneGraph(game, surface);
+      Stage = new roga.canvas.Stage(game, surface);
       return it("addChild()", function() {
-        sceneGraph.setRoot(sprite);
-        return expect(sceneGraph._root).toBe(sprite);
+        Stage.setRoot(sprite);
+        return expect(Stage._root).toBe(sprite);
       });
     });
     return describe("Node children", function() {

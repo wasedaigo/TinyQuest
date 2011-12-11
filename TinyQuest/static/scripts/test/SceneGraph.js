@@ -24,13 +24,13 @@
     game.preload("../../static/assets/images/Images/Enemies/death_wind.png");
     game.preload("../../static/assets/images/bg/bg0001.png");
     game.onload = function() {
-      var moveVelocityX, moveVelocityY, s, sceneGraph, stage, surface;
+      var moveVelocityX, moveVelocityY, s, Stage, stage, surface;
       stage = new Group();
       surface = new Surface(GAME_WIDTH, GAME_HEIGHT);
-      sceneGraph = new roga.canvas.SceneGraph(game, surface);
+      Stage = new roga.canvas.Stage(game, surface);
       root.setPosition = [0, 0];
       root.setScale([scale, scale]);
-      sceneGraph.setRoot(root);
+      Stage.setRoot(root);
       s = new enchant.Sprite(GAME_WIDTH, GAME_HEIGHT);
       s.image = surface;
       stage.addChild(s);
@@ -77,7 +77,7 @@
             target.getPosition()[1] += moveVelocityY;
           }
           roga.animation.animationManager.update();
-          sceneGraph.update();
+          Stage.update();
         }
         surface.context.globalCompositeOperation = "source-over";
         return surface.context.globalAlpha = 1;

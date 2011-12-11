@@ -47,12 +47,12 @@ describe "canvas", ->
       expect(sprite.getOffsetByPositionAnchor([ 0, -1 ])).toEqual [ -10, -135 ]
       expect(sprite.getOffsetByPositionAnchor([ 1, -1 ])).toEqual [ 20, -135 ]
 
-  describe "SceneGraph children", ->
+  describe "Stage children", ->
     sprite = new roga.canvas.Sprite("", [ 5, 14, 25, 30 ])
-    sceneGraph = new roga.canvas.SceneGraph(game, surface)
+    Stage = new roga.canvas.Stage(game, surface)
     it "addChild()", ->
-        sceneGraph.setRoot sprite
-        expect(sceneGraph._root).toBe sprite
+        Stage.setRoot sprite
+        expect(Stage._root).toBe sprite
 
   describe "Node children", ->
     node1 = new roga.canvas.Node()

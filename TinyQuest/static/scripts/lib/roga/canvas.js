@@ -2,24 +2,24 @@
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
   this.module("roga.canvas", function() {
-    this.SceneGraph = (function() {
+    this.Stage = (function() {
 
-      function SceneGraph(game, surface) {
+      function Stage(game, surface) {
         assert(surface);
         this._game = game;
         this._surface = surface;
         this._root = null;
       }
 
-      SceneGraph.prototype.setRoot = function(node) {
+      Stage.prototype.setRoot = function(node) {
         return this._root = node;
       };
 
-      SceneGraph.prototype.prioritySortFunc = function(a, b) {
+      Stage.prototype.prioritySortFunc = function(a, b) {
         return a.getAbsPriority() - b.getAbsPriority();
       };
 
-      SceneGraph.prototype.update = function() {
+      Stage.prototype.update = function() {
         var drawCommmands, i, _results;
         assert(this._root);
         this._root.updateTransform();
@@ -36,7 +36,7 @@
         return _results;
       };
 
-      return SceneGraph;
+      return Stage;
 
     })();
     this.Node = (function() {

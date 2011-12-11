@@ -1,12 +1,12 @@
 @module "roga.canvas", ->
  
-  class @SceneGraph
+  class @Stage
     constructor: (game, surface) ->
       assert surface
       @_game = game
       @_surface = surface
       @_root = null
-    
+
     setRoot: (node) ->
       @_root = node
     
