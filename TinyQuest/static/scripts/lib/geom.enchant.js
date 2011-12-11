@@ -1,35 +1,53 @@
 
   enchant.geom = {};
 
-  enchant.geom.Size = enchant.Class.create({
-    initialize: function(width, height) {
+  enchant.geom.Size = (function() {
+
+    function _Class(width, height) {
       this.width = width;
-      return this.height = height;
+      this.height = height;
     }
-  });
 
-  enchant.geom.Point = enchant.Class.create({
-    initialize: function(x, y, width, height) {
+    return _Class;
+
+  })();
+
+  enchant.geom.Point = (function() {
+
+    function _Class(x, y) {
       this.x = x;
-      return this.y = y;
+      this.y = y;
     }
-  });
 
-  enchant.geom.Rectangle = enchant.Class.create({
-    initialize: function(x, y, width, height) {
+    return _Class;
+
+  })();
+
+  enchant.geom.Rectangle = (function() {
+
+    function _Class(x, y, width, height) {
       this.x = x;
       this.y = y;
       this.width = width;
-      return this.height = height;
-    },
-    right: {
-      get: function() {
-        return this.x + this.width;
-      }
-    },
-    bottom: {
-      get: function() {
-        return this.y + this.height;
-      }
+      this.height = height;
     }
-  });
+
+    _Class.prototype.getLeft = function() {
+      return this.x;
+    };
+
+    _Class.prototype.getTop = function() {
+      return this.y;
+    };
+
+    _Class.prototype.getRight = function() {
+      return this.x + this.width;
+    };
+
+    _Class.prototype.getBottom = function() {
+      return this.y + this.height;
+    };
+
+    return _Class;
+
+  })();

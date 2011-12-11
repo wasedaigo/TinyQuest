@@ -18,5 +18,7 @@ describe "Geom", ->
       expect(rectangle.y).toBe 20
       expect(rectangle.width).toBe 240
       expect(rectangle.height).toBe 320
-      expect(rectangle.right).toBe 250
-      expect(rectangle.bottom).toBe 340
+      expect(rectangle.getLeft()).toBe 10
+      expect(rectangle.getTop()).toBe 20
+      expect(rectangle.getRight()).toBe 250
+      expect(rectangle.getBottom()).toBe 340
