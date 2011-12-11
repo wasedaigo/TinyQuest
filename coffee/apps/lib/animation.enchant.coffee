@@ -34,8 +34,9 @@ enchant.animation.animationManager =
     timelines = data["timelines"]
     parallels = []
     node = new enchant.canvas.Node(baseTransform)
-    node.alpha = baseAlpha
-    node.priority = basePriority
+    node.setAlpha baseAlpha
+    node.setPriority  basePriority
+
     for timelineNo of timelines
       timeline = timelines[timelineNo]
       sprite = new enchant.canvas.Sprite()
@@ -49,14 +50,15 @@ enchant.animation.animationManager =
       sequences.push sourceInterval
       parallels.push new enchant.animation.interval.Parallel(sequences)
       node.addChild sprite
+
     parallelInterval = new enchant.animation.interval.Parallel(parallels)
     interval = null
     if isSubAnimation
       interval = new enchant.animation.interval.Loop(parallelInterval, 0)
     else
       interval = parallelInterval
-    interval: interval
-    node: node
+    
+    {interval: interval, node: node}
 
   CreateAttributeTween: (node, attribute, keyframes, target) ->
     if keyframes.length is 0
@@ -110,26 +112,26 @@ enchant.animation.interval =
     result = offset
     if positionType is "relativeToTarget"
       anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor)
-      tempPos = [ target.node.position[0], target.node.position[1] ]
+      tempPos = [ target.node.getPosition()[0], target.node.getPosition()[1] ]
       tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0]
       tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1]
-      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.parent.transform)
-      invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3)
+      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
+      invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
       result = enchant.matrix.transformPoint(targetPosition, invertMatrix)
     else if positionType is "relativeToTargetOrigin"
       anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor)
       tempPos = [ target.origin[0], target.origin[1] ]
       tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0]
       tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1]
-      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.parent.transform)
-      invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3)
+      targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform())
+      invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3)
       result = enchant.matrix.transformPoint(targetPosition, invertMatrix)
     result
 
   CalculateRelativePosition: (startValue, endValue, node, startPositionType, endPositionType, startPositionAnchor, endPositionAnchor, target) ->
     resultStartValue = startValue
     resultEndValue = endValue
-    if target and node.parent
+    if target and node.getParent()
       resultStartValue = _GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue)
       resultEndValue = _GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue)
     [ resultStartValue, resultEndValue ]
@@ -140,30 +142,30 @@ enchant.animation.interval =
       if facingOption is "faceToDir"
         absStartPosition = undefined
         absTargetPosition = undefined
-        if node.parent
-          absStartPosition = enchant.matrix.transformPoint(node.position, node.parent.transform)
-          absTargetPosition = enchant.matrix.transformPoint(target.position, node.parent.transform)
+        if node.getParent()
+          absStartPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())
+          absTargetPosition = enchant.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform())
         else
-          absStartPosition = node.position
-          absTargetPosition = target.position
-        dx = absTargetPosition[0] - absStartPosition.position[0]
-        dy = absTargetPosition[1] - absStartPosition.position[1]
+          absStartPosition = node.getPosition()
+          absTargetPosition = target.node.getPosition()
+        dx = absTargetPosition[0] - absStartPosition.getPosition()[0]
+        dy = absTargetPosition[1] - absStartPosition.getPosition()[1]
         startValue = (Math.atan2(dy, dx) / Math.PI) * 180
         endValue = startValue
       else if facingOption is "faceToMov"
         absStartPosition = (if dataStore.lastAbsPosition then dataStore.lastAbsPosition else [ 0, 0 ])
-        absTargetPosition = node.position
-        absTargetPosition = enchant.matrix.transformPoint(node.position, node.parent.transform)  if node.parent
+        absTargetPosition = node.getPosition()
+        absTargetPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform())  if node.getParent()
         dx = absTargetPosition[0] - absStartPosition[0]
         dy = absTargetPosition[1] - absStartPosition[1]
         startValue += (Math.atan2(dy, dx) / Math.PI) * 180
         endValue = startValue
         if dataStore.ignore
-          node.parent.alpha = dataStore.lastAlpha
+          node.getParent().setAlpha dataStore.lastAlpha
         else
           dataStore.ignore = true
-          dataStore.lastAlpha = node.parent.alpha
-          node.parent.alpha = 0
+          dataStore.lastAlpha = node.getParent().getAlpha()
+          node.getParent().setAlpha 0
         dataStore.lastAbsPosition = absTargetPosition
     [ startValue, endValue ]
 
@@ -194,7 +196,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create(
     @start()
 
   start: ->
-    @_node[@_attribute] = @_startValue
+    @_node.setAttribute @_attribute, @_startValue
     @_frameNo = 0
     @updateValue()
 
@@ -209,7 +211,7 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create(
       endValue = result[1]
     value = startValue
     value = enchant.animation.interval.Completement(startValue, endValue, @_frameNo / @_duration)  if @_tween
-    @_node[@_attribute] = value
+    @_node.setAttribute @_attribute, value
 
   update: ->
     unless @isDone()
@@ -254,8 +256,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create(
     @_frameNo >= @_duration
 
   _clearSetting: ->
-    @_sprite.srcRect = null
-    @_sprite.srcPath = null
+    @_sprite.setSrcRect null
+    @_sprite.setSrcPath null
     if @_interval
       @_interval = null
       @_sprite.removeAllChildren()
@@ -263,30 +265,33 @@ enchant.animation.interval.SourceInterval = enchant.Class.create(
   _updateKeyframe: (keyframe) ->
     @_clearSetting()  unless @_lastAnimationId is keyframe.id
     @_lastAnimationId = keyframe.id
-    @_sprite.priority = (if keyframe.priority then keyframe.priority else 0.5)
-    @_sprite.blendType = (if keyframe.blendType then keyframe.blendType else "none")
+    @_sprite.setPriority (keyframe.priority || 0.5)
+    @_sprite.setBlendType (keyframe.blendType || "none")
     if keyframe.type is "image"
-      @_sprite.srcPath = keyframe.id + ".png"
-      @_sprite.srcRect = keyframe.rect
-      @_sprite.center = keyframe.center
+      @_sprite.setSrcPath keyframe.id + ".png"
+      @_sprite.setSrcRect  keyframe.rect
+      @_sprite.setCenter keyframe.center
     else
       if @_interval
         @_interval.update()
       else
         if keyframe.emitter
           transform = null
-          if @_sprite.parent
-            transform = @_sprite.parent.transform
-            transform = enchant.matrix.getNodeTransformMatirx(@_sprite.position[0], @_sprite.position[1], @_sprite.rotation * Math.PI / 180, @_sprite.scale[0], @_sprite.scale[1])
-            transform = enchant.matrix.matrixMultiply(transform, @_sprite.parent.transform)
-          animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.alpha, @_sprite.priority, @_target)
+          if @_sprite.getParent()
+            transform = @_sprite.getParent().getTransform()
+            transform = enchant.matrix.getNodeTransformMatirx(@_sprite.getPosition()[0], @_sprite.getPosition()[1], @_sprite.getRotation() * Math.PI / 180, @_sprite.getScale()[0], @_sprite.getScale()[1])
+            transform = enchant.matrix.matrixMultiply(transform, @_sprite.getParent().getTransform())
+          
+          animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.getAlpha(), @_sprite.getPriority(), @_target)
+          
           if keyframe.maxEmitSpeed > 0
             speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random()
             angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random()
             rad = (angle / 180) * Math.PI
-            animation.node.velocity[0] = speed * Math.cos(rad)
-            animation.node.velocity[1] = speed * Math.sin(rad)
+            animation.node.setVelocity [speed * Math.cos(rad), speed * Math.sin(rad)]
+          
           enchant.animation.animationManager.start animation
+
         else
           if keyframe.id
             @_sprite.updateTransform()

@@ -47,8 +47,8 @@
       timelines = data["timelines"];
       parallels = [];
       node = new enchant.canvas.Node(baseTransform);
-      node.alpha = baseAlpha;
-      node.priority = basePriority;
+      node.setAlpha(baseAlpha);
+      node.setPriority(basePriority);
       for (timelineNo in timelines) {
         timeline = timelines[timelineNo];
         sprite = new enchant.canvas.Sprite();
@@ -137,19 +137,19 @@
       result = offset;
       if (positionType === "relativeToTarget") {
         anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
-        tempPos = [target.node.position[0], target.node.position[1]];
+        tempPos = [target.node.getPosition()[0], target.node.getPosition()[1]];
         tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
         tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1];
-        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.parent.transform);
-        invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
+        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
+        invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
         result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
       } else if (positionType === "relativeToTargetOrigin") {
         anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
         tempPos = [target.origin[0], target.origin[1]];
         tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
         tempPos[1] = tempPos[1] + offset[1] + anchorOffset[1];
-        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.parent.transform);
-        invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
+        targetPosition = enchant.matrix.transformPoint(tempPos, target.node.getParent().getTransform());
+        invertMatrix = enchant.matrix.createInverseMatrix(node.getParent().getTransform(), 3);
         result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
       }
       return result;
@@ -158,7 +158,7 @@
       var resultEndValue, resultStartValue;
       resultStartValue = startValue;
       resultEndValue = endValue;
-      if (target && node.parent) {
+      if (target && node.getParent()) {
         resultStartValue = _GetRelativePosition(node, target, startPositionType, startPositionAnchor, startValue);
         resultEndValue = _GetRelativePosition(node, target, endPositionType, endPositionAnchor, endValue);
       }
@@ -171,33 +171,33 @@
         if (facingOption === "faceToDir") {
           absStartPosition = void 0;
           absTargetPosition = void 0;
-          if (node.parent) {
-            absStartPosition = enchant.matrix.transformPoint(node.position, node.parent.transform);
-            absTargetPosition = enchant.matrix.transformPoint(target.position, node.parent.transform);
+          if (node.getParent()) {
+            absStartPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
+            absTargetPosition = enchant.matrix.transformPoint(target.node.getPosition(), node.getParent().getTransform());
           } else {
-            absStartPosition = node.position;
-            absTargetPosition = target.position;
+            absStartPosition = node.getPosition();
+            absTargetPosition = target.node.getPosition();
           }
-          dx = absTargetPosition[0] - absStartPosition.position[0];
-          dy = absTargetPosition[1] - absStartPosition.position[1];
+          dx = absTargetPosition[0] - absStartPosition.getPosition()[0];
+          dy = absTargetPosition[1] - absStartPosition.getPosition()[1];
           startValue = (Math.atan2(dy, dx) / Math.PI) * 180;
           endValue = startValue;
         } else if (facingOption === "faceToMov") {
           absStartPosition = (dataStore.lastAbsPosition ? dataStore.lastAbsPosition : [0, 0]);
-          absTargetPosition = node.position;
-          if (node.parent) {
-            absTargetPosition = enchant.matrix.transformPoint(node.position, node.parent.transform);
+          absTargetPosition = node.getPosition();
+          if (node.getParent()) {
+            absTargetPosition = enchant.matrix.transformPoint(node.getPosition(), node.getParent().getTransform());
           }
           dx = absTargetPosition[0] - absStartPosition[0];
           dy = absTargetPosition[1] - absStartPosition[1];
           startValue += (Math.atan2(dy, dx) / Math.PI) * 180;
           endValue = startValue;
           if (dataStore.ignore) {
-            node.parent.alpha = dataStore.lastAlpha;
+            node.getParent().setAlpha(dataStore.lastAlpha);
           } else {
             dataStore.ignore = true;
-            dataStore.lastAlpha = node.parent.alpha;
-            node.parent.alpha = 0;
+            dataStore.lastAlpha = node.getParent().getAlpha();
+            node.getParent().setAlpha(0);
           }
           dataStore.lastAbsPosition = absTargetPosition;
         }
@@ -238,7 +238,7 @@
       return this.start();
     },
     start: function() {
-      this._node[this._attribute] = this._startValue;
+      this._node.setAttribute(this._attribute, this._startValue);
       this._frameNo = 0;
       return this.updateValue();
     },
@@ -256,7 +256,7 @@
       if (this._tween) {
         value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
       }
-      return this._node[this._attribute] = value;
+      return this._node.setAttribute(this._attribute, value);
     },
     update: function() {
       if (!this.isDone()) {
@@ -309,8 +309,8 @@
       return this._frameNo >= this._duration;
     },
     _clearSetting: function() {
-      this._sprite.srcRect = null;
-      this._sprite.srcPath = null;
+      this._sprite.setSrcRect(null);
+      this._sprite.setSrcPath(null);
       if (this._interval) {
         this._interval = null;
         return this._sprite.removeAllChildren();
@@ -320,30 +320,29 @@
       var angle, animation, rad, speed, transform;
       if (this._lastAnimationId !== keyframe.id) this._clearSetting();
       this._lastAnimationId = keyframe.id;
-      this._sprite.priority = (keyframe.priority ? keyframe.priority : 0.5);
-      this._sprite.blendType = (keyframe.blendType ? keyframe.blendType : "none");
+      this._sprite.setPriority(keyframe.priority || 0.5);
+      this._sprite.setBlendType(keyframe.blendType || "none");
       if (keyframe.type === "image") {
-        this._sprite.srcPath = keyframe.id + ".png";
-        this._sprite.srcRect = keyframe.rect;
-        return this._sprite.center = keyframe.center;
+        this._sprite.setSrcPath(keyframe.id + ".png");
+        this._sprite.setSrcRect(keyframe.rect);
+        return this._sprite.setCenter(keyframe.center);
       } else {
         if (this._interval) {
           return this._interval.update();
         } else {
           if (keyframe.emitter) {
             transform = null;
-            if (this._sprite.parent) {
-              transform = this._sprite.parent.transform;
-              transform = enchant.matrix.getNodeTransformMatirx(this._sprite.position[0], this._sprite.position[1], this._sprite.rotation * Math.PI / 180, this._sprite.scale[0], this._sprite.scale[1]);
-              transform = enchant.matrix.matrixMultiply(transform, this._sprite.parent.transform);
+            if (this._sprite.getParent()) {
+              transform = this._sprite.getParent().getTransform();
+              transform = enchant.matrix.getNodeTransformMatirx(this._sprite.getPosition()[0], this._sprite.getPosition()[1], this._sprite.getRotation() * Math.PI / 180, this._sprite.getScale()[0], this._sprite.getScale()[1]);
+              transform = enchant.matrix.matrixMultiply(transform, this._sprite.getParent().getTransform());
             }
-            animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.alpha, this._sprite.priority, this._target);
+            animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.getAlpha(), this._sprite.getPriority(), this._target);
             if (keyframe.maxEmitSpeed > 0) {
               speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random();
               angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random();
               rad = (angle / 180) * Math.PI;
-              animation.node.velocity[0] = speed * Math.cos(rad);
-              animation.node.velocity[1] = speed * Math.sin(rad);
+              animation.node.setVelocity([speed * Math.cos(rad), speed * Math.sin(rad)]);
             }
             return enchant.animation.animationManager.start(animation);
           } else {

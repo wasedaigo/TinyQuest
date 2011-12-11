@@ -3,40 +3,40 @@ describe "canvas", ->
   describe "Sprite", ->
     it "property check", ->
       sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
-      expect(sprite.srcRect[0]).toBe 5
-      expect(sprite.srcRect[1]).toBe 14
-      expect(sprite.srcRect[2]).toBe 25
-      expect(sprite.srcRect[3]).toBe 30
+      expect(sprite.getSrcRect()[0]).toBe 5
+      expect(sprite.getSrcRect()[1]).toBe 14
+      expect(sprite.getSrcRect()[2]).toBe 25
+      expect(sprite.getSrcRect()[3]).toBe 30
 
     it "setter/geter check", ->
       sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
-      sprite.position = [ 5, 2 ]
-      sprite.scale = [ 3, 2 ]
-      sprite.hue = [ 2, 3, 2 ]
-      sprite.alpha = 0.4
-      sprite.priority = 0.3
-      sprite.rotation = 122
-      sprite.parent = 0
-      sprite.srcRect = [ 5, 2, 3, 2 ]
-      sprite.srcPath = "tes"
-      sprite.size = [ 3, 5 ]
-      expect(sprite.position).toEqual [ 5, 2 ]
-      expect(sprite.scale).toEqual [ 3, 2 ]
-      expect(sprite.hue).toEqual [ 2, 3, 2 ]
-      expect(sprite.alpha).toEqual 0.4
-      expect(sprite.priority).toEqual 0.3
-      expect(sprite.rotation).toEqual 122
-      expect(sprite.parent).toEqual 0
-      expect(sprite.srcRect).toEqual [ 5, 2, 3, 2 ]
-      expect(sprite.srcPath).toEqual "tes"
-      expect(sprite.size).toEqual [ 3, 5 ]
+      sprite.setPosition [ 5, 2 ]
+      sprite.setScale [ 3, 2 ]
+      sprite.setHue [ 2, 3, 2 ]
+      sprite.setAlpha 0.4
+      sprite.setPriority 0.3
+      sprite.setRotation 122
+      sprite.setParent 0
+      sprite.setSrcRect [ 5, 2, 3, 2 ]
+      sprite.setSrcPath "tes"
+      sprite.setSize [ 3, 5 ]
+      expect(sprite.getPosition()).toEqual [ 5, 2 ]
+      expect(sprite.getScale()).toEqual [ 3, 2 ]
+      expect(sprite.getHue()).toEqual [ 2, 3, 2 ]
+      expect(sprite.getAlpha()).toEqual 0.4
+      expect(sprite.getPriority()).toEqual 0.3
+      expect(sprite.getRotation()).toEqual 122
+      expect(sprite.getParent()).toEqual 0
+      expect(sprite.getSrcRect()).toEqual [ 5, 2, 3, 2 ]
+      expect(sprite.getSrcPath()).toEqual "tes"
+      expect(sprite.getSize()).toEqual [ 3, 5 ]
 
     it "positionType check", ->
       sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
-      sprite.size = [ 30, 50 ]
-      sprite.position = [ 0, 10 ]
-      sprite.scale = [ 2, 3 ]
-      sprite.center = [ -5, 5 ]
+      sprite.setSize [ 30, 50 ]
+      sprite.setPosition [ 0, 10 ]
+      sprite.setScale [ 2, 3 ]
+      sprite.setCenter [ -5, 5 ]
       expect(sprite.getOffsetByPositionAnchor([ -1, 1 ])).toEqual [ -40, 15 ]
       expect(sprite.getOffsetByPositionAnchor([ 0, 1 ])).toEqual [ -10, 15 ]
       expect(sprite.getOffsetByPositionAnchor([ 1, 1 ])).toEqual [ 20, 15 ]
@@ -51,18 +51,18 @@ describe "canvas", ->
     sprite = new enchant.canvas.Sprite("", [ 5, 14, 25, 30 ])
     sceneGraph = new enchant.canvas.SceneGraph(game, surface)
     it "addChild()", ->
-      sceneGraph.setRoot sprite
-      expect(sceneGraph._root).toBe sprite
+        sceneGraph.setRoot sprite
+        expect(sceneGraph._root).toBe sprite
 
   describe "Node children", ->
     node1 = new enchant.canvas.Node()
     node2 = new enchant.canvas.Node()
     it "addChild()", ->
       node1.addChild node2
-      expect(node2.parent).toBe node1
+      expect(node2.getParent()).toBe node1
       expect(node1._children.length).toBe 1
 
     it "removeChild()", ->
       node1.removeChild node2
-      expect(node2.parent).toBe null
+      expect(node2.getParent()).toBe null
       expect(node1._children.length).toBe 0

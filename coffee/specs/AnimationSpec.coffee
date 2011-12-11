@@ -1,46 +1,47 @@
 testFrame = (root, interval, testData, i, j) ->
-  expect(root._children[j].position).toEqual testData[j].position[i]
-  expect(testRound(root._children[j].scale)).toEqual testData[j].scale[i]
-  expect(testRound(root._children[j].alpha)).toEqual testData[j].alpha[i]
-  expect(root._children[j].hue).toEqual testData[j].hue[i]
-  expect(testRound(root._children[j].rotation)).toEqual testData[j].rotation[i]
-  if root._children[j].srcRect
-    expect(testRound(root._children[j].srcRect)).toEqual testData[j].srcRect[i]
-  else
-    expect(root._children[j].srcRect).toEqual null
-  expect(root._children[j].srcPath).toEqual testData[j].srcPath[i]
-  expect(testRound(root._children[j].center)).toEqual testData[j].center[i]
-  expect(interval.isDone()).toBe testData[j].isDone[i]
+    expect(root._children[j].getPosition()).toEqual testData[j].position[i]
+    expect(testRound(root._children[j].getScale())).toEqual testData[j].scale[i]
+    expect(testRound(root._children[j].getAlpha())).toEqual testData[j].alpha[i]
+    expect(root._children[j].getHue()).toEqual testData[j].hue[i]
+    expect(testRound(root._children[j].getRotation())).toEqual testData[j].rotation[i]
+    if root._children[j].getSrcRect()
+        expect(testRound(root._children[j].getSrcRect())).toEqual testData[j].srcRect[i]
+    else
+        expect(root._children[j].getSrcRect()).toEqual null
+    expect(root._children[j].getSrcPath()).toEqual testData[j].srcPath[i]
+    expect(testRound(root._children[j].getCenter())).toEqual testData[j].center[i]
+    expect(interval.isDone()).toBe testData[j].isDone[i]
+
 describe "Animation", ->
   describe "TestInterval", ->
     it "AlphaInterval", ->
-      node = new enchant.canvas.Node()
+      node = new enchant.canvas.Node
       interval = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.0, 1.0, 5, true)
-      expect(node.alpha).toBe 1
+      expect(node.getAlpha()).toBe 1
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(node.alpha).toEqual 0.0
+      expect(node.getAlpha()).toEqual 0.0
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.alpha).toBe 0.2
+      expect(node.getAlpha()).toBe 0.2
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.alpha).toBe 0.4
+      expect(node.getAlpha()).toBe 0.4
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.alpha).toBe 0.6
+      expect(node.getAlpha()).toBe 0.6
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.alpha).toBe 0.8
+      expect(node.getAlpha()).toBe 0.8
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(interval.isDone()).toBe true
       interval.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(interval.isDone()).toBe true
       interval.reset()
-      expect(node.alpha).toEqual 0.0
+      expect(node.getAlpha()).toEqual 0.0
       expect(interval.isDone()).toBe false
 
     it "PositionInterval", ->
@@ -50,73 +51,73 @@ describe "Animation", ->
         endRelative: false
         target: null
       )
-      expect(node.position).toEqual [ 0, 0 ]
+      expect(node.getPosition()).toEqual [ 0, 0 ]
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(node.position).toEqual [ 10, 10 ]
+      expect(node.getPosition()).toEqual [ 10, 10 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.position).toEqual [ 8, 9 ]
+      expect(node.getPosition()).toEqual [ 8, 9 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.position).toEqual [ 6, 8 ]
+      expect(node.getPosition()).toEqual [ 6, 8 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.position).toEqual [ 4, 7 ]
+      expect(node.getPosition()).toEqual [ 4, 7 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.position).toEqual [ 2, 6 ]
+      expect(node.getPosition()).toEqual [ 2, 6 ]
       expect(interval.isDone()).toBe true
       interval.reset()
-      expect(node.position).toEqual [ 10, 10 ]
+      expect(node.getPosition()).toEqual [ 10, 10 ]
       expect(interval.isDone()).toBe false
 
     it "ScaleInterval", ->
       node = new enchant.canvas.Node()
       interval = new enchant.animation.interval.AttributeInterval(node, "scale", [ 10, 10 ], [ 2, 6 ], 4, true)
-      expect(node.scale).toEqual [ 1, 1 ]
+      expect(node.getScale()).toEqual [ 1, 1 ]
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(node.scale).toEqual [ 10, 10 ]
+      expect(node.getScale()).toEqual [ 10, 10 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.scale).toEqual [ 8, 9 ]
+      expect(node.getScale()).toEqual [ 8, 9 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.scale).toEqual [ 6, 8 ]
+      expect(node.getScale()).toEqual [ 6, 8 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.scale).toEqual [ 4, 7 ]
+      expect(node.getScale()).toEqual [ 4, 7 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.scale).toEqual [ 2, 6 ]
+      expect(node.getScale()).toEqual [ 2, 6 ]
       expect(interval.isDone()).toBe true
       interval.reset()
-      expect(node.scale).toEqual [ 10, 10 ]
+      expect(node.getScale()).toEqual [ 10, 10 ]
       expect(interval.isDone()).toBe false
 
     it "HueInterval", ->
       node = new enchant.canvas.Node()
       interval = new enchant.animation.interval.AttributeInterval(node, "hue", [ 10, 10, 20 ], [ 2, 6, 40 ], 4, true)
-      expect(node.hue).toEqual [ 0, 0, 0 ]
+      expect(node.getHue()).toEqual [ 0, 0, 0 ]
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(node.hue).toEqual [ 10, 10, 20 ]
+      expect(node.getHue()).toEqual [ 10, 10, 20 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.hue).toEqual [ 8, 9, 25 ]
+      expect(node.getHue()).toEqual [ 8, 9, 25 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.hue).toEqual [ 6, 8, 30 ]
+      expect(node.getHue()).toEqual [ 6, 8, 30 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.hue).toEqual [ 4, 7, 35 ]
+      expect(node.getHue()).toEqual [ 4, 7, 35 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.hue).toEqual [ 2, 6, 40 ]
+      expect(node.getHue()).toEqual [ 2, 6, 40 ]
       expect(interval.isDone()).toBe true
       interval.reset()
-      expect(node.hue).toEqual [ 10, 10, 20 ]
+      expect(node.getHue()).toEqual [ 10, 10, 20 ]
       expect(interval.isDone()).toBe false
 
     it "RotationInterval", ->
@@ -124,22 +125,22 @@ describe "Animation", ->
       interval = new enchant.animation.interval.AttributeInterval(node, "rotation", 360, 0, 3, true,
         facingOption: null
       )
-      expect(node.rotation).toBe 0
+      expect(node.getRotation()).toBe 0
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(node.rotation).toEqual 360
+      expect(node.getRotation()).toEqual 360
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.rotation).toBe 240
+      expect(node.getRotation()).toBe 240
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.rotation).toBe 120
+      expect(node.getRotation()).toBe 120
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(node.rotation).toBe 0
+      expect(node.getRotation()).toBe 0
       expect(interval.isDone()).toBe true
       interval.reset()
-      expect(node.rotation).toEqual 360
+      expect(node.getRotation()).toEqual 360
       expect(interval.isDone()).toBe false
 
     it "Wait", ->
@@ -195,52 +196,52 @@ describe "Animation", ->
         }
       ]
       interval = new enchant.animation.interval.SourceInterval(sprite, keyframes)
-      expect(sprite.srcPath).toEqual null
+      expect(sprite.getSrcPath()).toEqual null
       expect(interval.isDone()).toBe false
       interval.start()
-      expect(sprite.srcPath).toEqual "test.png"
-      expect(sprite.srcRect).toEqual [ 10, 10, 32, 48 ]
-      expect(sprite.center).toEqual [ 1, 1 ]
+      expect(sprite.getSrcPath()).toEqual "test.png"
+      expect(sprite.getSrcRect()).toEqual [ 10, 10, 32, 48 ]
+      expect(sprite.getCenter()).toEqual [ 1, 1 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test.png"
-      expect(sprite.srcRect).toEqual [ 10, 10, 32, 48 ]
-      expect(sprite.center).toEqual [ 1, 1 ]
+      expect(sprite.getSrcPath()).toEqual "test.png"
+      expect(sprite.getSrcRect()).toEqual [ 10, 10, 32, 48 ]
+      expect(sprite.getCenter()).toEqual [ 1, 1 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test.png"
-      expect(sprite.srcRect).toEqual [ 10, 10, 32, 48 ]
-      expect(sprite.center).toEqual [ 1, 1 ]
+      expect(sprite.getSrcPath()).toEqual "test.png"
+      expect(sprite.getSrcRect()).toEqual [ 10, 10, 32, 48 ]
+      expect(sprite.getCenter()).toEqual [ 1, 1 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test.png"
-      expect(sprite.srcRect).toEqual [ 10, 10, 32, 48 ]
-      expect(sprite.center).toEqual [ 1, 1 ]
+      expect(sprite.getSrcPath()).toEqual "test.png"
+      expect(sprite.getSrcRect()).toEqual [ 10, 10, 32, 48 ]
+      expect(sprite.getCenter()).toEqual [ 1, 1 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test2.png"
-      expect(sprite.srcRect).toEqual [ 20, 10, 22, 48 ]
-      expect(sprite.center).toEqual [ 2, 2 ]
+      expect(sprite.getSrcPath()).toEqual "test2.png"
+      expect(sprite.getSrcRect()).toEqual [ 20, 10, 22, 48 ]
+      expect(sprite.getCenter()).toEqual [ 2, 2 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test2.png"
-      expect(sprite.srcRect).toEqual [ 20, 10, 22, 48 ]
-      expect(sprite.center).toEqual [ 2, 2 ]
+      expect(sprite.getSrcPath()).toEqual "test2.png"
+      expect(sprite.getSrcRect()).toEqual [ 20, 10, 22, 48 ]
+      expect(sprite.getCenter()).toEqual [ 2, 2 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test3.png"
-      expect(sprite.srcRect).toEqual [ 20, 20, 22, 48 ]
-      expect(sprite.center).toEqual [ 3, 3 ]
+      expect(sprite.getSrcPath()).toEqual "test3.png"
+      expect(sprite.getSrcRect()).toEqual [ 20, 20, 22, 48 ]
+      expect(sprite.getCenter()).toEqual [ 3, 3 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test4.png"
-      expect(sprite.srcRect).toEqual [ 20, 20, 22, 48 ]
-      expect(sprite.center).toEqual [ 4, 4 ]
+      expect(sprite.getSrcPath()).toEqual "test4.png"
+      expect(sprite.getSrcRect()).toEqual [ 20, 20, 22, 48 ]
+      expect(sprite.getCenter()).toEqual [ 4, 4 ]
       expect(interval.isDone()).toBe false
       interval.update()
-      expect(sprite.srcPath).toEqual "test4.png"
-      expect(sprite.srcRect).toEqual [ 20, 20, 22, 48 ]
-      expect(sprite.center).toEqual [ 4, 4 ]
+      expect(sprite.getSrcPath()).toEqual "test4.png"
+      expect(sprite.getSrcRect()).toEqual [ 20, 20, 22, 48 ]
+      expect(sprite.getCenter()).toEqual [ 4, 4 ]
       expect(interval.isDone()).toBe true
 
     it "Sequence1", ->
@@ -250,31 +251,31 @@ describe "Animation", ->
       interval3 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.7, 0.0, 2, true)
       sequence = new enchant.animation.interval.Sequence([ interval1, interval2, interval3 ])
       sequence.start()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.4
+      expect(node.getAlpha()).toBe 0.4
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.7
+      expect(node.getAlpha()).toBe 0.7
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.35
+      expect(node.getAlpha()).toBe 0.35
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.0
+      expect(node.getAlpha()).toBe 0.0
       expect(sequence.isDone()).toBe true
       sequence.reset()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(sequence.isDone()).toBe false
 
     it "Sequence2", ->
@@ -285,19 +286,19 @@ describe "Animation", ->
       interval4 = new enchant.animation.interval.AttributeInterval(node, "alpha", 0.1, 0.1, 1, true)
       sequence = new enchant.animation.interval.Sequence([ interval1, interval2, interval3, interval4 ])
       sequence.start()
-      expect(node.alpha).toBe 1
+      expect(node.getAlpha()).toBe 1
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 1
+      expect(node.getAlpha()).toBe 1
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.5
+      expect(node.getAlpha()).toBe 0.5
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(sequence.isDone()).toBe false
       sequence.update()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(sequence.isDone()).toBe true
 
     it "Parallel", ->
@@ -308,32 +309,32 @@ describe "Animation", ->
       )
       parallel = new enchant.animation.interval.Parallel([ interval1, interval2 ])
       parallel.start()
-      expect(node.alpha).toBe 0.1
-      expect(node.rotation).toBe 0
+      expect(node.getAlpha()).toBe 0.1
+      expect(node.getRotation()).toBe 0
       expect(parallel.isDone()).toBe false
       parallel.update()
-      expect(node.alpha).toBe 0.4
-      expect(node.rotation).toBe 36
+      expect(node.getAlpha()).toBe 0.4
+      expect(node.getRotation()).toBe 36
       expect(parallel.isDone()).toBe false
       parallel.update()
-      expect(node.alpha).toBe 0.7
-      expect(node.rotation).toBe 72
+      expect(node.getAlpha()).toBe 0.7
+      expect(node.getRotation()).toBe 72
       expect(parallel.isDone()).toBe false
       parallel.update()
-      expect(node.alpha).toBe 1.0
-      expect(node.rotation).toBe 108
+      expect(node.getAlpha()).toBe 1.0
+      expect(node.getRotation()).toBe 108
       expect(parallel.isDone()).toBe false
       parallel.update()
-      expect(node.alpha).toBe 1.0
-      expect(node.rotation).toBe 144
+      expect(node.getAlpha()).toBe 1.0
+      expect(node.getRotation()).toBe 144
       expect(parallel.isDone()).toBe false
       parallel.update()
-      expect(node.alpha).toBe 1.0
-      expect(node.rotation).toBe 180
+      expect(node.getAlpha()).toBe 1.0
+      expect(node.getRotation()).toBe 180
       expect(parallel.isDone()).toBe true
       parallel.reset()
-      expect(node.alpha).toBe 0.1
-      expect(node.rotation).toBe 0
+      expect(node.getAlpha()).toBe 0.1
+      expect(node.getRotation()).toBe 0
       expect(parallel.isDone()).toBe false
 
     it "Loop count 2", ->
@@ -344,25 +345,25 @@ describe "Animation", ->
       sequence = new enchant.animation.interval.Sequence([ interval1, interval2, interval3 ])
       loop_ = new enchant.animation.interval.Loop(sequence, 2)
       loop_.start()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 1.0
+      expect(node.getAlpha()).toBe 1.0
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 1
+      expect(node.getAlpha()).toBe 1
       expect(loop_.isDone()).toBe false
       loop_.update()
-      expect(node.alpha).toBe 0
+      expect(node.getAlpha()).toBe 0
       expect(loop_.isDone()).toBe true
 
     it "Loop count infinite", ->
@@ -373,19 +374,19 @@ describe "Animation", ->
       sequence = new enchant.animation.interval.Sequence([ interval1, interval2, interval3 ])
       loop_ = new enchant.animation.interval.Loop(sequence, 0)
       loop_.start()
-      expect(node.alpha).toBe 0.1
+      expect(node.getAlpha()).toBe 0.1
       expect(loop_.isDone()).toBe false
       i = 0
 
       while i < 4
         loop_.update()
-        expect(node.alpha).toBe 1.0
+        expect(node.getAlpha()).toBe 1.0
         expect(loop_.isDone()).toBe false
         loop_.update()
-        expect(node.alpha).toBe 1.0
+        expect(node.getAlpha()).toBe 1.0
         expect(loop_.isDone()).toBe false
         loop_.update()
-        expect(node.alpha).toBe 0.1
+        expect(node.getAlpha()).toBe 0.1
         expect(loop_.isDone()).toBe false
         i++
 

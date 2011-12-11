@@ -15,20 +15,20 @@ window.onload = ->
     stage = new Group()
     surface = new Surface(GAME_WIDTH, GAME_HEIGHT)
     sceneGraph = new enchant.canvas.SceneGraph(game, surface)
-    root.position = [ 0, 0 ]
-    root.scale = [ scale, scale ]
+    root.setPosition = [ 0, 0 ]
+    root.setScale [ scale, scale ]
     sceneGraph.setRoot root
     s = new enchant.Sprite(GAME_WIDTH, GAME_HEIGHT)
     s.image = surface
     stage.addChild s
     game.rootScene.addChild stage
     target = new enchant.canvas.Sprite()
-    target.srcPath = "Images/Enemies/death_wind.png"
-    target.srcRect = [ 0, 0, 90, 92 ]
-    target.size = [ 90, 92 ]
-    target.position = [ GAME_WIDTH / (4 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1]) ]
-    target.origin = [ GAME_WIDTH / (4 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1]) ]
-    target.priority = 0.49
+    target.setSrcPath "Images/Enemies/death_wind.png"
+    target.setSrcRect [ 0, 0, 90, 92 ]
+    target.setSize [ 90, 92 ]
+    target.setPosition [ GAME_WIDTH / (4 * root.getScale()[0]), GAME_HEIGHT / (2 * root.getScale()[1]) ]
+    target.origin = [ GAME_WIDTH / (4 * root.getScale()[0]), GAME_HEIGHT / (2 * root.getScale()[1]) ]
+    target.setPriority 0.49
     moveVelocityX = 1
     moveVelocityY = 1
     enchant.animation.animationManager.initialize root
@@ -48,12 +48,12 @@ window.onload = ->
       s.image.context.stroke()
       if currentAnimationFileName
         if target
-          moveVelocityX *= -1  if target.position[0] >= GAME_WIDTH / (3 * root.scale[0])
-          moveVelocityX *= -1  if target.position[0] <= GAME_HEIGHT / (8 * root.scale[0])
-          moveVelocityY *= -1  if target.position[1] >= GAME_HEIGHT / (2 * root.scale[1])
-          moveVelocityY *= -1  if target.position[1] <= GAME_HEIGHT / (8 * root.scale[1])
-          target.position[0] += moveVelocityX
-          target.position[1] += moveVelocityY
+          moveVelocityX *= -1  if target.getPosition()[0] >= GAME_WIDTH / (3 * root.getScale()[0])
+          moveVelocityX *= -1  if target.getPosition()[0] <= GAME_HEIGHT / (8 * root.getScale()[0])
+          moveVelocityY *= -1  if target.getPosition()[1] >= GAME_HEIGHT / (2 * root.getScale()[1])
+          moveVelocityY *= -1  if target.getPosition()[1] <= GAME_HEIGHT / (8 * root.getScale()[1])
+          target.getPosition()[0] += moveVelocityX
+          target.getPosition()[1] += moveVelocityY
         enchant.animation.animationManager.update()
         sceneGraph.update()
       surface.context.globalCompositeOperation = "source-over"
@@ -89,5 +89,5 @@ window.playAnimation = (id) ->
         node: target
         origin: enchant.utils.clone(target.origin)
       )
-      animation.node.position = [ GAME_WIDTH / (2 * root.scale[0]), GAME_HEIGHT / (2 * root.scale[1]) ]
+      animation.node.setPosition [ GAME_WIDTH / (2 * root.getScale()[0]), GAME_HEIGHT / (2 * root.getScale()[1]) ]
       enchant.animation.animationManager.start animation
