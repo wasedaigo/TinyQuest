@@ -176,8 +176,8 @@ enchant.animation.interval =
     else result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore)  if attribute is "rotation"
     result
 
-enchant.animation.interval.AttributeInterval = enchant.Class.create(
-  initialize: (node, attribute, startValue, endValue, duration, tween, options) ->
+enchant.animation.interval.AttributeInterval = class
+  constructor: (node, attribute, startValue, endValue, duration, tween, options) ->
     @_node = node
     @_startValue = startValue
     @_endValue = endValue
@@ -217,9 +217,9 @@ enchant.animation.interval.AttributeInterval = enchant.Class.create(
     unless @isDone()
       @_frameNo++
       @updateValue()
-)
-enchant.animation.interval.Wait = enchant.Class.create(
-  initialize: (duration) ->
+
+enchant.animation.interval.Wait = class
+  constructor: (duration) ->
     @_duration = duration
     @_frameNo = 0
 
@@ -237,9 +237,9 @@ enchant.animation.interval.Wait = enchant.Class.create(
 
   update: ->
     @_frameNo++  unless @isDone()
-)
-enchant.animation.interval.SourceInterval = enchant.Class.create(
-  initialize: (sprite, sourceKeykeyframes, target) ->
+
+enchant.animation.interval.SourceInterval = class
+  constructor: (sprite, sourceKeykeyframes, target) ->
     @_sprite = sprite
     @_interval = null
     @_sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes)
@@ -324,9 +324,9 @@ enchant.animation.interval.SourceInterval = enchant.Class.create(
       if @_frameDuration >= keyframe.duration
         @_index++
         @_frameDuration = 0
-)
-enchant.animation.interval.Loop = enchant.Class.create(
-  initialize: (interval, loopCount) ->
+
+enchant.animation.interval.Loop = class
+  constructor: (interval, loopCount) ->
     @_loopCounter = 0
     @_loopCount = loopCount
     @_interval = interval
@@ -355,9 +355,9 @@ enchant.animation.interval.Loop = enchant.Class.create(
       if @_interval.isDone()
         @_loopCounter++
         @_interval.reset()  if @_loopCount is 0 or @_loopCounter < @_loopCount
-)
-enchant.animation.interval.Sequence = enchant.Class.create(
-  initialize: (intervals) ->
+
+enchant.animation.interval.Sequence = class
+  constructor: (intervals) ->
     @_intervals = intervals
     @_index = 0
     length = @_intervals.length
@@ -385,9 +385,9 @@ enchant.animation.interval.Sequence = enchant.Class.create(
       if @isDone()
         @finish()
       else @_index++  if currentInterval.isDone()
-)
-enchant.animation.interval.Parallel = enchant.Class.create(
-  initialize: (intervals) ->
+
+enchant.animation.interval.Parallel = class
+  constructor: (intervals) ->
     @_intervals = intervals
 
   isDone: ->
@@ -416,4 +416,3 @@ enchant.animation.interval.Parallel = enchant.Class.create(
       for i of @_intervals
         @_intervals[i].update()
       @finish()  if @isDone()
-)
