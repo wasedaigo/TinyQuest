@@ -218,354 +218,351 @@
     }
   };
 
-  enchant.animation.interval.AttributeInterval = (function() {
+  this.module("enchant.animation.interval", function() {
+    this.AttributeInterval = (function() {
 
-    function _Class(node, attribute, startValue, endValue, duration, tween, options) {
-      this._node = node;
-      this._startValue = startValue;
-      this._endValue = endValue;
-      this._duration = duration;
-      this._attribute = attribute;
-      this._frameNo = 0;
-      this._tween = tween;
-      this._dataStore = {};
-      this._options = options;
-    }
-
-    _Class.prototype.isDone = function() {
-      return this._frameNo >= this._duration;
-    };
-
-    _Class.prototype.reset = function() {
-      this._frameNo = 0;
-      return this.start();
-    };
-
-    _Class.prototype.start = function() {
-      this._node.setAttribute(this._attribute, this._startValue);
-      this._frameNo = 0;
-      return this.updateValue();
-    };
-
-    _Class.prototype.finish = function() {};
-
-    _Class.prototype.updateValue = function() {
-      var endValue, result, startValue, value;
-      startValue = this._startValue;
-      endValue = this._endValue;
-      result = enchant.animation.interval.CalculateAttributeValues(this._attribute, this._startValue, this._endValue, this._node, this._options, this._dataStore);
-      if (result) {
-        startValue = result[0];
-        endValue = result[1];
+      function AttributeInterval(node, attribute, startValue, endValue, duration, tween, options) {
+        this._node = node;
+        this._startValue = startValue;
+        this._endValue = endValue;
+        this._duration = duration;
+        this._attribute = attribute;
+        this._frameNo = 0;
+        this._tween = tween;
+        this._dataStore = {};
+        this._options = options;
       }
-      value = startValue;
-      if (this._tween) {
-        value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
-      }
-      return this._node.setAttribute(this._attribute, value);
-    };
 
-    _Class.prototype.update = function() {
-      if (!this.isDone()) {
-        this._frameNo++;
+      AttributeInterval.prototype.isDone = function() {
+        return this._frameNo >= this._duration;
+      };
+
+      AttributeInterval.prototype.reset = function() {
+        this._frameNo = 0;
+        return this.start();
+      };
+
+      AttributeInterval.prototype.start = function() {
+        this._node.setAttribute(this._attribute, this._startValue);
+        this._frameNo = 0;
         return this.updateValue();
+      };
+
+      AttributeInterval.prototype.finish = function() {};
+
+      AttributeInterval.prototype.updateValue = function() {
+        var endValue, result, startValue, value;
+        startValue = this._startValue;
+        endValue = this._endValue;
+        result = enchant.animation.interval.CalculateAttributeValues(this._attribute, this._startValue, this._endValue, this._node, this._options, this._dataStore);
+        if (result) {
+          startValue = result[0];
+          endValue = result[1];
+        }
+        value = startValue;
+        if (this._tween) {
+          value = enchant.animation.interval.Completement(startValue, endValue, this._frameNo / this._duration);
+        }
+        return this._node.setAttribute(this._attribute, value);
+      };
+
+      AttributeInterval.prototype.update = function() {
+        if (!this.isDone()) {
+          this._frameNo++;
+          return this.updateValue();
+        }
+      };
+
+      return AttributeInterval;
+
+    })();
+    this.Wait = (function() {
+
+      function Wait(duration) {
+        this._duration = duration;
+        this._frameNo = 0;
       }
-    };
 
-    return _Class;
+      Wait.prototype.isDone = function() {
+        return this._frameNo >= this._duration;
+      };
 
-  })();
+      Wait.prototype.reset = function() {
+        this._frameNo = 0;
+        return this.start();
+      };
 
-  enchant.animation.interval.Wait = (function() {
+      Wait.prototype.start = function() {
+        return this._frameNo = 0;
+      };
 
-    function _Class(duration) {
-      this._duration = duration;
-      this._frameNo = 0;
-    }
+      Wait.prototype.finish = function() {};
 
-    _Class.prototype.isDone = function() {
-      return this._frameNo >= this._duration;
-    };
+      Wait.prototype.update = function() {
+        if (!this.isDone()) return this._frameNo++;
+      };
 
-    _Class.prototype.reset = function() {
-      this._frameNo = 0;
-      return this.start();
-    };
+      return Wait;
 
-    _Class.prototype.start = function() {
-      return this._frameNo = 0;
-    };
+    })();
+    this.SourceInterval = (function() {
 
-    _Class.prototype.finish = function() {};
-
-    _Class.prototype.update = function() {
-      if (!this.isDone()) return this._frameNo++;
-    };
-
-    return _Class;
-
-  })();
-
-  enchant.animation.interval.SourceInterval = (function() {
-
-    function _Class(sprite, sourceKeykeyframes, target) {
-      var key;
-      this._sprite = sprite;
-      this._interval = null;
-      this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
-      this._frameNo = 0;
-      this._index = 0;
-      this._frameDuration = 0;
-      this._duration = 0;
-      this._target = target;
-      this._lastAnimationId = "";
-      for (key in this._sourceKeykeyframes) {
-        this._duration += this._sourceKeykeyframes[key].duration;
-      }
-    }
-
-    _Class.prototype.isDone = function() {
-      return this._frameNo >= this._duration;
-    };
-
-    _Class.prototype._clearSetting = function() {
-      this._sprite.setSrcRect(null);
-      this._sprite.setSrcPath(null);
-      if (this._interval) {
+      function SourceInterval(sprite, sourceKeykeyframes, target) {
+        var key;
+        this._sprite = sprite;
         this._interval = null;
-        return this._sprite.removeAllChildren();
+        this._sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes);
+        this._frameNo = 0;
+        this._index = 0;
+        this._frameDuration = 0;
+        this._duration = 0;
+        this._target = target;
+        this._lastAnimationId = "";
+        for (key in this._sourceKeykeyframes) {
+          this._duration += this._sourceKeykeyframes[key].duration;
+        }
       }
-    };
 
-    _Class.prototype._updateKeyframe = function(keyframe) {
-      var angle, animation, rad, speed, transform;
-      if (this._lastAnimationId !== keyframe.id) this._clearSetting();
-      this._lastAnimationId = keyframe.id;
-      this._sprite.setPriority(keyframe.priority || 0.5);
-      this._sprite.setBlendType(keyframe.blendType || "none");
-      if (keyframe.type === "image") {
-        this._sprite.setSrcPath(keyframe.id + ".png");
-        this._sprite.setSrcRect(keyframe.rect);
-        return this._sprite.setCenter(keyframe.center);
-      } else {
+      SourceInterval.prototype.isDone = function() {
+        return this._frameNo >= this._duration;
+      };
+
+      SourceInterval.prototype._clearSetting = function() {
+        this._sprite.setSrcRect(null);
+        this._sprite.setSrcPath(null);
         if (this._interval) {
-          return this._interval.update();
+          this._interval = null;
+          return this._sprite.removeAllChildren();
+        }
+      };
+
+      SourceInterval.prototype._updateKeyframe = function(keyframe) {
+        var angle, animation, rad, speed, transform;
+        if (this._lastAnimationId !== keyframe.id) this._clearSetting();
+        this._lastAnimationId = keyframe.id;
+        this._sprite.setPriority(keyframe.priority || 0.5);
+        this._sprite.setBlendType(keyframe.blendType || "none");
+        if (keyframe.type === "image") {
+          this._sprite.setSrcPath(keyframe.id + ".png");
+          this._sprite.setSrcRect(keyframe.rect);
+          return this._sprite.setCenter(keyframe.center);
         } else {
-          if (keyframe.emitter) {
-            transform = null;
-            if (this._sprite.getParent()) {
-              transform = this._sprite.getParent().getTransform();
-              transform = enchant.matrix.getNodeTransformMatirx(this._sprite.getPosition()[0], this._sprite.getPosition()[1], this._sprite.getRotation() * Math.PI / 180, this._sprite.getScale()[0], this._sprite.getScale()[1]);
-              transform = enchant.matrix.matrixMultiply(transform, this._sprite.getParent().getTransform());
-            }
-            animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.getAlpha(), this._sprite.getPriority(), this._target);
-            if (keyframe.maxEmitSpeed > 0) {
-              speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random();
-              angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random();
-              rad = (angle / 180) * Math.PI;
-              animation.node.setVelocity([speed * Math.cos(rad), speed * Math.sin(rad)]);
-            }
-            return enchant.animation.animationManager.start(animation);
+          if (this._interval) {
+            return this._interval.update();
           } else {
-            if (keyframe.id) {
-              this._sprite.updateTransform();
-              animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, this._target);
-              this._sprite.addChild(animation.node);
-              this._interval = animation.interval;
-              return this._interval.start();
+            if (keyframe.emitter) {
+              transform = null;
+              if (this._sprite.getParent()) {
+                transform = this._sprite.getParent().getTransform();
+                transform = enchant.matrix.getNodeTransformMatirx(this._sprite.getPosition()[0], this._sprite.getPosition()[1], this._sprite.getRotation() * Math.PI / 180, this._sprite.getScale()[0], this._sprite.getScale()[1]);
+                transform = enchant.matrix.matrixMultiply(transform, this._sprite.getParent().getTransform());
+              }
+              animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, this._sprite.getAlpha(), this._sprite.getPriority(), this._target);
+              if (keyframe.maxEmitSpeed > 0) {
+                speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random();
+                angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random();
+                rad = (angle / 180) * Math.PI;
+                animation.node.setVelocity([speed * Math.cos(rad), speed * Math.sin(rad)]);
+              }
+              return enchant.animation.animationManager.start(animation);
+            } else {
+              if (keyframe.id) {
+                this._sprite.updateTransform();
+                animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, this._target);
+                this._sprite.addChild(animation.node);
+                this._interval = animation.interval;
+                return this._interval.start();
+              }
             }
           }
         }
-      }
-    };
+      };
 
-    _Class.prototype.reset = function() {
-      this._frameNo = 0;
-      this._index = 0;
-      this._frameDuration = 0;
-      if (this._interval) return this._interval.reset();
-    };
+      SourceInterval.prototype.reset = function() {
+        this._frameNo = 0;
+        this._index = 0;
+        this._frameDuration = 0;
+        if (this._interval) return this._interval.reset();
+      };
 
-    _Class.prototype.start = function() {
-      var keyframe;
-      keyframe = this._sourceKeykeyframes[0];
-      return this._updateKeyframe(keyframe);
-    };
+      SourceInterval.prototype.start = function() {
+        var keyframe;
+        keyframe = this._sourceKeykeyframes[0];
+        return this._updateKeyframe(keyframe);
+      };
 
-    _Class.prototype.finish = function() {
-      return this._clearSetting();
-    };
-
-    _Class.prototype.update = function() {
-      var keyframe;
-      if (this.isDone()) {
+      SourceInterval.prototype.finish = function() {
         return this._clearSetting();
-      } else {
-        this._frameDuration++;
-        this._frameNo++;
-        keyframe = this._sourceKeykeyframes[this._index];
-        this._updateKeyframe(keyframe);
-        if (this._frameDuration >= keyframe.duration) {
-          this._index++;
-          return this._frameDuration = 0;
-        }
-      }
-    };
+      };
 
-    return _Class;
-
-  })();
-
-  enchant.animation.interval.Loop = (function() {
-
-    function _Class(interval, loopCount) {
-      this._loopCounter = 0;
-      this._loopCount = loopCount;
-      this._interval = interval;
-    }
-
-    _Class.prototype.isDone = function() {
-      var _isDone;
-      _isDone = false;
-      if (this._loopCount === 0) {
-        _isDone = false;
-      } else {
-        _isDone = this._interval.isDone() && this._loopCounter >= this._loopCount - 1;
-      }
-      return _isDone;
-    };
-
-    _Class.prototype.reset = function() {
-      this._loopCounter = 0;
-      return this._interval.reset();
-    };
-
-    _Class.prototype.start = function() {
-      return this._interval.start();
-    };
-
-    _Class.prototype.finish = function() {
-      return this._interval.finish();
-    };
-
-    _Class.prototype.update = function() {
-      if (!this.isDone()) {
-        this._interval.update();
-        if (this._interval.isDone()) {
-          this._loopCounter++;
-          if (this._loopCount === 0 || this._loopCounter < this._loopCount) {
-            return this._interval.reset();
+      SourceInterval.prototype.update = function() {
+        var keyframe;
+        if (this.isDone()) {
+          return this._clearSetting();
+        } else {
+          this._frameDuration++;
+          this._frameNo++;
+          keyframe = this._sourceKeykeyframes[this._index];
+          this._updateKeyframe(keyframe);
+          if (this._frameDuration >= keyframe.duration) {
+            this._index++;
+            return this._frameDuration = 0;
           }
         }
+      };
+
+      return SourceInterval;
+
+    })();
+    this.Loop = (function() {
+
+      function Loop(interval, loopCount) {
+        this._loopCounter = 0;
+        this._loopCount = loopCount;
+        this._interval = interval;
       }
-    };
 
-    return _Class;
-
-  })();
-
-  enchant.animation.interval.Sequence = (function() {
-
-    function _Class(intervals) {
-      var length;
-      this._intervals = intervals;
-      this._index = 0;
-      length = this._intervals.length;
-      this._lastInterval = this._intervals[length - 1];
-    }
-
-    _Class.prototype.isDone = function() {
-      return this._lastInterval.isDone();
-    };
-
-    _Class.prototype.reset = function() {
-      var i;
-      this._index = 0;
-      for (i in this._intervals) {
-        this._intervals[i].reset();
-      }
-      return this.start();
-    };
-
-    _Class.prototype.start = function() {
-      return this._intervals[0].start();
-    };
-
-    _Class.prototype.finish = function() {
-      return this._intervals[this._index].finish();
-    };
-
-    _Class.prototype.update = function() {
-      var currentInterval;
-      if (!this.isDone()) {
-        currentInterval = this._intervals[this._index];
-        currentInterval.update();
-        if (this.isDone()) {
-          return this.finish();
+      Loop.prototype.isDone = function() {
+        var _isDone;
+        _isDone = false;
+        if (this._loopCount === 0) {
+          _isDone = false;
         } else {
-          if (currentInterval.isDone()) return this._index++;
+          _isDone = this._interval.isDone() && this._loopCounter >= this._loopCount - 1;
         }
-      }
-    };
+        return _isDone;
+      };
 
-    return _Class;
+      Loop.prototype.reset = function() {
+        this._loopCounter = 0;
+        return this._interval.reset();
+      };
 
-  })();
+      Loop.prototype.start = function() {
+        return this._interval.start();
+      };
 
-  enchant.animation.interval.Parallel = (function() {
+      Loop.prototype.finish = function() {
+        return this._interval.finish();
+      };
 
-    function _Class(intervals) {
-      this._intervals = intervals;
-    }
-
-    _Class.prototype.isDone = function() {
-      var i, isDone;
-      isDone = true;
-      for (i in this._intervals) {
-        if (!this._intervals[i].isDone()) {
-          isDone = false;
-          break;
+      Loop.prototype.update = function() {
+        if (!this.isDone()) {
+          this._interval.update();
+          if (this._interval.isDone()) {
+            this._loopCounter++;
+            if (this._loopCount === 0 || this._loopCounter < this._loopCount) {
+              return this._interval.reset();
+            }
+          }
         }
-      }
-      return isDone;
-    };
+      };
 
-    _Class.prototype.reset = function() {
-      var i;
-      for (i in this._intervals) {
-        this._intervals[i].reset();
-      }
-      return this.start();
-    };
+      return Loop;
 
-    _Class.prototype.start = function() {
-      var i, _results;
-      _results = [];
-      for (i in this._intervals) {
-        _results.push(this._intervals[i].start());
-      }
-      return _results;
-    };
+    })();
+    this.Sequence = (function() {
 
-    _Class.prototype.finish = function() {
-      var i, _results;
-      _results = [];
-      for (i in this._intervals) {
-        _results.push(this._intervals[i].finish());
+      function Sequence(intervals) {
+        var length;
+        this._intervals = intervals;
+        this._index = 0;
+        length = this._intervals.length;
+        this._lastInterval = this._intervals[length - 1];
       }
-      return _results;
-    };
 
-    _Class.prototype.update = function() {
-      var i;
-      if (!this.isDone()) {
+      Sequence.prototype.isDone = function() {
+        return this._lastInterval.isDone();
+      };
+
+      Sequence.prototype.reset = function() {
+        var i;
+        this._index = 0;
         for (i in this._intervals) {
-          this._intervals[i].update();
+          this._intervals[i].reset();
         }
-        if (this.isDone()) return this.finish();
+        return this.start();
+      };
+
+      Sequence.prototype.start = function() {
+        return this._intervals[0].start();
+      };
+
+      Sequence.prototype.finish = function() {
+        return this._intervals[this._index].finish();
+      };
+
+      Sequence.prototype.update = function() {
+        var currentInterval;
+        if (!this.isDone()) {
+          currentInterval = this._intervals[this._index];
+          currentInterval.update();
+          if (this.isDone()) {
+            return this.finish();
+          } else {
+            if (currentInterval.isDone()) return this._index++;
+          }
+        }
+      };
+
+      return Sequence;
+
+    })();
+    return this.Parallel = (function() {
+
+      function Parallel(intervals) {
+        this._intervals = intervals;
       }
-    };
 
-    return _Class;
+      Parallel.prototype.isDone = function() {
+        var i, isDone;
+        isDone = true;
+        for (i in this._intervals) {
+          if (!this._intervals[i].isDone()) {
+            isDone = false;
+            break;
+          }
+        }
+        return isDone;
+      };
 
-  })();
+      Parallel.prototype.reset = function() {
+        var i;
+        for (i in this._intervals) {
+          this._intervals[i].reset();
+        }
+        return this.start();
+      };
+
+      Parallel.prototype.start = function() {
+        var i, _results;
+        _results = [];
+        for (i in this._intervals) {
+          _results.push(this._intervals[i].start());
+        }
+        return _results;
+      };
+
+      Parallel.prototype.finish = function() {
+        var i, _results;
+        _results = [];
+        for (i in this._intervals) {
+          _results.push(this._intervals[i].finish());
+        }
+        return _results;
+      };
+
+      Parallel.prototype.update = function() {
+        var i;
+        if (!this.isDone()) {
+          for (i in this._intervals) {
+            this._intervals[i].update();
+          }
+          if (this.isDone()) return this.finish();
+        }
+      };
+
+      return Parallel;
+
+    })();
+  });

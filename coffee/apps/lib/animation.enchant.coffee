@@ -176,243 +176,244 @@ enchant.animation.interval =
     else result = enchant.animation.interval.CalculateDynamicRotation(startValue, endValue, node, options.facingOption, options.target, dataStore)  if attribute is "rotation"
     result
 
-enchant.animation.interval.AttributeInterval = class
-  constructor: (node, attribute, startValue, endValue, duration, tween, options) ->
-    @_node = node
-    @_startValue = startValue
-    @_endValue = endValue
-    @_duration = duration
-    @_attribute = attribute
-    @_frameNo = 0
-    @_tween = tween
-    @_dataStore = {}
-    @_options = options
-
-  isDone: ->
-    @_frameNo >= @_duration
-
-  reset: ->
-    @_frameNo = 0
-    @start()
-
-  start: ->
-    @_node.setAttribute @_attribute, @_startValue
-    @_frameNo = 0
-    @updateValue()
-
-  finish: ->
-
-  updateValue: ->
-    startValue = @_startValue
-    endValue = @_endValue
-    result = enchant.animation.interval.CalculateAttributeValues(@_attribute, @_startValue, @_endValue, @_node, @_options, @_dataStore)
-    if result
-      startValue = result[0]
-      endValue = result[1]
-    value = startValue
-    value = enchant.animation.interval.Completement(startValue, endValue, @_frameNo / @_duration)  if @_tween
-    @_node.setAttribute @_attribute, value
-
-  update: ->
-    unless @isDone()
-      @_frameNo++
+@module "enchant.animation.interval", ->
+  class @AttributeInterval
+    constructor: (node, attribute, startValue, endValue, duration, tween, options) ->
+      @_node = node
+      @_startValue = startValue
+      @_endValue = endValue
+      @_duration = duration
+      @_attribute = attribute
+      @_frameNo = 0
+      @_tween = tween
+      @_dataStore = {}
+      @_options = options
+  
+    isDone: ->
+      @_frameNo >= @_duration
+  
+    reset: ->
+      @_frameNo = 0
+      @start()
+  
+    start: ->
+      @_node.setAttribute @_attribute, @_startValue
+      @_frameNo = 0
       @updateValue()
-
-enchant.animation.interval.Wait = class
-  constructor: (duration) ->
-    @_duration = duration
-    @_frameNo = 0
-
-  isDone: ->
-    @_frameNo >= @_duration
-
-  reset: ->
-    @_frameNo = 0
-    @start()
-
-  start: ->
-    @_frameNo = 0
-
-  finish: ->
-
-  update: ->
-    @_frameNo++  unless @isDone()
-
-enchant.animation.interval.SourceInterval = class
-  constructor: (sprite, sourceKeykeyframes, target) ->
-    @_sprite = sprite
-    @_interval = null
-    @_sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes)
-    @_frameNo = 0
-    @_index = 0
-    @_frameDuration = 0
-    @_duration = 0
-    @_target = target
-    @_lastAnimationId = ""
-    for key of @_sourceKeykeyframes
-      @_duration += @_sourceKeykeyframes[key].duration
-
-  isDone: ->
-    @_frameNo >= @_duration
-
-  _clearSetting: ->
-    @_sprite.setSrcRect null
-    @_sprite.setSrcPath null
-    if @_interval
-      @_interval = null
-      @_sprite.removeAllChildren()
-
-  _updateKeyframe: (keyframe) ->
-    @_clearSetting()  unless @_lastAnimationId is keyframe.id
-    @_lastAnimationId = keyframe.id
-    @_sprite.setPriority (keyframe.priority || 0.5)
-    @_sprite.setBlendType (keyframe.blendType || "none")
-    if keyframe.type is "image"
-      @_sprite.setSrcPath keyframe.id + ".png"
-      @_sprite.setSrcRect  keyframe.rect
-      @_sprite.setCenter keyframe.center
-    else
-      if @_interval
-        @_interval.update()
-      else
-        if keyframe.emitter
-          transform = null
-          if @_sprite.getParent()
-            transform = @_sprite.getParent().getTransform()
-            transform = enchant.matrix.getNodeTransformMatirx(@_sprite.getPosition()[0], @_sprite.getPosition()[1], @_sprite.getRotation() * Math.PI / 180, @_sprite.getScale()[0], @_sprite.getScale()[1])
-            transform = enchant.matrix.matrixMultiply(transform, @_sprite.getParent().getTransform())
-          
-          animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.getAlpha(), @_sprite.getPriority(), @_target)
-          
-          if keyframe.maxEmitSpeed > 0
-            speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random()
-            angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random()
-            rad = (angle / 180) * Math.PI
-            animation.node.setVelocity [speed * Math.cos(rad), speed * Math.sin(rad)]
-          
-          enchant.animation.animationManager.start animation
-
-        else
-          if keyframe.id
-            @_sprite.updateTransform()
-            animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, @_target)
-            @_sprite.addChild animation.node
-            @_interval = animation.interval
-            @_interval.start()
-
-  reset: ->
-    @_frameNo = 0
-    @_index = 0
-    @_frameDuration = 0
-    @_interval.reset()  if @_interval
-
-  start: ->
-    keyframe = @_sourceKeykeyframes[0]
-    @_updateKeyframe keyframe
-
-  finish: ->
-    @_clearSetting()
-
-  update: ->
-    if @isDone()
-      @_clearSetting()
-    else
-      @_frameDuration++
-      @_frameNo++
-      keyframe = @_sourceKeykeyframes[@_index]
-      @_updateKeyframe keyframe
-      if @_frameDuration >= keyframe.duration
-        @_index++
-        @_frameDuration = 0
-
-enchant.animation.interval.Loop = class
-  constructor: (interval, loopCount) ->
-    @_loopCounter = 0
-    @_loopCount = loopCount
-    @_interval = interval
-
-  isDone: ->
-    _isDone = false
-    if @_loopCount is 0
-      _isDone = false
-    else
-      _isDone = @_interval.isDone() and @_loopCounter >= @_loopCount - 1
-    _isDone
-
-  reset: ->
-    @_loopCounter = 0
-    @_interval.reset()
-
-  start: ->
-    @_interval.start()
-
-  finish: ->
-    @_interval.finish()
-
-  update: ->
-    unless @isDone()
-      @_interval.update()
-      if @_interval.isDone()
-        @_loopCounter++
-        @_interval.reset()  if @_loopCount is 0 or @_loopCounter < @_loopCount
-
-enchant.animation.interval.Sequence = class
-  constructor: (intervals) ->
-    @_intervals = intervals
-    @_index = 0
-    length = @_intervals.length
-    @_lastInterval = @_intervals[length - 1]
-
-  isDone: ->
-    @_lastInterval.isDone()
-
-  reset: ->
-    @_index = 0
-    for i of @_intervals
-      @_intervals[i].reset()
-    @start()
-
-  start: ->
-    @_intervals[0].start()
-
-  finish: ->
-    @_intervals[@_index].finish()
-
-  update: ->
-    unless @isDone()
-      currentInterval = @_intervals[@_index]
-      currentInterval.update()
-      if @isDone()
-        @finish()
-      else @_index++  if currentInterval.isDone()
-
-enchant.animation.interval.Parallel = class
-  constructor: (intervals) ->
-    @_intervals = intervals
-
-  isDone: ->
-    isDone = true
-    for i of @_intervals
-      unless @_intervals[i].isDone()
-        isDone = false
-        break
-    isDone
-
-  reset: ->
-    for i of @_intervals
-      @_intervals[i].reset()
-    @start()
-
-  start: ->
-    for i of @_intervals
-      @_intervals[i].start()
-
-  finish: ->
-    for i of @_intervals
-      @_intervals[i].finish()
-
-  update: ->
-    unless @isDone()
-      for i of @_intervals
-        @_intervals[i].update()
-      @finish()  if @isDone()
+  
+    finish: ->
+  
+    updateValue: ->
+      startValue = @_startValue
+      endValue = @_endValue
+      result = enchant.animation.interval.CalculateAttributeValues(@_attribute, @_startValue, @_endValue, @_node, @_options, @_dataStore)
+      if result
+        startValue = result[0]
+        endValue = result[1]
+      value = startValue
+      value = enchant.animation.interval.Completement(startValue, endValue, @_frameNo / @_duration)  if @_tween
+      @_node.setAttribute @_attribute, value
+  
+    update: ->
+      unless @isDone()
+        @_frameNo++
+        @updateValue()
+  
+  class @Wait
+        constructor: (duration) ->
+          @_duration = duration
+          @_frameNo = 0
+      
+        isDone: ->
+          @_frameNo >= @_duration
+      
+        reset: ->
+          @_frameNo = 0
+          @start()
+      
+        start: ->
+          @_frameNo = 0
+      
+        finish: ->
+      
+        update: ->
+          @_frameNo++  unless @isDone()
+  
+  class @SourceInterval
+        constructor: (sprite, sourceKeykeyframes, target) ->
+          @_sprite = sprite
+          @_interval = null
+          @_sourceKeykeyframes = enchant.utils.clone(sourceKeykeyframes)
+          @_frameNo = 0
+          @_index = 0
+          @_frameDuration = 0
+          @_duration = 0
+          @_target = target
+          @_lastAnimationId = ""
+          for key of @_sourceKeykeyframes
+            @_duration += @_sourceKeykeyframes[key].duration
+      
+        isDone: ->
+          @_frameNo >= @_duration
+      
+        _clearSetting: ->
+          @_sprite.setSrcRect null
+          @_sprite.setSrcPath null
+          if @_interval
+            @_interval = null
+            @_sprite.removeAllChildren()
+      
+        _updateKeyframe: (keyframe) ->
+          @_clearSetting()  unless @_lastAnimationId is keyframe.id
+          @_lastAnimationId = keyframe.id
+          @_sprite.setPriority (keyframe.priority || 0.5)
+          @_sprite.setBlendType (keyframe.blendType || "none")
+          if keyframe.type is "image"
+            @_sprite.setSrcPath keyframe.id + ".png"
+            @_sprite.setSrcRect  keyframe.rect
+            @_sprite.setCenter keyframe.center
+          else
+            if @_interval
+              @_interval.update()
+            else
+              if keyframe.emitter
+                transform = null
+                if @_sprite.getParent()
+                  transform = @_sprite.getParent().getTransform()
+                  transform = enchant.matrix.getNodeTransformMatirx(@_sprite.getPosition()[0], @_sprite.getPosition()[1], @_sprite.getRotation() * Math.PI / 180, @_sprite.getScale()[0], @_sprite.getScale()[1])
+                  transform = enchant.matrix.matrixMultiply(transform, @_sprite.getParent().getTransform())
+                
+                animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), false, transform, @_sprite.getAlpha(), @_sprite.getPriority(), @_target)
+                
+                if keyframe.maxEmitSpeed > 0
+                  speed = keyframe.minEmitSpeed + (keyframe.maxEmitSpeed - keyframe.minEmitSpeed) * Math.random()
+                  angle = keyframe.minEmitAngle + (keyframe.maxEmitAngle - keyframe.minEmitAngle) * Math.random()
+                  rad = (angle / 180) * Math.PI
+                  animation.node.setVelocity [speed * Math.cos(rad), speed * Math.sin(rad)]
+                
+                enchant.animation.animationManager.start animation
+      
+              else
+                if keyframe.id
+                  @_sprite.updateTransform()
+                  animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.getAnimation(keyframe.id), true, null, 1, 0.5, @_target)
+                  @_sprite.addChild animation.node
+                  @_interval = animation.interval
+                  @_interval.start()
+      
+        reset: ->
+          @_frameNo = 0
+          @_index = 0
+          @_frameDuration = 0
+          @_interval.reset()  if @_interval
+      
+        start: ->
+          keyframe = @_sourceKeykeyframes[0]
+          @_updateKeyframe keyframe
+      
+        finish: ->
+          @_clearSetting()
+      
+        update: ->
+          if @isDone()
+            @_clearSetting()
+          else
+            @_frameDuration++
+            @_frameNo++
+            keyframe = @_sourceKeykeyframes[@_index]
+            @_updateKeyframe keyframe
+            if @_frameDuration >= keyframe.duration
+              @_index++
+              @_frameDuration = 0
+      
+  class @Loop
+        constructor: (interval, loopCount) ->
+          @_loopCounter = 0
+          @_loopCount = loopCount
+          @_interval = interval
+      
+        isDone: ->
+          _isDone = false
+          if @_loopCount is 0
+            _isDone = false
+          else
+            _isDone = @_interval.isDone() and @_loopCounter >= @_loopCount - 1
+          _isDone
+      
+        reset: ->
+          @_loopCounter = 0
+          @_interval.reset()
+      
+        start: ->
+          @_interval.start()
+      
+        finish: ->
+          @_interval.finish()
+      
+        update: ->
+          unless @isDone()
+            @_interval.update()
+            if @_interval.isDone()
+              @_loopCounter++
+              @_interval.reset()  if @_loopCount is 0 or @_loopCounter < @_loopCount
+  
+  class @Sequence
+        constructor: (intervals) ->
+          @_intervals = intervals
+          @_index = 0
+          length = @_intervals.length
+          @_lastInterval = @_intervals[length - 1]
+      
+        isDone: ->
+          @_lastInterval.isDone()
+      
+        reset: ->
+          @_index = 0
+          for i of @_intervals
+            @_intervals[i].reset()
+          @start()
+      
+        start: ->
+          @_intervals[0].start()
+      
+        finish: ->
+          @_intervals[@_index].finish()
+      
+        update: ->
+          unless @isDone()
+            currentInterval = @_intervals[@_index]
+            currentInterval.update()
+            if @isDone()
+              @finish()
+            else @_index++  if currentInterval.isDone()
+      
+  class @Parallel
+        constructor: (intervals) ->
+          @_intervals = intervals
+      
+        isDone: ->
+          isDone = true
+          for i of @_intervals
+            unless @_intervals[i].isDone()
+              isDone = false
+              break
+          isDone
+      
+        reset: ->
+          for i of @_intervals
+            @_intervals[i].reset()
+          @start()
+      
+        start: ->
+          for i of @_intervals
+            @_intervals[i].start()
+      
+        finish: ->
+          for i of @_intervals
+            @_intervals[i].finish()
+      
+        update: ->
+          unless @isDone()
+            for i of @_intervals
+              @_intervals[i].update()
+            @finish()  if @isDone()

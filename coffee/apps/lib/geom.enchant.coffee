@@ -1,15 +1,15 @@
-enchant.geom = {}
-enchant.geom.Size = class
+@module "enchant.geom", ->
+  class @Size
     constructor: (width, height) ->
       @width = width
       @height = height
 
-enchant.geom.Point = class
+  class @Point
     constructor: (x, y) ->
         @x = x
         @y = y
-
-enchant.geom.Rectangle = class
+  
+  class @Rectangle
     constructor: (x, y, width, height) ->
         @x = x
         @y = y

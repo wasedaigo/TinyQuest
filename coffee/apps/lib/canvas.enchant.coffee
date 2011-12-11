@@ -1,290 +1,292 @@
-enchant.canvas = {}
-enchant.canvas.SceneGraph = class
-      constructor: (game, surface) ->
-        assert surface
-        @_game = game
-        @_surface = surface
-        @_root = null
+@module "enchant.canvas", ->
+ 
+  class @SceneGraph
+    constructor: (game, surface) ->
+      assert surface
+      @_game = game
+      @_surface = surface
+      @_root = null
     
-      setRoot: (node) ->
-        @_root = node
+    setRoot: (node) ->
+      @_root = node
     
-      prioritySortFunc: (a, b) ->
-        a.getAbsPriority() - b.getAbsPriority()
+    prioritySortFunc: (a, b) ->
+      a.getAbsPriority() - b.getAbsPriority()
     
-      update: ->
-        assert @_root
-        @_root.updateTransform()
-        @_root.updateAttributes()
-        drawCommmands = []
-        @_root.registerDrawCommand drawCommmands
-        drawCommmands.sort @prioritySortFunc
-        i = 0
+    update: ->
+      assert @_root
+      @_root.updateTransform()
+      @_root.updateAttributes()
+      drawCommmands = []
+      @_root.registerDrawCommand drawCommmands
+      drawCommmands.sort @prioritySortFunc
+      i = 0
     
-        while i < drawCommmands.length
-          drawCommmands[i].draw @_game.assets, @_surface
-          i++
+      while i < drawCommmands.length
+        drawCommmands[i].draw @_game.assets, @_surface
+        i++
 
-enchant.canvas.Node = class
+  class @Node
     constructor: (baseTransform) ->
-        @_position = [ 0, 0 ]
-        @_velocity = [ 0, 0 ]
-        @_size = [ 1, 1 ]
-        @_scale = [ 1, 1 ]
-        @_alpha = 1.0
-        @_absAlpha = 1.0
-        @_depth = 0
-        @_priority = 0.5
-        @_absPriority = 0.5
-        @_blendType = null
-        @_hue = [ 0, 0, 0 ]
-        @_rotation = 0
-        @_parent = null
-        @_children = []
-        @_transform = null
-        @_hasBaseTransform = false
-        @_center = [ 0, 0 ]
-        if baseTransform
-          @_hasBaseTransform = true
-          @_transform = baseTransform
+      @_position = [ 0, 0 ]
+      @_velocity = [ 0, 0 ]
+      @_size = [ 1, 1 ]
+      @_scale = [ 1, 1 ]
+      @_alpha = 1.0
+      @_absAlpha = 1.0
+      @_depth = 0
+      @_priority = 0.5
+      @_absPriority = 0.5
+      @_blendType = null
+      @_hue = [ 0, 0, 0 ]
+      @_rotation = 0
+      @_parent = null
+      @_children = []
+      @_transform = null
+      @_hasBaseTransform = false
+      @_center = [ 0, 0 ]
+      if baseTransform
+        @_hasBaseTransform = true
+        @_transform = baseTransform
     
     getAttribute: (name) ->
-        @["_#{name}"]
+      @["_#{name}"]
     
     setAttribute: (name, value) ->
-        @["_#{name}"] = value
+      @["_#{name}"] = value
     
     getSize: ->
-        @_size
+      @_size
     
     setSize: (value) ->
-        @_size = value
+      @_size = value
     
     getPosition: ->
-        @_position
+      @_position
     
     setPosition: (value) ->
-        @_position = value
+      @_position = value
     
     getVelocity: ->
-        @_velocity
+      @_velocity
     
     setVelocity: (value) ->
-        @_velocity = value
-        
+      @_velocity = value
+      
     getAlpha: ->
-        @_alpha
+      @_alpha
     
     setAlpha: (value) ->
-        @_alpha = value
+      @_alpha = value
     
     getAbsAlpha: ->
-        @_absAlpha
+      @_absAlpha
     
     getBlendType: ->
-        @_blendType
+      @_blendType
     
     setBlendType: (value) ->
-        @_blendType = value
+      @_blendType = value
     
     getCenter: ->
-        @_center
+      @_center
     
     setCenter: (value) ->
-        @_center = value
+      @_center = value
     
     getDepth: ->
-        @_depth
+      @_depth
     
     setDepth: ->
-        @_depth = value
+      @_depth = value
     
     getPriority: ->
-        @_priority
+      @_priority
     
     setPriority: (value) ->
-        @_priority = value
+      @_priority = value
     
     getAbsPriority: ->
-        @_absPriority
+      @_absPriority
     
     getHue: ->
-        @_hue
+      @_hue
     
     setHue: (value) ->
-        @_hue = value
+      @_hue = value
     
     getParent: ->
-        @_parent
+      @_parent
     
     setParent: (value) ->
-        @_parent = value
+      @_parent = value
     
     getRotation: ->
-        @_rotation
+      @_rotation
     
     setRotation: (value)->
-        @_rotation = value
+      @_rotation = value
     
     getScale: ->
-        @_scale
+      @_scale
     
     setScale: (value) ->
-        @_scale = value
+      @_scale = value
     
     getChildren: ->
-        @_children
+      @_children
     
     getOffsetByPositionAnchor: (positionAnchor) ->
-        centerX = @_size[0] / 2 + @_center[0]
-        centerY = @_size[1] / 2 + @_center[1]
-        [ centerX + (positionAnchor[0] * (@_size[0] / 2) - centerX) * @_scale[0], centerY + (positionAnchor[1] * (@_size[1] / 2) - centerY) * @_scale[1] ]
-        
+      centerX = @_size[0] / 2 + @_center[0]
+      centerY = @_size[1] / 2 + @_center[1]
+      [ centerX + (positionAnchor[0] * (@_size[0] / 2) - centerX) * @_scale[0], centerY + (positionAnchor[1] * (@_size[1] / 2) - centerY) * @_scale[1] ]
+      
     getTransform: ->
-        unless @_transform
-            if @_parent
-              @updateTransform()
-            else
-              @updateTransform()
-        @_transform
+      unless @_transform
+        if @_parent
+          @updateTransform()
+        else
+          @updateTransform()
+      @_transform
     
     setTransform: (transform) ->
-        set: (transform) ->
-          @_transform = transform
+      set: (transform) ->
+        @_transform = transform
     
     addChild: (node) ->
-        @_children.push node
-        node.setParent this
-        
+      @_children.push node
+      node.setParent this
+      
     removeChild: (node) ->
-        i = 0
-        while i < @_children.length
-          if @_children[i] is node
-            node.setParent null
-            @_children.splice i, 1
-            break
-          i++
+      i = 0
+      while i < @_children.length
+        if @_children[i] is node
+          node.setParent null
+          @_children.splice i, 1
+          break
+        i++
     
     removeAllChildren: ->
-        i = 0
-        while i < @_children.length
-          @_children[i].setParent null
-          i++
-        @_children.length = 0
+      i = 0
+      while i < @_children.length
+        @_children[i].setParent null
+        i++
+      @_children.length = 0
     
     applyTransform: (context) ->
-        t = @_transform
-        context.setTransform t[0][0], t[0][1], t[1][0], t[1][1], t[2][0], t[2][1]
+      t = @_transform
+      context.setTransform t[0][0], t[0][1], t[1][0], t[1][1], t[2][0], t[2][1]
     
     updateTransform: ->
-        parentTransform = null
-        parentTransform = @_parent.getTransform() if @_parent
-        if @_hasBaseTransform
-          matrix = enchant.matrix.createMatrixIdentity(3)
-          matrix[0][0] = parentTransform[0][0]
-          matrix[0][1] = parentTransform[0][1]
-          matrix[1][0] = parentTransform[1][0]
-          matrix[1][1] = parentTransform[1][1]
-          velocity = enchant.matrix.transformPoint(@_velocity, matrix)
-          @_transform[2][0] += velocity[0]
-          @_transform[2][1] += velocity[1]
-        else
-          transform = enchant.matrix.getNodeTransformMatirx(@_position[0], @_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
-          transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
-          @_transform = transform
-        i = 0
+      parentTransform = null
+      parentTransform = @_parent.getTransform() if @_parent
+      if @_hasBaseTransform
+        matrix = enchant.matrix.createMatrixIdentity(3)
+        matrix[0][0] = parentTransform[0][0]
+        matrix[0][1] = parentTransform[0][1]
+        matrix[1][0] = parentTransform[1][0]
+        matrix[1][1] = parentTransform[1][1]
+        velocity = enchant.matrix.transformPoint(@_velocity, matrix)
+        @_transform[2][0] += velocity[0]
+        @_transform[2][1] += velocity[1]
+      else
+        transform = enchant.matrix.getNodeTransformMatirx(@_position[0], @_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
+        transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
+        @_transform = transform
+      i = 0
     
+      while i < @_children.length
+        @_children[i].updateTransform()
+        i++
+    
+    updateAttributes: ->
+      if @_parent
+          @_depth = @_parent.getDepth() + 1
+          @_absAlpha = @_alpha * @_parent.getAlpha()
+          @_absPriority = 2 * @_priority * @_parent.getAbsPriority()
+      else
+          @_depth = 0
+          @_absAlpha = @_alpha
+          @_absPriority = @_priority
+      i = 0
+    
+      while i < @_children.length
+          @_children[i].updateAttributes()
+          i++
+    
+    registerDrawCommand: (drawCommands) ->
+      return  if @_absAlpha <= 0
+      i = 0
+      
+      while i < @_children.length
+        @_children[i].registerDrawCommand drawCommands
+        i++
+
+  class @Sprite extends @Node
+    constructor: (srcPath, srcRect) ->
+      super()
+      @_srcPath = srcPath or null
+      @_srcRect = srcRect or null
+  
+    getSrcPath: ->
+      @_srcPath
+    
+    setSrcPath: (value) ->
+      @_srcPath = value
+    
+    getSrcRect: ->
+      @_srcRect
+    
+    setSrcRect: (value) ->
+      @_srcRect = value
+        
+    updateTransform: ->
+      parentTransform = null
+      parentTransform = @_parent.getTransform()  if @_parent
+      if @_srcPath
+        transform = enchant.matrix.getImageTransformMatirx(-@_position[0], -@_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
+        transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
+        @_transform = transform
+        i = 0
+      
         while i < @_children.length
           @_children[i].updateTransform()
           i++
-    
-    updateAttributes: ->
-        if @_parent
-            @_depth = @_parent.getDepth() + 1
-            @_absAlpha = @_alpha * @_parent.getAlpha()
-            @_absPriority = 2 * @_priority * @_parent.getAbsPriority()
-        else
-            @_depth = 0
-            @_absAlpha = @_alpha
-            @_absPriority = @_priority
-        i = 0
-    
-        while i < @_children.length
-            @_children[i].updateAttributes()
-            i++
+      else
+          super()
     
     registerDrawCommand: (drawCommands) ->
-        return  if @_absAlpha <= 0
-        i = 0
-        
-        while i < @_children.length
-          @_children[i].registerDrawCommand drawCommands
-          i++
-
-enchant.canvas.Sprite = class extends enchant.canvas.Node
-        constructor: (srcPath, srcRect) ->
-            super()
-            @_srcPath = srcPath or null
-            @_srcRect = srcRect or null
-        
-        getSrcPath: ->
-            @_srcPath
-        
-        setSrcPath: (value) ->
-            @_srcPath = value
+      return  if @getAbsAlpha() is 0
+      if @_srcPath
+        drawCommands.push @
+      else
+        super drawCommands
     
-        getSrcRect: ->
-            @_srcRect
-        
-        setSrcRect: (value) ->
-            @_srcRect = value
-            
-        updateTransform: ->
-            parentTransform = null
-            parentTransform = @_parent.getTransform()  if @_parent
-            if @_srcPath
-              transform = enchant.matrix.getImageTransformMatirx(-@_position[0], -@_position[1], @_rotation * Math.PI / 180, @_scale[0], @_scale[1])
-              transform = enchant.matrix.matrixMultiply(transform, parentTransform)  if parentTransform
-              @_transform = transform
-              i = 0
-            
-              while i < @_children.length
-                @_children[i].updateTransform()
-                i++
-            else
-                super()
-        
-        registerDrawCommand: (drawCommands) ->
-            return  if @getAbsAlpha() is 0
-            if @_srcPath
-              drawCommands.push @
-            else
-              super drawCommands
-    
-        draw: (assets, surface) ->
-            return  if @getAbsAlpha() is 0
-            key = "../../static/assets/images/" + @_srcPath
-            src = assets[key]
-            assert src isnt `undefined`, "No file found at path = " + key
-            @_srcRect = [ 0, 0, src.width, src.height ]  unless @_srcRect
-            @_size = [ @_srcRect[2], @_srcRect[3] ]  unless @_size
-            @applyTransform surface.context
-
-            surface.context.globalAlpha = @getAbsAlpha()
-            operation = undefined
-            if @_blendType is "add"
-              operation = "lighter"
-            else
-              operation = "source-over"
-            surface.context.globalCompositeOperation = operation  unless operation is surface.context.globalCompositeOperation
-            assert typeof (@_srcRect[0]) is "number", "1"
-            assert typeof (@_srcRect[1]) is "number", "2"
-            assert typeof (@_srcRect[2]) is "number", "3"
-            assert typeof (@_srcRect[3]) is "number", "4"
-            assert typeof (@_position[0]) is "number", "5"
-            assert typeof (@_position[1]) is "number", "6"
-            posX = Math.floor(@_position[0] - @_center[0] - @_srcRect[2] / 2)
-            posY = Math.floor(@_position[1] - @_center[1] - @_srcRect[3] / 2)
-            uvCutX = 1
-            uvCutY = 0
-            surface.draw src, @_srcRect[0], @_srcRect[1], @_srcRect[2] - uvCutX, @_srcRect[3] - uvCutY, posX, posY, @_srcRect[2], @_srcRect[3]
+    draw: (assets, surface) ->
+      return  if @getAbsAlpha() is 0
+      key = "../../static/assets/images/" + @_srcPath
+      src = assets[key]
+      assert src isnt `undefined`, "No file found at path = " + key
+      @_srcRect = [ 0, 0, src.width, src.height ]  unless @_srcRect
+      @_size = [ @_srcRect[2], @_srcRect[3] ]  unless @_size
+      @applyTransform surface.context
+  
+      surface.context.globalAlpha = @getAbsAlpha()
+      operation = undefined
+      if @_blendType is "add"
+        operation = "lighter"
+      else
+        operation = "source-over"
+      surface.context.globalCompositeOperation = operation  unless operation is surface.context.globalCompositeOperation
+      assert typeof (@_srcRect[0]) is "number", "1"
+      assert typeof (@_srcRect[1]) is "number", "2"
+      assert typeof (@_srcRect[2]) is "number", "3"
+      assert typeof (@_srcRect[3]) is "number", "4"
+      assert typeof (@_position[0]) is "number", "5"
+      assert typeof (@_position[1]) is "number", "6"
+      posX = Math.floor(@_position[0] - @_center[0] - @_srcRect[2] / 2)
+      posY = Math.floor(@_position[1] - @_center[1] - @_srcRect[3] / 2)
+      uvCutX = 1
+      uvCutY = 0
+      surface.draw src, @_srcRect[0], @_srcRect[1], @_srcRect[2] - uvCutX, @_srcRect[3] - uvCutY, posX, posY, @_srcRect[2], @_srcRect[3]
+      

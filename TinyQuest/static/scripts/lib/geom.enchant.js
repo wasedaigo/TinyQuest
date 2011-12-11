@@ -1,53 +1,51 @@
 
-  enchant.geom = {};
+  this.module("enchant.geom", function() {
+    this.Size = (function() {
 
-  enchant.geom.Size = (function() {
+      function Size(width, height) {
+        this.width = width;
+        this.height = height;
+      }
 
-    function _Class(width, height) {
-      this.width = width;
-      this.height = height;
-    }
+      return Size;
 
-    return _Class;
+    })();
+    this.Point = (function() {
 
-  })();
+      function Point(x, y) {
+        this.x = x;
+        this.y = y;
+      }
 
-  enchant.geom.Point = (function() {
+      return Point;
 
-    function _Class(x, y) {
-      this.x = x;
-      this.y = y;
-    }
+    })();
+    return this.Rectangle = (function() {
 
-    return _Class;
+      function Rectangle(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+      }
 
-  })();
+      Rectangle.prototype.getLeft = function() {
+        return this.x;
+      };
 
-  enchant.geom.Rectangle = (function() {
+      Rectangle.prototype.getTop = function() {
+        return this.y;
+      };
 
-    function _Class(x, y, width, height) {
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-    }
+      Rectangle.prototype.getRight = function() {
+        return this.x + this.width;
+      };
 
-    _Class.prototype.getLeft = function() {
-      return this.x;
-    };
+      Rectangle.prototype.getBottom = function() {
+        return this.y + this.height;
+      };
 
-    _Class.prototype.getTop = function() {
-      return this.y;
-    };
+      return Rectangle;
 
-    _Class.prototype.getRight = function() {
-      return this.x + this.width;
-    };
-
-    _Class.prototype.getBottom = function() {
-      return this.y + this.height;
-    };
-
-    return _Class;
-
-  })();
+    })();
+  });

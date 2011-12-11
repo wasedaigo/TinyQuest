@@ -1,16 +1,16 @@
 testFrame = (root, interval, testData, i, j) ->
-    expect(root._children[j].getPosition()).toEqual testData[j].position[i]
-    expect(testRound(root._children[j].getScale())).toEqual testData[j].scale[i]
-    expect(testRound(root._children[j].getAlpha())).toEqual testData[j].alpha[i]
-    expect(root._children[j].getHue()).toEqual testData[j].hue[i]
-    expect(testRound(root._children[j].getRotation())).toEqual testData[j].rotation[i]
-    if root._children[j].getSrcRect()
-        expect(testRound(root._children[j].getSrcRect())).toEqual testData[j].srcRect[i]
-    else
-        expect(root._children[j].getSrcRect()).toEqual null
-    expect(root._children[j].getSrcPath()).toEqual testData[j].srcPath[i]
-    expect(testRound(root._children[j].getCenter())).toEqual testData[j].center[i]
-    expect(interval.isDone()).toBe testData[j].isDone[i]
+  expect(root._children[j].getPosition()).toEqual testData[j].position[i]
+  expect(testRound(root._children[j].getScale())).toEqual testData[j].scale[i]
+  expect(testRound(root._children[j].getAlpha())).toEqual testData[j].alpha[i]
+  expect(root._children[j].getHue()).toEqual testData[j].hue[i]
+  expect(testRound(root._children[j].getRotation())).toEqual testData[j].rotation[i]
+  if root._children[j].getSrcRect()
+    expect(testRound(root._children[j].getSrcRect())).toEqual testData[j].srcRect[i]
+  else
+    expect(root._children[j].getSrcRect()).toEqual null
+  expect(root._children[j].getSrcPath()).toEqual testData[j].srcPath[i]
+  expect(testRound(root._children[j].getCenter())).toEqual testData[j].center[i]
+  expect(interval.isDone()).toBe testData[j].isDone[i]
 
 describe "Animation", ->
   describe "TestInterval", ->
@@ -391,17 +391,17 @@ describe "Animation", ->
         i++
 
     animationTestResult = Smoke01: [
-        {
-            position: [ [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ],
-            scale: [ [ 0.5, 0.5 ], [ 0.62, 0.62 ], [ 0.74, 0.74 ], [ 0.86, 0.86 ], [ 0.98, 0.98 ], [ 1.1, 1.1 ], [ 1.14, 1.14 ], [ 1.19, 1.19 ], [ 1.23, 1.23 ], [ 1.28, 1.28 ], [ 1.32, 1.32 ], [ 1.37, 1.37 ], [ 1.41, 1.41 ], [ 1.46, 1.46 ], [ 1.5, 1.5 ], [ 1.5, 1.5 ], [ 1.5, 1.5 ] ],
-            alpha: [ 1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0, 0.0 ],
-            hue: [ [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ],
-            rotation: [ 0, 2.14, 4.29, 6.43, 8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30, 30, 30 ],
-            srcRect: [ [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ] ],
-            srcPath: [ "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", null ],
-            isDone: [ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true ],
-            center: [ [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ]
-        } 
+      {
+        position: [ [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ],
+        scale: [ [ 0.5, 0.5 ], [ 0.62, 0.62 ], [ 0.74, 0.74 ], [ 0.86, 0.86 ], [ 0.98, 0.98 ], [ 1.1, 1.1 ], [ 1.14, 1.14 ], [ 1.19, 1.19 ], [ 1.23, 1.23 ], [ 1.28, 1.28 ], [ 1.32, 1.32 ], [ 1.37, 1.37 ], [ 1.41, 1.41 ], [ 1.46, 1.46 ], [ 1.5, 1.5 ], [ 1.5, 1.5 ], [ 1.5, 1.5 ] ],
+        alpha: [ 1, 0.93, 0.86, 0.79, 0.71, 0.64, 0.57, 0.5, 0.43, 0.36, 0.29, 0.21, 0.14, 0.07, 0.0, 0.0, 0.0 ],
+        hue: [ [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ],
+        rotation: [ 0, 2.14, 4.29, 6.43, 8.57, 10.71, 12.86, 15, 17.14, 19.29, 21.43, 23.57, 25.71, 27.86, 30, 30, 30 ],
+        srcRect: [ [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ], [ 0, 0, 32, 32 ] ],
+        srcPath: [ "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", "test.png", null ],
+        isDone: [ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true ],
+        center: [ [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ]
+      } 
     ]
 
     it "AnimationTest1", ->
