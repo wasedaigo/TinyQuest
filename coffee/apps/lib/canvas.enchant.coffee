@@ -1,30 +1,30 @@
-enchant.canvas = {}
-enchant.canvas.SceneGraph = enchant.Class.create(
-  initialize: (game, surface) ->
-    assert surface
-    @_game = game
-    @_surface = surface
-    @_root = null
+enchant.canvas = 
+    SceneGraph : class
+      constructor: (game, surface) ->
+        assert surface
+        @_game = game
+        @_surface = surface
+        @_root = null
+    
+      setRoot: (node) ->
+        @_root = node
+    
+      prioritySortFunc: (a, b) ->
+        a.absPriority - b.absPriority
+    
+      update: ->
+        assert @_root
+        @_root.updateTransform()
+        @_root.updateAttributes()
+        drawCommmands = []
+        @_root.registerDrawCommand drawCommmands
+        drawCommmands.sort @prioritySortFunc
+        i = 0
+    
+        while i < drawCommmands.length
+          drawCommmands[i].draw @_game.assets, @_surface
+          i++
 
-  setRoot: (node) ->
-    @_root = node
-
-  prioritySortFunc: (a, b) ->
-    a.absPriority - b.absPriority
-
-  update: ->
-    assert @_root
-    @_root.updateTransform()
-    @_root.updateAttributes()
-    drawCommmands = []
-    @_root.registerDrawCommand drawCommmands
-    drawCommmands.sort @prioritySortFunc
-    i = 0
-
-    while i < drawCommmands.length
-      drawCommmands[i].draw @_game.assets, @_surface
-      i++
-)
 enchant.canvas.Node = enchant.Class.create(
   initialize: (baseTransform) ->
     @position = [ 0, 0 ]
