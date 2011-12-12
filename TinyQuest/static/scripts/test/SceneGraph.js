@@ -17,7 +17,7 @@ window.onload = function() {
         var stage = new Group();
 
         var surface = new Surface(GAME_WIDTH,GAME_HEIGHT);
-        var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
+        var sceneGraph = new enchant.canvas.Stage(game, surface);
 
         root.position = [0, 0];
         root.scale = [scale, scale];

@@ -1,7 +1,7 @@
 enchant.canvas = {};
 
 // Define a scene graph, which holds nodes and sprites.
-enchant.canvas.SceneGraph = enchant.Class.create({
+enchant.canvas.Stage = enchant.Class.create({
     initialize: function(game, surface) {
         assert(surface);
         this._game = game;

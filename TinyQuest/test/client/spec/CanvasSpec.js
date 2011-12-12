@@ -54,9 +54,9 @@ describe("canvas", function() {
         });
     });
 
-    describe("SceneGraph children", function() {
+    describe("Stage children", function() {
         var sprite = new enchant.canvas.Sprite("", [5, 14, 25, 30]);
-        var sceneGraph = new enchant.canvas.SceneGraph(game, surface);
+        var sceneGraph = new enchant.canvas.Stage(game, surface);
         it("addChild()", function() {
             sceneGraph.setRoot(sprite);
             expect(sceneGraph._root).toBe(sprite);
