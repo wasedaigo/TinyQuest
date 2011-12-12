@@ -14,7 +14,7 @@ enchant.loader =
   get: (path) ->
     data = enchant.Game.instance.assets[path]
     console.log "[enchant.loader] No path '" + path + "' defined in cache"  unless data
-    $.parseJSON data
+    data
 
   load: (assets, cb) ->
     if assets.length > 0
