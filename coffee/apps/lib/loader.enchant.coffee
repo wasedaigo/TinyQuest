@@ -2,28 +2,6 @@ enchant.loader =
   setRootPath: (rootPath) ->
     @rootPath = rootPath
 
-  cache: {}
-  pendingRequest: {}
-  loadJSON: (name, callback) ->
-    @loadJSONWithData name, "", callback
-
-  loadJSONWithData: (name, data, callback) ->
-    unless @pendingRequest[name]
-      @pendingRequest[name] = true
-      $.ajax
-        url: name
-        type: "GET"
-        data: data
-        dataType: "json"
-        timeout: 5000
-        error: (data) ->
-          alert "Server Error: " + name
-          @pendingRequest[name] = false
-
-        success: (json) ->
-          callback json
-          @pendingRequest[name] = false
-
   setAnimation: (path, data) ->
     @set @rootPath + "/animations/" + path + ".json", data
 

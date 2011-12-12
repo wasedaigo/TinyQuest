@@ -383,12 +383,6 @@
         if (operation !== surface.context.globalCompositeOperation) {
           surface.context.globalCompositeOperation = operation;
         }
-        assert(typeof this._srcRect[0] === "number", "1");
-        assert(typeof this._srcRect[1] === "number", "2");
-        assert(typeof this._srcRect[2] === "number", "3");
-        assert(typeof this._srcRect[3] === "number", "4");
-        assert(typeof this._position[0] === "number", "5");
-        assert(typeof this._position[1] === "number", "6");
         posX = Math.floor(this._position[0] - this._center[0] - this._srcRect[2] / 2);
         posY = Math.floor(this._position[1] - this._center[1] - this._srcRect[3] / 2);
         uvCutX = 1;

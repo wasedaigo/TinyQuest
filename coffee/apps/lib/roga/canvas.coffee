@@ -1,5 +1,8 @@
 @module "roga.canvas", ->
- 
+  #
+  # Stage
+  # The root of a scene graph, which manages nodes and sprites.
+  #
   class @Stage
     constructor: (game, surface) ->
       assert surface
@@ -26,6 +29,10 @@
         drawCommmands[i].draw @_game.assets, @_surface
         i++
 
+  #
+  # Node
+  # Nodes are the minimum components of scenes
+  #
   class @Node
     constructor: (baseTransform) ->
       @_position = [ 0, 0 ]
@@ -54,7 +61,7 @@
     
     setAttribute: (name, value) ->
       @["_#{name}"] = value
-    
+
     getSize: ->
       @_size
     
@@ -222,6 +229,10 @@
         @_children[i].registerDrawCommand drawCommands
         i++
 
+  #
+  # Sprite
+  # Sprites are for displaying images on a scene graph
+  #
   class @Sprite extends @Node
     constructor: (srcPath, srcRect) ->
       super()
@@ -277,13 +288,8 @@
         operation = "lighter"
       else
         operation = "source-over"
+
       surface.context.globalCompositeOperation = operation  unless operation is surface.context.globalCompositeOperation
-      assert typeof (@_srcRect[0]) is "number", "1"
-      assert typeof (@_srcRect[1]) is "number", "2"
-      assert typeof (@_srcRect[2]) is "number", "3"
-      assert typeof (@_srcRect[3]) is "number", "4"
-      assert typeof (@_position[0]) is "number", "5"
-      assert typeof (@_position[1]) is "number", "6"
       posX = Math.floor(@_position[0] - @_center[0] - @_srcRect[2] / 2)
       posY = Math.floor(@_position[1] - @_center[1] - @_srcRect[3] / 2)
       uvCutX = 1
