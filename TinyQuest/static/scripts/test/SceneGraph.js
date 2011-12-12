@@ -24,7 +24,7 @@
     game.preload("../../static/assets/images/Images/Enemies/death_wind.png");
     game.preload("../../static/assets/images/bg/bg0001.png");
     game.onload = function() {
-      var moveVelocityX, moveVelocityY, s, Stage, stage, surface;
+      var Stage, moveVelocityX, moveVelocityY, s, stage, surface;
       stage = new Group();
       surface = new Surface(GAME_WIDTH, GAME_HEIGHT);
       Stage = new roga.canvas.Stage(game, surface);

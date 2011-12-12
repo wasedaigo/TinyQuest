@@ -878,9 +878,6 @@ enchant.Game = enchant.Class.create(enchant.EventTarget, {
                         } else if (type.match(/^audio/)) {
                             game.assets[src] = enchant.Sound.load(src, type);
                             game.assets[src].addEventListener('load', callback);
-                        } else if (ext == 'json') {
-                            game.assets[src] =  $.parseJSON(req.responseText);
-                            callback();
                         } else {
                             game.assets[src] = req.responseText;
                             callback();

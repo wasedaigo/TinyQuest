@@ -6,7 +6,7 @@ enchant.loader.setRootPath "../../static/assets"
 currentAnimationFileName = null
 currentAnimation = null
 target = null
-root = new enchant.canvas.Node()
+root = new roga.canvas.Node()
 window.onload = ->
   game.fps = 40
   game.preload "../../static/assets/images/Images/Enemies/death_wind.png"
@@ -14,7 +14,7 @@ window.onload = ->
   game.onload = ->
     stage = new Group()
     surface = new Surface(GAME_WIDTH, GAME_HEIGHT)
-    Stage = new enchant.canvas.Stage(game, surface)
+    Stage = new roga.canvas.Stage(game, surface)
     root.setPosition = [ 0, 0 ]
     root.setScale [ scale, scale ]
     Stage.setRoot root
@@ -22,7 +22,7 @@ window.onload = ->
     s.image = surface
     stage.addChild s
     game.rootScene.addChild stage
-    target = new enchant.canvas.Sprite()
+    target = new roga.canvas.Sprite()
     target.setSrcPath "Images/Enemies/death_wind.png"
     target.setSrcRect [ 0, 0, 90, 92 ]
     target.setSize [ 90, 92 ]
@@ -31,7 +31,7 @@ window.onload = ->
     target.setPriority 0.49
     moveVelocityX = 1
     moveVelocityY = 1
-    enchant.animation.animationManager.initialize root
+    roga.animation.animationManager.initialize root
     surface.context.fillStyle = "rgba(120,120,120,1)"
     @addEventListener "enterframe", ->
       surface.context.setTransform 1, 0, 0, 1, 0, 0
@@ -54,7 +54,7 @@ window.onload = ->
           moveVelocityY *= -1  if target.getPosition()[1] <= GAME_HEIGHT / (8 * root.getScale()[1])
           target.getPosition()[0] += moveVelocityX
           target.getPosition()[1] += moveVelocityY
-        enchant.animation.animationManager.update()
+        roga.animation.animationManager.update()
         Stage.update()
       surface.context.globalCompositeOperation = "source-over"
       surface.context.globalAlpha = 1
@@ -85,9 +85,9 @@ window.playAnimation = (id) ->
       interval = null
       root.removeAllChildren()
       root.addChild target
-      animation = enchant.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5,
+      animation = roga.animation.animationManager.CreateAnimation(enchant.loader.get(currentAnimationFileName), false, null, 1, 0.5,
         node: target
-        origin: enchant.utils.clone(target.origin)
+        origin: roga.Helper.instance().clone(target.origin)
       )
       animation.node.setPosition [ GAME_WIDTH / (2 * root.getScale()[0]), GAME_HEIGHT / (2 * root.getScale()[1]) ]
-      enchant.animation.animationManager.start animation
+      roga.animation.animationManager.start animation
