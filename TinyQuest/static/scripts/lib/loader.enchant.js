@@ -18,7 +18,7 @@
       if (!data) {
         console.log("[enchant.loader] No path '" + path + "' defined in cache");
       }
-      return $.parseJSON(data);
+      return data;
     },
     load: function(assets, cb) {
       var i, len, loaded, _results;
