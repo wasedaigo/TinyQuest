@@ -43,11 +43,12 @@ enchant.loader  =
         enchant.Game.instance.assets[path] = data;
     },
     get: function(path) {
-        var data = enchant.Game.instance.assets[path];
-        if (!data) {
-            console.log("[enchant.loader] No path '" + path + "' defined in cache");
-        }
-        return data;
+      var data;
+      data = enchant.Game.instance.assets[path];
+      if (!data) {
+        console.log("[enchant.loader] No path '" + path + "' defined in cache");
+      }
+      return data;
     },
     load: function(assets, cb) {
         if (assets.length > 0) {
