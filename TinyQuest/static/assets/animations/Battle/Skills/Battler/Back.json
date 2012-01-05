@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 8,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -30,11 +30,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -53,11 +53,11 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 4,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -75,11 +75,11 @@
             0
           ],
           "frameNo": 23,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -97,7 +97,7 @@
             0
           ],
           "frameNo": 27,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -112,7 +112,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         }
       ],

@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -31,11 +31,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -53,11 +53,11 @@
             0
           ],
           "frameNo": 1,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -75,11 +75,11 @@
             0
           ],
           "frameNo": 2,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -97,11 +97,11 @@
             0
           ],
           "frameNo": 3,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -119,11 +119,11 @@
             0
           ],
           "frameNo": 4,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -141,11 +141,11 @@
             0
           ],
           "frameNo": 5,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -163,11 +163,11 @@
             0
           ],
           "frameNo": 6,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -185,11 +185,11 @@
             0
           ],
           "frameNo": 7,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -207,7 +207,7 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -332,7 +332,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Laser/LightParticle01",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 0
         }

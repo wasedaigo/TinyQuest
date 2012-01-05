@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 6,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -30,11 +30,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -52,11 +52,11 @@
             0
           ],
           "frameNo": 6,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": null,
           "wait": true,
           "endPositionAnchor": [
@@ -81,7 +81,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Monster/DeadlyFang",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 0
         },

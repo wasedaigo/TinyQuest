@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 4,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             0,
             0
@@ -26,7 +26,7 @@
         },
         {
           "duration": 4,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -45,11 +45,11 @@
             0
           ],
           "frameNo": 4,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -68,7 +68,7 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -112,7 +112,7 @@
           "blendType": "add",
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Light",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,

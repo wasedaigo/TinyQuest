@@ -16,7 +16,7 @@
       "position": [
         {
           "duration": 3,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             0,
             0
@@ -30,7 +30,7 @@
         },
         {
           "duration": 26,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -49,11 +49,11 @@
             0
           ],
           "frameNo": 3,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -71,7 +71,7 @@
             0
           ],
           "frameNo": 29,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -114,7 +114,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 3,
           "rect": [
             288,
@@ -128,7 +128,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearHold",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 11
         },
         {
@@ -139,7 +139,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 21,
           "rect": [
             288,
@@ -156,7 +156,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/SmokeRing",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 23
         },
@@ -168,7 +168,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 28,
           "rect": [
             288,
@@ -182,7 +182,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearHold",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 29
         }
       ],
@@ -198,21 +198,21 @@
           "endValue": -405,
           "tween": true,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 11
         },
         {
           "duration": 8,
           "endValue": -405,
           "startValue": -405,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 21
         },
         {
           "duration": 1,
           "endValue": -405,
           "startValue": -405,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 29
         }
       ],

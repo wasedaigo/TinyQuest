@@ -14,7 +14,7 @@
       "position": [
         {
           "duration": 16,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -33,11 +33,11 @@
             1
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 4,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             1
@@ -55,7 +55,7 @@
             1
           ],
           "frameNo": 16,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -70,7 +70,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordDashUpper",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {

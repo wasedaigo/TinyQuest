@@ -26,7 +26,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/MagicCasting",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -67,7 +67,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Lit01",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 2
         }

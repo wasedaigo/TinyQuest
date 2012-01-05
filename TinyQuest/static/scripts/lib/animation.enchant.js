@@ -131,7 +131,7 @@ enchant.animation.interval  =
     _GetRelativePosition: function (node, target, positionType, positionAnchor, offset) {
         var result = offset;
         
-        if (positionType == "relativeToTarget") {
+        if (positionType == "RelativeToTarget") {
             var anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
             var tempPos = [target.node.position[0], target.node.position[1]];
             tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
@@ -140,7 +140,7 @@ enchant.animation.interval  =
             var invertMatrix = enchant.matrix.createInverseMatrix(node.parent.transform, 3);
             result = enchant.matrix.transformPoint(targetPosition, invertMatrix);
 
-        } else if (positionType == "relativeToTargetOrigin") {
+        } else if (positionType == "RelativeToTargetOrigin") {
             var anchorOffset = target.node.getOffsetByPositionAnchor(positionAnchor);
             var tempPos = [target.origin[0], target.origin[1]];
             tempPos[0] = tempPos[0] + offset[0] + anchorOffset[0];
@@ -166,7 +166,7 @@ enchant.animation.interval  =
     CalculateDynamicRotation: function (startValue, endValue, node, facingOption, target, dataStore) {
         if (target) {
             var invertMatrix = null;
-            if (facingOption == "faceToDir") {
+            if (facingOption == "FaceToDir") {
                 var absStartPosition;
                 var absTargetPosition;
                 if (node.parent) {
@@ -181,7 +181,7 @@ enchant.animation.interval  =
                 startValue = (Math.atan2(dy,dx) / Math.PI)  * 180;
                 endValue = startValue;
                 
-            } else if (facingOption == "faceToMov") {
+            } else if (facingOption == "FaceToMov") {
                 var absStartPosition = dataStore.lastAbsPosition ? dataStore.lastAbsPosition : [0, 0];
                 var absTargetPosition = node.position;
                 if (node.parent) {
@@ -330,8 +330,8 @@ enchant.animation.interval.SourceInterval = enchant.Class.create({
         this._lastAnimationId = keyframe.id;
     
         this._sprite.priority = keyframe.priority ? keyframe.priority : 0.5;
-        this._sprite.blendType = keyframe.blendType ? keyframe.blendType : "none";
-        if (keyframe.type == "image") {
+        this._sprite.blendType = keyframe.blendType ? keyframe.blendType : "None";
+        if (keyframe.type == "Image") {
             this._sprite.srcPath = keyframe.id + ".png";
             this._sprite.srcRect = keyframe.rect;
             this._sprite.center = keyframe.center;

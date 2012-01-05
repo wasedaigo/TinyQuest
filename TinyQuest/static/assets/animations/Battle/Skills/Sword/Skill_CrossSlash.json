@@ -16,7 +16,7 @@
       "position": [
         {
           "duration": 7,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -34,11 +34,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 13,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -56,7 +56,7 @@
             0
           ],
           "frameNo": 7,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -71,7 +71,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordDown",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -79,7 +79,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SwordDown02",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 7
         },
         {
@@ -100,7 +100,7 @@
       "position": [
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             0,
             0
@@ -114,7 +114,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -132,11 +132,11 @@
             0
           ],
           "frameNo": 3,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 4,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             0,
             0
@@ -150,7 +150,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -168,7 +168,7 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -191,7 +191,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Slash01",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 3
         },
@@ -208,7 +208,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Slash01",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 8
         }
@@ -224,7 +224,7 @@
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 3
         },
         {
@@ -238,7 +238,7 @@
           "endValue": 0,
           "tween": true,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 8
         }
       ],

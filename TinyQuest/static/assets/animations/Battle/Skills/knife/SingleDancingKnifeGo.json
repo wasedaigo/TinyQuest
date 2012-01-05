@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 14,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -31,11 +31,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -53,7 +53,7 @@
             0
           ],
           "frameNo": 14,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -68,7 +68,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/knife/SingleKnifeRotating",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         }
       ],

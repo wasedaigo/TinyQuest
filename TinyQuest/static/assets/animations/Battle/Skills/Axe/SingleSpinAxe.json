@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 7,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -30,11 +30,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -52,7 +52,7 @@
             0
           ],
           "frameNo": 7,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -70,7 +70,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_AxeBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,
@@ -86,14 +86,14 @@
           "endValue": 315,
           "tween": true,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 315,
           "startValue": 315,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 7
         }
       ],

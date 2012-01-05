@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 8,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -31,11 +31,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -53,7 +53,7 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -71,7 +71,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             160,
@@ -86,14 +86,14 @@
           "duration": 8,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "faceToMov",
+          "facingOption": "FaceToMov",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "faceToMov",
+          "facingOption": "FaceToMov",
           "frameNo": 8
         }
       ],

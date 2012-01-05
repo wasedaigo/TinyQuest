@@ -27,7 +27,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/HealShining02",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 0
         }

@@ -30,7 +30,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             384,
@@ -47,7 +47,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 38,
           "rect": [
             288,
@@ -74,7 +74,7 @@
       "position": [
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -93,11 +93,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -116,11 +116,11 @@
             0
           ],
           "frameNo": 5,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -139,11 +139,11 @@
             0
           ],
           "frameNo": 10,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -162,11 +162,11 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 18,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -184,7 +184,7 @@
             0
           ],
           "frameNo": 20,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -202,7 +202,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,
@@ -219,7 +219,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 5,
           "rect": [
             32,
@@ -236,7 +236,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 10,
           "rect": [
             64,
@@ -253,7 +253,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 15,
           "rect": [
             96,
@@ -270,7 +270,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 20,
           "rect": [
             128,
@@ -287,7 +287,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 29,
           "rect": [
             0,
@@ -309,7 +309,7 @@
           "endValue": 15,
           "tween": true,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 0
         },
         {
@@ -317,7 +317,7 @@
           "endValue": 30,
           "tween": true,
           "startValue": 15,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 5
         },
         {
@@ -325,7 +325,7 @@
           "endValue": 45,
           "tween": true,
           "startValue": 30,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 10
         },
         {
@@ -333,14 +333,14 @@
           "endValue": 60,
           "tween": true,
           "startValue": 45,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 15
         },
         {
           "duration": 18,
           "endValue": 60,
           "startValue": 60,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 20
         }
       ],
@@ -352,7 +352,7 @@
       "position": [
         {
           "duration": 29,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             0,
             0
@@ -366,7 +366,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -385,7 +385,7 @@
             0
           ],
           "frameNo": 29,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -403,7 +403,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             160,
@@ -420,7 +420,7 @@
           "minEmitAngle": -90,
           "id": "Battle/Skills/Bow/ArrowShootBomb",
           "maxEmitAngle": -90,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 30.0,
           "frameNo": 29
         },
@@ -437,7 +437,7 @@
           "endValue": 105,
           "tween": true,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 0
         },
         {
@@ -445,7 +445,7 @@
           "endValue": 120,
           "tween": true,
           "startValue": 105,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 5
         },
         {
@@ -453,7 +453,7 @@
           "endValue": 135,
           "tween": true,
           "startValue": 120,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 10
         },
         {
@@ -461,21 +461,21 @@
           "endValue": 150,
           "tween": true,
           "startValue": 135,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 15
         },
         {
           "duration": 9,
           "endValue": 0,
           "startValue": 150,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 20
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 29
         }
       ],
@@ -487,7 +487,7 @@
       "position": [
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -506,11 +506,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -529,11 +529,11 @@
             0
           ],
           "frameNo": 10,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -551,7 +551,7 @@
             0
           ],
           "frameNo": 20,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -570,7 +570,7 @@
           "blendType": "add",
           "priority": 0.600000023841858,
           "id": "Battle/Skills/Effect_Special01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             32,

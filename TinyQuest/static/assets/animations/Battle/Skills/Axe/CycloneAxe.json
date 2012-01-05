@@ -15,7 +15,7 @@
       "position": [
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -33,11 +33,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -56,11 +56,11 @@
             0
           ],
           "frameNo": 2,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -78,11 +78,11 @@
             0
           ],
           "frameNo": 12,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -101,11 +101,11 @@
             0
           ],
           "frameNo": 17,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 19,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -123,7 +123,7 @@
             0
           ],
           "frameNo": 27,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -138,7 +138,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -149,7 +149,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 28,
           "rect": [
             288,
@@ -176,7 +176,7 @@
       "position": [
         {
           "duration": 7,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             -8,
             -36
@@ -190,7 +190,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -209,11 +209,11 @@
             0
           ],
           "frameNo": 7,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 12,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -232,11 +232,11 @@
             0
           ],
           "frameNo": 8,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 21,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -255,11 +255,11 @@
             0
           ],
           "frameNo": 20,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -278,7 +278,7 @@
             0
           ],
           "frameNo": 41,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -298,7 +298,7 @@
           "emitter": false,
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Axe/SpinAxeY",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 7
         },
         {
@@ -306,7 +306,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Axe/SpinAxeY",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 8
         }
       ],

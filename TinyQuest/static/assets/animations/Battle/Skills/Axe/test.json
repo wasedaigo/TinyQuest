@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 12,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             8,
             50
@@ -26,7 +26,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -44,7 +44,7 @@
             0
           ],
           "frameNo": 12,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -67,7 +67,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Stab01",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 12
         }

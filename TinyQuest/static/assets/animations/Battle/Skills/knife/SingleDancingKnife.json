@@ -14,7 +14,7 @@
       "position": [
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -32,11 +32,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -54,11 +54,11 @@
             0
           ],
           "frameNo": 5,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 8,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             0,
             -140
@@ -72,7 +72,7 @@
         },
         {
           "duration": 5,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -90,11 +90,11 @@
             0
           ],
           "frameNo": 14,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -112,7 +112,7 @@
             0
           ],
           "frameNo": 19,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -130,7 +130,7 @@
           "minEmitAngle": 90,
           "id": "Battle/Skills/knife/SingleDancingKnifeGo",
           "maxEmitAngle": 90,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         },
@@ -147,7 +147,7 @@
           "minEmitAngle": 90,
           "id": "Battle/Skills/knife/SingleDancingKnifeBack",
           "maxEmitAngle": 90,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 14
         }

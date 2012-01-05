@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 21,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -30,7 +30,7 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -48,7 +48,7 @@
           ],
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,
@@ -65,7 +65,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 3,
           "rect": [
             0,
@@ -82,7 +82,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 6,
           "rect": [
             0,
@@ -99,7 +99,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 9,
           "rect": [
             0,
@@ -116,7 +116,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 12,
           "rect": [
             0,
@@ -133,7 +133,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Earth_Crack",
-          "type": "image",
+          "type": "Image",
           "frameNo": 15,
           "rect": [
             0,

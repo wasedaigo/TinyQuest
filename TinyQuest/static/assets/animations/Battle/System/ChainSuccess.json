@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 12,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -30,7 +30,7 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -48,7 +48,7 @@
           ],
           "priority": 0.5,
           "id": "UI/UI_ChainBox",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,
@@ -75,7 +75,7 @@
       "position": [
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -93,11 +93,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 9,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -115,11 +115,11 @@
             0
           ],
           "frameNo": 2,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -137,7 +137,7 @@
             0
           ],
           "frameNo": 11,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -155,7 +155,7 @@
           ],
           "priority": 0.5,
           "id": "UI/UI_ChainBox",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             32,

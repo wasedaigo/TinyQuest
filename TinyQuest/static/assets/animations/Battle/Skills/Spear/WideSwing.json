@@ -15,7 +15,7 @@
       "position": [
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -33,11 +33,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -56,11 +56,11 @@
             0
           ],
           "frameNo": 2,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 3,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -78,11 +78,11 @@
             0
           ],
           "frameNo": 12,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 6,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -101,11 +101,11 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 17,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -123,11 +123,11 @@
             0
           ],
           "frameNo": 21,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -145,11 +145,11 @@
             0
           ],
           "frameNo": 38,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 10,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -168,11 +168,11 @@
             0
           ],
           "frameNo": 40,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 3,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -190,7 +190,7 @@
             0
           ],
           "frameNo": 50,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -205,7 +205,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -216,7 +216,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 15,
           "rect": [
             416,
@@ -233,7 +233,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 22,
           "rect": [
             288,
@@ -247,7 +247,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallJump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 38
         },
         {
@@ -268,7 +268,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             -26,
             14
@@ -282,7 +282,7 @@
         },
         {
           "duration": 6,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -301,11 +301,11 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -323,7 +323,7 @@
             0
           ],
           "frameNo": 21,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -346,7 +346,7 @@
           ],
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_SpearBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 15,
           "rect": [
             0,
@@ -373,14 +373,14 @@
           "duration": 6,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 15
         },
         {
           "duration": 1,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 21
         }
       ],
@@ -412,7 +412,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Slash04",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 30
         }

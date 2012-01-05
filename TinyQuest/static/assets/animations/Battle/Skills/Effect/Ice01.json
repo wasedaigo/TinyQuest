@@ -75,7 +75,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Effect/IceOrb",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         }
       ],

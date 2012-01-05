@@ -13,7 +13,7 @@
       "position": [
         {
           "duration": 3,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -31,11 +31,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 22,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -54,11 +54,11 @@
             0
           ],
           "frameNo": 3,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 7,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -76,7 +76,7 @@
             0
           ],
           "frameNo": 25,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -94,7 +94,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             608,
@@ -111,7 +111,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 3,
           "rect": [
             128,
@@ -128,7 +128,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 11,
           "rect": [
             320,
@@ -142,7 +142,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Spear/SpearHold",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 20
         },
         {
@@ -164,21 +164,21 @@
           "endValue": -405,
           "tween": true,
           "startValue": 0,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 11
         },
         {
           "duration": 5,
           "endValue": -405,
           "startValue": -405,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 20
         },
         {
           "duration": 7,
           "endValue": -405,
           "startValue": -405,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 25
         }
       ],

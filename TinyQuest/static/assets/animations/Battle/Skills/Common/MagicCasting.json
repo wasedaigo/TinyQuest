@@ -16,7 +16,7 @@
       "position": [
         {
           "duration": 9,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -35,11 +35,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 35,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -57,11 +57,11 @@
             0
           ],
           "frameNo": 9,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -79,7 +79,7 @@
             0
           ],
           "frameNo": 44,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -94,7 +94,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Walking",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -105,7 +105,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 9,
           "rect": [
             416,
@@ -126,7 +126,7 @@
       "position": [
         {
           "duration": 9,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             -17,
             3
@@ -140,7 +140,7 @@
         },
         {
           "duration": 29,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -158,7 +158,7 @@
             0
           ],
           "frameNo": 9,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -179,7 +179,7 @@
           "emitter": false,
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Common/MagicCastingRingTop",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 9
         },
         {
@@ -211,7 +211,7 @@
       "position": [
         {
           "duration": 9,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "endValue": [
             -17,
             3
@@ -225,7 +225,7 @@
         },
         {
           "duration": 29,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -243,7 +243,7 @@
             0
           ],
           "frameNo": 9,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -264,7 +264,7 @@
           "emitter": false,
           "priority": 0.600000023841858,
           "id": "Battle/Skills/Common/MagicCastingRingBottom",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 9
         },
         {

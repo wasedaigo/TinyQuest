@@ -18,7 +18,7 @@
       "position": [
         {
           "duration": 21,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             -64,
             0
@@ -32,7 +32,7 @@
         },
         {
           "duration": 7,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             1
@@ -50,11 +50,11 @@
             1
           ],
           "frameNo": 21,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 16,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             1
@@ -73,11 +73,11 @@
             0
           ],
           "frameNo": 28,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 2,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -95,11 +95,11 @@
             0
           ],
           "frameNo": 44,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -117,7 +117,7 @@
             0
           ],
           "frameNo": 46,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -135,7 +135,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Battler/SwordCharge",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 0
         },
@@ -149,7 +149,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 21
         }
       ],
@@ -205,7 +205,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Effect/Slash03",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 13
         },
         {

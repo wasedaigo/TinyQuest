@@ -13,7 +13,7 @@
       "position": [
         {
           "duration": 10,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -32,11 +32,11 @@
             1
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             1,
             1
@@ -54,7 +54,7 @@
             1
           ],
           "frameNo": 10,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -72,7 +72,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             512,
@@ -99,7 +99,7 @@
       "position": [
         {
           "duration": 10,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -118,11 +118,11 @@
             1
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             1,
             1
@@ -140,7 +140,7 @@
             1
           ],
           "frameNo": 10,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -158,7 +158,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_SwordBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             0,
@@ -179,14 +179,14 @@
           "duration": 10,
           "endValue": 90,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 90,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 10
         }
       ],

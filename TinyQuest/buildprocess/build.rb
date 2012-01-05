@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'json'
+require 'FileUtils'
 
 INPUT_PATH = "buildprocess/rawassets/animations"
 OUTPUT_PATH = "static/assets/animations"
@@ -16,6 +17,11 @@ AnchorData = {
     "topRight" => [1, -1]
 };
 
+
+def to_pascal(str)
+  str[0,1] = str[0,1].upcase
+  return str;
+end
 
 def build_animation_file(filename)
     data = ""
@@ -84,13 +90,13 @@ def setup_tweens(result, latestSourceData)
                     if keyframe["wait"]
                         prev_keyframe["endValue"] = prev_keyframe["startValue"]
                         if key == "position"
-                            prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? prev_keyframe["endPositionType"] : "none"
+                            prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? to_pascal(prev_keyframe["endPositionType"]) : "None"
                             prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : AnchorData["center"]
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
                         if key == "position"
-                            prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? keyframe["startPositionType"] : "none"
+                            prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? to_pascal(keyframe["startPositionType"]) : "None"
                             prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : AnchorData["center"]
                         end
                     end
@@ -159,7 +165,7 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
         
         # Position attribute has special options
         if key == "position"
-            data["startPositionType"] = keyframe_set["positionType"] ? keyframe_set["positionType"] : "none"
+            data["startPositionType"] = keyframe_set["positionType"] ? to_pascal(keyframe_set["positionType"]) : "None"
             data["endPositionType"] = data["startPositionType"]
 
             data["startPositionAnchor"] = AnchorData[keyframe_set["positionTypeOption"]] ? AnchorData[keyframe_set["positionTypeOption"]] : AnchorData["center"]
@@ -167,7 +173,7 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
             
         end
         if key == "rotation"
-            data["facingOption"] = keyframe_set["facingOption"] ? keyframe_set["facingOption"] : "none"
+            data["facingOption"] = keyframe_set["facingOption"] ? to_pascal(keyframe_set["facingOption"]) : "None"
         end
         
     end
@@ -208,7 +214,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
             unless dependencies["images"].index(id)
                 dependencies["images"] << id
             end
-            sourceKeyFrame["type"] = "image"
+            sourceKeyFrame["type"] = "Image"
             sourceKeyFrame["rect"] = keyframe_set["textureRect"] ? keyframe_set["textureRect"] : [0,0,0,0]
             # Center
             center = [0, 0]
@@ -222,7 +228,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
             unless dependencies["animations"].index(id)
                 dependencies["animations"] << id
             end
-            sourceKeyFrame["type"] = "animation"
+            sourceKeyFrame["type"] = "Animation"
             if keyframe_set["emitter"]
                 sourceKeyFrame["emitter"] = true
                 sourceKeyFrame["maxEmitAngle"] = keyframe_set["maxEmitAngle"]

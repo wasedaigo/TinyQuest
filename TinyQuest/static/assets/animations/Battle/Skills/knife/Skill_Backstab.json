@@ -13,7 +13,7 @@
       "position": [
         {
           "duration": 6,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -32,11 +32,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 17,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -55,11 +55,11 @@
             1
           ],
           "frameNo": 6,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -78,11 +78,11 @@
             1
           ],
           "frameNo": 23,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 5,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -100,11 +100,11 @@
             1
           ],
           "frameNo": 26,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -123,11 +123,11 @@
             1
           ],
           "frameNo": 31,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -146,11 +146,11 @@
             1
           ],
           "frameNo": 34,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 6,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -169,11 +169,11 @@
             1
           ],
           "frameNo": 37,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 6,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -192,11 +192,11 @@
             1
           ],
           "frameNo": 43,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 18,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             -1,
             1
@@ -215,11 +215,11 @@
             0
           ],
           "frameNo": 49,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 3,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -238,11 +238,11 @@
             0
           ],
           "frameNo": 67,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 9,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -260,7 +260,7 @@
             0
           ],
           "frameNo": 70,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -331,7 +331,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -342,7 +342,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 28,
           "rect": [
             256,
@@ -359,7 +359,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 31,
           "rect": [
             288,
@@ -373,7 +373,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 43
         },
         {
@@ -384,7 +384,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 71,
           "rect": [
             608,
@@ -401,7 +401,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 72,
           "rect": [
             256,
@@ -418,7 +418,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 75,
           "rect": [
             288,
@@ -445,7 +445,7 @@
       "position": [
         {
           "duration": 31,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             -2,
             7
@@ -459,7 +459,7 @@
         },
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -478,11 +478,11 @@
             1
           ],
           "frameNo": 31,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 3,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -501,11 +501,11 @@
             1
           ],
           "frameNo": 34,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         },
         {
           "duration": 6,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             -1,
             1
@@ -523,7 +523,7 @@
             1
           ],
           "frameNo": 37,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -546,7 +546,7 @@
           ],
           "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_KnifeBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 31,
           "rect": [
             32,
@@ -574,7 +574,7 @@
           "endValue": 90,
           "tween": true,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 31
         },
         {
@@ -582,14 +582,14 @@
           "endValue": 90,
           "tween": true,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 34
         },
         {
           "duration": 6,
           "endValue": 90,
           "startValue": 90,
-          "facingOption": "none",
+          "facingOption": "None",
           "frameNo": 37
         }
       ],

@@ -12,7 +12,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -30,11 +30,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -52,7 +52,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -71,7 +71,7 @@
           "minEmitAngle": 105,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 105,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -100,7 +100,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -118,11 +118,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -140,7 +140,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -159,7 +159,7 @@
           "minEmitAngle": 120,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 120,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -188,7 +188,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -206,11 +206,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -228,7 +228,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -247,7 +247,7 @@
           "minEmitAngle": 0,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 0,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -276,7 +276,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -294,11 +294,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -316,7 +316,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -335,7 +335,7 @@
           "minEmitAngle": 30,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 30,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -364,7 +364,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -382,11 +382,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -404,7 +404,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -423,7 +423,7 @@
           "minEmitAngle": 45,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 45,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -452,7 +452,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -470,11 +470,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -492,7 +492,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -511,7 +511,7 @@
           "minEmitAngle": 80,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 80,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 5.0,
           "frameNo": 0
         }
@@ -540,7 +540,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -558,11 +558,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -580,7 +580,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -599,7 +599,7 @@
           "minEmitAngle": 75,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 75,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }
@@ -628,7 +628,7 @@
       "position": [
         {
           "duration": 15,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -646,11 +646,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "none",
+          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
@@ -668,7 +668,7 @@
             0
           ],
           "frameNo": 15,
-          "startPositionType": "none"
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -687,7 +687,7 @@
           "minEmitAngle": 90,
           "id": "Battle/Skills/Laser/StraightLaserBullet",
           "maxEmitAngle": 90,
-          "type": "animation",
+          "type": "Animation",
           "maxEmitSpeed": 10.0,
           "frameNo": 0
         }

@@ -13,7 +13,7 @@
       "position": [
         {
           "duration": 23,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -32,11 +32,11 @@
             0
           ],
           "frameNo": 0,
-          "startPositionType": "none"
+          "startPositionType": "None"
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -54,7 +54,7 @@
             0
           ],
           "frameNo": 23,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -72,7 +72,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             160,
@@ -93,7 +93,7 @@
           "duration": 24,
           "endValue": -90,
           "startValue": -90,
-          "facingOption": "faceToMov",
+          "facingOption": "FaceToMov",
           "frameNo": 0
         }
       ],
@@ -105,7 +105,7 @@
       "position": [
         {
           "duration": 24,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             0,
             0
@@ -119,7 +119,7 @@
         },
         {
           "duration": 14,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -137,7 +137,7 @@
             0
           ],
           "frameNo": 24,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -160,7 +160,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 24,
           "rect": [
             336,
@@ -177,7 +177,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 25,
           "rect": [
             496,
@@ -194,7 +194,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 26,
           "rect": [
             16,
@@ -211,7 +211,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 27,
           "rect": [
             176,
@@ -228,7 +228,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 28,
           "rect": [
             336,
@@ -245,7 +245,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 29,
           "rect": [
             496,
@@ -262,7 +262,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 30,
           "rect": [
             16,
@@ -279,7 +279,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 31,
           "rect": [
             176,
@@ -296,7 +296,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 32,
           "rect": [
             336,
@@ -313,7 +313,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 33,
           "rect": [
             496,
@@ -330,7 +330,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 34,
           "rect": [
             16,
@@ -347,7 +347,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 35,
           "rect": [
             176,
@@ -364,7 +364,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 36,
           "rect": [
             336,
@@ -381,7 +381,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Explosion01",
-          "type": "image",
+          "type": "Image",
           "frameNo": 37,
           "rect": [
             496,

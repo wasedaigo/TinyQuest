@@ -51,7 +51,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
-          "type": "image",
+          "type": "Image",
           "frameNo": 0,
           "rect": [
             64,
@@ -199,7 +199,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
-          "type": "image",
+          "type": "Image",
           "frameNo": 2,
           "rect": [
             832,
@@ -216,7 +216,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
-          "type": "image",
+          "type": "Image",
           "frameNo": 6,
           "rect": [
             256,
@@ -233,7 +233,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
-          "type": "image",
+          "type": "Image",
           "frameNo": 7,
           "rect": [
             416,
@@ -250,7 +250,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Slash3",
-          "type": "image",
+          "type": "Image",
           "frameNo": 9,
           "rect": [
             624,

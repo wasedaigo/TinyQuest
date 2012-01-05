@@ -26,7 +26,7 @@
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/knife/Skill_Stab",
-          "type": "animation",
+          "type": "Animation",
           "frameNo": 0
         },
         {
@@ -67,7 +67,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
-          "type": "image",
+          "type": "Image",
           "frameNo": 31,
           "rect": [
             128,
@@ -94,7 +94,7 @@
       "position": [
         {
           "duration": 25,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "endValue": [
             0,
             0
@@ -108,7 +108,7 @@
         },
         {
           "duration": 1,
-          "endPositionType": "relativeToTarget",
+          "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
             0
@@ -126,7 +126,7 @@
             0
           ],
           "frameNo": 25,
-          "startPositionType": "relativeToTarget"
+          "startPositionType": "RelativeToTarget"
         }
       ],
       "scale": [
@@ -149,7 +149,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Sub02",
-          "type": "image",
+          "type": "Image",
           "frameNo": 25,
           "rect": [
             32,
@@ -166,7 +166,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Sub02",
-          "type": "image",
+          "type": "Image",
           "frameNo": 27,
           "rect": [
             128,
@@ -183,7 +183,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Sub02",
-          "type": "image",
+          "type": "Image",
           "frameNo": 29,
           "rect": [
             192,
@@ -200,7 +200,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Sub02",
-          "type": "image",
+          "type": "Image",
           "frameNo": 31,
           "rect": [
             288,
@@ -217,7 +217,7 @@
           ],
           "priority": 0.5,
           "id": "Battle/Skills/Effect_Sub02",
-          "type": "image",
+          "type": "Image",
           "frameNo": 33,
           "rect": [
             384,
