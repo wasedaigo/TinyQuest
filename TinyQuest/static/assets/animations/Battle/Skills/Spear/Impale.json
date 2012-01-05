@@ -322,16 +322,25 @@
         {
           "duration": 25,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -12,
             7
           ],
           "wait": true,
+          "startValue": [
+            -12,
+            7
+          ],
           "endPositionAnchor": [
             1,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 7,
@@ -502,9 +511,15 @@
       "rotation": [
         {
           "duration": 25,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": -90,
           "wait": true,
-          "frameNo": 0
+          "startValue": -90,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 7,
@@ -558,16 +573,25 @@
         {
           "duration": 32,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -4,
             0
           ],
           "wait": true,
+          "startValue": [
+            -4,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 4,
@@ -631,16 +655,25 @@
         {
           "duration": 54,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             6
           ],
           "wait": true,
+          "startValue": [
+            0,
+            6
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -668,12 +701,21 @@
       "scale": [
         {
           "duration": 54,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             2.0,
             2.0
           ],
           "wait": true,
-          "frameNo": 0
+          "startValue": [
+            2.0,
+            2.0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

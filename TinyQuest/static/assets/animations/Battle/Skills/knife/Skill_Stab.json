@@ -329,16 +329,25 @@
         {
           "duration": 12,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -17,
             6
           ],
           "wait": true,
+          "startValue": [
+            -17,
+            6
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 2,
@@ -442,9 +451,15 @@
       "rotation": [
         {
           "duration": 12,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": -90,
           "wait": true,
-          "frameNo": 0
+          "startValue": -90,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 2,

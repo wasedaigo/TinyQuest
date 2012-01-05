@@ -19,16 +19,25 @@
         {
           "duration": 24,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
           ],
           "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -121,9 +130,15 @@
       "alpha": [
         {
           "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 1.0,
           "wait": true,
-          "frameNo": 0
+          "startValue": 1.0,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

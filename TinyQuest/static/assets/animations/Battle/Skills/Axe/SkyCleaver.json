@@ -384,16 +384,25 @@
         {
           "duration": 12,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
           ],
           "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -446,9 +455,15 @@
       "rotation": [
         {
           "duration": 12,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 180,
           "wait": true,
-          "frameNo": 0
+          "startValue": 180,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

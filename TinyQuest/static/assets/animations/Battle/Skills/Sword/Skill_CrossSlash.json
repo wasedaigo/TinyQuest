@@ -101,16 +101,25 @@
         {
           "duration": 3,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
           ],
           "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -137,16 +146,25 @@
         {
           "duration": 4,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
           ],
           "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 4
+          "frameNo": 4,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -216,9 +234,15 @@
       "rotation": [
         {
           "duration": 3,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": -90,
           "wait": true,
-          "frameNo": 0
+          "startValue": -90,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -229,9 +253,15 @@
         },
         {
           "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 0,
           "wait": true,
-          "frameNo": 4
+          "startValue": 0,
+          "frameNo": 4,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

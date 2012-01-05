@@ -36,16 +36,25 @@
         {
           "duration": 3,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0,
             0
           ],
           "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 1
+          "frameNo": 1,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -72,16 +81,25 @@
         {
           "duration": 3,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             32,
             0
           ],
           "wait": true,
+          "startValue": [
+            32,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 5
+          "frameNo": 5,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -108,16 +126,25 @@
         {
           "duration": 3,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             64,
             0
           ],
           "wait": true,
+          "startValue": [
+            64,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 9
+          "frameNo": 9,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -144,16 +171,25 @@
         {
           "duration": 3,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             96,
             0
           ],
           "wait": true,
+          "startValue": [
+            96,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 13
+          "frameNo": 13,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -180,16 +216,25 @@
         {
           "duration": 3,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             128,
             0
           ],
           "wait": true,
+          "startValue": [
+            128,
+            0
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 17
+          "frameNo": 17,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

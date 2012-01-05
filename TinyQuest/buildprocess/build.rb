@@ -95,6 +95,11 @@ def setup_tweens(result, latestSourceData)
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
+                        unless prev_keyframe.has_key?("startValue")
+                           prev_keyframe["startValue"] = prev_keyframe["endValue"]
+                           prev_keyframe["startPositionType"] = "None"
+                           prev_keyframe["startPositionAnchor"] = AnchorData["center"]
+                        end
                         if key == "position"
                             prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? to_pascal(keyframe["startPositionType"]) : "None"
                             prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : AnchorData["center"]

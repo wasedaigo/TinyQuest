@@ -35,16 +35,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -27,
             -1
           ],
           "wait": true,
+          "startValue": [
+            -27,
+            -1
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 1
+          "frameNo": 1,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -71,16 +80,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             23,
             15
           ],
           "wait": true,
+          "startValue": [
+            23,
+            15
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 3
+          "frameNo": 3,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -107,16 +125,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -3,
             -21
           ],
           "wait": true,
+          "startValue": [
+            -3,
+            -21
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 5
+          "frameNo": 5,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -143,16 +170,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -19,
             24
           ],
           "wait": true,
+          "startValue": [
+            -19,
+            24
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 7
+          "frameNo": 7,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -179,16 +215,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -7,
             -5
           ],
           "wait": true,
+          "startValue": [
+            -7,
+            -5
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 9
+          "frameNo": 9,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -215,16 +260,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             2,
             36
           ],
           "wait": true,
+          "startValue": [
+            2,
+            36
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 11
+          "frameNo": 11,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -251,16 +305,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             16,
             -23
           ],
           "wait": true,
+          "startValue": [
+            16,
+            -23
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 13
+          "frameNo": 13,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -287,16 +350,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             36,
             4
           ],
           "wait": true,
+          "startValue": [
+            36,
+            4
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 15
+          "frameNo": 15,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -323,16 +395,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -8,
             -1
           ],
           "wait": true,
+          "startValue": [
+            -8,
+            -1
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 17
+          "frameNo": 17,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -359,16 +440,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             4,
             -16
           ],
           "wait": true,
+          "startValue": [
+            4,
+            -16
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 19
+          "frameNo": 19,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -395,16 +485,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -23,
             25
           ],
           "wait": true,
+          "startValue": [
+            -23,
+            25
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 21
+          "frameNo": 21,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
@@ -431,16 +530,25 @@
         {
           "duration": 1,
           "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -26,
             -20
           ],
           "wait": true,
+          "startValue": [
+            -26,
+            -20
+          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 23
+          "frameNo": 23,
+          "startPositionType": "None"
         },
         {
           "duration": 1,

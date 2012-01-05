@@ -87,12 +87,21 @@
       "scale": [
         {
           "duration": 2,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             0.699999988079071,
             0.699999988079071
           ],
           "wait": true,
-          "frameNo": 0
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 3,
@@ -266,9 +275,15 @@
       "alpha": [
         {
           "duration": 2,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 0.200000002980232,
           "wait": true,
-          "frameNo": 0
+          "startValue": 0.200000002980232,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 3,

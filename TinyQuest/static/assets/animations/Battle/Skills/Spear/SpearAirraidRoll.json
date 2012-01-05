@@ -155,9 +155,15 @@
       "rotation": [
         {
           "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 0,
           "wait": true,
-          "frameNo": 0
+          "startValue": 0,
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 9,

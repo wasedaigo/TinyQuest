@@ -19,16 +19,25 @@
         {
           "duration": 21,
           "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": [
             -64,
             0
           ],
           "wait": true,
+          "startValue": [
+            -64,
+            0
+          ],
           "endPositionAnchor": [
             0,
             1
           ],
-          "frameNo": 0
+          "frameNo": 0,
+          "startPositionType": "None"
         },
         {
           "duration": 7,
@@ -172,9 +181,15 @@
         },
         {
           "duration": 16,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
           "endValue": 1.0,
           "wait": true,
-          "frameNo": 5
+          "startValue": 1.0,
+          "frameNo": 5,
+          "startPositionType": "None"
         },
         {
           "duration": 1,
