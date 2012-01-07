@@ -23,8 +23,13 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
         this.animations.Add(animation);
         animation.Interval.Start();
 	}
-
+	
+	
+	static int counter = 0;
 	public void Update() {
+		counter += 1;
+		//if (counter < 2) {return;}
+		counter = 0;
         for (int i = this.animations.Count - 1; i >= 0; i-- ) {
             Roga2dAnimation animation = this.animations[i];
             animation.Interval.Update();
@@ -33,7 +38,6 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 				Destroy(animation.Node.GameObject);
 				Destroy(animation.Root);
 				this.animations.RemoveAt(i);
-				break;
             }
         }
 	}

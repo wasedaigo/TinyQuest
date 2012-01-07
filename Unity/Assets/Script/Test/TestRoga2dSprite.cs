@@ -21,24 +21,17 @@ class TestRoga2dSprite {
 		sprite.LocalRotation = 3.0f;
 		sprite.LocalScale = new Vector2(-1.0f, -2.0f);
 
-		// Before transform
-		// Check Sprite Root
-		Tester.Match(sprite.GameObject.transform.localPosition, new Vector3(0.0f, 0.0f, 0.0f));
-		Tester.Match(sprite.GameObject.transform.localEulerAngles, new Vector3(0.0f, 0.0f, 0.0f));
-		Tester.Match(sprite.GameObject.transform.localScale, new Vector3(1.0f, 1.0f, 1.0f));
-		
 		// Check TextureObject
-		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(-1.0f, -0.5f, 0.0f));
+		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(1.0f, 0.5f, 0.0f));
 		
-		sprite.Update();
-		// After transform
 		// Check Sprite Root
+		sprite.Update();
 		Tester.Match(sprite.GameObject.transform.localPosition, new Vector3(1.0f, 2.0f, 0.5f));
 		Tester.Match(sprite.GameObject.transform.localEulerAngles, new Vector3(0.0f, 0.0f, 3.0f));
 		Tester.Match(sprite.GameObject.transform.localScale, new Vector3(-1.0f, -2.0f, 1.0f));
 		
 		// Check TextureObject
-		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(-1.0f, -0.5f, 0.0f));
+		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(1.0f, 0.5f, 0.0f));
 		
 		sprite.Destroy();
 	}

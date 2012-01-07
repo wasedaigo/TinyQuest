@@ -8,7 +8,8 @@ class TestRoga2dSourceInterval {
 	}
 	
 	public static void TestUpdate() {
-        Roga2dSprite sprite = new Roga2dSprite(null);
+		Roga2dRenderObject renderObject = new Roga2dRenderObject(null, new Vector2(32, 48), new Vector2(1, 1), new Rect(10, 10, 32, 48));
+        Roga2dSprite sprite = new Roga2dSprite(renderObject);
 		Roga2dRoot root = new Roga2dRoot(null);
 		
 		List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();

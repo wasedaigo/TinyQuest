@@ -35,17 +35,17 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	public override sealed void Update() {
 		if (!this.IsDone()) {
 			this.frameNo += 1;
-			
-			this.TweenBeforeFilter(ref this.start, ref this.end);
+
+			T[] values = this.TweenBeforeFilter(this.start, this.end);
 			
 			if (this.tween) {
-				this.SetValue(Roga2dUtils<T>.Completement(this.start, this.end, this.frameNo / this.duration));
+				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], this.frameNo / this.duration));
 			} else {
-				this.SetValue(this.start);
+				this.SetValue(values[0]);
 			}
 		}
 	}
 	
-	protected virtual void TweenBeforeFilter(ref T start, ref T end) {}
+	protected virtual T[] TweenBeforeFilter(T start, T end) {return new T[2] {start, end};}
 	protected abstract void SetValue(T value);
 }

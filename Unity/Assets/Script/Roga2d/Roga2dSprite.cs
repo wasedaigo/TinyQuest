@@ -3,7 +3,7 @@ public class Roga2dSprite : Roga2dNode {
 	private Roga2dRenderObject renderObject;
 	
 	public Roga2dSprite(Roga2dRenderObject renderObject) 
-	: base()
+	: base(new GameObject("Sprite"))
 	{
 		this.RenderObject = renderObject;
 	}
@@ -34,7 +34,8 @@ public class Roga2dSprite : Roga2dNode {
 				if (value != null) {
 					this.renderObject = value;
 					this.renderObject.Pop();
-					this.renderObject.GameObject.transform.parent = this.GameObject.transform;
+					Transform transform = this.GameObject.transform;
+					this.renderObject.GameObject.transform.parent = transform;
 					Vector2 anchor = renderObject.Anchor;
 					this.renderObject.GameObject.transform.localPosition = new Vector3(anchor.y, anchor.x, 0.0f);
 				}

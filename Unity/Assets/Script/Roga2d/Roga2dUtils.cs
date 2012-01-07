@@ -95,7 +95,7 @@ public class Roga2dUtils {
 		Roga2dAnimationData animationData = JsonReader.Deserialize<Roga2dAnimationData>(txt.text);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
-        Roga2dNode node = new Roga2dNode();
+        Roga2dNode node = new Roga2dNode(new GameObject(id));
         node.LocalAlpha = baseAlpha;
         node.LocalPriority = basePriority;
         
@@ -108,11 +108,11 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dPositionIntervalData positionIntervalData in timeline.position) {
-					Vector2 start = new Vector2(positionIntervalData.startValue[0], positionIntervalData.startValue[1]);
-					Vector2 end = new Vector2(positionIntervalData.endValue[0], positionIntervalData.endValue[1]);
+					Vector2 start = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startValue[0], positionIntervalData.startValue[1]));
+					Vector2 end = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endValue[0], positionIntervalData.endValue[1]));
 					Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
-	                option.StartPositionAnchor = new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]);
-					option.EndPositionAnchor = new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]);
+	                option.StartPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]));
+					option.EndPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]));
 	                option.StartPositionType = positionIntervalData.startPositionType;
 					option.EndPositionType = positionIntervalData.endPositionType;
 	                option.Target = (root!=null) ? root.Target : null;
@@ -144,8 +144,8 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dScaleIntervalData scaleIntervalData in timeline.scale) {
-					Vector2 start = new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]);
-					Vector2 end = new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]);
+					Vector2 start = fixCoordinate(new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]));
+					Vector2 end = fixCoordinate(new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]));
 					intervals.Add(new Roga2dScaleInterval(sprite, start, end, scaleIntervalData.duration, scaleIntervalData.tween));
 				}
 				if(intervals.Count > 0) {
@@ -175,10 +175,11 @@ public class Roga2dUtils {
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				keyFrame.Id = sourceIntervalData.id;
 				keyFrame.Duration = sourceIntervalData.duration;
+				keyFrame.Priority = sourceIntervalData.priority;
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Rect = new Rect(sourceIntervalData.rect[0], sourceIntervalData.rect[1], sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
 					keyFrame.PixelCenter = new Vector2(sourceIntervalData.center[0], sourceIntervalData.center[1]);
-					keyFrame.PixelSize = new Vector2(sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
+					keyFrame.PixelSize = new Vector2(sourceIntervalData.rect[3], sourceIntervalData.rect[2]);
 				} else {				
 					keyFrame.Emitter = sourceIntervalData.emitter;
 					keyFrame.MaxEmitAngle = sourceIntervalData.maxEmitAngle;
@@ -210,8 +211,8 @@ public class Roga2dUtils {
 		return new Vector2(-pixelCoordinate.y / 25, pixelCoordinate.x / 25);
 	}
 	
-	public static Vector2 localToPixel(Vector2 localCoordinate){
-		return new Vector2(-localCoordinate.y * 25, localCoordinate.x * 25);
+	public static Vector2 fixCoordinate(Vector2 coordinate){
+		return new Vector2(-coordinate.y, coordinate.x);
 	}
 }
 

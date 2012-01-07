@@ -22,7 +22,7 @@ class TestRoga2dNode {
 		
 		node1.RemoveAllChildren();
 		Tester.Match(node1.ChildrenCount, 0);
-		
+	
 		node1.Destroy();
 	}
 	
@@ -46,11 +46,11 @@ class TestRoga2dNode {
 		Roga2dNode node = new Roga2dNode();
 	
 		// Scale
-		node.LocalScale.Set(1.0f, 1.0f);
+		node.LocalScale = new Vector2(1.0f, 1.0f);
 		Tester.Match(node.LocalScale, new Vector2(1.0f, 1.0f));
 		
 		// Position
-		node.LocalPosition.Set(1.0f, 1.0f);
+		node.LocalPosition = new Vector2(1.0f, 1.0f);
 		Tester.Match(node.LocalPosition, new Vector2(1.0f, 1.0f));
 		Tester.Match(node.Position, new Vector2(1.0f, 1.0f));
 		
@@ -83,19 +83,15 @@ class TestRoga2dNode {
 	
 		node.LocalAlpha = 0.3f;
 		node.LocalPriority = 0.4f;
-		node.LocalPosition.Set(1.0f, 2.0f);
+		node.LocalPosition = new Vector2(1.0f, 2.0f);
 		node.LocalRotation = 3.0f;
-		node.LocalScale.Set(-1.0f, -2.0f);
+		node.LocalScale = new Vector2(-1.0f, -2.0f);
 		
 		child.LocalAlpha = 0.3f;
 		child.LocalPriority = 0.4f;
 		node.AddChild(child);
 		
 		// Before transform
-		Tester.Match(node.GameObject.transform.localPosition, new Vector3(0.0f, 0.0f, 0.0f));
-		Tester.Match(node.GameObject.transform.localEulerAngles, new Vector3(0.0f, 0.0f, 0.0f));
-		Tester.Match(node.GameObject.transform.localScale, new Vector3(1.0f, 1.0f, 1.0f));
-		Tester.Ok(child.GameObject.transform.parent == null);
 		Tester.Match(node.Alpha, 1.0f);
 		Tester.Match(node.Priority, 0.5f);
 		Tester.Match(child.Alpha, 1.0f);

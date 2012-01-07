@@ -16,11 +16,12 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 		}
 	}
 
-	protected override void TweenBeforeFilter(ref float start, ref float end) {
+	protected override float[] TweenBeforeFilter(float start, float end) {
 		if (this.option.FacingType != Roga2dFacingType.None) {
 			start = GetDynamicRotation( node, start, end, this.option, this.option.Target, this.dataStore);
 			end = start;
 		}
+		return new float[2]{start, end};
 	}
 
 	protected override void SetValue(float value) {

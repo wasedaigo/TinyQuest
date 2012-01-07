@@ -22,16 +22,18 @@ public class Roga2dNode {
 			return this.GameObject.transform.localEulerAngles.z;
 		}
 		set {
-			value = (value + 360.0f) % 360.0f;
-			this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
+			this.GameObject.transform.rotation = Quaternion.identity;
+			this.GameObject.transform.Rotate(new Vector3(0, 0, value));
+			//value = (value + 360.0f) % 360.0f;
+			//this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
 		}
 	}
 	public Vector2 LocalPosition {
 		get {
-			return Roga2dUtils.localToPixel(this.GameObject.transform.localPosition);
+			return this.GameObject.transform.localPosition;
 		}
 		set {
-			this.GameObject.transform.localPosition = Roga2dUtils.pixelToLocal(value);
+			this.GameObject.transform.localPosition = value;
 		}
 	}
 	public Vector2 LocalScale {
@@ -73,6 +75,7 @@ public class Roga2dNode {
 		if (this.GameObject) {
 			this.GameObject.transform.parent = null;
 			Object.Destroy(this.GameObject);
+			this.GameObject = null;
 		}
 	}
 
@@ -116,6 +119,8 @@ public class Roga2dNode {
             this.alpha = this.LocalAlpha;
             this.priority = this.LocalPriority;
         }
+		// Move z position of the node, so that it reflects its render-priority
+		this.GameObject.transform.position = new Vector3(this.GameObject.transform.position.x, this.GameObject.transform.position.y, this.priority);
 
 		foreach(Roga2dNode node in this.children) {
 			node.UpdateAttributes();
