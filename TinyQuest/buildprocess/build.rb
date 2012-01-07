@@ -2,8 +2,8 @@ require 'rubygems'
 require 'json'
 require 'FileUtils'
 
-INPUT_PATH = "buildprocess/rawassets/animations"
-OUTPUT_PATH = "static/assets/animations"
+INPUT_PATH = "rawassets/animations"
+OUTPUT_PATH = "../../Unity/Assets/Resources/Animations"
 
 AnchorData = {
     "bottomLeft" => [-1, 1],
@@ -19,7 +19,9 @@ AnchorData = {
 
 
 def to_pascal(str)
-  str[0,1] = str[0,1].upcase
+  if str
+    str[0,1] = str[0,1].upcase
+  end
   return str;
 end
 
@@ -88,18 +90,20 @@ def setup_tweens(result, latestSourceData)
                 
                 if key != "source"
                     if keyframe["wait"]
-                        prev_keyframe["endValue"] = prev_keyframe["startValue"]
                         if key == "position"
                             prev_keyframe["endPositionType"] = prev_keyframe["endPositionType"] ? to_pascal(prev_keyframe["endPositionType"]) : "None"
                             prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : AnchorData["center"]
                         end
                     else
                         prev_keyframe["endValue"] = keyframe["startValue"]
+                        
                         unless prev_keyframe.has_key?("startValue")
                            prev_keyframe["startValue"] = prev_keyframe["endValue"]
                            prev_keyframe["startPositionType"] = "None"
                            prev_keyframe["startPositionAnchor"] = AnchorData["center"]
                         end
+                        
+                        prev_keyframe["startValue"] = prev_keyframe["endValue"] unless prev_keyframe.has_key?("startValue")
                         if key == "position"
                             prev_keyframe["endPositionType"] = keyframe["startPositionType"] ? to_pascal(keyframe["startPositionType"]) : "None"
                             prev_keyframe["endPositionAnchor"] = keyframe["startPositionAnchor"] ? keyframe["startPositionAnchor"] : AnchorData["center"]
@@ -203,7 +207,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
         latestSourceData["textureRect"] = keyframe_set["textureRect"]
         latestSourceData["sourcePath"] = keyframe_set["sourcePath"]
         latestSourceData["priority"] = keyframe_set["priority"]
-        latestSourceData["blendType"] = keyframe_set["blendType"]
+        latestSourceData["blendType"] = to_pascal(keyframe_set["blendType"])
 
         id = keyframe_set["sourcePath"].split(".")[0]
         ext = keyframe_set["sourcePath"].split(".")[1]
@@ -211,7 +215,7 @@ def createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencie
         sourceKeyFrame["priority"] = keyframe_set["priority"] ? keyframe_set["priority"] : 0.5
         
         if keyframe_set["blendType"]
-            sourceKeyFrame["blendType"] = keyframe_set["blendType"]
+            sourceKeyFrame["blendType"] = to_pascal(keyframe_set["blendType"])
         end
 
         if ext == "png"
@@ -287,7 +291,7 @@ animation_data.keys.each do |id|
     retrieveAllDependencies(animation_data, id)
     
     # Get output filename
-    outputFilename = OUTPUT_PATH + "/" + id + ".json"
+    outputFilename = OUTPUT_PATH + "/" + id + ".txt"
     
     # Create directories
     FileUtils.mkpath File.dirname(outputFilename)

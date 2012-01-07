@@ -1,0 +1,154 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class Roga2dNode {
+	
+	public Vector2 Origin;
+	public Vector2 Velocity;
+	public float LocalAlpha;
+	public Roga2dHue LocalHue;
+	public float LocalPriority;
+	
+	public Roga2dBlendType BlendType;
+	public Roga2dNode Parent;
+	public GameObject GameObject;
+
+	private List<Roga2dNode> children;
+	private float priority;
+	private float alpha;
+	
+	public float LocalRotation {
+		get {
+			return this.GameObject.transform.localEulerAngles.z;
+		}
+		set {
+			value = (value + 360.0f) % 360.0f;
+			this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
+		}
+	}
+	public Vector2 LocalPosition {
+		get {
+			return Roga2dUtils.localToPixel(this.GameObject.transform.localPosition);
+		}
+		set {
+			this.GameObject.transform.localPosition = Roga2dUtils.pixelToLocal(value);
+		}
+	}
+	public Vector2 LocalScale {
+		get {
+			return this.GameObject.transform.localScale ;
+		}
+		set {
+			this.GameObject.transform.localScale = new Vector3(value.x, value.y, 1.0f);
+		}
+	}
+	
+	public Roga2dNode() {
+		Initialize();
+	}
+	
+	public Roga2dNode(GameObject go) {
+		this.GameObject = go;
+		Initialize();
+	}
+	
+	private void Initialize() {
+		this.children = new List<Roga2dNode>();
+		
+		if (this.GameObject == null) {
+			this.GameObject = new GameObject("Node");
+		} else {
+			this.LocalPosition = this.GameObject.transform.position;
+		}
+
+		this.LocalAlpha = 1.0f;
+		this.LocalPriority = 0.5f;
+		this.alpha = 1.0f;
+		this.priority = 0.5f;
+		
+	}
+	
+	public virtual void Destroy() {
+		this.Parent = null;	
+		if (this.GameObject) {
+			this.GameObject.transform.parent = null;
+			Object.Destroy(this.GameObject);
+		}
+	}
+
+	public int ChildrenCount {
+		get {
+			return this.children.Count;
+		}
+	}
+	
+	public Vector2 Position {
+		get {
+			return (Vector2)this.GameObject.transform.position;
+		}
+	}
+	
+	public float Alpha {
+		get {
+			return this.alpha;	
+		}
+	}
+	
+	public float Priority {
+		get {
+			return this.priority;	
+		}
+	}
+	
+	public virtual void Update() {
+		this.UpdateAttributes();
+		
+		foreach(Roga2dNode node in this.children) {
+			node.Update();
+		}
+	}
+
+	private void UpdateAttributes() {
+        if (this.Parent != null) {
+            this.alpha = this.LocalAlpha * this.Parent.Alpha;
+            this.priority = 2 * this.LocalPriority * this.Parent.Priority;
+        } else {
+            this.alpha = this.LocalAlpha;
+            this.priority = this.LocalPriority;
+        }
+
+		foreach(Roga2dNode node in this.children) {
+			node.UpdateAttributes();
+		}
+    }
+	
+	public void AddChild(Roga2dNode node) {
+		if (node.Parent != null) {
+			Debug.LogError("Node cannot have multiple parent");
+		}
+		
+		this.children.Add(node);
+		node.GameObject.transform.parent = this.GameObject.transform;
+		node.Parent = this;
+	}
+	
+    public void RemoveChild(Roga2dNode node) {
+		if (node != null) {
+	        this.children.Remove(node);
+			node.Destroy();
+		}
+    }
+	
+	public void RemoveAllChildren() {
+		foreach(Roga2dNode node in this.children) {
+			node.Destroy();
+		}
+		this.children.Clear();
+	}
+
+	public Vector2 InverseTransformPoint(Vector2 point) {
+			return this.GameObject.transform.InverseTransformPoint(point);
+	}
+	
+	public virtual Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {return new Vector2(0, 0);}
+}
