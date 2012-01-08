@@ -13,7 +13,7 @@ public class Roga2dNode {
 	public Roga2dNode Parent;
 	public GameObject GameObject;
 
-	private List<Roga2dNode> children;
+	public List<Roga2dNode> children;
 	private float priority;
 	private float alpha;
 	
@@ -22,10 +22,11 @@ public class Roga2dNode {
 			return this.GameObject.transform.localEulerAngles.z;
 		}
 		set {
-			this.GameObject.transform.rotation = Quaternion.identity;
-			this.GameObject.transform.Rotate(new Vector3(0, 0, value));
-			//value = (value + 360.0f) % 360.0f;
-			//this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
+			//this.GameObject.transform.rotation = Quaternion.identity;
+			//this.GameObject.transform.Rotate(new Vector3(0, 0, value));
+			
+			value = (value + 360.0f) % 360.0f;
+			this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
 		}
 	}
 	public Vector2 LocalPosition {
@@ -131,10 +132,13 @@ public class Roga2dNode {
 		if (node.Parent != null) {
 			Debug.LogError("Node cannot have multiple parent");
 		}
-		
+
 		this.children.Add(node);
+		
+		Roga2dGameObjectState state = Roga2dUtils.stashState(node.GameObject);
 		node.GameObject.transform.parent = this.GameObject.transform;
 		node.Parent = this;
+		Roga2dUtils.applyState(node.GameObject, state);
 	}
 	
     public void RemoveChild(Roga2dNode node) {

@@ -114,9 +114,6 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
                     if (keyFrame.Id != "") {
 						Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.root);
 						this.sprite.AddChild(animation.Node);
-						animation.Node.LocalScale = new Vector2(1, 1);
-						animation.Node.LocalRotation = 0;
-						animation.Node.LocalPosition = new Vector2(0, 0);
 						this.interval = animation.Interval;
                         this.interval.Start();
                     }

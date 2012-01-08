@@ -30,11 +30,29 @@ class TestRoga2dNode {
 		Roga2dNode node1 = new Roga2dNode();
 		Roga2dNode node2 = new Roga2dNode();
 		
-		Tester.Match(node1.ChildrenCount, 0);
+		node1.LocalPosition = new Vector2(5, 5);
+		node1.LocalRotation = 50.0f;
+		node1.LocalScale = new Vector2(3, 2);
 		
+		node2.LocalPosition = new Vector2(10, 10);
+		node2.LocalRotation = 100.0f;
+		node2.LocalScale = new Vector2(5, 4);
+		
+		Tester.Match(node1.ChildrenCount, 0);
+
 		node1.AddChild(node2);
 		Tester.Match(node1.ChildrenCount, 1);
 		Tester.Match(node1, node2.Parent);
+		
+		// Check parent node transform is as expected
+		Tester.Match(node1.LocalPosition, new Vector2(5, 5));
+		Tester.Match(node1.LocalRotation, 50.0f);
+		Tester.Match(node1.LocalScale, new Vector2(3, 2));
+		
+		// Check child node transform is as expected
+		Tester.Match(node2.LocalPosition, new Vector2(10, 10));
+		Tester.Match(node2.LocalRotation, 100.0f);
+		Tester.Match(node2.LocalScale, new Vector2(5, 4));
 		
 		node1.RemoveChild(node2);
 		Tester.Match(node1.ChildrenCount, 0);

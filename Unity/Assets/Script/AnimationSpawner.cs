@@ -44,7 +44,12 @@ public class AnimationSpawner : MonoBehaviour {
 			//string id = "Battle/Skills/Axe/Bash";
 			//string id = "Battle/Skills/Effect/Stab01";
 			//string id = "Battle/Skills/Sword/LeaveDance";
+			//string id = "Battle/Skills/Effect/PlaneCutTest";
+			//string id = "Battle/Skills/Effect/PlaneCutBottom";
+			//string id = "Battle/Skills/Battler/SwordDash";
+			//string id = "Battle/Skills/Battler/SwordUpper";
 			//string id = "Battle/Skills/Laser/Skill_Laser01";
+			string id = "Battle/Skills/Spear/SpearAirraid";
 			//string id = "Battle/Skills/Axe/CycloneAxe";
 			//string id = "Battle/Skills/Axe/SpinAxeY";
 			//string id = "Battle/Skills/Axe/Slash";
@@ -52,7 +57,7 @@ public class AnimationSpawner : MonoBehaviour {
 			//string id = "Battle/Skills/Battler/Jump";
 			//string id = "Battle/Skills/Battler/Back";
 			//string id = "Battle/Skills/Battler/RollBack";
-			string id = "Battle/Skills/Fire/Skill_Flare";
+			//string id = "Battle/Skills/Fire/Skill_Flare";
 			//string id = "Battle/Skills/Fire/FlareEffect";
 			//string id = "Battle/Skills/Fire/FlareParticle";
 			//string id = "Battle/Skills/Common/MagicCasting";

@@ -22,7 +22,7 @@ class TestRoga2dSprite {
 		sprite.LocalScale = new Vector2(-1.0f, -2.0f);
 
 		// Check TextureObject
-		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(1.0f, 0.5f, 0.0f));
+		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(0.5f, 1.0f, 0.0f));
 		
 		// Check Sprite Root
 		sprite.Update();
@@ -31,7 +31,7 @@ class TestRoga2dSprite {
 		Tester.Match(sprite.GameObject.transform.localScale, new Vector3(-1.0f, -2.0f, 1.0f));
 		
 		// Check TextureObject
-		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(1.0f, 0.5f, 0.0f));
+		Tester.Match(renderObject.GameObject.transform.localPosition, new Vector3(0.5f, 1.0f, 0.0f));
 		
 		sprite.Destroy();
 	}

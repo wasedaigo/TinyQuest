@@ -1,5 +1,9 @@
 using UnityEngine;
 
+public class Roga2dConst {
+	public static float BasePixelSize = 64.0f;
+};
+
 public enum Roga2dBlendType {
 	Alpha,
 	Add
@@ -161,4 +165,10 @@ public class Roga2dRoot {
 	public Roga2dRoot(Roga2dAnimationPlayer player) {
 		this.player = player;
 	}
+}
+
+public struct Roga2dGameObjectState {
+	public Vector3 position;
+	public Quaternion rotation;
+	public Vector3 scale;
 }

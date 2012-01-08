@@ -16,14 +16,17 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 	public void Play(Transform rootTransform, Roga2dAnimation animation) {
 		GameObject go = new GameObject("Root");
 		animation.Root = go;
+		
+		Roga2dGameObjectState state = Roga2dUtils.stashState(animation.Node.GameObject);
 		animation.Node.GameObject.transform.parent = go.transform;
+		Roga2dUtils.applyState(animation.Node.GameObject, state);
+
 		go.transform.position = rootTransform.position;
 		go.transform.rotation = rootTransform.rotation;
 
         this.animations.Add(animation);
         animation.Interval.Start();
 	}
-	
 	
 	static int counter = 0;
 	public void Update() {

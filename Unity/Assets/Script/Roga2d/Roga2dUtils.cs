@@ -104,6 +104,33 @@ public class Roga2dUtils {
             Roga2dSprite sprite = new Roga2dSprite(null);
             List<Roga2dBaseInterval> sequences = new List<Roga2dBaseInterval>();
 		
+			// Add alpha interval
+			{
+				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
+				foreach(Roga2dAlphaIntervalData alphaIntervalData in timeline.alpha) {
+					float start = alphaIntervalData.startValue;
+					float end = alphaIntervalData.endValue;
+					Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, alphaIntervalData.duration, alphaIntervalData.tween);
+					intervals.Add(interval);
+				}
+				if(intervals.Count > 0) {
+					sequences.Add(new Roga2dSequence(intervals));
+				}
+			}
+			
+			// Add scale interval
+			{
+				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
+				foreach(Roga2dScaleIntervalData scaleIntervalData in timeline.scale) {
+					Vector2 start = FixCoordinate(new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]));
+					Vector2 end = FixCoordinate(new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]));
+					intervals.Add(new Roga2dScaleInterval(sprite, start, end, scaleIntervalData.duration, scaleIntervalData.tween));
+				}
+				if(intervals.Count > 0) {
+					sequences.Add(new Roga2dSequence(intervals));
+				}
+			}
+
 			// Add position interval
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
@@ -139,34 +166,7 @@ public class Roga2dUtils {
 					sequences.Add(new Roga2dSequence(intervals));
 				}
 			}
-			
-			// Add scale interval
-			{
-				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
-				foreach(Roga2dScaleIntervalData scaleIntervalData in timeline.scale) {
-					Vector2 start = fixCoordinate(new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]));
-					Vector2 end = fixCoordinate(new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]));
-					intervals.Add(new Roga2dScaleInterval(sprite, start, end, scaleIntervalData.duration, scaleIntervalData.tween));
-				}
-				if(intervals.Count > 0) {
-					sequences.Add(new Roga2dSequence(intervals));
-				}
-			}
-			
-			// Add alpha interval
-			{
-				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
-				foreach(Roga2dAlphaIntervalData alphaIntervalData in timeline.alpha) {
-					float start = alphaIntervalData.startValue;
-					float end = alphaIntervalData.endValue;
-					Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, alphaIntervalData.duration, alphaIntervalData.tween);
-					intervals.Add(interval);
-				}
-				if(intervals.Count > 0) {
-					sequences.Add(new Roga2dSequence(intervals));
-				}
-			}
-			
+
 			// Add source interval
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
 			foreach(Roga2dSourceIntervalData sourceIntervalData in timeline.source) {
@@ -208,11 +208,34 @@ public class Roga2dUtils {
     }
 	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
-		return new Vector2(-pixelCoordinate.y / 25, pixelCoordinate.x / 25);
+		return new Vector2(-pixelCoordinate.y / 32, pixelCoordinate.x / 32);
 	}
 	
-	public static Vector2 fixCoordinate(Vector2 coordinate){
-		return new Vector2(-coordinate.y, coordinate.x);
+	public static Vector2 FixCoordinate(Vector2 coordinate){
+		return new Vector2(coordinate.y, coordinate.x);
+	}
+	
+	public static Roga2dGameObjectState stashState(GameObject go) {
+		
+		Roga2dGameObjectState state;
+		// Unity3D nodes break local coordinate of child node when it is added
+		// Thus, it is needed to set the parent node (0,0,0) first
+		// Gotta save current state of the node before adding a child
+		state.position = go.transform.localPosition;
+		state.rotation = go.transform.localRotation;
+		state.scale = go.transform.localScale;
+		go.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+		go.transform.localRotation = new Quaternion(0, 0, 0, 0);
+		go.transform.localPosition = new Vector3(0, 0, 0);
+		
+		return state;
+	}
+	
+	// Recover old state after child node is already added
+	public static void applyState(GameObject go, Roga2dGameObjectState state) {
+		go.transform.localPosition = state.position;
+		go.transform.localRotation = state.rotation;
+		go.transform.localScale = state.scale;	
 	}
 }
 

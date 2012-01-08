@@ -2,8 +2,8 @@ require 'rubygems'
 require 'json'
 require 'FileUtils'
 
-INPUT_PATH = "rawassets/animations"
-OUTPUT_PATH = "../../Unity/Assets/Resources/Animations"
+INPUT_PATH = "buildprocess/rawassets/animations"
+OUTPUT_PATH = "../Unity/Assets/Resources/Animations"
 
 AnchorData = {
     "bottomLeft" => [-1, 1],

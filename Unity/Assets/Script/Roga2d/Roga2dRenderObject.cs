@@ -6,7 +6,6 @@ public class Roga2dRenderObject {
 	private GameObject gameObject;
 	private Texture texture;
 	
-	private static float BasePixelSize = 64.0f;
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
@@ -43,7 +42,7 @@ public class Roga2dRenderObject {
 			};
 		}
 		
-		(this.gameObject.GetComponent("MeshFilter") as MeshFilter).mesh = GeneratePlane(this.pixelSize.x / BasePixelSize, this.pixelSize.y / BasePixelSize, uvs);
+		(this.gameObject.GetComponent("MeshFilter") as MeshFilter).mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize, uvs);
 		
 		MeshRenderer renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		renderer.material = new Material (Shader.Find("Transparent/VertexLit"));
@@ -100,8 +99,8 @@ public class Roga2dRenderObject {
 	
 	public Vector2 Anchor {
 		get {
-			float centerX = (this.pixelCenter.x) / this.pixelSize.x;
-			float centerY = (this.pixelCenter.y) / this.pixelSize.y;
+			float centerX = (this.pixelCenter.x * 2.0f) / Roga2dConst.BasePixelSize;
+			float centerY = (this.pixelCenter.y * 2.0f) / Roga2dConst.BasePixelSize;
 			return new Vector2(centerX, centerY);
 		}
 	}
