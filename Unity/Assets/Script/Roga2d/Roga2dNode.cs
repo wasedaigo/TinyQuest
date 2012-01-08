@@ -106,6 +106,7 @@ public class Roga2dNode {
 	
 	public virtual void Update() {
 		this.UpdateAttributes();
+
 		
 		foreach(Roga2dNode node in this.children) {
 			node.Update();
@@ -120,6 +121,15 @@ public class Roga2dNode {
             this.alpha = this.LocalAlpha;
             this.priority = this.LocalPriority;
         }
+		
+		// Add velocity
+		Vector2 velocity = this.Velocity;
+		if (this.Parent != null) {
+			//velocity = this.Parent.InverseTransformPoint(this.Velocity);
+			//Debug.Log(this.Velocity +" : "+velocity);
+		}
+		this.LocalPosition = new Vector2(this.LocalPosition.x + velocity.x, this.LocalPosition.y + velocity.y);
+	
 		// Move z position of the node, so that it reflects its render-priority
 		this.GameObject.transform.position = new Vector3(this.GameObject.transform.position.x, this.GameObject.transform.position.y, this.priority);
 

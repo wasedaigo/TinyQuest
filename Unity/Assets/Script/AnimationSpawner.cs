@@ -50,6 +50,7 @@ public class AnimationSpawner : MonoBehaviour {
 			//string id = "Battle/Skills/Battler/SwordUpper";
 			//string id = "Battle/Skills/Laser/Skill_Laser01";
 			string id = "Battle/Skills/Spear/SpearAirraid";
+			//string id = "Battle/Skills/Bow/Shoot";
 			//string id = "Battle/Skills/Axe/CycloneAxe";
 			//string id = "Battle/Skills/Axe/SpinAxeY";
 			//string id = "Battle/Skills/Axe/Slash";

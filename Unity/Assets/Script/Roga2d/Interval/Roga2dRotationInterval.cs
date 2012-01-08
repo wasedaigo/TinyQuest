@@ -32,14 +32,14 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
         float result = start;
 		if (target != null) {
             if (this.option.FacingType == Roga2dFacingType.FaceToDir) {
-                var dx = target.Position.x - node.Position.x;
-                var dy = target.Position.y - node.Position.y;
+                float dx = target.Position.x - node.Position.x;
+                float dy = target.Position.y - node.Position.y;
                 result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
             } else if (this.option.FacingType == Roga2dFacingType.FaceToMov) {
-                var dx = target.Position.x - node.Position.x;
-                var dy = target.Position.y - node.Position.y;
+                float dx = node.Position.x - dataStore.lastAbsPosition.x;
+                float dy = node.Position.y - dataStore.lastAbsPosition.y;
                 
-                result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
+                result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180 + 270;
                 if (dataStore.ignore) {
                     node.Parent.LocalAlpha = dataStore.lastAlpha;
                 } else {
@@ -48,7 +48,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
                     node.Parent.LocalAlpha = 0;
                 }
                 // Extra data for FaceToMov option
-                dataStore.lastAbsPosition = target.Position;
+                dataStore.lastAbsPosition = node.Position;
             }
         }
 

@@ -71,7 +71,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
             float speed = keyFrame.MinEmitSpeed + (keyFrame.MaxEmitSpeed - keyFrame.MinEmitSpeed) * Random.value;
             float angle = keyFrame.MinEmitAngle + (keyFrame.MaxEmitAngle - keyFrame.MinEmitAngle) * Random.value;
             float rad = (angle / 180) * Mathf.PI;
-			this.sprite.Velocity = new Vector2(speed * Mathf.Cos(rad), speed * Mathf.Sin(rad));
+			animation.Node.Velocity = Roga2dUtils.pixelToLocal(new Vector2(speed * Mathf.Cos(rad), speed * Mathf.Sin(rad)));
         }
 		
 		if (this.root.Player == null) {

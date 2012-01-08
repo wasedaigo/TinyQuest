@@ -94,7 +94,7 @@ public struct Roga2dRotationIntervalOption {
 	}
 }
 
-public struct Roga2dRotationIntervalDataStore {
+public class Roga2dRotationIntervalDataStore {
 	public bool ignore;
 	public float lastAlpha;
 	public Vector2 lastAbsPosition;
