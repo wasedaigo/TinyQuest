@@ -79,10 +79,25 @@ public class Roga2dAnimationData {
 }
 
 public class Roga2dUtils {
+	// Sometimes there are sprites at the exact same z-position
+	// This causes weird rendering effect depending on devices, so let's avoid that by little hack here
+	private static float priorityAddition;
+	private static void incrementPriorityAddition() {
+		priorityAddition += 0.0001f;
+		if (priorityAddition > 0.01f) {
+			priorityAddition = 0.0f;	
+		}
+	}
+	
+	public static float getPriorityAddition() {
+		incrementPriorityAddition();
+		return priorityAddition;
+	}
+	
 	public static float Completement(float start, float end, float proportion) {
 		return start + (end - start) * proportion;
 	}
-
+	
 	public static Vector2 Completement(Vector2 start, Vector2 end, float proportion) {
 		Vector2 result;
 		result.x = start.x + (end.x - start.x) * proportion;
@@ -176,6 +191,7 @@ public class Roga2dUtils {
 				keyFrame.Id = sourceIntervalData.id;
 				keyFrame.Duration = sourceIntervalData.duration;
 				keyFrame.Priority = sourceIntervalData.priority;
+				keyFrame.BlendType = sourceIntervalData.blendType;
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Rect = new Rect(sourceIntervalData.rect[0], sourceIntervalData.rect[1], sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
 					keyFrame.PixelCenter = new Vector2(sourceIntervalData.center[0], sourceIntervalData.center[1]);
@@ -217,7 +233,7 @@ public class Roga2dUtils {
 	
 	public static Roga2dGameObjectState stashState(GameObject go) {
 		
-		Roga2dGameObjectState state;
+		Roga2dGameObjectState state = new Roga2dGameObjectState();;
 		// Unity3D nodes break local coordinate of child node when it is added
 		// Thus, it is needed to set the parent node (0,0,0) first
 		// Gotta save current state of the node before adding a child
@@ -260,11 +276,10 @@ public class Roga2dVector2MathProvider : Roga2dBaseMathProvider<Vector2> {
 
 public class Roga2dHueMathProvider : Roga2dBaseMathProvider<Roga2dHue> {
 	public override Roga2dHue Completement(Roga2dHue start, Roga2dHue end, float proportion) {
-		Roga2dHue result;
-		result.r = start.r + (int)((end.r - start.r) * proportion);
-		result.g = start.g + (int)((end.g - start.g) * proportion);
-		result.b = start.b + (int)((end.b - start.b) * proportion);
-		return result;
+		int r = start.r + (int)((end.r - start.r) * proportion);
+		int g = start.g + (int)((end.g - start.g) * proportion);
+		int b = start.b + (int)((end.b - start.b) * proportion);
+		return new Roga2dHue(r, g, b);
 	}
 }
 

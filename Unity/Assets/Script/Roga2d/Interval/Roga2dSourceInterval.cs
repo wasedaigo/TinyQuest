@@ -63,6 +63,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	}
 	
 	private void EmitAnimation(Roga2dAnimationKeyFrame keyFrame) {
+		this.sprite.UpdatePriority();
         // Emit the new animation (emitted animation won't be controled by this instance anymore)
         Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, false, this.sprite.Alpha, this.sprite.Priority, this.root);
 
@@ -77,6 +78,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		if (this.root.Player == null) {
 			Debug.LogError("No AnimationPlayer is defined in root");	
 		}
+		
 		this.root.Player.Play(this.sprite.GameObject.transform, animation);
 	}
 	
@@ -88,7 +90,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			this.lastAnimationId = keyFrame.Id;
         }
 		
-        this.sprite.LocalPriority = keyFrame.Priority;
+        this.sprite.LocalPriority = keyFrame.Priority + Roga2dUtils.getPriorityAddition();
         this.sprite.BlendType = keyFrame.BlendType;
 
 		if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {

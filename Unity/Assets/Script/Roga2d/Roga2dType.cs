@@ -27,7 +27,7 @@ public enum Roga2dPositionType {
 	RelativeToTargetOrigin
 };
 
-public struct Roga2dHue {
+public class Roga2dHue {
 	public int r;
 	public int g;
 	public int b;
@@ -63,7 +63,7 @@ public struct Roga2dHue {
 	}
 };
 
-public struct Roga2dPositionIntervalOption {
+public class Roga2dPositionIntervalOption {
 	public Roga2dPositionType StartPositionType;
 	public Vector2 StartPositionAnchor;
 	public Roga2dPositionType EndPositionType;
@@ -81,7 +81,7 @@ public struct Roga2dPositionIntervalOption {
 	}
 }
 
-public struct Roga2dRotationIntervalOption {
+public class Roga2dRotationIntervalOption {
 	public Roga2dFacingType FacingType;
 	public Roga2dNode Target;
 	
@@ -100,7 +100,7 @@ public class Roga2dRotationIntervalDataStore {
 	public Vector2 lastAbsPosition;
 }
 
-public struct Roga2dAnimationKeyFrame {
+public class Roga2dAnimationKeyFrame {
 	public string Id;
 	public int FrameNo;
 	public int Duration;
@@ -168,7 +168,7 @@ public class Roga2dRoot {
 	}
 }
 
-public struct Roga2dGameObjectState {
+public class Roga2dGameObjectState {
 	public Vector3 position;
 	public Quaternion rotation;
 	public Vector3 scale;

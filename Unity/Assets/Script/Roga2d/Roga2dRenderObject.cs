@@ -5,6 +5,7 @@ public class Roga2dRenderObject {
 	public Vector2 pixelCenter;
 	private GameObject gameObject;
 	private Texture texture;
+	private float alpha;
 	
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
@@ -13,6 +14,7 @@ public class Roga2dRenderObject {
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
 		this.texture = texture;
+		this.alpha = 1.0f;
 	}
 	
 	public void Destroy() {
@@ -44,13 +46,7 @@ public class Roga2dRenderObject {
 		
 		(this.gameObject.GetComponent("MeshFilter") as MeshFilter).mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize, uvs);
 		
-		MeshRenderer renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
-		renderer.material = new Material (Shader.Find("Transparent/VertexLit"));
-		// Setup Texture
-		if (texture != null) {
-			renderer.material.mainTexture = this.texture;
-		}
-		
+		this.SetBlendType(Roga2dBlendType.Alpha);		
 	}
 	
 	public GameObject GameObject {
@@ -82,9 +78,33 @@ public class Roga2dRenderObject {
 	public void SetAlpha(float alpha) {
 		MeshRenderer renderer = this.GameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		Color color = new Color(1.0f, 1.0f, 1.0f, alpha);
-		renderer.material.SetColor("_Color", color);
+		renderer.material.SetColor("_Emission", color);
+		this.alpha = alpha;
 	}
 
+	public void SetBlendType(Roga2dBlendType blendType) {
+		MeshRenderer renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
+		Color color;
+		switch (blendType) {
+		case Roga2dBlendType.Alpha:
+			renderer.material = new Material (Shader.Find("Custom/AlphaBlend"));
+			color = new Color(1.0f, 1.0f, 1.0f, this.alpha);
+			renderer.material.SetColor("_Color", color);
+		break;
+		case Roga2dBlendType.Add:
+			renderer.material = new Material (Shader.Find("Custom/AlphaAdditive"));
+			color = new Color(1.0f, 1.0f, 1.0f, this.alpha);
+			renderer.material.SetColor("_Color", color);
+		break;
+		}
+		
+		// Setup Texture
+		if (this.texture != null) {
+			renderer.material.mainTexture = this.texture;
+		}
+		
+	}
+	
 	public Vector2 PixelSize {
 		get {
 			return this.pixelSize;	

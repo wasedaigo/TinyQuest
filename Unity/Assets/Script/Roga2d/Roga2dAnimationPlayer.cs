@@ -25,7 +25,6 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 		go.transform.rotation = rootTransform.rotation;
 
         this.animations.Add(animation);
-		Debug.Log("Add");
 	}
 
 	static int counter = 0;

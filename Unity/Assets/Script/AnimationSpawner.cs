@@ -34,7 +34,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.Target = new Roga2dNode(this.target);
 		
 	}
-	
+
 	static bool done = false;
 	// Update is called once per frame
 	void Update () {
@@ -48,8 +48,8 @@ public class AnimationSpawner : MonoBehaviour {
 			//string id = "Battle/Skills/Effect/PlaneCutBottom";
 			//string id = "Battle/Skills/Battler/SwordDash";
 			//string id = "Battle/Skills/Battler/SwordUpper";
-			//string id = "Battle/Skills/Laser/Skill_Laser01";
-			string id = "Battle/Skills/Spear/SpearAirraid";
+			string id = "Battle/Skills/Laser/Skill_Laser01";
+			//string id = "Battle/Skills/Spear/SpearAirraid";
 			//string id = "Battle/Skills/Bow/Shoot";
 			//string id = "Battle/Skills/Axe/CycloneAxe";
 			//string id = "Battle/Skills/Axe/SpinAxeY";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Roga2dNode {
 	
+	private static int nodeCount = 0;
 	public Vector2 Origin;
 	public Vector2 Velocity;
 	public float LocalAlpha;
@@ -104,16 +105,7 @@ public class Roga2dNode {
 		}
 	}
 	
-	public virtual void Update() {
-		this.UpdateAttributes();
-
-		
-		foreach(Roga2dNode node in this.children) {
-			node.Update();
-		}
-	}
-
-	private void UpdateAttributes() {
+	public virtual void UpdatePriority() {
         if (this.Parent != null) {
             this.alpha = this.LocalAlpha * this.Parent.Alpha;
             this.priority = 2 * this.LocalPriority * this.Parent.Priority;
@@ -121,22 +113,24 @@ public class Roga2dNode {
             this.alpha = this.LocalAlpha;
             this.priority = this.LocalPriority;
         }
-		
+	}
+	
+	public virtual void Update() {
+
+		UpdatePriority();
 		// Add velocity
 		Vector2 velocity = this.Velocity;
-		if (this.Parent != null) {
-			//velocity = this.Parent.InverseTransformPoint(this.Velocity);
-			//Debug.Log(this.Velocity +" : "+velocity);
-		}
 		this.LocalPosition = new Vector2(this.LocalPosition.x + velocity.x, this.LocalPosition.y + velocity.y);
 	
 		// Move z position of the node, so that it reflects its render-priority
-		this.GameObject.transform.position = new Vector3(this.GameObject.transform.position.x, this.GameObject.transform.position.y, this.priority);
+		float z = this.priority;
+		this.GameObject.transform.position = new Vector3(this.GameObject.transform.position.x, this.GameObject.transform.position.y, z);
 
+		
 		foreach(Roga2dNode node in this.children) {
-			node.UpdateAttributes();
+			node.Update();
 		}
-    }
+	}
 	
 	public void AddChild(Roga2dNode node) {
 		if (node.Parent != null) {
@@ -149,18 +143,21 @@ public class Roga2dNode {
 		node.GameObject.transform.parent = this.GameObject.transform;
 		node.Parent = this;
 		Roga2dUtils.applyState(node.GameObject, state);
+		nodeCount += 1;
 	}
 	
     public void RemoveChild(Roga2dNode node) {
 		if (node != null) {
 	        this.children.Remove(node);
 			node.Destroy();
+			nodeCount -= 1;
 		}
     }
 	
 	public void RemoveAllChildren() {
 		foreach(Roga2dNode node in this.children) {
 			node.Destroy();
+			nodeCount -= 1;
 		}
 		this.children.Clear();
 	}
