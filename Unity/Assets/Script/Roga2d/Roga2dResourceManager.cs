@@ -7,6 +7,7 @@ public class Roga2dResourceManager {
 	private static Dictionary<string, Texture> textureDictionary = new Dictionary<string, Texture>();
 	
 	public static Roga2dAnimationData getAnimation(string key) {
+		if (key == "") {return null;}
 		if (!animationDictionary.ContainsKey(key))
 		{
 			Debug.Log("Loaded - " + key);
@@ -22,6 +23,9 @@ public class Roga2dResourceManager {
 		if (!textureDictionary.ContainsKey(key))
 		{
 			Texture texture = Resources.Load("Images/" + key) as Texture;
+			if (texture == null){ 
+				return null;
+			}
 			texture.filterMode = FilterMode.Point;
 			textureDictionary.Add(key, texture);
 		}

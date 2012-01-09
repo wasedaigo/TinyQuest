@@ -87,7 +87,7 @@ public class Roga2dRenderObject {
 		Color color;
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-			renderer.material = new Material (Shader.Find("Custom/AlphaBlend"));
+			renderer.material = new Material (Shader.Find("Transparent/VertexLit"));
 			color = new Color(1.0f, 1.0f, 1.0f, this.alpha);
 			renderer.material.SetColor("_Color", color);
 		break;

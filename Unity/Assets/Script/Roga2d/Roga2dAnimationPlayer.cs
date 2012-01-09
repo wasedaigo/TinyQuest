@@ -43,7 +43,6 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 	            	animation.Interval.Update();
 				}
 			} else {
-				
 				animation.Interval.Start();
 				animation.IsStarted = true;
 			}

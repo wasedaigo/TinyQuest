@@ -27,7 +27,7 @@ public enum Roga2dPositionType {
 	RelativeToTargetOrigin
 };
 
-public class Roga2dHue {
+public struct Roga2dHue {
 	public int r;
 	public int g;
 	public int b;

@@ -42,7 +42,8 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 			if (this.tween) {
 				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], this.frameNo / this.duration));
 			} else {
-				if (this.IsDone()) {
+				// Single frame get its ending value immediately
+				if (this.duration <= 1 && this.IsDone()) {
 					this.SetValue(values[1]);
 				} else {
 					this.SetValue(values[0]);

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using JsonFx.Json;
 
 public class Roga2dSourceIntervalData {
 	public string id;
@@ -106,8 +105,7 @@ public class Roga2dUtils {
 	}
 
     public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dRoot root) {
-		TextAsset txt = (TextAsset)Resources.Load("Animations/" + id, typeof(TextAsset));
-		Roga2dAnimationData animationData = JsonReader.Deserialize<Roga2dAnimationData>(txt.text);
+		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
         Roga2dNode node = new Roga2dNode(new GameObject(id));

@@ -23,7 +23,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		this.renderObjects = new List<Roga2dRenderObject>(this.keyFrames.Count);
         foreach (Roga2dAnimationKeyFrame keyFrame in this.keyFrames) {
 			if (keyFrame.Id != "" && keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
-				Texture texture = Resources.Load("Images/" + keyFrame.Id) as Texture;
+				Texture texture = Roga2dResourceManager.getTexture(keyFrame.Id);
 				Roga2dRenderObject renderObject = new Roga2dRenderObject(texture, keyFrame.PixelSize, keyFrame.PixelCenter, keyFrame.Rect);
 				renderObjects.Add(renderObject);
 			} else {
