@@ -1,0 +1,105 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_AxeBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 7,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 7,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 7,
+          "endValue": 315,
+          "tween": true,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 315,
+          "startValue": 315,
+          "facingOption": "None",
+          "frameNo": 7
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

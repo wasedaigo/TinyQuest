@@ -1,0 +1,113 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 16,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 4,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 16,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 20,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 20,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 16,
+          "endValue": 0,
+          "tween": true,
+          "startValue": -405,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endValue": 0,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 16
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

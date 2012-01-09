@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{CD8C9303-404B-FB8D-6B9B-21988D5CAC0A}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_0;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_FLASH;ENABLE_GENERICS</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Script\AnimationSpawner.cs" />
+     <Compile Include="Assets\Script\LitJson\IJsonWrapper.cs" />
+     <Compile Include="Assets\Script\LitJson\JsonData.cs" />
+     <Compile Include="Assets\Script\LitJson\JsonException.cs" />
+     <Compile Include="Assets\Script\LitJson\JsonMapper.cs" />
+     <Compile Include="Assets\Script\LitJson\JsonReader.cs" />
+     <Compile Include="Assets\Script\LitJson\JsonWriter.cs" />
+     <Compile Include="Assets\Script\LitJson\Lexer.cs" />
+     <Compile Include="Assets\Script\LitJson\ParserToken.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dAlphaInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dBaseInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dHueInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dLoop.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dParallel.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dPositionInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dRotationInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dScaleInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dSequenceInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dSourceInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dValueInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dWait.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dAnimationPlayer.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dNode.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dRenderObject.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dResourceManager.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dSprite.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dType.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dUtils.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dAlphaInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dHueInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dLoop.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dParallel.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dPositionInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dRotationInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dScaleInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dSequence.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dSourceInterval.cs" />
+     <Compile Include="Assets\Script\Test\Interval\TestRoga2dWait.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dAnimationPlayer.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dNode.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dRenderObject.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dResourceManager.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dSprite.cs" />
+     <Compile Include="Assets\Script\Test\TestRoga2dUtils.cs" />
+     <Compile Include="Assets\Script\Test\TestRunner.cs" />
+     <Compile Include="Assets\Script\Test\Tester.cs" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Thrust01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\StoneSpike01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearHold.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash04.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_CrossSlash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SmallJump.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\Skill_EarthCrack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Hea01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\Shoot.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\IceOrb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\CycloneAxe.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareExploder.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\BloodySword.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainIn.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\ArrowShoot.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_Backstab.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Back.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\BeamSplash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SkyCleaver.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\RollBack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraidRoll.txt" />
+     <None Include="Assets\Resources\Shaders\AlphaAdditive.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\WindSpiralTop.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\StraightLaserBullet.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnifeBack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Heal\Skill_FirstAid.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\bow_holyarrow.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\Bash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainSuccess.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\Skill_Laser01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_SwordCharge.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDashUpper.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Smoke01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\Skill_DeadlyFang.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\DefaultSkill.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Stab01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillMove.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareEffect.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\Skill_StoneSpike.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Walking.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareParticle.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\BlossomSword.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_Stab.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Passive\Cover.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnife.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\KnifeShining01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\Camera.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Heal\FirstAidEffect.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\test.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\HealShining02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCasting.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Impale.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\LeaveDance.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainInLine.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Slash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash03.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\bow_bomb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Test.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\MagicCasting.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_DancingKnives.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\EarthCrack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Bash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Ice\Freeze.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\TestSwordUpper.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTest.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\Implode.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareExplosion.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainBoxStay.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood03.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDown02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SingleSpinAxe.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\LightParticle01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\ArrowShootBomb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Jump.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainInBox.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\LightBom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCastingRingBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\WideSwing.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\DeadlyFang.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnifeGo.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordCharge.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SmallBack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleKnifeRotating.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\WindSpiralBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\RainbowCycron.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\StoneMove01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\SmokeRing.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\SpikeWave.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCastingRingTop.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordSwing.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDown.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\Skill_Flare.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraidSmoke.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Lit01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\Target.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Running.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillAction.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Thunder\Lightening.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordUpper.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\HealShining01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Ice01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTop.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\ArmorBreaker.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SpinAxeY.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraid.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\DeadlyBite.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Drill.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\test.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Thrust.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\Slash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_PoisonStab.txt" />
+ <Reference Include="Assets\JsonFx.Json">
+ <HintPath>Assets\JsonFx.Json.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

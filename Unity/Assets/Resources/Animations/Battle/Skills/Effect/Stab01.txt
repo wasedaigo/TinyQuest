@@ -1,0 +1,143 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Weapon03"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Weapon03",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            288,
+            96,
+            96
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Weapon03",
+          "type": "Image",
+          "frameNo": 1,
+          "rect": [
+            96,
+            288,
+            96,
+            96
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Weapon03",
+          "type": "Image",
+          "frameNo": 2,
+          "rect": [
+            192,
+            288,
+            96,
+            96
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Weapon03",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            288,
+            288,
+            96,
+            96
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Weapon03",
+          "type": "Image",
+          "frameNo": 4,
+          "rect": [
+            384,
+            288,
+            96,
+            96
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 5,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

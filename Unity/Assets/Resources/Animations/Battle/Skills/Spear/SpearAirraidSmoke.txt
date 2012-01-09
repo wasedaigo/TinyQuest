@@ -1,0 +1,295 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Spear/SpearHold",
+      "Battle/Skills/Effect/SmokeRing",
+      "Battle/Skills/Effect/Smoke01"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Effect_Special01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 3,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 26,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 3,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 29,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 23,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0.5,
+            1.0
+          ],
+          "wait": true,
+          "startValue": [
+            0.5,
+            1.0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            1.0
+          ],
+          "startValue": [
+            0.5,
+            1.0
+          ],
+          "frameNo": 23
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 10,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "Animation",
+          "frameNo": 11
+        },
+        {
+          "duration": 2,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 21,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 5,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/SmokeRing",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 28,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "type": "Animation",
+          "frameNo": 29
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 0,
+          "wait": true,
+          "startValue": 0,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 10,
+          "endValue": -405,
+          "tween": true,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 11
+        },
+        {
+          "duration": 8,
+          "endValue": -405,
+          "startValue": -405,
+          "facingOption": "None",
+          "frameNo": 21
+        },
+        {
+          "duration": 1,
+          "endValue": -405,
+          "startValue": -405,
+          "facingOption": "None",
+          "frameNo": 29
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 3,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 0.0,
+          "wait": true,
+          "startValue": 0.0,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 8,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 3
+        },
+        {
+          "duration": 10,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 11
+        },
+        {
+          "duration": 2,
+          "endValue": 1.0,
+          "startValue": 0.0,
+          "frameNo": 21
+        },
+        {
+          "duration": 5,
+          "endValue": 0.0,
+          "startValue": 1.0,
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 28
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 29
+        }
+      ]
+    }
+  ]
+}

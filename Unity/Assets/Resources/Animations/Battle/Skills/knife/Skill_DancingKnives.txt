@@ -1,0 +1,701 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Battler/Running",
+      "Battle/Skills/Battler/Jump",
+      "Battle/Skills/Effect/KnifeShining01",
+      "Battle/Skills/knife/SingleDancingKnife",
+      "Battle/Skills/Effect/Slash04",
+      "Battle/Skills/knife/SingleDancingKnifeGo",
+      "Battle/Skills/knife/SingleDancingKnifeBack",
+      "Battle/Skills/knife/SingleKnifeRotating"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_KnifeBase",
+      "Battle/Skills/Effect_Weapon05",
+      "Battle/Skills/Effect_Weapon03"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 9,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -16,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 62,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            -16,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 9,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 6,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            -16,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 71,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 17,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -16,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 77,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 3,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 94,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 97,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Running",
+          "type": "Animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 14,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 9,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 18,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 23,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 30,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 41,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 27,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Jump",
+          "type": "Animation",
+          "frameNo": 71
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 13,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            -22,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 8,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            0
+          ],
+          "startValue": [
+            -22,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 13,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 5,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            -30
+          ],
+          "tween": true,
+          "startValue": [
+            -22,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 21,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 2,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            -30
+          ],
+          "startValue": [
+            -22,
+            -30
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 26,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 10,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            -18
+          ],
+          "tween": true,
+          "startValue": [
+            -22,
+            -30
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 28,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -22,
+            -18
+          ],
+          "startValue": [
+            -22,
+            -18
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 38,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 13,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 26,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_KnifeBase",
+          "type": "Image",
+          "frameNo": 13,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 21,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 0,
+          "wait": true,
+          "startValue": 0,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 17,
+          "endValue": 360,
+          "tween": true,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 21
+        },
+        {
+          "duration": 1,
+          "endValue": 360,
+          "tween": true,
+          "startValue": 360,
+          "facingOption": "None",
+          "frameNo": 38
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 13,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -26,
+            -6
+          ],
+          "wait": true,
+          "startValue": [
+            -26,
+            -6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -26,
+            -6
+          ],
+          "startValue": [
+            -26,
+            -6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 13,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 27,
+          "endPositionType": "None",
+          "wait": true,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 14
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 13,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/KnifeShining01",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 13
+        },
+        {
+          "duration": 26,
+          "wait": true,
+          "frameNo": 14
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/knife/SingleDancingKnife",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 40
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 41,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 54,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 54,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 54,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "wait": true,
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 54
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 54,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Slash04",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 54
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 54,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 180,
+          "wait": true,
+          "startValue": 180,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 180,
+          "startValue": 180,
+          "facingOption": "None",
+          "frameNo": 54
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 54,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 1.0,
+          "wait": true,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 54
+        }
+      ]
+    }
+  ]
+}

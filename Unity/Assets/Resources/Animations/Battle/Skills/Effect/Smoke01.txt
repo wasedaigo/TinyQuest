@@ -1,0 +1,117 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Special01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+        {
+          "duration": 5,
+          "endValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "tween": true,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 9,
+          "endValue": [
+            1.5,
+            1.5
+          ],
+          "tween": true,
+          "startValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1.5,
+            1.5
+          ],
+          "startValue": [
+            1.5,
+            1.5
+          ],
+          "frameNo": 14
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Special01",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 15,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 14,
+          "endValue": 30,
+          "tween": true,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 30,
+          "startValue": 30,
+          "facingOption": "None",
+          "frameNo": 14
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 14,
+          "endValue": 0.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 14
+        }
+      ]
+    }
+  ]
+}

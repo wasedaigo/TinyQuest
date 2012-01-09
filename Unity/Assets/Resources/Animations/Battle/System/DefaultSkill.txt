@@ -1,0 +1,48 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Blank"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Blank",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

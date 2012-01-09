@@ -1,0 +1,247 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -46,
+            41
+          ],
+          "tween": true,
+          "startValue": [
+            56,
+            -65
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -46,
+            41
+          ],
+          "startValue": [
+            -46,
+            41
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 6,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 6,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 6
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 1,
+          "rect": [
+            48,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 2,
+          "rect": [
+            96,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            144,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 4,
+          "rect": [
+            96,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 5,
+          "rect": [
+            48,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash",
+          "type": "Image",
+          "frameNo": 6,
+          "rect": [
+            0,
+            0,
+            48,
+            80
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 7,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 6,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 6
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 6,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 6
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/Slash02"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_AxeBase",
+      "Battle/Skills/Effect_Slash2"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 12,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 6,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -48
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 12,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 7,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            -48
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 18,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 7,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 25,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 14,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 12,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 6,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 26,
+          "rect": [
+            608,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 32,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 12,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -6,
+            6
+          ],
+          "startValue": [
+            -6,
+            6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 6,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -6,
+            -42
+          ],
+          "tween": true,
+          "startValue": [
+            -6,
+            6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 12,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 7,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -6,
+            6
+          ],
+          "tween": true,
+          "startValue": [
+            -6,
+            -42
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 18,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -6,
+            6
+          ],
+          "startValue": [
+            -6,
+            6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 25,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 18,
+          "center": [
+            -1.0,
+            13.0
+          ],
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 8,
+          "center": [
+            -1.0,
+            13.0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_AxeBase",
+          "type": "Image",
+          "frameNo": 18,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 3,
+          "endValue": 180,
+          "startValue": 180,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": 150,
+          "tween": true,
+          "startValue": 180,
+          "facingOption": "None",
+          "frameNo": 3
+        },
+        {
+          "duration": 4,
+          "endValue": 150,
+          "startValue": 150,
+          "facingOption": "None",
+          "frameNo": 8
+        },
+        {
+          "duration": 6,
+          "endValue": 300,
+          "tween": true,
+          "startValue": 150,
+          "facingOption": "None",
+          "frameNo": 12
+        },
+        {
+          "duration": 7,
+          "endValue": 360,
+          "tween": true,
+          "startValue": 300,
+          "facingOption": "None",
+          "frameNo": 18
+        },
+        {
+          "duration": 1,
+          "endValue": 360,
+          "tween": true,
+          "startValue": 360,
+          "facingOption": "None",
+          "frameNo": 25
+        }
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 12,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 12,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 12,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Slash02",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 12
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 12,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 180,
+          "wait": true,
+          "startValue": 180,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 180,
+          "startValue": 180,
+          "facingOption": "None",
+          "frameNo": 12
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_BowBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 8,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            10,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            10,
+            0
+          ],
+          "startValue": [
+            10,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 8,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 8,
+          "endValue": -90,
+          "startValue": -90,
+          "facingOption": "FaceToMov",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": -90,
+          "startValue": -90,
+          "facingOption": "FaceToMov",
+          "frameNo": 8
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

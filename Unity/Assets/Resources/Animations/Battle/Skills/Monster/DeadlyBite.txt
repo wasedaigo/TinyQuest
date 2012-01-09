@@ -1,0 +1,155 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Monster_Attack1"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            -56,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 12,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 6,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 18,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            48,
+            48,
+            48
+          ]
+        },
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            48,
+            48,
+            48,
+            48
+          ]
+        },
+        {
+          "duration": 12,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Monster_Attack1",
+          "type": "Image",
+          "frameNo": 6,
+          "rect": [
+            96,
+            48,
+            48,
+            48
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 18,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 18,
+          "endValue": 0,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 18,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0
+        }
+      ]
+    }
+  ]
+}

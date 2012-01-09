@@ -1,0 +1,227 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SwordBase"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 28,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            544,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 3,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            512,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 22,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 6,
+          "rect": [
+            480,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 28,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 6,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            2,
+            8
+          ],
+          "tween": true,
+          "startValue": [
+            -6,
+            8
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 22,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            2,
+            8
+          ],
+          "startValue": [
+            2,
+            8
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 6,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "center": [
+            0.0,
+            11.0
+          ],
+          "priority": 0.300000011920929,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 25,
+          "center": [
+            0.0,
+            11.0
+          ],
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "type": "Image",
+          "frameNo": 3,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 28,
+          "rect": null
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 6,
+          "endValue": 90,
+          "tween": true,
+          "startValue": 360,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 22,
+          "endValue": 90,
+          "startValue": 90,
+          "facingOption": "None",
+          "frameNo": 6
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

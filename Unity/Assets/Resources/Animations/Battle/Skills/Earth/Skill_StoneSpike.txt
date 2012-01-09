@@ -1,0 +1,131 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Earth/StoneSpike01",
+      "Battle/Skills/Effect/StoneMove01"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Effect_Stone01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 22,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            1
+          ],
+          "frameNo": 0,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 22,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Earth/StoneSpike01",
+          "type": "Animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 22,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 22,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 22,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 22,
+          "rect": null
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

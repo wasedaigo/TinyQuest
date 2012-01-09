@@ -1,0 +1,601 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Spear/SpearAirraidRoll",
+      "Battle/Skills/Battler/RollBack",
+      "Battle/Skills/Effect/BeamSplash01",
+      "Battle/Skills/Spear/SpearHold"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Effect_Beam01"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 3,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 3,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 32,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -124
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            -124
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 4,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -124
+          ],
+          "startValue": [
+            0,
+            -124
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 36,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 19,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 37,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 56,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 4,
+          "emitter": true,
+          "minEmitSpeed": 15.0,
+          "priority": 0.5,
+          "minEmitAngle": 270,
+          "id": "Battle/Skills/Spear/SpearAirraidRoll",
+          "maxEmitAngle": 270,
+          "type": "Animation",
+          "maxEmitSpeed": 15.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 32,
+          "wait": true,
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 6.0,
+          "priority": 0.5,
+          "minEmitAngle": 90,
+          "id": "Battle/Skills/Battler/RollBack",
+          "maxEmitAngle": 90,
+          "type": "Animation",
+          "maxEmitSpeed": 6.0,
+          "frameNo": 36
+        },
+        {
+          "duration": 19,
+          "wait": true,
+          "frameNo": 37
+        },
+        {
+          "duration": 1,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/SpearAirraidRoll",
+          "type": "Animation",
+          "frameNo": 56
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 3,
+          "endValue": 0.100000001490116,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
+          "frameNo": 3
+        },
+        {
+          "duration": 32,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 1.0,
+          "wait": true,
+          "startValue": 1.0,
+          "frameNo": 4,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 36
+        },
+        {
+          "duration": 19,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 1.0,
+          "wait": true,
+          "startValue": 1.0,
+          "frameNo": 37,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 56
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 25,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "wait": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 25,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 2,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "wait": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 26,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 28,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 2,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "wait": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 29,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 31,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 2,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "wait": true,
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 32,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            -32
+          ],
+          "startValue": [
+            32,
+            -32
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 34,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 25,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 25
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 28
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 29
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 31
+        },
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 32
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.600000023841858,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/BeamSplash01",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 34
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 25,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 45,
+          "wait": true,
+          "startValue": 45,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 25
+        },
+        {
+          "duration": 2,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 45,
+          "wait": true,
+          "startValue": 45,
+          "frameNo": 26,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 28
+        },
+        {
+          "duration": 2,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 45,
+          "wait": true,
+          "startValue": 45,
+          "frameNo": 29,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 31
+        },
+        {
+          "duration": 2,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 45,
+          "wait": true,
+          "startValue": 45,
+          "frameNo": 32,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 34
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

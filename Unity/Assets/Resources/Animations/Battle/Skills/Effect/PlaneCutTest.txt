@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/PlaneCutBottom"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Slash"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/PlaneCutBottom",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 45,
+          "startValue": 45,
+          "facingOption": "None",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}
