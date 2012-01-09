@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using LitJson;
 
 public class AnimationSpawner : MonoBehaviour {
 	public Transform planePrefab;
@@ -31,7 +30,9 @@ public class AnimationSpawner : MonoBehaviour {
 	sprite.RenderObject = renderObject;
 	sprite.Update();*/
 		this.root = new Roga2dRoot(player);
-		this.root.Target = new Roga2dNode(this.target);
+		Roga2dNode target = new Roga2dNode(this.target);
+		target.Origin = target.Position;
+		this.root.Target = target;
 		
 	}
 
@@ -43,14 +44,17 @@ public class AnimationSpawner : MonoBehaviour {
 			//if(done){return;}
 			//string id = "Battle/Skills/Axe/Bash";
 			//string id = "Battle/Skills/Effect/Stab01";
-			//string id = "Battle/Skills/Sword/LeaveDance";
+			string id = "Battle/Skills/Sword/LeaveDance";
+			//string id = "Battle/Skills/Battler/TestSwordUpper";
 			//string id = "Battle/Skills/Effect/PlaneCutTest";
 			//string id = "Battle/Skills/Effect/PlaneCutBottom";
 			//string id = "Battle/Skills/Battler/SwordDash";
 			//string id = "Battle/Skills/Battler/SwordUpper";
-			string id = "Battle/Skills/Laser/Skill_Laser01";
+			//string id = "Battle/Skills/Laser/test";
+			//string id = "Battle/Skills/Laser/Skill_Laser01";
 			//string id = "Battle/Skills/Spear/SpearAirraid";
 			//string id = "Battle/Skills/Bow/Shoot";
+			//string id = "Battle/Skills/Bow/bow_bomb";
 			//string id = "Battle/Skills/Axe/CycloneAxe";
 			//string id = "Battle/Skills/Axe/SpinAxeY";
 			//string id = "Battle/Skills/Axe/Slash";
