@@ -18,7 +18,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 
 	protected override float[] TweenBeforeFilter(float start, float end) {
 		if (this.option.FacingType != Roga2dFacingType.None) {
-			start = GetDynamicRotation( node, start, end, this.option, this.option.Target, this.dataStore);
+			start = GetDynamicRotation( start, end, this.option, this.option.Target, this.dataStore);
 			end = start;
 		}
 		return new float[2]{start, end};
@@ -28,7 +28,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 		this.node.LocalRotation = value;
 	}
 	
-    private float GetDynamicRotation(Roga2dNode node, float start, float end, Roga2dRotationIntervalOption option, Roga2dNode target, Roga2dRotationIntervalDataStore dataStore) {
+    private float GetDynamicRotation(float start, float end, Roga2dRotationIntervalOption option, Roga2dNode target, Roga2dRotationIntervalDataStore dataStore) {
         float result = start;
 		if (target != null) {
             if (this.option.FacingType == Roga2dFacingType.FaceToDir) {
@@ -44,14 +44,14 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
                     node.LocalAlpha = dataStore.lastAlpha;
                 } else {
                     dataStore.ignore = true;
-                    dataStore.lastAlpha = node.Parent.LocalAlpha;
+                    dataStore.lastAlpha = node.LocalAlpha;
                     node.LocalAlpha = 0;
                 }
                 // Extra data for FaceToMov option
                 dataStore.lastAbsPosition = node.Position;
             }
         }
-
+		
         return result;
     }
 }

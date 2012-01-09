@@ -10,7 +10,6 @@ public class Roga2dResourceManager {
 		if (key == "") {return null;}
 		if (!animationDictionary.ContainsKey(key))
 		{
-			Debug.Log("Loaded - " + key);
 			TextAsset txt = (TextAsset)Resources.Load("Animations/" + key, typeof(TextAsset));
 			Roga2dAnimationData animationData = JsonReader.Deserialize<Roga2dAnimationData>(txt.text);
 			animationDictionary.Add(key, animationData);

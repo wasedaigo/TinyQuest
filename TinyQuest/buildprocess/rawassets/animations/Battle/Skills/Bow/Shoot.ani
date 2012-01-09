@@ -8,7 +8,6 @@
             "frameNo" : 0,
             "positionTween" : "fix",
             "sourcePath" : "Battle/Skills/Battler_Base.png",
-            "swapTargetType" : "character",
             "textureRect" : [ 288, 0, 32, 32 ]
          },
          {
@@ -105,13 +104,15 @@
             "textureRect" : [ 160, 0, 32, 32 ]
          },
          {
+            "alphaTween" : "fix",
+            "colorTween" : "linear",
             "emitter" : true,
-            "frameNo" : 15,
+            "frameNo" : 16,
             "maxEmitAngle" : 270,
             "maxEmitSpeed" : 5.0,
             "minEmitAngle" : 270,
             "minEmitSpeed" : 5.0,
-            "position" : [ -17, 7 ],
+            "position" : [ -11, 3 ],
             "positionTween" : "fix",
             "rotationTween" : "fix",
             "sourcePath" : "Battle/Skills/Bow/ArrowShoot.ani"
