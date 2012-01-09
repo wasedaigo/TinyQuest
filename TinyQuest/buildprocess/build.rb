@@ -95,7 +95,15 @@ def setup_tweens(result, latestSourceData)
                             prev_keyframe["endPositionAnchor"] = prev_keyframe["endPositionAnchor"] ? prev_keyframe["endPositionAnchor"] : AnchorData["center"]
                         end
                     else
-                        prev_keyframe["endValue"] = keyframe["startValue"]
+                         prev_keyframe["endValue"] = keyframe["startValue"]
+                         
+                        if key == "rotation"
+                          if (keyframe["facingOption"] != nil) && (keyframe["facingOption"] != "None")
+                            prev_keyframe["endValue"] = keyframe["startValue"]
+                          else
+                            prev_keyframe["endValue"] = prev_keyframe["startValue"]
+                          end
+                        end
                         
                         unless prev_keyframe.has_key?("startValue")
                            prev_keyframe["startValue"] = prev_keyframe["endValue"]
