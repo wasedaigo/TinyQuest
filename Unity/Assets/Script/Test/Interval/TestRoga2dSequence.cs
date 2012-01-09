@@ -83,11 +83,11 @@ class TestRoga2dSequence {
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update();
-		Tester.Match(node.LocalAlpha, 1.0f);
+		Tester.Match(node.LocalAlpha, 0.5f);
 		Tester.Ok(!sequence.IsDone());
 
 		sequence.Update();
-		Tester.Match(node.LocalAlpha, 0.5f);
+		Tester.Match(node.LocalAlpha, 0.3f);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update();

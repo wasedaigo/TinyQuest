@@ -25,7 +25,8 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	}
 	
 	public override sealed void Start() {
-		this.SetValue(this.start);
+		T[] values = this.TweenBeforeFilter(this.start, this.end);
+		this.SetValue(values[0]);
 	}
 	
 	public override sealed void Finish() {
@@ -41,7 +42,12 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 			if (this.tween) {
 				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], this.frameNo / this.duration));
 			} else {
-				this.SetValue(values[0]);
+				if (this.IsDone()) {
+					this.SetValue(values[1]);
+				} else {
+					this.SetValue(values[0]);
+				}
+				
 			}
 		}
 	}

@@ -26,6 +26,9 @@ class TestRoga2dAnimationPlayer {
 		Tester.Ok(!interval.IsDone());
 
         player.Update();
+		Tester.Ok(!interval.IsDone());
+		
+        player.Update();
 		Tester.Ok(interval.IsDone());
 		
 		node.Destroy();

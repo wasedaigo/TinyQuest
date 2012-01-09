@@ -25,9 +25,9 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 		go.transform.rotation = rootTransform.rotation;
 
         this.animations.Add(animation);
-        animation.Interval.Start();
+		Debug.Log("Add");
 	}
-	
+
 	static int counter = 0;
 	public void Update() {
 		counter += 1;
@@ -35,13 +35,20 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 		counter = 0;
         for (int i = this.animations.Count - 1; i >= 0; i-- ) {
             Roga2dAnimation animation = this.animations[i];
-            animation.Interval.Update();
+			if (animation.IsStarted) {
+	            if (animation.Interval.IsDone()) {
+					Destroy(animation.Node.GameObject);
+					Destroy(animation.Root);
+					this.animations.RemoveAt(i);
+	            } else {
+	            	animation.Interval.Update();
+				}
+			} else {
+				
+				animation.Interval.Start();
+				animation.IsStarted = true;
+			}
 			animation.Node.Update();
-            if (animation.Interval.IsDone()) {
-				Destroy(animation.Node.GameObject);
-				Destroy(animation.Root);
-				this.animations.RemoveAt(i);
-            }
         }
 	}
 }
