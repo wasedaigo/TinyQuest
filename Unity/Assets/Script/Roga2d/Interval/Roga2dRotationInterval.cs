@@ -41,11 +41,11 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
                 
                 result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180 + 270;
                 if (dataStore.ignore) {
-                    node.Parent.LocalAlpha = dataStore.lastAlpha;
+                    node.LocalAlpha = dataStore.lastAlpha;
                 } else {
                     dataStore.ignore = true;
                     dataStore.lastAlpha = node.Parent.LocalAlpha;
-                    node.Parent.LocalAlpha = 0;
+                    node.LocalAlpha = 0;
                 }
                 // Extra data for FaceToMov option
                 dataStore.lastAbsPosition = node.Position;

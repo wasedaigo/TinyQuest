@@ -15,16 +15,13 @@
             "textureRect" : [ 160, 0, 32, 32 ]
          },
          {
-            "facingOption" : "faceToMov",
+            "colorTween" : "linear",
             "frameNo" : 23,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
             "sourcePath" : "Battle/Skills/Weapon_BowBase.png",
             "textureRect" : [ 160, 0, 32, 32 ]
-         },
-         {
-            "frameNo" : 24,
-            "isEmpty" : true
          }
       ],
       "1" : [
