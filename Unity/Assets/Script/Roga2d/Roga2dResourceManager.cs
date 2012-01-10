@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using JsonFx.Json;
 
 public class Roga2dResourceManager {
+	// Animation
 	private static Dictionary<string, Roga2dAnimationData> animationDictionary = new Dictionary<string, Roga2dAnimationData>();
-	private static Dictionary<string, Texture> textureDictionary = new Dictionary<string, Texture>();
-	
 	public static Roga2dAnimationData getAnimation(string key) {
 		if (key == "") {return null;}
 		if (!animationDictionary.ContainsKey(key))
@@ -18,10 +17,13 @@ public class Roga2dResourceManager {
 		return animationDictionary[key];
 	}
 	
+	// Texture
+	private static Dictionary<string, Texture> textureDictionary = new Dictionary<string, Texture>();
 	public static Texture getTexture(string key) {
 		if (!textureDictionary.ContainsKey(key))
 		{
 			Texture texture = Resources.Load("Images/" + key) as Texture;
+			
 			if (texture == null){ 
 				return null;
 			}

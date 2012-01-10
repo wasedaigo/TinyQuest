@@ -5,8 +5,11 @@ public class Roga2dRenderObject {
 	public Vector2 pixelCenter;
 	private GameObject gameObject;
 	private Texture texture;
+	private Mesh mesh;
+	private Material material;
+	private Roga2dBlendType blendType;
 	private float alpha;
-	
+
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
@@ -14,21 +17,23 @@ public class Roga2dRenderObject {
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
 		this.texture = texture;
-		this.alpha = 1.0f;
+		this.alpha = -0.1f; // In order to update its materal at SetBlend at first time
 	}
-	
+
 	public void Destroy() {
 		if (this.gameObject != null) {
 			Object.Destroy(this.gameObject);
+			Object.Destroy(this.mesh);
+			Object.Destroy(this.material);
 			this.gameObject = null;
 		}
 	}
-	
+
 	public void Pop() {
 		this.gameObject = new GameObject("RenderObject");
 		
 		// Setup Renderer
-		this.gameObject.AddComponent("MeshFilter");
+		MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
 		this.gameObject.AddComponent("MeshRenderer");
 		
 		float[] uvs;
@@ -44,9 +49,8 @@ public class Roga2dRenderObject {
 			};
 		}
 		
-		(this.gameObject.GetComponent("MeshFilter") as MeshFilter).mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize, uvs);
-		
-		this.SetBlendType(Roga2dBlendType.Alpha);		
+		meshFilter.mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize, uvs);
+		this.SetBlend(Roga2dBlendType.Alpha, 1.0f);		
 	}
 	
 	public GameObject GameObject {
@@ -56,7 +60,10 @@ public class Roga2dRenderObject {
 	}
 
 	private Mesh GeneratePlane(float sizeX, float sizeY, float[] uvs) {
-		Mesh mesh = new Mesh();
+		if (this.mesh != null) {
+			Debug.Log("Mesh is not null!");	
+		}
+		this.mesh = new Mesh();
 		mesh.vertices = new Vector3[4] {
 			new Vector3(-sizeX, -sizeY, 0.01f), 
 			new Vector3(sizeX, -sizeY, 0.01f), 
@@ -72,37 +79,45 @@ public class Roga2dRenderObject {
 		mesh.triangles = new int[6] {0, 1, 2, 0, 2, 3};
 		mesh.RecalculateNormals();
 		
-		return mesh;
-	}
-	
-	public void SetAlpha(float alpha) {
-		MeshRenderer renderer = this.GameObject.GetComponent("MeshRenderer") as MeshRenderer;
-		Color color = new Color(1.0f, 1.0f, 1.0f, alpha);
-		renderer.material.SetColor("_Emission", color);
-		this.alpha = alpha;
+		return this.mesh;
 	}
 
-	public void SetBlendType(Roga2dBlendType blendType) {
+	public void SetBlend(Roga2dBlendType blendType, float alpha) {
+		// If nothing has changed, don't do anything
+		if (this.blendType == blendType && this.alpha == alpha) {
+			return;	
+		}
+		this.blendType = blendType;
+		this.alpha = alpha;
+		
+		if (this.material != null) {
+			Object.Destroy(this.material);
+		}
+
 		MeshRenderer renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		Color color;
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-			renderer.material = new Material (Shader.Find("Transparent/VertexLit"));
-			color = new Color(1.0f, 1.0f, 1.0f, this.alpha);
-			renderer.material.SetColor("_Color", color);
-		break;
+			this.material = new Material(Shader.Find("Transparent/VertexLit"));
+			color = new Color(1.0f, 1.0f, 1.0f, alpha);
+			this.material.SetColor("_Color", color);
+			break;
 		case Roga2dBlendType.Add:
-			renderer.material = new Material (Shader.Find("Custom/AlphaAdditive"));
-			color = new Color(1.0f, 1.0f, 1.0f, this.alpha);
+			renderer.material = new Material(Shader.Find("Custom/AlphaAdditive"));
+			color = new Color(1.0f, 1.0f, 1.0f, alpha);
 			renderer.material.SetColor("_Color", color);
-		break;
+			break;
+		default:
+			Debug.LogError("Invalid BlendType is passed");
+			break;
 		}
 		
 		// Setup Texture
 		if (this.texture != null) {
-			renderer.material.mainTexture = this.texture;
+			this.material.mainTexture = this.texture;
 		}
-		
+
+		renderer.material = this.material;
 	}
 	
 	public Vector2 PixelSize {

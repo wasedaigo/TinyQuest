@@ -79,6 +79,9 @@ public class Roga2dNode {
 			Object.Destroy(this.GameObject);
 			this.GameObject = null;
 		}
+		foreach (Roga2dNode node in this.children) {
+			node.Destroy();	
+		}
 	}
 
 	public int ChildrenCount {

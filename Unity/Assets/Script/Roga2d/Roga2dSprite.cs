@@ -48,8 +48,7 @@ public class Roga2dSprite : Roga2dNode {
 	public override void Update() {
 		base.Update();
 		if (this.renderObject != null) {
-			this.renderObject.SetAlpha(this.Alpha);
-			this.renderObject.SetBlendType(this.BlendType);
+			this.renderObject.SetBlend(this.BlendType, this.Alpha);
 		}
 	}
 	
