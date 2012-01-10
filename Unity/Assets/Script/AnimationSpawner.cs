@@ -14,21 +14,7 @@ public class AnimationSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		/*
-    Texture texture = Resources.Load("chara") as Texture;
-		
-	
-	Roga2dRenderObject renderObject = new Roga2dRenderObject(texture, new Vector2(64, 64), new Vector2(32, 32), new Rect(0, 0, 1, 1));
-	Roga2dSprite sprite = new Roga2dSprite(renderObject);
-	sprite.LocalAlpha = 0.5f;
-	sprite.Update();
-		
-	renderObject = new Roga2dRenderObject(texture, new Vector2(128, 128), new Vector2(128, 128), new Rect(0, 0, 1, 1));
-	new Roga2dSprite(renderObject);
-		
-	renderObject = new Roga2dRenderObject(texture, new Vector2(64, 64), new Vector2(0, 0), new Rect(0, 0, 1, 1));
-	sprite.RenderObject = renderObject;
-	sprite.Update();*/
+
 		this.root = new Roga2dRoot(player);
 		Roga2dNode target = new Roga2dNode(this.target);
 		target.Origin = target.Position;
