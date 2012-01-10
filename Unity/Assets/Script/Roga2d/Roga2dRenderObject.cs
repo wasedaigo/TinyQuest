@@ -103,9 +103,9 @@ public class Roga2dRenderObject {
 			this.material.SetColor("_Color", color);
 			break;
 		case Roga2dBlendType.Add:
-			renderer.material = new Material(Shader.Find("Custom/AlphaAdditive"));
+			this.material = new Material(Shader.Find("Custom/AlphaAdditive"));
 			color = new Color(1.0f, 1.0f, 1.0f, alpha);
-			renderer.material.SetColor("_Color", color);
+			this.material.SetColor("_Color", color);
 			break;
 		default:
 			Debug.LogError("Invalid BlendType is passed");
