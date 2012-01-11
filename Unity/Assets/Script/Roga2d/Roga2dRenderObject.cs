@@ -1,4 +1,11 @@
 using UnityEngine;
+
+/*
+ * 	[Optimization idea]
+ *  1. Make object pool for GameObject / Mesh / Material, reuse them instead of Destoryoing them
+ *  2. Use shared material. (Trade-off with adjustable transparency)
+ *  3. Try not to use different render-object for each different keyframe if it shares texture
+ */
 public class Roga2dRenderObject {
 	public Rect srcRect;
 	public Vector2 pixelSize;
@@ -31,8 +38,6 @@ public class Roga2dRenderObject {
 
 	public void Pop() {
 		this.gameObject = new GameObject("RenderObject");
-		
-		// Setup Renderer
 		MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
 		this.gameObject.AddComponent("MeshRenderer");
 		
@@ -83,6 +88,7 @@ public class Roga2dRenderObject {
 	}
 
 	public void SetBlend(Roga2dBlendType blendType, float alpha) {
+		
 		// If nothing has changed, don't do anything
 		if (this.blendType == blendType && this.alpha == alpha) {
 			return;	

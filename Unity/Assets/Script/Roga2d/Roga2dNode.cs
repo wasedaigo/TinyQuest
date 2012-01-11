@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/*
+ * 	[Optimization idea]
+ *  1. Setting LocalRot/Position/Scale costs a bit, so keep the value to local valuable. Set it to the node in update call
+ *  2. Use GameObject pool
+ */
 public class Roga2dNode {
 	
 	private static int nodeCount = 0;
