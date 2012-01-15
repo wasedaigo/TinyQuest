@@ -9,7 +9,6 @@ using System.Collections.Generic;
 public class Roga2dNode {
 	
 	private static int nodeCount = 0;
-	public Vector2 Origin;
 	public Vector2 Velocity;
 	public float LocalAlpha;
 	public Roga2dHue LocalHue;
@@ -28,9 +27,6 @@ public class Roga2dNode {
 			return this.GameObject.transform.localEulerAngles.z;
 		}
 		set {
-			//this.GameObject.transform.rotation = Quaternion.identity;
-			//this.GameObject.transform.Rotate(new Vector3(0, 0, value));
-			
 			value = (value + 360.0f) % 360.0f;
 			this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
 		}
@@ -52,20 +48,24 @@ public class Roga2dNode {
 		}
 	}
 	
+	public Roga2dNode(string name) {
+		Initialize(name);
+	}
+	
 	public Roga2dNode() {
-		Initialize();
+		Initialize("Node");
 	}
 	
 	public Roga2dNode(GameObject go) {
 		this.GameObject = go;
-		Initialize();
+		Initialize("Node");
 	}
 	
-	private void Initialize() {
+	private void Initialize(string name) {
 		this.children = new List<Roga2dNode>();
 		
 		if (this.GameObject == null) {
-			this.GameObject = new GameObject("Node");
+			this.GameObject = new GameObject(name);
 		} else {
 			this.LocalPosition = this.GameObject.transform.position;
 		}

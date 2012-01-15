@@ -69,6 +69,7 @@ public class Roga2dPositionIntervalOption {
 	public Roga2dPositionType EndPositionType;
 	public Vector2 EndPositionAnchor;
 	public Roga2dNode Target;
+	public Roga2dNode TargetOrigin;
 	
 	public static Roga2dPositionIntervalOption Build() {
 		Roga2dPositionIntervalOption option = new Roga2dPositionIntervalOption();
@@ -77,6 +78,7 @@ public class Roga2dPositionIntervalOption {
 		option.EndPositionType = Roga2dPositionType.None;
 		option.EndPositionAnchor = new Vector2(0.0f, 0.0f);
 		option.Target = null;
+		option.TargetOrigin = null;
 		return option;
 	}
 }
@@ -148,23 +150,6 @@ public class Roga2dAnimation {
 		animation.Node = node;
 		animation.IsStarted = false;
 		return animation;
-	}
-}
-
-public class Roga2dRoot {
-	
-	public Roga2dNode Target;
-	private Roga2dAnimationPlayer player;
-	public Transform Transform;
-
-	public Roga2dAnimationPlayer Player {
-		get {
-			return player;	
-		}
-	}
-	
-	public Roga2dRoot(Roga2dAnimationPlayer player) {
-		this.player = player;
 	}
 }
 

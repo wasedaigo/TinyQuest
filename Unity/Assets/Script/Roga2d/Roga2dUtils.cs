@@ -156,6 +156,8 @@ public class Roga2dUtils {
 	                option.StartPositionType = positionIntervalData.startPositionType;
 					option.EndPositionType = positionIntervalData.endPositionType;
 	                option.Target = (root!=null) ? root.Target : null;
+					option.TargetOrigin = (root!=null) ? root.TargetOrigin : null;
+
 					intervals.Add(new Roga2dPositionInterval(sprite, start, end, positionIntervalData.duration, positionIntervalData.tween, option));
 				}
 				if(intervals.Count > 0) {

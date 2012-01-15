@@ -13,8 +13,8 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 	
 	protected override Vector2[] TweenBeforeFilter(Vector2 start, Vector2 end) {
 		if (this.option.Target != null) {
-			start = GetRelativePosition(node, this.option.Target, this.option.StartPositionType, this.option.StartPositionAnchor, start);
-			end = GetRelativePosition(node, this.option.Target, this.option.EndPositionType, this.option.EndPositionAnchor, end);
+			start = GetRelativePosition(node, this.option.Target, this.option.TargetOrigin, this.option.StartPositionType, this.option.StartPositionAnchor, start);
+			end = GetRelativePosition(node, this.option.Target, this.option.TargetOrigin, this.option.EndPositionType, this.option.EndPositionAnchor, end);
 		}
 		
 		return new Vector2[2] {start, end};
@@ -24,7 +24,7 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 		this.node.LocalPosition = value;
 	}
 	
-    private Vector2 GetRelativePosition(Roga2dNode node, Roga2dNode target, Roga2dPositionType positionType, Vector2 positionAnchor, Vector2 offset) {
+    private Vector2 GetRelativePosition(Roga2dNode node, Roga2dNode target, Roga2dNode targetOrigin, Roga2dPositionType positionType, Vector2 positionAnchor, Vector2 offset) {
 		Vector2 localTargetPosition = offset;
         
 		if (node.Parent != null) {
@@ -35,7 +35,7 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);
 	        } else if (positionType == Roga2dPositionType.RelativeToTargetOrigin) {
 	            Vector2 anchorOffset = target.GetOffsetByPositionAnchor(positionAnchor.x, positionAnchor.y);
-				Vector2 targetPosition = target.Origin + offset + anchorOffset;
+				Vector2 targetPosition = targetOrigin.Position + offset + anchorOffset;
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);
 	        }
 		}

@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Roga2dAnimationPlayer : MonoBehaviour {
+public class Roga2dAnimationPlayer {
 	private List<Roga2dAnimation> animations;
-	
-	public void Start()
+	public Roga2dAnimationPlayer()
 	{
 		this.animations = new List<Roga2dAnimation>();
 	}
@@ -13,17 +12,16 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
 		return animations.Count > 0;
 	}
 	
-	public void Play(Transform rootTransform, Roga2dAnimation animation) {
-		GameObject go = new GameObject("Root");
-		animation.Root = go;
+	public void Play(Roga2dNode root, Transform spawnTransform, Roga2dAnimation animation) {
 		
-		Roga2dGameObjectState state = Roga2dUtils.stashState(animation.Node.GameObject);
-		animation.Node.GameObject.transform.parent = go.transform;
-		Roga2dUtils.applyState(animation.Node.GameObject, state);
+		if (root != null) {
+			root.AddChild(animation.Node);
+		}
 
-		go.transform.position = rootTransform.position;
-		go.transform.rotation = rootTransform.rotation;
-
+		if (spawnTransform != null) {
+			animation.Node.GameObject.transform.position = spawnTransform.position;
+			animation.Node.GameObject.transform.rotation = spawnTransform.rotation;
+		}
         this.animations.Add(animation);
 	}
 
@@ -36,8 +34,7 @@ public class Roga2dAnimationPlayer : MonoBehaviour {
             Roga2dAnimation animation = this.animations[i];
 			if (animation.IsStarted) {
 	            if (animation.Interval.IsDone()) {
-					Destroy(animation.Node.GameObject);
-					Destroy(animation.Root);
+					Object.Destroy(animation.Node.GameObject);
 					this.animations.RemoveAt(i);
 	            } else {
 	            	animation.Interval.Update();
