@@ -63,10 +63,10 @@ public class Roga2dRenderObject {
 			return this.gameObject;
 		}
 	}
-
+	
 	private Mesh GeneratePlane(float sizeX, float sizeY, float[] uvs) {
 		if (this.mesh != null) {
-			Debug.Log("Mesh is not null!");	
+			return this.mesh;
 		}
 		this.mesh = new Mesh();
 		mesh.vertices = new Vector3[4] {
