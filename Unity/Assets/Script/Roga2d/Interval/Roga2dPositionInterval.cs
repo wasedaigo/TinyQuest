@@ -28,15 +28,22 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 		Vector2 localTargetPosition = offset;
         
 		if (node.Parent != null) {
+			GameObject root = node.GameObject.transform.root.gameObject;
 	        if (positionType == Roga2dPositionType.RelativeToTarget) {
+				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
 	            Vector2 anchorOffset = target.GetOffsetByPositionAnchor(positionAnchor.x, positionAnchor.y);
-	            
 				Vector2 targetPosition = target.Position + offset + anchorOffset;
+				
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);
+				Roga2dUtils.applyState(root, state);	
+				
 	        } else if (positionType == Roga2dPositionType.RelativeToTargetOrigin) {
+				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
 	            Vector2 anchorOffset = target.GetOffsetByPositionAnchor(positionAnchor.x, positionAnchor.y);
 				Vector2 targetPosition = targetOrigin.Position + offset + anchorOffset;
+				
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);
+				Roga2dUtils.applyState(root, state);
 	        }
 		}
         return localTargetPosition;

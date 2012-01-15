@@ -31,11 +31,15 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
     private float GetDynamicRotation(float start, float end, Roga2dRotationIntervalOption option, Roga2dNode target, Roga2dRotationIntervalDataStore dataStore) {
         float result = start;
 		if (target != null) {
+			GameObject root = node.GameObject.transform.root.gameObject;
             if (this.option.FacingType == Roga2dFacingType.FaceToDir) {
+				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
                 float dx = target.Position.x - node.Position.x;
                 float dy = target.Position.y - node.Position.y;
                 result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
+				Roga2dUtils.applyState(root, state);
             } else if (this.option.FacingType == Roga2dFacingType.FaceToMov) {
+				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
                 float dx = node.Position.x - dataStore.lastAbsPosition.x;
                 float dy = node.Position.y - dataStore.lastAbsPosition.y;
                 
@@ -49,6 +53,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
                 }
                 // Extra data for FaceToMov option
                 dataStore.lastAbsPosition = node.Position;
+				Roga2dUtils.applyState(root, state);
             }
         }
 		
