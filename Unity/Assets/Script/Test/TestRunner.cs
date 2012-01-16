@@ -16,6 +16,7 @@ public class TestRunner : MonoBehaviour {
 		TestRoga2dUtils.Test();
 		TestRoga2dNode.Test();
 		TestRoga2dSprite.Test();
+		TestRoga2dRoot.Test();
 		TestRoga2dAnimationPlayer.Test();
 
 		Tester.outputResult();

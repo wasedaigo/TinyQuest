@@ -5,6 +5,7 @@ public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
 	private Roga2dRoot root;
 	private Roga2dAnimationPlayer player;
+	private Roga2dSprite battler;
 	
 	void Awake () {
 		Application.targetFrameRate = 60;
@@ -14,15 +15,24 @@ public class AnimationSpawner : MonoBehaviour {
 	void Start () {
 		this.player = new Roga2dAnimationPlayer();
 		this.root = new Roga2dRoot(this.player);
-		
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.GameObject);
 		this.root.GameObject.transform.parent = roga2dRoot.transform;
 		Roga2dUtils.applyState(this.root.GameObject, state);
-
 		{
 			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("bg/bg0001"), new Vector2(192, 256), new Vector2(0, 0), new Rect(0, 0, 128, 64));
+
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
+			sprite.LocalPriority = 0.05f;
 			this.root.AddChild(sprite);
+		}
+		
+		{
+			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("Battle/Skills/Battler_Base"), new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32));
+			Roga2dSprite sprite = new Roga2dSprite(renderObject);
+			sprite.LocalPriority = 0.1f;
+			sprite.Update();
+			this.root.AddChild(sprite);
+			this.battler = sprite;
 		}
 		
 		{
@@ -33,44 +43,42 @@ public class AnimationSpawner : MonoBehaviour {
 		
 			Roga2dNode target = sprite;
 			this.root.Target = target;
-			
-			Roga2dNode origin = new Roga2dNode("TargetOrigin");
-			this.root.AddChild(origin);
-			origin.LocalPosition = target.LocalPosition;
-			this.root.TargetOrigin = origin;
-			;
 		}
 	}
 	
 	static string[] ids = new string[] {
-			"Battle/Skills/Axe/Bash",
 			"Battle/Skills/Sword/LeaveDance",
-			"Battle/Skills/Battler/TestSwordUpper",
-			"Battle/Skills/Laser/Skill_Laser01",
 			"Battle/Skills/Spear/SpearAirraid",
+			"Battle/Skills/Axe/Bash",
+			
+			"Battle/Skills/Laser/Skill_Laser01",
 			"Battle/Skills/Bow/Shoot",
 			"Battle/Skills/Bow/bow_bomb",
-			//"Battle/Skills/Axe/CycloneAxe",
+			"Battle/Skills/Axe/CycloneAxe",
 			"Battle/Skills/Axe/Slash",
 			"Battle/Skills/Axe/ArmorBreaker",
 			"Battle/Skills/Fire/Skill_Flare",
 			"Battle/Skills/Common/MagicCasting"
 	};
+	
 	static int no = 0;
-	static bool done = false;
-	// Update is called once per frame
+    void AnimationFinished(Roga2dAnimation animation)
+    {
+		this.battler.Show();
+    }
+
 	void Update () {
-		
 		this.player.Update();
-		if (!player.HasPlayingAnimations()) {
-			//Resources.UnloadUnusedAssets();
-			//if(done){return;}
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root);
-			this.player.Play(this.root, null, animation);
-			done = true;
-			no +=1;
-			if (no >= ids.Length) {
-				no = 0;	
+		this.root.Update();
+		if (Input.GetMouseButtonDown(0)) {
+			this.battler.Hide();
+			if (!player.HasPlayingAnimations()) {
+				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root);
+				this.player.Play(this.root, null, animation,  AnimationFinished);
+				no +=1;
+				if (no >= ids.Length) {
+					no = 0;	
+				}
 			}
 		}
 	}

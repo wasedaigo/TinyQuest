@@ -8,6 +8,7 @@ class TestRoga2dNode {
 		TestAddRemove();
 		TestAddRemoveAll();
 		TestUpdate();
+		TestVisibility();
 	}
 	
 	public static void TestAddRemoveAll() {
@@ -127,5 +128,27 @@ class TestRoga2dNode {
 		Tester.Match(child.Priority, 0.32f);
 		
 		node.Destroy();
+	}
+	
+	public static void TestVisibility() {
+		Roga2dNode node1 = new Roga2dNode();
+		Roga2dNode node2 = new Roga2dNode();
+		
+		node1.Hide();
+		Tester.Match(node1.IsVisible, false);
+		
+		node1.AddChild(node2);
+		Tester.Match(node2.IsVisible, false);
+		
+		node1.Hide();
+		Tester.Match(node1.IsVisible, false);
+		Tester.Match(node2.IsVisible, false);
+		
+		node1.Show();
+		Tester.Match(node1.IsVisible, true);
+		Tester.Match(node2.IsVisible, true);
+		
+		node1.Destroy();
+		node2.Destroy();
 	}
 }

@@ -21,6 +21,7 @@ public class Roga2dNode {
 	public List<Roga2dNode> children;
 	private float priority;
 	private float alpha;
+	private bool isHidden;
 	
 	public float LocalRotation {
 		get {
@@ -47,7 +48,23 @@ public class Roga2dNode {
 			this.GameObject.transform.localScale = new Vector3(value.x, value.y, 1.0f);
 		}
 	}
-	
+	public bool IsVisible {
+		get {
+			return !this.isHidden;
+		}
+	}
+	public virtual void Hide() {
+		this.isHidden = true;
+		foreach(Roga2dNode node in this.children) {
+			node.Hide();
+		}
+	}
+	public virtual void Show() {
+		this.isHidden = false;
+		foreach(Roga2dNode node in this.children) {
+			node.Show();
+		}
+	}
 	public Roga2dNode(string name) {
 		Initialize(name);
 	}
@@ -74,16 +91,15 @@ public class Roga2dNode {
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;
 		this.priority = 0.5f;
-		
 	}
 	
 	public virtual void Destroy() {
-		this.Parent = null;	
-		if (this.GameObject) {
+		if (this.GameObject != null) {
 			this.GameObject.transform.parent = null;
 			Object.Destroy(this.GameObject);
 			this.GameObject = null;
 		}
+
 		foreach (Roga2dNode node in this.children) {
 			node.Destroy();	
 		}
@@ -112,29 +128,40 @@ public class Roga2dNode {
 			return this.priority;	
 		}
 	}
-	
-	public virtual void UpdatePriority() {
-        if (this.Parent != null) {
-            this.alpha = this.LocalAlpha * this.Parent.Alpha;
-            this.priority = 2 * this.LocalPriority * this.Parent.Priority;
+
+	public virtual void UpdateTransparency() {
+        if (this.Parent == null) {
+			this.alpha = this.LocalAlpha;
         } else {
-            this.alpha = this.LocalAlpha;
-            this.priority = this.LocalPriority;
+            this.alpha = this.LocalAlpha * this.Parent.Alpha;
         }
 	}
 	
-	public virtual void Update() {
+	public virtual void UpdatePriority() {
+        if (this.Parent == null) {
+            this.priority = this.LocalPriority;
+        } else {
+			this.priority = 2 * this.LocalPriority * this.Parent.Priority;
+        }
+	}
 
-		UpdatePriority();
+	public virtual void UpdatePosition() {
 		// Add velocity
 		Vector2 velocity = this.Velocity;
 		this.LocalPosition = new Vector2(this.LocalPosition.x + velocity.x, this.LocalPosition.y + velocity.y);
-	
-		// Move z position of the node, so that it reflects its render-priority
-		float z = this.priority;
-		this.GameObject.transform.position = new Vector3(this.GameObject.transform.position.x, this.GameObject.transform.position.y, z);
-
 		
+		// Move z position of the node, so that it reflects its render-priority
+		this.GameObject.transform.position = new Vector3(
+			this.GameObject.transform.position.x, 
+			this.GameObject.transform.position.y, 
+			this.priority
+		);
+	}
+	public virtual void Update() {
+		UpdateTransparency();
+		UpdatePriority();
+		UpdatePosition();
+
 		foreach(Roga2dNode node in this.children) {
 			node.Update();
 		}
@@ -147,6 +174,9 @@ public class Roga2dNode {
 
 		this.children.Add(node);
 		
+		if (this.isHidden) {
+			node.Hide();
+		}
 		Roga2dGameObjectState state = Roga2dUtils.stashState(node.GameObject);
 		node.GameObject.transform.parent = this.GameObject.transform;
 		node.Parent = this;

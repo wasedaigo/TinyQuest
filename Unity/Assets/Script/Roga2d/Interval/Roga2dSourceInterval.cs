@@ -79,7 +79,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			Debug.LogError("No AnimationPlayer is defined in root");	
 		}
 		
-		this.root.Player.Play(this.root, this.sprite.GameObject.transform, animation);
+		this.root.Player.Play(this.root, this.sprite.GameObject.transform, animation, null);
 	}
 	
 	private void UpdateKeyframe(int index, bool isStart) {

@@ -33,6 +33,8 @@ public class Roga2dRenderObject {
 			Object.Destroy(this.mesh);
 			Object.Destroy(this.material);
 			this.gameObject = null;
+			this.mesh = null;
+			this.material = null;
 		}
 	}
 
@@ -40,7 +42,6 @@ public class Roga2dRenderObject {
 		this.gameObject = new GameObject("RenderObject");
 		MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
 		this.gameObject.AddComponent("MeshRenderer");
-		
 		float[] uvs;
 		
 		if (this.texture == null) {
@@ -53,9 +54,9 @@ public class Roga2dRenderObject {
 				1 - this.srcRect.yMin / this.texture.height
 			};
 		}
-		
+		this.alpha = 0.0f;
 		meshFilter.mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize, uvs);
-		this.SetBlend(Roga2dBlendType.Alpha, 1.0f);		
+		this.SetBlend(Roga2dBlendType.Alpha, 1.0f);	
 	}
 	
 	public GameObject GameObject {
@@ -65,9 +66,6 @@ public class Roga2dRenderObject {
 	}
 	
 	private Mesh GeneratePlane(float sizeX, float sizeY, float[] uvs) {
-		if (this.mesh != null) {
-			return this.mesh;
-		}
 		this.mesh = new Mesh();
 		mesh.vertices = new Vector3[4] {
 			new Vector3(-sizeX, -sizeY, 0.01f), 
