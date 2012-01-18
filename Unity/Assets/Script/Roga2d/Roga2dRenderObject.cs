@@ -20,7 +20,7 @@ public class Roga2dRenderObject {
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
-		this.pixelSize = pixelSize;
+		this.pixelSize = Roga2dUtils.FixCoordinate(pixelSize);
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
 		this.texture = texture;

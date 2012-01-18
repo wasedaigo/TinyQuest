@@ -195,7 +195,7 @@ public class Roga2dUtils {
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Rect = new Rect(sourceIntervalData.rect[0], sourceIntervalData.rect[1], sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
 					keyFrame.PixelCenter = new Vector2(sourceIntervalData.center[0], sourceIntervalData.center[1]);
-					keyFrame.PixelSize = new Vector2(sourceIntervalData.rect[3], sourceIntervalData.rect[2]);
+					keyFrame.PixelSize = new Vector2(sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
 				} else {				
 					keyFrame.Emitter = sourceIntervalData.emitter;
 					keyFrame.MaxEmitAngle = sourceIntervalData.maxEmitAngle;

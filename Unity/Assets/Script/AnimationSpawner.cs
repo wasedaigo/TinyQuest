@@ -19,7 +19,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.GameObject.transform.parent = roga2dRoot.transform;
 		Roga2dUtils.applyState(this.root.GameObject, state);
 		{
-			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("bg/bg0001"), new Vector2(192, 256), new Vector2(0, 0), new Rect(0, 0, 128, 64));
+			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("bg/bg0001"), new Vector2(256, 192), new Vector2(0, 0), new Rect(0, 0, 128, 64));
 
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
 			sprite.LocalPriority = 0.05f;
