@@ -227,6 +227,10 @@ public class Roga2dUtils {
 		return new Vector2(-pixelCoordinate.y / 32, pixelCoordinate.x / 32);
 	}
 	
+	public static Vector2 localToPixel(Vector2 localCoordinate){
+		return new Vector2(localCoordinate.y * 32, -localCoordinate.x * 32);
+	}
+	
 	public static Vector2 FixCoordinate(Vector2 coordinate){
 		return new Vector2(coordinate.y, coordinate.x);
 	}

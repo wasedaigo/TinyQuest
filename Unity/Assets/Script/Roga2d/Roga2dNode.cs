@@ -23,6 +23,14 @@ public class Roga2dNode {
 	private float alpha;
 	private bool isHidden;
 	
+	public Vector2 LocalPixelPosition {
+		get {
+			return Roga2dUtils.localToPixel(this.GameObject.transform.localPosition);
+		}
+		set {
+			this.GameObject.transform.localPosition = Roga2dUtils.pixelToLocal(value);
+		}
+	}
 	public float LocalRotation {
 		get {
 			return this.GameObject.transform.localEulerAngles.z;
