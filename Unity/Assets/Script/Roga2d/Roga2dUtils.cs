@@ -224,15 +224,19 @@ public class Roga2dUtils {
     }
 	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
-		return new Vector2(-pixelCoordinate.y / 32, pixelCoordinate.x / 32);
+		return new Vector2(-pixelCoordinate.y / 32.0f, pixelCoordinate.x / 32.0f);
 	}
 	
 	public static Vector2 localToPixel(Vector2 localCoordinate){
-		return new Vector2(localCoordinate.y * 32, -localCoordinate.x * 32);
+		return new Vector2(localCoordinate.y * 32.0f, -localCoordinate.x * 32.0f);
 	}
 	
 	public static Vector2 FixCoordinate(Vector2 coordinate){
 		return new Vector2(coordinate.y, coordinate.x);
+	}
+	
+	public static float RoundPrecision(float value){
+		return Mathf.Round(value * 10000) / 10000;
 	}
 	
 	public static Roga2dGameObjectState stashState(GameObject go) {

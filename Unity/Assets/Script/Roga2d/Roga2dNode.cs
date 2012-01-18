@@ -156,7 +156,7 @@ public class Roga2dNode {
 	public virtual void UpdatePosition() {
 		// Add velocity
 		Vector2 velocity = this.Velocity;
-		this.LocalPosition = new Vector2(this.LocalPosition.x + velocity.x, this.LocalPosition.y + velocity.y);
+		this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(this.LocalPosition.x + velocity.x), Roga2dUtils.RoundPrecision(this.LocalPosition.y + velocity.y));
 		
 		// Move z position of the node, so that it reflects its render-priority
 		this.GameObject.transform.position = new Vector3(
