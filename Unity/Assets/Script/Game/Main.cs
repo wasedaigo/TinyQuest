@@ -30,12 +30,19 @@ public class Main : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	private static bool isPressed = false;
 	void Update () {
 		this.player.Update();
 		this.root.Update();
+		if (Input.GetMouseButtonUp(0)) {
+			isPressed = false;
+		}
 		if (Input.GetMouseButtonDown(0)) {
+			isPressed = true;
+		}
+		if (isPressed) {
 			Vector2 position = this.player.LocalPixelPosition;
-			this.player.LocalPixelPosition = new Vector2(position.x + 1, position.y);
+			this.player.LocalPixelPosition = new Vector2(position.x - 1, position.y);
 		}
 	}
 }
