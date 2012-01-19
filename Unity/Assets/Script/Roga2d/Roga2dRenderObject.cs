@@ -20,7 +20,7 @@ public class Roga2dRenderObject {
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
-		this.pixelSize = Roga2dUtils.FixCoordinate(pixelSize);
+		this.pixelSize = pixelSize;
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
 		this.texture = texture;
@@ -46,7 +46,8 @@ public class Roga2dRenderObject {
 			this.gameObject.AddComponent("MeshRenderer");
 			
 			this.alpha = 0.0f;
-			meshFilter.mesh = GeneratePlane(this.pixelSize.x / Roga2dConst.BasePixelSize, this.pixelSize.y / Roga2dConst.BasePixelSize);
+			meshFilter.mesh = GeneratePlane(1, 1);
+			this.SetSize(this.pixelSize);
 			this.SetSrcRect(this.srcRect);
 			this.SetBlend(Roga2dBlendType.Alpha, 1.0f);	
 		}
@@ -61,10 +62,10 @@ public class Roga2dRenderObject {
 	private Mesh GeneratePlane(float sizeX, float sizeY) {
 		this.mesh = new Mesh();
 		this.mesh.vertices = new Vector3[4] {
-			new Vector3(-sizeX, -sizeY, 0.01f), 
-			new Vector3(sizeX, -sizeY, 0.01f), 
-			new Vector3(sizeX, sizeY, 0.01f), 
-			new Vector3(-sizeX, sizeY, 0.01f)
+			new Vector3(-1.0f, -1.0f, 0.01f), 
+			new Vector3(1.0f, -1.0f, 0.01f), 
+			new Vector3(1.0f, 1.0f, 0.01f), 
+			new Vector3(-1.0f, 1.0f, 0.01f)
 		};
 		this.mesh.triangles = new int[6] {0, 1, 2, 0, 2, 3};
 		this.mesh.RecalculateNormals();
@@ -72,21 +73,28 @@ public class Roga2dRenderObject {
 		return this.mesh;
 	}
 	
+	public void SetSize(Vector2 pixelSize) {
+		pixelSize = Roga2dUtils.FixCoordinate(pixelSize);
+		this.gameObject.transform.localScale = new Vector3(pixelSize.x / Roga2dConst.BasePixelSize, pixelSize.y / Roga2dConst.BasePixelSize, 0.1f);
+	}
+	
 	public void SetSrcRect(Rect srcRect) {
 		this.srcRect = srcRect;
-		float[] uvs = new float[4] {
-			this.srcRect.xMin / this.texture.width, 
-			1 - this.srcRect.yMax / this.texture.height, 
-			this.srcRect.xMax / this.texture.width, 
-			1 - this.srcRect.yMin / this.texture.height
-		};
-
-		this.mesh.uv = new Vector2[4] {
-			new Vector2(uvs[0], uvs[1]), 
-			new Vector2 (uvs[0], uvs[3]), 
-			new Vector2(uvs[2], uvs[3]), 
-			new Vector2 (uvs[2], uvs[1])
-		};
+		if (this.texture != null) {
+			float[] uvs = new float[4] {
+				this.srcRect.xMin / this.texture.width, 
+				1 - this.srcRect.yMax / this.texture.height, 
+				this.srcRect.xMax / this.texture.width, 
+				1 - this.srcRect.yMin / this.texture.height
+			};
+	
+			this.mesh.uv = new Vector2[4] {
+				new Vector2(uvs[0], uvs[1]), 
+				new Vector2 (uvs[0], uvs[3]), 
+				new Vector2(uvs[2], uvs[3]), 
+				new Vector2 (uvs[2], uvs[1])
+			};
+		}
 	}
 	
 	public void SetBlend(Roga2dBlendType blendType, float alpha) {

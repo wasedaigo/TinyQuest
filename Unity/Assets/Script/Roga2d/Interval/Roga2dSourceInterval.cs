@@ -1,6 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+class Roga2dRenderObjectDesc {
+	public Roga2dRenderObject RenderObject;
+	public Rect SrcRect;
+	public Vector2 PixelSize;
+};
+
 public class Roga2dSourceInterval : Roga2dBaseInterval {
 	private Roga2dSprite sprite;
 	private Roga2dRoot root;
@@ -11,7 +17,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	protected float duration;
 	protected int frameNo;
 	private int index;
-	private List<Roga2dRenderObject> renderObjects;
+	private List<Roga2dRenderObjectDesc> renderObjectDescs;
 
 	public Roga2dSourceInterval(Roga2dSprite sprite, List<Roga2dAnimationKeyFrame> keyFrames, Roga2dRoot root)
 	{
@@ -20,14 +26,28 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		this.root = root;
 		this.lastAnimationId = "";
 		this.keyFrames = keyFrames;
-		this.renderObjects = new List<Roga2dRenderObject>(this.keyFrames.Count);
+		this.renderObjectDescs = new List<Roga2dRenderObjectDesc>(this.keyFrames.Count);
+		
+		string lastKeyFrameId = "";
         foreach (Roga2dAnimationKeyFrame keyFrame in this.keyFrames) {
 			if (keyFrame.Id != "" && keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
-				Texture texture = Roga2dResourceManager.getTexture(keyFrame.Id);
-				Roga2dRenderObject renderObject = new Roga2dRenderObject(texture, keyFrame.PixelSize, keyFrame.PixelCenter, keyFrame.Rect);
-				renderObjects.Add(renderObject);
+				
+				Roga2dRenderObject renderObject;
+				if (lastKeyFrameId == keyFrame.Id) {
+					renderObject = renderObjectDescs[renderObjectDescs.Count - 1].RenderObject;
+				} else {
+					Texture texture = Roga2dResourceManager.getTexture(keyFrame.Id);
+					renderObject = new Roga2dRenderObject(texture, keyFrame.PixelSize, keyFrame.PixelCenter, keyFrame.Rect);
+				}
+				Roga2dRenderObjectDesc desc = new Roga2dRenderObjectDesc();
+				desc.RenderObject = renderObject;
+				desc.SrcRect = keyFrame.Rect;
+				desc.PixelSize = keyFrame.PixelSize;
+				renderObjectDescs.Add(desc);
+				lastKeyFrameId = keyFrame.Id;
 			} else {
-				renderObjects.Add(null);
+				renderObjectDescs.Add(null);
+				lastKeyFrameId = "";
 			}
 			this.duration += keyFrame.Duration;  
         }
@@ -94,10 +114,20 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
         this.sprite.BlendType = keyFrame.BlendType;
 
 		if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
-			if (this.renderObjects[index] == null) {
+			if (this.renderObjectDescs[index] == null) {
 				Debug.LogError("Null RenderObject");	
 			}
-			this.sprite.RenderObject = this.renderObjects[index];
+			Roga2dRenderObjectDesc desc = this.renderObjectDescs[index];
+			
+			if (desc.RenderObject == this.sprite.RenderObject) {
+				// Reuse old RenderObject and only changes its UV Map
+				this.sprite.RenderObject.SetSrcRect(desc.SrcRect);
+				this.sprite.RenderObject.SetSize(desc.PixelSize);
+			} else {
+				// Assign a new RenderObject
+				this.sprite.RenderObject = desc.RenderObject;
+			}
+			
 			
 		} else if (keyFrame.Type == Roga2dAnimationKeyFrameType.Animation) {
 			

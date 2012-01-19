@@ -39,7 +39,6 @@ public class Roga2dSprite : Roga2dNode {
 					Roga2dGameObjectState state = Roga2dUtils.stashState(this.renderObject.GameObject);
 					this.renderObject.GameObject.transform.parent = this.GameObject.transform;
 					Roga2dUtils.applyState(this.renderObject.GameObject, state);
-
 				}
 			}
 		}
@@ -58,9 +57,9 @@ public class Roga2dSprite : Roga2dNode {
 	public override Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {
 		Vector2 offset = new Vector2(0, 0);
 		if (this.renderObject != null) {
-	        float centerX = this.RenderObject.PixelSize.x / 2 + this.RenderObject.PixelCenter.x;
-	        float centerY = this.RenderObject.PixelSize.y / 2 + this.RenderObject.PixelCenter.y;
 			Vector2 pixelSize = this.RenderObject.PixelSize;
+	        float centerX = pixelSize.x / 2 + this.RenderObject.PixelCenter.x;
+	        float centerY = pixelSize.y / 2 + this.RenderObject.PixelCenter.y;
 			offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * this.LocalScale.x;
 			offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * this.LocalScale.y;
 		}
