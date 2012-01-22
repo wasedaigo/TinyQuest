@@ -12,6 +12,7 @@ public class Roga2dRenderObject {
 	public Vector2 pixelCenter;
 	private GameObject gameObject;
 	private Transform transform;
+	private MeshRenderer renderer;
 	private Texture texture;
 	private Mesh mesh;
 	private Material material;
@@ -47,7 +48,7 @@ public class Roga2dRenderObject {
 		
 		if (this.texture != null) {
 			MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
-			this.gameObject.AddComponent("MeshRenderer");
+			this.renderer = this.gameObject.AddComponent("MeshRenderer") as MeshRenderer;
 			
 			this.alpha = 0.0f;
 			this.mesh = GeneratePlane(1, 1);
@@ -67,6 +68,12 @@ public class Roga2dRenderObject {
 	public Transform Transform {
 		get {
 			return this.transform;
+		}
+	}
+	
+	public MeshRenderer Renderer {
+		get {
+			return this.renderer;
 		}
 	}
 	
@@ -119,7 +126,7 @@ public class Roga2dRenderObject {
 			Object.Destroy(this.material);
 		}
 
-		MeshRenderer renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
+		this.renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		Color color;
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
