@@ -128,9 +128,15 @@ public class Roga2dRenderObject {
 
 		this.renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		Color color;
+		
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-			this.material = new Material(Shader.Find("Transparent/VertexLit"));
+			if (alpha == 1.0f) {
+				// Use lite-shader for non-alpha sprite
+				this.material = new Material(Shader.Find("Mobile/Particles/VertexLit Blended"));
+			} else {
+				this.material = new Material(Shader.Find("Transparent/VertexLit"));
+			}
 			color = new Color(1.0f, 1.0f, 1.0f, alpha);
 			this.material.SetColor("_Color", color);
 			break;
