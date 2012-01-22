@@ -81,18 +81,16 @@ public class Roga2dRenderObject {
 	public void SetSrcRect(Rect srcRect) {
 		this.srcRect = srcRect;
 		if (this.texture != null) {
-			float[] uvs = new float[4] {
-				this.srcRect.xMin / this.texture.width, 
-				1 - this.srcRect.yMax / this.texture.height, 
-				this.srcRect.xMax / this.texture.width, 
-				1 - this.srcRect.yMin / this.texture.height
-			};
-	
+			float uv1 = this.srcRect.xMin / this.texture.width;
+			float uv2 = 1 - this.srcRect.yMax / this.texture.height;
+			float uv3 = this.srcRect.xMax / this.texture.width;
+			float uv4 = 1 - this.srcRect.yMin / this.texture.height;
+
 			this.mesh.uv = new Vector2[4] {
-				new Vector2(uvs[0], uvs[1]), 
-				new Vector2 (uvs[0], uvs[3]), 
-				new Vector2(uvs[2], uvs[3]), 
-				new Vector2 (uvs[2], uvs[1])
+				new Vector2(uv1, uv2), 
+				new Vector2(uv1, uv4), 
+				new Vector2(uv3, uv4), 
+				new Vector2(uv3, uv2)
 			};
 		}
 	}
