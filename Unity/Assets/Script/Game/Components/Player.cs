@@ -24,8 +24,9 @@ namespace TinyQuest.Component {
 				keyFrame.PixelSize = new Vector2(32, 32);
 				keyFrames.Add(keyFrame);
 			}
-				
-			this.interval = new Roga2dLoop(new Roga2dSourceInterval(sprite, keyFrames, null), 0);
+			
+			Dictionary<string, string> options = new Dictionary<string, string>();
+			this.interval = new Roga2dLoop(new Roga2dSourceInterval(sprite, keyFrames, null, options), 0);
 			
 		}
 		

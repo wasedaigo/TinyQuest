@@ -104,7 +104,7 @@ public class Roga2dUtils {
 		return result;
 	}
 
-    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dRoot root) {
+    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dRoot root, Dictionary<string, string> options) {
 		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
@@ -188,7 +188,11 @@ public class Roga2dUtils {
 				Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
-				keyFrame.Id = sourceIntervalData.id;
+				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
+					keyFrame.Id = swapTextureId(sourceIntervalData.id, options);
+				} else {
+					keyFrame.Id = sourceIntervalData.id;
+				}
 				keyFrame.Duration = sourceIntervalData.duration;
 				keyFrame.Priority = sourceIntervalData.priority;
 				keyFrame.BlendType = sourceIntervalData.blendType;
@@ -206,7 +210,7 @@ public class Roga2dUtils {
 				keyFrames.Add(keyFrame);
 			}
 			if (keyFrames.Count > 0) {
-				sequences.Add(new Roga2dSourceInterval(sprite, keyFrames, root));
+				sequences.Add(new Roga2dSourceInterval(sprite, keyFrames, root, options));
 			}
 
 			parallels.Add(new Roga2dParallel(sequences));
@@ -223,6 +227,15 @@ public class Roga2dUtils {
 		}
     }
 	
+	public static string swapTextureId(string baseFileName, Dictionary<string, string> conversionMap){
+
+		if (conversionMap.ContainsKey(baseFileName)) {
+			return conversionMap[baseFileName];
+		}
+		
+		return baseFileName;
+	}
+
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
 		return new Vector2(-pixelCoordinate.y / 32.0f, pixelCoordinate.x / 32.0f);
 	}

@@ -50,7 +50,7 @@ class TestRoga2dSourceInterval {
 		keyFrame.PixelCenter = new Vector2(4, 4);
 		keyFrames.Add(keyFrame);
 
-		Roga2dSourceInterval interval = new Roga2dSourceInterval(sprite, keyFrames, root);
+		Roga2dSourceInterval interval = new Roga2dSourceInterval(sprite, keyFrames, root, null);
 	
 		interval.Start();
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));

@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
 	private Roga2dRoot root;
 	private Roga2dAnimationPlayer player;
 	private Roga2dSprite battler;
+	private Dictionary<string, string> options;
 	
 	void Awake () {
 		Application.targetFrameRate = 60;
@@ -13,6 +15,7 @@ public class AnimationSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		string characterName = "draco";
 		this.player = new Roga2dAnimationPlayer();
 		this.root = new Roga2dRoot(this.player);
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
@@ -28,7 +31,7 @@ public class AnimationSpawner : MonoBehaviour {
 		}
 		
 		{
-			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("Battle/Skills/Battler_Base"), new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32));
+			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("Characters/" + characterName), new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32));
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
 			sprite.LocalPriority = 0.1f;
 			sprite.Update();
@@ -45,6 +48,9 @@ public class AnimationSpawner : MonoBehaviour {
 			Roga2dNode target = sprite;
 			this.root.Target = target;
 		}
+		
+		this.options = new Dictionary<string, string>();
+		this.options["Battle/Skills/Battler_Base"] = "Characters/" + characterName;
 	}
 	
 	static string[] ids = new string[] {
@@ -74,7 +80,8 @@ public class AnimationSpawner : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			this.battler.Hide();
 			if (!player.HasPlayingAnimations()) {
-				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root);
+				
+				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root, this.options);
 				this.player.Play(this.root, null, animation,  AnimationFinished);
 				no +=1;
 				if (no >= ids.Length) {
