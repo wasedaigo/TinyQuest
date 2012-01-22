@@ -24,13 +24,12 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		Application.targetFrameRate = 60;
 		this.player = new Roga2dAnimationPlayer();
 		this.root = new Roga2dRoot(this.player);
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
-		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.GameObject);
-		this.root.GameObject.transform.parent = roga2dRoot.transform;
-		Roga2dUtils.applyState(this.root.GameObject, state);
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);
+		this.root.Transform.parent = roga2dRoot.transform;
+		Roga2dUtils.applyState(this.root.Transform, state);
 
 		// Player
 		
@@ -48,7 +47,7 @@ public class AnimationSpawner : MonoBehaviour {
 		{
 			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("death_wind"), new Vector2(96, 96), new Vector2(0, 0), new Rect(0, 0, 96, 96));
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
-			sprite.GameObject.transform.position = new Vector3(0.0f, -2.0f, 0.45f);
+			sprite.Transform.position = new Vector3(0.0f, -2.0f, 0.45f);
 			this.root.AddChild(sprite);
 		
 			Roga2dNode target = sprite;

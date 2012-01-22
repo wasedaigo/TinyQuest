@@ -34,11 +34,11 @@ public class Roga2dSprite : Roga2dNode {
 				if (value != null) {
 					this.renderObject = value;
 					this.renderObject.Pop();
-					this.renderObject.GameObject.transform.localPosition = Roga2dUtils.FixCoordinate(renderObject.Anchor);
+					this.renderObject.Transform.localPosition = Roga2dUtils.FixCoordinate(renderObject.Anchor);
 					
-					Roga2dGameObjectState state = Roga2dUtils.stashState(this.renderObject.GameObject);
-					this.renderObject.GameObject.transform.parent = this.GameObject.transform;
-					Roga2dUtils.applyState(this.renderObject.GameObject, state);
+					Roga2dGameObjectState state = Roga2dUtils.stashState(this.renderObject.Transform);
+					this.renderObject.Transform.parent = this.Transform;
+					Roga2dUtils.applyState(this.renderObject.Transform, state);
 				}
 			}
 		}

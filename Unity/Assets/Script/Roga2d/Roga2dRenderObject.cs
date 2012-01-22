@@ -11,6 +11,7 @@ public class Roga2dRenderObject {
 	public Vector2 pixelSize;
 	public Vector2 pixelCenter;
 	private GameObject gameObject;
+	private Transform transform;
 	private Texture texture;
 	private Mesh mesh;
 	private Material material;
@@ -20,6 +21,7 @@ public class Roga2dRenderObject {
 	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
+		this.transform = null;
 		this.pixelSize = pixelSize;
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
@@ -33,6 +35,7 @@ public class Roga2dRenderObject {
 			Object.Destroy(this.mesh);
 			Object.Destroy(this.material);
 			this.gameObject = null;
+			this.transform = null;
 			this.mesh = null;
 			this.material = null;
 		}
@@ -40,13 +43,15 @@ public class Roga2dRenderObject {
 
 	public void Pop() {
 		this.gameObject = new GameObject("RenderObject");
+		this.transform = this.gameObject.transform;
 		
 		if (this.texture != null) {
 			MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
 			this.gameObject.AddComponent("MeshRenderer");
 			
 			this.alpha = 0.0f;
-			meshFilter.mesh = GeneratePlane(1, 1);
+			this.mesh = GeneratePlane(1, 1);
+			meshFilter.mesh = this.mesh;
 			this.SetSize(this.pixelSize);
 			this.SetSrcRect(this.srcRect);
 			this.SetBlend(Roga2dBlendType.Alpha, 1.0f);	
@@ -59,25 +64,31 @@ public class Roga2dRenderObject {
 		}
 	}
 	
+	public Transform Transform {
+		get {
+			return this.transform;
+		}
+	}
+	
 	private Mesh GeneratePlane(float sizeX, float sizeY) {
-		this.mesh = new Mesh();
-		this.mesh.vertices = new Vector3[4] {
+		Mesh mesh = new Mesh();
+		mesh.vertices = new Vector3[4] {
 			new Vector3(-1.0f, -1.0f, 0.01f), 
 			new Vector3(1.0f, -1.0f, 0.01f), 
 			new Vector3(1.0f, 1.0f, 0.01f), 
 			new Vector3(-1.0f, 1.0f, 0.01f)
 		};
-		this.mesh.triangles = new int[6] {0, 1, 2, 0, 2, 3};
-		this.mesh.RecalculateNormals();
+		mesh.triangles = new int[6] {0, 1, 2, 0, 2, 3};
+		mesh.RecalculateNormals();
 		
-		return this.mesh;
+		return mesh;
 	}
-	
+
 	public void SetSize(Vector2 pixelSize) {
 		pixelSize = Roga2dUtils.FixCoordinate(pixelSize);
-		this.gameObject.transform.localScale = new Vector3(pixelSize.x / Roga2dConst.BasePixelSize, pixelSize.y / Roga2dConst.BasePixelSize, 0.1f);
+		this.transform.localScale = new Vector3(pixelSize.x / Roga2dConst.BasePixelSize, pixelSize.y / Roga2dConst.BasePixelSize, 0.1f);
 	}
-	
+
 	public void SetSrcRect(Rect srcRect) {
 		this.srcRect = srcRect;
 		if (this.texture != null) {

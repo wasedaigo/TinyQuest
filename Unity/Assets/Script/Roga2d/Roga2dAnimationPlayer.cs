@@ -18,8 +18,8 @@ public class Roga2dAnimationPlayer {
 		}
 
 		if (spawnTransform != null) {
-			animation.Node.GameObject.transform.position = spawnTransform.position;
-			animation.Node.GameObject.transform.rotation = spawnTransform.rotation;
+			animation.Node.Transform.position = spawnTransform.position;
+			animation.Node.Transform.rotation = spawnTransform.rotation;
 		}
 		
 		animation.finishCallback = finishCallback;

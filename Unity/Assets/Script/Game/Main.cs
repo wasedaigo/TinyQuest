@@ -15,9 +15,9 @@ public class Main : MonoBehaviour {
 		this.root = new Roga2dRoot(this.animationPlayer);
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
 
-		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.GameObject);
-		this.root.GameObject.transform.parent = roga2dRoot.transform;
-		Roga2dUtils.applyState(this.root.GameObject, state);
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);
+		this.root.Transform.parent = roga2dRoot.transform;
+		Roga2dUtils.applyState(this.root.Transform, state);
 		
 		// Player
 		this.player = new Player("lilia");

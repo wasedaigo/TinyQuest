@@ -118,10 +118,10 @@ class TestRoga2dNode {
 
 		node.Update();
 		// After transform
-		Tester.Match(node.GameObject.transform.localPosition, new Vector3(1.0f, 2.0f, 0.4f));
-		Tester.Match(node.GameObject.transform.localEulerAngles, new Vector3(0.0f, 0.0f, 3.0f));
-		Tester.Match(node.GameObject.transform.localScale, new Vector3(-1.0f, -2.0f, 1.0f));
-		Tester.Match(node.GameObject.transform, child.GameObject.transform.parent);
+		Tester.Match(node.Transform.localPosition, new Vector3(1.0f, 2.0f, 0.4f));
+		Tester.Match(node.Transform.localEulerAngles, new Vector3(0.0f, 0.0f, 3.0f));
+		Tester.Match(node.Transform.localScale, new Vector3(-1.0f, -2.0f, 1.0f));
+		Tester.Match(node.Transform, child.Transform.parent);
 		Tester.Match(node.Alpha, 0.3f);
 		Tester.Match(node.Priority, 0.4f);
 		Tester.Match(child.Alpha, 0.09f);

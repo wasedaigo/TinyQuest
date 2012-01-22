@@ -16,44 +16,50 @@ public class Roga2dNode {
 	
 	public Roga2dBlendType BlendType;
 	public Roga2dNode Parent;
-	public GameObject GameObject;
-
 	public List<Roga2dNode> children;
+	
+	private GameObject GameObject;
+	private Transform transform;
 	private float priority;
 	private float alpha;
 	private bool isHidden;
 	
 	public Vector2 LocalPixelPosition {
 		get {
-			return Roga2dUtils.localToPixel(this.GameObject.transform.localPosition);
+			return Roga2dUtils.localToPixel(this.transform.localPosition);
 		}
 		set {
-			this.GameObject.transform.localPosition = Roga2dUtils.pixelToLocal(value);
+			this.transform.localPosition = Roga2dUtils.pixelToLocal(value);
 		}
 	}
 	public float LocalRotation {
 		get {
-			return this.GameObject.transform.localEulerAngles.z;
+			return this.transform.localEulerAngles.z;
 		}
 		set {
 			value = (value + 360.0f) % 360.0f;
-			this.GameObject.transform.localEulerAngles = new Vector3(0, 0, value);
+			this.transform.localEulerAngles = new Vector3(0, 0, value);
 		}
 	}
 	public Vector2 LocalPosition {
 		get {
-			return this.GameObject.transform.localPosition;
+			return this.transform.localPosition;
 		}
 		set {
-			this.GameObject.transform.localPosition = value;
+			this.transform.localPosition = value;
 		}
 	}
 	public Vector2 LocalScale {
 		get {
-			return this.GameObject.transform.localScale ;
+			return this.transform.localScale ;
 		}
 		set {
-			this.GameObject.transform.localScale = new Vector3(value.x, value.y, 1.0f);
+			this.transform.localScale = new Vector3(value.x, value.y, 1.0f);
+		}
+	}
+	public Transform Transform {
+		get {
+			return this.transform;	
 		}
 	}
 	public bool IsVisible {
@@ -83,6 +89,7 @@ public class Roga2dNode {
 	
 	public Roga2dNode(GameObject go) {
 		this.GameObject = go;
+		this.transform = this.GameObject.transform;
 		Initialize("Node");
 	}
 	
@@ -91,10 +98,10 @@ public class Roga2dNode {
 		
 		if (this.GameObject == null) {
 			this.GameObject = new GameObject(name);
+			this.transform = this.GameObject.transform;
 		} else {
-			this.LocalPosition = this.GameObject.transform.position;
+			this.LocalPosition = this.transform.position;
 		}
-
 		this.LocalAlpha = 1.0f;
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;
@@ -103,7 +110,7 @@ public class Roga2dNode {
 	
 	public virtual void Destroy() {
 		if (this.GameObject != null) {
-			this.GameObject.transform.parent = null;
+			this.transform.parent = null;
 			Object.Destroy(this.GameObject);
 			this.GameObject = null;
 		}
@@ -121,7 +128,7 @@ public class Roga2dNode {
 	
 	public Vector2 Position {
 		get {
-			return (Vector2)this.GameObject.transform.position;
+			return (Vector2)this.transform.position;
 		}
 	}
 	
@@ -159,9 +166,10 @@ public class Roga2dNode {
 		this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(this.LocalPosition.x + velocity.x), Roga2dUtils.RoundPrecision(this.LocalPosition.y + velocity.y));
 		
 		// Move z position of the node, so that it reflects its render-priority
-		this.GameObject.transform.position = new Vector3(
-			this.GameObject.transform.position.x, 
-			this.GameObject.transform.position.y, 
+		Transform transform = this.transform;
+		transform.position = new Vector3(
+			transform.position.x, 
+			transform.position.y, 
 			this.priority
 		);
 	}
@@ -185,10 +193,10 @@ public class Roga2dNode {
 		if (this.isHidden) {
 			node.Hide();
 		}
-		Roga2dGameObjectState state = Roga2dUtils.stashState(node.GameObject);
-		node.GameObject.transform.parent = this.GameObject.transform;
+		Roga2dGameObjectState state = Roga2dUtils.stashState(node.Transform);
+		node.Transform.parent = this.transform;
 		node.Parent = this;
-		Roga2dUtils.applyState(node.GameObject, state);
+		Roga2dUtils.applyState(node.Transform, state);
 		nodeCount += 1;
 	}
 	
@@ -209,7 +217,7 @@ public class Roga2dNode {
 	}
 
 	public Vector2 InverseTransformPoint(Vector2 point) {
-			return this.GameObject.transform.InverseTransformPoint(point);
+			return this.transform.InverseTransformPoint(point);
 	}
 	
 	public virtual Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {return new Vector2(0, 0);}

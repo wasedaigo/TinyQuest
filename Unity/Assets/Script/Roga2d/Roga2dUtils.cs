@@ -252,27 +252,27 @@ public class Roga2dUtils {
 		return Mathf.Round(value * 10000) / 10000;
 	}
 	
-	public static Roga2dGameObjectState stashState(GameObject go) {
+	public static Roga2dGameObjectState stashState(Transform transform) {
 		
-		Roga2dGameObjectState state = new Roga2dGameObjectState();;
+		Roga2dGameObjectState state = new Roga2dGameObjectState();
 		// Unity3D nodes break local coordinate of child node when it is added
 		// Thus, it is needed to set the parent node (0,0,0) first
 		// Gotta save current state of the node before adding a child
-		state.position = go.transform.localPosition;
-		state.rotation = go.transform.localRotation;
-		state.scale = go.transform.localScale;
-		go.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-		go.transform.localRotation = new Quaternion(0, 0, 0, 0);
-		go.transform.localPosition = new Vector3(0, 0, 0);
+		state.position = transform.localPosition;
+		state.rotation = transform.localRotation;
+		state.scale = transform.localScale;
+		transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+		transform.localRotation = new Quaternion(0, 0, 0, 0);
+		transform.localPosition = new Vector3(0, 0, 0);
 		
 		return state;
 	}
 	
 	// Recover old state after child node is already added
-	public static void applyState(GameObject go, Roga2dGameObjectState state) {
-		go.transform.localPosition = state.position;
-		go.transform.localRotation = state.rotation;
-		go.transform.localScale = state.scale;	
+	public static void applyState(Transform transform, Roga2dGameObjectState state) {
+		transform.localPosition = state.position;
+		transform.localRotation = state.rotation;
+		transform.localScale = state.scale;	
 	}
 }
 
