@@ -19,7 +19,7 @@ public class Main : MonoBehaviour {
 		this.root.GameObject.transform.parent = roga2dRoot.transform;
 		Roga2dUtils.applyState(this.root.GameObject, state);
 		
-		this.player = new Player();
+		this.player = new Player("lilia");
 		this.player.LocalPriority = 0.1f;
 		this.root.AddChild(player);
 		

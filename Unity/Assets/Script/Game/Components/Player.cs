@@ -5,8 +5,10 @@ namespace TinyQuest.Component {
 	public class Player : Roga2dNode {
 		private Roga2dRenderObject renderObject;
 		private Roga2dLoop interval;
-		public Player() 
+		public Player(string characterName) 
 		{
+			string textureId = "Characters/" + characterName;
+			
 			this.renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("Battle/Skills/Battler_Base"), new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32));
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
 			this.AddChild(sprite);
@@ -17,7 +19,7 @@ namespace TinyQuest.Component {
 			for (int i = 0; i < 4; i++) {
 				Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
 				keyFrame.Rect = new Rect(96 + frames[i] * 32, 0, 32, 32);
-				keyFrame.Id = "Battle/Skills/Battler_Base";
+				keyFrame.Id = textureId;
 				keyFrame.Duration = 10;
 				keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
 				keyFrame.PixelCenter = new Vector2(0, 0);
@@ -26,8 +28,8 @@ namespace TinyQuest.Component {
 			}
 			
 			Dictionary<string, string> options = new Dictionary<string, string>();
+			options["Battle/Skills/Battler_Base"] = textureId;
 			this.interval = new Roga2dLoop(new Roga2dSourceInterval(sprite, keyFrames, null, options), 0);
-			
 		}
 		
 		public override void Update() {
