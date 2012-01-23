@@ -32,6 +32,7 @@ public class Roga2dNode {
 			this.transform.localPosition = Roga2dUtils.pixelToLocal(value);
 		}
 	}
+	
 	public float LocalRotation {
 		get {
 			return this.transform.localEulerAngles.z;
@@ -41,6 +42,7 @@ public class Roga2dNode {
 			this.transform.localEulerAngles = new Vector3(0, 0, value);
 		}
 	}
+	
 	public Vector2 LocalPosition {
 		get {
 			return this.transform.localPosition;
@@ -49,6 +51,7 @@ public class Roga2dNode {
 			this.transform.localPosition = value;
 		}
 	}
+	
 	public Vector2 LocalScale {
 		get {
 			return this.transform.localScale ;
@@ -57,28 +60,33 @@ public class Roga2dNode {
 			this.transform.localScale = new Vector3(value.x, value.y, 1.0f);
 		}
 	}
+	
 	public Transform Transform {
 		get {
 			return this.transform;	
 		}
 	}
+	
 	public bool IsVisible {
 		get {
 			return !this.isHidden;
 		}
 	}
+	
 	public virtual void Hide() {
 		this.isHidden = true;
 		foreach(Roga2dNode node in this.children) {
 			node.Hide();
 		}
 	}
+	
 	public virtual void Show() {
 		this.isHidden = false;
 		foreach(Roga2dNode node in this.children) {
 			node.Show();
 		}
 	}
+	
 	public Roga2dNode(string name) {
 		Initialize(name);
 	}
@@ -102,6 +110,7 @@ public class Roga2dNode {
 		} else {
 			this.LocalPosition = this.transform.position;
 		}
+		this.LocalHue.SetRGB(255, 255, 255);
 		this.LocalAlpha = 1.0f;
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;

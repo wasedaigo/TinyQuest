@@ -74,21 +74,20 @@ public class AnimationSpawner : MonoBehaviour {
 	static int no = 0;
     void AnimationFinished(Roga2dAnimation animation)
     {
-		foreach (Player battler in this.battlers) {
-			battler.Sprite.Show();
-		}
+		animation.Target.Show();
     }
 
 	void Update () {
 		this.player.Update();
 		this.root.Update();
 		if (Input.GetMouseButtonDown(0)) {
-			if (!player.HasPlayingAnimations()) {
-				Player battler = this.battlers[no % 5];
+			Player battler = this.battlers[no % 5];
+			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 				Dictionary<string, string> options = new Dictionary<string, string>();
 				options["Battle/Skills/Battler_Base"] = battler.TextureID;
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root, options);
+				animation.Target = battler.Sprite;
 				this.player.Play(battler, null, animation,  AnimationFinished);
 				no +=1;
 				if (no >= ids.Length) {

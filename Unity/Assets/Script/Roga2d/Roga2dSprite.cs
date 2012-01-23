@@ -49,7 +49,7 @@ public class Roga2dSprite : Roga2dNode {
 		if (this.renderObject != null && this.renderObject.Renderer != null) {
 			this.renderObject.Renderer.enabled = this.IsVisible;
 			if (this.IsVisible) {
-				this.renderObject.SetBlend(this.BlendType, this.Alpha);
+				this.renderObject.SetBlend(this.BlendType, this.Alpha, this.LocalHue);
 			}
 		}
 	}
