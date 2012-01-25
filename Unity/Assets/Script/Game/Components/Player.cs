@@ -10,12 +10,10 @@ namespace TinyQuest.Component {
 		public Player(string name) 
 		{
 			this.textureId = "Characters/" + name;
-			
+			this.interval = null;
 			this.renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture(this.textureId), new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32));
 			this.sprite = new Roga2dSprite(renderObject);
 			this.AddChild(this.sprite);
-
-			//this.interval = buildWalkInterval();
 		}
 
 		public string TextureID{

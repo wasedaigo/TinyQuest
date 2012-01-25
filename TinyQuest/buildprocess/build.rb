@@ -34,7 +34,7 @@ def build_animation_file(filename)
 
     result = {}
     result["timelines"], result["dependencies"] = parse_timelines(json["keyframes"])
-    
+    result["events"] = json["events"]
     return result
 end
 
