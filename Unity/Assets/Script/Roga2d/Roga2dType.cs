@@ -124,6 +124,7 @@ public class Roga2dAnimationKeyFrame {
 	public Roga2dBlendType BlendType;
 	public float Priority;
 	public Roga2dAnimationKeyFrameType Type;
+	public string[] Commands;
 	
 	public static Roga2dAnimationKeyFrame Build() {
 		Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();

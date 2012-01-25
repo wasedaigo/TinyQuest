@@ -75,6 +75,7 @@ public class Roga2dAnimationDependencyData {
 public class Roga2dAnimationData {
 	public Roga2dAnimationDependencyData dependencies;
 	public Roga2dIntervalData[] timelines;
+	public Dictionary<string, string[]> events;
 }
 
 public class Roga2dUtils {
@@ -188,6 +189,14 @@ public class Roga2dUtils {
 				Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
+				
+				// Events
+				string key = (string)keyFrame.FrameNo.ToString();
+				if (animationData.events != null && animationData.events.ContainsKey(key)) {
+					keyFrame.Commands = animationData.events[key];
+				}
+				
+				// Get (Image / Animation) Id
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Id = swapTextureId(sourceIntervalData.id, options);
 				} else {

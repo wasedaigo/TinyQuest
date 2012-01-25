@@ -5,6 +5,7 @@ public class Roga2dRoot : Roga2dNode {
 	private Roga2dNode target;
 	private Roga2dNode targetOrigin;
 	private Roga2dAnimationPlayer player;
+	public Roga2dCommandCallback commandCallBack;
 
 	public Roga2dAnimationPlayer Player {
 		get {
@@ -47,3 +48,4 @@ public class Roga2dRoot : Roga2dNode {
 		this.player = player;
 	}
 }
+public delegate void Roga2dCommandCallback(string command);

@@ -26,6 +26,7 @@ public class AnimationSpawner : MonoBehaviour {
 	void Start () {
 		this.player = new Roga2dAnimationPlayer();
 		this.root = new Roga2dRoot(this.player);
+		this.root.commandCallBack = CommandCalled;
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);
 		this.root.Transform.parent = roga2dRoot.transform;
@@ -76,7 +77,12 @@ public class AnimationSpawner : MonoBehaviour {
     {
 		animation.Target.Show();
     }
-
+	
+	void CommandCalled(string command) 
+	{
+		Debug.Log("Command Callback:" + command);
+	}
+	
 	void Update () {
 		this.player.Update();
 		this.root.Update();
