@@ -7,6 +7,7 @@ public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
 	private Roga2dRoot root;
 	private Roga2dAnimationPlayer player;
+	private Roga2dBaseInterval targetInterval;
 
 	private List<Player> battlers = new List<Player>();
 	
@@ -58,18 +59,18 @@ public class AnimationSpawner : MonoBehaviour {
 	}
 	
 	static string[] ids = new string[] {
-			"Battle/Skills/Sword/LeaveDance",
-			"Battle/Skills/Spear/SpearAirraid",
-			"Battle/Skills/Axe/Bash",
-			
-			"Battle/Skills/Laser/Skill_Laser01",
-			"Battle/Skills/Bow/Shoot",
-			"Battle/Skills/Bow/bow_bomb",
-			"Battle/Skills/Axe/CycloneAxe",
-			"Battle/Skills/Axe/Slash",
-			"Battle/Skills/Axe/ArmorBreaker",
-			"Battle/Skills/Fire/Skill_Flare",
-			"Battle/Skills/Common/MagicCasting"
+//			"Battle/Skills/Sword/LeaveDance",
+//			"Battle/Skills/Spear/SpearAirraid",
+//			"Battle/Skills/Axe/Bash",
+//			
+//			"Battle/Skills/Laser/Skill_Laser01",
+			"Battle/Skills/Bow/Shoot"
+//			"Battle/Skills/Bow/bow_bomb",
+//			"Battle/Skills/Axe/CycloneAxe",
+//			"Battle/Skills/Axe/Slash",
+//			"Battle/Skills/Axe/ArmorBreaker",
+//			"Battle/Skills/Fire/Skill_Flare",
+//			"Battle/Skills/Common/MagicCasting"
 	};
 	
 	static int no = 0;
@@ -80,12 +81,26 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	void CommandCalled(string command) 
 	{
-		Debug.Log("Command Callback:" + command);
+		string[] commandData = command.Split(':');
+		if (commandData[0] == "damage") {
+			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
+			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(255, 255, 255), new Roga2dHue(255, 0, 0), 5, true));
+			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(255, 0, 0), new Roga2dHue(255, 255, 255), 5, true));
+			this.targetInterval = new Roga2dSequence(list);
+		}
 	}
 	
 	void Update () {
+		
+		// Update target interval
+		if (this.targetInterval != null && !this.targetInterval.IsDone()){
+			this.targetInterval.Update();
+		}
+
+		// Update animations
 		this.player.Update();
 		this.root.Update();
+
 		if (Input.GetMouseButtonDown(0)) {
 			Player battler = this.battlers[no % 5];
 			if (battler.Sprite.IsVisible) {
@@ -101,5 +116,6 @@ public class AnimationSpawner : MonoBehaviour {
 				}
 			}
 		}
+
 	}
 }
