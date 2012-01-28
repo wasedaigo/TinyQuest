@@ -15,7 +15,7 @@ class TestRoga2dHueInterval {
 		
 		Tester.Ok(!interval.IsDone());
 		
-		Tester.Match(node.LocalHue, new Roga2dHue(255, 255, 255));
+		Tester.Match(node.LocalHue, new Roga2dHue(0, 0, 0));
 		Tester.Ok(!interval.IsDone());
         
         interval.Start();

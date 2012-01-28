@@ -84,8 +84,8 @@ public class AnimationSpawner : MonoBehaviour {
 		string[] commandData = command.Split(':');
 		if (commandData[0] == "damage") {
 			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(255, 255, 255), new Roga2dHue(255, 0, 0), 5, true));
-			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(255, 0, 0), new Roga2dHue(255, 255, 255), 5, true));
+			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
+			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
 			this.targetInterval = new Roga2dSequence(list);
 		}
 	}

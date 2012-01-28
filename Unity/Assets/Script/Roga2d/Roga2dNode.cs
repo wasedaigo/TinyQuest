@@ -110,7 +110,7 @@ public class Roga2dNode {
 		} else {
 			this.LocalPosition = this.transform.position;
 		}
-		this.LocalHue.SetRGB(255, 255, 255);
+		this.LocalHue.SetRGB(0, 0, 0);
 		this.LocalAlpha = 1.0f;
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;

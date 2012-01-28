@@ -56,7 +56,7 @@ public class Roga2dRenderObject {
 			meshFilter.mesh = this.mesh;
 			this.SetSize(this.pixelSize);
 			this.SetSrcRect(this.srcRect);
-			Roga2dHue hue = new Roga2dHue(255, 255, 255);
+			Roga2dHue hue = new Roga2dHue(0, 0, 0);
 			this.SetBlend(Roga2dBlendType.Alpha, 1.0f, hue);	
 		}
 	}
@@ -134,15 +134,9 @@ public class Roga2dRenderObject {
 		
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-			if (alpha == 1.0f) {
-				// Use lite-shader for non-alpha sprite
-				this.material = new Material(Shader.Find("Mobile/Particles/VertexLit Blended"));
-				this.material.SetColor("_EmisColor", new Color(hue.r / 510.0f, hue.g / 510.0f, hue.b / 510.0f, alpha));
-			} else {
-				this.material = new Material(Shader.Find("Transparent/VertexLit"));
-				this.material.SetColor("_Color", new Color(hue.r / 255.0f, hue.g / 255.0f, hue.b / 255.0f, alpha));
-			}
-			
+			this.material = new Material(Shader.Find("TintAlphaBlended"));
+			this.material.SetColor("_EmisColor", new Color(hue.r / 255.0f + 0.5f, hue.g / 255.0f + 0.5f, hue.b / 255.0f + 0.5f, alpha));
+
 			break;
 		case Roga2dBlendType.Add:
 			this.material = new Material(Shader.Find("Custom/AlphaAdditive"));
