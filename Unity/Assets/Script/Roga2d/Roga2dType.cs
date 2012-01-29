@@ -150,3 +150,12 @@ public class Roga2dGameObjectState {
 	public Quaternion rotation;
 	public Vector3 scale;
 }
+
+public struct Roga2dSwapTextureDef {
+	public string textureID;
+	public Vector2 pixelSize;
+	public Roga2dSwapTextureDef(string textureID, Vector2 pixelSize) {
+		this.textureID = textureID;
+		this.pixelSize = pixelSize;
+	}
+}

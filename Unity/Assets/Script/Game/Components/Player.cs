@@ -42,9 +42,7 @@ namespace TinyQuest.Component {
 				keyFrames.Add(keyFrame);
 			}
 
-			Dictionary<string, string> options = new Dictionary<string, string>();
-			options["Battle/Skills/Battler_Base"] = this.textureId;
-			return new Roga2dLoop(new Roga2dSourceInterval(this.sprite, keyFrames, null, options), 0);
+			return new Roga2dLoop(new Roga2dSourceInterval(this.sprite, keyFrames, null, null), 0);
 		}
 		
 		public override void Update() {

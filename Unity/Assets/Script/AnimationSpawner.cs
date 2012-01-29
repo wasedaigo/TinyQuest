@@ -108,8 +108,10 @@ public class AnimationSpawner : MonoBehaviour {
 			Player battler = this.battlers[no % 5];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
-				Dictionary<string, string> options = new Dictionary<string, string>();
-				options["Battle/Skills/Battler_Base"] = battler.TextureID;
+				
+				Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
+					{ "Battle/Skills/Battler_Base", new Roga2dSwapTextureDef(battler.TextureID, new Vector2(32, 32))}
+				};
 
 				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.enemy, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);

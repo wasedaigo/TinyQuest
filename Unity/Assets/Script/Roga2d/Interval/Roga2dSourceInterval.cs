@@ -18,9 +18,9 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	protected int frameNo;
 	private int index;
 	private List<Roga2dRenderObjectDesc> renderObjectDescs;
-	private Dictionary<string, string> options;
+	private Dictionary<string, Roga2dSwapTextureDef> options;
 
-	public Roga2dSourceInterval(Roga2dSprite sprite, List<Roga2dAnimationKeyFrame> keyFrames, Roga2dAnimationSettings settings, Dictionary<string, string> options)
+	public Roga2dSourceInterval(Roga2dSprite sprite, List<Roga2dAnimationKeyFrame> keyFrames, Roga2dAnimationSettings settings, Dictionary<string, Roga2dSwapTextureDef> options)
 	{
 		this.options = options;
 		this.sprite = sprite;

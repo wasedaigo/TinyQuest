@@ -104,8 +104,8 @@ public class Roga2dUtils {
 		result.y = start.y + (end.y - start.y) * proportion;
 		return result;
 	}
-
-    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dAnimationSettings settings, Dictionary<string, string> options) {
+	
+    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dAnimationSettings settings, Dictionary<string, Roga2dSwapTextureDef> options) {
 		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
@@ -190,20 +190,17 @@ public class Roga2dUtils {
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				
-				// Get (Image / Animation) Id
-				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
-					keyFrame.Id = swapTextureId(sourceIntervalData.id, options);
-				} else {
-					keyFrame.Id = sourceIntervalData.id;
-				}
 				keyFrame.Duration = sourceIntervalData.duration;
 				keyFrame.Priority = sourceIntervalData.priority;
 				keyFrame.BlendType = sourceIntervalData.blendType;
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
+					keyFrame.Id = sourceIntervalData.id;
 					keyFrame.Rect = new Rect(sourceIntervalData.rect[0], sourceIntervalData.rect[1], sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
 					keyFrame.PixelCenter = new Vector2(sourceIntervalData.center[0], sourceIntervalData.center[1]);
 					keyFrame.PixelSize = new Vector2(sourceIntervalData.rect[2], sourceIntervalData.rect[3]);
-				} else {				
+					swapTextureInfo(ref keyFrame, sourceIntervalData.id, options);
+				} else {	
+					keyFrame.Id = sourceIntervalData.id;
 					keyFrame.Emitter = sourceIntervalData.emitter;
 					keyFrame.MaxEmitAngle = sourceIntervalData.maxEmitAngle;
 					keyFrame.MinEmitAngle = sourceIntervalData.minEmitAngle;
@@ -239,15 +236,14 @@ public class Roga2dUtils {
 		}
     }
 	
-	public static string swapTextureId(string baseFileName, Dictionary<string, string> conversionMap){
-
-		if (conversionMap.ContainsKey(baseFileName)) {
-			return conversionMap[baseFileName];
-		}
+	public static void swapTextureInfo(ref Roga2dAnimationKeyFrame keyframe, string baseFileName, Dictionary<string, Roga2dSwapTextureDef> conversionMap){
 		
-		return baseFileName;
+		if (conversionMap.ContainsKey(baseFileName)) {
+			keyframe.Id = conversionMap[baseFileName].textureID;
+			keyframe.PixelSize = conversionMap[baseFileName].pixelSize;
+		}
 	}
-
+	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
 		return new Vector2(-pixelCoordinate.y / 32.0f, pixelCoordinate.x / 32.0f);
 	}
