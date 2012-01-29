@@ -12,7 +12,7 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 	}
 	
 	protected override Vector2[] TweenBeforeFilter(Vector2 start, Vector2 end) {
-		if (this.option.Target != null) {
+		if (this.option != null && this.option.Target != null) {
 			start = GetRelativePosition(node, this.option.Target, this.option.TargetOrigin, this.option.StartPositionType, this.option.StartPositionAnchor, start);
 			end = GetRelativePosition(node, this.option.Target, this.option.TargetOrigin, this.option.EndPositionType, this.option.EndPositionAnchor, end);
 		}

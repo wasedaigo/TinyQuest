@@ -49,7 +49,8 @@ public class AnimationSpawner : MonoBehaviour {
 		{
 			Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("death_wind"), new Vector2(96, 96), new Vector2(0, 0), new Rect(0, 0, 96, 96));
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
-			sprite.Transform.position = new Vector3(0.0f, -2.0f, 0.45f);
+			sprite.LocalPosition = new Vector3(0.0f, -2.0f);
+			sprite.LocalPriority = 0.45f;
 			this.root.AddChild(sprite);
 		
 			Roga2dNode target = sprite;
@@ -87,6 +88,8 @@ public class AnimationSpawner : MonoBehaviour {
 			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
 			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
 			this.targetInterval = new Roga2dSequence(list);
+			Roga2dAnimation animation = TinyQuest.Core.EffectBuilder.buildDamagePopAnimation(this.root.Target.LocalPixelPosition, 2750);
+			this.player.Play(this.root, null, animation, null);
 		}
 	}
 	
