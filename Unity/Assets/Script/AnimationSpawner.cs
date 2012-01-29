@@ -49,7 +49,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.AddChild(spawnBattler("hose", 80, 40));
 		
 		// Monster
-		this.monster = spawnMonster("death_wind", -20, 40);
+		this.monster = spawnMonster("death_wind", -40, 0);
 		this.root.AddChild(this.monster);
 		
 		// Stage
@@ -79,6 +79,8 @@ public class AnimationSpawner : MonoBehaviour {
     void AnimationFinished(Roga2dAnimation animation)
     {
 		animation.settings.Origin.Show();
+		animation.settings.Destroy();
+		animation.settings = null;
     }
 	
 	void CommandCalled(Roga2dAnimationSettings settings, string command) 
@@ -89,6 +91,7 @@ public class AnimationSpawner : MonoBehaviour {
 			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
 			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
 			this.targetInterval = new Roga2dSequence(list);
+
 			Roga2dAnimation animation = TinyQuest.Core.EffectBuilder.buildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
 			this.player.Play(settings.Root, null, animation, null);
 		}
@@ -115,7 +118,7 @@ public class AnimationSpawner : MonoBehaviour {
 					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}}
 				};
 
-				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster.Sprite, CommandCalled);
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
 				this.player.Play(battler, null, animation,  AnimationFinished);
 				no +=1;

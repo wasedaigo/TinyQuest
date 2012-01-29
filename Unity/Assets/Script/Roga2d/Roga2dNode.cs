@@ -23,6 +23,15 @@ public class Roga2dNode {
 	private float priority;
 	private float alpha;
 	private bool isHidden;
+
+	public Vector2 PixelPosition {
+		get {
+			return Roga2dUtils.localToPixel(this.transform.position);
+		}
+		set {
+			this.transform.position = Roga2dUtils.pixelToLocal(value);
+		}
+	}
 	
 	public Vector2 LocalPixelPosition {
 		get {

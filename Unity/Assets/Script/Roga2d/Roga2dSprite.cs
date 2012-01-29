@@ -2,6 +2,12 @@ using UnityEngine;
 public class Roga2dSprite : Roga2dNode {
 	private Roga2dRenderObject renderObject;
 	
+	public Roga2dSprite(string name, Roga2dRenderObject renderObject) 
+	: base(new GameObject(name))
+	{
+		this.RenderObject = renderObject;
+	}
+	
 	public Roga2dSprite(Roga2dRenderObject renderObject) 
 	: base(new GameObject("Sprite"))
 	{

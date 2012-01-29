@@ -69,5 +69,13 @@ public class Roga2dAnimationSettings {
 		this.Target = target;
 		this.commandCallBack = commandCallBack;
 	}
+	
+	public void Destroy() {
+		if (this.targetOrigin != null) {
+			this.targetOrigin.Destroy();
+			this.targetOrigin.Parent.RemoveChild(this.targetOrigin);
+			this.targetOrigin = null;
+		}
+	}
 }
 public delegate void Roga2dCommandCallback(Roga2dAnimationSettings settings, string command);
