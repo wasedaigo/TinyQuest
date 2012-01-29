@@ -151,11 +151,77 @@ public class Roga2dGameObjectState {
 	public Vector3 scale;
 }
 
-public struct Roga2dSwapTextureDef {
-	public string textureID;
-	public Vector2 pixelSize;
-	public Roga2dSwapTextureDef(string textureID, Vector2 pixelSize) {
-		this.textureID = textureID;
-		this.pixelSize = pixelSize;
+public class Roga2dSwapTextureDef {
+	private string textureID;
+	private Vector2 pixelSize;
+	private Vector2 pixelCenter;
+	private Rect srcRect;
+	private bool swapTextureID;
+	private bool swapPixelSize;
+	private bool swapPixelCenter;
+	private bool swapSrcRect;
+	
+	public string TextureID {
+		get {
+			return this.textureID;	
+		}
+		set {
+			this.textureID = value;
+			this.swapTextureID = true;
+		}
+	}
+	
+	public Vector2 PixelSize {
+		get {
+			return this.pixelSize;	
+		}
+		set {
+			this.pixelSize = value;
+			this.swapPixelSize = true;
+		}
+	}
+	
+	public Vector2 PixelCenter {
+		get {
+			return this.pixelCenter;	
+		}
+		set {
+			this.pixelCenter = value;
+			this.swapPixelCenter = true;
+		}
+	}
+	
+	public Rect SrcRect {
+		get {
+			return this.srcRect;	
+		}
+		set {
+			this.srcRect = value;
+			this.swapSrcRect = true;
+		}
+	}
+
+	public bool SwapTextureID {
+		get {
+			return this.swapTextureID;	
+		}
+	}
+
+	public bool SwapPixelSize {
+		get {
+			return this.swapPixelSize;	
+		}
+	}
+	
+	public bool SwapPixelCenter {
+		get {
+			return this.swapPixelCenter;	
+		}
+	}
+	
+	public bool SwapSrcRect {
+		get {
+			return this.swapSrcRect;	
+		}
 	}
 }

@@ -6,7 +6,7 @@ using TinyQuest.Component;
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
 	private Roga2dNode root;
-	private Roga2dNode enemy;
+	private Roga2dNode monster;
 	private Roga2dAnimationPlayer player;
 	private Roga2dBaseInterval targetInterval;
 
@@ -53,7 +53,7 @@ public class AnimationSpawner : MonoBehaviour {
 			sprite.LocalPriority = 0.45f;
 			this.root.AddChild(sprite);
 		
-			this.enemy = sprite;
+			this.monster = sprite;
 		}
 
 	}
@@ -110,10 +110,11 @@ public class AnimationSpawner : MonoBehaviour {
 				battler.Sprite.Hide();
 				
 				Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-					{ "Battle/Skills/Battler_Base", new Roga2dSwapTextureDef(battler.TextureID, new Vector2(32, 32))}
+					{ "Battle/Skills/Battler_Base", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
+					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(64, 64),  SrcRect = new Rect(0, 0, 64, 64)}}
 				};
 
-				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.enemy, CommandCalled);
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
 				this.player.Play(battler, null, animation,  AnimationFinished);
 				no +=1;

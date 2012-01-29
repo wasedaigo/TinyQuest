@@ -239,8 +239,19 @@ public class Roga2dUtils {
 	public static void swapTextureInfo(ref Roga2dAnimationKeyFrame keyframe, string baseFileName, Dictionary<string, Roga2dSwapTextureDef> conversionMap){
 		
 		if (conversionMap.ContainsKey(baseFileName)) {
-			keyframe.Id = conversionMap[baseFileName].textureID;
-			keyframe.PixelSize = conversionMap[baseFileName].pixelSize;
+			Roga2dSwapTextureDef def = conversionMap[baseFileName];
+			if (def.SwapTextureID) {
+				keyframe.Id = def.TextureID;
+			}
+			if (def.SwapPixelSize) {
+				keyframe.PixelSize = def.PixelSize;
+			}
+			if (def.SwapSrcRect) {
+				keyframe.Rect = def.SrcRect;
+			}
+			if (def.SwapPixelCenter) {
+				keyframe.PixelCenter = def.PixelCenter;
+			}
 		}
 	}
 	
