@@ -7,7 +7,7 @@ class TestRoga2dEventInterval {
 		TestUpdate();
 	}
 	
-	private static void CommandCalled(string command) 
+	private static void CommandCalled(Roga2dAnimationSettings settings, string command) 
 	{
 		if (counter == 0) {
 			Tester.Match(command, "test1");
@@ -26,8 +26,9 @@ class TestRoga2dEventInterval {
 		string[] test2 = {"test3"};
 		events.Add(1, test1);
 		events.Add(5, test2);
-
-		Roga2dBaseInterval interval = new Roga2dEventInterval(events, CommandCalled);
+		
+		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(null, null, null, null, CommandCalled);
+		Roga2dBaseInterval interval = new Roga2dEventInterval(events, settings);
 		
 		interval.Start();
 		interval.Update();

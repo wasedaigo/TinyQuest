@@ -4,7 +4,7 @@ using TinyQuest.Component;
 
 public class Main : MonoBehaviour {
 	public GameObject roga2dRoot;
-	private Roga2dRoot root;
+	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;
 	private Player player;
 	
@@ -12,7 +12,7 @@ public class Main : MonoBehaviour {
 	void Start () {
 	
 		this.animationPlayer = new Roga2dAnimationPlayer();
-		this.root = new Roga2dRoot(this.animationPlayer);
+		this.root = new Roga2dNode();
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
 
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);

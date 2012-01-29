@@ -5,7 +5,8 @@ using TinyQuest.Component;
 
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
-	private Roga2dRoot root;
+	private Roga2dNode root;
+	private Roga2dNode enemy;
 	private Roga2dAnimationPlayer player;
 	private Roga2dBaseInterval targetInterval;
 
@@ -26,8 +27,7 @@ public class AnimationSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.player = new Roga2dAnimationPlayer();
-		this.root = new Roga2dRoot(this.player);
-		this.root.commandCallBack = CommandCalled;
+		this.root = new Roga2dNode("Root");
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);
 		this.root.Transform.parent = roga2dRoot.transform;
@@ -53,8 +53,7 @@ public class AnimationSpawner : MonoBehaviour {
 			sprite.LocalPriority = 0.45f;
 			this.root.AddChild(sprite);
 		
-			Roga2dNode target = sprite;
-			this.root.Target = target;
+			this.enemy = sprite;
 		}
 
 	}
@@ -78,19 +77,19 @@ public class AnimationSpawner : MonoBehaviour {
 	static int no = 0;
     void AnimationFinished(Roga2dAnimation animation)
     {
-		animation.Target.Show();
+		animation.settings.Origin.Show();
     }
 	
-	void CommandCalled(string command) 
+	void CommandCalled(Roga2dAnimationSettings settings, string command) 
 	{
 		string[] commandData = command.Split(':');
 		if (commandData[0] == "damage") {
 			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
-			list.Add(new Roga2dHueInterval(this.root.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
+			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
+			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
 			this.targetInterval = new Roga2dSequence(list);
-			Roga2dAnimation animation = TinyQuest.Core.EffectBuilder.buildDamagePopAnimation(this.root.Target.LocalPixelPosition, 2750);
-			this.player.Play(this.root, null, animation, null);
+			Roga2dAnimation animation = TinyQuest.Core.EffectBuilder.buildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
+			this.player.Play(settings.Root, null, animation, null);
 		}
 	}
 	
@@ -111,8 +110,9 @@ public class AnimationSpawner : MonoBehaviour {
 				battler.Sprite.Hide();
 				Dictionary<string, string> options = new Dictionary<string, string>();
 				options["Battle/Skills/Battler_Base"] = battler.TextureID;
-				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, this.root, options);
-				animation.Target = battler.Sprite;
+
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.enemy, CommandCalled);
+				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
 				this.player.Play(battler, null, animation,  AnimationFinished);
 				no +=1;
 				if (no >= ids.Length) {

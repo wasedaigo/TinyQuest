@@ -105,7 +105,7 @@ public class Roga2dUtils {
 		return result;
 	}
 
-    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dRoot root, Dictionary<string, string> options) {
+    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dAnimationSettings settings, Dictionary<string, string> options) {
 		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
@@ -156,8 +156,8 @@ public class Roga2dUtils {
 					option.EndPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]));
 	                option.StartPositionType = positionIntervalData.startPositionType;
 					option.EndPositionType = positionIntervalData.endPositionType;
-	                option.Target = (root!=null) ? root.Target : null;
-					option.TargetOrigin = (root!=null) ? root.TargetOrigin : null;
+	                option.Target = (settings!=null) ? settings.Target : null;
+					option.TargetOrigin = (settings!=null) ? settings.TargetOrigin : null;
 
 					intervals.Add(new Roga2dPositionInterval(sprite, start, end, positionIntervalData.duration, positionIntervalData.tween, option));
 				}
@@ -175,7 +175,7 @@ public class Roga2dUtils {
 					float end = rotationIntervalData.endValue;
 					Roga2dRotationIntervalOption option = Roga2dRotationIntervalOption.Build();
 	                option.FacingType = rotationIntervalData.facingOption;
-	                option.Target = (root!=null) ? root.Target : null;
+	                option.Target = (settings!=null) ? settings.Target : null;
 					intervals.Add(new Roga2dRotationInterval(sprite, start, end, rotationIntervalData.duration, rotationIntervalData.tween, option));
 				}
 				if(intervals.Count > 0) {
@@ -213,7 +213,7 @@ public class Roga2dUtils {
 				keyFrames.Add(keyFrame);
 			}
 			if (keyFrames.Count > 0) {
-				sequences.Add(new Roga2dSourceInterval(sprite, keyFrames, root, options));
+				sequences.Add(new Roga2dSourceInterval(sprite, keyFrames, settings, options));
 			}
 
 			parallels.Add(new Roga2dParallel(sequences));
@@ -226,15 +226,15 @@ public class Roga2dUtils {
 			foreach (KeyValuePair<string, string[]> entry in animationData.events) {
 				events.Add(Convert.ToInt32(entry.Key), entry.Value);
 			}
-			parallels.Add(new Roga2dEventInterval(events, root.commandCallBack));
+			parallels.Add(new Roga2dEventInterval(events, settings));
 		}
 		
 		{
 			Roga2dParallel parallel = new Roga2dParallel(parallels);
 	        if (isSubAnimation) {
-				 return Roga2dAnimation.Build(node, new Roga2dLoop(parallel, 0));
+				 return Roga2dAnimation.Build(node, new Roga2dLoop(parallel, 0), settings);
 	        } else {
-				 return Roga2dAnimation.Build(node, parallel);
+				 return Roga2dAnimation.Build(node, parallel, settings);
 	        }
 		}
     }

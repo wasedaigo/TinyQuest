@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class Roga2dRoot : Roga2dNode {
-	
+public class Roga2dAnimationSettings {
+	private Roga2dNode root;
+	private Roga2dNode origin;
 	private Roga2dNode target;
 	private Roga2dNode targetOrigin;
 	private Roga2dAnimationPlayer player;
-	public Roga2dCommandCallback commandCallBack;
+	private Roga2dCommandCallback commandCallBack;
 
 	public Roga2dAnimationPlayer Player {
 		get {
@@ -13,11 +14,29 @@ public class Roga2dRoot : Roga2dNode {
 		}
 	}
 	
+	public Roga2dCommandCallback CommandCallBack {
+		get {
+			return this.commandCallBack;
+		}
+	}
+	
+	public Roga2dNode Root {
+		get {
+			return this.root;
+		}
+	}
+	
+	public Roga2dNode Origin {
+		get {
+			return this.origin;
+		}
+	}
+	
 	public Roga2dNode Target {
 		get {
 			return this.target;
 		}
-		set {
+		private set {
 			if (this.target != value && this.target != null) {
 				this.target.Destroy();	
 				this.targetOrigin.Destroy();
@@ -42,10 +61,13 @@ public class Roga2dRoot : Roga2dNode {
 		}
 	}
 	
-	public Roga2dRoot(Roga2dAnimationPlayer player) 
-	: base("Root")
+	public Roga2dAnimationSettings(Roga2dAnimationPlayer player, Roga2dNode root, Roga2dNode origin, Roga2dNode target, Roga2dCommandCallback commandCallBack) 
 	{
 		this.player = player;
+		this.root = root;
+		this.origin = origin;
+		this.Target = target;
+		this.commandCallBack = commandCallBack;
 	}
 }
-public delegate void Roga2dCommandCallback(string command);
+public delegate void Roga2dCommandCallback(Roga2dAnimationSettings settings, string command);
