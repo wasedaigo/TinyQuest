@@ -7,19 +7,19 @@ class TestRoga2dEventInterval {
 		TestUpdate();
 	}
 	
-	void CommandCalled(string command) 
+	private static void CommandCalled(string command) 
 	{
 		if (counter == 0) {
 			Tester.Match(command, "test1");
-		} else if(counter == 2) {
+		} else if(counter == 1) {
 			Tester.Match(command, "test2");
-		} else if(counter == 3) {
+		} else if(counter == 2) {
 			Tester.Match(command, "test3");
 		}
 		counter += 1;
 	}
 	
-	public static void TestUpdate() {
+	private static void TestUpdate() {
 		Dictionary<int, string[]> events = new Dictionary<int, string[]>();
 		
 		string[] test1 = {"test1", "test2"};
@@ -27,9 +27,10 @@ class TestRoga2dEventInterval {
 		events.Add(1, test1);
 		events.Add(5, test2);
 
-		Roga2dBaseInterval interval = new Roga2dEventInterval(events, this.CommandCalled);
+		Roga2dBaseInterval interval = new Roga2dEventInterval(events, CommandCalled);
 		
 		interval.Start();
+		interval.Update();
 		interval.Update();
 		interval.Update();
 		interval.Update();
@@ -38,5 +39,7 @@ class TestRoga2dEventInterval {
 		
 		interval.Update();
 		Tester.Ok(interval.IsDone());
+		
+		Tester.Match(counter, 3);
 	}
 }

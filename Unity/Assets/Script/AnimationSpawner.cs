@@ -60,18 +60,19 @@ public class AnimationSpawner : MonoBehaviour {
 	}
 	
 	static string[] ids = new string[] {
-//			"Battle/Skills/Sword/LeaveDance",
-//			"Battle/Skills/Spear/SpearAirraid",
-//			"Battle/Skills/Axe/Bash",
-//			
-//			"Battle/Skills/Laser/Skill_Laser01",
-			"Battle/Skills/Bow/Shoot"
-//			"Battle/Skills/Bow/bow_bomb",
-//			"Battle/Skills/Axe/CycloneAxe",
-//			"Battle/Skills/Axe/Slash",
-//			"Battle/Skills/Axe/ArmorBreaker",
-//			"Battle/Skills/Fire/Skill_Flare",
-//			"Battle/Skills/Common/MagicCasting"
+			//"Battle/Skills/Bow/Shoot",
+			//"Battle/Skills/Sword/LeaveDance",
+			"Battle/Skills/Spear/SpearAirraid",
+			//"Battle/Skills/Axe/Bash",
+			
+			//"Battle/Skills/Laser/Skill_Laser01",
+			
+			"Battle/Skills/Bow/bow_bomb",
+			"Battle/Skills/Axe/CycloneAxe",
+			"Battle/Skills/Axe/Slash",
+			"Battle/Skills/Axe/ArmorBreaker",
+			"Battle/Skills/Fire/Skill_Flare",
+			"Battle/Skills/Common/MagicCasting"
 	};
 	
 	static int no = 0;

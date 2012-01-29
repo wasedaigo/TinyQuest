@@ -3,6 +3,8 @@ using UnityEngine;
 public class TestRunner : MonoBehaviour {
 	void Start () {
 		Tester.setup();
+		
+		// Test Roga2d
 		TestRoga2dPositionInterval.Test();
 		TestRoga2dRotationInterval.Test();
 		TestRoga2dAlphaInterval.Test();
@@ -18,7 +20,11 @@ public class TestRunner : MonoBehaviour {
 		TestRoga2dSprite.Test();
 		TestRoga2dRoot.Test();
 		TestRoga2dAnimationPlayer.Test();
-
+		TestRoga2dEventInterval.Test();
+		
+		// Test TinyQuest
+		TinyQuest.Test.Core.TestUtils.Test();
+		
 		Tester.outputResult();
 	}
 }

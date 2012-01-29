@@ -115,14 +115,6 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
         this.sprite.LocalPriority = keyFrame.Priority + Roga2dUtils.getPriorityAddition();
         this.sprite.BlendType = keyFrame.BlendType;
 		
-		// Call commands
-		if (keyFrame.Commands != null) {
-			foreach (string command in keyFrame.Commands) {
-				if(this.root.commandCallBack != null) {
-					this.root.commandCallBack(command);
-				}
-			}
-		}
 		
 		if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 			// Update RenderObject

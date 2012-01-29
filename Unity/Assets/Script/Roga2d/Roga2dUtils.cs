@@ -190,12 +190,6 @@ public class Roga2dUtils {
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				
-				// Events
-				string key = (string)keyFrame.FrameNo.ToString();
-				if (animationData.events != null && animationData.events.ContainsKey(key)) {
-					keyFrame.Commands = animationData.events[key];
-				}
-				
 				// Get (Image / Animation) Id
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Id = swapTextureId(sourceIntervalData.id, options);
@@ -225,6 +219,15 @@ public class Roga2dUtils {
 			parallels.Add(new Roga2dParallel(sequences));
             node.AddChild(sprite);
         }
+		
+		// Add timeline-event interval
+		if (animationData.events != null && animationData.events.Count > 0) {
+			Dictionary<int, string[]> events = new Dictionary<int, string[]>();
+			foreach (KeyValuePair<string, string[]> entry in animationData.events) {
+				events.Add(Convert.ToInt32(entry.Key), entry.Value);
+			}
+			parallels.Add(new Roga2dEventInterval(events, root.commandCallBack));
+		}
 		
 		{
 			Roga2dParallel parallel = new Roga2dParallel(parallels);
