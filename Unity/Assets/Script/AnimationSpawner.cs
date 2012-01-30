@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Component;
+using TinyQuest.Core;
 
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
@@ -87,22 +88,20 @@ public class AnimationSpawner : MonoBehaviour {
 	{
 		string[] commandData = command.Split(':');
 		if (commandData[0] == "damage") {
-			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
-			list.Add(new Roga2dHueInterval(settings.Target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
-			this.targetInterval = new Roga2dSequence(list);
-
-			Roga2dAnimation animation = TinyQuest.Core.EffectBuilder.buildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
+			
+			// Flash effect
+			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
+			Roga2dIntervalPlayer.GetInstance().Play(interval);
+			
+			// Damage pop
+			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
 			this.player.Play(settings.Root, null, animation, null);
 		}
 	}
 	
 	void Update () {
 		
-		// Update target interval
-		if (this.targetInterval != null && !this.targetInterval.IsDone()){
-			this.targetInterval.Update();
-		}
+		Roga2dIntervalPlayer.GetInstance().Update();
 
 		// Update animations
 		this.player.Update();

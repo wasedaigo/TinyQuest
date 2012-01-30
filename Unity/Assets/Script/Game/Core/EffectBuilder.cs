@@ -3,8 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace TinyQuest.Core {
-	public class EffectBuilder {	
-		public static Roga2dAnimation buildDamagePopAnimation(Vector2 position, uint value) {
+	public class EffectBuilder {
+		private static EffectBuilder instance;
+		
+		public static EffectBuilder GetInstance()
+		{
+			if (instance == null) {
+				instance = new EffectBuilder();
+			}
+			return instance;
+		}
+		
+		// Build animation for damage pop
+		public Roga2dAnimation BuildDamagePopAnimation(Vector2 position, uint value) {
 			Roga2dNode node = new Roga2dNode(new GameObject("Damage"));
 			List<uint> digits = Utils.getDigits(value);
 			position.x -= (10 * digits.Count) / 2;
@@ -42,6 +53,14 @@ namespace TinyQuest.Core {
 			});
 	
 			return Roga2dAnimation.Build(node, resultInterval);	
+		}
+		
+		// Build interval for red-flash
+		public Roga2dBaseInterval BuildDamageInterval(Roga2dNode target) {
+			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
+			return new Roga2dSequence(list);
 		}
 	}
 }
