@@ -53,7 +53,18 @@ public struct Roga2dHue {
 	{
 	  return this.r ^ this.g ^ this.b;
 	}
-
+	
+	public static Roga2dHue operator +(Roga2dHue a, Roga2dHue b)
+	{
+		int newR = a.r + b.r;
+		int newG = a.g + b.g;
+		int newB = a.b + b.b;
+		newR = Mathf.Min(255, Mathf.Max(-255, newR));
+		newG = Mathf.Min(255, Mathf.Max(-255, newG));
+		newB = Mathf.Min(255, Mathf.Max(-255, newB));
+	    return new Roga2dHue(newR, newG, newB);
+	}
+	
 	public static bool operator ==(Roga2dHue a, Roga2dHue b)
 	{
 	    return a.r == b.r && a.g == b.g && a.b == b.b;

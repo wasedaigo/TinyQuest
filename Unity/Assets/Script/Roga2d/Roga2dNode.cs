@@ -22,6 +22,7 @@ public class Roga2dNode {
 	private Transform transform;
 	private float priority;
 	private float alpha;
+	private Roga2dHue hue;
 	private bool isHidden;
 
 	public Vector2 PixelPosition {
@@ -123,6 +124,7 @@ public class Roga2dNode {
 		this.LocalAlpha = 1.0f;
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;
+		this.hue = new Roga2dHue(0, 0, 0); 
 		this.priority = 0.5f;
 	}
 	
@@ -156,6 +158,12 @@ public class Roga2dNode {
 		}
 	}
 	
+	public Roga2dHue Hue {
+		get {
+			return this.hue;	
+		}
+	}
+	
 	public float Priority {
 		get {
 			return this.priority;	
@@ -167,6 +175,14 @@ public class Roga2dNode {
 			this.alpha = this.LocalAlpha;
         } else {
             this.alpha = this.LocalAlpha * this.Parent.Alpha;
+        }
+	}
+	
+	public virtual void UpdateHue() {
+        if (this.Parent == null) {
+			this.hue = this.LocalHue;
+        } else {
+            this.hue = this.LocalHue + this.Parent.Hue;
         }
 	}
 	
@@ -193,6 +209,7 @@ public class Roga2dNode {
 	}
 	public virtual void Update() {
 		UpdateTransparency();
+		UpdateHue();
 		UpdatePriority();
 		UpdatePosition();
 
