@@ -6,6 +6,8 @@ using TinyQuest.Core;
 
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
+	public Transform camera;
+	
 	private Roga2dNode root;
 	private Monster monster;
 	private Roga2dAnimationPlayer player;
@@ -88,7 +90,6 @@ public class AnimationSpawner : MonoBehaviour {
 	{
 		string[] commandData = command.Split(':');
 		if (commandData[0] == "damage") {
-			
 			// Flash effect
 			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
 			Roga2dIntervalPlayer.GetInstance().Play(interval);
@@ -126,6 +127,8 @@ public class AnimationSpawner : MonoBehaviour {
 				}
 			}
 		}
-
+		
+		// Change Camera position
+		// camera.position = new Vector3(this.monster.Position.x, this.monster.Position.y, camera.position.z);
 	}
 }
