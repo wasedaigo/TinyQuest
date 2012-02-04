@@ -6,7 +6,7 @@ public class Main : MonoBehaviour {
 	public GameObject roga2dRoot;
 	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;
-	private Player player;
+	private Ally player;
 	
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class Main : MonoBehaviour {
 		Roga2dUtils.applyState(this.root.Transform, state);
 		
 		// Player
-		this.player = new Player("lilia");
+		this.player = new Ally("lilia");
 		this.player.LocalPriority = 0.1f;
 		this.root.AddChild(player);
 		

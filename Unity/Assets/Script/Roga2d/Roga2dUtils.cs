@@ -109,7 +109,8 @@ public class Roga2dUtils {
 		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
-        Roga2dNode node = new Roga2dNode(new GameObject(id));
+        Roga2dNode node = new Roga2dNode(id);
+
         node.LocalAlpha = baseAlpha;
         node.LocalPriority = basePriority;
         

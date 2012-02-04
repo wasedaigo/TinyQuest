@@ -3,19 +3,13 @@ public class Roga2dSprite : Roga2dNode {
 	private Roga2dRenderObject renderObject;
 	
 	public Roga2dSprite(string name, Roga2dRenderObject renderObject) 
-	: base(new GameObject(name))
+	: base(name)
 	{
 		this.RenderObject = renderObject;
 	}
 	
 	public Roga2dSprite(Roga2dRenderObject renderObject) 
-	: base(new GameObject("Sprite"))
-	{
-		this.RenderObject = renderObject;
-	}
-
-	public Roga2dSprite(GameObject go, Roga2dRenderObject renderObject) 
-	: base(go)
+	: base("Sprite")
 	{
 		this.RenderObject = renderObject;
 	}

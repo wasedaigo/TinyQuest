@@ -19,8 +19,8 @@ public class AnimationSpawner : MonoBehaviour {
 		Application.targetFrameRate = 60;
 	}
 	
-	Player spawnBattler (string name, float x, float y) {
-		Player battler = new Player(name);
+	Ally spawnBattler (string name, float x, float y) {
+		Ally battler = new Ally(name);
 		battler.Sprite.LocalPriority = 0.1f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		this.battlers.Add(battler);

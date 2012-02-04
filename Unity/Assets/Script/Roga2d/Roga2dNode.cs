@@ -105,12 +105,6 @@ public class Roga2dNode {
 		Initialize("Node");
 	}
 	
-	public Roga2dNode(GameObject go) {
-		this.GameObject = go;
-		this.transform = this.GameObject.transform;
-		Initialize("Node");
-	}
-	
 	private void Initialize(string name) {
 		this.children = new List<Roga2dNode>();
 		
