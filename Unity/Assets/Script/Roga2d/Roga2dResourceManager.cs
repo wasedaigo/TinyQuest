@@ -33,4 +33,18 @@ public class Roga2dResourceManager {
 
 		return textureDictionary[key];
 	}
+	
+	// Material
+	private static Dictionary<string, Material> materialDictionary = new Dictionary<string, Material>();
+	public static Material getSharedMaterial(string key) {
+		if (!materialDictionary.ContainsKey(key))
+		{
+			Texture texture = getTexture(key);
+			Material material = new Material(Shader.Find("Diffuse"));
+			material.mainTexture = texture;
+			materialDictionary.Add(key, material);
+		}
+
+		return materialDictionary[key];
+	}
 }
