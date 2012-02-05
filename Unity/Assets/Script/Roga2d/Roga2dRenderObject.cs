@@ -125,6 +125,7 @@ public class Roga2dRenderObject {
 		this.alpha = alpha;
 		this.hue = hue;
 		
+		
 		if (this.material != null) {
 			Object.Destroy(this.material);
 		}
@@ -133,14 +134,15 @@ public class Roga2dRenderObject {
 		
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-
-//			this.material = new Material(Shader.Find("TintAlphaBlended"));
-			this.material = new Material(Shader.Find("Mobile/Particles/VertexLit Blended"));
+			//this.material = new Material(Shader.Find("TintAlphaBlended"));
+			this.material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/VertexLit Blended"));
 			this.material.SetColor("_EmisColor", new Color(hue.r / 255.0f + 0.5f, hue.g / 255.0f + 0.5f, hue.b / 255.0f + 0.5f, alpha));
 
 			break;
 		case Roga2dBlendType.Add:
-			this.material = new Material(Shader.Find("Custom/AlphaAdditive"));
+			// Better but heavier
+			//this.material = new Material(Shader.Find("Custom/AlphaAdditive"));
+			this.material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Additive"));
 			color = new Color(1.0f, 1.0f, 1.0f, alpha);
 			this.material.SetColor("_Color", color);
 			break;
