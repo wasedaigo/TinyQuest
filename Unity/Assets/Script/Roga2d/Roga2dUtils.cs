@@ -187,7 +187,7 @@ public class Roga2dUtils {
 			// Add source interval
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
 			foreach(Roga2dSourceIntervalData sourceIntervalData in timeline.source) {
-				Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
+				Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				

@@ -13,7 +13,7 @@ class TestRoga2dSourceInterval {
 		
 		List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
 		
-		Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
+		Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
 		keyFrame.FrameNo = 0;
 		keyFrame.Rect = new Rect(10, 10, 32, 48);
 		keyFrame.Id = "test";
@@ -22,7 +22,7 @@ class TestRoga2dSourceInterval {
 		keyFrame.PixelCenter = new Vector2(1, 1);
 		keyFrames.Add(keyFrame);
 		
-		keyFrame = Roga2dAnimationKeyFrame.Build();
+		keyFrame = new Roga2dAnimationKeyFrame();
 		keyFrame.FrameNo = 3;
 		keyFrame.Rect = new Rect(20, 10, 22, 48);
 		keyFrame.Id = "test2";
@@ -31,7 +31,7 @@ class TestRoga2dSourceInterval {
 		keyFrame.PixelCenter = new Vector2(2, 2);
 		keyFrames.Add(keyFrame);
 	
-		keyFrame = Roga2dAnimationKeyFrame.Build();
+		keyFrame = new Roga2dAnimationKeyFrame();
 		keyFrame.FrameNo = 5;
 		keyFrame.Rect = new Rect(20, 10, 22, 48);
 		keyFrame.Id = "test3";
@@ -40,7 +40,7 @@ class TestRoga2dSourceInterval {
 		keyFrame.PixelCenter = new Vector2(3, 3);
 		keyFrames.Add(keyFrame);
 		
-		keyFrame = Roga2dAnimationKeyFrame.Build();
+		keyFrame = new Roga2dAnimationKeyFrame();
 		keyFrame.FrameNo = 6;
 		keyFrame.Rect = new Rect(20, 10, 22, 48);
 		keyFrame.Id = "test4";

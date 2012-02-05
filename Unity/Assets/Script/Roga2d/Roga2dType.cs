@@ -139,25 +139,6 @@ public class Roga2dAnimationKeyFrame {
 	public Roga2dBlendType BlendType;
 	public float Priority;
 	public Roga2dAnimationKeyFrameType Type;
-	
-	public static Roga2dAnimationKeyFrame Build() {
-		Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
-		keyFrame.Id = "";
-		keyFrame.FrameNo = 0;
-		keyFrame.Duration = 0;
-		keyFrame.Rect = new Rect(0, 0, 1, 1);
-		keyFrame.PixelCenter = new Vector2(0, 0);
-		keyFrame.PixelSize = new Vector2(1, 1);
-		keyFrame.Emitter = false;
-		keyFrame.MaxEmitSpeed = 0.0f;
-		keyFrame.MinEmitSpeed = 0.0f;
-		keyFrame.MaxEmitAngle = 0.0f;
-		keyFrame.MinEmitAngle = 0.0f;
-		keyFrame.BlendType = Roga2dBlendType.Alpha;
-		keyFrame.Priority = 0.5f;
-		keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
-		return keyFrame;
-	}
 }
 
 public class Roga2dGameObjectState {

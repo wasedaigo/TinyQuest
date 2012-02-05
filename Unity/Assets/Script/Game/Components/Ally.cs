@@ -12,7 +12,7 @@ namespace TinyQuest.Component {
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
 			int[] frames = new int[4]{1, 0, 1, 2};
 			for (int i = 0; i < 4; i++) {
-				Roga2dAnimationKeyFrame keyFrame = Roga2dAnimationKeyFrame.Build();
+				Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
 				keyFrame.Rect = new Rect(96 + frames[i] * 32, 0, 32, 32);
 				keyFrame.Id = this.TextureID;
 				keyFrame.Duration = 10;

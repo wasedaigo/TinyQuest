@@ -55,20 +55,16 @@ public class Roga2dResourceManager {
 	// Material
 	private static Dictionary<string, Material> materialDictionary = new Dictionary<string, Material>();
 	public static Material getSharedMaterial(string key, Roga2dBlendType blendType) {
-		string hash = key + blendType;
-		
-		if (!materialDictionary.ContainsKey(hash))
+		if (!materialDictionary.ContainsKey(key))
 		{
 			Material material = null;
 
 			switch (blendType) {
 			case Roga2dBlendType.Alpha:
 				material = new Material(Roga2dResourceManager.getShader("Custom/TintAlphaBlended"));
-				//material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Alpha Blended"));
 				break;
 			case Roga2dBlendType.Add:
 				material = new Material(Roga2dResourceManager.getShader("Custom/AlphaAdditive"));
-				//material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Additive"));
 				break;
 			default:
 				Debug.LogError("Invalid BlendType is passed");
@@ -77,9 +73,9 @@ public class Roga2dResourceManager {
 	
 			Texture texture = getTexture(key);
 			material.mainTexture = texture;
-			materialDictionary.Add(hash, material);
+			materialDictionary.Add(key, material);
 		}
 
-		return materialDictionary[hash];
+		return materialDictionary[key];
 	}
 }
