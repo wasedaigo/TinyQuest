@@ -173,20 +173,20 @@ public class Roga2dNode {
         }
 	}
 	
+	public virtual void UpdateMovement() {
+		// Add velocity
+		// TODO: Should be remove in future. Use interval for this kind of move!
+		Vector2 velocity = this.Velocity;
+		Vector2 position = this.LocalPosition;
+		this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(position.x + velocity.x), Roga2dUtils.RoundPrecision(position.y + velocity.y));
+	}
+	
 	public virtual void UpdatePriority() {
         if (this.Parent == null) {
             this.priority = this.LocalPriority;
         } else {
 			this.priority = 2 * this.LocalPriority * this.Parent.Priority;
         }
-	}
-
-	public virtual void UpdatePosition() {
-		// Add velocity
-		// TODO: Should be remove in future. Use interval for this kind of move!
-		Vector2 velocity = this.Velocity;
-		this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(this.LocalPosition.x + velocity.x), Roga2dUtils.RoundPrecision(this.LocalPosition.y + velocity.y));
-		
 		// Move z position of the node, so that it reflects its render-priority
 		// TODO: Only update if priority has changed
 		Transform transform = this.transform;
@@ -196,11 +196,12 @@ public class Roga2dNode {
 			this.priority
 		);
 	}
+
 	public virtual void Update() {
 		UpdateTransparency();
 		UpdateHue();
+		UpdateMovement();
 		UpdatePriority();
-		UpdatePosition();
 
 		foreach(Roga2dNode node in this.children) {
 			node.Update();
