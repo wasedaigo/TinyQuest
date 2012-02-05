@@ -26,14 +26,6 @@ public class Roga2dNode {
 	private Roga2dHue hue;
 	private bool isHidden;
 
-	public Vector2 PixelPosition {
-		get {
-			return Roga2dUtils.localToPixel(this.transform.position);
-		}
-		set {
-			this.transform.position = Roga2dUtils.pixelToLocal(value);
-		}
-	}
 	
 	public Vector2 LocalPixelPosition {
 		get {
