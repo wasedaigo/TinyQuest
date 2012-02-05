@@ -10,13 +10,13 @@ namespace TinyQuest.Scene {
 			this.player = new Ally("lilia");
 			this.player.LocalPriority = 0.1f;
 			this.AddChild(player);
-			
-			// Stage
-			Stage stage = new Stage();
-			stage.LocalPriority = 0.0f;
-			this.AddChild(stage);
+
+			// TileMap
+			Roga2dTiledSprite map = new Roga2dTiledSprite("Dungeon/sample", 5, 5);
+			map.LocalPriority = 0.05f;
+			this.AddChild(map);
 		}
-		
+
 		public override void Update ()
 		{
 			base.Update ();

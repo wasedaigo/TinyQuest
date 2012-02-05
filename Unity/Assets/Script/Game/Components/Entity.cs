@@ -6,7 +6,8 @@ namespace TinyQuest.Component {
 		private Roga2dBaseInterval interval;
 		private string textureId;
 		private Roga2dSprite sprite;
-		public Entity(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect) 
+		public Entity(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
+		:base("Entity")
 		{
 			this.textureId = textureId;
 			this.interval = null;
