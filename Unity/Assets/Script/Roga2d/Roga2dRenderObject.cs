@@ -54,7 +54,7 @@ public class Roga2dRenderObject {
 			this.renderer = this.gameObject.AddComponent("MeshRenderer") as MeshRenderer;
 			
 			this.alpha = 0.0f;
-			this.mesh = GeneratePlane(1, 1);
+			this.mesh = GeneratePlane();
 			meshFilter.mesh = this.mesh;
 			this.SetSize(this.pixelSize);
 			this.SetSrcRect(this.srcRect);
@@ -81,7 +81,7 @@ public class Roga2dRenderObject {
 		}
 	}
 	
-	private Mesh GeneratePlane(float sizeX, float sizeY) {
+	private Mesh GeneratePlane() {
 		Mesh mesh = new Mesh();
 		mesh.vertices = new Vector3[4] {
 			new Vector3(-1.0f, 1.0f, 0.01f), 
