@@ -5,9 +5,15 @@ Properties {
 }
 
 SubShader {
-	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+	Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 	Blend SrcAlpha One
-		
+	Cull Off Lighting Off ZWrite Off Fog { Color (0,0,0,0) }
+	
+	BindChannels {
+		Bind "Color", color
+		Bind "Vertex", vertex
+		Bind "TexCoord", texcoord
+	}
 	Pass {
 		Material {
 			Diffuse [_Color]
@@ -15,7 +21,7 @@ SubShader {
 		}
 		Lighting On
 		SetTexture [_MainTex] {
-			Combine texture * primary
+			Combine texture * primary DOUBLE
 		} 
 	}	
 }

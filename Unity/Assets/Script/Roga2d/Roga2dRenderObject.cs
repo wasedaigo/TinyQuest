@@ -130,7 +130,7 @@ public class Roga2dRenderObject {
 		if (this.material != null) {
 			Object.Destroy(this.material);
 		}
-
+		
 		if (!hue.IsZero() || alpha != 1.0f || this.material != null) {
 			this.renderer.material =  Roga2dResourceManager.getSharedMaterial(this.textureID, blendType);
 			if (blendType == Roga2dBlendType.Alpha) {
@@ -143,7 +143,7 @@ public class Roga2dRenderObject {
 			this.renderer.sharedMaterial =  Roga2dResourceManager.getSharedMaterial(this.textureID, blendType);
 		}
 	}
-
+	
 	public Vector2 PixelSize {
 		get {
 			return this.pixelSize;	

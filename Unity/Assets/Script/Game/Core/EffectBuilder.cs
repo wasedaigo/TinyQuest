@@ -58,8 +58,8 @@ namespace TinyQuest.Core {
 		// Build interval for red-flash
 		public Roga2dBaseInterval BuildDamageInterval(Roga2dNode target) {
 			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(0, -255, -255), 5, true));
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, -255, -255), new Roga2dHue(0, 0, 0), 5, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(100, -100, -100), 5, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(100, -100, -100), new Roga2dHue(0, 0, 0), 5, true));
 			return new Roga2dSequence(list);
 		}
 	}

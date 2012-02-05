@@ -63,7 +63,7 @@ public class Roga2dResourceManager {
 
 			switch (blendType) {
 			case Roga2dBlendType.Alpha:
-				material = new Material(Roga2dResourceManager.getShader("TintAlphaBlended"));
+				material = new Material(Roga2dResourceManager.getShader("Custom/TintAlphaBlended"));
 				//material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Alpha Blended"));
 				break;
 			case Roga2dBlendType.Add:
