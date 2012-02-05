@@ -14,7 +14,6 @@ class TestRoga2dAnimationPlayer {
 
 	public static void TestPlay() {
 		GameObject gameObject = new GameObject();
-		gameObject.AddComponent("Roga2dAnimationPlayer");
 		Roga2dAnimationPlayer player = new Roga2dAnimationPlayer();
 		Roga2dWait interval = new Roga2dWait(3);
 		Roga2dNode node = new Roga2dNode();

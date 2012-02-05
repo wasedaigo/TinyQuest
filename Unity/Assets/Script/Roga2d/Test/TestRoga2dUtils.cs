@@ -231,7 +231,7 @@ class TestRoga2dUtils{
 	}
 	
 	public static void TestCoordinationConversion() {
-		Tester.Match(Roga2dUtils.pixelToLocal(new Vector2(96.0f, 64.0f)), new Vector2(-2.0f, 3.0f));
-		Tester.Match(Roga2dUtils.localToPixel(new Vector2(-2.0f, 3.0f)), new Vector2(96.0f, 64.0f));
+		Tester.Match(Roga2dUtils.pixelToLocal(new Vector2(96.0f, 64.0f)), new Vector2(3.0f, 2.0f));
+		Tester.Match(Roga2dUtils.localToPixel(new Vector2(3.0f, 2.0f)), new Vector2(96.0f, 64.0f));
 	}
 }

@@ -137,8 +137,8 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dScaleIntervalData scaleIntervalData in timeline.scale) {
-					Vector2 start = FixCoordinate(new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]));
-					Vector2 end = FixCoordinate(new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]));
+					Vector2 start = new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]);
+					Vector2 end = new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]);
 					intervals.Add(new Roga2dScaleInterval(sprite, start, end, scaleIntervalData.duration, scaleIntervalData.tween));
 				}
 				if(intervals.Count > 0) {
@@ -257,15 +257,11 @@ public class Roga2dUtils {
 	}
 	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
-		return new Vector2(-pixelCoordinate.y / 32.0f, pixelCoordinate.x / 32.0f);
+		return new Vector2(pixelCoordinate.x / 32.0f, pixelCoordinate.y / 32.0f);
 	}
 	
 	public static Vector2 localToPixel(Vector2 localCoordinate){
-		return new Vector2(localCoordinate.y * 32.0f, -localCoordinate.x * 32.0f);
-	}
-	
-	public static Vector2 FixCoordinate(Vector2 coordinate){
-		return new Vector2(coordinate.y, coordinate.x);
+		return new Vector2(localCoordinate.x * 32.0f, localCoordinate.y * 32.0f);
 	}
 	
 	public static float RoundPrecision(float value){

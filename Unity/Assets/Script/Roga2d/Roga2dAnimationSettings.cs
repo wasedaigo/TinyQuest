@@ -43,15 +43,17 @@ public class Roga2dAnimationSettings {
 				this.target = null;
 				this.targetOrigin = null;
 			} 
-
-			this.target = value;
-			if (this.target.Parent == null) {
-				Debug.LogError("Target must be in scenegraph before set to the root");	
-			}
 			
-			this.targetOrigin = new Roga2dNode("TargetOrigin");
-			this.target.Parent.AddChild(this.targetOrigin);
-			this.targetOrigin.LocalPosition = target.LocalPosition;
+			if (value != null) {
+				this.target = value;
+				if (this.target.Parent == null) {
+					Debug.LogError("Target must be in scenegraph before set to the root");	
+				}
+				
+				this.targetOrigin = new Roga2dNode("TargetOrigin");
+				this.target.Parent.AddChild(this.targetOrigin);
+				this.targetOrigin.LocalPosition = target.LocalPosition;
+			}
 		}
 	}
 	

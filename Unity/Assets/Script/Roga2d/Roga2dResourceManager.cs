@@ -25,6 +25,7 @@ public class Roga2dResourceManager {
 	// Texture
 	private static Dictionary<string, Texture> textureDictionary = new Dictionary<string, Texture>();
 	public static Texture getTexture(string key) {
+		if (key == null) {return null;}
 		if (!textureDictionary.ContainsKey(key))
 		{
 			Texture texture = Resources.Load("Images/" + key) as Texture;
@@ -53,9 +54,10 @@ public class Roga2dResourceManager {
 	}
 	
 	// Material
-	private static Dictionary<string, Material> materialDictionary = new Dictionary<string, Material>();
+	private static Dictionary<string, Material>[] materialDictionary = new Dictionary<string, Material>[] {new Dictionary<string, Material>(), new Dictionary<string, Material>()};
 	public static Material getSharedMaterial(string key, Roga2dBlendType blendType) {
-		if (!materialDictionary.ContainsKey(key))
+		int index = (int)blendType;
+		if (!materialDictionary[index].ContainsKey(key))
 		{
 			Material material = null;
 
@@ -73,9 +75,9 @@ public class Roga2dResourceManager {
 	
 			Texture texture = getTexture(key);
 			material.mainTexture = texture;
-			materialDictionary.Add(key, material);
+			materialDictionary[index].Add(key, material);
 		}
 
-		return materialDictionary[key];
+		return materialDictionary[index][key];
 	}
 }

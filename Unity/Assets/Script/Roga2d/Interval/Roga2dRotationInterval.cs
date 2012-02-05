@@ -43,7 +43,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
                 float dx = node.Position.x - dataStore.lastAbsPosition.x;
                 float dy = node.Position.y - dataStore.lastAbsPosition.y;
                 
-                result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180 + 270;
+                result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
                 if (dataStore.ignore) {
                     node.LocalAlpha = dataStore.lastAlpha;
                 } else {
