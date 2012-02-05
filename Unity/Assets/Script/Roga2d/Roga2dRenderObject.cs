@@ -87,9 +87,8 @@ public class Roga2dRenderObject {
 			new Vector3(1.0f, 1.0f, 0.01f), 
 			new Vector3(-1.0f, 1.0f, 0.01f)
 		};
-		mesh.triangles = new int[6] {0, 1, 2, 0, 2, 3};
+		mesh.SetTriangleStrip(new int[4] {0, 1, 3, 2}, 0);
 		mesh.RecalculateNormals();
-		
 		return mesh;
 	}
 
@@ -129,7 +128,6 @@ public class Roga2dRenderObject {
 			Object.Destroy(this.material);
 		}
 
-		this.renderer = this.gameObject.GetComponent("MeshRenderer") as MeshRenderer;
 		Color color;
 		
 		switch (blendType) {
@@ -153,7 +151,7 @@ public class Roga2dRenderObject {
 			this.material.mainTexture = this.texture;
 		}
 
-		renderer.material = this.material;
+		this.renderer.material = this.material;
 	}
 	
 	public Vector2 PixelSize {
