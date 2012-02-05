@@ -8,7 +8,6 @@ using System.Collections.Generic;
  */
 public class Roga2dNode {
 	
-	private static int nodeCount = 0;
 	public Vector2 Velocity;
 	public float LocalAlpha;
 	public Roga2dHue LocalHue;
@@ -18,7 +17,9 @@ public class Roga2dNode {
 	public Roga2dNode Parent;
 	public List<Roga2dNode> children;
 	
-	private GameObject GameObject;
+	protected GameObject GameObject;
+	
+	private static int nodeCount = 0;
 	private Transform transform;
 	private float priority;
 	private float alpha;
@@ -79,7 +80,7 @@ public class Roga2dNode {
 	
 	public bool IsVisible {
 		get {
-			return !this.isHidden;
+			return !this.isHidden && this.alpha != 0.0f;
 		}
 	}
 	

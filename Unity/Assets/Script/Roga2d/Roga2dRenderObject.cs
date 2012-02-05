@@ -89,6 +89,7 @@ public class Roga2dRenderObject {
 		};
 		mesh.SetTriangleStrip(new int[4] {0, 1, 3, 2}, 0);
 		mesh.RecalculateNormals();
+		
 		return mesh;
 	}
 
@@ -132,7 +133,9 @@ public class Roga2dRenderObject {
 		
 		switch (blendType) {
 		case Roga2dBlendType.Alpha:
-			this.material = new Material(Shader.Find("TintAlphaBlended"));
+
+//			this.material = new Material(Shader.Find("TintAlphaBlended"));
+			this.material = new Material(Shader.Find("Mobile/Particles/VertexLit Blended"));
 			this.material.SetColor("_EmisColor", new Color(hue.r / 255.0f + 0.5f, hue.g / 255.0f + 0.5f, hue.b / 255.0f + 0.5f, alpha));
 
 			break;
