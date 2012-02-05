@@ -257,11 +257,11 @@ public class Roga2dUtils {
 	}
 	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
-		return new Vector2(pixelCoordinate.x / 32.0f, pixelCoordinate.y / 32.0f);
+		return new Vector2(pixelCoordinate.x / Roga2dConst.BasePixelSize, pixelCoordinate.y / Roga2dConst.BasePixelSize);
 	}
 	
 	public static Vector2 localToPixel(Vector2 localCoordinate){
-		return new Vector2(localCoordinate.x * 32.0f, localCoordinate.y * 32.0f);
+		return new Vector2(localCoordinate.x * Roga2dConst.BasePixelSize, localCoordinate.y * Roga2dConst.BasePixelSize);
 	}
 	
 	public static float RoundPrecision(float value){

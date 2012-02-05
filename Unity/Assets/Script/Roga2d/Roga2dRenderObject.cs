@@ -84,10 +84,10 @@ public class Roga2dRenderObject {
 	private Mesh GeneratePlane() {
 		Mesh mesh = new Mesh();
 		mesh.vertices = new Vector3[4] {
-			new Vector3(-1.0f, 1.0f, 0.01f), 
-			new Vector3(-1.0f, -1.0f, 0.01f), 
-			new Vector3(1.0f, -1.0f, 0.01f), 
-			new Vector3(1.0f, 1.0f, 0.01f)
+			new Vector3(-0.5f, 0.5f, 0.01f), 
+			new Vector3(-0.5f, -0.5f, 0.01f), 
+			new Vector3(0.5f, -0.5f, 0.01f), 
+			new Vector3(0.5f, 0.5f, 0.01f)
 			
 		};
 		mesh.SetTriangleStrip(new int[4] {0, 1, 3, 2}, 0);
@@ -158,8 +158,8 @@ public class Roga2dRenderObject {
 	
 	public Vector2 Anchor {
 		get {
-			float centerX = (this.pixelCenter.x * 2.0f) / Roga2dConst.BasePixelSize;
-			float centerY = (this.pixelCenter.y * 2.0f) / Roga2dConst.BasePixelSize;
+			float centerX = this.pixelCenter.x / Roga2dConst.BasePixelSize;
+			float centerY = this.pixelCenter.y / Roga2dConst.BasePixelSize;
 			return new Vector2(-centerX, -centerY);
 		}
 	}

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Roga2dConst {
-	public static float BasePixelSize = 64.0f;
+	public static float BasePixelSize = 32.0f;
 };
 
 public enum Roga2dBlendType {
