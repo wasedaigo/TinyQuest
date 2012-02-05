@@ -191,10 +191,12 @@ public class Roga2dNode {
 
 	public virtual void UpdatePosition() {
 		// Add velocity
+		// TODO: Should be remove in future. Use interval for this kind of move!
 		Vector2 velocity = this.Velocity;
 		this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(this.LocalPosition.x + velocity.x), Roga2dUtils.RoundPrecision(this.LocalPosition.y + velocity.y));
 		
 		// Move z position of the node, so that it reflects its render-priority
+		// TODO: Only update if priority has changed
 		Transform transform = this.transform;
 		transform.position = new Vector3(
 			transform.position.x, 
