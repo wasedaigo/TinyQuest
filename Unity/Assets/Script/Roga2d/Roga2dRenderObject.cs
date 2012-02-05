@@ -20,14 +20,14 @@ public class Roga2dRenderObject {
 	private float alpha;
 	private Roga2dHue hue;
 
-	public Roga2dRenderObject(Texture texture, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
+	public Roga2dRenderObject(string textureID, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 	{
 		this.gameObject = null;
 		this.transform = null;
 		this.pixelSize = pixelSize;
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
-		this.texture = texture;
+		this.texture = Roga2dResourceManager.getTexture(textureID);
 		this.alpha = -0.1f; // In order to update its materal at SetBlend at first time
 	}
 

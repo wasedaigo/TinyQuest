@@ -38,8 +38,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 				if (lastKeyFrameId == keyFrame.Id) {
 					renderObject = renderObjectDescs[renderObjectDescs.Count - 1].RenderObject;
 				} else {
-					Texture texture = Roga2dResourceManager.getTexture(keyFrame.Id);
-					renderObject = new Roga2dRenderObject(texture, keyFrame.PixelSize, keyFrame.PixelCenter, keyFrame.Rect);
+					renderObject = new Roga2dRenderObject(keyFrame.Id, keyFrame.PixelSize, keyFrame.PixelCenter, keyFrame.Rect);
 				}
 				Roga2dRenderObjectDesc desc = new Roga2dRenderObjectDesc();
 				desc.RenderObject = renderObject;

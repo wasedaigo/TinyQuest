@@ -26,7 +26,7 @@ namespace TinyQuest.Core {
 			for (int i = 0; i < digits.Count; i++) {
 				uint no = digits[i];
 				// Get Font Image
-				Roga2dRenderObject renderObject = new Roga2dRenderObject(Roga2dResourceManager.getTexture("Font/number_font"), new Vector2(7, 10), new Vector2(0, 0), new Rect(no * 7, 0, 7, 10));
+				Roga2dRenderObject renderObject = new Roga2dRenderObject("Font/number_font", new Vector2(7, 10), new Vector2(0, 0), new Rect(no * 7, 0, 7, 10));
 				Roga2dSprite sprite = new Roga2dSprite(renderObject);
 				// X-coordinate each digit pop
 				int popX = i * 10;
