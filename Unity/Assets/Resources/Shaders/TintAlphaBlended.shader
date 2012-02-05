@@ -4,7 +4,7 @@
 
 Shader "TintAlphaBlended" {
 Properties {
-	_EmisColor ("Emissive Color", Color) = (.2,.2,.2,0)
+	_EmisColor ("Emissive Color", Color) = (0.5, 0.5, 0.5, 1.0)
 	_MainTex ("Particle Texture", 2D) = "white" {}
 }
 

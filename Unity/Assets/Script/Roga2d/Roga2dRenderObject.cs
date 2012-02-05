@@ -14,6 +14,7 @@ public class Roga2dRenderObject {
 	private Transform transform;
 	private MeshRenderer renderer;
 	private Texture texture;
+	private string textureID;
 	private Mesh mesh;
 	private Material material;
 	private Roga2dBlendType blendType;
@@ -28,6 +29,7 @@ public class Roga2dRenderObject {
 		this.pixelCenter = pixelCenter;
 		this.srcRect = srcRect;
 		this.texture = Roga2dResourceManager.getTexture(textureID);
+		this.textureID = textureID;
 		this.alpha = -0.1f; // In order to update its materal at SetBlend at first time
 	}
 
@@ -124,41 +126,24 @@ public class Roga2dRenderObject {
 		this.blendType = blendType;
 		this.alpha = alpha;
 		this.hue = hue;
-		
-		
+
 		if (this.material != null) {
 			Object.Destroy(this.material);
 		}
 
-		Color color;
-		
-		switch (blendType) {
-		case Roga2dBlendType.Alpha:
-			//this.material = new Material(Shader.Find("TintAlphaBlended"));
-			this.material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/VertexLit Blended"));
-			this.material.SetColor("_EmisColor", new Color(hue.r / 255.0f + 0.5f, hue.g / 255.0f + 0.5f, hue.b / 255.0f + 0.5f, alpha));
-
-			break;
-		case Roga2dBlendType.Add:
-			// Better but heavier
-			//this.material = new Material(Shader.Find("Custom/AlphaAdditive"));
-			this.material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Additive"));
-			color = new Color(1.0f, 1.0f, 1.0f, alpha);
-			this.material.SetColor("_Color", color);
-			break;
-		default:
-			Debug.LogError("Invalid BlendType is passed");
-			break;
+		if (!hue.IsZero() || alpha != 1.0f || this.material != null) {
+			this.renderer.material =  Roga2dResourceManager.getSharedMaterial(this.textureID, blendType);
+			if (blendType == Roga2dBlendType.Alpha) {
+				this.renderer.material.SetColor("_EmisColor", new Color(hue.r / 255.0f + 0.5f, hue.g / 255.0f + 0.5f, hue.b / 255.0f + 0.5f, alpha));
+			} else {
+				this.renderer.material.SetColor("_Color", new Color(1.0f, 1.0f, 1.0f, alpha));
+			}
+			this.material = this.renderer.material;
+		} else {
+			this.renderer.sharedMaterial =  Roga2dResourceManager.getSharedMaterial(this.textureID, blendType);
 		}
-		
-		// Setup Texture
-		if (this.texture != null) {
-			this.material.mainTexture = this.texture;
-		}
-
-		this.renderer.material = this.material;
 	}
-	
+
 	public Vector2 PixelSize {
 		get {
 			return this.pixelSize;	

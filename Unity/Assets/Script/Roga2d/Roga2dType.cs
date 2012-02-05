@@ -44,6 +44,10 @@ public struct Roga2dHue {
 		this.b = b;
 	}
 	
+	public bool IsZero() {
+		return this.r == 0 && this.g == 0 && this.b == 0;
+	}
+
 	public override bool Equals(object obj) 
 	{
 	  return obj is Roga2dHue && this == (Roga2dHue)obj;

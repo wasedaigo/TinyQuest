@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using JsonFx.Json;
 
 public class Roga2dResourceManager {
+	
+	public static void Init() {
+		
+	}
+	
 	// Animation
 	private static Dictionary<string, Roga2dAnimationData> animationDictionary = new Dictionary<string, Roga2dAnimationData>();
 	public static Roga2dAnimationData getAnimation(string key) {
@@ -49,15 +54,32 @@ public class Roga2dResourceManager {
 	
 	// Material
 	private static Dictionary<string, Material> materialDictionary = new Dictionary<string, Material>();
-	public static Material getSharedMaterial(string key) {
-		if (!materialDictionary.ContainsKey(key))
+	public static Material getSharedMaterial(string key, Roga2dBlendType blendType) {
+		string hash = key + blendType;
+		
+		if (!materialDictionary.ContainsKey(hash))
 		{
+			Material material = null;
+
+			switch (blendType) {
+			case Roga2dBlendType.Alpha:
+				material = new Material(Roga2dResourceManager.getShader("TintAlphaBlended"));
+				//material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Alpha Blended"));
+				break;
+			case Roga2dBlendType.Add:
+				material = new Material(Roga2dResourceManager.getShader("Custom/AlphaAdditive"));
+				//material = new Material(Roga2dResourceManager.getShader("Mobile/Particles/Additive"));
+				break;
+			default:
+				Debug.LogError("Invalid BlendType is passed");
+				break;
+			}
+	
 			Texture texture = getTexture(key);
-			Material material = new Material(Shader.Find("Diffuse"));
 			material.mainTexture = texture;
-			materialDictionary.Add(key, material);
+			materialDictionary.Add(hash, material);
 		}
 
-		return materialDictionary[key];
+		return materialDictionary[hash];
 	}
 }

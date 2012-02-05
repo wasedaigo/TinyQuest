@@ -37,6 +37,8 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Shader.WarmupAllShaders() ;
+
 		this.player = new Roga2dAnimationPlayer();
 		this.root = new Roga2dNode("Root");
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
