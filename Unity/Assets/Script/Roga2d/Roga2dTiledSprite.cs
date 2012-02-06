@@ -3,10 +3,14 @@ public class Roga2dTiledSprite : Roga2dNode {
 	
 	private int countX;
 	private int countY;
+	private int srcCountX;
+	private int srcCountY;
 	private float textureWidth;
 	private float textureHeight;
 	private float gridWidth;
 	private float gridHeight;
+	private Mesh mesh;
+	
 	public Roga2dTiledSprite(string textureID, int countX, int countY) 
 	: base("TileMap")
 	{
@@ -20,12 +24,21 @@ public class Roga2dTiledSprite : Roga2dNode {
 		this.textureHeight = texture.height;
 		renderer.sharedMaterial =  Roga2dResourceManager.getSharedMaterial(textureID, Roga2dBlendType.Alpha);
 		this.SetGridSize(16.0f, 16.0f);
-		meshFilter.mesh = GenerateGrid(countX, countY);
+	
+		this.mesh = GenerateGrid(countX, countY);
+		meshFilter.mesh = this.mesh;
 	}
 	
+	public override void Destroy() {
+		Object.Destroy(this.mesh);
+		base.Destroy();
+	}
+
 	private void SetGridSize(float width, float height) {
 		this.gridWidth = width;
 		this.gridHeight = height;
+		this.srcCountX = (int)Mathf.Floor(this.textureWidth / this.gridWidth);
+		this.srcCountY = (int)Mathf.Floor(this.gridHeight / this.gridHeight);
 		this.LocalScale = new Vector3(this.countX * width / Roga2dConst.BasePixelSize, this.countY * height / Roga2dConst.BasePixelSize, 0.1f);
 	}
 
@@ -75,15 +88,36 @@ public class Roga2dTiledSprite : Roga2dNode {
 				i++;
 			}
 		}
-		
+
 		// Initialize Mesh
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices;
 		mesh.triangles = triangles;
 		mesh.uv = uvs;
-		
 		mesh.RecalculateNormals();
 
 		return mesh;
+	}
+	
+	public void SetTile(int x, int y, int tileNo) {
+		float[] uv;
+		if (tileNo >= 0) {
+			float ux = (1 + this.gridWidth * Mathf.Floor(tileNo / this.srcCountX)) / this.textureWidth;
+			float uy = (1 + this.gridHeight * Mathf.Floor(tileNo % this.srcCountX)) / this.textureHeight;
+			float uw = (this.gridWidth - 1) / this.textureWidth;
+			float uh = (this.gridHeight - 1) / this.textureHeight;
+			uv = new float[4]{ux, 1.0f - uy, ux + uw, 1.0f - uy - uh};
+		} else {
+			uv = new float[4]{0, 0, 0, 0};
+		}
+
+		int gridNo = x + y * this.countX;
+		int index = gridNo * 4;
+		Vector2[] uvs = this.mesh.uv;
+		uvs[index] = new Vector2(uv[0], uv[1]);
+		uvs[index + 1] = new Vector2(uv[0], uv[3]);
+		uvs[index + 2] = new Vector2(uv[2], uv[1]);
+		uvs[index + 3] = new Vector2(uv[2], uv[3]);
+		this.mesh.uv = uvs;
 	}
 }
