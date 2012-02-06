@@ -81,6 +81,9 @@ public class Roga2dTiledSprite : Roga2dNode {
 		mesh.vertices = vertices;
 		mesh.triangles = triangles;
 		mesh.uv = uvs;
+		
+		mesh.RecalculateNormals();
+
 		return mesh;
 	}
 }
