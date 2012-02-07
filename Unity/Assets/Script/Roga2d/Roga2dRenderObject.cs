@@ -46,21 +46,31 @@ public class Roga2dRenderObject {
 	}
 
 	public void Pop() {
-		this.gameObject = new GameObject("RenderObject");
-		this.transform = this.gameObject.transform;
-		
-		if (this.texture != null) {
-			MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
-			this.renderer = this.gameObject.AddComponent("MeshRenderer") as MeshRenderer;
+		if (this.gameObject == null) {
+			this.gameObject = new GameObject("RenderObject");
+			this.transform = this.gameObject.transform;
 			
-			this.alpha = 0.0f;
-			this.mesh = GeneratePlane();
-			meshFilter.mesh = this.mesh;
-			this.SetSize(this.pixelSize);
-			this.SetSrcRect(this.srcRect);
-			Roga2dHue hue = new Roga2dHue(0, 0, 0);
-			this.SetBlend(Roga2dBlendType.Alpha, 1.0f, hue);	
+			if (this.texture != null) {
+				MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
+				this.renderer = this.gameObject.AddComponent("MeshRenderer") as MeshRenderer;
+				
+				this.alpha = 0.0f;
+				this.mesh = GeneratePlane();
+				meshFilter.mesh = this.mesh;
+				this.SetSize(this.pixelSize);
+				this.SetSrcRect(this.srcRect);
+				Roga2dHue hue = new Roga2dHue(0, 0, 0);
+				this.SetBlend(Roga2dBlendType.Alpha, 1.0f, hue);	
+			}
 		}
+	}
+	
+	public void Hide() {
+		this.renderer.enabled = false;
+	}
+	
+	public void Show() {
+		this.renderer.enabled = true;
 	}
 	
 	public GameObject GameObject {
