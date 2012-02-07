@@ -32,7 +32,7 @@ public class Roga2dNode {
 			return Roga2dUtils.localToPixel(this.transform.localPosition);
 		}
 		set {
-			this.transform.localPosition = Roga2dUtils.pixelToLocal(value);
+			this.LocalPosition = Roga2dUtils.pixelToLocal(value);
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class Roga2dNode {
 			return this.transform.localPosition;
 		}
 		set {
-			this.transform.localPosition = value;
+			this.transform.localPosition = new Vector3(value.x, value.y, this.transform.localPosition.z);
 		}
 	}
 	

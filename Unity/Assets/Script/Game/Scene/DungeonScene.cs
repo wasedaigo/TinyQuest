@@ -9,13 +9,12 @@ namespace TinyQuest.Scene {
 		{
 			// Player
 			this.player = new Ally("lilia");
-			this.player.LocalPriority = 0.1f;
+			this.player.LocalPriority = 1.0f;
 			this.AddChild(player);
 
 			// TileMap
-			//Roga2dTiledSprite map = new Roga2dTiledSprite("Dungeon/sample", 5, 5);
-			//map.LocalPriority = 0.05f;
-			//this.AddChild(map);
+			RevealableTileMap tileMap = new RevealableTileMap();
+			this.AddChild(tileMap);
 			
 			Roga2dButton button = new Roga2dButton();
 			button.UpRenderObject = new Roga2dRenderObject("Dungeon/sample", new Vector2(32, 32), new Vector2(0, 0), new Rect(0, 0, 64, 64));
@@ -40,7 +39,9 @@ namespace TinyQuest.Scene {
 				RaycastHit hitInfo = new RaycastHit();
 				if (Physics.Raycast(ray, out hitInfo)) {
 					this.pressedCollider = hitInfo.collider;
-					this.pressedCollider.SendMessage("ReceiveTouchDown");
+					if (this.pressedCollider != null) {
+						this.pressedCollider.SendMessage("ReceiveTouchDown");
+					}
 				}
 			}
 			

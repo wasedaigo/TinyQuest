@@ -49,6 +49,9 @@ public class Roga2dTiledSprite : Roga2dNode {
 		Vector2[] uvs = new Vector2[gridCount * 4];
 		int[] triangles = new int[gridCount * 6];
 	
+		float vsx = -0.5f;
+		float vsy = -0.5f;
+		Debug.Log (vsx);
 		float vw = 1.0f / countX;
 		float vh = 1.0f / countY;
 		float ux = 1 / this.textureWidth;
@@ -64,8 +67,8 @@ public class Roga2dTiledSprite : Roga2dNode {
 				int t1 = i * 4;
 				
 				// Vertex
-				float vx = vw * x;
-				float vy = vh * y;
+				float vx = vw * x + vsx;
+				float vy = vh * y + vsy;
 				vertices[t1] = new Vector3(vx , vy, 0.01f);
 				vertices[t1 + 1] = new Vector3(vx, vy + vh, 0.01f);
 				vertices[t1 + 2] = new Vector3(vx + vw, vy, 0.01f);
