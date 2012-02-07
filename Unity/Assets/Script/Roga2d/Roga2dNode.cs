@@ -112,7 +112,7 @@ public class Roga2dNode {
 		this.LocalPriority = 0.5f;
 		this.alpha = 1.0f;
 		this.hue = new Roga2dHue(0, 0, 0); 
-		this.priority = 0.5f;
+		this.priority = 0.0f;
 	}
 	
 	public virtual void Destroy() {
