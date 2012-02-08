@@ -53,7 +53,7 @@ public class Roga2dButton : Roga2dNode {
 		}
 	}
 	
-	private void OnTouchDown() {
+	private void OnTouchDown(Vector2 pos) {
 		this.isPressed = true;
 		this.state = State.Down;
 		UpdateState();

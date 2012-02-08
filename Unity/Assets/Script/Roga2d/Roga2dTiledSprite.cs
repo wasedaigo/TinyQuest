@@ -33,7 +33,19 @@ public class Roga2dTiledSprite : Roga2dNode {
 		Object.Destroy(this.mesh);
 		base.Destroy();
 	}
-
+	
+	public float GridWidth {
+		get {
+			return this.gridWidth;	
+		}
+	}
+	
+	public float GridHeight {
+		get {
+			return this.gridHeight;	
+		}
+	}
+	
 	private void SetGridSize(float width, float height) {
 		this.gridWidth = width;
 		this.gridHeight = height;
@@ -62,8 +74,8 @@ public class Roga2dTiledSprite : Roga2dNode {
 
 		// Setup Mesh data
 		int i = 0;
-		for (int x = 0; x < countX; x++) {
-			for (int y = 0; y < countY; y++) {
+		for (int y = 0; y < countY; y++) {
+			for (int x = 0; x < countX; x++) {
 				int t1 = i * 4;
 				
 				// Vertex

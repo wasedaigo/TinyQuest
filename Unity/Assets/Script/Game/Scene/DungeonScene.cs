@@ -39,8 +39,10 @@ namespace TinyQuest.Scene {
 				RaycastHit hitInfo = new RaycastHit();
 				if (Physics.Raycast(ray, out hitInfo)) {
 					this.pressedCollider = hitInfo.collider;
+					
 					if (this.pressedCollider != null) {
-						this.pressedCollider.SendMessage("ReceiveTouchDown");
+						object obj = hitInfo.point;
+						this.pressedCollider.SendMessage("ReceiveTouchDown", obj);
 					}
 				}
 			}
