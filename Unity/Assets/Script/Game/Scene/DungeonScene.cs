@@ -14,6 +14,7 @@ namespace TinyQuest.Scene {
 
 			// TileMap
 			RevealableTileMap tileMap = new RevealableTileMap();
+			tileMap.LocalPriority = 0.5f;
 			this.AddChild(tileMap);
 			
 			Roga2dButton button = new Roga2dButton();

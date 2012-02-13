@@ -5,7 +5,6 @@ public class RevealableTileMap : Roga2dNode {
 	private Roga2dTiledSprite map;
 	public RevealableTileMap () {
 		this.map = new Roga2dTiledSprite("Dungeon/sample", 5, 5);
-		this.map.LocalPriority = 0.05f;
 		this.AddChild(this.map);
 		
 		// Setup Collider

@@ -192,7 +192,7 @@ public class Roga2dUtils {
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				
 				keyFrame.Duration = sourceIntervalData.duration;
-				keyFrame.Priority = sourceIntervalData.priority;
+				keyFrame.Priority = sourceIntervalData.priority - 0.5f;
 				keyFrame.BlendType = sourceIntervalData.blendType;
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
 					keyFrame.Id = sourceIntervalData.id;

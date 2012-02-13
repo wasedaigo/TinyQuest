@@ -109,7 +109,7 @@ public class Roga2dNode {
 		}
 		this.LocalHue.SetRGB(0, 0, 0);
 		this.LocalAlpha = 1.0f;
-		this.LocalPriority = 0.5f;
+		this.LocalPriority = 0.0f;
 		this.alpha = 1.0f;
 		this.hue = new Roga2dHue(0, 0, 0); 
 		this.priority = 0.0f;
@@ -188,7 +188,7 @@ public class Roga2dNode {
         if (this.Parent == null) {
             this.priority = this.LocalPriority;
         } else {
-			this.priority = 2 * this.LocalPriority * this.Parent.Priority;
+			this.priority = this.LocalPriority + this.Parent.Priority;
         }
 		// Move z position of the node, so that it reflects its render-priority
 		if (lastPriority != this.priority) {
