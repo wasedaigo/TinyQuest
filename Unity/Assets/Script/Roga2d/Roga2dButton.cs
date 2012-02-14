@@ -6,7 +6,7 @@ public class Roga2dButton : Roga2dNode {
 		Down
 	};
 	
-	public delegate void OnTouchDelegate();
+	public delegate void OnTouchDelegate(Roga2dButton button);
 	private OnTouchDelegate onTouched;
 	private Roga2dRenderObject upRenderObject;
 	private Roga2dRenderObject downRenderObject;
@@ -62,7 +62,7 @@ public class Roga2dButton : Roga2dNode {
 	private void OnTouchUp() {
 		if (this.isPressed) {
 			if (this.onTouched != null) {
-				this.onTouched();	
+				this.onTouched(this);	
 			}
 		}
 		this.isPressed = false;

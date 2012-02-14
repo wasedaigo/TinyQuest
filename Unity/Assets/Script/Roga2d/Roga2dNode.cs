@@ -7,7 +7,7 @@ using System.Collections.Generic;
  *  2. Use GameObject pool
  */
 public class Roga2dNode {
-	
+	public object Tag;
 	public Vector2 Velocity;
 	public float LocalAlpha;
 	public Roga2dHue LocalHue;
