@@ -9,7 +9,6 @@ public class Main : MonoBehaviour {
 	private DungeonScene mainWindow;
 	private AdventureWindow subWindow;
 
-	
 	// Use this for initialization
 	void Start () {
 		this.mainWindow = new DungeonScene();

@@ -28,10 +28,10 @@ namespace TinyQuest.Scene {
 			//this.AddChild(player);
 			
 			// BG
-			Roga2dRenderObject renderObject = new Roga2dRenderObject("Dungeon/sample_bg", new Vector2(144, 160), new Vector2(0, 0), new Rect(0, 0, 256, 256));
+			Roga2dRenderObject renderObject = new Roga2dRenderObject("Dungeon/sample_bg", new Vector2(320, 192), new Vector2(0, 0), new Rect(0, 0, 256, 256));
 			Roga2dSprite sprite = new Roga2dSprite(renderObject);
 			this.AddChild(sprite);
-			
+
 			// TileMap
 			//RevealableTileMap tileMap = new RevealableTileMap();
 			//tileMap.LocalPriority = 0.5f;

@@ -32,7 +32,7 @@ namespace TinyQuest.Core {
 				int popX = i * 10;
 				// Init state
 				sprite.LocalAlpha = 0.0f;
-				sprite.LocalPosition = new Vector2(popX, 0);
+				sprite.LocalPosition = Roga2dUtils.pixelToLocal(new Vector2(popX, 0));
 				// Add to parent
 				node.AddChild(sprite);
 	
