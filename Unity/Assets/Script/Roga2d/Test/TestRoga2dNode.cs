@@ -125,7 +125,7 @@ class TestRoga2dNode {
 		Tester.Match(node.Alpha, 0.3f);
 		Tester.Match(node.Priority, 0.4f);
 		Tester.Match(child.Alpha, 0.09f);
-		Tester.Match(child.Priority, 0.32f);
+		Tester.Match(child.Priority, 0.8f);
 		
 		node.Destroy();
 	}

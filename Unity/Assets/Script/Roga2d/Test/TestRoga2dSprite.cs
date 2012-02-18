@@ -26,7 +26,7 @@ class TestRoga2dSprite {
 		
 		// Check Sprite Root
 		sprite.Update();
-		Tester.Match(sprite.Transform.localPosition, new Vector3(1.0f, 2.0f, 0.5f));
+		Tester.Match(sprite.Transform.localPosition, new Vector3(1.0f, 2.0f, 0.0f));
 		Tester.Match(sprite.Transform.localEulerAngles, new Vector3(0.0f, 0.0f, 3.0f));
 		Tester.Match(sprite.Transform.localScale, new Vector3(-1.0f, -2.0f, 1.0f));
 		
