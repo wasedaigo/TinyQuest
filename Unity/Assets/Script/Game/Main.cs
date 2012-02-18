@@ -4,31 +4,40 @@ using TinyQuest.Scene;
 using TinyQuest.Component;
 
 public class Main : MonoBehaviour {
+	public GameObject AdventureWindow;
+	public GameObject PanelWindow;
 	public GameObject MainWindow;
-	public GameObject SubWindow;
-	private DungeonScene mainWindow;
-	private AdventureWindow subWindow;
-
+	private DungeonScene panelWindow;
+	private AdventureWindow adventureWindow;
+	private Roga2dSprite mainWindow;
+	
 	// Use this for initialization
 	void Start () {
-		this.mainWindow = new DungeonScene();
-		this.mainWindow.LocalScale = new Vector2(2.0f, 2.0f);
-		Roga2dGameObjectState state = Roga2dUtils.stashState(this.mainWindow.Transform);
+		this.panelWindow = new DungeonScene();
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.panelWindow.Transform);
+		this.panelWindow.Transform.parent = PanelWindow.transform;
+		Roga2dUtils.applyState(this.panelWindow.Transform, state);
+		
+		this.adventureWindow = new AdventureWindow();
+		state = Roga2dUtils.stashState(this.adventureWindow.Transform);
+		this.adventureWindow.Transform.parent = AdventureWindow.transform;
+		Roga2dUtils.applyState(this.adventureWindow.Transform, state);
+		
+		// Connect AdventureWindow and PanelWindow
+		this.panelWindow.SymbolTouched += this.adventureWindow.SymbolTouched;
+		
+		// BG
+		Roga2dRenderObject renderObject = new Roga2dRenderObject("UI/frame", new Vector2(160, 240), new Vector2(0, 0), new Rect(0, 0, 160, 240));
+		this.mainWindow = new Roga2dSprite(renderObject);
+		state = Roga2dUtils.stashState(this.mainWindow.Transform);
 		this.mainWindow.Transform.parent = MainWindow.transform;
 		Roga2dUtils.applyState(this.mainWindow.Transform, state);
-		
-		this.subWindow = new AdventureWindow();
-		state = Roga2dUtils.stashState(this.subWindow.Transform);
-		this.subWindow.Transform.parent = SubWindow.transform;
-		Roga2dUtils.applyState(this.subWindow.Transform, state);
-		
-		
-		this.mainWindow.SymbolTouched += this.subWindow.SymbolTouched;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		this.panelWindow.Update();
+		this.adventureWindow.Update();
 		this.mainWindow.Update();
-		this.subWindow.Update();
 	}
 }

@@ -5,7 +5,7 @@ namespace TinyQuest.Component {
 		
 		public Stage() 
 		{
-			Roga2dRenderObject renderObject = new Roga2dRenderObject("bg/bg_test", new Vector2(320, 640), new Vector2(0, 80), new Rect(0, 0, 320, 640));
+			Roga2dRenderObject renderObject = new Roga2dRenderObject("bg/001", new Vector2(160, 140), new Vector2(0, 0), new Rect(0, 0, 160, 140));
 			Roga2dSprite sprite = new Roga2dSprite("Stage", renderObject);
 			this.AddChild(sprite);
 		}

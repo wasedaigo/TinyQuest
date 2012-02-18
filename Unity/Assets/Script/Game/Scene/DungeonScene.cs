@@ -1,24 +1,14 @@
 using TinyQuest.Component;
 using UnityEngine;
 namespace TinyQuest.Scene {
+	public delegate void SymbolTouchEvent(object sender);
 	public class DungeonScene : Roga2dNode {
-		public delegate void SymbolTouchEvent(object sender);
 		public event SymbolTouchEvent SymbolTouched;
 		
 		private Ally player;
 		private bool isPressed;
 		private Collider pressedCollider;
-		
-		private void addSymbol(float x, float y) {
-			// Symbols
-			Roga2dButton button = new Roga2dButton();
-			button.LocalPriority = 0.1f;
-			button.UpRenderObject = new Roga2dRenderObject("Dungeon/symbols", new Vector2(24, 24), new Vector2(8, 8), new Rect(0, 0, 32, 32));
-			button.DownRenderObject = new Roga2dRenderObject("Dungeon/symbols", new Vector2(24, 24), new Vector2(8, 8), new Rect(32, 0, 32, 32));
-			button.OnTouched = this.OnTouched;
-			button.LocalPixelPosition = new Vector2(x, y);
-			this.AddChild(button);
-		}
+
 		
 		public DungeonScene()
 		{
@@ -26,20 +16,24 @@ namespace TinyQuest.Scene {
 			//this.player = new Ally("lilia");
 			//this.player.LocalPriority = 1.0f;
 			//this.AddChild(player);
+
 			
-			// BG
-			Roga2dRenderObject renderObject = new Roga2dRenderObject("Dungeon/sample_bg", new Vector2(320, 192), new Vector2(0, 0), new Rect(0, 0, 256, 256));
-			Roga2dSprite sprite = new Roga2dSprite(renderObject);
-			this.AddChild(sprite);
+			//CombatControlPanel combatControlPanel = new CombatControlPanel();
+			//this.AddChild(combatControlPanel);
+			//combatControlPanel.LocalPriority = -0.2f;
+			//combatControlPanel.LocalPixelPosition = new Vector2(-80, 20);
+			
+			MapNavigator mapNavigator = new MapNavigator(this.OnTouched);
+			mapNavigator.LocalPriority = -0.1f;
+			mapNavigator.LocalPixelPosition = new Vector2(-80, 20);
+			this.AddChild(mapNavigator);
 
 			// TileMap
 			//RevealableTileMap tileMap = new RevealableTileMap();
 			//tileMap.LocalPriority = 0.5f;
 			//this.AddChild(tileMap);
 			
-			this.addSymbol(20, -20);
-			this.addSymbol(-50, -30);
-			this.addSymbol(20, 40);
+
 		}
 			
 		public void OnTouched(Roga2dButton button) {
