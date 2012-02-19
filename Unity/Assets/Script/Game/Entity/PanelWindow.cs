@@ -6,9 +6,9 @@ namespace TinyQuest.Entity {
 		MapNavigation,
 		Combat
 	}
-	public delegate void PanelWindowMessageEvent(PanelWindowMessage message);
+	
 	public class PanelWindow : Roga2dNode {
-		public event PanelWindowMessageEvent MessageEvent;
+		public event WindowMessageEvent MessageEvent;
 		private Ally player;
 		private bool isPressed;
 		private Collider pressedCollider;
@@ -17,24 +17,7 @@ namespace TinyQuest.Entity {
 
 		public PanelWindow()
 		{
-			// Player
-			//this.player = new Ally("lilia");
-			//this.player.LocalPriority = 1.0f;
-			//this.AddChild(player);
-
-			
 			this.setPanel(PanelType.MapNavigation);
-			
-			/*
-			MapNavigator mapNavigator = new MapNavigator(this.OnTouched);
-			mapNavigator.LocalPriority = -0.1f;
-			mapNavigator.LocalPixelPosition = new Vector2(-80, 20);
-			this.AddChild(mapNavigator);
-			 */
-			// TileMap
-			//RevealableTileMap tileMap = new RevealableTileMap();
-			//tileMap.LocalPriority = 0.5f;
-			//this.AddChild(tileMap);
 		}
 		
 		private void setPanel(PanelType panelType) {
@@ -72,11 +55,11 @@ namespace TinyQuest.Entity {
 				PanelWindowMessage message = null;
 				switch (this.selectedPanelType) {
 				case PanelType.Combat:
-					message = new PanelWindowMessage(PanelWindowMessageType.CombatCardTouched, button.Tag);
+					message = new PanelWindowMessage(WindowMessageType.CombatCardTouched, button.Tag);
 					break;
 				case PanelType.MapNavigation:
-					message = new PanelWindowMessage(PanelWindowMessageType.FloorSymbolTouched, button.Tag);
-					this.setPanel(PanelType.Combat);
+					//message = new PanelWindowMessage(WindowMessageType.FloorSymbolTouched, button.Tag);
+					message = new PanelWindowMessage(WindowMessageType.StartCombat, button.Tag);
 					break;
 				}
 				
@@ -85,10 +68,20 @@ namespace TinyQuest.Entity {
 				}
 			}
 		}
-			
+		
+		public void ReceiveMessage(PanelWindowMessage message) 
+		{
+			switch (message.Type) {
+			case WindowMessageType.StartCombat:
+				this.setPanel(PanelType.Combat);
+				break;
+			case WindowMessageType.CombatCardTouched:
+				break;	
+			}
+		}
+
 		public override void Update ()
 		{
-	
 			base.Update ();
 			
 			// Construct a ray from the current mouse coordinates

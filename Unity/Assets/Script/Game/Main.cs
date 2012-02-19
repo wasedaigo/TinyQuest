@@ -23,8 +23,12 @@ public class Main : MonoBehaviour {
 		Roga2dUtils.applyState(this.adventureWindow.Transform, state);
 		
 		// Connect AdventureWindow and PanelWindow
+		this.panelWindow.MessageEvent += this.panelWindow.ReceiveMessage;
 		this.panelWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
 		
+		this.adventureWindow.MessageEvent += this.panelWindow.ReceiveMessage;
+		this.adventureWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
+
 		// BG
 		Roga2dRenderObject renderObject = new Roga2dRenderObject("UI/frame", new Vector2(160, 240), new Vector2(0, 0), new Rect(0, 0, 160, 240));
 		this.mainWindow = new Roga2dSprite(renderObject);

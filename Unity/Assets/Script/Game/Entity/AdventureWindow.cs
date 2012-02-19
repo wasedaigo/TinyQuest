@@ -5,7 +5,7 @@ using TinyQuest.Core;
 
 namespace TinyQuest.Entity {
 	public class AdventureWindow : Roga2dNode {
-		public Transform camera;
+		public event WindowMessageEvent MessageEvent;
 		
 		private Roga2dNode root;
 		private Monster monster;
@@ -42,10 +42,6 @@ namespace TinyQuest.Entity {
 	
 			// Player
 			this.root.AddChild(spawnBattler("hose", 40, 30));
-			
-			// Monster
-			this.monster = spawnMonster("death_wind", -20, 0);
-			this.root.AddChild(this.monster);
 			
 			// Stage
 			Stage stage = new Stage();
@@ -107,6 +103,15 @@ namespace TinyQuest.Entity {
 			}	
 		}
 	
+		private void finishCombat() {
+			if (MessageEvent != null) {
+				PanelWindowMessage message = null;
+				if (message != null) {
+					MessageEvent(message);;	
+				}
+			}	
+		}
+		
 		public override void Update () {
 			base.Update();
 			Roga2dIntervalPlayer.GetInstance().Update();
@@ -122,10 +127,11 @@ namespace TinyQuest.Entity {
 		public void ReceiveMessage(PanelWindowMessage message) 
 		{
 			switch (message.Type) {
-			case PanelWindowMessageType.FloorSymbolTouched:
-				
+			case WindowMessageType.StartCombat:
+				this.monster = spawnMonster("death_wind", -20, 0);
+				this.root.AddChild(this.monster);
 				break;
-			case PanelWindowMessageType.CombatCardTouched:
+			case WindowMessageType.CombatCardTouched:
 				int no = (int)message.Data;
 				this.playNextAnimation(no);
 				break;	
