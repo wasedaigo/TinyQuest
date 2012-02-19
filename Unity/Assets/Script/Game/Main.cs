@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using TinyQuest.Scene;
 using TinyQuest.Entity;
 
 public class Main : MonoBehaviour {

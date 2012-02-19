@@ -2,7 +2,6 @@ using TinyQuest.Entity;
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
-using TinyQuest.Scene;
 
 namespace TinyQuest.Entity {
 	public class MapNavigator : Roga2dNode {

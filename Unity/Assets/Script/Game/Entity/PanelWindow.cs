@@ -1,15 +1,20 @@
-using TinyQuest.Entity;
 using TinyQuest.Core;
 using UnityEngine;
-namespace TinyQuest.Scene {
+namespace TinyQuest.Entity {
+	public enum PanelType {
+		Undefined,
+		MapNavigation,
+		Combat
+	}
 	public delegate void PanelWindowMessageEvent(PanelWindowMessage message);
 	public class PanelWindow : Roga2dNode {
 		public event PanelWindowMessageEvent MessageEvent;
 		private Ally player;
 		private bool isPressed;
 		private Collider pressedCollider;
+		private PanelType selectedPanelType;
+		private Roga2dNode selectedNode;
 
-		
 		public PanelWindow()
 		{
 			// Player
@@ -18,10 +23,7 @@ namespace TinyQuest.Scene {
 			//this.AddChild(player);
 
 			
-			CombatControlPanel combatControlPanel = new CombatControlPanel(this.OnTouched);
-			this.AddChild(combatControlPanel);
-			combatControlPanel.LocalPriority = -0.2f;
-			combatControlPanel.LocalPixelPosition = new Vector2(-80, 20);
+			this.setPanel(PanelType.MapNavigation);
 			
 			/*
 			MapNavigator mapNavigator = new MapNavigator(this.OnTouched);
@@ -34,12 +36,53 @@ namespace TinyQuest.Scene {
 			//tileMap.LocalPriority = 0.5f;
 			//this.AddChild(tileMap);
 		}
+		
+		private void setPanel(PanelType panelType) {
+			// Don't do anything if it is trying to switch to the same panel
+			if (this.selectedPanelType == panelType) {
+				return;	
+			}
 			
+			// Remove selected panel in order to switch to a new panel
+			if (selectedNode != null) {
+				this.RemoveChild(selectedNode);
+				selectedNode.Destroy();
+			}
+
+			// Construct new panel component and add it to the scene
+			Roga2dNode node = null;
+			switch (panelType) {
+			case PanelType.Combat:
+				node = new CombatControlPanel(this.OnTouched);
+				break;
+			case PanelType.MapNavigation:
+				node = new MapNavigator(this.OnTouched);
+				break;
+			}
+			this.AddChild(node);
+			// Adjugst priority and positions
+			node.LocalPriority = -0.2f;
+			node.LocalPixelPosition = new Vector2(-80, 20);
+			this.selectedNode = node;
+			this.selectedPanelType = panelType;
+		}
+		
 		public void OnTouched(Roga2dButton button) {
 			if (MessageEvent != null) {
-				// PanelWindowMessage message = new PanelWindowMessage(PanelWindowMessageType.FloorSymbolTouched, button.Tag);
-				PanelWindowMessage message = new PanelWindowMessage(PanelWindowMessageType.CombatCardTouched, button.Tag);
-				MessageEvent(message);
+				PanelWindowMessage message = null;
+				switch (this.selectedPanelType) {
+				case PanelType.Combat:
+					message = new PanelWindowMessage(PanelWindowMessageType.CombatCardTouched, button.Tag);
+					break;
+				case PanelType.MapNavigation:
+					message = new PanelWindowMessage(PanelWindowMessageType.FloorSymbolTouched, button.Tag);
+					this.setPanel(PanelType.Combat);
+					break;
+				}
+				
+				if (message != null) {
+					MessageEvent(message);;	
+				}
 			}
 		}
 			
