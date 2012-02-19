@@ -71,19 +71,43 @@ namespace TinyQuest.Entity {
 			animation.settings.Origin.Show();
 			animation.settings.Destroy();
 			animation.settings = null;
+			
+			this.checkDead();
 	    }
+		
+		private void checkDead() {
+			if (this.monster.IsDead()) {
+				this.RemoveChild(this.monster);
+				this.monster.Destroy();
+				this.finishCombat();
+			}
+		}
+	
+		private void finishCombat() {
+			if (MessageEvent != null) {
+				WindowMessage message = null;
+				message = new WindowMessage(WindowMessageType.FinishCombat, null);
+				if (message != null) {
+					MessageEvent(message);;	
+				}
+			}	
+		}
 		
 		private void CommandCalled(Roga2dAnimationSettings settings, string command) 
 		{
 			string[] commandData = command.Split(':');
 			if (commandData[0] == "damage") {
+				uint damageValue = 2750;
 				// Flash effect
 				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
 				Roga2dIntervalPlayer.GetInstance().Play(interval);
 				
 				// Damage pop
-				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
+				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
 				this.player.Play(settings.Root, null, animation, null);
+				
+				BaseObject baseObject = (BaseObject)settings.Target;
+				baseObject.ApplyDamage(damageValue);
 			}
 		}
 		
@@ -102,15 +126,7 @@ namespace TinyQuest.Entity {
 				this.player.Play(battler, null, animation,  AnimationFinished);
 			}	
 		}
-	
-		private void finishCombat() {
-			if (MessageEvent != null) {
-				PanelWindowMessage message = null;
-				if (message != null) {
-					MessageEvent(message);;	
-				}
-			}	
-		}
+
 		
 		public override void Update () {
 			base.Update();
@@ -124,7 +140,7 @@ namespace TinyQuest.Entity {
 			// camera.position = new Vector3(this.monster.Position.x, this.monster.Position.y, camera.position.z);
 		}
 		
-		public void ReceiveMessage(PanelWindowMessage message) 
+		public void ReceiveMessage(WindowMessage message) 
 		{
 			switch (message.Type) {
 			case WindowMessageType.StartCombat:

@@ -6,6 +6,8 @@ namespace TinyQuest.Entity {
 		private Roga2dBaseInterval interval;
 		private string textureId;
 		private Roga2dSprite sprite;
+		private int hp;
+		
 		public BaseObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 		:base("BaseObject")
 		{
@@ -14,6 +16,7 @@ namespace TinyQuest.Entity {
 			Roga2dRenderObject renderObject = new Roga2dRenderObject(this.textureId, pixelSize, pixelCenter, srcRect);
 			this.sprite = new Roga2dSprite(textureId, renderObject);
 			this.AddChild(this.sprite);
+			this.hp = 10000;
 		}
 		
 		public Roga2dSprite Sprite {
@@ -51,6 +54,14 @@ namespace TinyQuest.Entity {
 			if (this.interval != null) {
 				this.interval.Update();
 			}
+		}
+	
+		public bool IsDead() {
+			return this.hp < 0;
+		}
+		
+		public void ApplyDamage(uint value) {
+			this.hp -= (int)value;
 		}
 	}
 }

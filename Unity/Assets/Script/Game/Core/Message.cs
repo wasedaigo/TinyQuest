@@ -5,15 +5,15 @@ namespace TinyQuest.Core {
 		FloorSymbolTouched,
 		CombatCardTouched
 	}
-	public class PanelWindowMessage {
+	public class WindowMessage {
 		public WindowMessageType Type;
 		public object Data;
 		
-		public PanelWindowMessage(WindowMessageType type, object data) {
+		public WindowMessage(WindowMessageType type, object data) {
 			this.Type = type;
 			this.Data = data;
 		}
 	}
 	
-	public delegate void WindowMessageEvent(PanelWindowMessage message);
+	public delegate void WindowMessageEvent(WindowMessage message);
 }

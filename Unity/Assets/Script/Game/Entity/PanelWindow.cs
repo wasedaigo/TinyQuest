@@ -52,14 +52,13 @@ namespace TinyQuest.Entity {
 		
 		public void OnTouched(Roga2dButton button) {
 			if (MessageEvent != null) {
-				PanelWindowMessage message = null;
+				WindowMessage message = null;
 				switch (this.selectedPanelType) {
 				case PanelType.Combat:
-					message = new PanelWindowMessage(WindowMessageType.CombatCardTouched, button.Tag);
+					message = new WindowMessage(WindowMessageType.CombatCardTouched, button.Tag);
 					break;
 				case PanelType.MapNavigation:
-					//message = new PanelWindowMessage(WindowMessageType.FloorSymbolTouched, button.Tag);
-					message = new PanelWindowMessage(WindowMessageType.StartCombat, button.Tag);
+					message = new WindowMessage(WindowMessageType.StartCombat, button.Tag);
 					break;
 				}
 				
@@ -69,13 +68,14 @@ namespace TinyQuest.Entity {
 			}
 		}
 		
-		public void ReceiveMessage(PanelWindowMessage message) 
+		public void ReceiveMessage(WindowMessage message) 
 		{
 			switch (message.Type) {
 			case WindowMessageType.StartCombat:
 				this.setPanel(PanelType.Combat);
 				break;
-			case WindowMessageType.CombatCardTouched:
+			case WindowMessageType.FinishCombat:
+				this.setPanel(PanelType.MapNavigation);
 				break;	
 			}
 		}
