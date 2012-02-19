@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Entity {
 	public class CombatControlPanel : Roga2dNode {
 		
 		private void AddCard(int no, float x, float y, Roga2dButton.OnTouchDelegate symbolTouched) {

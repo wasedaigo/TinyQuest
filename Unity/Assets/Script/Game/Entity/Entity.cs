@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace TinyQuest.Component {
-	public class Entity : Roga2dNode {
+namespace TinyQuest.Entity {
+	public class BaseObject : Roga2dNode {
 		private Roga2dBaseInterval interval;
 		private string textureId;
 		private Roga2dSprite sprite;
-		public Entity(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
-		:base("Entity")
+		public BaseObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
+		:base("BaseObject")
 		{
 			this.textureId = textureId;
 			this.interval = null;

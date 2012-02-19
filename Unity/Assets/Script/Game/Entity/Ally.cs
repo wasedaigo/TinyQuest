@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace TinyQuest.Component {
-	public class Ally : Entity {
+namespace TinyQuest.Entity {
+	public class Ally : BaseObject {
 		public Ally(string name) 
 		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32))
 		{

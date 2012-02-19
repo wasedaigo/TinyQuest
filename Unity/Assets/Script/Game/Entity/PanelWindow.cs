@@ -1,4 +1,4 @@
-using TinyQuest.Component;
+using TinyQuest.Entity;
 using TinyQuest.Core;
 using UnityEngine;
 namespace TinyQuest.Scene {

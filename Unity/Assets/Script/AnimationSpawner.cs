@@ -1,19 +1,18 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TinyQuest.Component;
+using TinyQuest.Entity;
 using TinyQuest.Core;
 
 public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
-	public Transform camera;
 	
 	private Roga2dNode root;
 	private Monster monster;
 	private Roga2dAnimationPlayer player;
 	private Roga2dBaseInterval targetInterval;
 
-	private List<Entity> battlers = new List<Entity>();
+	private List<BaseObject> battlers = new List<BaseObject>();
 	
 	void Awake () {
 		Application.targetFrameRate = 60;
@@ -111,7 +110,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.Update();
 
 		if (Input.GetMouseButtonDown(0)) {
-			Entity battler = this.battlers[no % 5];
+			BaseObject battler = this.battlers[no % 5];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 

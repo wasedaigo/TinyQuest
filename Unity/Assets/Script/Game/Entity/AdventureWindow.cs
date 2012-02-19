@@ -1,10 +1,10 @@
-using TinyQuest.Component;
+using TinyQuest.Entity;
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
 using TinyQuest.Scene;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Entity {
 	public class AdventureWindow : Roga2dNode {
 		public Transform camera;
 		
@@ -13,7 +13,7 @@ namespace TinyQuest.Component {
 		private Roga2dAnimationPlayer player;
 		private Roga2dBaseInterval targetInterval;
 		
-		private List<Entity> battlers = new List<Entity>();
+		private List<BaseObject> battlers = new List<BaseObject>();
 		
 		Ally spawnBattler (string name, float x, float y) {
 			Ally battler = new Ally(name);
@@ -42,10 +42,10 @@ namespace TinyQuest.Component {
 			
 	
 			// Player
-			this.root.AddChild(spawnBattler("hose", 30, 30));
+			this.root.AddChild(spawnBattler("hose", 40, 30));
 			
 			// Monster
-			this.monster = spawnMonster("death_wind", -40, 0);
+			this.monster = spawnMonster("death_wind", -20, 0);
 			this.root.AddChild(this.monster);
 			
 			// Stage
@@ -71,7 +71,6 @@ namespace TinyQuest.Component {
 				"Battle/Skills/Common/MagicCasting"
 		};
 		
-		static int no = 0;
 	    private void AnimationFinished(Roga2dAnimation animation)
 	    {
 			animation.settings.Origin.Show();
@@ -94,7 +93,7 @@ namespace TinyQuest.Component {
 		}
 		
 		private void playNextAnimation(int no) {
-			Entity battler = this.battlers[0];
+			BaseObject battler = this.battlers[0];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 

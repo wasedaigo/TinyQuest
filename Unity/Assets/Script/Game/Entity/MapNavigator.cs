@@ -1,10 +1,10 @@
-using TinyQuest.Component;
+using TinyQuest.Entity;
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
 using TinyQuest.Scene;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Entity {
 	public class MapNavigator : Roga2dNode {
 
 		private void addSymbol(float x, float y, Roga2dButton.OnTouchDelegate symbolTouched) {
