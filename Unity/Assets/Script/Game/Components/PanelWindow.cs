@@ -1,16 +1,16 @@
 using TinyQuest.Component;
+using TinyQuest.Core;
 using UnityEngine;
 namespace TinyQuest.Scene {
-	public delegate void SymbolTouchEvent(object sender);
-	public class DungeonScene : Roga2dNode {
-		public event SymbolTouchEvent SymbolTouched;
-		
+	public delegate void PanelWindowMessageEvent(PanelWindowMessage message);
+	public class PanelWindow : Roga2dNode {
+		public event PanelWindowMessageEvent MessageEvent;
 		private Ally player;
 		private bool isPressed;
 		private Collider pressedCollider;
 
 		
-		public DungeonScene()
+		public PanelWindow()
 		{
 			// Player
 			//this.player = new Ally("lilia");
@@ -18,27 +18,28 @@ namespace TinyQuest.Scene {
 			//this.AddChild(player);
 
 			
-			//CombatControlPanel combatControlPanel = new CombatControlPanel();
-			//this.AddChild(combatControlPanel);
-			//combatControlPanel.LocalPriority = -0.2f;
-			//combatControlPanel.LocalPixelPosition = new Vector2(-80, 20);
+			CombatControlPanel combatControlPanel = new CombatControlPanel(this.OnTouched);
+			this.AddChild(combatControlPanel);
+			combatControlPanel.LocalPriority = -0.2f;
+			combatControlPanel.LocalPixelPosition = new Vector2(-80, 20);
 			
+			/*
 			MapNavigator mapNavigator = new MapNavigator(this.OnTouched);
 			mapNavigator.LocalPriority = -0.1f;
 			mapNavigator.LocalPixelPosition = new Vector2(-80, 20);
 			this.AddChild(mapNavigator);
-
+			 */
 			// TileMap
 			//RevealableTileMap tileMap = new RevealableTileMap();
 			//tileMap.LocalPriority = 0.5f;
 			//this.AddChild(tileMap);
-			
-
 		}
 			
 		public void OnTouched(Roga2dButton button) {
-			if (SymbolTouched != null) {
-				SymbolTouched(this);
+			if (MessageEvent != null) {
+				// PanelWindowMessage message = new PanelWindowMessage(PanelWindowMessageType.FloorSymbolTouched, button.Tag);
+				PanelWindowMessage message = new PanelWindowMessage(PanelWindowMessageType.CombatCardTouched, button.Tag);
+				MessageEvent(message);
 			}
 		}
 			

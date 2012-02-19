@@ -42,11 +42,7 @@ namespace TinyQuest.Component {
 			
 	
 			// Player
-			this.root.AddChild(spawnBattler("pierre", 40, -20));
-			this.root.AddChild(spawnBattler("amon", 40, 20));
-			this.root.AddChild(spawnBattler("draco", 80, -40));
-			this.root.AddChild(spawnBattler("lilia", 80, 0));
-			this.root.AddChild(spawnBattler("hose", 80, 40));
+			this.root.AddChild(spawnBattler("hose", 30, 30));
 			
 			// Monster
 			this.monster = spawnMonster("death_wind", -40, 0);
@@ -97,8 +93,8 @@ namespace TinyQuest.Component {
 			}
 		}
 		
-		private void playNextAnimation() {
-			Entity battler = this.battlers[no % 5];
+		private void playNextAnimation(int no) {
+			Entity battler = this.battlers[0];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 
@@ -110,10 +106,6 @@ namespace TinyQuest.Component {
 				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
 				this.player.Play(battler, null, animation,  AnimationFinished);
-				no +=1;
-				if (no >= ids.Length) {
-					no = 0;	
-				}
 			}	
 		}
 	
@@ -129,9 +121,17 @@ namespace TinyQuest.Component {
 			// camera.position = new Vector3(this.monster.Position.x, this.monster.Position.y, camera.position.z);
 		}
 		
-		public void SymbolTouched(object sender) 
+		public void ReceiveMessage(PanelWindowMessage message) 
 		{
-			this.playNextAnimation();
+			switch (message.Type) {
+			case PanelWindowMessageType.FloorSymbolTouched:
+				
+				break;
+			case PanelWindowMessageType.CombatCardTouched:
+				int no = (int)message.Data;
+				this.playNextAnimation(no);
+				break;	
+			}
 		}
 	}
 }
