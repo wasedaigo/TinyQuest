@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using TinyQuest.Entity;
+using TinyQuest.Cache;
+using TinyQuest.Component;
+using TinyQuest.Component.Window;
+using TinyQuest.Model;
 
 public class Main : MonoBehaviour {
 	public GameObject AdventureWindow;
@@ -12,12 +15,14 @@ public class Main : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		this.panelWindow = new PanelWindow();
+		MapModel mapModel = MapCache.GetInstance().GetModel();
+
+		this.panelWindow = new PanelWindow(mapModel);
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.panelWindow.Transform);
 		this.panelWindow.Transform.parent = PanelWindow.transform;
 		Roga2dUtils.applyState(this.panelWindow.Transform, state);
 		
-		this.adventureWindow = new AdventureWindow();
+		this.adventureWindow = new AdventureWindow(mapModel);
 		state = Roga2dUtils.stashState(this.adventureWindow.Transform);
 		this.adventureWindow.Transform.parent = AdventureWindow.transform;
 		Roga2dUtils.applyState(this.adventureWindow.Transform, state);
@@ -25,7 +30,7 @@ public class Main : MonoBehaviour {
 		// Connect AdventureWindow and PanelWindow
 		this.panelWindow.MessageEvent += this.panelWindow.ReceiveMessage;
 		this.panelWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
-		
+
 		this.adventureWindow.MessageEvent += this.panelWindow.ReceiveMessage;
 		this.adventureWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
 

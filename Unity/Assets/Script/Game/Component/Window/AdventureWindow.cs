@@ -1,9 +1,10 @@
-using TinyQuest.Entity;
+using TinyQuest.Component;
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
+using TinyQuest.Model;
 
-namespace TinyQuest.Entity {
+namespace TinyQuest.Component.Window {
 	public class AdventureWindow : Roga2dNode {
 		public event WindowMessageEvent MessageEvent;
 		
@@ -11,7 +12,7 @@ namespace TinyQuest.Entity {
 		private Monster monster;
 		private Roga2dAnimationPlayer player;
 		private Roga2dBaseInterval targetInterval;
-		
+		private MapModel mapModel;
 		private List<BaseObject> battlers = new List<BaseObject>();
 		
 		Ally spawnBattler (string name, float x, float y) {
@@ -31,15 +32,16 @@ namespace TinyQuest.Entity {
 		}
 		
 		// Use this for initialization
-		public AdventureWindow() {
+		public AdventureWindow(MapModel mapModel) {
 			Shader.WarmupAllShaders() ;
 	
+			this.mapModel = mapModel;
+			this.mapModel.StepMoveStart += this.onStepMoveStart;
 			this.player = new Roga2dAnimationPlayer();
 			this.root = new Roga2dNode("Root");
 			this.root.LocalScale = new Vector2(2.0f, 2.0f);
 			this.AddChild(this.root);
 			
-	
 			// Player
 			this.root.AddChild(spawnBattler("hose", 40, 30));
 			
@@ -49,6 +51,9 @@ namespace TinyQuest.Entity {
 			this.root.AddChild(stage);
 		}
 		
+		private void onStepMoveStart() {
+			Debug.Log("onStepMoveStart A");
+		}
 		
 		static string[] ids = new string[] {
 				"Battle/Skills/Monster/DeadlyBite",

@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace TinyQuest.Entity {
+namespace TinyQuest.Component {
 	public class Stage : Roga2dNode {
 		private Roga2dRenderObject renderObject;
 		

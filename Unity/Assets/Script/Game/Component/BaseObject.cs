@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace TinyQuest.Entity {
+namespace TinyQuest.Component {
 	public class BaseObject : Roga2dNode {
 		private Roga2dBaseInterval interval;
 		private string textureId;

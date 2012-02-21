@@ -1,6 +1,9 @@
 using TinyQuest.Core;
+using TinyQuest.Component.Panel;
+using TinyQuest.Model;
 using UnityEngine;
-namespace TinyQuest.Entity {
+
+namespace TinyQuest.Component {
 	public enum PanelType {
 		Undefined,
 		MapNavigation,
@@ -14,10 +17,17 @@ namespace TinyQuest.Entity {
 		private Collider pressedCollider;
 		private PanelType selectedPanelType;
 		private Roga2dNode selectedNode;
+		private MapModel mapModel;
 
-		public PanelWindow()
+		public PanelWindow(MapModel mapModel)
 		{
+			this.mapModel = mapModel;
+			this.mapModel.StepMoveStart += this.onStepMoveStart;
 			this.setPanel(PanelType.MapNavigation);
+		}
+		
+		private void onStepMoveStart() {
+			Debug.Log("onStepMoveStart B");
 		}
 		
 		private void setPanel(PanelType panelType) {
@@ -31,15 +41,19 @@ namespace TinyQuest.Entity {
 				this.RemoveChild(selectedNode);
 				selectedNode.Destroy();
 			}
-
+			
 			// Construct new panel component and add it to the scene
 			Roga2dNode node = null;
 			switch (panelType) {
 			case PanelType.Combat:
-				node = new CombatControlPanel(this.OnTouched);
+				CombatControlPanel combatControlPanel = new CombatControlPanel();
+				combatControlPanel.CardSelected += this.onCardSelected;
+				node = combatControlPanel;
 				break;
 			case PanelType.MapNavigation:
-				node = new MapNavigator(this.OnTouched);
+				MapNavigatorPanel mapNavigator = new MapNavigatorPanel();
+				mapNavigator.StepTouched += this.onStepTouched;
+				node = mapNavigator;
 				break;
 			}
 			this.AddChild(node);
@@ -50,22 +64,17 @@ namespace TinyQuest.Entity {
 			this.selectedPanelType = panelType;
 		}
 		
-		public void OnTouched(Roga2dButton button) {
-			if (MessageEvent != null) {
-				WindowMessage message = null;
-				switch (this.selectedPanelType) {
-				case PanelType.Combat:
-					message = new WindowMessage(WindowMessageType.CombatCardTouched, button.Tag);
-					break;
-				case PanelType.MapNavigation:
-					message = new WindowMessage(WindowMessageType.StartCombat, button.Tag);
-					break;
-				}
-				
-				if (message != null) {
-					MessageEvent(message);;	
-				}
+		public void onStepTouched(int stepIndex) {
+			this.mapModel.moveTo(stepIndex);
+			if (stepIndex == 0) {
+				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, stepIndex);
+				MessageEvent(message);
 			}
+		}
+		
+		private void onCardSelected(int cardIndex) {
+				WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
+				MessageEvent(message);
 		}
 		
 		public void ReceiveMessage(WindowMessage message) 

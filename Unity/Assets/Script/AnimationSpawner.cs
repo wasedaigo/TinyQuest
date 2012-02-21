@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TinyQuest.Entity;
+using TinyQuest.Component;
 using TinyQuest.Core;
 
 public class AnimationSpawner : MonoBehaviour {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TinyQuest.Entity {
+namespace TinyQuest.Component {
 public class RevealableTileMap : Roga2dNode {
 	private Roga2dTiledSprite map;
 	public RevealableTileMap () {
