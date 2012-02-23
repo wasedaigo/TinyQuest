@@ -12,6 +12,7 @@ namespace TinyQuest.Component.Window {
 		private Monster monster;
 		private Roga2dAnimationPlayer player;
 		private Roga2dBaseInterval targetInterval;
+		private Stage stage;
 		private MapModel mapModel;
 		private List<BaseObject> battlers = new List<BaseObject>();
 		
@@ -46,13 +47,14 @@ namespace TinyQuest.Component.Window {
 			this.root.AddChild(spawnBattler("hose", 40, 30));
 			
 			// Stage
-			Stage stage = new Stage();
-			stage.LocalPriority = 0.0f;
+			this.stage = new Stage();
+			this.stage.LocalPriority = 0.0f;
 			this.root.AddChild(stage);
 		}
 		
 		private void onStepMoveStart() {
 			Debug.Log("onStepMoveStart A");
+			this.stage.Scroll();
 		}
 		
 		static string[] ids = new string[] {
