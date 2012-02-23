@@ -33,6 +33,9 @@ public class Roga2dSequence : Roga2dBaseInterval {
                 this.Finish();
             } else if (currentInterval.IsDone()) {
                 this.index += 1;
+				if (currentInterval.isSkippable()) {
+					this.Update();
+				}
             }
         }
 	}

@@ -21,6 +21,7 @@ public class TestRunner : MonoBehaviour {
 		TestRoga2dAnimationSettings.Test();
 		TestRoga2dAnimationPlayer.Test();
 		TestRoga2dEventInterval.Test();
+		TestRoga2dFunc.Test();
 		
 		// Test TinyQuest
 		TinyQuest.Test.Core.TestUtils.Test();

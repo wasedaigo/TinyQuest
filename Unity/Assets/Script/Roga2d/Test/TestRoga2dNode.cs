@@ -112,9 +112,9 @@ class TestRoga2dNode {
 		
 		// Before transform
 		Tester.Match(node.Alpha, 1.0f);
-		Tester.Match(node.Priority, 0.0f);
+		Tester.Match(node.Priority, -999.0f);
 		Tester.Match(child.Alpha, 1.0f);
-		Tester.Match(child.Priority, 0.0f);
+		Tester.Match(child.Priority, -999.0f);
 
 		node.Update();
 		// After transform
