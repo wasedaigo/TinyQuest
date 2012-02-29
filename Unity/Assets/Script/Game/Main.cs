@@ -15,6 +15,7 @@ public class Main : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Application.targetFrameRate = 60;
 		MapModel mapModel = MapCache.GetInstance().GetModel();
 
 		this.panelWindow = new PanelWindow(mapModel);

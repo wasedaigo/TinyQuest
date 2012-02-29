@@ -24,5 +24,14 @@ namespace TinyQuest.Component {
 
 			return new Roga2dLoop(new Roga2dSourceInterval(this.Sprite, keyFrames, null, null), 0);
 		}
+		
+		public void startWalkingAnimation() {
+			this.interval = this.buildWalkInterval();
+		}
+		
+		public void stopWalkingAnimation() {
+			this.sprite.RenderObject.SetSrcRect(new Rect(128, 0, 32, 32));
+			this.interval = null;
+		}
 	}
 }

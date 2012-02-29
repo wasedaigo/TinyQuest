@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace TinyQuest.Component {
 	public class Stage : Roga2dNode {
+		public delegate void StageScrollFinishEventHandler();
+		public event StageScrollFinishEventHandler ScrollFinished;
+		
 		private Roga2dNode root;
 		private List<Roga2dSprite> sprites;
 		private Roga2dRenderObject renderObject;
@@ -36,6 +39,9 @@ namespace TinyQuest.Component {
 		}
 		
 		private void onScrolled() {
+			if (this.ScrollFinished != null) {
+				this.ScrollFinished();	
+			}
 			//this.LocalPixelPosition = new Vector2(0, 0);
 		}
 		

@@ -10,11 +10,12 @@ namespace TinyQuest.Component.Window {
 		
 		private Roga2dNode root;
 		private Monster monster;
-		private Roga2dAnimationPlayer player;
+		private Roga2dAnimationPlayer animationPlayer;
 		private Roga2dBaseInterval targetInterval;
 		private Stage stage;
 		private MapModel mapModel;
 		private List<BaseObject> battlers = new List<BaseObject>();
+		private Ally player;
 		
 		Ally spawnBattler (string name, float x, float y) {
 			Ally battler = new Ally(name);
@@ -37,24 +38,31 @@ namespace TinyQuest.Component.Window {
 			Shader.WarmupAllShaders() ;
 	
 			this.mapModel = mapModel;
-			this.mapModel.StepMoveStart += this.onStepMoveStart;
-			this.player = new Roga2dAnimationPlayer();
+			this.animationPlayer = new Roga2dAnimationPlayer();
 			this.root = new Roga2dNode("Root");
 			this.root.LocalScale = new Vector2(2.0f, 2.0f);
 			this.AddChild(this.root);
 			
-			// Player
-			this.root.AddChild(spawnBattler("hose", 40, 30));
+			// animationPlayer
+			this.player = spawnBattler("hose", 40, 30);
+			this.root.AddChild(this.player);
 			
 			// Stage
 			this.stage = new Stage();
 			this.stage.LocalPriority = 0.0f;
 			this.root.AddChild(stage);
+			
+			this.mapModel.StepMoveStart += this.onStepMoveStart;
+			this.stage.ScrollFinished += this.onScrollFinished;
 		}
 		
 		private void onStepMoveStart() {
-			Debug.Log("onStepMoveStart A");
+			this.player.startWalkingAnimation();
 			this.stage.Scroll();
+		}
+	
+		private void onScrollFinished() {
+			this.player.stopWalkingAnimation();
 		}
 		
 		static string[] ids = new string[] {
@@ -111,7 +119,7 @@ namespace TinyQuest.Component.Window {
 				
 				// Damage pop
 				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
-				this.player.Play(settings.Root, null, animation, null);
+				this.animationPlayer.Play(settings.Root, null, animation, null);
 				
 				BaseObject baseObject = (BaseObject)settings.Target;
 				baseObject.ApplyDamage(damageValue);
@@ -128,9 +136,9 @@ namespace TinyQuest.Component.Window {
 					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}}
 				};
 
-				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster, CommandCalled);
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, this.root, battler, this.monster, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
-				this.player.Play(battler, null, animation,  AnimationFinished);
+				this.animationPlayer.Play(battler, null, animation,  AnimationFinished);
 			}	
 		}
 
@@ -140,7 +148,7 @@ namespace TinyQuest.Component.Window {
 			Roga2dIntervalPlayer.GetInstance().Update();
 	
 			// Update animations
-			this.player.Update();
+			this.animationPlayer.Update();
 			this.root.Update();
 			
 			// Change Camera position

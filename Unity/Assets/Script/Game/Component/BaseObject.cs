@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace TinyQuest.Component {
 	public class BaseObject : Roga2dNode {
-		private Roga2dBaseInterval interval;
+		protected Roga2dBaseInterval interval;
+		protected Roga2dSprite sprite;
 		private string textureId;
-		private Roga2dSprite sprite;
 		private int hp;
 		
 		public BaseObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
