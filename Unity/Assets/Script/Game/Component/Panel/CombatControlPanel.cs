@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace TinyQuest.Component.Panel {
-	public class CombatControlPanel : Roga2dNode {
+	public class CombatControlPanel : BasePanel {
 		public delegate void CardSelectEventHandler(int cardIndex);
 		public event CardSelectEventHandler CardSelected;
 		
@@ -14,6 +14,15 @@ namespace TinyQuest.Component.Panel {
 			button.OnTouched = this.onTouched;
 			button.LocalPixelPosition = new Vector2(x, y);
 			button.Tag = no;
+			
+			int tx = no % 3;
+			int ty = no / 3;
+			
+			Roga2dRenderObject renderObject = new Roga2dRenderObject("UI/weapon", new Vector2(32, 32), new Vector2(16, 16), new Rect(64 * tx, 56 * ty, 64, 56));
+			Roga2dSprite sprite = new Roga2dSprite(renderObject);
+			sprite.LocalPriority = 0.1f;
+			sprite.LocalPixelPosition = new Vector2(16, 16);
+			button.AddChild(sprite);
 			this.AddChild(button);
 		}
 
