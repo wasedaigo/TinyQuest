@@ -52,11 +52,11 @@ namespace TinyQuest.Component.Window {
 			this.stage.LocalPriority = 0.0f;
 			this.root.AddChild(stage);
 			
-			this.mapModel.StepMoveStart += this.onStepMoveStart;
+			this.mapModel.StepMoved += this.onStepMoved;
 			this.stage.ScrollFinished += this.onScrollFinished;
 		}
 		
-		private void onStepMoveStart() {
+		private void onStepMoved(float posX, float posY) {
 			this.player.startWalkingAnimation();
 			this.stage.Scroll();
 		}

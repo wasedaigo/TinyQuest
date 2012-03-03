@@ -23,12 +23,7 @@ namespace TinyQuest.Component {
 		public PanelWindow(MapModel mapModel)
 		{
 			this.mapModel = mapModel;
-			this.mapModel.StepMoveStart += this.onStepMoveStart;
 			this.setPanel(PanelType.MapNavigation);
-		}
-		
-		private void onStepMoveStart() {
-			Debug.Log("onStepMoveStart B");
 		}
 		
 		private void setPanel(PanelType panelType) {
@@ -38,9 +33,21 @@ namespace TinyQuest.Component {
 			}
 			
 			// Remove selected panel in order to switch to a new panel
-			if (selectedPanel != null) {
+
+			
+			switch (this.selectedPanelType) {
+			case PanelType.Combat:
+				CombatControlPanel combatControlPanel = (CombatControlPanel)this.selectedPanel;
+				combatControlPanel.CardSelected -= this.onCardSelected;
+				break;
+			case PanelType.MapNavigation:
+				MapNavigatorPanel mapNavigator = (MapNavigatorPanel)this.selectedPanel;
+				this.mapModel.StepMoved -= mapNavigator.OnStepMoved;
+				mapNavigator.StepTouched -= this.OnStepTouched;
+				break;
+			}
+			if (this.selectedPanel != null) {
 				this.RemoveChild(selectedPanel);
-				selectedPanel.Destroy();
 			}
 			
 			// Construct new panel component and add it to the scene
@@ -52,8 +59,10 @@ namespace TinyQuest.Component {
 				panel = combatControlPanel;
 				break;
 			case PanelType.MapNavigation:
-				MapNavigatorPanel mapNavigator = new MapNavigatorPanel();
-				mapNavigator.StepTouched += this.onStepTouched;
+				MapNavigatorPanel mapNavigator = new MapNavigatorPanel(this.mapModel);
+				this.mapModel.StepMoved += mapNavigator.OnStepMoved;
+				mapNavigator.StepTouched += this.OnStepTouched;
+				mapNavigator.Init();
 				panel = mapNavigator;
 				break;
 			}
@@ -65,10 +74,9 @@ namespace TinyQuest.Component {
 			this.selectedPanelType = panelType;
 		}
 		
-		public void onStepTouched(int stepIndex) {
-			this.mapModel.moveTo(stepIndex);
-			if (stepIndex == 0) {
-				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, stepIndex);
+		public void OnStepTouched(int stepId) {
+			if (stepId == 1) {
+				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, stepId);
 				MessageEvent(message);
 			}
 		}
@@ -113,7 +121,6 @@ namespace TinyQuest.Component {
 			if (this.isPressed) {
 				if (this.selectedPanel != null) {
 					float actualLogicalRatio = Config.LogicalWidth / (float)Screen.width;
-					Debug.Log(Screen.width);
 					this.selectedPanel.OnTouchMoved(
 						new Vector2(
 							Input.mousePosition.x - this.lastTouchedPosition.x,
@@ -121,7 +128,6 @@ namespace TinyQuest.Component {
 						) * actualLogicalRatio
 					);
 					this.lastTouchedPosition = Input.mousePosition;
-					Debug.Log(Input.mousePosition);
 				}
 				//
 			}

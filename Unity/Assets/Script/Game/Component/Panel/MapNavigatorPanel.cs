@@ -1,16 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
+using TinyQuest.Entity;
 using TinyQuest.Model;
+using TinyQuest.Cache;
 
 namespace TinyQuest.Component.Panel {
 	public class MapNavigatorPanel : BasePanel {
 		public delegate void StepTouchEventHandler(int stepIndex);
 		public event StepTouchEventHandler StepTouched;
 		private Roga2dNode floor;
+		private Roga2dSprite playerPiece;
 		private Vector2 mapSize;
 		private Vector2 panelSize;
 		private Vector2 scrollVelocity;
+		private MapModel mapModel;
 		
 		private void addStep(int no, float x, float y) {
 			// Steps
@@ -25,7 +29,8 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		// Use this for initialization
-		public MapNavigatorPanel() {
+		public MapNavigatorPanel(MapModel mapModel) {
+			this.mapModel = mapModel;
 			this.mapSize = new Vector2(512, 512);
 
 			// BG
@@ -35,22 +40,40 @@ namespace TinyQuest.Component.Panel {
 			this.floor.AddChild(sprite);
 			this.AddChild(this.floor);
 	
-			this.addStep(0, 300, 50);
-			this.addStep(1, 150, 400);
-			this.addStep(2, 100, 300);
-			this.addStep(3, 50, 400);
-
-			sprite = new Roga2dSprite("Dungeon/piece", new Vector2(32, 32), new Vector2(16, 32), new Rect(0, 0, 64, 64));
-			sprite.LocalPixelPosition = new Vector2(316, 66);
-			sprite.LocalPriority = 0.2f;
-			this.floor.AddChild(sprite);
 			
-			this.floor.LocalPixelPosition = new Vector2(-sprite.LocalPixelPosition.x + Config.PanelWidth / 2 + 16, sprite.LocalPixelPosition.y + Config.PanelHeight / 2);
+			MapModel model = MapCache.GetInstance().GetModel();
+			StepData[] steps = model.GetSteps();
+			foreach (StepData step in steps) {
+				this.addStep(step.StepId, step.PosX, step.PosY);
+						
+			}
+
+			this.playerPiece = new Roga2dSprite("Dungeon/piece", new Vector2(32, 32), new Vector2(16, 32), new Rect(0, 0, 64, 64));
+			this.playerPiece.LocalPixelPosition = new Vector2(316, 66);
+			
+			this.playerPiece.LocalPriority = 0.2f;
+			this.floor.AddChild(this.playerPiece);
+		}
+		
+		public override void Init() {
+			this.mapModel.MoveTo(1);
+		}
+		
+		private void setScreenCenter(float posX, float posY) {
+			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2 + 16, -posY + Config.PanelHeight / 2);
+		}
+		
+		public void OnStepMoved(float posX, float posY) {
+			this.playerPiece.LocalPixelPosition = new Vector2(posX + 16, posY + 16);
+			//this.playerPiece.Update();
+			this.setScreenCenter(posX + 16, posY + 16);
 		}
 		
 		private void onTouched(Roga2dButton button) {
+			int stepId = (int)button.Tag;
+			this.mapModel.MoveTo(stepId);
 			if (StepTouched != null) {
-				StepTouched((int)button.Tag);	
+				StepTouched(stepId);	
 			}
 		}
 		

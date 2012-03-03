@@ -99,6 +99,7 @@ public class Roga2dNode {
 	}
 	
 	private void Initialize(string name) {
+		
 		this.children = new List<Roga2dNode>();
 		
 		if (this.GameObject == null) {
@@ -107,6 +108,7 @@ public class Roga2dNode {
 		} else {
 			this.LocalPosition = this.transform.position;
 		}
+
 		this.LocalHue.SetRGB(0, 0, 0);
 		this.LocalAlpha = 1.0f;
 		this.LocalPriority = 0.0f;

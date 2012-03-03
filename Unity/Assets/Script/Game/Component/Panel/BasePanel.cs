@@ -5,5 +5,8 @@ namespace TinyQuest.Component.Panel {
 		public virtual void OnTouchMoved(Vector2 delta) {
 			
 		}
+		
+		public virtual void Init() {
+		}
 	}
 }
