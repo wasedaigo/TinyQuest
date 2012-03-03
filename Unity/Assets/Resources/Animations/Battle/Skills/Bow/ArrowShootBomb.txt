@@ -8,6 +8,15 @@
       "Battle/Skills/Effect_Explosion01"
     ]
   },
+  "events": {
+    "24": [
+      "snd:MMS/bom10",
+      "damage:0"
+    ],
+    "0": [
+      "snd:MMS/Arrow01"
+    ]
+  },
   "timelines": [
     {
       "position": [
@@ -80,21 +89,22 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 24,
-          "rect": null
         }
       ],
       "rotation": [
         {
-          "duration": 24,
-          "endValue": -90,
+          "duration": 23,
+          "endValue": 0,
           "startValue": -90,
           "facingOption": "FaceToMov",
           "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "facingOption": "None",
+          "frameNo": 23
         }
       ],
       "alpha": [

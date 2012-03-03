@@ -7,6 +7,11 @@
       "Battle/Skills/Weapon_BowBase"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/Arrow01"
+    ]
+  },
   "timelines": [
     {
       "position": [

@@ -7,6 +7,11 @@
       "Battle/Skills/Effect_Heal01"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/power07"
+    ]
+  },
   "timelines": [
     {
       "position": [

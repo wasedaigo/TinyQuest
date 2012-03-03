@@ -7,6 +7,11 @@
       "Battle/Skills/Effect_Weapon07"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/hit61_a"
+    ]
+  },
   "timelines": [
     {
       "position": [

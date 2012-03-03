@@ -9,6 +9,11 @@
       "Battle/Skills/Effect_Slash3"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/mecha20"
+    ]
+  },
   "timelines": [
     {
       "position": [

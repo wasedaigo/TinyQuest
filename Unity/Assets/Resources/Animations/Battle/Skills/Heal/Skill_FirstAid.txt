@@ -9,6 +9,14 @@
       "Battle/Skills/Effect_Heal01"
     ]
   },
+  "events": {
+    "1": [
+      "goto:0"
+    ],
+    "2": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

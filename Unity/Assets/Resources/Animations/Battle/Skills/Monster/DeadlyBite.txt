@@ -7,6 +7,14 @@
       "Battle/Skills/Monster_Attack1"
     ]
   },
+  "events": {
+    "7": [
+      "snd:MMS/hit_s13"
+    ],
+    "9": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

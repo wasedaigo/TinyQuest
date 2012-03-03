@@ -8,6 +8,12 @@
       "Battle/Skills/Weapon_KnifeBase"
     ]
   },
+  "events": {
+    "15": [
+      "damage:0",
+      "snd:MMS/swing06"
+    ]
+  },
   "timelines": [
     {
       "position": [

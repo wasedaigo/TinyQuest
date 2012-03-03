@@ -10,6 +10,14 @@
       "Battle/Skills/Effect_Weapon03"
     ]
   },
+  "events": {
+    "34": [
+      "goto:30"
+    ],
+    "35": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

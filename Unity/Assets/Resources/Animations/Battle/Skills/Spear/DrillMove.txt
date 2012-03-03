@@ -12,6 +12,7 @@
       "Battle/Skills/Weapon_SpearBase"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

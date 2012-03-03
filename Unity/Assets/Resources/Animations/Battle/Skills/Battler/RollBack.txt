@@ -7,6 +7,7 @@
       "Battle/Skills/Battler_Base"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

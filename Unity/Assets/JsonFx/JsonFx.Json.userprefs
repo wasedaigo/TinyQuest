@@ -1,0 +1,24 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="JsonFx.Json/XmlDataReader.cs">
+    <Files>
+      <File FileName="JsonFx.Json/XmlDataReader.cs" Line="34" Column="7" />
+      <File FileName="JsonFx.Json/JsonIgnoreAttribute.cs" Line="34" Column="7" />
+      <File FileName="JsonFx.Json/JsonWriter.cs" Line="40" Column="7" />
+      <File FileName="JsonFx.Json/XmlDataWriter.cs" Line="35" Column="7" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="JsonFx.Json" expanded="True">
+            <Node name="XmlDataReader.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

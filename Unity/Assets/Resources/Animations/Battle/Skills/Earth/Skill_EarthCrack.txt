@@ -8,6 +8,17 @@
       "Battle/Skills/Earth_Crack"
     ]
   },
+  "events": {
+    "0": [
+      "hide"
+    ],
+    "2": [
+      "goto:0"
+    ],
+    "21": [
+      "show"
+    ]
+  },
   "timelines": [
     {
       "position": [

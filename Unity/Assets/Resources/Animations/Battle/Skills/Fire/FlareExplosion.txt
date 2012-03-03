@@ -7,6 +7,29 @@
       "Battle/Skills/Effect_Slash3"
     ]
   },
+  "events": {
+    "12": [
+      "snd:MMS/bom07"
+    ],
+    "8": [
+      "snd:MMS/bosu12"
+    ],
+    "24": [
+      "snd:MMS/bosu12"
+    ],
+    "16": [
+      "snd:MMS/bosu12"
+    ],
+    "0": [
+      "snd:MMS/bom10"
+    ],
+    "20": [
+      "snd:MMS/bosu12"
+    ],
+    "4": [
+      "snd:MMS/bosu12"
+    ]
+  },
   "timelines": [
     {
       "position": [

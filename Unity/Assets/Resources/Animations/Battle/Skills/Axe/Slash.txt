@@ -9,6 +9,11 @@
       "Battle/Skills/Effect_Slash2"
     ]
   },
+  "events": {
+    "14": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

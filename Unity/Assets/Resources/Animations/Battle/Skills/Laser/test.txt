@@ -1,18 +1,166 @@
 {
   "dependencies": {
     "animations": [
+      "Battle/Skills/Laser/LightBom",
+      "Battle/Skills/Laser/StraightLaserBullet",
       "Battle/Skills/Battler/SmallBack",
+      "Battle/Skills/Laser/LightParticle01",
       "Battle/Skills/Battler/SmallJump"
     ],
     "images": [
-      "Battle/Skills/Battler_Base"
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Effect_Light",
+      "Battle/Skills/Effect_Special01"
+    ]
+  },
+  "events": {
+    "26": [
+      "damage:0"
+    ],
+    "0": [
+      "snd:MMS/power03"
     ]
   },
   "timelines": [
     {
       "position": [
         {
+          "duration": 24,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
           "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 24,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 24,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "emitter": true,
+          "minEmitSpeed": 0.0,
+          "priority": 0.5,
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Laser/LightBom",
+          "maxEmitAngle": 0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "frameNo": 24
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "blendType": "Add",
+          "emitter": true,
+          "minEmitSpeed": 20.0,
+          "priority": 0.5,
+          "minEmitAngle": -45,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "maxEmitAngle": -45,
+          "type": "Animation",
+          "maxEmitSpeed": 20.0,
+          "frameNo": 1
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": 1.0,
+          "wait": true,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "tween": true,
+          "startValue": 1.0,
+          "frameNo": 1
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 43,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -52,7 +200,7 @@
             0,
             0
           ],
-          "frameNo": 1,
+          "frameNo": 43,
           "startPositionType": "None"
         }
       ],
@@ -64,7 +212,7 @@
       ],
       "source": [
         {
-          "duration": 1,
+          "duration": 43,
           "center": [
             0,
             0
@@ -86,12 +234,12 @@
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallBack",
           "type": "Animation",
-          "frameNo": 1
+          "frameNo": 43
         },
         {
           "duration": 1,
           "id": "",
-          "frameNo": 16,
+          "frameNo": 58,
           "rect": null
         }
       ],

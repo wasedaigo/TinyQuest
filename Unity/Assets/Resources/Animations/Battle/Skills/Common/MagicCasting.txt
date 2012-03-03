@@ -11,6 +11,18 @@
       "Battle/Skills/Magic_CastingEffectRingBottom"
     ]
   },
+  "events": {
+    "45": [
+      "show"
+    ],
+    "9": [
+      "snd:MMS/Warp02"
+    ],
+    "0": [
+      "hide",
+      ""
+    ]
+  },
   "timelines": [
     {
       "position": [

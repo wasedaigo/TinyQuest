@@ -9,6 +9,23 @@
       "Battle/Skills/Effect_Weapon05"
     ]
   },
+  "events": {
+    "12": [
+      "snd:MMS/swing06"
+    ],
+    "8": [
+      "snd:MMS/swing06"
+    ],
+    "16": [
+      "snd:MMS/swing06"
+    ],
+    "0": [
+      "snd:MMS/swing06"
+    ],
+    "4": [
+      "snd:MMS/swing06"
+    ]
+  },
   "timelines": [
     {
       "position": [

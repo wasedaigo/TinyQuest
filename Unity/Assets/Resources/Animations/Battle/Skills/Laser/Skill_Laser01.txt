@@ -13,6 +13,14 @@
       "Battle/Skills/Effect_Special01"
     ]
   },
+  "events": {
+    "26": [
+      "damage:0"
+    ],
+    "0": [
+      "snd:MMS/power03"
+    ]
+  },
   "timelines": [
     {
       "position": [

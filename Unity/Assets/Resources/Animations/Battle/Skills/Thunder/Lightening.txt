@@ -9,6 +9,14 @@
       "Battle/Skills/Effect_Lightning02"
     ]
   },
+  "events": {
+    "11": [
+      "damage:0"
+    ],
+    "7": [
+      "goto:2"
+    ]
+  },
   "timelines": [
     {
       "position": [

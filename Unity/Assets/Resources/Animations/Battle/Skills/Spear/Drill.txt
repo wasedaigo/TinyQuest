@@ -14,6 +14,41 @@
       "Battle/Skills/Effect_WindSpiral"
     ]
   },
+  "events": {
+    "33": [
+      "damage:0"
+    ],
+    "23": [
+      "damage:0"
+    ],
+    "7": [
+      "snd:MMS/mecha15"
+    ],
+    "35": [
+      "damage:0"
+    ],
+    "25": [
+      "damage:0"
+    ],
+    "27": [
+      "damage:0"
+    ],
+    "17": [
+      "damage:0"
+    ],
+    "29": [
+      "damage:0"
+    ],
+    "31": [
+      "damage:0"
+    ],
+    "19": [
+      "damage:0"
+    ],
+    "21": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

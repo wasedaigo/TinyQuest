@@ -7,6 +7,14 @@
       "Battle/Skills/Battler_Base"
     ]
   },
+  "events": {
+    "27": [
+      "show"
+    ],
+    "0": [
+      "hide"
+    ]
+  },
   "timelines": [
     {
       "position": [

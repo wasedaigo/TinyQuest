@@ -13,6 +13,11 @@
       "Battle/Skills/Effect_Slash"
     ]
   },
+  "events": {
+    "33": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
       "position": [

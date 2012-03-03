@@ -13,6 +13,17 @@
       "Battle/Skills/Effect_Slash2"
     ]
   },
+  "events": {
+    "47": [
+      "show"
+    ],
+    "16": [
+      "damage:0"
+    ],
+    "0": [
+      "hide"
+    ]
+  },
   "timelines": [
     {
       "position": [

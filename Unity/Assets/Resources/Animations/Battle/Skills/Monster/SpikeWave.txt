@@ -8,6 +8,7 @@
       "Battle/Skills/Effect_Stone01"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

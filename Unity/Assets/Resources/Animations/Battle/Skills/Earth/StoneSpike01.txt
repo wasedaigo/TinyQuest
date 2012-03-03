@@ -7,6 +7,11 @@
       "Battle/Skills/Effect_Stone01"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/bosu22"
+    ]
+  },
   "timelines": [
     {
       "position": [

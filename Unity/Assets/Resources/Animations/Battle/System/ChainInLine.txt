@@ -7,6 +7,7 @@
       "UI/UI_ChainLine"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

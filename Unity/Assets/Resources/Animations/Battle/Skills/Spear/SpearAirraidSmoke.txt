@@ -11,6 +11,7 @@
       "Battle/Skills/Effect_Special01"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

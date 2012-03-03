@@ -10,6 +10,14 @@
       "Battle/Skills/Effect_Explosion01"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/power11"
+    ],
+    "30": [
+      "goto:29"
+    ]
+  },
   "timelines": [
     {
       "position": [

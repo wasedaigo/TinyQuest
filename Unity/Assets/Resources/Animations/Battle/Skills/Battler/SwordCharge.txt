@@ -9,6 +9,7 @@
       "Battle/Skills/Weapon_SwordBase"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

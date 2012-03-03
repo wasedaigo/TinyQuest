@@ -7,6 +7,15 @@
       "Battle/Skills/Battler_Base"
     ]
   },
+  "events": {
+    "0": [
+      "snd:Other/Cloth01",
+      "hide"
+    ],
+    "28": [
+      "show"
+    ]
+  },
   "timelines": [
     {
       "position": [

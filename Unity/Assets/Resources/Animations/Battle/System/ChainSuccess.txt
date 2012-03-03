@@ -7,6 +7,11 @@
       "UI/UI_ChainBox"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/eco03"
+    ]
+  },
   "timelines": [
     {
       "position": [

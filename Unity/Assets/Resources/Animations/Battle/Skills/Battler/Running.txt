@@ -7,6 +7,11 @@
       "Battle/Skills/Battler_Base"
     ]
   },
+  "events": {
+    "0": [
+      "swaptex:Battle/Skills/Battler_Base.png,character"
+    ]
+  },
   "timelines": [
     {
       "position": [

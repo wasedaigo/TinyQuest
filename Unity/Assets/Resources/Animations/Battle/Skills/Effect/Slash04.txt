@@ -7,6 +7,11 @@
       "Battle/Skills/Effect_Weapon03"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/hit_s03_c"
+    ]
+  },
   "timelines": [
     {
       "position": [

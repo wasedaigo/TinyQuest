@@ -7,6 +7,7 @@
       "Battle/Skills/Magic_CastingEffectRingBottom"
     ]
   },
+  "events": null,
   "timelines": [
     {
       "position": [

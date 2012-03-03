@@ -7,6 +7,11 @@
       "Battle/Skills/Effect_Weapon05"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/chari14_a"
+    ]
+  },
   "timelines": [
     {
       "position": [

@@ -8,6 +8,12 @@
       "UI/UI_ChainLine"
     ]
   },
+  "events": {
+    "0": [
+      "snd:MMS/power03",
+      ""
+    ]
+  },
   "timelines": [
     {
       "position": [
