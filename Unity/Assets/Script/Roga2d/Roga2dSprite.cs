@@ -2,10 +2,10 @@ using UnityEngine;
 public class Roga2dSprite : Roga2dNode {
 	private Roga2dRenderObject renderObject;
 	
-	public Roga2dSprite(string name, Roga2dRenderObject renderObject) 
-	: base(name)
+	public Roga2dSprite(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect) 
+	: base(textureId)
 	{
-		this.RenderObject = renderObject;
+		this.RenderObject = new Roga2dRenderObject(textureId, pixelSize, pixelCenter, srcRect);
 	}
 	
 	public Roga2dSprite(Roga2dRenderObject renderObject) 

@@ -17,8 +17,8 @@ namespace TinyQuest.Component.Panel {
 			Roga2dButton button = new Roga2dButton();
 			button.Tag = no;
 			button.LocalPriority = 0.1f;
-			button.UpRenderObject = new Roga2dRenderObject("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(0, 0, 32, 32));
-			button.DownRenderObject = new Roga2dRenderObject("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(32, 0, 32, 32));
+			button.SetUpSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(0, 0, 32, 32));
+			button.SetDownSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(32, 0, 32, 32));
 			button.OnTouched = this.onTouched;
 			button.LocalPixelPosition = new Vector2(x, y);
 			this.floor.AddChild(button);
@@ -30,8 +30,7 @@ namespace TinyQuest.Component.Panel {
 
 			// BG
 			this.floor = new Roga2dNode();
-			Roga2dRenderObject renderObject = new Roga2dRenderObject("bg/map", new Vector2(512, 512), new Vector2(0, 0), new Rect(0, 0, 512, 512));
-			Roga2dSprite sprite = new Roga2dSprite(renderObject);
+			Roga2dSprite sprite = new Roga2dSprite("bg/map", new Vector2(512, 512), new Vector2(0, 0), new Rect(0, 0, 512, 512));
 			sprite.LocalPixelPosition = new Vector2(256, 256);
 			this.floor.AddChild(sprite);
 			this.AddChild(this.floor);
@@ -40,6 +39,13 @@ namespace TinyQuest.Component.Panel {
 			this.addStep(1, 150, 400);
 			this.addStep(2, 100, 300);
 			this.addStep(3, 50, 400);
+
+			sprite = new Roga2dSprite("Dungeon/piece", new Vector2(32, 32), new Vector2(16, 32), new Rect(0, 0, 64, 64));
+			sprite.LocalPixelPosition = new Vector2(316, 66);
+			sprite.LocalPriority = 0.2f;
+			this.floor.AddChild(sprite);
+			
+			this.floor.LocalPixelPosition = new Vector2(-sprite.LocalPixelPosition.x + Config.PanelWidth / 2 + 16, sprite.LocalPixelPosition.y + Config.PanelHeight / 2);
 		}
 		
 		private void onTouched(Roga2dButton button) {

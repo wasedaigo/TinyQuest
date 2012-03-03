@@ -24,26 +24,23 @@ public class Roga2dButton : Roga2dNode {
 		this.state = State.Up;
 	}
 	
-	public Roga2dRenderObject UpRenderObject {
-		set {
-			if (this.upRenderObject == null) {
-				this.upRenderObject = value;
-				this.upRenderObject.Pop();
-				this.upRenderObject.Transform.parent = this.Transform;
-				this.upRenderObject.Hide();
-				UpdateState();
-			}
+	public void SetUpSprite(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect) {
+		if (this.upRenderObject == null) {
+			this.upRenderObject = new Roga2dRenderObject(textureId, pixelSize, pixelCenter, srcRect);
+			this.upRenderObject.Pop();
+			this.upRenderObject.Transform.parent = this.Transform;
+			this.upRenderObject.Hide();
+			UpdateState();
 		}
 	}
 	
-	public Roga2dRenderObject DownRenderObject {
-		set {
-			if (this.downRenderObject == null) {
-				this.downRenderObject = value;
-				this.downRenderObject.Pop();
-				this.downRenderObject.Transform.parent = this.Transform;
-				this.downRenderObject.Hide();
-			}
+	public void SetDownSprite(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect) {
+		if (this.downRenderObject == null) {
+			this.downRenderObject = new Roga2dRenderObject(textureId, pixelSize, pixelCenter, srcRect);
+			this.downRenderObject.Pop();
+			this.downRenderObject.Transform.parent = this.Transform;
+			this.downRenderObject.Hide();
+			UpdateState();
 		}
 	}
 	
