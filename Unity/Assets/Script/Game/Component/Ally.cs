@@ -32,9 +32,12 @@ namespace TinyQuest.Component {
 		}
 		
 		public void stopWalkingAnimation() {
-			this.sprite.RenderObject.SetSrcRect(new Rect(128, 0, 32, 32));
-			Roga2dIntervalPlayer.GetInstance().Stop(this.interval);
-			this.interval = null;
+			
+			if (this.interval != null) {
+				Roga2dIntervalPlayer.GetInstance().Stop(this.interval);
+				this.interval = null;
+				this.sprite.RenderObject.SetSrcRect(new Rect(128, 0, 32, 32));
+			}
 		}
 	}
 }
