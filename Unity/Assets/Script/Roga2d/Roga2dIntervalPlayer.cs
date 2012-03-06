@@ -16,10 +16,15 @@ public class Roga2dIntervalPlayer {
 		this.intervals = new List<Roga2dBaseInterval>();
 	}
 
-	public void Play(Roga2dBaseInterval interval) {
+	public Roga2dBaseInterval Play(Roga2dBaseInterval interval) {
 		this.intervals.Add(interval);
+		return interval;
 	}
 
+	public void Stop(Roga2dBaseInterval interval) {
+		this.intervals.Remove(interval);
+	}
+	
 	public void Update() {
         for (int i = this.intervals.Count - 1; i >= 0; i-- ) {
             Roga2dBaseInterval interval = this.intervals[i];

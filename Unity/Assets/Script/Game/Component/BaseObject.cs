@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace TinyQuest.Component {
 	public class BaseObject : Roga2dNode {
-		protected Roga2dBaseInterval interval;
 		protected Roga2dSprite sprite;
 		private string textureId;
 		private int hp;
@@ -12,7 +11,6 @@ namespace TinyQuest.Component {
 		:base("BaseObject")
 		{
 			this.textureId = textureId;
-			this.interval = null;
 			this.sprite = new Roga2dSprite(this.textureId, pixelSize, pixelCenter, srcRect);
 			this.AddChild(this.sprite);
 			this.hp = 10000;
@@ -45,13 +43,6 @@ namespace TinyQuest.Component {
 		public Rect SrcRect {
 			get {
 				return this.sprite.RenderObject.SrcRect;
-			}
-		}
-		
-		public override void Update() {
-			base.Update();
-			if (this.interval != null) {
-				this.interval.Update();
 			}
 		}
 	

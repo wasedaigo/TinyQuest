@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace TinyQuest.Component {
 	public class Ally : BaseObject {
+		private Roga2dBaseInterval interval;
 		public Ally(string name) 
 		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32))
 		{
@@ -27,10 +28,12 @@ namespace TinyQuest.Component {
 		
 		public void startWalkingAnimation() {
 			this.interval = this.buildWalkInterval();
+			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
 		}
 		
 		public void stopWalkingAnimation() {
 			this.sprite.RenderObject.SetSrcRect(new Rect(128, 0, 32, 32));
+			Roga2dIntervalPlayer.GetInstance().Stop(this.interval);
 			this.interval = null;
 		}
 	}

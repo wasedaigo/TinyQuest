@@ -9,15 +9,13 @@ namespace TinyQuest.Component {
 		private Roga2dNode root;
 		private List<Roga2dSprite> sprites;
 		private Roga2dRenderObject renderObject;
-		private Roga2dBaseInterval interval;
 		
 		public Stage() 
 		{
 			this.root = new Roga2dNode();
 			this.AddChild(this.root);
 			this.sprites = new List<Roga2dSprite>();
-			this.interval = null;
-
+			
 			this.setupStage();
 		}
 		
@@ -34,7 +32,8 @@ namespace TinyQuest.Component {
 			Roga2dPositionInterval posInterval = new Roga2dPositionInterval(this, new Vector2(0, 0), Roga2dUtils.pixelToLocal(new Vector2(320, 0)), 100, true, null);
 			Roga2dFunc func = new Roga2dFunc(this.onScrolled);
 			
-			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {posInterval, func});
+			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {posInterval, func});
+			Roga2dIntervalPlayer.GetInstance().Play(interval);
 		}
 		
 		private void onScrolled() {
@@ -42,14 +41,6 @@ namespace TinyQuest.Component {
 				this.ScrollFinished();	
 			}
 			//this.LocalPixelPosition = new Vector2(0, 0);
-		}
-		
-		public override void Update() {
-			base.Update();
-
-			if (this.interval != null && !this.interval.IsDone()) {
-				this.interval.Update();
-			}
 		}
 	}
 }
