@@ -28,8 +28,8 @@ namespace TinyQuest.Component {
 			}
 		}
 		
-		public void Scroll() {
-			Roga2dPositionInterval posInterval = new Roga2dPositionInterval(this, new Vector2(0, 0), Roga2dUtils.pixelToLocal(new Vector2(320, 0)), 100, true, null);
+		public void Scroll(float duration) {
+			Roga2dPositionInterval posInterval = new Roga2dPositionInterval(this, new Vector2(0, 0), Roga2dUtils.pixelToLocal(new Vector2(320, 0)), (int)duration, true, null);
 			Roga2dFunc func = new Roga2dFunc(this.onScrolled);
 			
 			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {posInterval, func});

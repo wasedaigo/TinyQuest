@@ -10,6 +10,7 @@ namespace TinyQuest.Component.Panel {
 		public delegate void StepTouchEventHandler(int stepIndex);
 		public event StepTouchEventHandler StepTouched;
 		private Roga2dNode floor;
+		private Roga2dNode camera;
 		private Roga2dSprite playerPiece;
 		private Vector2 mapSize;
 		private Vector2 panelSize;
@@ -39,6 +40,10 @@ namespace TinyQuest.Component.Panel {
 			sprite.LocalPixelPosition = new Vector2(256, 256);
 			this.floor.AddChild(sprite);
 			this.AddChild(this.floor);
+			
+			// Camera
+			this.camera = new Roga2dNode();
+			this.AddChild(this.camera);
 
 			MapModel model = MapCache.GetInstance().GetModel();
 			StepData[] steps = model.GetSteps();
@@ -56,12 +61,31 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		private void setScreenCenter(float posX, float posY) {
-			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2 + 16, -posY + Config.PanelHeight / 2);
+			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2, -posY + Config.PanelHeight / 2);
 		}
 		
-		public void OnStepMoved(float posX, float posY) {
-			this.playerPiece.LocalPixelPosition = new Vector2(posX + 16, posY + 16);
-			this.setScreenCenter(posX + 16, posY + 16);
+		public void OnStepMoved(float posX, float posY, float duration) {
+			Vector2 piecePixelPos = this.playerPiece.LocalPixelPosition;
+			Vector2 piecePos = Roga2dUtils.pixelToLocal(new Vector2(piecePixelPos.x, piecePixelPos.y));
+			Vector2 movePos = Roga2dUtils.pixelToLocal(new Vector2(posX + 16, posY + 16));
+			Vector2 cameraPos = this.camera.LocalPosition;
+			Vector2 cameraFocusPos = Roga2dUtils.pixelToLocal(new Vector2(piecePixelPos.x - 16, piecePixelPos.y - 16));
+			Vector2 cameraMovePos = Roga2dUtils.pixelToLocal(new Vector2(posX , posY));
+			
+			// Move camera and piece at the same time
+			Roga2dParallel parallel = new Roga2dParallel(new List<Roga2dBaseInterval> {
+				new Roga2dPositionInterval(this.playerPiece, piecePos, movePos, (int)duration, true, null),
+				new Roga2dPositionInterval(this.camera, cameraFocusPos, cameraMovePos, (int)duration, true, null)
+			});
+			
+			// At first move back to the piece position
+			float distance = Vector2.Distance(cameraPos, piecePos);
+			Roga2dSequence sequence = new Roga2dSequence(new List<Roga2dBaseInterval> {
+				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, (int)(distance * 10), true, null),
+				parallel
+			});
+			
+			Roga2dIntervalPlayer.GetInstance().Play(sequence);
 		}
 		
 		private void onTouched(Roga2dButton button) {
@@ -77,13 +101,13 @@ namespace TinyQuest.Component.Panel {
 		}
 
 		private void scrollFloor(Vector2 delta) {
-			Vector2 pos = this.floor.LocalPixelPosition + delta;
-			if (pos.x > 0) { pos.x = 0; }
-			if (pos.y > 0) { pos.y = 0; }
-			if (pos.x < -this.mapSize.x + Config.PanelWidth) { pos.x = -this.mapSize.x + Config.PanelWidth; }
-			if (pos.y < -this.mapSize.y + Config.PanelHeight) { pos.y = -this.mapSize.y + Config.PanelHeight; }
+			Vector2 pos = this.camera.LocalPixelPosition - delta;
+			if (pos.x < Config.PanelWidth / 2) { pos.x = Config.PanelWidth / 2; }
+			if (pos.y < Config.PanelHeight / 2) { pos.y = Config.PanelHeight / 2; }
+			if (pos.x > this.mapSize.x - Config.PanelWidth / 2) { pos.x = this.mapSize.x - Config.PanelWidth / 2; }
+			if (pos.y > this.mapSize.y - Config.PanelHeight / 2) { pos.y = this.mapSize.y - Config.PanelHeight / 2; }
 
-			this.floor.LocalPixelPosition = pos;
+			this.camera.LocalPixelPosition = pos;
 		}
 		
 		public override void Update() {
@@ -92,6 +116,8 @@ namespace TinyQuest.Component.Panel {
 			this.scrollVelocity *= 0.9f;
 			if (Mathf.Abs(this.scrollVelocity.x) < 0.1f) {this.scrollVelocity.x = 0.0f;}
 			if (Mathf.Abs(this.scrollVelocity.y) < 0.1f) {this.scrollVelocity.y = 0.0f;}
+			
+			this.setScreenCenter(this.camera.LocalPixelPosition.x, this.camera.LocalPixelPosition.y);
 		}
 	}
 }

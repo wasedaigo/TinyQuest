@@ -27,8 +27,8 @@ namespace TinyQuest.Component {
 		}
 		
 		public override void Destroy() {
-			base.Destroy();
 			this.removeSelectedPanel();	
+			base.Destroy();
 		}
 		
 		private void removeSelectedPanel() {

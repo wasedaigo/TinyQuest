@@ -55,10 +55,10 @@ namespace TinyQuest.Component.Window {
 			this.mapModel.StepMoved += this.onStepMoved;
 			this.stage.ScrollFinished += this.onScrollFinished;
 		}
-		
-		private void onStepMoved(float posX, float posY) {
+
+		private void onStepMoved(float posX, float posY, float duration) {
 			this.player.startWalkingAnimation();
-			this.stage.Scroll();
+			this.stage.Scroll(duration);
 		}
 	
 		private void onScrollFinished() {
