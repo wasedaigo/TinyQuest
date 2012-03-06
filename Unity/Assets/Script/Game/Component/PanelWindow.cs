@@ -26,15 +26,12 @@ namespace TinyQuest.Component {
 			this.setPanel(PanelType.MapNavigation);
 		}
 		
-		private void setPanel(PanelType panelType) {
-			// Don't do anything if it is trying to switch to the same panel
-			if (this.selectedPanelType == panelType) {
-				return;	
-			}
-			
-			// Remove selected panel in order to switch to a new panel
-
-			
+		public override void Destroy() {
+			base.Destroy();
+			this.removeSelectedPanel();	
+		}
+		
+		private void removeSelectedPanel() {
 			switch (this.selectedPanelType) {
 			case PanelType.Combat:
 				CombatControlPanel combatControlPanel = (CombatControlPanel)this.selectedPanel;
@@ -47,8 +44,18 @@ namespace TinyQuest.Component {
 				break;
 			}
 			if (this.selectedPanel != null) {
-				this.RemoveChild(selectedPanel);
+				this.RemoveChild(this.selectedPanel);
+				this.selectedPanel = null;
 			}
+		}
+		
+		private void setPanel(PanelType panelType) {
+			// Don't do anything if it is trying to switch to the same panel
+			if (this.selectedPanelType == panelType) {
+				return;	
+			}
+			
+			this.removeSelectedPanel();
 			
 			// Construct new panel component and add it to the scene
 			BasePanel panel = null;

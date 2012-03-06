@@ -40,6 +40,7 @@ namespace TinyQuest.Core {
 						new Roga2dWait(i * 2),
 						new Roga2dAlphaInterval(sprite, 1.0f, 1.0f, 1, false),
 						new Roga2dPositionInterval(sprite, Roga2dUtils.pixelToLocal(new Vector2(popX, 0)), Roga2dUtils.pixelToLocal(new Vector2(popX, -50)), 7, true, null)
+						// TODO: destroy damage effects
 					}
 				);
 				
