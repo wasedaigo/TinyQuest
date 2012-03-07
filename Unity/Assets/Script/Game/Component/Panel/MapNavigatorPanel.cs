@@ -74,13 +74,13 @@ namespace TinyQuest.Component.Panel {
 			this.camera.LocalPixelPosition = new Vector2(posX , posY);
 		}
 		
-		public void OnStepMoved(float posX, float posY, float duration) {
+		public void OnStepMoved(StepData step, float duration) {
 			Vector2 piecePixelPos = this.playerPiece.LocalPixelPosition;
 			Vector2 piecePos = Roga2dUtils.pixelToLocal(new Vector2(piecePixelPos.x, piecePixelPos.y));
-			Vector2 movePos = Roga2dUtils.pixelToLocal(new Vector2(posX + 16, posY + 16));
+			Vector2 movePos = Roga2dUtils.pixelToLocal(new Vector2(step.PosX + 16, step.PosY + 16));
 			Vector2 cameraPos = this.camera.LocalPosition;
 			Vector2 cameraFocusPos = Roga2dUtils.pixelToLocal(new Vector2(piecePixelPos.x - 16, piecePixelPos.y - 16));
-			Vector2 cameraMovePos = Roga2dUtils.pixelToLocal(new Vector2(posX , posY));
+			Vector2 cameraMovePos = Roga2dUtils.pixelToLocal(new Vector2(step.PosX , step.PosY));
 			
 			Roga2dFunc func = new Roga2dFunc(this.onPieceMoved);
 			
@@ -92,8 +92,9 @@ namespace TinyQuest.Component.Panel {
 			
 			// At first move back to the piece position
 			float distance = Vector2.Distance(cameraPos, piecePos);
+			int cameraFocusDuration = (int)(distance * 10);
 			Roga2dSequence sequence = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, (int)(distance * 10), true, null),
+				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, cameraFocusDuration, true, null),
 				parallel,
 				func
 			});

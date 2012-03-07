@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
 using TinyQuest.Model;
+using TinyQuest.Entity;
 
 namespace TinyQuest.Component.Window {
 	public class AdventureWindow : Roga2dNode {
@@ -56,7 +57,7 @@ namespace TinyQuest.Component.Window {
 			this.stage.ScrollFinished += this.onScrollFinished;
 		}
 
-		private void onStepMoved(float posX, float posY, float duration) {
+		private void onStepMoved(StepData step, float duration) {
 			this.player.startWalkingAnimation();
 			this.stage.Scroll(duration);
 		}

@@ -3,7 +3,7 @@ using TinyQuest.Entity;
 
 namespace TinyQuest.Model {
 	public class MapModel {
-		public delegate void StepMovedEventHandler(float x, float y, float duration);
+		public delegate void StepMovedEventHandler(StepData step, float duration);
 		public event StepMovedEventHandler StepMoved;
 		
 		private int currentStepId;
@@ -38,7 +38,7 @@ namespace TinyQuest.Model {
 			this.currentStepId = stepId;
 			StepData step = this.getStepById(stepId);
 			if (step != null && this.StepMoved != null) {
-				this.StepMoved(step.PosX, step.PosY, 90);	
+				this.StepMoved(step, 90);	
 			}
 		}
 	}
