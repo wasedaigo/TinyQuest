@@ -40,7 +40,8 @@ namespace TinyQuest.Component {
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = (MapNavigatorPanel)this.selectedPanel;
 				this.mapModel.StepMoved -= mapNavigator.OnStepMoved;
-				mapNavigator.StepTouched -= this.OnStepTouched;
+				this.mapModel.StepSet -= mapNavigator.OnStepSet;
+				mapNavigator.MessageSent -= this.OnMessage;
 				break;
 			}
 			if (this.selectedPanel != null) {
@@ -68,7 +69,8 @@ namespace TinyQuest.Component {
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = new MapNavigatorPanel(this.mapModel);
 				this.mapModel.StepMoved += mapNavigator.OnStepMoved;
-				mapNavigator.StepTouched += this.OnStepTouched;
+				this.mapModel.StepSet += mapNavigator.OnStepSet;
+				mapNavigator.MessageSent += this.OnMessage;
 				mapNavigator.Init();
 				panel = mapNavigator;
 				break;
@@ -81,16 +83,13 @@ namespace TinyQuest.Component {
 			this.selectedPanelType = panelType;
 		}
 		
-		public void OnStepTouched(int stepId) {
-			if (stepId == 1) {
-				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, stepId);
-				MessageEvent(message);
-			}
+		public void OnMessage(WindowMessage message) {
+			MessageEvent(message);
 		}
 		
 		private void onCardSelected(int cardIndex) {
-				WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
-				MessageEvent(message);
+			WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
+			MessageEvent(message);
 		}
 		
 		public void ReceiveMessage(WindowMessage message) 

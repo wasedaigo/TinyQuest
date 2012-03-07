@@ -9,6 +9,10 @@ namespace TinyQuest.Component.Panel {
 	public class MapNavigatorPanel : BasePanel {
 		public delegate void StepTouchEventHandler(int stepIndex);
 		public event StepTouchEventHandler StepTouched;
+		
+		public delegate void MessageHandler(WindowMessage message);
+		public event MessageHandler MessageSent;
+		
 		private Roga2dNode floor;
 		private Roga2dNode camera;
 		private Roga2dSprite playerPiece;
@@ -24,7 +28,7 @@ namespace TinyQuest.Component.Panel {
 			button.LocalPriority = 0.1f;
 			button.SetUpSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(0, 0, 32, 32));
 			button.SetDownSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(32, 0, 32, 32));
-			button.OnTouched = this.onTouched;
+			button.OnTouched = this.onStepTouched;
 			button.LocalPixelPosition = new Vector2(x, y);
 			this.floor.AddChild(button);
 		}
@@ -57,11 +61,16 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		public override void Init() {
-			this.mapModel.MoveTo(1);
+			this.mapModel.SetAt(1);
 		}
 		
 		private void setScreenCenter(float posX, float posY) {
 			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2, -posY + Config.PanelHeight / 2);
+		}
+		
+		public void OnStepSet(float posX, float posY) {
+			this.playerPiece.LocalPixelPosition = new Vector2(posX + 16, posY + 16);
+			this.camera.LocalPixelPosition = new Vector2(posX , posY);
 		}
 		
 		public void OnStepMoved(float posX, float posY, float duration) {
@@ -71,6 +80,8 @@ namespace TinyQuest.Component.Panel {
 			Vector2 cameraPos = this.camera.LocalPosition;
 			Vector2 cameraFocusPos = Roga2dUtils.pixelToLocal(new Vector2(piecePixelPos.x - 16, piecePixelPos.y - 16));
 			Vector2 cameraMovePos = Roga2dUtils.pixelToLocal(new Vector2(posX , posY));
+			
+			Roga2dFunc func = new Roga2dFunc(this.onPieceMoved);
 			
 			// Move camera and piece at the same time
 			Roga2dParallel parallel = new Roga2dParallel(new List<Roga2dBaseInterval> {
@@ -82,13 +93,22 @@ namespace TinyQuest.Component.Panel {
 			float distance = Vector2.Distance(cameraPos, piecePos);
 			Roga2dSequence sequence = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, (int)(distance * 10), true, null),
-				parallel
+				parallel,
+				func
 			});
 			
 			Roga2dIntervalPlayer.GetInstance().Play(sequence);
 		}
 		
-		private void onTouched(Roga2dButton button) {
+		// After whole movement, invoke the next state action
+		private void onPieceMoved() {
+			if (this.MessageSent != null) {
+				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, null);
+				this.MessageSent(message);	
+			}
+		}
+		
+		private void onStepTouched(Roga2dButton button) {
 			int stepId = (int)button.Tag;
 			this.mapModel.MoveTo(stepId);
 			if (StepTouched != null) {
