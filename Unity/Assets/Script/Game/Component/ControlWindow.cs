@@ -10,7 +10,7 @@ namespace TinyQuest.Component {
 		Combat
 	}
 	
-	public class PanelWindow : Roga2dNode {
+	public class ControlWindow : Roga2dNode {
 		public event WindowMessageEventHandler MessageEvent;
 		private Ally player;
 		private bool isPressed;
@@ -20,7 +20,7 @@ namespace TinyQuest.Component {
 		private BasePanel selectedPanel;
 		private MapModel mapModel;
 
-		public PanelWindow(MapModel mapModel)
+		public ControlWindow(MapModel mapModel)
 		{
 			this.mapModel = mapModel;
 			this.setPanel(PanelType.MapNavigation);
@@ -133,7 +133,6 @@ namespace TinyQuest.Component {
 					);
 					this.lastTouchedPosition = Input.mousePosition;
 				}
-				//
 			}
 			
 			if (Input.GetMouseButtonUp(0)) {	

@@ -6,33 +6,33 @@ using TinyQuest.Component.Window;
 using TinyQuest.Model;
 
 public class Main : MonoBehaviour {
-	public GameObject AdventureWindow;
-	public GameObject PanelWindow;
+	public GameObject PreviewWindow;
+	public GameObject ControlWindow;
 	public GameObject MainWindow;
-	private PanelWindow panelWindow;
+	private ControlWindow controlWindow;
 	private AdventureWindow adventureWindow;
 	private Roga2dSprite mainWindow;
-	
+
 	// Use this for initialization
 	void Start () {
 		Application.targetFrameRate = 60;
 		MapModel mapModel = MapCache.GetInstance().GetModel();
 
-		this.panelWindow = new PanelWindow(mapModel);
-		Roga2dGameObjectState state = Roga2dUtils.stashState(this.panelWindow.Transform);
-		this.panelWindow.Transform.parent = PanelWindow.transform;
-		Roga2dUtils.applyState(this.panelWindow.Transform, state);
+		this.controlWindow = new ControlWindow(mapModel);
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.controlWindow.Transform);
+		this.controlWindow.Transform.parent = ControlWindow.transform;
+		Roga2dUtils.applyState(this.controlWindow.Transform, state);
 		
 		this.adventureWindow = new AdventureWindow(mapModel);
 		state = Roga2dUtils.stashState(this.adventureWindow.Transform);
-		this.adventureWindow.Transform.parent = AdventureWindow.transform;
+		this.adventureWindow.Transform.parent = PreviewWindow.transform;
 		Roga2dUtils.applyState(this.adventureWindow.Transform, state);
 		
-		// Connect AdventureWindow and PanelWindow
-		this.panelWindow.MessageEvent += this.panelWindow.ReceiveMessage;
-		this.panelWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
+		// Connect PreviewWindow and ControlWindow
+		this.controlWindow.MessageEvent += this.controlWindow.ReceiveMessage;
+		this.controlWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
 
-		this.adventureWindow.MessageEvent += this.panelWindow.ReceiveMessage;
+		this.adventureWindow.MessageEvent += this.controlWindow.ReceiveMessage;
 		this.adventureWindow.MessageEvent += this.adventureWindow.ReceiveMessage;
 
 		// BG
@@ -44,7 +44,7 @@ public class Main : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		this.panelWindow.Update();
+		this.controlWindow.Update();
 		this.adventureWindow.Update();
 		this.mainWindow.Update();
 	}

@@ -15,11 +15,11 @@ namespace TinyQuest.Cache {
 
 		public Model.MapModel GetModel() {
 			StepData[] steps = new StepData[5];
-			steps[0] = new StepData(1, 100, 100);
-			steps[1] = new StepData(2, 150, 100);
-			steps[2] = new StepData(3, 100, 150);
-			steps[3] = new StepData(4, 200, 200);
-			steps[4] = new StepData(5, 250, 250);
+			steps[0] = new StepData(1, 100, 250);
+			steps[1] = new StepData(2, 100, 300);
+			steps[2] = new StepData(3, 100, 350);
+			steps[3] = new StepData(4, 100, 400);
+			steps[4] = new StepData(5, 100, 450);
 			
 			return new Model.MapModel(steps);
 				
