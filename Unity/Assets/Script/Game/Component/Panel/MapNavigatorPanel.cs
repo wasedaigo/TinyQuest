@@ -61,14 +61,15 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		public override void Init() {
-			this.mapModel.SetAt(1);
+			StepData step = this.mapModel.GetCurrentStep();
+			this.setPiecePosition(step.PosX, step.PosY);
 		}
-		
+
 		private void setScreenCenter(float posX, float posY) {
 			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2, -posY + Config.PanelHeight / 2);
 		}
 		
-		public void OnStepSet(float posX, float posY) {
+		public void setPiecePosition(float posX, float posY) {
 			this.playerPiece.LocalPixelPosition = new Vector2(posX + 16, posY + 16);
 			this.camera.LocalPixelPosition = new Vector2(posX , posY);
 		}

@@ -6,21 +6,22 @@ namespace TinyQuest.Model {
 		public delegate void StepMovedEventHandler(float x, float y, float duration);
 		public event StepMovedEventHandler StepMoved;
 		
-		public delegate void StepSetEventHandler(float x, float y);
-		public event StepSetEventHandler StepSet;
-		
-		
 		private int currentStepId;
 		private StepData[] steps; 
 		
 		public MapModel(StepData[] steps)
 		{
-			this.currentStepId = 0;
+			this.currentStepId = 1;
 			this.steps = steps;
 		}
 		
 		public StepData[] GetSteps() {
 			return this.steps;
+		}
+		
+		public StepData GetCurrentStep() {
+			StepData step = this.getStepById(this.currentStepId);
+			return step;
 		}
 		
 		private StepData getStepById(int stepId) {
@@ -31,14 +32,6 @@ namespace TinyQuest.Model {
 			}
 			
 			return null;
-		}
-		
-		public void SetAt(int stepId) {
-			this.currentStepId = stepId;
-			StepData step = this.getStepById(stepId);
-			if (step != null && this.StepSet != null) {
-				this.StepSet(step.PosX, step.PosY);	
-			}
 		}
 
 		public void MoveTo(int stepId) {

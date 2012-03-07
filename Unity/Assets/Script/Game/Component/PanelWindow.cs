@@ -40,7 +40,6 @@ namespace TinyQuest.Component {
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = (MapNavigatorPanel)this.selectedPanel;
 				this.mapModel.StepMoved -= mapNavigator.OnStepMoved;
-				this.mapModel.StepSet -= mapNavigator.OnStepSet;
 				mapNavigator.MessageSent -= this.OnMessage;
 				break;
 			}
@@ -69,7 +68,6 @@ namespace TinyQuest.Component {
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = new MapNavigatorPanel(this.mapModel);
 				this.mapModel.StepMoved += mapNavigator.OnStepMoved;
-				this.mapModel.StepSet += mapNavigator.OnStepSet;
 				mapNavigator.MessageSent += this.OnMessage;
 				mapNavigator.Init();
 				panel = mapNavigator;
