@@ -15,5 +15,5 @@ namespace TinyQuest.Core {
 		}
 	}
 	
-	public delegate void WindowMessageEvent(WindowMessage message);
+	public delegate void WindowMessageEventHandler(WindowMessage message);
 }

@@ -11,7 +11,7 @@ namespace TinyQuest.Component {
 	}
 	
 	public class PanelWindow : Roga2dNode {
-		public event WindowMessageEvent MessageEvent;
+		public event WindowMessageEventHandler MessageEvent;
 		private Ally player;
 		private bool isPressed;
 		private Vector2 lastTouchedPosition;
@@ -35,12 +35,12 @@ namespace TinyQuest.Component {
 			switch (this.selectedPanelType) {
 			case PanelType.Combat:
 				CombatControlPanel combatControlPanel = (CombatControlPanel)this.selectedPanel;
-				combatControlPanel.CardSelected -= this.onCardSelected;
+				combatControlPanel.WindowMessageInvoked -= this.OnMessage;
 				break;
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = (MapNavigatorPanel)this.selectedPanel;
 				this.mapModel.StepMoved -= mapNavigator.OnStepMoved;
-				mapNavigator.MessageSent -= this.OnMessage;
+				mapNavigator.WindowMessageInvoked -= this.OnMessage;
 				break;
 			}
 			if (this.selectedPanel != null) {
@@ -62,13 +62,13 @@ namespace TinyQuest.Component {
 			switch (panelType) {
 			case PanelType.Combat:
 				CombatControlPanel combatControlPanel = new CombatControlPanel();
-				combatControlPanel.CardSelected += this.onCardSelected;
+				combatControlPanel.WindowMessageInvoked += this.OnMessage;
 				panel = combatControlPanel;
 				break;
 			case PanelType.MapNavigation:
 				MapNavigatorPanel mapNavigator = new MapNavigatorPanel(this.mapModel);
 				this.mapModel.StepMoved += mapNavigator.OnStepMoved;
-				mapNavigator.MessageSent += this.OnMessage;
+				mapNavigator.WindowMessageInvoked += this.OnMessage;
 				mapNavigator.Init();
 				panel = mapNavigator;
 				break;

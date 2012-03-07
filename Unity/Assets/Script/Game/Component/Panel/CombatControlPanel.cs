@@ -1,9 +1,9 @@
 using UnityEngine;
+using TinyQuest.Core;
 
 namespace TinyQuest.Component.Panel {
 	public class CombatControlPanel : BasePanel {
-		public delegate void CardSelectEventHandler(int cardIndex);
-		public event CardSelectEventHandler CardSelected;
+		public event WindowMessageEventHandler WindowMessageInvoked;
 		
 		private void AddCard(int no, float x, float y) {
 			// Symbols
@@ -40,8 +40,10 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		private void onTouched(Roga2dButton button) {
-			if (CardSelected != null) {
-				CardSelected((int)button.Tag);	
+			if (this.WindowMessageInvoked != null) {
+				int cardIndex = (int)button.Tag;
+				WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
+				this.WindowMessageInvoked(message);					
 			}
 		}
 	}

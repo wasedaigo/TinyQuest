@@ -10,8 +10,7 @@ namespace TinyQuest.Component.Panel {
 		public delegate void StepTouchEventHandler(int stepIndex);
 		public event StepTouchEventHandler StepTouched;
 		
-		public delegate void MessageHandler(WindowMessage message);
-		public event MessageHandler MessageSent;
+		public event WindowMessageEventHandler WindowMessageInvoked;
 		
 		private Roga2dNode floor;
 		private Roga2dNode camera;
@@ -104,9 +103,9 @@ namespace TinyQuest.Component.Panel {
 		
 		// After whole movement, invoke the next state action
 		private void onPieceMoved() {
-			if (this.MessageSent != null) {
+			if (this.WindowMessageInvoked != null) {
 				WindowMessage message = new WindowMessage(WindowMessageType.StartCombat, null);
-				this.MessageSent(message);	
+				this.WindowMessageInvoked(message);	
 			}
 		}
 		

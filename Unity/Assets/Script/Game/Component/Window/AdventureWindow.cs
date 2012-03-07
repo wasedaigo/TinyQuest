@@ -7,7 +7,7 @@ using TinyQuest.Entity;
 
 namespace TinyQuest.Component.Window {
 	public class AdventureWindow : Roga2dNode {
-		public event WindowMessageEvent MessageEvent;
+		public event WindowMessageEventHandler MessageEvent;
 		
 		private Roga2dNode root;
 		private Monster monster;
