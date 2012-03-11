@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 namespace TinyQuest.Component {
-	public class BaseObject : Roga2dNode {
+	public class AdventureObject : Roga2dNode {
 		protected Roga2dSprite sprite;
 		private string textureId;
 		private int hp;
 		
-		public BaseObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
-		:base("BaseObject")
+		public AdventureObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
+		:base("AdventureObject")
 		{
 			this.textureId = textureId;
 			this.sprite = new Roga2dSprite(this.textureId, pixelSize, pixelCenter, srcRect);

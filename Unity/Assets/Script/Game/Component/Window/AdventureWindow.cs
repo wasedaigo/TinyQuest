@@ -6,8 +6,7 @@ using TinyQuest.Model;
 using TinyQuest.Entity;
 
 namespace TinyQuest.Component.Window {
-	public class AdventureWindow : Roga2dNode {
-		public event WindowMessageEventHandler MessageEvent;
+	public class AdventureWindow : BaseComponent {
 		
 		private Roga2dNode root;
 		private Monster monster;
@@ -15,7 +14,7 @@ namespace TinyQuest.Component.Window {
 		private Roga2dBaseInterval targetInterval;
 		private Stage stage;
 		private MapModel mapModel;
-		private List<BaseObject> battlers = new List<BaseObject>();
+		private List<AdventureObject> battlers = new List<AdventureObject>();
 		private Ally player;
 		
 		Ally spawnBattler (string name, float x, float y) {
@@ -99,13 +98,8 @@ namespace TinyQuest.Component.Window {
 		}
 	
 		private void finishCombat() {
-			if (MessageEvent != null) {
-				WindowMessage message = null;
-				message = new WindowMessage(WindowMessageType.FinishCombat, null);
-				if (message != null) {
-					MessageEvent(message);;	
-				}
-			}	
+			WindowMessage message = new WindowMessage(WindowMessageType.FinishCombat, null);
+			this.SendMessage(message);
 		}
 		
 		private void CommandCalled(Roga2dAnimationSettings settings, string command) 
@@ -121,13 +115,13 @@ namespace TinyQuest.Component.Window {
 				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
 				this.animationPlayer.Play(settings.Root, null, animation, null);
 				
-				BaseObject baseObject = (BaseObject)settings.Target;
-				baseObject.ApplyDamage(damageValue);
+				AdventureObject obj = (AdventureObject)settings.Target;
+				obj.ApplyDamage(damageValue);
 			}
 		}
 		
 		private void playNextAnimation(int no) {
-			BaseObject battler = this.battlers[0];
+			AdventureObject battler = this.battlers[0];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 
@@ -155,7 +149,7 @@ namespace TinyQuest.Component.Window {
 			// camera.position = new Vector3(this.monster.Position.x, this.monster.Position.y, camera.position.z);
 		}
 		
-		public void ReceiveMessage(WindowMessage message) 
+		public override void ReceiveMessage(WindowMessage message) 
 		{
 			switch (message.Type) {
 			case WindowMessageType.StartCombat:

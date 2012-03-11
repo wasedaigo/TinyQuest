@@ -3,19 +3,16 @@ using TinyQuest.Component.Panel;
 using TinyQuest.Model;
 using UnityEngine;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Component.Window {
 	public enum PanelType {
 		Undefined,
 		MapNavigation,
 		Combat
 	}
-	
-	public class ControlWindow : Roga2dNode {
-		public event WindowMessageEventHandler MessageEvent;
+
+	public class ControlWindow : BaseComponent {
+
 		private Ally player;
-		private bool isPressed;
-		private Vector2 lastTouchedPosition;
-		private Collider pressedCollider;
 		private PanelType selectedPanelType;
 		private BasePanel selectedPanel;
 		private MapModel mapModel;
@@ -82,16 +79,17 @@ namespace TinyQuest.Component {
 		}
 		
 		public void OnMessage(WindowMessage message) {
-			MessageEvent(message);
+			this.SendMessage(message);
 		}
 		
 		private void onCardSelected(int cardIndex) {
 			WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
-			MessageEvent(message);
+			this.SendMessage(message);
 		}
 		
-		public void ReceiveMessage(WindowMessage message) 
+		public override void ReceiveMessage(WindowMessage message) 
 		{
+			base.ReceiveMessage(message);
 			switch (message.Type) {
 			case WindowMessageType.StartCombat:
 				this.setPanel(PanelType.Combat);
@@ -102,45 +100,10 @@ namespace TinyQuest.Component {
 			}
 		}
 
-		public override void Update ()
-		{
-			base.Update ();
-			
-			// Construct a ray from the current mouse coordinates
-			if (Input.GetMouseButtonDown(0)) {
-				this.isPressed = true;
-				this.lastTouchedPosition = Input.mousePosition;
-				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-				RaycastHit hitInfo = new RaycastHit();
-				if (Physics.Raycast(ray, out hitInfo)) {
-					this.pressedCollider = hitInfo.collider;
-					
-					if (this.pressedCollider != null) {
-						object obj = hitInfo.point;
-						this.pressedCollider.SendMessage("ReceiveTouchDown", obj);
-					}
-				}
-			}
-			
-			if (this.isPressed) {
-				if (this.selectedPanel != null) {
-					float actualLogicalRatio = Config.LogicalWidth / (float)Screen.width;
-					this.selectedPanel.OnTouchMoved(
-						new Vector2(
-							Input.mousePosition.x - this.lastTouchedPosition.x,
-							-Input.mousePosition.y + this.lastTouchedPosition.y
-						) * actualLogicalRatio
-					);
-					this.lastTouchedPosition = Input.mousePosition;
-				}
-			}
-			
-			if (Input.GetMouseButtonUp(0)) {	
-				this.isPressed = false;
-				if (this.pressedCollider != null) {
-					this.pressedCollider.SendMessage("ReceiveTouchUp");
-					this.pressedCollider = null;
-				}
+		public override void OnTouchMoved(Vector2 delta) {
+			base.OnTouchMoved(delta);
+			if (this.selectedPanel != null) {
+				this.selectedPanel.OnTouchMoved(delta);
 			}
 		}
 	}

@@ -12,7 +12,7 @@ public class AnimationSpawner : MonoBehaviour {
 	private Roga2dAnimationPlayer player;
 	private Roga2dBaseInterval targetInterval;
 
-	private List<BaseObject> battlers = new List<BaseObject>();
+	private List<AdventureObject> battlers = new List<AdventureObject>();
 	
 	void Awake () {
 		Application.targetFrameRate = 60;
@@ -110,7 +110,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.Update();
 
 		if (Input.GetMouseButtonDown(0)) {
-			BaseObject battler = this.battlers[no % 5];
+			AdventureObject battler = this.battlers[no % 5];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 
