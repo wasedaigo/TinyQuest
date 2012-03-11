@@ -7,6 +7,10 @@ using TinyQuest.Component.Window;
 using TinyQuest.Model;
 
 public class DualScreen : Roga2dNode{
+	private Vector2 InvalidTouchPosition = new Vector2(-1000, -1000);
+	private Rect TopPanelRect = new Rect(0, 100, 160, 140);
+	private Rect BottomPanelRect = new Rect(0, 0, 160, 100);
+	
 	private bool isPressed;
 	private Vector2 lastTouchedPosition;
 	private Collider pressedCollider;
@@ -46,6 +50,8 @@ public class DualScreen : Roga2dNode{
 
 		this.topPanel.MessageEvent += this.bottomPanel.ReceiveMessage;
 		this.topPanel.MessageEvent += this.topPanel.ReceiveMessage;
+		
+		this.lastTouchedPosition = InvalidTouchPosition;
 	}
 	
 	public override void Update ()
@@ -55,7 +61,6 @@ public class DualScreen : Roga2dNode{
 		// Construct a ray from the current mouse coordinates
 		if (Input.GetMouseButtonDown(0)) {
 			this.isPressed = true;
-			this.lastTouchedPosition = Input.mousePosition;
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hitInfo = new RaycastHit();
 			if (Physics.Raycast(ray, out hitInfo)) {
@@ -69,15 +74,29 @@ public class DualScreen : Roga2dNode{
 		}
 		
 		if (this.isPressed) {
-			float actualLogicalRatio = Config.LogicalWidth / (float)Screen.width;
-			Vector2 delta = new Vector2(
-					Input.mousePosition.x - this.lastTouchedPosition.x,
-					-Input.mousePosition.y + this.lastTouchedPosition.y
-			) * actualLogicalRatio;
+			float logicalInputX = Input.mousePosition.x * Config.ActualLogicalRatio;
+			float logicalInputY = Input.mousePosition.y * Config.ActualLogicalRatio;
 			
-			this.bottomPanel.OnTouchMoved(delta);
-			this.topPanel.OnTouchMoved(delta);
-			this.lastTouchedPosition = Input.mousePosition;
+			if (this.lastTouchedPosition == InvalidTouchPosition) {
+				this.lastTouchedPosition = new Vector2(logicalInputX, logicalInputY);	
+			}
+			
+			Vector2 delta = new Vector2(
+					logicalInputX - this.lastTouchedPosition.x,
+					-logicalInputY + this.lastTouchedPosition.y
+			);
+			
+			if (this.TopPanelRect.Contains(this.lastTouchedPosition)) {
+				this.topPanel.OnTouchMoved(delta);
+			}
+
+			if (this.BottomPanelRect.Contains(this.lastTouchedPosition)) {
+				this.bottomPanel.OnTouchMoved(delta);
+			}
+			this.lastTouchedPosition.x = logicalInputX;
+			this.lastTouchedPosition.y = logicalInputY;
+		} else {
+			this.lastTouchedPosition = InvalidTouchPosition;
 		}
 		
 		if (Input.GetMouseButtonUp(0)) {	
