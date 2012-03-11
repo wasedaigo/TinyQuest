@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using TinyQuest.Cache;
 using TinyQuest;
+using TinyQuest.Core;
 using TinyQuest.Component;
 using TinyQuest.Component.Window;
 using TinyQuest.Model;
@@ -14,42 +15,37 @@ public class DualScreen : Roga2dNode{
 	private bool isPressed;
 	private Vector2 lastTouchedPosition;
 	private Collider pressedCollider;
-	private BaseComponent topPanel;
-	private BaseComponent bottomPanel;
+	
+	private BaseComponent topWindow;
+	private BaseComponent bottomWindow;
 
 	// Use this for initialization
 	public DualScreen() {
-		Roga2dNode topWindow = new Roga2dNode();
-		topWindow.LocalPriority = 20.0f;
-		topWindow.LocalPosition = new Vector2(0, -1.5f);
-		this.AddChild(topWindow);
+		MapModel mapModel = MapCache.GetInstance().GetModel();
 		
-		Roga2dNode bottomWindow = new Roga2dNode();
-		topWindow.LocalPriority = 10.0f;
-		this.AddChild(bottomWindow);
+		this.topWindow = new TopWindow(mapModel);
+		this.topWindow.LocalPriority = 20.0f;
+		this.topWindow.LocalPosition = new Vector2(0, -1.5f);
+		this.AddChild(this.topWindow);
+		
+		this.bottomWindow = new BottomWindow(mapModel);
+		this.bottomWindow.LocalPriority = 10.0f;
+		this.AddChild(this.bottomWindow);
 		
 		Roga2dNode frame = new Roga2dNode();
 		frame.LocalPriority = 30.0f;
 		this.AddChild(frame);
-		
-		MapModel mapModel = MapCache.GetInstance().GetModel();
-		
-		this.topPanel = new AdventureWindow(mapModel);
-		topWindow.AddChild(this.topPanel);
-		
-		this.bottomPanel = new ControlWindow(mapModel);
-		bottomWindow.AddChild(this.bottomPanel);
 		
 		// Set up Frame
 		Roga2dSprite mainWindow = new Roga2dSprite("UI/frame", new Vector2(160, 240), new Vector2(0, 0), new Rect(0, 0, 160, 240));
 		frame.AddChild(mainWindow);
 
 		// Connect PreviewWindow and ControlWindow
-		this.bottomPanel.MessageEvent += this.bottomPanel.ReceiveMessage;
-		this.bottomPanel.MessageEvent += this.topPanel.ReceiveMessage;
+		this.bottomWindow.MessageEvent += this.bottomWindow.ReceiveMessage;
+		this.bottomWindow.MessageEvent += this.topWindow.ReceiveMessage;
 
-		this.topPanel.MessageEvent += this.bottomPanel.ReceiveMessage;
-		this.topPanel.MessageEvent += this.topPanel.ReceiveMessage;
+		this.topWindow.MessageEvent += this.bottomWindow.ReceiveMessage;
+		this.topWindow.MessageEvent += this.topWindow.ReceiveMessage;
 		
 		this.lastTouchedPosition = InvalidTouchPosition;
 	}
@@ -87,11 +83,11 @@ public class DualScreen : Roga2dNode{
 			);
 			
 			if (this.TopPanelRect.Contains(this.lastTouchedPosition)) {
-				this.topPanel.OnTouchMoved(delta);
+				this.topWindow.OnTouchMoved(delta);
 			}
 
 			if (this.BottomPanelRect.Contains(this.lastTouchedPosition)) {
-				this.bottomPanel.OnTouchMoved(delta);
+				this.bottomWindow.OnTouchMoved(delta);
 			}
 			this.lastTouchedPosition.x = logicalInputX;
 			this.lastTouchedPosition.y = logicalInputY;

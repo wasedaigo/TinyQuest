@@ -6,7 +6,7 @@ using TinyQuest.Model;
 using TinyQuest.Entity;
 
 namespace TinyQuest.Component.Window {
-	public class AdventureWindow : BaseComponent {
+	public class TopWindow : BaseComponent {
 		
 		private Roga2dNode root;
 		private Monster monster;
@@ -34,7 +34,7 @@ namespace TinyQuest.Component.Window {
 		}
 		
 		// Use this for initialization
-		public AdventureWindow(MapModel mapModel) {
+		public TopWindow(MapModel mapModel) {
 			Shader.WarmupAllShaders() ;
 	
 			this.mapModel = mapModel;

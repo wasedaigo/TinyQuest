@@ -10,14 +10,14 @@ namespace TinyQuest.Component.Window {
 		Combat
 	}
 
-	public class ControlWindow : BaseComponent {
+	public class BottomWindow : BaseComponent {
 
 		private Ally player;
 		private PanelType selectedPanelType;
 		private BasePanel selectedPanel;
 		private MapModel mapModel;
 
-		public ControlWindow(MapModel mapModel)
+		public BottomWindow(MapModel mapModel)
 		{
 			this.mapModel = mapModel;
 			this.setPanel(PanelType.MapNavigation);
@@ -78,12 +78,9 @@ namespace TinyQuest.Component.Window {
 			this.selectedPanelType = panelType;
 		}
 		
-		public void OnMessage(WindowMessage message) {
-			this.SendMessage(message);
-		}
 		
-		private void onCardSelected(int cardIndex) {
-			WindowMessage message = new WindowMessage(WindowMessageType.CombatCardTouched, cardIndex);
+		
+		public void OnMessage(WindowMessage message) {
 			this.SendMessage(message);
 		}
 		
