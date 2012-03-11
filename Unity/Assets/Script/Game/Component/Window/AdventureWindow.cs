@@ -41,7 +41,6 @@ namespace TinyQuest.Component.Window {
 			this.mapModel = mapModel;
 			this.animationPlayer = new Roga2dAnimationPlayer();
 			this.root = new Roga2dNode("Root");
-			this.root.LocalScale = new Vector2(2.0f, 2.0f);
 			this.AddChild(this.root);
 			
 			// animationPlayer
