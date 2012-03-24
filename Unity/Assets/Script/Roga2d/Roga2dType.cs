@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Roga2dConst {
 	public static float BasePixelSize = 32.0f;
-	public static float AnimationFPS = 60.0f;
+	public static float AnimationFPS = 45.0f;
 };
 
 public enum Roga2dBlendType {

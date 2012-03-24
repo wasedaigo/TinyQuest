@@ -8,11 +8,14 @@ using TinyQuest.Model;
 public class Main : MonoBehaviour {
 	public GameObject Root;
 	private DualScreen dualScreen;
-
+	
+	void Awake () {
+		Application.targetFrameRate = 30;
+		Time.captureFramerate = 30;	
+	}
+	
 	// Use this for initialization
 	void Start () {
-		Application.targetFrameRate = 60;
-		
 		this.dualScreen = new DualScreen();
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.dualScreen.Transform);
 		this.dualScreen.Transform.parent = this.Root.transform;

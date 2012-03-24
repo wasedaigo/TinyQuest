@@ -16,6 +16,7 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	void Awake () {
 		Application.targetFrameRate = 60;
+		Time.captureFramerate = 60;
 	}
 	
 	Ally spawnBattler (string name, float x, float y) {
