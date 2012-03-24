@@ -64,6 +64,7 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	
 	static string[] ids = new string[] {
+			"Battle/Skills/Fire/Skill_Flare",
 			"Battle/Skills/Monster/DeadlyBite",
 			"Battle/Skills/Bow/Shoot",
 			"Battle/Skills/Sword/LeaveDance",
@@ -75,7 +76,7 @@ public class AnimationSpawner : MonoBehaviour {
 			"Battle/Skills/Axe/CycloneAxe",
 			"Battle/Skills/Axe/Slash",
 			"Battle/Skills/Axe/ArmorBreaker",
-			"Battle/Skills/Fire/Skill_Flare",
+			
 			"Battle/Skills/Common/MagicCasting"
 	};
 	
@@ -106,7 +107,7 @@ public class AnimationSpawner : MonoBehaviour {
 		Roga2dIntervalPlayer.GetInstance().Update();
 
 		// Update animations
-		this.player.Update();
+		this.player.Update(Time.deltaTime);
 		this.root.Update();
 
 		if (Input.GetMouseButtonDown(0)) {

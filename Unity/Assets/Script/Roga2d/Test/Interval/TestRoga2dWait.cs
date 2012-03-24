@@ -11,19 +11,19 @@ class TestRoga2dWait {
 		
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
 
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Ok(interval.IsDone());
         
         interval.Reset();

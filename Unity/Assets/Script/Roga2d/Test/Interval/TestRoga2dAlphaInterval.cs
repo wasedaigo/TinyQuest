@@ -17,27 +17,27 @@ class TestRoga2dAlphaInterval {
 		Tester.Match(node.LocalAlpha, 0.0f);
 		Tester.Ok(!interval.IsDone());
         
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 0.2f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 0.4f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 0.6f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 0.8f);
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(interval.IsDone());
 	
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(interval.IsDone());
 		

@@ -85,13 +85,13 @@ namespace TinyQuest.Component.Panel {
 			
 			// Move camera and piece at the same time
 			Roga2dParallel parallel = new Roga2dParallel(new List<Roga2dBaseInterval> {
-				new Roga2dPositionInterval(this.playerPiece, piecePos, movePos, (int)duration, true, null),
-				new Roga2dPositionInterval(this.camera, cameraFocusPos, cameraMovePos, (int)duration, true, null)
+				new Roga2dPositionInterval(this.playerPiece, piecePos, movePos, duration, true, null),
+				new Roga2dPositionInterval(this.camera, cameraFocusPos, cameraMovePos, duration, true, null)
 			});
 			
 			// At first move back to the piece position
 			float distance = Vector2.Distance(cameraPos, piecePos);
-			int cameraFocusDuration = (int)(distance * 10);
+			float cameraFocusDuration = distance * 0.3f;
 			Roga2dSequence sequence = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, cameraFocusDuration, true, null),
 				parallel,

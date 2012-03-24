@@ -2,31 +2,31 @@ using UnityEngine;
 
 public class Roga2dWait : Roga2dBaseInterval {
 	protected float duration;
-	protected int frameNo;
+	protected float elapsed;
 
-	public Roga2dWait (int duration) {
+	public Roga2dWait (float duration) {
 		this.duration = duration;
-		this.frameNo = 0;
+		this.elapsed = 0;
 	}
 	
 	public override sealed bool IsDone() {
-		return this.frameNo >= this.duration;
+		return this.elapsed >= this.duration;
 	}
 	
 	public override sealed void Reset() {
-		this.frameNo = 0;
+		this.elapsed = 0;
 		this.Start();
 	}
 	
 	public override sealed void Start() {}
 	
 	public override sealed void Finish() {
-		this.frameNo = (int)this.duration;
+		this.elapsed = this.duration;
 	}
 
-	public override sealed void Update() {
+	public override sealed void Update(float delta) {
 		if (!this.IsDone()) {
-			this.frameNo += 1;
+			this.elapsed += delta;
 		}
 	}
 }

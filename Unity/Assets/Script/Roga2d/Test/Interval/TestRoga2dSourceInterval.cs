@@ -5,6 +5,7 @@ class TestRoga2dSourceInterval {
 	
 	public static void Test() {
 		TestUpdate();
+		TestDelta();
 	}
 	
 	public static void TestUpdate() {
@@ -56,46 +57,115 @@ class TestRoga2dSourceInterval {
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(3, 3));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(4, 4));
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
 		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(4, 4));
 		Tester.Ok(interval.IsDone());
-		interval.Update();
+		interval.Update(1.0f);
+
+		sprite.Destroy();
+	}
+	
+	public static void TestDelta() {
+		Roga2dRenderObject renderObject = new Roga2dRenderObject(null, new Vector2(32, 48), new Vector2(1, 1), new Rect(10, 10, 32, 48));
+        Roga2dSprite sprite = new Roga2dSprite(renderObject);
+		
+		List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
+		
+		Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
+		keyFrame.FrameNo = 0;
+		keyFrame.Rect = new Rect(10, 10, 32, 48);
+		keyFrame.Id = "test";
+		keyFrame.Duration = 2;
+		keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
+		keyFrame.PixelCenter = new Vector2(1, 1);
+		keyFrames.Add(keyFrame);
+		
+		keyFrame = new Roga2dAnimationKeyFrame();
+		keyFrame.FrameNo = 2;
+		keyFrame.Rect = new Rect(20, 10, 22, 48);
+		keyFrame.Id = "test2";
+		keyFrame.Duration = 1;
+		keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
+		keyFrame.PixelCenter = new Vector2(2, 2);
+		keyFrames.Add(keyFrame);
+
+		Roga2dSourceInterval interval = new Roga2dSourceInterval(sprite, keyFrames, null, null);
+	
+		interval.Start();
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.5f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.5f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(1.0f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.3f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.3f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.3f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
+		Tester.Ok(!interval.IsDone());
+		
+		interval.Update(0.3f);
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
+		Tester.Ok(interval.IsDone());
 
 		sprite.Destroy();
 	}

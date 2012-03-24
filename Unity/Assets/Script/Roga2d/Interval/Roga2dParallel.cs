@@ -36,10 +36,10 @@ public class Roga2dParallel : Roga2dBaseInterval {
         }
 	}
 	
-	public override void Update() {
+	public override void Update(float delta) {
         if (!this.IsDone()) {
 	        foreach (Roga2dBaseInterval interval in this.intervals) {
-	        	interval.Update();
+	        	interval.Update(delta);
 	        }
 			if (this.IsDone()) {
 				this.Finish();	

@@ -23,11 +23,11 @@ public class Roga2dAnimationPlayer {
         this.animations.Add(animation);
 	}
 
-	public void Update() {
+	public void Update(float delta) {
         for (int i = this.animations.Count - 1; i >= 0; i-- ) {
             Roga2dAnimation animation = this.animations[i];
 			if (animation.IsStarted) {
-				animation.Interval.Update();
+				animation.Interval.Update(delta);
 	            if (animation.Interval.IsDone()) {
 					animation.Node.Destroy();
 					if (animation.Node.Parent != null) {

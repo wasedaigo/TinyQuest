@@ -5,7 +5,7 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 	private Roga2dRotationIntervalOption option;
 	private Roga2dRotationIntervalDataStore dataStore;
 	
-	public Roga2dRotationInterval(Roga2dNode node, float start, float end, int duration, bool tween, Roga2dRotationIntervalOption option) 
+	public Roga2dRotationInterval(Roga2dNode node, float start, float end, float duration, bool tween, Roga2dRotationIntervalOption option) 
 	: base(start, end, duration, tween) 
 	{
 		this.node = node;

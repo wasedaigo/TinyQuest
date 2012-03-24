@@ -25,16 +25,16 @@ public class Roga2dSequence : Roga2dBaseInterval {
 	public override void Finish() {
 		this.intervals[this.index].Finish();
 	}
-	public override void Update() {
+	public override void Update(float delta) {
         if (!this.IsDone()) {
             Roga2dBaseInterval currentInterval = this.intervals[this.index];
-            currentInterval.Update();
+            currentInterval.Update(delta);
             if (this.IsDone()) {
                 this.Finish();
             } else if (currentInterval.IsDone()) {
                 this.index += 1;
 				if (currentInterval.isSkippable()) {
-					this.Update();
+					this.Update(delta);
 				}
             }
         }

@@ -22,18 +22,18 @@ class TestRoga2dAnimationPlayer {
 		
 		Tester.Ok(!interval.IsDone());
         
-        player.Update();
+        player.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
         
-        player.Update();
+        player.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
 
-        player.Update();
+        player.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
 		
 		Tester.Match(testCounter, 0);
 
-        player.Update();
+        player.Update(1.0f);
 		Tester.Ok(interval.IsDone());
 		Tester.Match(testCounter, 999);
 		

@@ -22,7 +22,7 @@ public class Roga2dFunc : Roga2dBaseInterval {
 		this.isDone = true;
 	}
 
-	public override sealed void Update() {
+	public override sealed void Update(float delta) {
 		if (!this.IsDone()) {
 			this.callback();
 			this.isDone = true;

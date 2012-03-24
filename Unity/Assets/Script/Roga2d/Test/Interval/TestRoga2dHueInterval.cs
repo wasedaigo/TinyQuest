@@ -22,19 +22,19 @@ class TestRoga2dHueInterval {
 		Tester.Match(node.LocalHue, new Roga2dHue(10, 10, 10));
 		Tester.Ok(!interval.IsDone());
 
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalHue, new Roga2dHue(8, 9, 5));
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalHue, new Roga2dHue(6, 8, 0));
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalHue, new Roga2dHue(4, 7, -5));
 		Tester.Ok(!interval.IsDone());
 
-        interval.Update();
+        interval.Update(1.0f);
 		Tester.Match(node.LocalHue, new Roga2dHue(2, 6, -10));
 		Tester.Ok(interval.IsDone());
         

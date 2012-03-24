@@ -31,14 +31,14 @@ class TestRoga2dEventInterval {
 		Roga2dBaseInterval interval = new Roga2dEventInterval(events, settings);
 		
 		interval.Start();
-		interval.Update();
-		interval.Update();
-		interval.Update();
-		interval.Update();
-		interval.Update();
+		interval.Update(1.0f);
+		interval.Update(1.0f);
+		interval.Update(1.0f);
+		interval.Update(1.0f);
+		interval.Update(1.0f);
 		Tester.Ok(!interval.IsDone());
 		
-		interval.Update();
+		interval.Update(1.0f);
 		Tester.Ok(interval.IsDone());
 		
 		Tester.Match(counter, 3);
