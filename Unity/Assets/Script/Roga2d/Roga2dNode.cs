@@ -181,8 +181,7 @@ public class Roga2dNode {
 		if (this.Velocity.x != 0 && this.Velocity.y != 0) {
 			Vector2 velocity = this.Velocity;
 			Vector2 position = this.LocalPosition;
-
-			this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(position.x + velocity.x *  Roga2dConst.AnimationFPS * Time.deltaTime), Roga2dUtils.RoundPrecision(position.y + velocity.y * Roga2dConst.AnimationFPS * Time.deltaTime));
+			this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(position.x + velocity.x), Roga2dUtils.RoundPrecision(position.y + velocity.y));
 		}
 	}
 	

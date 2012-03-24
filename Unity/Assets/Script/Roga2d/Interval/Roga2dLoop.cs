@@ -35,9 +35,9 @@ public class Roga2dLoop : Roga2dBaseInterval {
 		this.interval.Finish();
 	}
 	
-	public override void Update(float delta) {
+	public override void Update() {
         if (!this.IsDone()) {
-            this.interval.Update(delta);
+            this.interval.Update();
             if (this.interval.IsDone()) {
                 this.loopCounter++;
                 if (this.loopCount == 0 || this.loopCounter < this.loopCount) {

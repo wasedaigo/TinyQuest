@@ -37,9 +37,9 @@ namespace TinyQuest.Core {
 	
 				Roga2dBaseInterval interval = new Roga2dSequence(
 					new List<Roga2dBaseInterval>() {
-						new Roga2dWait(i * 0.1f),
-						new Roga2dAlphaInterval(sprite, 1.0f, 1.0f, 0.03f, false),
-						new Roga2dPositionInterval(sprite, Roga2dUtils.pixelToLocal(new Vector2(popX, 0)), Roga2dUtils.pixelToLocal(new Vector2(popX, -50)), 0.2f, true, null)
+						new Roga2dWait(i * 2),
+						new Roga2dAlphaInterval(sprite, 1.0f, 1.0f, 1, false),
+						new Roga2dPositionInterval(sprite, Roga2dUtils.pixelToLocal(new Vector2(popX, 0)), Roga2dUtils.pixelToLocal(new Vector2(popX, -50)), 7, true, null)
 						// TODO: destroy damage effects
 					}
 				);
@@ -49,7 +49,7 @@ namespace TinyQuest.Core {
 			
 			Roga2dBaseInterval resultInterval = new Roga2dSequence(new List<Roga2dBaseInterval>() {
 				new Roga2dParallel(popIntervals),
-				new Roga2dWait(0.2f)
+				new Roga2dWait(5)
 			});
 	
 			return Roga2dAnimation.Build(node, resultInterval);	
@@ -58,8 +58,8 @@ namespace TinyQuest.Core {
 		// Build interval for red-flash
 		public Roga2dBaseInterval BuildDamageInterval(Roga2dNode target) {
 			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(100, -100, -100), 0.15f, true));
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(100, -100, -100), new Roga2dHue(0, 0, 0), 0.15f, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(100, -100, -100), 5, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(100, -100, -100), new Roga2dHue(0, 0, 0), 5, true));
 			return new Roga2dSequence(list);
 		}
 	}

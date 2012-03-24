@@ -43,7 +43,7 @@ public class Roga2dIntervalPlayer {
 				this.intervals.RemoveAt(i);
 				this.stopIntervals.Remove(interval);
             } else {
-				interval.Update(Time.deltaTime);
+				interval.Update();
 			}
         }
 	}

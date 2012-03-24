@@ -4,7 +4,7 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 	private Roga2dNode node;
 	private Roga2dPositionIntervalOption option;
 	
-	public Roga2dPositionInterval(Roga2dNode node, Vector2 start, Vector2 end, float duration, bool tween, Roga2dPositionIntervalOption option)
+	public Roga2dPositionInterval(Roga2dNode node, Vector2 start, Vector2 end, int duration, bool tween, Roga2dPositionIntervalOption option)
 	: base(start, end, duration, tween) 
 	{
 		this.node = node;

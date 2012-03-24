@@ -27,27 +27,27 @@ class TestRoga2dLoop {
 		Tester.Match(node.LocalAlpha, 0.1f);
 		Tester.Ok(!loop.IsDone());
 		
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(!loop.IsDone());
 
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(!loop.IsDone());
 		
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 0.1f);
 		Tester.Ok(!loop.IsDone());
 		
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(!loop.IsDone());
 		
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 1.0f);
 		Tester.Ok(!loop.IsDone());
 			
-		loop.Update(1.0f);
+		loop.Update();
 		Tester.Match(node.LocalAlpha, 0.0f);
 		Tester.Ok(loop.IsDone());
 		
@@ -74,15 +74,15 @@ class TestRoga2dLoop {
 		Tester.Ok(!loop.IsDone());
            
         for (int i = 0; i < 4; i++) {
-            loop.Update(1.0f);
+            loop.Update();
 			Tester.Match(node.LocalAlpha, 1.0f);
             Tester.Ok(!loop.IsDone());
 
-            loop.Update(1.0f);
+            loop.Update();
 			Tester.Match(node.LocalAlpha, 1.0f);
             Tester.Ok(!loop.IsDone());
 
-            loop.Update(1.0f);
+            loop.Update();
 			Tester.Match(node.LocalAlpha, 0.1f);
             Tester.Ok(!loop.IsDone());
         }   

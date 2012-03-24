@@ -19,11 +19,11 @@ class TestRoga2dFunc {
 		i = 0;
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(i, 1);
 		Tester.Ok(interval.IsDone());
         
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(i, 1);
 		Tester.Ok(interval.IsDone());
 	}
@@ -38,7 +38,7 @@ class TestRoga2dFunc {
 
 		Roga2dSequence interval = new Roga2dSequence(intervals);
 		
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(i, 3);
 		Tester.Ok(interval.IsDone());
 	}

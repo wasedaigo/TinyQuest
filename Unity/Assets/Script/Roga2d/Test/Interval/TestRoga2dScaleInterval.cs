@@ -22,19 +22,19 @@ class TestRoga2dScaleInterval {
 		Tester.Match(node.LocalScale, new Vector2(10.0f, 10.0f));
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(node.LocalScale, new Vector2(8.0f, 9.0f));
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(node.LocalScale, new Vector2(6.0f, 8.0f));
 		Tester.Ok(!interval.IsDone());
         
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(node.LocalScale, new Vector2(4.0f, 7.0f));
 		Tester.Ok(!interval.IsDone());
 
-        interval.Update(1.0f);
+        interval.Update();
 		Tester.Match(node.LocalScale, new Vector2(2.0f, 6.0f));
 		Tester.Ok(interval.IsDone());
         

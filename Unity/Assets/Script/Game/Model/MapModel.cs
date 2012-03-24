@@ -38,7 +38,7 @@ namespace TinyQuest.Model {
 			this.currentStepId = stepId;
 			StepData step = this.getStepById(stepId);
 			if (step != null && this.StepMoved != null) {
-				this.StepMoved(step, 2.0f);	
+				this.StepMoved(step, 90);	
 			}
 		}
 	}

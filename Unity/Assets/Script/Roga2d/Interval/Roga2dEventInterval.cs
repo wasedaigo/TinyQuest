@@ -3,15 +3,12 @@ using System.Collections.Generic;
 
 public class Roga2dEventInterval : Roga2dBaseInterval {
 	protected float duration;
-	protected float elapsed;
 	private int frameNo;
 	private Dictionary<int, string[]> events;
 	private Roga2dAnimationSettings settings;
 
 	public Roga2dEventInterval(Dictionary<int, string[]> events, Roga2dAnimationSettings settings)
 	{
-		this.elapsed = 0;
-		this.frameNo = -1;
 		// Calculate the length
 		int max = 0;
 		foreach (KeyValuePair<int, string[]> entry in events) {
@@ -40,21 +37,17 @@ public class Roga2dEventInterval : Roga2dBaseInterval {
 		this.frameNo = Mathf.FloorToInt(this.duration);
 	}
 	
-    public override void Update(float delta) {
-		if (!this.IsDone()) {
-			this.elapsed += delta;
-			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
-			if (this.frameNo != temp) {
-				this.frameNo = temp;
-				if (this.events.ContainsKey(this.frameNo)) {
-					string[] commands = this.events[this.frameNo];
-					foreach (string command in commands) {
-						if(settings.CommandCallBack != null) {
-							settings.CommandCallBack(settings, command);
-						}
+    public override void Update() {
+		this.frameNo += 1;
+        if (!this.IsDone()) {
+			if (this.events.ContainsKey(this.frameNo)) {
+				string[] commands = this.events[this.frameNo];
+				foreach (string command in commands) {
+					if(settings.CommandCallBack != null) {
+						settings.CommandCallBack(settings, command);
 					}
 				}
-		    }
-		}
+			}
+        }
     }
 }

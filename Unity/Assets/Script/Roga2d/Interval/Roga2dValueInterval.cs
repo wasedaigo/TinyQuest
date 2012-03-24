@@ -5,22 +5,22 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	protected T end;
 	protected bool tween;
 	protected float duration;
-	protected float elapsed;
-	
-	public Roga2dValueInterval (T start, T end, float duration, bool tween) {
+	protected int frameNo;
+
+	public Roga2dValueInterval (T start, T end, int duration, bool tween) {
 		this.start = start;
 		this.end = end;
 		this.duration = duration;
-		this.elapsed = 0;
+		this.frameNo = 0;
 		this.tween = tween;
 	}
 	
 	public override sealed bool IsDone() {
-		return this.elapsed >= this.duration;
+		return this.frameNo >= this.duration;
 	}
 	
 	public override sealed void Reset() {
-		this.elapsed = 0;
+		this.frameNo = 0;
 		this.Start();
 	}
 	
@@ -30,20 +30,17 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	}
 	
 	public override sealed void Finish() {
-		this.elapsed = this.duration;
+		this.frameNo = (int)this.duration;
 	}
 
-	public override sealed void Update(float delta) {
+	public override sealed void Update() {
 		if (!this.IsDone()) {
-			this.elapsed += delta;
+			this.frameNo += 1;
+
 			T[] values = this.TweenBeforeFilter(this.start, this.end);
 			
 			if (this.tween) {
-				float t = this.elapsed;
-				if (this.elapsed > this.duration) {
-					t = this.duration;
-				}
-				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], t / this.duration));
+				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], this.frameNo / this.duration));
 			} else {
 				// Single frame get its ending value immediately
 				if (this.duration <= 1 && this.IsDone()) {

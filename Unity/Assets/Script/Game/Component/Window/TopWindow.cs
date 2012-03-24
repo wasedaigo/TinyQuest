@@ -53,9 +53,6 @@ namespace TinyQuest.Component.Window {
 			
 			this.mapModel.StepMoved += this.onStepMoved;
 			this.stage.ScrollFinished += this.onScrollFinished;
-			
-			this.monster = this.spawnMonster("death_wind", -20, 0);
-			this.root.AddChild(this.monster);
 		}
 
 		private void onStepMoved(StepData step, float duration) {
@@ -145,7 +142,7 @@ namespace TinyQuest.Component.Window {
 			Roga2dIntervalPlayer.GetInstance().Update();
 	
 			// Update animations
-			this.animationPlayer.Update(Time.deltaTime);
+			this.animationPlayer.Update();
 			this.root.Update();
 			
 			// Change Camera position

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Roga2dConst {
 	public static float BasePixelSize = 32.0f;
-	public static float AnimationFPS = 60.0f;
 };
 
 public enum Roga2dBlendType {
@@ -128,7 +127,7 @@ public class Roga2dRotationIntervalDataStore {
 public class Roga2dAnimationKeyFrame {
 	public string Id;
 	public int FrameNo;
-	public float Duration;
+	public int Duration;
 	public Rect Rect;
 	public Vector2 PixelCenter;
 	public Vector2 PixelSize;
