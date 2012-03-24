@@ -91,7 +91,7 @@ namespace TinyQuest.Component.Panel {
 			
 			// At first move back to the piece position
 			float distance = Vector2.Distance(cameraPos, piecePos);
-			float cameraFocusDuration = distance * 0.3f;
+			float cameraFocusDuration = distance * 0.1f;
 			Roga2dSequence sequence = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				new Roga2dPositionInterval(this.camera, cameraPos, cameraFocusPos, cameraFocusDuration, true, null),
 				parallel,

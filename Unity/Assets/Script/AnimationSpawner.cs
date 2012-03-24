@@ -15,8 +15,8 @@ public class AnimationSpawner : MonoBehaviour {
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	
 	void Awake () {
-		Application.targetFrameRate = 60;
-		Time.captureFramerate = 60;
+		Application.targetFrameRate = 30;
+		Time.captureFramerate = 30;
 	}
 	
 	Ally spawnBattler (string name, float x, float y) {

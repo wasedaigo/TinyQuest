@@ -58,7 +58,5 @@ void Update()
         accum = 0.0F;
         frames = 0;
     }
-		
-	guiText.text = System.String.Format("{0:F2} FPS",Time.deltaTime);
 }
 }

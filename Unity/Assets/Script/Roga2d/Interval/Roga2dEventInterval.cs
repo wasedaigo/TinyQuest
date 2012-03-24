@@ -45,15 +45,19 @@ public class Roga2dEventInterval : Roga2dBaseInterval {
 			this.elapsed += delta;
 			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
 			if (this.frameNo != temp) {
-				this.frameNo = temp;
-				if (this.events.ContainsKey(this.frameNo)) {
-					string[] commands = this.events[this.frameNo];
-					foreach (string command in commands) {
-						if(settings.CommandCallBack != null) {
-							settings.CommandCallBack(settings, command);
+				
+				for (int i = this.frameNo; i < temp; i++) {
+					if (this.events.ContainsKey(i)) {
+						string[] commands = this.events[i];
+						foreach (string command in commands) {
+							if(settings.CommandCallBack != null) {
+								settings.CommandCallBack(settings, command);
+							}
 						}
 					}
 				}
+				
+				this.frameNo = temp;
 		    }
 		}
     }

@@ -135,9 +135,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		} else if (keyFrame.Type == Roga2dAnimationKeyFrameType.Animation) {
 			// Update Inner Animation
             // Display nested animations
-            if (this.interval != null) {
-               this.interval.Update(delta);
-            } else {
+            if (this.interval == null) {
 				if (oneSecStep) {
 					// Not going to emit anything when updatekeyframe called via Start()
 	                if (keyFrame.Emitter) {
@@ -169,12 +167,18 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
 			bool oneSecStep = this.frameNo != temp;
 			this.frameNo = temp;
-
+			
+			if (this.interval != null) {
+               this.interval.Update(delta);
+            }
             this.UpdateKeyframe(this.index, false, delta, oneSecStep);
 			Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
 			if (this.frameDuration >= keyFrame.Duration) {
 	            this.index += 1;
 	            this.frameDuration = 0;
+				if (this.index >= this.keyFrames.Count) {
+					this.elapsed = this.duration;
+				}
 	        }
         }
     }
