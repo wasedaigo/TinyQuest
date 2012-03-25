@@ -134,25 +134,33 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			}
 		}
     }
-
-	private void ExecuteSubAnimation(int index) {
+	
+	private void UpdateSubAnimation(int index, float delta) {
+		if (this.interval != null) {
+			this.interval.Update(delta);
+			return;
+		}
 		if (this.interval != null) { return; }
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
-		if (keyFrame.Type == Roga2dAnimationKeyFrameType.Animation) {
-			// Not going to emit anything when updatekeyframe called via Start()
-            if (keyFrame.Emitter) {
-				EmitAnimation(keyFrame);
-            } else {
-                // No animation node is generaetd yet, let's generate it
-                // If no ID exists, ignore it (Which usually means an empty keyframe)
-                if (keyFrame.Id != "") {
-					Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.settings, this.options);
-					this.sprite.AddChild(animation.Node);
-					this.interval = animation.Interval;
-                    this.interval.Start();
-                }
-            }
-		}
+		if (keyFrame.Type != Roga2dAnimationKeyFrameType.Animation) { return; }
+        if (keyFrame.Emitter) { return; }
+		if (keyFrame.Id == "") { return; }
+
+		// No animation node is generaetd yet, let's generate it
+		// If no ID exists, ignore it (Which usually means an empty keyframe)
+		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.settings, this.options);
+		this.sprite.AddChild(animation.Node);
+		this.interval = animation.Interval;
+		this.interval.Start();
+	}
+
+	private void UpdateEmitAnimation(int index) {
+		if (this.interval != null) { return; }
+		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
+		if (keyFrame.Type != Roga2dAnimationKeyFrameType.Animation) { return; }
+        if (!keyFrame.Emitter) { return; }
+		
+		EmitAnimation(keyFrame);
 	}
 	
     public override void Update(float delta) {
@@ -165,12 +173,9 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
 			
 			this.UpdateKeyframe(this.index);
-			
-			if (this.interval != null) {
-            	this.interval.Update(delta);
-			}
+			this.UpdateSubAnimation(this.index, delta);
 			if (this.frameNo != temp) {
-				this.ExecuteSubAnimation(this.index);
+				this.UpdateEmitAnimation(this.index);
 			}
 			this.frameNo = temp;
 			
