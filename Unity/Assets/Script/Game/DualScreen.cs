@@ -24,16 +24,16 @@ public class DualScreen : Roga2dNode{
 		MapModel mapModel = MapCache.GetInstance().GetModel();
 		
 		this.topWindow = new TopWindow(mapModel);
-		this.topWindow.LocalPriority = 20.0f;
+		this.topWindow.LocalPriority = 0.0f;
 		this.topWindow.LocalPosition = new Vector2(0, -1.5f);
 		this.AddChild(this.topWindow);
 		
 		this.bottomWindow = new BottomWindow(mapModel);
-		this.bottomWindow.LocalPriority = 10.0f;
+		this.bottomWindow.LocalPriority = -10.0f;
 		this.AddChild(this.bottomWindow);
 		
 		Roga2dNode frame = new Roga2dNode();
-		frame.LocalPriority = 30.0f;
+		frame.LocalPriority = 10.0f;
 		this.AddChild(frame);
 		
 		// Set up Frame

@@ -1,82 +1,49 @@
 {
    "events" : {
-      "14" : [ "" ]
+      "6" : [ "" ]
    },
    "keyframes" : {
       "0" : [
          {
             "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 1,
             "sourcePath" : "Battle/Skills/Battler_Base.png",
             "swapTargetType" : "character",
             "textureRect" : [ 288, 0, 32, 32 ]
          },
          {
-            "frameNo" : 3,
-            "sourcePath" : "Battle/Skills/Battler_Base.png",
-            "swapTargetType" : "character",
-            "textureRect" : [ 320, 0, 32, 32 ]
-         },
-         {
-            "frameNo" : 12,
+            "frameNo" : 11,
             "sourcePath" : "Battle/Skills/Battler_Base.png",
             "swapTargetType" : "character",
             "textureRect" : [ 288, 0, 32, 32 ]
          },
          {
-            "frameNo" : 23,
-            "sourcePath" : "Battle/Skills/Battler_Base.png",
-            "swapTargetType" : "character",
-            "textureRect" : [ 288, 0, 32, 32 ]
-         },
-         {
-            "frameNo" : 26,
+            "frameNo" : 14,
             "isEmpty" : true
          }
       ],
       "1" : [
          {
-            "center" : [ -1.0, 13.0 ],
+            "center" : [ -2.0, 13.0 ],
             "frameNo" : 0,
+            "position" : [ -7, 6 ],
+            "positionTween" : "linear",
+            "priority" : 0.4000000059604645,
+            "rotation" : 30,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 6,
             "position" : [ -6, 6 ],
             "positionTween" : "fix",
-            "priority" : 0.4000000059604645,
-            "rotationTween" : "fix",
-            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
-         },
-         {
-            "center" : [ -1.0, 13.0 ],
-            "frameNo" : 3,
-            "position" : [ -6, 6 ],
-            "priority" : 0.4000000059604645,
-            "rotationTween" : "linear",
-            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
-         },
-         {
-            "center" : [ -1.0, 13.0 ],
-            "frameNo" : 8,
-            "position" : [ -6, 6 ],
-            "priority" : 0.4000000059604645,
-            "rotation" : 30,
-            "rotationTween" : "fix",
-            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
-         },
-         {
-            "center" : [ -1.0, 13.0 ],
-            "frameNo" : 12,
-            "position" : [ -6, 6 ],
-            "priority" : 0.4000000059604645,
-            "rotation" : 30,
-            "rotationTween" : "linear",
-            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
-         },
-         {
-            "center" : [ -1.0, 13.0 ],
-            "frameNo" : 18,
-            "position" : [ -6, 6 ],
             "rotation" : -160,
             "rotationTween" : "linear",
             "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
@@ -86,7 +53,7 @@
       "2" : [
          {
             "emitter" : true,
-            "frameNo" : 12,
+            "frameNo" : 6,
             "maxEmitAngle" : 0,
             "maxEmitSpeed" : 0.0,
             "minEmitAngle" : 0,

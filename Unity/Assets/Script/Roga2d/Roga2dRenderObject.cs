@@ -170,6 +170,7 @@ public class Roga2dRenderObject {
 		get {
 			float centerX = this.pixelCenter.x / Roga2dConst.BasePixelSize;
 			float centerY = this.pixelCenter.y / Roga2dConst.BasePixelSize;
+
 			return new Vector2(-centerX, -centerY);
 		}
 	}
