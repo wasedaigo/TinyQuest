@@ -24,6 +24,7 @@ public class Roga2dAnimationPlayer {
 	}
 
 	public void Update(float delta) {
+		delta = Roga2dUtils.limitAnimationDelta(delta);
         for (int i = this.animations.Count - 1; i >= 0; i-- ) {
             Roga2dAnimation animation = this.animations[i];
 			if (animation.IsStarted) {

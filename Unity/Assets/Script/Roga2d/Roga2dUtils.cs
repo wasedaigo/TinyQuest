@@ -268,6 +268,14 @@ public class Roga2dUtils {
 		return new Vector2(localCoordinate.x * Roga2dConst.BasePixelSize, localCoordinate.y * Roga2dConst.BasePixelSize);
 	}
 	
+	public static float limitAnimationDelta(float delta) {
+		if (delta >= Roga2dConst.AnimationFrameTime) {
+			delta = Roga2dConst.AnimationFrameTime - 0.01f;
+		}
+		
+		return delta;
+	}
+
 	public static float RoundPrecision(float value){
 		return Mathf.Round(value * 10000) / 10000;
 	}

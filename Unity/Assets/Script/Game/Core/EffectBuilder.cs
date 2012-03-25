@@ -37,10 +37,9 @@ namespace TinyQuest.Core {
 	
 				Roga2dBaseInterval interval = new Roga2dSequence(
 					new List<Roga2dBaseInterval>() {
-						new Roga2dWait(i * 0.1f),
+						new Roga2dWait(i * 0.05f),
 						new Roga2dAlphaInterval(sprite, 1.0f, 1.0f, 0.02f, false),
 						new Roga2dPositionInterval(sprite, Roga2dUtils.pixelToLocal(new Vector2(popX, 0)), Roga2dUtils.pixelToLocal(new Vector2(popX, -15)), 0.05f, true, null)
-						// TODO: destroy damage effects
 					}
 				);
 				
