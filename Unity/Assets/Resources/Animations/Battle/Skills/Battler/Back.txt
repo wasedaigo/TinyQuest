@@ -7,19 +7,12 @@
       "Battle/Skills/Battler_Base"
     ]
   },
-  "events": {
-    "27": [
-      "show"
-    ],
-    "0": [
-      "hide"
-    ]
-  },
+  "events": null,
   "timelines": [
     {
       "position": [
         {
-          "duration": 8,
+          "duration": 7,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -41,7 +34,7 @@
           "startPositionType": "RelativeToTarget"
         },
         {
-          "duration": 15,
+          "duration": 11,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -60,11 +53,11 @@
             0,
             0
           ],
-          "frameNo": 8,
+          "frameNo": 7,
           "startPositionType": "RelativeToTarget"
         },
         {
-          "duration": 4,
+          "duration": 2,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -82,7 +75,7 @@
             0,
             0
           ],
-          "frameNo": 23,
+          "frameNo": 18,
           "startPositionType": "None"
         },
         {
@@ -104,7 +97,7 @@
             0,
             0
           ],
-          "frameNo": 27,
+          "frameNo": 20,
           "startPositionType": "None"
         }
       ],
@@ -116,7 +109,7 @@
       ],
       "source": [
         {
-          "duration": 28,
+          "duration": 21,
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/Jump",

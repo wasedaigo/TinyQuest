@@ -11,7 +11,7 @@ public class Main : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Application.targetFrameRate = 60;
+		Application.targetFrameRate = 30;
 		
 		this.dualScreen = new DualScreen();
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.dualScreen.Transform);

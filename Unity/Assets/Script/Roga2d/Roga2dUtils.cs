@@ -264,6 +264,10 @@ public class Roga2dUtils {
 		return new Vector2(localCoordinate.x * Roga2dConst.BasePixelSize, localCoordinate.y * Roga2dConst.BasePixelSize);
 	}
 	
+	public static int TimeToFrame(float value){
+		return Mathf.FloorToInt(value * Roga2dConst.TimeToFrameRatio);
+	}
+	
 	public static float RoundPrecision(float value){
 		return Mathf.Round(value * 10000) / 10000;
 	}

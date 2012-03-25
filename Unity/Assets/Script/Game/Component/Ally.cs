@@ -16,7 +16,7 @@ namespace TinyQuest.Component {
 				Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
 				keyFrame.Rect = new Rect(96 + frames[i] * 32, 0, 32, 32);
 				keyFrame.Id = this.TextureID;
-				keyFrame.Duration = 10;
+				keyFrame.Duration = Roga2dUtils.TimeToFrame(0.2f);
 				keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
 				keyFrame.PixelCenter = new Vector2(0, 0);
 				keyFrame.PixelSize = new Vector2(32, 32);

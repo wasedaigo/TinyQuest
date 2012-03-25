@@ -12,7 +12,7 @@
     {
       "position": [
         {
-          "duration": 16,
+          "duration": 12,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -35,7 +35,7 @@
           "startPositionType": "RelativeToTarget"
         },
         {
-          "duration": 4,
+          "duration": 3,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -54,7 +54,7 @@
             0,
             0
           ],
-          "frameNo": 16,
+          "frameNo": 12,
           "startPositionType": "None"
         }
       ],
@@ -66,7 +66,7 @@
       ],
       "source": [
         {
-          "duration": 20,
+          "duration": 15,
           "center": [
             0,
             0
@@ -85,13 +85,13 @@
         {
           "duration": 1,
           "id": "",
-          "frameNo": 20,
+          "frameNo": 15,
           "rect": null
         }
       ],
       "rotation": [
         {
-          "duration": 16,
+          "duration": 12,
           "endValue": 0,
           "tween": true,
           "startValue": -405,
@@ -99,11 +99,11 @@
           "frameNo": 0
         },
         {
-          "duration": 4,
+          "duration": 3,
           "endValue": 0,
           "startValue": 0,
           "facingOption": "None",
-          "frameNo": 16
+          "frameNo": 12
         }
       ],
       "alpha": [

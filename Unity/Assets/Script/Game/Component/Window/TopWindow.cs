@@ -77,7 +77,8 @@ namespace TinyQuest.Component.Window {
 				"Battle/Skills/Axe/Slash",
 				"Battle/Skills/Axe/ArmorBreaker",
 				"Battle/Skills/Fire/Skill_Flare",
-				"Battle/Skills/Common/MagicCasting"
+				"Battle/Skills/Common/MagicCasting",
+				"Battle/Skills/Monster/SpikeWave"
 		};
 		
 	    private void AnimationFinished(Roga2dAnimation animation)
@@ -138,13 +139,12 @@ namespace TinyQuest.Component.Window {
 
 		
 		public override void Update () {
-			base.Update();
+			
 			Roga2dIntervalPlayer.GetInstance().Update();
 	
 			// Update animations
 			this.animationPlayer.Update();
-			this.root.Update();
-			
+			base.Update();
 			// Change Camera position
 			// camera.position = new Vector3(this.monster.Position.x, this.monster.Position.y, camera.position.z);
 		}

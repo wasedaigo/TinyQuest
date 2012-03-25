@@ -43,7 +43,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 5,
+          "duration": 2,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -66,7 +66,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 5,
+          "duration": 3,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -85,7 +85,7 @@
             0,
             0
           ],
-          "frameNo": 7,
+          "frameNo": 4,
           "startPositionType": "None"
         },
         {
@@ -107,7 +107,7 @@
             0,
             0
           ],
-          "frameNo": 12,
+          "frameNo": 7,
           "startPositionType": "None"
         }
       ],
@@ -136,7 +136,7 @@
           ]
         },
         {
-          "duration": 10,
+          "duration": 5,
           "center": [
             0,
             0
@@ -153,7 +153,7 @@
           ]
         },
         {
-          "duration": 3,
+          "duration": 2,
           "center": [
             0,
             0
@@ -161,7 +161,7 @@
           "priority": 0.5,
           "id": "Battle/Skills/Battler_Base",
           "type": "Image",
-          "frameNo": 12,
+          "frameNo": 7,
           "rect": [
             608,
             0,

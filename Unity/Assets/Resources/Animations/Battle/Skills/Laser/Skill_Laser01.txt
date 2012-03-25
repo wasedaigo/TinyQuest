@@ -14,18 +14,18 @@
     ]
   },
   "events": {
-    "26": [
-      "damage:0"
-    ],
     "0": [
       "snd:MMS/power03"
+    ],
+    "20": [
+      "damage:0"
     ]
   },
   "timelines": [
     {
       "position": [
         {
-          "duration": 24,
+          "duration": 20,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -66,7 +66,7 @@
             0,
             0
           ],
-          "frameNo": 24,
+          "frameNo": 20,
           "startPositionType": "RelativeToTarget"
         }
       ],
@@ -78,7 +78,7 @@
       ],
       "source": [
         {
-          "duration": 24,
+          "duration": 20,
           "wait": true,
           "frameNo": 0
         },
@@ -92,7 +92,7 @@
           "maxEmitAngle": 0,
           "type": "Animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 24
+          "frameNo": 20
         }
       ],
       "rotation": [
@@ -148,7 +148,7 @@
           "frameNo": 0
         },
         {
-          "duration": 20,
+          "duration": 10,
           "blendType": "Add",
           "emitter": true,
           "minEmitSpeed": 20.0,
@@ -171,7 +171,7 @@
           "maxEmitAngle": -45,
           "type": "Animation",
           "maxEmitSpeed": 20.0,
-          "frameNo": 21
+          "frameNo": 11
         }
       ],
       "rotation": [
@@ -185,7 +185,7 @@
           "frameNo": 0
         },
         {
-          "duration": 20,
+          "duration": 10,
           "endValue": 0.600000023841858,
           "tween": true,
           "startValue": 1.0,
@@ -196,14 +196,14 @@
           "endValue": 0.600000023841858,
           "tween": true,
           "startValue": 0.600000023841858,
-          "frameNo": 21
+          "frameNo": 11
         }
       ]
     },
     {
       "position": [
         {
-          "duration": 43,
+          "duration": 26,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -225,7 +225,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 15,
+          "duration": 8,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -243,7 +243,7 @@
             0,
             0
           ],
-          "frameNo": 43,
+          "frameNo": 26,
           "startPositionType": "None"
         }
       ],
@@ -255,7 +255,7 @@
       ],
       "source": [
         {
-          "duration": 43,
+          "duration": 26,
           "center": [
             0,
             0
@@ -272,17 +272,17 @@
           ]
         },
         {
-          "duration": 15,
+          "duration": 8,
           "emitter": false,
           "priority": 0.5,
           "id": "Battle/Skills/Battler/SmallBack",
           "type": "Animation",
-          "frameNo": 43
+          "frameNo": 26
         },
         {
           "duration": 1,
           "id": "",
-          "frameNo": 58,
+          "frameNo": 34,
           "rect": null
         }
       ],
