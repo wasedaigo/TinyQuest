@@ -70,7 +70,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
     }
 
     public override void Start() {
-        this.UpdateKeyframe(0, true, 0);
+        this.UpdateKeyframe(0);
     }
 	
     public override void Finish() {
@@ -105,7 +105,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		this.settings.Player.Play(this.settings.Root, this.sprite.Transform, animation, null);
 	}
 	
-	private void UpdateKeyframe(int index, bool isStart, float delta) {
+	private void UpdateKeyframe(int index) {
 		
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
         if (this.lastAnimationId != keyFrame.Id) {
@@ -136,25 +136,22 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
     }
 
 	private void ExecuteSubAnimation(int index) {
+		if (this.interval != null) { return; }
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
 		if (keyFrame.Type == Roga2dAnimationKeyFrameType.Animation) {
-			// Update Inner Animation
-		    // Display nested animations
-		    if (this.interval == null) {
-				// Not going to emit anything when updatekeyframe called via Start()
-	            if (keyFrame.Emitter) {
-					EmitAnimation(keyFrame);
-	            } else {
-	                // No animation node is generaetd yet, let's generate it
-	                // If no ID exists, ignore it (Which usually means an empty keyframe)
-	                if (keyFrame.Id != "") {
-						Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.settings, this.options);
-						this.sprite.AddChild(animation.Node);
-						this.interval = animation.Interval;
-	                    this.interval.Start();
-	                }
-	            }
-		    }
+			// Not going to emit anything when updatekeyframe called via Start()
+            if (keyFrame.Emitter) {
+				EmitAnimation(keyFrame);
+            } else {
+                // No animation node is generaetd yet, let's generate it
+                // If no ID exists, ignore it (Which usually means an empty keyframe)
+                if (keyFrame.Id != "") {
+					Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.settings, this.options);
+					this.sprite.AddChild(animation.Node);
+					this.interval = animation.Interval;
+                    this.interval.Start();
+                }
+            }
 		}
 	}
 	
@@ -166,16 +163,17 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
             this.elapsed += delta;
         	
 			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
-			bool oneSecStep = this.frameNo != temp;
-			this.frameNo = temp;
+			
+			this.UpdateKeyframe(this.index);
 			
 			if (this.interval != null) {
-               this.interval.Update(delta);
-            }
-            this.UpdateKeyframe(this.index, false, delta);
-			if (oneSecStep) {
+            	this.interval.Update(delta);
+			}
+			if (this.frameNo != temp) {
 				this.ExecuteSubAnimation(this.index);
 			}
+			this.frameNo = temp;
+			
 			Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
 			if (this.frameDuration >= keyFrame.Duration) {
 	            this.index += 1;
