@@ -28,6 +28,10 @@ public class Roga2dEventInterval : Roga2dBaseInterval {
         return this.frameNo >= this.duration;
     }
 	
+	public override sealed float ExcessTime() {
+		return 0;
+	}
+	
 	public override void Start() {
 		this.Reset();
 	}

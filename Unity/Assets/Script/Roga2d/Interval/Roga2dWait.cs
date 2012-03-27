@@ -9,6 +9,11 @@ public class Roga2dWait : Roga2dBaseInterval {
 		this.elapsed = 0;
 	}
 	
+	public override sealed float ExcessTime() {
+		float excessTime = this.elapsed - this.duration;
+		return excessTime;
+	}
+
 	public override sealed bool IsDone() {
 		return this.elapsed >= this.duration;
 	}

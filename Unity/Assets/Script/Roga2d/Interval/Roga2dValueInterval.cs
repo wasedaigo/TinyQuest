@@ -19,6 +19,10 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 		return this.elapsed >= this.duration;
 	}
 	
+	public override sealed float ExcessTime() {
+		return this.elapsed - this.duration;
+	}
+	
 	public override sealed void Reset() {
 		this.elapsed = 0;
 		this.Start();
@@ -34,7 +38,9 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	}
 
 	public override sealed void Update(float delta) {
-		if (!this.IsDone()) {
+		if (this.IsDone()) {
+			this.elapsed = this.duration;
+		} else {
 			this.elapsed += delta;
 			T[] values = this.TweenBeforeFilter(this.start, this.end);
 			
@@ -51,7 +57,6 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 				} else {
 					this.SetValue(values[0]);
 				}
-				
 			}
 		}
 	}

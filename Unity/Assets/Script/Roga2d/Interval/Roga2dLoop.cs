@@ -3,11 +3,17 @@ public class Roga2dLoop : Roga2dBaseInterval {
 	private Roga2dBaseInterval interval;
 	private int loopCount;
 	private int loopCounter;
+	private float excessTime;
 	
 	public Roga2dLoop(Roga2dBaseInterval interval, int loopCount) {
 		this.interval = interval;
 		this.loopCount = loopCount;
 		this.loopCounter = 0;
+		this.excessTime = -1;
+	}
+	
+	public override sealed float ExcessTime() {
+		return this.excessTime;
 	}
 	
 	public override bool IsDone() {
@@ -36,15 +42,27 @@ public class Roga2dLoop : Roga2dBaseInterval {
 	}
 	
 	public override void Update(float delta) {
-        if (!this.IsDone()) {
-            this.interval.Update(delta);
-            if (this.interval.IsDone()) {
-                this.loopCounter++;
-                if (this.loopCount == 0 || this.loopCounter < this.loopCount) {
-                    // Repeat this interval again, since this is a subanimation
-                    this.interval.Reset();
-                }
-            }
+        if (this.IsDone()) {
+			this.excessTime = 0;
+		} else {
+			while (true) {
+	            this.interval.Update(delta);
+				delta = this.interval.ExcessTime();
+	            if (this.interval.IsDone()) {
+	                this.loopCounter++;
+	                if (this.loopCount == 0 || this.loopCounter < this.loopCount) {
+	                    // Repeat this interval again, since this is a subanimation
+	                    this.interval.Reset();
+	                } else {
+						this.excessTime = delta;
+						break;
+					}
+	            } else {
+					if (delta > 0) { break; }
+				}
+
+				if (delta <= 0) { break; }
+			}
         }
 	}
 }

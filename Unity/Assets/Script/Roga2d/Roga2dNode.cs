@@ -182,7 +182,7 @@ public class Roga2dNode {
 			Vector2 velocity = this.Velocity;
 			Vector2 position = this.LocalPosition;
 			
-			float delta = Roga2dUtils.limitAnimationDelta(Time.deltaTime);
+			float delta = Time.deltaTime;//Roga2dUtils.limitAnimationDelta(Time.deltaTime);
 			this.LocalPosition = new Vector2(Roga2dUtils.RoundPrecision(position.x + velocity.x *  Roga2dConst.AnimationFPS * delta), Roga2dUtils.RoundPrecision(position.y + velocity.y * Roga2dConst.AnimationFPS * Time.deltaTime));
 		}
 	}

@@ -116,34 +116,42 @@ class TestRoga2dSequence {
 		
 		sequence.Start();
 		Tester.Match(node.LocalAlpha, 1.0f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update(0.5f);
 		Tester.Match(node.LocalAlpha, 0.5f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 
 		sequence.Update(0.5f);
 		Tester.Match(node.LocalAlpha, 0.0f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 	
 		sequence.Update(0.2f);
 		Tester.Match(node.LocalAlpha, 0.2f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update(0.2f);
 		Tester.Match(node.LocalAlpha, 0.4f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update(0.2f);
 		Tester.Match(node.LocalAlpha, 0.6f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update(0.2f);
 		Tester.Match(node.LocalAlpha, 0.8f);
+		Tester.Match(sequence.ExcessTime(), -1);
 		Tester.Ok(!sequence.IsDone());
 		
 		sequence.Update(1.0f);
 		Tester.Match(node.LocalAlpha, 1.0f);
+		Tester.Match(sequence.ExcessTime(), 0.8f);
 		Tester.Ok(sequence.IsDone());
 		
 		node.Destroy();

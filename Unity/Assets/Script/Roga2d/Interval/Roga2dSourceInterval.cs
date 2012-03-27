@@ -17,12 +17,16 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	protected float duration;
 	protected float elapsed;
 	protected int frameNo;
+	private int lastUpdateIndex;
+	private int lastUpdateFrameNo;
 	private int index;
 	private List<Roga2dRenderObjectDesc> renderObjectDescs;
 	private Dictionary<string, Roga2dSwapTextureDef> options;
 
 	public Roga2dSourceInterval(Roga2dSprite sprite, List<Roga2dAnimationKeyFrame> keyFrames, Roga2dAnimationSettings settings, Dictionary<string, Roga2dSwapTextureDef> options)
 	{
+		this.lastUpdateIndex = -1;
+		this.lastUpdateFrameNo = -1;
 		this.options = options;
 		this.sprite = sprite;
 		this.frameDuration = 0;
@@ -54,6 +58,10 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			}
 			this.duration += keyFrame.Duration;  
         }
+	}
+	
+	public override sealed float ExcessTime() {
+		return 0;
 	}
 	
 	public override bool IsDone() {
@@ -163,30 +171,63 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		EmitAnimation(keyFrame);
 	}
 	
+	private void checkEmitUpdate(int index, int frameNo) {
+		if (this.lastUpdateIndex != index || this.lastUpdateFrameNo != frameNo) {
+			this.UpdateEmitAnimation(index);
+		}
+		this.lastUpdateIndex = index;
+		this.lastUpdateFrameNo = frameNo;
+	}
+	
     public override void Update(float delta) {
         if (this.IsDone()) {
             this.ClearSetting();
         } else {
-            this.frameDuration += delta;
-            this.elapsed += delta;
-        	
-			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
-			
-			this.UpdateKeyframe(this.index);
-			this.UpdateSubAnimation(this.index, delta);
-			if (this.frameNo != temp) {
-				this.UpdateEmitAnimation(this.index);
-			}
-			this.frameNo = temp;
-			
-			Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
-			if (this.frameDuration >= keyFrame.Duration) {
-	            this.index += 1;
-	            this.frameDuration = 0;
-				if (this.index >= this.keyFrames.Count) {
-					this.elapsed = this.duration;
+			while (delta > 0) {
+				
+				if (this.frameDuration == 0) {
+					this.UpdateKeyframe(index);
+					this.checkEmitUpdate(this.index, this.frameNo);
 				}
-	        }
+
+				this.frameNo = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
+				int targetFrameNo =  this.frameNo + 1;
+				float targetElapsedTime = targetFrameNo / Roga2dConst.AnimationFPS;
+				float targetDelta =  targetElapsedTime - this.elapsed;
+				if (targetDelta > delta) {
+					targetDelta = delta;
+				}
+				this.frameDuration += targetDelta;
+	            this.elapsed += targetDelta;
+				
+				this.UpdateSubAnimation(this.index, targetDelta);
+				
+				int updateFrameNo = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
+				bool frameChanged = this.frameNo != updateFrameNo;
+				this.frameNo = updateFrameNo;
+				
+				Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
+				if (this.frameDuration >= keyFrame.Duration) {
+		            this.index += 1;
+
+		            this.frameDuration -= keyFrame.Duration;
+					
+					// Force quit if all keyframes were executed
+					if (this.index >= this.keyFrames.Count) {
+						this.elapsed = this.duration;
+						break;
+					}
+					
+					this.UpdateKeyframe(index);
+					this.checkEmitUpdate(this.index, this.frameNo);
+		        } else {			
+					if (frameChanged && this.frameDuration > Roga2dConst.AnimationFrameTime) {
+						this.checkEmitUpdate(this.index, this.frameNo);	
+					}
+				}
+				
+				delta -= targetDelta;
+			}
         }
     }
 }

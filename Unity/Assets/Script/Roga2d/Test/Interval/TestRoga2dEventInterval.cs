@@ -32,13 +32,6 @@ class TestRoga2dEventInterval {
 		
 		interval.Start();
 		interval.Update(1.0f);
-		interval.Update(1.0f);
-		interval.Update(1.0f);
-		interval.Update(1.0f);
-		interval.Update(1.0f);
-		Tester.Ok(!interval.IsDone());
-		
-		interval.Update(1.0f);
 		Tester.Ok(interval.IsDone());
 		
 		Tester.Match(counter, 3);

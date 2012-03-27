@@ -13,8 +13,13 @@ public class TestRunner : MonoBehaviour {
 		TestRoga2dWait.Test();
 		TestRoga2dSequence.Test();
 		TestRoga2dParallel.Test();
+		
+		
 		TestRoga2dLoop.Test();
+		
 		TestRoga2dSourceInterval.Test();
+		
+		
 		TestRoga2dUtils.Test();
 		TestRoga2dNode.Test();
 		TestRoga2dSprite.Test();
@@ -25,7 +30,7 @@ public class TestRunner : MonoBehaviour {
 		
 		// Test TinyQuest
 		TinyQuest.Test.Core.TestUtils.Test();
-		
+
 		Tester.outputResult();
 	}
 }

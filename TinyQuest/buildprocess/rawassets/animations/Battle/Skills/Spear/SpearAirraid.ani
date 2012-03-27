@@ -20,21 +20,7 @@
             "sourcePath" : "Battle/Skills/Spear/SpearAirraidRoll.ani"
          },
          {
-            "alpha" : 0.1000000014901161,
-            "alphaTween" : "fix",
-            "color" : [ -0.6000000238418579, -0.6000000238418579, 0.6000000238418579 ],
-            "colorTween" : "fix",
-            "emitter" : true,
-            "frameNo" : 3,
-            "maxEmitAngle" : 270,
-            "maxEmitSpeed" : 15.0,
-            "minEmitAngle" : 270,
-            "minEmitSpeed" : 15.0,
-            "positionTween" : "fix",
-            "sourcePath" : "Battle/Skills/Spear/SpearAirraidRoll.ani"
-         },
-         {
-            "frameNo" : 4,
+            "frameNo" : 1,
             "isEmpty" : true
          },
          {

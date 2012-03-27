@@ -10,7 +10,7 @@ public class Main : MonoBehaviour {
 	private DualScreen dualScreen;
 	
 	void Awake () {
-		Application.targetFrameRate = 26;
+		Application.targetFrameRate = 60;
 	}
 	
 	// Use this for initialization
