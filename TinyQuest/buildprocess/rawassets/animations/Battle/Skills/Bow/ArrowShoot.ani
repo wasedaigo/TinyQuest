@@ -15,7 +15,7 @@
          },
          {
             "facingOption" : "faceToMov",
-            "frameNo" : 8,
+            "frameNo" : 4,
             "position" : [ 10, 0 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",

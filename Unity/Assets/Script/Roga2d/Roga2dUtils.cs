@@ -195,7 +195,7 @@ public class Roga2dUtils {
 				keyFrame.Type = sourceIntervalData.type;
 				keyFrame.FrameNo = sourceIntervalData.frameNo;
 				
-				keyFrame.Duration = sourceIntervalData.duration / Roga2dConst.AnimationFPS;
+				keyFrame.Duration = CalculateDuration(sourceIntervalData.duration);
 				keyFrame.Priority = sourceIntervalData.priority - 0.5f;
 				keyFrame.BlendType = sourceIntervalData.blendType;
 				if (keyFrame.Type == Roga2dAnimationKeyFrameType.Image) {
@@ -272,8 +272,8 @@ public class Roga2dUtils {
 		if (delta >= Roga2dConst.AnimationFrameTime) {
 			delta = Roga2dConst.AnimationFrameTime - 0.01f;
 		}
-		
-		return delta;
+
+		return (float)Math.Round(delta, 3);
 	}
 
 	public static float RoundPrecision(float value){

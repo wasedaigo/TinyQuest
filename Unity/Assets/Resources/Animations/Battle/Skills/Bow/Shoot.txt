@@ -11,7 +11,7 @@
     ]
   },
   "events": {
-    "23": [
+    "11": [
       "damage:0"
     ]
   },
@@ -19,7 +19,7 @@
     {
       "position": [
         {
-          "duration": 30,
+          "duration": 13,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -39,6 +39,28 @@
           ],
           "frameNo": 0,
           "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 13,
+          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -49,7 +71,7 @@
       ],
       "source": [
         {
-          "duration": 30,
+          "duration": 14,
           "center": [
             0,
             0
@@ -64,12 +86,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 30,
-          "rect": null
         }
       ],
       "rotation": [
@@ -82,7 +98,7 @@
     {
       "position": [
         {
-          "duration": 11,
+          "duration": 3,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -104,7 +120,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 3,
+          "duration": 2,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -122,7 +138,7 @@
             0,
             0
           ],
-          "frameNo": 11,
+          "frameNo": 3,
           "startPositionType": "None"
         },
         {
@@ -144,18 +160,18 @@
             0,
             0
           ],
-          "frameNo": 14,
+          "frameNo": 5,
           "startPositionType": "None"
         },
         {
-          "duration": 9,
+          "duration": 4,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
           ],
           "endValue": [
-            -9,
+            -7,
             4
           ],
           "startValue": [
@@ -166,7 +182,29 @@
             0,
             0
           ],
-          "frameNo": 15,
+          "frameNo": 6,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -7,
+            4
+          ],
+          "startValue": [
+            -7,
+            4
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 10,
           "startPositionType": "None"
         }
       ],
@@ -178,7 +216,7 @@
       ],
       "source": [
         {
-          "duration": 4,
+          "duration": 1,
           "center": [
             0,
             0
@@ -195,7 +233,7 @@
           ]
         },
         {
-          "duration": 3,
+          "duration": 1,
           "center": [
             0,
             0
@@ -203,7 +241,7 @@
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
           "type": "Image",
-          "frameNo": 4,
+          "frameNo": 1,
           "rect": [
             32,
             0,
@@ -212,7 +250,7 @@
           ]
         },
         {
-          "duration": 2,
+          "duration": 1,
           "center": [
             0,
             0
@@ -220,7 +258,7 @@
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
           "type": "Image",
-          "frameNo": 7,
+          "frameNo": 2,
           "rect": [
             64,
             0,
@@ -229,7 +267,7 @@
           ]
         },
         {
-          "duration": 2,
+          "duration": 3,
           "center": [
             0,
             0
@@ -237,24 +275,7 @@
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
           "type": "Image",
-          "frameNo": 9,
-          "rect": [
-            96,
-            0,
-            32,
-            32
-          ]
-        },
-        {
-          "duration": 4,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Weapon_BowBase",
-          "type": "Image",
-          "frameNo": 11,
+          "frameNo": 3,
           "rect": [
             128,
             0,
@@ -263,7 +284,7 @@
           ]
         },
         {
-          "duration": 9,
+          "duration": 5,
           "center": [
             0,
             0
@@ -271,24 +292,18 @@
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_BowBase",
           "type": "Image",
-          "frameNo": 15,
+          "frameNo": 6,
           "rect": [
             0,
             0,
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 24,
-          "rect": null
         }
       ],
       "rotation": [
         {
-          "duration": 24,
+          "duration": 1,
           "endValue": 0,
           "startValue": 0,
           "facingOption": "None",
@@ -302,7 +317,7 @@
     {
       "position": [
         {
-          "duration": 11,
+          "duration": 2,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -325,7 +340,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 3,
+          "duration": 2,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -343,7 +358,7 @@
             0,
             0
           ],
-          "frameNo": 11,
+          "frameNo": 2,
           "startPositionType": "None"
         },
         {
@@ -365,7 +380,7 @@
             0,
             0
           ],
-          "frameNo": 14,
+          "frameNo": 4,
           "startPositionType": "None"
         },
         {
@@ -387,7 +402,7 @@
             0,
             0
           ],
-          "frameNo": 16,
+          "frameNo": 6,
           "startPositionType": "None"
         }
       ],
@@ -399,7 +414,7 @@
       ],
       "source": [
         {
-          "duration": 16,
+          "duration": 6,
           "center": [
             0,
             0
@@ -425,12 +440,12 @@
           "maxEmitAngle": 270,
           "type": "Animation",
           "maxEmitSpeed": 5.0,
-          "frameNo": 16
+          "frameNo": 6
         }
       ],
       "rotation": [
         {
-          "duration": 14,
+          "duration": 4,
           "endValue": 90,
           "tween": true,
           "startValue": 90,
@@ -442,19 +457,19 @@
           "endValue": 0,
           "startValue": 90,
           "facingOption": "None",
-          "frameNo": 14
+          "frameNo": 4
         },
         {
           "duration": 1,
           "endValue": 0,
           "startValue": 0,
-          "facingOption": "None",
-          "frameNo": 16
+          "facingOption": "FaceToMov",
+          "frameNo": 6
         }
       ],
       "alpha": [
         {
-          "duration": 16,
+          "duration": 6,
           "startPositionAnchor": [
             0,
             0
@@ -469,14 +484,14 @@
           "duration": 1,
           "endValue": 1.0,
           "startValue": 1.0,
-          "frameNo": 16
+          "frameNo": 6
         }
       ]
     },
     {
       "position": [
         {
-          "duration": 23,
+          "duration": 11,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -517,7 +532,7 @@
             0,
             0
           ],
-          "frameNo": 23,
+          "frameNo": 11,
           "startPositionType": "RelativeToTarget"
         }
       ],
@@ -529,7 +544,7 @@
       ],
       "source": [
         {
-          "duration": 23,
+          "duration": 11,
           "wait": true,
           "frameNo": 0
         },
@@ -543,7 +558,7 @@
           "maxEmitAngle": 0,
           "type": "Animation",
           "maxEmitSpeed": 0.0,
-          "frameNo": 23
+          "frameNo": 11
         }
       ],
       "rotation": [

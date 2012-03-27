@@ -1,6 +1,6 @@
 {
    "events" : {
-      "6" : [ "" ]
+      "2" : [ "" ]
    },
    "keyframes" : {
       "0" : [
@@ -17,14 +17,16 @@
             "textureRect" : [ 288, 0, 32, 32 ]
          },
          {
-            "frameNo" : 11,
+            "frameNo" : 5,
             "sourcePath" : "Battle/Skills/Battler_Base.png",
             "swapTargetType" : "character",
             "textureRect" : [ 288, 0, 32, 32 ]
          },
          {
-            "frameNo" : 14,
-            "isEmpty" : true
+            "frameNo" : 7,
+            "sourcePath" : "Battle/Skills/Battler_Base.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 288, 0, 32, 32 ]
          }
       ],
       "1" : [
@@ -41,26 +43,35 @@
          },
          {
             "center" : [ -1.0, 13.0 ],
-            "frameNo" : 6,
+            "frameNo" : 3,
             "position" : [ -6, 6 ],
             "positionTween" : "fix",
             "rotation" : -160,
-            "rotationTween" : "linear",
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ -1.0, 13.0 ],
+            "frameNo" : 5,
+            "position" : [ -6, 6 ],
+            "positionTween" : "fix",
+            "rotation" : -160,
+            "rotationTween" : "fix",
             "sourcePath" : "Battle/Skills/Weapon_AxeBase.png",
             "textureRect" : [ 0, 0, 32, 32 ]
          }
       ],
       "2" : [
          {
-            "emitter" : true,
-            "frameNo" : 6,
-            "maxEmitAngle" : 0,
-            "maxEmitSpeed" : 0.0,
-            "minEmitAngle" : 0,
-            "minEmitSpeed" : 0.0,
+            "frameNo" : 3,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "sourcePath" : "Battle/Skills/Effect/Stab01.ani"
+         },
+         {
+            "frameNo" : 6,
+            "isEmpty" : true
          }
       ]
    }

@@ -5,6 +5,7 @@
    "keyframes" : {
       "0" : [
          {
+            "facingOption" : "faceToMov",
             "frameNo" : 0,
             "positionTween" : "fix",
             "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
@@ -12,29 +13,17 @@
          },
          {
             "frameNo" : 1,
-            "position" : [ -22, -86 ],
-            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
-            "textureRect" : [ 96, 288, 96, 96 ]
-         },
-         {
-            "frameNo" : 2,
             "position" : [ -138, -89 ],
             "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
             "textureRect" : [ 192, 288, 96, 96 ]
          },
          {
-            "frameNo" : 3,
-            "position" : [ -36, -83 ],
-            "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
-            "textureRect" : [ 288, 288, 96, 96 ]
-         },
-         {
-            "frameNo" : 4,
+            "frameNo" : 2,
             "sourcePath" : "Battle/Skills/Effect_Weapon03.png",
             "textureRect" : [ 384, 288, 96, 96 ]
          },
          {
-            "frameNo" : 5,
+            "frameNo" : 3,
             "isEmpty" : true
          }
       ]

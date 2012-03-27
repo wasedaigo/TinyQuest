@@ -16,7 +16,7 @@
     {
       "position": [
         {
-          "duration": 8,
+          "duration": 4,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -57,7 +57,7 @@
             0,
             0
           ],
-          "frameNo": 8,
+          "frameNo": 4,
           "startPositionType": "RelativeToTarget"
         }
       ],
@@ -69,7 +69,7 @@
       ],
       "source": [
         {
-          "duration": 9,
+          "duration": 5,
           "center": [
             0,
             0
@@ -88,7 +88,7 @@
       ],
       "rotation": [
         {
-          "duration": 8,
+          "duration": 4,
           "endValue": -90,
           "startValue": -90,
           "facingOption": "FaceToMov",
@@ -99,7 +99,7 @@
           "endValue": -90,
           "startValue": -90,
           "facingOption": "FaceToMov",
-          "frameNo": 8
+          "frameNo": 4
         }
       ],
       "alpha": [

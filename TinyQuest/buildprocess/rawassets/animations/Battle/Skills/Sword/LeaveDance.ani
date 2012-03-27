@@ -198,6 +198,10 @@
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Battle/Skills/Effect/PlaneCutTop.ani"
+         },
+         {
+            "frameNo" : 36,
+            "isEmpty" : true
          }
       ],
       "3" : [
@@ -250,6 +254,10 @@
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Battle/Skills/Effect/PlaneCutBottom.ani"
+         },
+         {
+            "frameNo" : 36,
+            "isEmpty" : true
          }
       ]
    },

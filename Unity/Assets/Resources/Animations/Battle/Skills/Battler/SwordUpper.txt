@@ -72,19 +72,20 @@
     {
       "position": [
         {
-          "duration": 1,
+          "duration": 8,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
           ],
           "endValue": [
-            8,
-            14
+            -4,
+            4
           ],
+          "tween": true,
           "startValue": [
-            14,
-            8
+            8,
+            5
           ],
           "endPositionAnchor": [
             0,
@@ -94,135 +95,25 @@
           "startPositionType": "None"
         },
         {
-          "duration": 1,
+          "duration": 17,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
           ],
           "endValue": [
-            0,
-            16
+            -4,
+            4
           ],
           "startValue": [
-            8,
-            14
+            -4,
+            4
           ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 1,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -8,
-            14
-          ],
-          "startValue": [
-            0,
-            16
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 2,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -14,
-            8
-          ],
-          "startValue": [
-            -8,
-            14
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 3,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -14,
-            -2
-          ],
-          "startValue": [
-            -14,
-            8
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -6,
-            -4
-          ],
-          "startValue": [
-            -14,
-            -2
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 5,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 19,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -6,
-            -4
-          ],
-          "startValue": [
-            -6,
-            -4
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 6,
+          "frameNo": 8,
           "startPositionType": "None"
         }
       ],
@@ -234,12 +125,12 @@
       ],
       "source": [
         {
-          "duration": 4,
+          "duration": 8,
           "center": [
-            0,
-            0
+            0.0,
+            13.0
           ],
-          "priority": 0.5,
+          "priority": 0.600000023841858,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "Image",
           "frameNo": 0,
@@ -251,15 +142,15 @@
           ]
         },
         {
-          "duration": 21,
+          "duration": 17,
           "center": [
-            0,
-            0
+            0.0,
+            13.0
           ],
-          "priority": 0.300000011920929,
+          "priority": 0.400000005960464,
           "id": "Battle/Skills/Weapon_SwordBase",
           "type": "Image",
-          "frameNo": 4,
+          "frameNo": 8,
           "rect": [
             0,
             0,
@@ -276,19 +167,19 @@
       ],
       "rotation": [
         {
-          "duration": 6,
-          "endValue": 360,
+          "duration": 8,
+          "endValue": 330,
           "tween": true,
-          "startValue": 90,
+          "startValue": 140,
           "facingOption": "None",
           "frameNo": 0
         },
         {
-          "duration": 19,
-          "endValue": 360,
-          "startValue": 360,
+          "duration": 17,
+          "endValue": 330,
+          "startValue": 330,
           "facingOption": "None",
-          "frameNo": 6
+          "frameNo": 8
         }
       ],
       "alpha": [

@@ -2,6 +2,7 @@
    "keyframes" : {
       "0" : [
          {
+            "alphaTween" : "fix",
             "blendType" : "add",
             "facingOption" : "faceToMov",
             "frameNo" : 0,
@@ -13,14 +14,26 @@
             "textureRect" : [ 32, 0, 32, 32 ]
          },
          {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
             "blendType" : "add",
             "facingOption" : "faceToMov",
-            "frameNo" : 21,
+            "frameNo" : 18,
+            "positionType" : "relativeToTarget",
+            "scale" : [ 2.0, 0.2000000029802322 ],
+            "sourcePath" : "Battle/Skills/Effect_Special01.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "blendType" : "add",
+            "facingOption" : "faceToMov",
+            "frameNo" : 19,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "rotationTween" : "fix",
             "scale" : [ 2.0, 0.2000000029802322 ],
-            "scaleTween" : "fix",
             "sourcePath" : "Battle/Skills/Effect_Special01.png",
             "textureRect" : [ 32, 0, 32, 32 ]
          }

@@ -16,7 +16,7 @@
     {
       "position": [
         {
-          "duration": 5,
+          "duration": 3,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -73,7 +73,7 @@
           "type": "Image",
           "frameNo": 1,
           "rect": [
-            96,
+            192,
             288,
             96,
             96
@@ -90,40 +90,6 @@
           "type": "Image",
           "frameNo": 2,
           "rect": [
-            192,
-            288,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon03",
-          "type": "Image",
-          "frameNo": 3,
-          "rect": [
-            288,
-            288,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon03",
-          "type": "Image",
-          "frameNo": 4,
-          "rect": [
             384,
             288,
             96,
@@ -133,7 +99,7 @@
         {
           "duration": 1,
           "id": "",
-          "frameNo": 5,
+          "frameNo": 3,
           "rect": null
         }
       ],

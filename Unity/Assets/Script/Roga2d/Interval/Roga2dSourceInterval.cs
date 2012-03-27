@@ -108,7 +108,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	private void UpdateKeyframe(int index) {
 		
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
-        if (this.lastAnimationId != keyFrame.Id) {
+        if (this.lastAnimationId != keyFrame.Id || keyFrame.Emitter) {
             this.ClearSetting();
 			this.lastAnimationId = keyFrame.Id;
         }

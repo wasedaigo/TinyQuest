@@ -10,7 +10,7 @@
     ]
   },
   "events": {
-    "6": [
+    "2": [
       ""
     ]
   },
@@ -18,7 +18,7 @@
     {
       "position": [
         {
-          "duration": 14,
+          "duration": 1,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -65,7 +65,7 @@
           ]
         },
         {
-          "duration": 13,
+          "duration": 7,
           "center": [
             0,
             0
@@ -80,12 +80,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 14,
-          "rect": null
         }
       ],
       "rotation": [
@@ -98,7 +92,7 @@
     {
       "position": [
         {
-          "duration": 6,
+          "duration": 3,
           "endPositionType": "None",
           "startPositionAnchor": [
             0,
@@ -121,6 +115,28 @@
           "startPositionType": "None"
         },
         {
+          "duration": 2,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -6,
+            6
+          ],
+          "startValue": [
+            -6,
+            6
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 3,
+          "startPositionType": "None"
+        },
+        {
           "duration": 1,
           "endPositionType": "None",
           "startPositionAnchor": [
@@ -139,7 +155,7 @@
             0,
             0
           ],
-          "frameNo": 6,
+          "frameNo": 5,
           "startPositionType": "None"
         }
       ],
@@ -151,7 +167,7 @@
       ],
       "source": [
         {
-          "duration": 6,
+          "duration": 3,
           "center": [
             -2.0,
             13.0
@@ -168,7 +184,7 @@
           ]
         },
         {
-          "duration": 1,
+          "duration": 3,
           "center": [
             -1.0,
             13.0
@@ -176,7 +192,7 @@
           "priority": 0.5,
           "id": "Battle/Skills/Weapon_AxeBase",
           "type": "Image",
-          "frameNo": 6,
+          "frameNo": 3,
           "rect": [
             0,
             0,
@@ -187,7 +203,7 @@
       ],
       "rotation": [
         {
-          "duration": 6,
+          "duration": 3,
           "endValue": -160,
           "tween": true,
           "startValue": 30,
@@ -195,12 +211,18 @@
           "frameNo": 0
         },
         {
-          "duration": 1,
+          "duration": 2,
           "endValue": -160,
-          "tween": true,
           "startValue": -160,
           "facingOption": "None",
-          "frameNo": 6
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endValue": -160,
+          "startValue": -160,
+          "facingOption": "None",
+          "frameNo": 5
         }
       ],
       "alpha": [
@@ -210,7 +232,7 @@
     {
       "position": [
         {
-          "duration": 6,
+          "duration": 3,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -233,7 +255,7 @@
           "startPositionType": "None"
         },
         {
-          "duration": 1,
+          "duration": 3,
           "endPositionType": "RelativeToTarget",
           "startPositionAnchor": [
             0,
@@ -251,7 +273,7 @@
             0,
             0
           ],
-          "frameNo": 6,
+          "frameNo": 3,
           "startPositionType": "RelativeToTarget"
         }
       ],
@@ -263,21 +285,23 @@
       ],
       "source": [
         {
-          "duration": 6,
+          "duration": 3,
           "wait": true,
           "frameNo": 0
         },
         {
-          "duration": 1,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
+          "duration": 3,
+          "emitter": false,
           "priority": 0.5,
-          "minEmitAngle": 0,
           "id": "Battle/Skills/Effect/Stab01",
-          "maxEmitAngle": 0,
           "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 6
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 6,
+          "rect": null
         }
       ],
       "rotation": [

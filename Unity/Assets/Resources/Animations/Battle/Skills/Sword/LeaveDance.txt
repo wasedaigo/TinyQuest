@@ -505,6 +505,12 @@
           "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 35
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 36,
+          "rect": null
         }
       ],
       "rotation": [
@@ -765,6 +771,12 @@
           "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 35
+        },
+        {
+          "duration": 1,
+          "id": "",
+          "frameNo": 36,
+          "rect": null
         }
       ],
       "rotation": [
