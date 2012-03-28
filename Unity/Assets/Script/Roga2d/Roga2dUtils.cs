@@ -127,10 +127,14 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dAlphaIntervalData alphaIntervalData in timeline.alpha) {
-					float start = alphaIntervalData.startValue;
-					float end = alphaIntervalData.endValue;
-					Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, CalculateDuration(alphaIntervalData.duration), alphaIntervalData.tween);
-					intervals.Add(interval);
+					if (alphaIntervalData.wait) {
+						intervals.Add(new Roga2dWait(CalculateDuration(alphaIntervalData.duration)));
+					} else {
+						float start = alphaIntervalData.startValue;
+						float end = alphaIntervalData.endValue;
+						Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, CalculateDuration(alphaIntervalData.duration), alphaIntervalData.tween);
+						intervals.Add(interval);
+					}
 				}
 				if(intervals.Count > 0) {
 					sequences.Add(new Roga2dSequence(intervals));
@@ -141,9 +145,13 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dScaleIntervalData scaleIntervalData in timeline.scale) {
-					Vector2 start = new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]);
-					Vector2 end = new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]);
-					intervals.Add(new Roga2dScaleInterval(sprite, start, end, CalculateDuration(scaleIntervalData.duration), scaleIntervalData.tween));
+					if (scaleIntervalData.wait) {
+						intervals.Add(new Roga2dWait(CalculateDuration(scaleIntervalData.duration)));
+					} else {
+						Vector2 start = new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]);
+						Vector2 end = new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]);
+						intervals.Add(new Roga2dScaleInterval(sprite, start, end, CalculateDuration(scaleIntervalData.duration), scaleIntervalData.tween));
+					}
 				}
 				if(intervals.Count > 0) {
 					sequences.Add(new Roga2dSequence(intervals));
@@ -154,17 +162,21 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dPositionIntervalData positionIntervalData in timeline.position) {
-					Vector2 start = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startValue[0], positionIntervalData.startValue[1]));
-					Vector2 end = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endValue[0], positionIntervalData.endValue[1]));
-					Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
-	                option.StartPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]));
-					option.EndPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]));
-	                option.StartPositionType = positionIntervalData.startPositionType;
-					option.EndPositionType = positionIntervalData.endPositionType;
-	                option.Target = (settings!=null) ? settings.Target : null;
-					option.TargetOrigin = (settings!=null) ? settings.TargetOrigin : null;
-
-					intervals.Add(new Roga2dPositionInterval(sprite, start, end, CalculateDuration(positionIntervalData.duration), positionIntervalData.tween, option));
+					if (positionIntervalData.wait) {
+						intervals.Add(new Roga2dWait(CalculateDuration(positionIntervalData.duration)));
+					} else {
+						Vector2 start = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startValue[0], positionIntervalData.startValue[1]));
+						Vector2 end = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endValue[0], positionIntervalData.endValue[1]));
+						Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
+		                option.StartPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]));
+						option.EndPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]));
+		                option.StartPositionType = positionIntervalData.startPositionType;
+						option.EndPositionType = positionIntervalData.endPositionType;
+		                option.Target = (settings!=null) ? settings.Target : null;
+						option.TargetOrigin = (settings!=null) ? settings.TargetOrigin : null;
+	
+						intervals.Add(new Roga2dPositionInterval(sprite, start, end, CalculateDuration(positionIntervalData.duration), positionIntervalData.tween, option));
+					}
 				}
 				if(intervals.Count > 0) {
 					sequences.Add(new Roga2dSequence(intervals));
@@ -175,13 +187,16 @@ public class Roga2dUtils {
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dRotationIntervalData rotationIntervalData in timeline.rotation) {
-					
-					float start = rotationIntervalData.startValue;
-					float end = rotationIntervalData.endValue;
-					Roga2dRotationIntervalOption option = Roga2dRotationIntervalOption.Build();
-	                option.FacingType = rotationIntervalData.facingOption;
-	                option.Target = (settings!=null) ? settings.Target : null;
-					intervals.Add(new Roga2dRotationInterval(sprite, start, end, CalculateDuration(rotationIntervalData.duration), rotationIntervalData.tween, option));
+					if (rotationIntervalData.wait) {
+						intervals.Add(new Roga2dWait(CalculateDuration(rotationIntervalData.duration)));
+					} else {
+						float start = rotationIntervalData.startValue;
+						float end = rotationIntervalData.endValue;
+						Roga2dRotationIntervalOption option = Roga2dRotationIntervalOption.Build();
+		                option.FacingType = rotationIntervalData.facingOption;
+		                option.Target = (settings!=null) ? settings.Target : null;
+						intervals.Add(new Roga2dRotationInterval(sprite, start, end, CalculateDuration(rotationIntervalData.duration), rotationIntervalData.tween, option));
+					}
 				}
 				if(intervals.Count > 0) {
 					sequences.Add(new Roga2dSequence(intervals));

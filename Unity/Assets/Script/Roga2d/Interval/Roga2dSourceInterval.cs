@@ -149,7 +149,6 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 			this.interval.Update(delta);
 			return;
 		}
-		if (this.interval != null) { return; }
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
 		if (keyFrame.Type != Roga2dAnimationKeyFrameType.Animation) { return; }
         if (keyFrame.Emitter) { return; }
@@ -165,6 +164,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 
 	private void UpdateEmitAnimation(int index) {
 		if (this.interval != null) { return; }
+
 		Roga2dAnimationKeyFrame keyFrame = this.keyFrames[index];
 		if (keyFrame.Type != Roga2dAnimationKeyFrameType.Animation) { return; }
         if (!keyFrame.Emitter) { return; }

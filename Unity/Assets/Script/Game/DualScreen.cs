@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+	using System.Collections;
 using TinyQuest.Cache;
 using TinyQuest;
 using TinyQuest.Core;
@@ -18,22 +18,19 @@ public class DualScreen : Roga2dNode{
 	
 	private BaseComponent topWindow;
 	private BaseComponent bottomWindow;
+	private Camera BottomScreenCamera;
+	private Camera TopScreenCamera;
 
 	// Use this for initialization
 	public DualScreen() {
 		MapModel mapModel = MapCache.GetInstance().GetModel();
 		
 		this.topWindow = new TopWindow(mapModel);
-		this.topWindow.LocalPriority = 0.0f;
 		this.topWindow.LocalPosition = new Vector2(0, -1.5f);
-		this.AddChild(this.topWindow);
 		
 		this.bottomWindow = new BottomWindow(mapModel);
-		this.bottomWindow.LocalPriority = -10.0f;
-		this.AddChild(this.bottomWindow);
 		
 		Roga2dNode frame = new Roga2dNode();
-		frame.LocalPriority = 10.0f;
 		this.AddChild(frame);
 		
 		// Set up Frame
@@ -50,14 +47,30 @@ public class DualScreen : Roga2dNode{
 		this.lastTouchedPosition = InvalidTouchPosition;
 	}
 	
+	public void SetTopScreen(GameObject topScreen, Camera topScreenCamera) {
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.topWindow.Transform);
+		this.topWindow.Transform.parent = topScreen.transform;
+		Roga2dUtils.applyState(this.topWindow.Transform, state);
+		this.TopScreenCamera = topScreenCamera;
+	}
+
+	public void SetBottomScreen(GameObject bottomScreen, Camera bottomScreenCamera) {
+		Roga2dGameObjectState state = Roga2dUtils.stashState(this.bottomWindow.Transform);
+		this.bottomWindow.Transform.parent = bottomScreen.transform;
+		Roga2dUtils.applyState(this.bottomWindow.Transform, state);
+		this.BottomScreenCamera = bottomScreenCamera;
+	}
+	
 	public override void Update ()
 	{
-		base.Update ();
+		base.Update();
+		this.bottomWindow.Update();
+		this.topWindow.Update();
 		
 		// Construct a ray from the current mouse coordinates
 		if (Input.GetMouseButtonDown(0)) {
 			this.isPressed = true;
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			Ray ray = this.BottomScreenCamera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hitInfo = new RaycastHit();
 			if (Physics.Raycast(ray, out hitInfo)) {
 				this.pressedCollider = hitInfo.collider;
