@@ -31,6 +31,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		this.sprite = sprite;
 		this.frameDuration = 0;
 		this.frameNo = 0;
+		this.index = 0;
 		this.settings = settings;
 		this.lastAnimationId = "";
 		this.keyFrames = keyFrames;
@@ -184,16 +185,19 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
             this.ClearSetting();
         } else {
 			while (delta > 0) {
-				
 				if (this.frameDuration == 0) {
 					this.UpdateKeyframe(index);
 					this.checkEmitUpdate(this.index, this.frameNo);
 				}
 
 				this.frameNo = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
-				int targetFrameNo =  this.frameNo + 1;
+				float targetFrameNo =  this.frameNo + 1;
 				float targetElapsedTime = targetFrameNo / Roga2dConst.AnimationFPS;
 				float targetDelta =  targetElapsedTime - this.elapsed;
+				if (targetDelta == 0) {
+					targetDelta	= 1 / Roga2dConst.AnimationFPS;
+				}
+				
 				if (targetDelta > delta) {
 					targetDelta = delta;
 				}

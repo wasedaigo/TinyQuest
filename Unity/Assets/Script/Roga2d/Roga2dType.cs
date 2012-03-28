@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Roga2dConst {
 	public static float BasePixelSize = 32.0f;
-	public static float AnimationFPS = 20.0f;
+	public static float AnimationFPS = 30.0f;
 	public static float AnimationFrameTime = 1.0f / AnimationFPS;
 };
 
