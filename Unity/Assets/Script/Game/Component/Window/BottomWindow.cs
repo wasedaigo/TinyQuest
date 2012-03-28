@@ -77,9 +77,7 @@ namespace TinyQuest.Component.Window {
 			this.selectedPanel = panel;
 			this.selectedPanelType = panelType;
 		}
-		
-		
-		
+
 		public void OnMessage(WindowMessage message) {
 			this.SendMessage(message);
 		}
