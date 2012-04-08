@@ -54,8 +54,6 @@ namespace TinyQuest.Component.Window {
 			this.mapModel.StepMoved += this.onStepMoved;
 			this.stage.ScrollFinished += this.onScrollFinished;
 			
-			this.monster = this.spawnMonster("death_wind", -20, 0);
-			this.root.AddChild(this.monster);
 		}
 
 		private void onStepMoved(StepData step, float duration) {

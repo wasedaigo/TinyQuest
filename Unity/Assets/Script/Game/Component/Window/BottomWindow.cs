@@ -20,7 +20,7 @@ namespace TinyQuest.Component.Window {
 		public BottomWindow(MapModel mapModel)
 		{
 			this.mapModel = mapModel;
-			this.setPanel(PanelType.Combat);
+			this.setPanel(PanelType.MapNavigation);
 		}
 		
 		public override void Destroy() {

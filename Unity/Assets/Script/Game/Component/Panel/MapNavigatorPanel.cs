@@ -20,27 +20,15 @@ namespace TinyQuest.Component.Panel {
 		private Vector2 scrollVelocity;
 		private MapModel mapModel;
 		
-		private void addStep(int no, float x, float y) {
-			// Steps
-			Roga2dButton button = new Roga2dButton();
-			button.Tag = no;
-			button.LocalPriority = 0.1f;
-			button.SetUpSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(0, 0, 32, 32));
-			button.SetDownSprite("Dungeon/symbols", new Vector2(24, 24), new Vector2(12, 12), new Rect(32, 0, 32, 32));
-			button.OnTouched = this.onStepTouched;
-			button.LocalPixelPosition = new Vector2(x, y);
-			this.floor.AddChild(button);
-		}
-		
 		// Use this for initialization
 		public MapNavigatorPanel(MapModel mapModel) {
 			this.mapModel = mapModel;
-			this.mapSize = new Vector2(512, 512);
+			this.mapSize = new Vector2(256, 256);
 
 			// BG
 			this.floor = new Roga2dNode();
-			Roga2dSprite sprite = new Roga2dSprite("bg/map", new Vector2(512, 512), new Vector2(0, 0), new Rect(0, 0, 512, 512));
-			sprite.LocalPixelPosition = new Vector2(256, 256);
+			Roga2dSprite sprite = new Roga2dSprite("bg/map", new Vector2(256, 256), new Vector2(0, 0), new Rect(0, 0, 512, 512));
+			sprite.LocalPixelPosition = new Vector2(128, 128);
 			this.floor.AddChild(sprite);
 			this.AddChild(this.floor);
 			
@@ -48,30 +36,21 @@ namespace TinyQuest.Component.Panel {
 			this.camera = new Roga2dNode();
 			this.AddChild(this.camera);
 
-			MapModel model = MapCache.GetInstance().GetModel();
-			StepData[] steps = model.GetSteps();
-			foreach (StepData step in steps) {
-				this.addStep(step.StepId, step.PosX, step.PosY);	
-			}
-
-			this.playerPiece = new Roga2dSprite("Dungeon/piece", new Vector2(32, 32), new Vector2(16, 32), new Rect(0, 0, 64, 64));
+			this.playerPiece = new Roga2dSprite("Dungeon/piece", new Vector2(16, 16), new Vector2(8, 16), new Rect(0, 0, 64, 64));
 			this.playerPiece.LocalPriority = 0.2f;
+			this.playerPiece.LocalPixelPosition = new Vector2(32, 32);
 			this.floor.AddChild(this.playerPiece);
+			
+			this.camera.LocalPixelPosition = new Vector2(68, 64);
 		}
 		
 		public override void Init() {
-			StepData step = this.mapModel.GetCurrentStep();
-			this.setPiecePosition(step.PosX, step.PosY);
 		}
 
 		private void setScreenCenter(float posX, float posY) {
 			this.floor.LocalPixelPosition = new Vector2(-posX + Config.PanelWidth / 2, -posY + Config.PanelHeight / 2);
 		}
 		
-		public void setPiecePosition(float posX, float posY) {
-			this.playerPiece.LocalPixelPosition = new Vector2(posX + 16, posY + 16);
-			this.camera.LocalPixelPosition = new Vector2(posX , posY);
-		}
 		
 		public void OnStepMoved(StepData step, float duration) {
 			Vector2 piecePixelPos = this.playerPiece.LocalPixelPosition;
@@ -118,15 +97,13 @@ namespace TinyQuest.Component.Panel {
 		}
 		
 		public override void OnTouchMoved(Vector2 delta) {
-			this.scrollVelocity = delta;
+			this.scrollVelocity = new Vector2(0, delta.y);
 		}
 
 		private void scrollFloor(Vector2 delta) {
 			Vector2 pos = this.camera.LocalPixelPosition - delta;
-			if (pos.x < Config.PanelWidth / 2) { pos.x = Config.PanelWidth / 2; }
-			if (pos.y < Config.PanelHeight / 2) { pos.y = Config.PanelHeight / 2; }
-			if (pos.x > this.mapSize.x - Config.PanelWidth / 2) { pos.x = this.mapSize.x - Config.PanelWidth / 2; }
-			if (pos.y > this.mapSize.y - Config.PanelHeight / 2) { pos.y = this.mapSize.y - Config.PanelHeight / 2; }
+			if (pos.y < 52) { pos.y = 52; }
+			if (pos.y > 220) { pos.y = 220; }
 
 			this.camera.LocalPixelPosition = pos;
 		}
