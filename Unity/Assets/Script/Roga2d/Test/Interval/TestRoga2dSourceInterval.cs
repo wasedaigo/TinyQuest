@@ -68,8 +68,8 @@ class TestRoga2dSourceInterval {
 		Tester.Ok(!interval.IsDone());
 		
 		interval.Update(1.0f);
-		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
-		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
 		Tester.Ok(!interval.IsDone());
 		
 		interval.Update(1.0f);
@@ -143,8 +143,8 @@ class TestRoga2dSourceInterval {
 		Tester.Ok(!interval.IsDone());
 		
 		interval.Update(1.0f);
-		Tester.Match(sprite.RenderObject.SrcRect, new Rect(10, 10, 32, 48));
-		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(1, 1));
+		Tester.Match(sprite.RenderObject.SrcRect, new Rect(20, 10, 22, 48));
+		Tester.Match(sprite.RenderObject.PixelCenter, new Vector2(2, 2));
 		Tester.Ok(!interval.IsDone());
 		
 		interval.Update(0.3f);

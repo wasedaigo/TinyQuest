@@ -21,7 +21,7 @@ namespace TinyQuest.Component {
 		
 		private void setupStage() {
 			for (int i = 0; i < 3; i++) {
-				Roga2dSprite sprite = new Roga2dSprite("bg/001", new Vector2(160, 140), new Vector2(0, 0), new Rect(0, 0, 160, 140));
+				Roga2dSprite sprite = new Roga2dSprite("bg/001", new Vector2(240, 160), new Vector2(0, 0), new Rect(0, 0, 160, 140));
 				this.root.AddChild(sprite);	
 				sprite.LocalPixelPosition = new Vector2(-i * 160, 0);
 				this.sprites.Add(sprite);

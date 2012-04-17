@@ -13,7 +13,7 @@ namespace TinyQuest.Core {
 			}
 			return instance;
 		}
-		
+
 		// Build animation for damage pop
 		public Roga2dAnimation BuildDamagePopAnimation(Vector2 position, uint value) {
 			Roga2dNode node = new Roga2dNode("Damage");
