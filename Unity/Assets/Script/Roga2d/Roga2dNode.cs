@@ -25,7 +25,8 @@ public class Roga2dNode {
 	private float alpha;
 	private Roga2dHue hue;
 	private bool isHidden;
-
+	private Vector2 pixelSize;
+	private Vector2 pixelCenter;
 	
 	public Vector2 LocalPixelPosition {
 		get {
@@ -128,7 +129,23 @@ public class Roga2dNode {
 			node.Destroy();	
 		}
 	}
-
+	
+	public Vector2 GetPixelSize() {
+		return this.pixelSize;
+	}
+	
+	public void SetPixelSize(Vector2 size) {
+		this.pixelSize = size;
+	}
+	
+	public Vector2 GetPixelCenter() {
+		return this.pixelCenter;
+	}
+	
+	public void SetPixelCenter(Vector2 center) {
+		this.pixelCenter = center; 
+	}
+	
 	public int ChildrenCount {
 		get {
 			return this.children.Count;
@@ -147,18 +164,18 @@ public class Roga2dNode {
 		}
 	}
 	
-	public Roga2dHue Hue {
-		get {
-			return this.hue;	
-		}
-	}
-	
 	public float Priority {
 		get {
 			return this.priority;	
 		}
 	}
 
+	public Roga2dHue Hue {
+		get {
+			return this.hue;	
+		}
+	}
+	
 	public virtual void UpdateTransparency() {
         if (this.Parent == null) {
 			this.alpha = this.LocalAlpha;
@@ -253,5 +270,16 @@ public class Roga2dNode {
 			return this.transform.InverseTransformPoint(point);
 	}
 	
-	public virtual Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {return new Vector2(0, 0);}
+	public Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {
+		Vector2 offset = new Vector2(0, 0);
+
+		Vector2 pixelSize = this.GetPixelSize();
+		Vector2 pixelCenter = this.GetPixelCenter();
+        float centerX = pixelSize.x / 2 + pixelCenter.x;
+        float centerY = pixelSize.y / 2 + pixelCenter.y;
+		offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * this.LocalScale.x;
+		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * this.LocalScale.y;
+
+        return offset;
+    }
 }

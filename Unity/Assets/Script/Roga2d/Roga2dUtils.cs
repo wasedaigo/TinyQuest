@@ -168,8 +168,9 @@ public class Roga2dUtils {
 						Vector2 start = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startValue[0], positionIntervalData.startValue[1]));
 						Vector2 end = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endValue[0], positionIntervalData.endValue[1]));
 						Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
-		                option.StartPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]));
-						option.EndPositionAnchor = Roga2dUtils.pixelToLocal(new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]));
+						Debug.Log(positionIntervalData);
+		                option.StartPositionAnchor = new Vector2(positionIntervalData.startPositionAnchor[0], positionIntervalData.startPositionAnchor[1]);
+						option.EndPositionAnchor = new Vector2(positionIntervalData.endPositionAnchor[0], positionIntervalData.endPositionAnchor[1]);
 		                option.StartPositionType = positionIntervalData.startPositionType;
 						option.EndPositionType = positionIntervalData.endPositionType;
 		                option.Target = (settings!=null) ? settings.Target : null;

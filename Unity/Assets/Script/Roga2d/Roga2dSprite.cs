@@ -6,12 +6,18 @@ public class Roga2dSprite : Roga2dNode {
 	: base(textureId)
 	{
 		this.RenderObject = new Roga2dRenderObject(textureId, pixelSize, pixelCenter, srcRect);
+		this.SetPixelSize(this.RenderObject.pixelSize);
+		this.SetPixelCenter(this.RenderObject.pixelCenter);
 	}
 	
 	public Roga2dSprite(Roga2dRenderObject renderObject) 
 	: base("Sprite")
 	{
 		this.RenderObject = renderObject;
+		if (this.RenderObject != null) {
+			base.SetPixelSize(this.RenderObject.pixelSize);
+			base.SetPixelCenter(this.RenderObject.pixelCenter);
+		}
 	}
 	
 	public override void Destroy() {
@@ -53,16 +59,4 @@ public class Roga2dSprite : Roga2dNode {
 			}
 		}
 	}
-	
-	public override Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {
-		Vector2 offset = new Vector2(0, 0);
-		if (this.renderObject != null) {
-			Vector2 pixelSize = this.RenderObject.PixelSize;
-	        float centerX = pixelSize.x / 2 + this.RenderObject.PixelCenter.x;
-	        float centerY = pixelSize.y / 2 + this.RenderObject.PixelCenter.y;
-			offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * this.LocalScale.x;
-			offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * this.LocalScale.y;
-		}
-        return offset;
-    }
 }

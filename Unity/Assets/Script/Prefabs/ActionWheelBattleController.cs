@@ -56,6 +56,16 @@ public class ActionWheelBattleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
+		float currentAngle = this.GetWheel().getCurrentAngle();
+		float singleAngle = this.GetWheel().SingleAngle;
+		// Setup slots
+		/*for (int i = 0; i < this.GetWheel().slotCount; i++) {
+			float angle = (currentAngle + (i + 1) * singleAngle) % 360;
+			GameObject slot = this.GetWheel().GetSlot(i);
+			float scale = Mathf.Sin(angle * Mathf.PI / 180) * 21;
+			slot.transform.localScale = new Vector3(scale, scale, scale);
+		}*/
+
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 pos = GetTouchPosition(Input.mousePosition);
 			if (this.lastTouchPoint != pos) {

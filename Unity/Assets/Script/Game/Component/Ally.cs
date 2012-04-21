@@ -5,7 +5,7 @@ namespace TinyQuest.Component {
 	public class Ally : AdventureObject {
 		private Roga2dBaseInterval interval;
 		public Ally(string name) 
-		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(128, 0, 32, 32))
+		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32))
 		{
 		}
 

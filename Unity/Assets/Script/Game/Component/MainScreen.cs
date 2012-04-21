@@ -42,7 +42,7 @@ namespace TinyQuest.Component {
 			this.AddChild(this.root);
 			
 			// animationPlayer
-			this.player = spawnBattler("hose", 30, 0);
+			this.player = spawnBattler("base", 20, 0);
 			this.root.AddChild(this.player);
 			
 			// Stage
@@ -54,7 +54,7 @@ namespace TinyQuest.Component {
 			
 			ActionWheel actionWheel = GameObject.Find("ActionWheel").GetComponent("ActionWheel") as ActionWheel;
 			actionWheel.onSlotChanged = this.onSlotChanged;
-			this.monster = spawnMonster("death_wind", -40, 0);
+			this.monster = spawnMonster("mini_dragon", -40, 0);
 			this.root.AddChild(this.monster);
 		}
 	
@@ -68,19 +68,26 @@ namespace TinyQuest.Component {
 		}
 		
 		static string[] ids = new string[] {
-				
-				"Battle/Skills/Bow/Shoot",
-				"Battle/Skills/Sword/LeaveDance",
-				"Battle/Skills/Spear/SpearAirraid",
-				"Battle/Skills/Axe/Bash",
-				"Battle/Skills/Common/MagicCasting",
-				"Battle/Skills/Laser/Skill_Laser01",
-				"Battle/Skills/Bow/bow_bomb",
-				"Battle/Skills/Axe/CycloneAxe",
-				"Battle/Skills/Axe/Slash",
-				"Battle/Skills/Axe/ArmorBreaker",
-				"Battle/Skills/Fire/Skill_Flare",
-				"Battle/Skills/Monster/DeadlyBite",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01",
+				"combat/sword_slash01"
+				//"Battle/Skills/Bow/Shoot",
+				//"Battle/Skills/Sword/LeaveDance",
+				//"Battle/Skills/Spear/SpearAirraid",
+				//"Battle/Skills/Axe/Bash",
+				//"Battle/Skills/Common/MagicCasting",
+				//"Battle/Skills/Laser/Skill_Laser01",
+				//"Battle/Skills/Bow/bow_bomb",
+				//"Battle/Skills/Axe/CycloneAxe",
+				//"Battle/Skills/Axe/Slash",
+				//"Battle/Skills/Axe/ArmorBreaker",
+				//"Battle/Skills/Fire/Skill_Flare",
+				//"Battle/Skills/Monster/DeadlyBite",
 		};
 		
 	    private void AnimationFinished(Roga2dAnimation animation)

@@ -12,6 +12,8 @@ namespace TinyQuest.Component {
 		{
 			this.textureId = textureId;
 			this.sprite = new Roga2dSprite(this.textureId, pixelSize, pixelCenter, srcRect);
+			this.SetPixelSize(pixelSize);
+			this.SetPixelCenter(pixelCenter);
 			this.AddChild(this.sprite);
 			this.hp = 10000;
 		}
