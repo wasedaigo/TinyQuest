@@ -1,0 +1,67 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 2,
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 10,
+            "positionTween" : "fix",
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         }
+      ],
+      "1" : [
+         {
+            "center" : [ 0.0, 16.0 ],
+            "frameNo" : 0,
+            "position" : [ 2, 7 ],
+            "positionTween" : "linear",
+            "priority" : 0.4000000059604645,
+            "rotation" : 30,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "combat/weapon_sword_base.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ 0.0, 16.0 ],
+            "frameNo" : 2,
+            "position" : [ 2, 12 ],
+            "priority" : 0.6000000238418579,
+            "rotation" : 30,
+            "sourcePath" : "combat/weapon_sword_base.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ 0.0, 16.0 ],
+            "frameNo" : 5,
+            "position" : [ -7, 10 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "rotation" : -240,
+            "rotationTween" : "fix",
+            "sourcePath" : "combat/weapon_sword_base.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         },
+         {
+            "center" : [ 0.0, 16.0 ],
+            "frameNo" : 10,
+            "position" : [ -7, 10 ],
+            "positionTween" : "fix",
+            "priority" : 0.6000000238418579,
+            "rotation" : -240,
+            "rotationTween" : "fix",
+            "sourcePath" : "combat/weapon_sword_base.png",
+            "textureRect" : [ 0, 0, 32, 32 ]
+         }
+      ]
+   }
+}

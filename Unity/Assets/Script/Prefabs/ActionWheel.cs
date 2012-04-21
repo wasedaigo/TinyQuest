@@ -11,6 +11,10 @@ public class ActionWheel : MonoBehaviour {
 	public delegate void SlotClickDelegate(int slotNo);
 	public SlotClickDelegate onSlotChanged;
 
+	public delegate void SubButtonClickDelegate();
+	public SubButtonClickDelegate onSubButtonClicked;
+	
+
 	public static Vector3 INVALID_TOUCH_POINT = new Vector3(0, 0, 0);
 	public GameObject parent;
 	public UIAtlas atlas;
@@ -170,6 +174,10 @@ public class ActionWheel : MonoBehaviour {
 	}
 	
 	public void OnMenuButtonClick() {
+		if (this.onSubButtonClicked != null) {
+			this.onSubButtonClicked();
+		}
+		/*
 		switch (this.state) {
 			case ActionWheelState.Menu:
 				this.setState(ActionWheelState.Battle);
@@ -178,6 +186,6 @@ public class ActionWheel : MonoBehaviour {
 				this.setState(ActionWheelState.Menu);
 			break;
 		}
-		
+		*/
 	}
 }

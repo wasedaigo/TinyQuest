@@ -1,0 +1,262 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "combat/battler_base",
+      "combat/weapon_sword_base"
+    ]
+  },
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 10,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 10,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "combat/battler_base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 9,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "combat/battler_base",
+          "type": "Image",
+          "frameNo": 2,
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -7,
+            10
+          ],
+          "tween": true,
+          "startValue": [
+            2,
+            7
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 5,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -7,
+            10
+          ],
+          "startValue": [
+            -7,
+            10
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 5,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -7,
+            10
+          ],
+          "startValue": [
+            -7,
+            10
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 10,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "center": [
+            0.0,
+            16.0
+          ],
+          "priority": 0.400000005960464,
+          "id": "combat/weapon_sword_base",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 9,
+          "center": [
+            0.0,
+            16.0
+          ],
+          "priority": 0.600000023841858,
+          "id": "combat/weapon_sword_base",
+          "type": "Image",
+          "frameNo": 2,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 5,
+          "endValue": -240,
+          "tween": true,
+          "startValue": 30,
+          "facingOption": "None",
+          "frameNo": 0
+        },
+        {
+          "duration": 5,
+          "endValue": -240,
+          "startValue": -240,
+          "facingOption": "None",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endValue": -240,
+          "startValue": -240,
+          "facingOption": "None",
+          "frameNo": 10
+        }
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

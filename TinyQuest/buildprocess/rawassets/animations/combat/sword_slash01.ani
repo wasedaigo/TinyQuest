@@ -1,0 +1,61 @@
+{
+   "events" : {
+      "5" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "combat/sword_swing.ani"
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "combat/sword_swing.ani"
+         },
+         {
+            "frameNo" : 10,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 14,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "combat/jump01.ani"
+         },
+         {
+            "frameNo" : 20,
+            "positionTween" : "fix",
+            "sourcePath" : "combat/jump01.ani"
+         },
+         {
+            "frameNo" : 21,
+            "positionTween" : "fix",
+            "sourcePath" : "combat/jump01.ani"
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 2,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "combat/effect_slash01.ani"
+         }
+      ]
+   }
+}

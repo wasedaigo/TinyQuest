@@ -41,26 +41,29 @@ namespace TinyQuest.Component {
 			this.root = new Roga2dNode("Root");
 			this.AddChild(this.root);
 			
-			// animationPlayer
-			this.player = spawnBattler("base", 20, 0);
-			this.root.AddChild(this.player);
-			
 			// Stage
 			this.stage = new Stage();
 			this.stage.LocalPriority = 0.0f;
 			this.root.AddChild(stage);
+
+			// animationPlayer
+			this.player = spawnBattler("fighter", 20, 0);
+			this.stage.GetCharacterLayer().AddChild(this.player);
 			
 			this.stage.ScrollFinished += this.onScrollFinished;
 			
 			ActionWheel actionWheel = GameObject.Find("ActionWheel").GetComponent("ActionWheel") as ActionWheel;
 			actionWheel.onSlotChanged = this.onSlotChanged;
-			this.monster = spawnMonster("mini_dragon", -40, 0);
-			this.root.AddChild(this.monster);
+			actionWheel.onSubButtonClicked = this.onSubButtonClicked;
+			this.monster = spawnMonster("death_wind", -40, 0);
+			this.stage.GetCharacterLayer().AddChild(this.monster);
 		}
 	
 		private void onSlotChanged(int slotNo) {
-			Debug.Log(slotNo + " changed");
 			this.playNextAnimation(slotNo);
+		}
+
+		private void onSubButtonClicked() {
 		}
 		
 		private void onScrollFinished() {
@@ -76,6 +79,29 @@ namespace TinyQuest.Component {
 				"combat/sword_slash01",
 				"combat/sword_slash01",
 				"combat/sword_slash01"
+				//"Battle/Skills/Bow/Shoot",
+				//"Battle/Skills/Sword/LeaveDance",
+				//"Battle/Skills/Spear/SpearAirraid",
+				//"Battle/Skills/Axe/Bash",
+				//"Battle/Skills/Common/MagicCasting",
+				//"Battle/Skills/Laser/Skill_Laser01",
+				//"Battle/Skills/Bow/bow_bomb",
+				//"Battle/Skills/Axe/CycloneAxe",
+				//"Battle/Skills/Axe/Slash",
+				//"Battle/Skills/Axe/ArmorBreaker",
+				//"Battle/Skills/Fire/Skill_Flare",
+				//"Battle/Skills/Monster/DeadlyBite",
+		};
+		
+		static Rect[] weapons = new Rect[] {
+				new Rect(32, 0, 32, 32),
+				new Rect(32, 0, 32, 32),
+				new Rect(32, 0, 32, 32),
+				new Rect(32, 0, 32, 32),
+				new Rect(0, 0, 32, 32),
+				new Rect(0, 0, 32, 32),
+				new Rect(0, 0, 32, 32),
+				new Rect(0, 0, 32, 32),
 				//"Battle/Skills/Bow/Shoot",
 				//"Battle/Skills/Sword/LeaveDance",
 				//"Battle/Skills/Spear/SpearAirraid",
@@ -130,11 +156,12 @@ namespace TinyQuest.Component {
 				battler.Sprite.Hide();
 
 				Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-					{ "Battle/Skills/Battler_Base", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
-					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}}
+					{ "combat/battler_base", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
+					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}},
+					{ "combat/weapon_sword_base", new Roga2dSwapTextureDef() {TextureID = "combat/weapon_sword_base", PixelSize = new Vector2(32, 32),  SrcRect = weapons[no]}}
 				};
 
-				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, this.root, battler, this.monster, CommandCalled);
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, this.stage.GetCharacterLayer(), battler, this.monster, CommandCalled);
 				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
 				this.animationPlayer.Play(battler, null, animation,  AnimationFinished);
 			}	

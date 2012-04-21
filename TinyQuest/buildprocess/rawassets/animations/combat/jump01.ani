@@ -1,0 +1,26 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 0, -32 ],
+            "positionTween" : "linear",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 6,
+            "positionTween" : "fix",
+            "sourcePath" : "combat/battler_base.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         }
+      ]
+   }
+}
