@@ -130,28 +130,6 @@
           ],
           "frameNo": 20,
           "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 21,
-          "startPositionType": "None"
         }
       ],
       "scale": [
@@ -187,7 +165,7 @@
           ]
         },
         {
-          "duration": 8,
+          "duration": 7,
           "emitter": false,
           "priority": 0.5,
           "id": "combat/jump01",

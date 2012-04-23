@@ -13,9 +13,7 @@
          },
          {
             "frameNo" : 10,
-            "positionTween" : "fix",
-            "sourcePath" : "combat/battler_base.png",
-            "textureRect" : [ 96, 0, 32, 32 ]
+            "isEmpty" : true
          }
       ],
       "1" : [
@@ -48,19 +46,13 @@
             "priority" : 0.6000000238418579,
             "rotation" : -240,
             "rotationTween" : "fix",
+            "scaleTween" : "fix",
             "sourcePath" : "combat/weapon_sword_base.png",
             "textureRect" : [ 0, 0, 32, 32 ]
          },
          {
-            "center" : [ 0.0, 16.0 ],
             "frameNo" : 10,
-            "position" : [ -7, 10 ],
-            "positionTween" : "fix",
-            "priority" : 0.6000000238418579,
-            "rotation" : -240,
-            "rotationTween" : "fix",
-            "sourcePath" : "combat/weapon_sword_base.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
+            "isEmpty" : true
          }
       ]
    }

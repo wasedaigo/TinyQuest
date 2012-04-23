@@ -35,11 +35,6 @@
             "frameNo" : 20,
             "positionTween" : "fix",
             "sourcePath" : "combat/jump01.ani"
-         },
-         {
-            "frameNo" : 21,
-            "positionTween" : "fix",
-            "sourcePath" : "combat/jump01.ani"
          }
       ],
       "1" : [
