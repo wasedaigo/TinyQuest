@@ -24,6 +24,7 @@ public class UITable : MonoBehaviour
 	public bool keepWithinPanel = false;
 
 	UIPanel mPanel;
+	UIDraggablePanel mDrag;
 
 	/// <summary>
 	/// Function that sorts items by name.
@@ -50,8 +51,9 @@ public class UITable : MonoBehaviour
 		int x = 0;
 		int y = 0;
 
-		foreach (Transform t in children)
+		for (int i = 0, imax = children.Count; i < imax; ++i)
 		{
+			Transform t = children[i];
 			Bounds b = NGUIMath.CalculateRelativeWidgetBounds(t);
 			Vector3 scale = t.localScale;
 			b.min = Vector3.Scale(b.min, scale);
@@ -71,8 +73,9 @@ public class UITable : MonoBehaviour
 		x = 0;
 		y = 0;
 
-		foreach (Transform t in children)
+		for (int i = 0, imax = children.Count; i < imax; ++i)
 		{
+			Transform t = children[i];
 			Bounds b = bounds[y, x];
 			Bounds br = boundsRows[x];
 			Bounds bc = boundsCols[y];
@@ -120,6 +123,7 @@ public class UITable : MonoBehaviour
 		if (sorted) children.Sort(SortByName);
 		if (children.Count > 0) RepositionVariableSize(children);
 		if (mPanel != null) mPanel.ConstrainTargetToBounds(myTrans, true);
+		if (mDrag != null) mDrag.UpdateScrollbars(true);
 	}
 
 	/// <summary>
@@ -128,7 +132,11 @@ public class UITable : MonoBehaviour
 
 	void Start ()
 	{
-		if (keepWithinPanel) mPanel = NGUITools.FindInParents<UIPanel>(gameObject);
+		if (keepWithinPanel)
+		{
+			mPanel = NGUITools.FindInParents<UIPanel>(gameObject);
+			mDrag = NGUITools.FindInParents<UIDraggablePanel>(gameObject);
+		}
 		Reposition();
 	}
 

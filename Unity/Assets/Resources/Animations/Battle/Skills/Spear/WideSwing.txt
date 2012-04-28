@@ -257,12 +257,6 @@
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "Animation",
           "frameNo": 38
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 53,
-          "rect": null
         }
       ],
       "rotation": [
@@ -371,12 +365,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 22,
-          "rect": null
         }
       ],
       "rotation": [

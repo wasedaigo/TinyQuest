@@ -217,7 +217,7 @@ public abstract class UIWidget : MonoBehaviour
 			// This widget is no longer parented to the same panel. Remove it and re-add it to a new one.
 			if (!valid)
 			{
-				material = null;
+				if (!keepMaterial) material = null;
 				mPanel = null;
 				CreatePanel();
 			}
@@ -301,7 +301,14 @@ public abstract class UIWidget : MonoBehaviour
 
 	void OnDisable ()
 	{
-		if (!keepMaterial) material = null;
+		if (!keepMaterial)
+		{
+			material = null;
+		}
+		else if (mPanel != null)
+		{
+			mPanel.RemoveWidget(this);
+		}
 		mPanel = null;
 	}
 

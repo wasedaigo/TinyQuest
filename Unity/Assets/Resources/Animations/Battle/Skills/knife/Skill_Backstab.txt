@@ -441,12 +441,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 79,
-          "rect": null
         }
       ],
       "rotation": [
@@ -578,12 +572,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 43,
-          "rect": null
         }
       ],
       "rotation": [

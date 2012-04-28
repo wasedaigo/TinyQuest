@@ -202,12 +202,6 @@
           "id": "Battle/Skills/Common/MagicCastingRingTop",
           "type": "Animation",
           "frameNo": 9
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 38,
-          "rect": null
         }
       ],
       "rotation": [
@@ -302,12 +296,6 @@
           "id": "Battle/Skills/Common/MagicCastingRingBottom",
           "type": "Animation",
           "frameNo": 9
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 38,
-          "rect": null
         }
       ],
       "rotation": [

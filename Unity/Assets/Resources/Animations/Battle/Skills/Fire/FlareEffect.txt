@@ -145,12 +145,6 @@
           "id": "Battle/Skills/Fire/FlareExplosion",
           "type": "Animation",
           "frameNo": 27
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 53,
-          "rect": null
         }
       ],
       "rotation": [

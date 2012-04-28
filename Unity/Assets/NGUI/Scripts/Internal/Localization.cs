@@ -17,7 +17,29 @@ using System.Collections.Generic;
 public class Localization : MonoBehaviour
 {
 	static Localization mInst;
-	static public Localization instance { get { return mInst; } }
+
+	/// <summary>
+	/// The instance of the localization class. Will create it if one isn't already around.
+	/// </summary>
+
+	static public Localization instance
+	{
+		get
+		{
+			if (mInst == null)
+			{
+				mInst = Object.FindObjectOfType(typeof(Localization)) as Localization;
+
+				if (mInst == null)
+				{
+					GameObject go = new GameObject("_Localization");
+					DontDestroyOnLoad(go);
+					mInst = go.AddComponent<Localization>();
+				}
+			}
+			return mInst;
+		}
+	}
 
 	/// <summary>
 	/// Language the localization manager will start with.
@@ -50,7 +72,7 @@ public class Localization : MonoBehaviour
 				{
 					currentLanguage = startingLanguage;
 
-					if (string.IsNullOrEmpty(mLanguage) && languages.Length > 0)
+					if (string.IsNullOrEmpty(mLanguage) && (languages != null && languages.Length > 0))
 					{
 						currentLanguage = languages[0].name;
 					}
@@ -60,23 +82,37 @@ public class Localization : MonoBehaviour
 		}
 		set
 		{
-			if (languages != null && mLanguage != value)
+			if (mLanguage != value)
 			{
-				if (string.IsNullOrEmpty(value))
+				if (!string.IsNullOrEmpty(value))
 				{
-					mDictionary.Clear();
-				}
-				else
-				{
-					foreach (TextAsset asset in languages)
+					// Check the referenced assets first
+					if (languages != null)
 					{
-						if (asset != null && asset.name == value)
+						for (int i = 0, imax = languages.Length; i < imax; ++i)
 						{
-							Load(asset);
-							return;
+							TextAsset asset = languages[i];
+
+							if (asset != null && asset.name == value)
+							{
+								Load(asset);
+								return;
+							}
 						}
 					}
+
+					// Not a referenced asset -- try to load it dynamically
+					TextAsset txt = Resources.Load(value, typeof(TextAsset)) as TextAsset;
+
+					if (txt != null)
+					{
+						Load(txt);
+						return;
+					}
 				}
+
+				// Either the language is null, or it wasn't found
+				mDictionary.Clear();
 				PlayerPrefs.DeleteKey("Language");
 			}
 		}
@@ -87,6 +123,12 @@ public class Localization : MonoBehaviour
 	/// </summary>
 
 	void Awake () { if (mInst == null) mInst = this; }
+
+	/// <summary>
+	/// Oddly enough... sometimes if there is no OnEnable function in Localization, it can get the Awake call after UILocalize's OnEnable.
+	/// </summary>
+
+	void OnEnable () { if (mInst == null) mInst = this; }
 
 	/// <summary>
 	/// Remove the instance reference.

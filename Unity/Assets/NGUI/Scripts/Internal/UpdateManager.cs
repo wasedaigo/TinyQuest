@@ -55,10 +55,11 @@ public class UpdateManager : MonoBehaviour
 		{
 			mInst = GameObject.FindObjectOfType(typeof(UpdateManager)) as UpdateManager;
 
-			if (mInst == null)
+			if (mInst == null && Application.isPlaying)
 			{
-				GameObject go = new GameObject("_UIUpdateManager");
-				go.hideFlags = HideFlags.DontSave;
+				GameObject go = new GameObject("_UpdateManager");
+				DontDestroyOnLoad(go);
+				//go.hideFlags = HideFlags.HideAndDontSave;
 				mInst = go.AddComponent<UpdateManager>();
 			}
 		}
@@ -196,7 +197,11 @@ public class UpdateManager : MonoBehaviour
 	{
 #if !UNITY_FLASH
 		// Flash export fails at life.
-		foreach (UpdateEntry ent in list) if (ent.func == func) return;
+		for (int i = 0, imax = list.Count; i < imax; ++i)
+		{
+			UpdateEntry ent = list[i];
+			if (ent.func == func) return;
+		}
 #endif
 
 		UpdateEntry item = new UpdateEntry();

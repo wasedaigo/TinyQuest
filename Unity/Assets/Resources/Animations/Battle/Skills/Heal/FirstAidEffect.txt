@@ -113,12 +113,6 @@
             96,
             96
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 6,
-          "rect": null
         }
       ],
       "rotation": [

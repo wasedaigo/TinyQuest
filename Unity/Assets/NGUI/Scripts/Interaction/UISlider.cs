@@ -68,14 +68,14 @@ public class UISlider : IgnoreTimeScale
 	public int numberOfSteps = 0;
 
 	// Used to be public prior to 1.87
-	[SerializeField] float rawValue = 1f;
+	[HideInInspector][SerializeField] float rawValue = 1f;
 
 	float mStepValue = 1f;
 	BoxCollider mCol;
 	Transform mTrans;
-	Transform mForeTrans;
-	UIWidget mWidget;
-	UIFilledSprite mSprite;
+	Transform mFGTrans;
+	UIWidget mFGWidget;
+	UIFilledSprite mFGFilled;
 	bool mInitDone = false;
 
 	/// <summary>
@@ -94,9 +94,9 @@ public class UISlider : IgnoreTimeScale
 
 		if (foreground != null)
 		{
-			mWidget = foreground.GetComponent<UIWidget>();
-			mSprite = (mWidget != null) ? mWidget as UIFilledSprite : null;
-			mForeTrans = foreground.transform;
+			mFGWidget = foreground.GetComponent<UIWidget>();
+			mFGFilled = (mFGWidget != null) ? mFGWidget as UIFilledSprite : null;
+			mFGTrans = foreground.transform;
 			if (fullSize == Vector2.zero) fullSize = foreground.localScale;
 		}
 		else if (mCol != null)
@@ -129,11 +129,11 @@ public class UISlider : IgnoreTimeScale
 
 		if (Application.isPlaying && thumb != null && thumb.collider != null)
 		{
-			UIEventListener listener = UIEventListener.Add(thumb.gameObject);
+			UIEventListener listener = UIEventListener.Get(thumb.gameObject);
 			listener.onPress += OnPressThumb;
 			listener.onDrag += OnDragThumb;
 		}
-		Set(rawValue, false);
+		Set(rawValue, true);
 	}
 
 	/// <summary>
@@ -239,28 +239,41 @@ public class UISlider : IgnoreTimeScale
 			if (direction == Direction.Horizontal) scale.x *= mStepValue;
 			else scale.y *= mStepValue;
 
-			if (mSprite != null)
+			if (mFGFilled != null)
 			{
-				mSprite.fillAmount = mStepValue;
+				mFGFilled.fillAmount = mStepValue;
 			}
 			else if (foreground != null)
 			{
-				mForeTrans.localScale = scale;
-				if (mWidget != null) mWidget.MarkAsChanged();
+				mFGTrans.localScale = scale;
+				
+				if (mFGWidget != null)
+				{
+					if (val > 0.001f)
+					{
+						mFGWidget.enabled = true;
+						mFGWidget.MarkAsChanged();
+					}
+					else
+					{
+						mFGWidget.enabled = false;
+					}
+				}
 			}
 
 			if (thumb != null)
 			{
 				Vector3 pos = thumb.localPosition;
 
-				if (mSprite != null)
+				if (mFGFilled != null)
 				{
-					switch (mSprite.fillDirection)
+					if (mFGFilled.fillDirection == UIFilledSprite.FillDirection.Horizontal)
 					{
-						case UIFilledSprite.FillDirection.TowardRight:		pos.x = scale.x; break;
-						case UIFilledSprite.FillDirection.TowardTop:		pos.y = scale.y; break;
-						case UIFilledSprite.FillDirection.TowardLeft:		pos.x = fullSize.x - scale.x; break;
-						case UIFilledSprite.FillDirection.TowardBottom:		pos.y = fullSize.y - scale.y; break;
+						pos.x = mFGFilled.invert ? fullSize.x - scale.x : scale.x;
+					}
+					else if (mFGFilled.fillDirection == UIFilledSprite.FillDirection.Vertical)
+					{
+						pos.y = mFGFilled.invert ? fullSize.y - scale.y : scale.y;
 					}
 				}
 				else if (direction == Direction.Horizontal)

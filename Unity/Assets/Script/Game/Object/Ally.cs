@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Object {
 	public class Ally : AdventureObject {
 		private Roga2dBaseInterval interval;
 		public Ally(string name) 

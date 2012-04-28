@@ -54,12 +54,6 @@
           "id": "Battle/Skills/Earth/StoneSpike01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 22,
-          "rect": null
         }
       ],
       "rotation": [
@@ -117,12 +111,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 22,
-          "rect": null
         }
       ],
       "rotation": [

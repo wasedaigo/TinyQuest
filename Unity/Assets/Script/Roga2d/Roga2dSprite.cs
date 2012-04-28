@@ -49,7 +49,19 @@ public class Roga2dSprite : Roga2dNode {
 			}
 		}
 	}
-
+	
+	public override void Hide() {
+		base.Hide();
+		// Hack: not reflecting the state immediately right now to avoid bug - Daigo
+		//this.renderObject.Renderer.enabled = this.IsVisible;
+	}
+	
+	
+	public override void Show() {
+		base.Show();
+		this.renderObject.Renderer.enabled = this.IsVisible;
+	}
+	
 	public override void Update() {
 		base.Update();
 		if (this.renderObject != null && this.renderObject.Renderer != null) {

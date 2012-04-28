@@ -73,12 +73,6 @@
           "id": "Battle/Skills/Battler/SwordDashUpper",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 20,
-          "rect": null
         }
       ],
       "rotation": [

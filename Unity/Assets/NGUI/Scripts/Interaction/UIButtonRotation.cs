@@ -19,6 +19,12 @@ public class UIButtonRotation : MonoBehaviour
 
 	Quaternion mRot;
 	bool mInitDone = false;
+	bool mStarted = false;
+	bool mHighlighted = false;
+
+	void Start () { mStarted = true; }
+
+	void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
 
 	void OnDisable ()
 	{
@@ -56,6 +62,7 @@ public class UIButtonRotation : MonoBehaviour
 		{
 			if (!mInitDone) Init();
 			TweenRotation.Begin(tweenTarget.gameObject, duration, isOver ? mRot * Quaternion.Euler(hover) : mRot).method = UITweener.Method.EaseInOut;
+			mHighlighted = isOver;
 		}
 	}
 }

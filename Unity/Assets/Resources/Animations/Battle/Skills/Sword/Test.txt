@@ -93,12 +93,6 @@
           "id": "Battle/Skills/Battler/Back",
           "type": "Animation",
           "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 2,
-          "rect": null
         }
       ],
       "rotation": [

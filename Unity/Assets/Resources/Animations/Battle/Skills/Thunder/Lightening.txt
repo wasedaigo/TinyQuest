@@ -36,12 +36,6 @@
           "id": "Battle/Skills/Battler/MagicCasting",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 25,
-          "rect": null
         }
       ],
       "rotation": [

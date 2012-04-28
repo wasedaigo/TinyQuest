@@ -158,12 +158,6 @@
             160,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 21,
-          "rect": null
         }
       ],
       "rotation": [

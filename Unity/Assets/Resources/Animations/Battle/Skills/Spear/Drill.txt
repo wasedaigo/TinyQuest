@@ -226,12 +226,6 @@
           "id": "Battle/Skills/Battler/Jump",
           "type": "Animation",
           "frameNo": 51
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 77,
-          "rect": null
         }
       ],
       "rotation": [

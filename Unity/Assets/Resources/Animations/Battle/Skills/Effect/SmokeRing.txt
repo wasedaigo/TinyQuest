@@ -71,12 +71,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -148,12 +142,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -225,12 +213,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -302,12 +284,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -379,12 +355,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -456,12 +426,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -533,12 +497,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [
@@ -610,12 +568,6 @@
           "id": "Battle/Skills/Effect/Smoke01",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 15,
-          "rect": null
         }
       ],
       "rotation": [

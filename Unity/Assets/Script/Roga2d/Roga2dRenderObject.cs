@@ -51,8 +51,8 @@ public class Roga2dRenderObject {
 			this.transform = this.gameObject.transform;
 			
 			if (this.texture != null) {
-				MeshFilter meshFilter = this.gameObject.AddComponent("MeshFilter") as MeshFilter;
-				this.renderer = this.gameObject.AddComponent("MeshRenderer") as MeshRenderer;
+				MeshFilter meshFilter = this.gameObject.AddComponent<MeshFilter>();
+				this.renderer = this.gameObject.AddComponent<MeshRenderer>();
 				
 				this.alpha = 0.0f;
 				this.mesh = GeneratePlane();

@@ -23,8 +23,12 @@ public class UIButtonTween : MonoBehaviour
 	public bool includeChildren = false;
 
 	UITweener[] mTweens;
+	bool mStarted = false;
+	bool mHighlighted = false;
 
-	void Start () { if (tweenTarget == null) tweenTarget = gameObject; }
+	void Start () { mStarted = true; if (tweenTarget == null) tweenTarget = gameObject; }
+
+	void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
 
 	void OnHover (bool isOver)
 	{
@@ -36,6 +40,7 @@ public class UIButtonTween : MonoBehaviour
 			{
 				Play(isOver);
 			}
+			mHighlighted = isOver;
 		}
 	}
 
@@ -67,8 +72,10 @@ public class UIButtonTween : MonoBehaviour
 			bool isFinished = true;
 			bool properDirection = true;
 
-			foreach (UITweener tw in mTweens)
+			for (int i = 0, imax = mTweens.Length; i < imax; ++i)
 			{
+				UITweener tw = mTweens[i];
+
 				if (tw.enabled)
 				{
 					isFinished = false;
@@ -92,7 +99,7 @@ public class UIButtonTween : MonoBehaviour
 	/// Activate the tweeners.
 	/// </summary>
 
-	void Play (bool forward)
+	public void Play (bool forward)
 	{
 		GameObject go = (tweenTarget == null) ? gameObject : tweenTarget;
 
@@ -119,8 +126,10 @@ public class UIButtonTween : MonoBehaviour
 			if (playDirection == Direction.Reverse) forward = !forward;
 
 			// Run through all located tween components
-			foreach (UITweener tw in mTweens)
+			for (int i = 0, imax = mTweens.Length; i < imax; ++i)
 			{
+				UITweener tw = mTweens[i];
+
 				// If the tweener's group matches, we can work with it
 				if (tw.tweenGroup == tweenGroup)
 				{

@@ -278,12 +278,6 @@
           "id": "Battle/Skills/Battler/SmallBack",
           "type": "Animation",
           "frameNo": 43
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 58,
-          "rect": null
         }
       ],
       "rotation": [

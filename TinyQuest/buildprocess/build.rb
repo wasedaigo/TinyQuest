@@ -119,7 +119,7 @@ def setup_tweens(result, latestSourceData)
                 frameNo = keyframes.last["frameNo"]
                 keyframes.delete(keyframes.last)
                 if (key == "source")
-                    keyframes << {"frameNo" => frameNo, "duration" => 1, "id"=>"", "rect"=>nil}
+                    #keyframes << {"frameNo" => frameNo, "duration" => 1, "id"=>"", "rect"=>nil}
                 end
             else
                 if (key == "source")

@@ -818,12 +818,6 @@
           "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 24
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 25,
-          "rect": null
         }
       ],
       "rotation": [

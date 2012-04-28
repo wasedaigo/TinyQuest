@@ -82,6 +82,7 @@ public class UICheckbox : MonoBehaviour
 		if (!mStarted)
 		{
 			startsChecked = state;
+			if (checkSprite != null) checkSprite.alpha = state ? 1f : 0f;
 		}
 		else if (mChecked != state)
 		{
@@ -90,12 +91,10 @@ public class UICheckbox : MonoBehaviour
 			{
 				UICheckbox[] cbs = radioButtonRoot.GetComponentsInChildren<UICheckbox>();
 
-				foreach (UICheckbox cb in cbs)
+				for (int i = 0, imax = cbs.Length; i < imax; ++i)
 				{
-					if (cb != this && cb.radioButtonRoot == radioButtonRoot)
-					{
-						cb.Set(false);
-					}
+					UICheckbox cb = cbs[i];
+					if (cb != this && cb.radioButtonRoot == radioButtonRoot) cb.Set(false);
 				}
 			}
 

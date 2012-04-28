@@ -23,6 +23,13 @@ public class UIButtonPlayAnimation : MonoBehaviour
 	public DisableCondition disableWhenFinished = DisableCondition.DoNotDisable;
 	public string callWhenFinished;
 
+	bool mStarted = false;
+	bool mHighlighted = false;
+
+	void Start () { mStarted = true; }
+
+	void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
+
 	void OnHover (bool isOver)
 	{
 		if (enabled)
@@ -33,6 +40,7 @@ public class UIButtonPlayAnimation : MonoBehaviour
 			{
 				Play(isOver);
 			}
+			mHighlighted = isOver;
 		}
 	}
 

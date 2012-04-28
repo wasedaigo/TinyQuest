@@ -63,12 +63,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 67,
-          "rect": null
         }
       ],
       "rotation": [
@@ -303,12 +297,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 38,
-          "rect": null
         }
       ],
       "rotation": [
@@ -440,12 +428,6 @@
           "type": "Animation",
           "maxEmitSpeed": 30.0,
           "frameNo": 29
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 30,
-          "rect": null
         }
       ],
       "rotation": [
@@ -631,12 +613,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 21,
-          "rect": null
         }
       ],
       "rotation": [

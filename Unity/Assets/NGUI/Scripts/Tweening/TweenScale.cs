@@ -12,20 +12,20 @@ using UnityEngine;
 [AddComponentMenu("NGUI/Tween/Scale")]
 public class TweenScale : UITweener
 {
-	public Vector3 from;
-	public Vector3 to;
+	public Vector3 from = Vector3.one;
+	public Vector3 to = Vector3.one;
 	public bool updateTable = false;
 
 	Transform mTrans;
 	UITable mTable;
 
-	public Vector3 scale { get { return mTrans.localScale; } set { mTrans.localScale = value; } }
+	public Transform cachedTransform { get { if (mTrans == null) mTrans = transform; return mTrans; } }
 
-	void Awake () { mTrans = transform; }
+	public Vector3 scale { get { return cachedTransform.localScale; } set { cachedTransform.localScale = value; } }
 
 	override protected void OnUpdate (float factor)
 	{
-		mTrans.localScale = from * (1f - factor) + to * factor;
+		cachedTransform.localScale = from * (1f - factor) + to * factor;
 
 		if (updateTable)
 		{

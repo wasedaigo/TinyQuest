@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 /// <summary>
 /// Unity doesn't keep the values of static variables after scripts change get recompiled. One way around this
-/// is to store the references in PlayerPrefs -- retrieve them at start, and save them whenever something changes.
+/// is to store the references in EditorPrefs -- retrieve them at start, and save them whenever something changes.
 /// </summary>
 
 public class UISettings
@@ -21,35 +21,41 @@ public class UISettings
 	static Texture2D mFontTexture;
 	static string mFontName = "New Font";
 	static string mAtlasName = "New Atlas";
+	static int mAtlasPadding = 1;
+	static public bool mAtlasTrimming = true;
 	static bool mPreview = true;
 
 	static Object GetObject (string name)
 	{
-		int assetID = PlayerPrefs.GetInt(name, -1);
+		int assetID = EditorPrefs.GetInt(name, -1);
 		return (assetID != -1) ? EditorUtility.InstanceIDToObject(assetID) : null;
 	}
 
 	static void Load ()
 	{
 		mLoaded			= true;
-		mFontName		= PlayerPrefs.GetString("NGUI Font Name");
-		mAtlasName		= PlayerPrefs.GetString("NGUI Atlas Name");
+		mFontName		= EditorPrefs.GetString("NGUI Font Name");
+		mAtlasName		= EditorPrefs.GetString("NGUI Atlas Name");
 		mFontData		= GetObject("NGUI Font Asset") as TextAsset;
 		mFontTexture	= GetObject("NGUI Font Texture") as Texture2D;
 		mFont			= GetObject("NGUI Font") as UIFont;
 		mAtlas			= GetObject("NGUI Atlas") as UIAtlas;
-		mPreview		= PlayerPrefs.GetInt("NGUI Preview") == 0;
+		mPreview		= EditorPrefs.GetInt("NGUI Preview") == 0;
+		mAtlasPadding	= EditorPrefs.GetInt("NGUI Atlas Padding", 1);
+		mAtlasTrimming	= EditorPrefs.GetBool("NGUI Atlas Trimming", true);
 	}
 
 	static void Save ()
 	{
-		PlayerPrefs.SetString("NGUI Font Name", mFontName);
-		PlayerPrefs.SetString("NGUI Atlas Name", mAtlasName);
-		PlayerPrefs.SetInt("NGUI Font Asset", (mFontData != null) ? mFontData.GetInstanceID() : -1);
-		PlayerPrefs.SetInt("NGUI Font Texture", (mFontTexture != null) ? mFontTexture.GetInstanceID() : -1);
-		PlayerPrefs.SetInt("NGUI Font", (mFont != null) ? mFont.GetInstanceID() : -1);
-		PlayerPrefs.SetInt("NGUI Atlas", (mAtlas != null) ? mAtlas.GetInstanceID() : -1);
-		PlayerPrefs.SetInt("NGUI Preview", mPreview ? 0 : 1);
+		EditorPrefs.SetString("NGUI Font Name", mFontName);
+		EditorPrefs.SetString("NGUI Atlas Name", mAtlasName);
+		EditorPrefs.SetInt("NGUI Font Asset", (mFontData != null) ? mFontData.GetInstanceID() : -1);
+		EditorPrefs.SetInt("NGUI Font Texture", (mFontTexture != null) ? mFontTexture.GetInstanceID() : -1);
+		EditorPrefs.SetInt("NGUI Font", (mFont != null) ? mFont.GetInstanceID() : -1);
+		EditorPrefs.SetInt("NGUI Atlas", (mAtlas != null) ? mAtlas.GetInstanceID() : -1);
+		EditorPrefs.SetInt("NGUI Preview", mPreview ? 0 : 1);
+		EditorPrefs.SetInt("NGUI Atlas Padding", mAtlasPadding);
+		EditorPrefs.SetBool("NGUI Atlas Trimming", mAtlasTrimming);
 	}
 
 	/// <summary>
@@ -125,4 +131,16 @@ public class UISettings
 	/// </summary>
 
 	static public bool texturePreview { get { if (!mLoaded) Load(); return mPreview; } set { if (mPreview != value) { mPreview = value; Save(); } } }
+
+	/// <summary>
+	/// Added padding in-between of sprites when creating an atlas.
+	/// </summary>
+
+	static public int atlasPadding { get { if (!mLoaded) Load(); return mAtlasPadding; } set { if (mAtlasPadding != value) { mAtlasPadding = value; Save(); } } }
+
+	/// <summary>
+	/// Whether the transparent pixels will be trimmed away when creating an atlas.
+	/// </summary>
+
+	static public bool atlasTrimming { get { if (!mLoaded) Load(); return mAtlasTrimming; } set { if (mAtlasTrimming != value) { mAtlasTrimming = value; Save(); } } }
 }

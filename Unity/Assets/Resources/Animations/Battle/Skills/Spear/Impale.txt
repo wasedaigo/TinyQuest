@@ -307,12 +307,6 @@
           "id": "Battle/Skills/Battler/Jump",
           "type": "Animation",
           "frameNo": 68
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 94,
-          "rect": null
         }
       ],
       "rotation": [
@@ -640,12 +634,6 @@
           "id": "Battle/Skills/Effect/Blood03",
           "type": "Animation",
           "frameNo": 32
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 36,
-          "rect": null
         }
       ],
       "rotation": [

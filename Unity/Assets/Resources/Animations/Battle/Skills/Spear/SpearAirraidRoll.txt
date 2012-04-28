@@ -145,12 +145,6 @@
           "id": "Battle/Skills/Spear/SpearHold",
           "type": "Animation",
           "frameNo": 20
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 32,
-          "rect": null
         }
       ],
       "rotation": [

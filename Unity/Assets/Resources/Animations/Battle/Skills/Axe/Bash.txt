@@ -296,12 +296,6 @@
           "id": "Battle/Skills/Effect/Stab01",
           "type": "Animation",
           "frameNo": 3
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 6,
-          "rect": null
         }
       ],
       "rotation": [

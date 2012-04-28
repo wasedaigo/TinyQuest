@@ -81,12 +81,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 20,
-          "rect": null
         }
       ],
       "rotation": [

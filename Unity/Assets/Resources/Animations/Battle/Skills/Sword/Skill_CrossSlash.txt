@@ -89,12 +89,6 @@
           "id": "Battle/Skills/Battler/SwordDown02",
           "type": "Animation",
           "frameNo": 7
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 20,
-          "rect": null
         }
       ],
       "rotation": [

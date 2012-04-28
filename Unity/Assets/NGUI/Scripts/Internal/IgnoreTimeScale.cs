@@ -13,6 +13,7 @@ using UnityEngine;
 public class IgnoreTimeScale : MonoBehaviour
 {
 	float mTime = 0f;
+	float mActual = 0f;
 	float mDelta = 0f;
 
 	/// <summary>
@@ -40,7 +41,10 @@ public class IgnoreTimeScale : MonoBehaviour
 	protected float UpdateRealTimeDelta ()
 	{
 		float time = Time.realtimeSinceStartup;
-		mDelta = Mathf.Max(0f, time - mTime);
+		float delta = time - mTime;
+		mActual += Mathf.Max(0f, delta);
+		mDelta = 0.001f * Mathf.Round(mActual * 1000f);
+		mActual -= mDelta;
 		mTime = time;
 		return mDelta;
 	}

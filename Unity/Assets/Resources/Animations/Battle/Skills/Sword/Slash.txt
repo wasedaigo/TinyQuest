@@ -332,12 +332,6 @@
           "id": "Battle/Skills/Effect/Slash01",
           "type": "Animation",
           "frameNo": 26
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 33,
-          "rect": null
         }
       ],
       "rotation": [

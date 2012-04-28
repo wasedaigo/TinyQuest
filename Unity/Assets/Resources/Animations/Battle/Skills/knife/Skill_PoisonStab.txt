@@ -29,12 +29,6 @@
           "id": "Battle/Skills/knife/Skill_Stab",
           "type": "Animation",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 31,
-          "rect": null
         }
       ],
       "rotation": [
@@ -76,12 +70,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 39,
-          "rect": null
         }
       ],
       "rotation": [

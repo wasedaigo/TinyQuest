@@ -96,12 +96,6 @@
           "duration": 2,
           "wait": true,
           "frameNo": 7
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 9,
-          "rect": null
         }
       ],
       "rotation": [

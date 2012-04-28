@@ -44,8 +44,7 @@ public class UIInput : MonoBehaviour
 	{
 		get
 		{
-			if (selected) return mText;
-			return (label != null) ? label.text : "";
+			return mText;
 		}
 		set
 		{
@@ -53,9 +52,12 @@ public class UIInput : MonoBehaviour
 
 			if (label != null)
 			{
+				if (string.IsNullOrEmpty(value)) value = mDefaultText;
+
 				label.supportEncoding = false;
 				label.text = selected ? value + caratChar : value;
 				label.showLastPasswordChar = selected;
+				label.color = (selected || value != mDefaultText) ? activeColor : mDefaultColor;
 			}
 		}
 	}
@@ -93,10 +95,22 @@ public class UIInput : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Initialize everything on start.
+	/// Initialize everything on awake.
 	/// </summary>
 
-	void Start () { Init(); }
+	void Awake () { Init(); }
+
+	/// <summary>
+	/// If the object is currently highlighted, it should also be selected.
+	/// </summary>
+
+	void OnEnable () { if (UICamera.IsHighlighted(gameObject)) OnSelect(true); }
+
+	/// <summary>
+	/// Remove the selection.
+	/// </summary>
+
+	void OnDisable () { if (UICamera.IsHighlighted(gameObject)) OnSelect(false); }
 
 	/// <summary>
 	/// Selection event, sent by UICamera.
@@ -207,8 +221,10 @@ public class UIInput : MonoBehaviour
 			if (Application.platform == RuntimePlatform.Android) return;
 			if (Application.platform == RuntimePlatform.IPhonePlayer) return;
 
-			foreach (char c in input)
+			for (int i = 0, imax = input.Length; i < imax; ++i)
 			{
+				char c = input[i];
+
 				if (c == '\b')
 				{
 					// Backspace
@@ -224,7 +240,7 @@ public class UIInput : MonoBehaviour
 					selected = false;
 					return;
 				}
-				else
+				else if (c >= ' ')
 				{
 					// All other characters get appended to the text
 					mText += c;

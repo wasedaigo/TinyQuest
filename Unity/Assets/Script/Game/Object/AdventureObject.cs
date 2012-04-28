@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace TinyQuest.Component {
+namespace TinyQuest.Object {
 	public class AdventureObject : Roga2dNode {
 		protected Roga2dSprite sprite;
 		private string textureId;

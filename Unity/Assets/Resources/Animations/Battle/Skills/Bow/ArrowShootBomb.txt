@@ -408,12 +408,6 @@
             128,
             80
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 38,
-          "rect": null
         }
       ],
       "rotation": [

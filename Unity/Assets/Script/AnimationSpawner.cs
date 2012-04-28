@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TinyQuest.Component;
+using TinyQuest.Object;
 using TinyQuest.Core;
 
 public class AnimationSpawner : MonoBehaviour {
@@ -56,11 +56,6 @@ public class AnimationSpawner : MonoBehaviour {
 		// Monster
 		this.monster = spawnMonster("death_wind", -40, 0);
 		this.root.AddChild(this.monster);
-		
-		// Stage
-		Stage stage = new Stage();
-		stage.LocalPriority = 0.0f;
-		this.root.AddChild(stage);
 	}
 	
 	

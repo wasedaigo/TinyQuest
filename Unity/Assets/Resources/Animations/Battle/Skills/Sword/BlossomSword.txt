@@ -103,12 +103,6 @@
           "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 6,
-          "rect": null
         }
       ],
       "rotation": [
@@ -483,12 +477,6 @@
           "id": "Battle/Skills/Battler/SmallJump",
           "type": "Animation",
           "frameNo": 57
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 70,
-          "rect": null
         }
       ],
       "rotation": [
@@ -777,12 +765,6 @@
             32,
             32
           ]
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 52,
-          "rect": null
         }
       ],
       "rotation": [
@@ -1398,12 +1380,6 @@
           "type": "Animation",
           "maxEmitSpeed": 0.0,
           "frameNo": 48
-        },
-        {
-          "duration": 1,
-          "id": "",
-          "frameNo": 49,
-          "rect": null
         }
       ],
       "rotation": [
