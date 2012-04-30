@@ -17,7 +17,7 @@ public class AdventureStageController : BaseStageController {
 		Shader.WarmupAllShaders() ;
 
 		// animationPlayer
-		this.player = spawnBattler("fighter", 20, 0);
+		this.player = spawnBattler("fighter", Ally.State.Stand, 20, 0);
 		
 		this.battlers.Add(this.player);
 		
@@ -107,8 +107,12 @@ public class AdventureStageController : BaseStageController {
 			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
 			this.AnimationPlayer.Play(settings.Root, null, animation, null);
 			
-			//AdventureObject obj = (AdventureObject)settings.Target;
-			//obj.ApplyDamage(damageValue);
+			AdventureObject obj = (AdventureObject)settings.Target;
+			obj.ApplyDamage(damageValue);
+			if (obj.IsDead()) {
+				obj.Hide();
+				Application.LoadLevel("Home");
+			}
 		}
 	}
 	

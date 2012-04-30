@@ -46,6 +46,9 @@ namespace TinyQuest.Object {
 			get {
 				return this.sprite.RenderObject.SrcRect;
 			}
+			set {
+				this.sprite.RenderObject.SetSrcRect(value);
+			}
 		}
 	
 		public bool IsDead() {

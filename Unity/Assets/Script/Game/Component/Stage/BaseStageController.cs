@@ -18,8 +18,8 @@ public class BaseStageController : MonoBehaviour {
 		get {return stage;}	
 	}
 	
-	protected Ally spawnBattler (string name, float x, float y) {
-		Ally battler = new Ally(name);
+	protected Ally spawnBattler (string name, Ally.State state, float x, float y) {
+		Ally battler = new Ally(name, state);
 		battler.Sprite.LocalPriority = 0.1f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		

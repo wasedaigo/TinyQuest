@@ -20,7 +20,7 @@ public class AnimationSpawner : MonoBehaviour {
 	}
 	
 	Ally spawnBattler (string name, float x, float y) {
-		Ally battler = new Ally(name);
+		Ally battler = new Ally(name, Ally.State.Stand);
 		battler.Sprite.LocalPriority = 0.1f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		this.battlers.Add(battler);

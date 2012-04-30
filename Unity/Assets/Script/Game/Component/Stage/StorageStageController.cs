@@ -5,7 +5,7 @@ using TinyQuest.Core;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class HomeStageController : BaseStageController {
+public class StorageStageController : BaseStageController {
 
 	// Use this for initialization
 	protected override void Start() {
@@ -14,11 +14,7 @@ public class HomeStageController : BaseStageController {
 		this.Stage.GetCharacterLayer().AddChild(battler);
 	}
 	
-	public void OnExploreButtonClicked() {
-		Application.LoadLevel("Adventure");	
-	}
-	
-	public void OnStorageButtonClicked() {
-		Application.LoadLevel("Storage");	
+	public void OnBackButtonClicked() {
+		Application.LoadLevel("Home");	
 	}
 }

@@ -4,9 +4,26 @@ using System.Collections.Generic;
 namespace TinyQuest.Object {
 	public class Ally : AdventureObject {
 		private Roga2dBaseInterval interval;
-		public Ally(string name) 
+		private State state;
+		public enum State {
+			Stand,
+			Walk,
+			Sit
+		};
+
+		public Ally(string name, State state) 
 		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32))
 		{
+			this.state = state;
+			
+			switch (this.state) {
+				case State.Stand:
+					this.SrcRect = new Rect(32, 0, 32, 32);
+				break;
+				case State.Sit:
+					this.SrcRect = new Rect(224, 0, 32, 32);
+				break;
+			}
 		}
 
 		private Roga2dBaseInterval buildWalkInterval() {
