@@ -5,6 +5,9 @@ using TinyQuest.Core;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
+using TinyQuest.Entity;
+using TinyQuest.Factory.Entity;
+
 public class HomeStageController : BaseStageController {
 
 	// Use this for initialization
@@ -12,6 +15,8 @@ public class HomeStageController : BaseStageController {
 		base.Start();
 		var battler = this.spawnBattler("fighter", Ally.State.Sit, 20, 0);
 		this.Stage.GetCharacterLayer().AddChild(battler);
+		
+		WeaponEntity entity = WeaponFactory.Instance.Build(1, 1);
 	}
 	
 	public void OnExploreButtonClicked() {
