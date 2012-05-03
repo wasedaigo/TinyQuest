@@ -7,12 +7,13 @@ namespace Async {
 		private int loadCount;
 		private int loadedCount;
 		private System.Action callback;
-		public void Parallel(IAsync[] objects, System.Action callback) {
-			this.loadCount = objects.Length;
+		
+		public void Parallel(System.Action<System.Action>[] actions, System.Action callback) {
+			this.loadCount = actions.Length;
 			this.loadedCount = 0;
 			this.callback = callback;
-			for (int i = 0; i < objects.Length; i++) {
-				objects[i].Load(this.LoadFinished);	
+			for (int i = 0; i < actions.Length; i++) {
+				actions[i](this.LoadFinished);
 			}
 		}
 		
