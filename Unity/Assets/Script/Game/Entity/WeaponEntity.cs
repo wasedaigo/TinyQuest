@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TinyQuest.Data;
-using TinyQuest.Factory.Data;
+using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Entity {
 

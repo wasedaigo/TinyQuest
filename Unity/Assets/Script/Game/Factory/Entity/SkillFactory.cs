@@ -1,7 +1,7 @@
 using UnityEngine;
 using TinyQuest.Data;
 using TinyQuest.Entity;
-using TinyQuest.Factory.Data;
+using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Factory.Entity {
 	public class SkillFactory {
@@ -10,7 +10,7 @@ namespace TinyQuest.Factory.Entity {
 		private SkillFactory(){}
 		
 		public SkillEntity Build(int id) {
-			MasterSkill masterSkill = MasterDataFactory<MasterSkill>.Instance.Get(id);
+			MasterSkill masterSkill = MasterDataCache<MasterSkill>.Instance.Get(id);
 			
 			SkillEntity skillEntity = new SkillEntity(masterSkill);
 			return skillEntity;

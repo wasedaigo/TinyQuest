@@ -1,19 +1,20 @@
-using System.Collections.Generic;
-
 namespace TinyQuest.Data{
-	public class UserSkill {
+	public class UserSkill: BaseMasterData {
 		public int skillId;
 		public int rate;
 	}
-	
-	public class UserWeapon {
-		public int id;
+
+	public class UserWeapon: BaseMasterData {
 		public int weaponId;
-		public UserSkill[] skills;
 		public int exp;
 	}
 
-	public class UserWeapons {
-		public UserWeapon[] data;
+	public class UserZone: BaseMasterData {
+		public ZoneEvent[] events;
+	}
+
+	public class UserZoneProgress: BaseMasterData {
+      	public int progressStep;
+		public int clearCount;
 	}
 }

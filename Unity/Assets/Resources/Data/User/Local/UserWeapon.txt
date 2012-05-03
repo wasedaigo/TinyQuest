@@ -1,0 +1,14 @@
+{
+  "data":[
+      {
+      	"id": 1,
+      	"weaponId": 1,
+		"exp": 1
+      },
+      {
+      	"id": 2,
+      	"weaponId": 2,
+		"exp": 1
+      }
+    ]
+}

@@ -2,7 +2,7 @@ using UnityEngine;
 using TinyQuest.Entity;
 
 namespace TinyQuest.Factory.Entity {
-	public class BattlerFactory {
+	public class BattlerFactory  {
 		public static readonly BattlerFactory Instance = new BattlerFactory();
 		private BattlerFactory(){}
 

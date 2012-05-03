@@ -26,7 +26,7 @@ namespace TinyQuest.Data{
 		public int chance1;
 		public int chance2;
 		public int chance3;
-		
+
 		public MasterWeaponParameter(int[] rawData) {
 			this.exp = rawData[(int)Key.Exp];
 			this.power = rawData[(int)Key.Power];
@@ -71,15 +71,12 @@ namespace TinyQuest.Data{
 		public string name;
 		public string path;
 	}
-
+	
 	public class MasterZone : BaseMasterData {
-      	int blocks;
-		string path;
+      	public int stepCount;
+		public string path;
+		ZoneEvent[] events;
 		//event
 		//enemy
-	}
-	
-	public class MasterLocalizedText {
-		public Dictionary<string, string> data;
 	}
 }

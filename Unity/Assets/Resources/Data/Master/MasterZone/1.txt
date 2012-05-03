@@ -2,7 +2,7 @@
   "data":[
       {
       	"id": 1,
-      	"blocks": 100,
+      	"stepCount": 10,
       	"path": "BG/bg0001",
       	"event": {
       	},

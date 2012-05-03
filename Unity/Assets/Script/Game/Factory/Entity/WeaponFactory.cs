@@ -1,7 +1,7 @@
 using UnityEngine;
 using TinyQuest.Data;
 using TinyQuest.Entity;
-using TinyQuest.Factory.Data;
+using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Factory.Entity {
 	public class WeaponFactory {
@@ -10,20 +10,18 @@ namespace TinyQuest.Factory.Entity {
 		private WeaponFactory(){}
 	
 		public WeaponEntity Build(int id) {
-			MasterWeapon masterWeapon = MasterDataFactory<MasterWeapon>.Instance.Get(id);
+			MasterWeapon masterWeapon = MasterDataCache<MasterWeapon>.Instance.Get(id);
 			
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, 1);
 			return weapon;
 		}
 		
 		public WeaponEntity Build(int weaponId, int userWeaponId) {
-			MasterWeapon masterWeapon = MasterDataFactory<MasterWeapon>.Instance.Get(weaponId);
-
-			UserWeapons userWeapons = UserDataFactory<UserWeapons>.Instance.Build();
-			UserWeapon userWeapon = userWeapons.data[userWeaponId];
-
+			MasterWeapon masterWeapon = MasterDataCache<MasterWeapon>.Instance.Get(weaponId);
+			UserWeapon userWeapon = LocalUserDataCache<UserWeapon>.Instance.Get(userWeaponId);
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, userWeapon, 1);
 			return weapon;
 		}
+		
 	}
 }
