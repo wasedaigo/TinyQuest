@@ -5,7 +5,7 @@ using TinyQuest.Core;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class AdventureStageController : BaseStageController {
+public class AdventureZoneController : BaseZoneController {
 	
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();

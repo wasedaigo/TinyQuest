@@ -5,7 +5,7 @@ using TinyQuest.Core;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class StorageStageController : BaseStageController {
+public class StorageZoneController : BaseZoneController {
 
 	// Use this for initialization
 	protected override void Start() {

@@ -8,7 +8,7 @@ namespace TinyQuest.Factory.Entity {
 
 		public BattlerEntity Build(int no) {
 			BattlerEntity battler = new BattlerEntity(100);
-			WeaponEntity weapon = WeaponFactory.Instance.Build(0);
+			WeaponEntity weapon = WeaponFactory.Instance.Build(1, 1);
 			battler.SetWeapon(0, weapon);
 			return battler;
 		}

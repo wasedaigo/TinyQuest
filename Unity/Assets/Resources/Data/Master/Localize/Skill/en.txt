@@ -1,0 +1,4 @@
+{
+  "Skill_Sword_Slash": "Slash",
+  "Skill_Sword_Double_Slash": "Double Slash",
+}

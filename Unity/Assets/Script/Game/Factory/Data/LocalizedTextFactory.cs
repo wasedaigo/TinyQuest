@@ -12,6 +12,7 @@ namespace TinyQuest.Factory.Data {
 			if (this.masterData == null) {
 				TextAsset txt = (TextAsset)Resources.Load("Data/Master/Localize/en", typeof(TextAsset));
 				this.masterData = JsonReader.Deserialize<MasterLocalizedText>(txt.text);
+				
 			}
 			return this.masterData.data[key];
 		}

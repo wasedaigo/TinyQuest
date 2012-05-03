@@ -5,7 +5,7 @@ using TinyQuest.Core;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class BaseStageController : MonoBehaviour {
+public class BaseZoneController : MonoBehaviour {
 	
 	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;

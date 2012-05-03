@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{CD8C9303-404B-FB8D-6B9B-21988D5CAC0A}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_0;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_IOS;UNITY_IPHONE;ENABLE_GENERICS;ENABLE_TERRAIN;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\JsonFx\JsonFx.Json\About.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\DataReaderProvider.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\DataWriterProvider.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\EcmaScriptIdentifier.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\EcmaScriptWriter.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\IDataReader.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\IDataWriter.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\IJsonSerializable.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonDataReader.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonDataWriter.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonIgnoreAttribute.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonNameAttribute.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonReader.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonReaderSettings.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonSerializationException.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonSpecifiedPropertyAttribute.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonToken.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonWriter.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\JsonWriterSettings.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\Properties\AssemblyInfo.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\Properties\AssemblyVersion.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\TypeCoercionUtility.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\XmlDataReader.cs" />
+     <Compile Include="Assets\JsonFx\JsonFx.Json\XmlDataWriter.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UIEquipmentSlot.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UIItemSlot.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UIItemStorage.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UIStorageSlot.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UITooltip.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvAttachmentPoint.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvBaseItem.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvDatabase.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvEquipment.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvGameItem.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvStat.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\System\InvTools.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\ChatInput.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\DownloadTexture.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\DragDropContainer.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\DragDropItem.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\DragDropRoot.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\DragDropSurface.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\LagPosition.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\LagRotation.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\LoadLevelOnClick.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\LookAtTarget.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\PanWithMouse.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\PlayIdleAnimations.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\SetColorOnSelection.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\ShaderQuality.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\Spin.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\SpinWithMouse.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\TypewriterEffect.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\WindowAutoYaw.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\Other\WindowDragTilt.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\LanguageSelection.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonColor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonKeys.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonMessage.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonOffset.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonPlayAnimation.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonRotation.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonScale.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonSound.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIButtonTween.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UICheckbox.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UICheckboxControlledComponent.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UICheckboxControlledObject.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIDragCamera.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIDragObject.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIDragPanelContents.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIDraggableCamera.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIDraggablePanel.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIForwardEvents.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIGrid.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIImageButton.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIPopupList.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UISavedOption.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UIScrollBar.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UISlider.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UISliderColors.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Interaction\UITable.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\ActiveAnimation.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\AnimationOrTween.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\BMFont.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\BMGlyph.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\BetterList.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\ByteReader.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\IgnoreTimeScale.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\Localization.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\NGUIDebug.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\NGUIMath.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\NGUITools.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\SpringPanel.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UIDrawCall.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UIEventListener.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UIGeometry.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UINode.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UIWidget.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Internal\UpdateManager.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\SpringPosition.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenColor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenPosition.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenRotation.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenScale.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\TweenTransform.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Tweening\UITweener.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIAnchor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIAtlas.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UICamera.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIFilledSprite.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIFont.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIInput.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIInputSaved.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UILabel.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UILocalize.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIOrthoCamera.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIPanel.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIRoot.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UISlicedSprite.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UISprite.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UISpriteAnimation.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIStretch.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UITextList.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UITiledSprite.cs" />
+     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Script\AnimationSpawner.cs" />
+     <Compile Include="Assets\Script\Game\Component\ActionWheel\ActionWheel.cs" />
+     <Compile Include="Assets\Script\Game\Component\ActionWheel\ActionWheelBattleController.cs" />
+     <Compile Include="Assets\Script\Game\Component\Stage\AdventureZoneController.cs" />
+     <Compile Include="Assets\Script\Game\Component\Stage\BaseZoneController.cs" />
+     <Compile Include="Assets\Script\Game\Component\Stage\HomeZoneController.cs" />
+     <Compile Include="Assets\Script\Game\Component\Stage\Stage.cs" />
+     <Compile Include="Assets\Script\Game\Component\Stage\StorageZoneController.cs" />
+     <Compile Include="Assets\Script\Game\Config.cs" />
+     <Compile Include="Assets\Script\Game\Core\EffectBuilder.cs" />
+     <Compile Include="Assets\Script\Game\Core\SceneDirector.cs" />
+     <Compile Include="Assets\Script\Game\Core\Utils.cs" />
+     <Compile Include="Assets\Script\Game\Data\MasterData.cs" />
+     <Compile Include="Assets\Script\Game\Data\UserData.cs" />
+     <Compile Include="Assets\Script\Game\Entity\BattlerEntity.cs" />
+     <Compile Include="Assets\Script\Game\Entity\SkillEntity.cs" />
+     <Compile Include="Assets\Script\Game\Entity\StageEntity.cs" />
+     <Compile Include="Assets\Script\Game\Entity\WeaponEntity.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Data\LocalizedTextFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Data\MasterDataFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Data\UserDataFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Entity\BattlerFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Entity\SkillFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Entity\WeaponFactory.cs" />
+     <Compile Include="Assets\Script\Game\Factory\Entity\ZoneFactory.cs" />
+     <Compile Include="Assets\Script\Game\Model\AdventureModel.cs" />
+     <Compile Include="Assets\Script\Game\Model\AllyModel.cs" />
+     <Compile Include="Assets\Script\Game\Model\CombatModel.cs" />
+     <Compile Include="Assets\Script\Game\Object\AdventureObject.cs" />
+     <Compile Include="Assets\Script\Game\Object\Ally.cs" />
+     <Compile Include="Assets\Script\Game\Object\Monster.cs" />
+     <Compile Include="Assets\Script\Game\Object\RevealableTileMap.cs" />
+     <Compile Include="Assets\Script\Game\Request\AdventureFinishRequest.cs" />
+     <Compile Include="Assets\Script\Game\Request\AdventureStartRequest.cs" />
+     <Compile Include="Assets\Script\Game\Request\FusionRequest.cs" />
+     <Compile Include="Assets\Script\Game\Scene\AdventurePreperationScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\AdventureScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\CollectionScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\FusionScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\GachaScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\HomeScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\ProfileScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\RaidBossPreperationScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\RaidBossScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\ResultScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\ShopScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\StartUpScene.cs" />
+     <Compile Include="Assets\Script\Game\Scene\State\Adventure\CombatState.cs" />
+     <Compile Include="Assets\Script\Game\Scene\State\Adventure\CutSceneState.cs" />
+     <Compile Include="Assets\Script\Game\Scene\State\Adventure\TravelState.cs" />
+     <Compile Include="Assets\Script\Game\Test\Core\TestUtils.cs" />
+     <Compile Include="Assets\Script\HUDFPS.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dAlphaInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dBaseInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dEventInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dFunc.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dHueInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dLoop.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dParallel.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dPositionInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dRotationInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dScaleInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dSequenceInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dSourceInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dValueInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Interval\Roga2dWait.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dAnimation.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dAnimationPlayer.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dAnimationSettings.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dButton.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dIntervalPlayer.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dNode.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dRenderObject.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dResourceManager.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dSprite.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dTiledSprite.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dTouchReceiver.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dType.cs" />
+     <Compile Include="Assets\Script\Roga2d\Roga2dUtils.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dAlphaInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dEventInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dFunc.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dHueInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dLoop.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dParallel.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dPositionInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dRotationInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dScaleInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dSequence.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dSourceInterval.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\Interval\TestRoga2dWait.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dAnimationPlayer.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dNode.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dRenderObject.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dResourceManager.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dRoot.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dSprite.cs" />
+     <Compile Include="Assets\Script\Roga2d\Test\TestRoga2dUtils.cs" />
+     <Compile Include="Assets\Script\Test\TestRunner.cs" />
+     <Compile Include="Assets\Script\Test\Tester.cs" />
+     <Compile Include="Assets\iTween\Plugins\iTween.cs" />
+     <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
+     <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
+     <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\Skill_DeadlyFang.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Depth.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCastingRingBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\HealShining01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\DeadlyFang.txt" />
+     <None Include="Assets\Resources\Data\Master\Localize\en.txt" />
+     <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Back.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\DeadlyBite.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash03.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Thrust.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\Skill_StoneSpike.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Passive\Cover.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\test.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainBoxStay.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Drill.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\BloodySword.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\LightBom.txt" />
+     <None Include="Assets\Resources\Animations\Combat\jump01.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SkyCleaver.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\KnifeShining01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Walking.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainSuccess.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareParticle.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\ArmorBreaker.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\StraightLaserBullet.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\Slash.txt" />
+     <None Include="Assets\NGUI\ReadMe - 1.90.txt" />
+     <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Running.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\Skill_EarthCrack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_DancingKnives.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\bow_bomb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\Target.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SmallJump.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\Impale.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\Camera.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\Implode.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\WindSpiralBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareExplosion.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnifeBack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDown02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordCharge.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Lit01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\WideSwing.txt" />
+     <None Include="Assets\Resources\Data\Master\MasterWeapon.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Hea01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareExploder.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\ArrowShootBomb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnifeGo.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnife.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Resources\Animations\Combat\sword_slash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\BeamSplash01.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\MagicCasting.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTest.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillMove.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordUpper.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\Skill_Flare.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_CrossSlash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\SmokeRing.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SpinAxeY.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Jump.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Ice01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDashUpper.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainInBox.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\WindSpiralTop.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\TestSwordUpper.txt" />
+     <None Include="Assets\Resources\Data\User\UserWeapons.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\StoneSpike01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\CycloneAxe.txt" />
+     <None Include="Assets\Resources\Animations\Combat\sword_swing.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\LightParticle01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareEffect.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Test.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\Bash.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordSwing.txt" />
+     <None Include="Assets\NGUI\ReadMe - 2.0.2c.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Heal\Skill_FirstAid.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
+     <None Include="Assets\Resources\Data\Master\MasterSkill.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\Shoot.txt" />
+     <None Include="Assets\Resources\Shaders\AlphaAdditive.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Ice\Freeze.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\StoneMove01.txt" />
+     <None Include="Assets\JsonFx\JsonFx.Json\License.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\IceOrb.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\BlossomSword.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\bow_holyarrow.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\RainbowCycron.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_PoisonStab.txt" />
+     <None Include="Assets\NGUI\Examples\Other\English.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\RollBack.txt" />
+     <None Include="Assets\NGUI\Examples\Other\French.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood03.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Heal\FirstAidEffect.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraidRoll.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleKnifeRotating.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDown.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainIn.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraidSmoke.txt" />
+     <None Include="Assets\JsonFx\History.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutBottom.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Bow\ArrowShoot.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SmallBack.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Earth\EarthCrack.txt" />
+     <None Include="Assets\JsonFx\JsonFx.Json\Readme.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCastingRingTop.txt" />
+     <None Include="Assets\Resources\Animations\Combat\effect_slash01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\ChainInLine.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Monster\SpikeWave.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTop.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Thunder\Lightening.txt" />
+     <None Include="Assets\Resources\Shaders\TintAlphaBlended.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_Stab.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\HealShining02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\System\DefaultSkill.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_Backstab.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Slash04.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Axe\SingleSpinAxe.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillAction.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCasting.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\LeaveDance.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Slash.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\Skill_Laser01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_SwordCharge.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearHold.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Thrust01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Stab01.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearAirraid.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Smoke01.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Bash01.txt" />
+     <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood02.txt" />
+     <None Include="Assets\Resources\Animations\Battle\Skills\Laser\test.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

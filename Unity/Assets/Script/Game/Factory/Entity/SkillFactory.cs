@@ -10,8 +10,7 @@ namespace TinyQuest.Factory.Entity {
 		private SkillFactory(){}
 		
 		public SkillEntity Build(int id) {
-			MasterSkills masterSkills = MasterDataFactory<MasterSkills>.Instance.Get();
-			MasterSkill masterSkill = masterSkills.data[id.ToString()];
+			MasterSkill masterSkill = MasterDataFactory<MasterSkill>.Instance.Get(id);
 			
 			SkillEntity skillEntity = new SkillEntity(masterSkill);
 			return skillEntity;

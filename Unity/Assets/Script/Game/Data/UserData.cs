@@ -7,10 +7,13 @@ namespace TinyQuest.Data{
 	}
 	
 	public class UserWeapon {
+		public int id;
+		public int weaponId;
 		public UserSkill[] skills;
+		public int exp;
 	}
 
 	public class UserWeapons {
-		public Dictionary<string, UserWeapon> data;
+		public UserWeapon[] data;
 	}
 }

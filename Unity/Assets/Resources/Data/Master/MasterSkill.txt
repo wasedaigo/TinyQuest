@@ -1,0 +1,12 @@
+{
+  "data":{
+      "1": {
+          "name": "Skill_Sword_Slash",
+          "path": "Combat/sword_slash01"
+      },
+      "2": {
+          "name": "Skill_Sword_Double_Slash",
+          "path": "Combat/sword_slash01"
+      }
+    }
+}

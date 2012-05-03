@@ -7,15 +7,15 @@ namespace TinyQuest.Factory.Data {
 		
 		public static readonly UserDataFactory<T> Instance = new UserDataFactory<T>();
 		private UserDataFactory(){}
-		private T masterData;
+		private T userData;
 
 		public T Build() {
-			if (this.masterData == null) {
+			if (this.userData == null) {
 				string path = typeof(T).Name;
 				TextAsset txt = (TextAsset)Resources.Load("Data/User/" + path, typeof(TextAsset));
-				this.masterData = JsonReader.Deserialize<T>(txt.text);
+				this.userData = JsonReader.Deserialize<T>(txt.text);
 			}
-			return this.masterData;
+			return this.userData;
 		}
 	}
 }
