@@ -8,10 +8,9 @@ using Async;
 public class MasterDataRequestMock<T> : MasterDataRequest<T>
 	where T : BaseMasterData
 {
-	public override void Get(System.Action<MasterDataCollection<T>> callback) {
+	public override void Get(System.Action<string> callback) {
 		string path = typeof(T).Name;
 		TextAsset txt = (TextAsset)Resources.Load("Data/Master/" + path, typeof(TextAsset));
-		MasterDataCollection<T> data = JsonReader.Deserialize<MasterDataCollection<T>>(txt.text);
-		callback(data);
+		callback(txt.text);
 	}
 }

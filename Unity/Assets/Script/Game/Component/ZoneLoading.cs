@@ -16,7 +16,7 @@ public class ZoneLoading : MonoBehaviour {
 		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
 			(next) => {
 				userZoneRequest.Get(
-					(MasterDataCollection<UserZone> result) => {
+					(string result) => {
 						MasterDataCache<UserZone>.Instance.Set(result);
 						next();
 					}

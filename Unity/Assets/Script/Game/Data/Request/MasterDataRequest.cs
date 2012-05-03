@@ -7,6 +7,6 @@ using TinyQuest.Data;
 public class MasterDataRequest<T>
 	where T : BaseMasterData
 {
-	public virtual void Get(System.Action<MasterDataCollection<T>> callback) {
+	public virtual void Get(System.Action<string> callback) {
 	}
 }

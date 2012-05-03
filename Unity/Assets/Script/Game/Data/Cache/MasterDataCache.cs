@@ -15,7 +15,8 @@ namespace TinyQuest.Data.Cache {
 			return this.masterData[id];
 		}
 		
-		public void Set(MasterDataCollection<T> data) {
+		public void Set(string jsonText) {
+			MasterDataCollection<T> data = JsonReader.Deserialize<MasterDataCollection<T>>(jsonText);
 			this.masterData.Clear();
 			for (int i = 0; i < data.data.Length; i++) {
 				this.masterData.Add(data.data[i].id, data.data[i]);

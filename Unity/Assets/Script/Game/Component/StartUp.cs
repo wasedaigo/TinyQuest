@@ -15,7 +15,7 @@ public class StartUp : MonoBehaviour {
 		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
 			(next) => {
 				masterWeaponRequest.Get(
-					(MasterDataCollection<MasterWeapon> result) => {
+					(string result) => {
 						MasterDataCache<MasterWeapon>.Instance.Set(result);
 						next();
 					}
@@ -23,7 +23,7 @@ public class StartUp : MonoBehaviour {
 			},
 			(next) => {
 				userWeaponRequest.Get(
-					(MasterDataCollection<UserWeapon> result) => {
+					(string result) => {
 						MasterDataCache<UserWeapon>.Instance.Set(result);
 						next();
 					}
