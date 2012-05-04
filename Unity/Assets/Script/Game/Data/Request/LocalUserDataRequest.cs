@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using TinyQuest.Data;
 
-public class LocalUserDataRequest<T>
-	where T : BaseMasterData
-{
-	public virtual void Get(System.Action<string> callback) {
+namespace TinyQuest.Data.Request {
+	public class LocalUserDataRequest<T>
+	{
+		public virtual void Get(System.Action<string> callback) {
+		}
 	}
 }

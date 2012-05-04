@@ -1,0 +1,25 @@
+{
+    "weapons": [
+        {
+            "id": 1,
+            "weaponId": 1,
+            "exp": 1
+        },
+        {
+            "id": 2,
+            "weaponId": 2,
+            "exp": 1
+        }
+    ],
+    "zone": {
+            "id": 1,
+            "events": []
+    },
+    "zoneProgresses": [
+        {
+            "id": 1,
+            "clearCount": 0,
+            "progressStep": 10
+        }
+    ]
+}

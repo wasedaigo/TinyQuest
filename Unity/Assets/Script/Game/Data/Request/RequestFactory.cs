@@ -12,18 +12,16 @@ namespace TinyQuest.Data.Request {
 			this.mockEnabled = mockEnabled;
 		}
 		
-		public MasterDataRequest<T> GetMasterDataRequest<MasterDataRequest, T>() 
-			where T : BaseMasterData
+		public MasterDataRequest GetMasterDataRequest() 
 		{
 			if (this.mockEnabled) {
-				return new MasterDataRequestMock<T>();
+				return new MasterDataRequestMock();
 			} else {
-				return new MasterDataRequest<T>();
+				return new MasterDataRequest();
 			}
 		}
 		
 		public LocalUserDataRequest<T> GetUserDataRequest<LocalUserDataRequest, T>() 
-			where T : BaseMasterData
 		{
 			if (this.mockEnabled) {
 				return new LocalUserDataRequestMock<T>();

@@ -8,23 +8,15 @@ using Async;
 public class StartUp : MonoBehaviour {
 
 	void Start () {
+		Application.targetFrameRate = 60;
 		RequestFactory.Instance.EnableMock(true);
-		MasterDataRequest<MasterWeapon> masterWeaponRequest = RequestFactory.Instance.GetMasterDataRequest<MasterDataRequest<MasterWeapon>, MasterWeapon>();
-		LocalUserDataRequest<UserWeapon> userWeaponRequest = RequestFactory.Instance.GetUserDataRequest<LocalUserDataRequest<UserWeapon>, UserWeapon>();
+		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
 		
 		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
 			(next) => {
-				masterWeaponRequest.Get(
+				masterRequest.GetStartUpData(
 					(string result) => {
-						MasterDataCache<MasterWeapon>.Instance.Set(result);
-						next();
-					}
-				);
-			},
-			(next) => {
-				userWeaponRequest.Get(
-					(string result) => {
-						MasterDataCache<UserWeapon>.Instance.Set(result);
+						MasterDataCache.Instance.Set(result);
 						next();
 					}
 				);

@@ -2,17 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 
 namespace TinyQuest.Data{
-	public class BaseMasterData
-	{
-		public int id;
-	}
-	
-	public class MasterDataCollection<T>
-		where T : BaseMasterData
-	{
-		public T[] data;
-	}
-	
 	public struct MasterWeaponParameter {
 		public enum Key {
 			Exp = 0,
@@ -36,10 +25,10 @@ namespace TinyQuest.Data{
 		}
 	}
 	
-	public class MasterWeapon : BaseMasterData {
+	public class MasterWeapon : IDData{
 		public static readonly int MinLevel = 1;
 		public static readonly int MaxLevel = 99;
-		
+
 		public string name;
 		public string path;
 		public string description;
@@ -67,16 +56,27 @@ namespace TinyQuest.Data{
 		}
 	}
 	
-	public class MasterSkill : BaseMasterData {
+	public class MasterSkill : IDData {
 		public string name;
 		public string path;
 	}
 	
-	public class MasterZone : BaseMasterData {
+	public class MasterZone : IDData {
       	public int stepCount;
 		public string path;
 		ZoneEvent[] events;
 		//event
 		//enemy
+	}
+	
+	public class MasterData {
+		public MasterZone zone;
+		public MasterWeapon[] weapons;
+		public MasterSkill[] skills;
+	}
+	
+	public class MasterFile {
+		public float version;
+		public MasterData data;
 	}
 }

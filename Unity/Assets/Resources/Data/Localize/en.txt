@@ -1,0 +1,10 @@
+{
+  "weapon" : {
+    "Sword_ShortSword": "Short Sword",
+    "Sword_BroadSword": "Broad Sword"
+  },
+  "skill" : {
+    "Sword_Slash": "Slash",
+    "Sword_Double_Slash": "Double Slash",
+  }
+}

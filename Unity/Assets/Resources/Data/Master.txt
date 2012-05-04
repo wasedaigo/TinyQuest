@@ -1,0 +1,41 @@
+{
+  "version":1,
+  "data":{
+    "skills":[
+        {
+          "id": 1,
+          "name": "Skill_Sword_Slash",
+          "path": "Combat/sword_slash01"
+        },
+        {
+          "id": 2,
+          "name": "Skill_Sword_Double_Slash",
+          "path": "Combat/sword_slash01"
+        }
+    ],
+    "weapons":[
+        {
+          "id": 1,
+      "name": "Weapon_Sword_ShortSword",
+      "path": "Sword/ShortSword",
+      "description": "",
+      "power": 100,
+      "parameters": [
+          [1000, 20, 60, 40, 0],
+          [2000, 40, 50, 50, 0]
+      ]
+        },
+        {
+          "id": 2,
+      "name": "Weapon_Sword_BroadSword",
+      "path": "Sword/BroadSword",
+      "description": "",
+      "power": 100,
+      "parameters": [
+          [1000, 20, 60, 40, 0],
+          [2000, 40, 50, 50, 0]
+      ]
+        }
+      ]
+    }
+}

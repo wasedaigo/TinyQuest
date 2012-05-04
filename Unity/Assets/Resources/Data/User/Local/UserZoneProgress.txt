@@ -1,9 +1,0 @@
-{
-  "data":[
-      {
-        "id": 1,
-        "clearCount": 0,
-      	"progressStep" : 10
-      }
-    ]
-}

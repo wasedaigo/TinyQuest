@@ -10,15 +10,15 @@ namespace TinyQuest.Factory.Entity {
 		private WeaponFactory(){}
 	
 		public WeaponEntity Build(int id) {
-			MasterWeapon masterWeapon = MasterDataCache<MasterWeapon>.Instance.Get(id);
+			MasterWeapon masterWeapon = MasterDataCache.Instance.GetWeaponByID(id);
 			
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, 1);
 			return weapon;
 		}
 		
 		public WeaponEntity Build(int weaponId, int userWeaponId) {
-			MasterWeapon masterWeapon = MasterDataCache<MasterWeapon>.Instance.Get(weaponId);
-			UserWeapon userWeapon = LocalUserDataCache<UserWeapon>.Instance.Get(userWeaponId);
+			MasterWeapon masterWeapon = MasterDataCache.Instance.GetWeaponByID(weaponId);
+			UserWeapon userWeapon = LocalUserDataCache.Instance.GetWeaponByID(userWeaponId);
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, userWeapon, 1);
 			return weapon;
 		}

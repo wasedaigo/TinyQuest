@@ -6,24 +6,48 @@ using TinyQuest.Data;
 using Async;
 
 namespace TinyQuest.Data.Cache {
-	public class LocalUserDataCache<T>
-		where T : BaseMasterData
+	public class LocalUserDataCache
 	{
-		public static readonly LocalUserDataCache<T> Instance = new LocalUserDataCache<T>();
+		public static readonly LocalUserDataCache Instance = new LocalUserDataCache();
 		private LocalUserDataCache(){}
-
-		private Dictionary<int, T> userData = new Dictionary<int, T>();
 		
-		public T Get(int id) {
-			return this.userData[id];
+		private UserZone userZone;
+		private Dictionary<int, UserWeapon> weaponDictionary;
+		private Dictionary<int, UserZoneProgress> zoneProgressDictionary;
+		
+		public string Serialize() {
+			// Need to implement
+			return "";	
 		}
 		
 		public void Set(string jsonText) {
-			MasterDataCollection<T> data = JsonReader.Deserialize<MasterDataCollection<T>>(jsonText);
-			this.userData.Clear();
-			for (int i = 0; i < data.data.Length; i++) {
-				this.userData.Add(data.data[i].id, data.data[i]);
+			LocalUserData localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
+
+			this.userZone = localUserData.zone;
+			this.zoneProgressDictionary = this.GetAsDictionary<UserZoneProgress>(localUserData.zoneProgresses);
+			this.weaponDictionary = this.GetAsDictionary<UserWeapon>(localUserData.weapons);
+		}
+		
+		public void SetZone(string jsonText) {
+			this.userZone = JsonReader.Deserialize<UserZone>(jsonText);
+		}
+		
+		private Dictionary<int, T> GetAsDictionary<T>(T[] data) 
+			where T : IDData
+		{
+			Dictionary<int, T> dictionary = new Dictionary<int, T>();
+			for (int i = 0; i < data.Length; i++) {
+				dictionary.Add(data[i].id, data[i]);
 			}
+			return dictionary;
+		}
+		
+		public UserWeapon GetWeaponByID(int id) {
+			return this.weaponDictionary[id];
+		}
+		
+		public UserZoneProgress GetZoneProgressByID(int id) {
+			return this.zoneProgressDictionary[id];
 		}
 	}
 }

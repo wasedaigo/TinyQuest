@@ -1,20 +1,22 @@
 namespace TinyQuest.Data{
-	public class UserSkill: BaseMasterData {
-		public int skillId;
-		public int rate;
-	}
 
-	public class UserWeapon: BaseMasterData {
+	public class UserWeapon : IDData{
 		public int weaponId;
 		public int exp;
 	}
 
-	public class UserZone: BaseMasterData {
+	public class UserZone : IDData{
 		public ZoneEvent[] events;
 	}
 
-	public class UserZoneProgress: BaseMasterData {
+	public class UserZoneProgress : IDData {
       	public int progressStep;
 		public int clearCount;
+	}
+	
+	public class LocalUserData {
+		public UserZone zone;
+		public UserWeapon[] weapons;
+		public UserZoneProgress[] zoneProgresses;
 	}
 }

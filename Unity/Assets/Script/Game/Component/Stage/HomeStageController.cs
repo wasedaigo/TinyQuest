@@ -1,11 +1,9 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-using TinyQuest.Core;
-using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class StorageZoneController : BaseZoneController {
+public class HomeStageController : BaseStageController {
 
 	// Use this for initialization
 	protected override void Start() {
@@ -13,8 +11,12 @@ public class StorageZoneController : BaseZoneController {
 		var battler = this.spawnBattler("fighter", Ally.State.Sit, 20, 0);
 		this.Stage.GetCharacterLayer().AddChild(battler);
 	}
+
+	public void OnExploreButtonClicked() {
+		Application.LoadLevel("ZoneLoading");	
+	}
 	
-	public void OnBackButtonClicked() {
-		Application.LoadLevel("Home");	
+	public void OnStorageButtonClicked() {
+		Application.LoadLevel("Storage");	
 	}
 }

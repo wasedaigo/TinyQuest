@@ -5,12 +5,13 @@ using System.IO;
 using TinyQuest.Data;
 using Async;
 
-public class LocalUserDataRequestMock<T> : LocalUserDataRequest<T>
-	where T : BaseMasterData
-{
-	public override void Get(System.Action<string> callback) {
-		string path = typeof(T).Name;
-		TextAsset txt = (TextAsset)Resources.Load("Data/User/Local/" + path, typeof(TextAsset));
-		callback(txt.text);
+namespace TinyQuest.Data.Request {
+	public class LocalUserDataRequestMock<T> : LocalUserDataRequest<T>
+	{
+		public override void Get(System.Action<string> callback) {
+			TextAsset txt = (TextAsset)Resources.Load("Data/LocalUser", typeof(TextAsset));
+			callback(txt.text);
+		}
+		
 	}
 }

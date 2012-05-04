@@ -5,12 +5,12 @@ using System.IO;
 using TinyQuest.Data;
 using Async;
 
-public class MasterDataRequestMock<T> : MasterDataRequest<T>
-	where T : BaseMasterData
-{
-	public override void Get(System.Action<string> callback) {
-		string path = typeof(T).Name;
-		TextAsset txt = (TextAsset)Resources.Load("Data/Master/" + path, typeof(TextAsset));
-		callback(txt.text);
+namespace TinyQuest.Data.Request {
+	public class MasterDataRequestMock : MasterDataRequest
+	{
+		public override void GetStartUpData(System.Action<string> callback) {
+			TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
+			callback(txt.text);
+		}
 	}
 }

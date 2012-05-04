@@ -1,4 +1,0 @@
-{
-  "Weapon_Sword_ShortSword": "Short Sword",
-  "Weapon_Sword_BroadSword": "Broad Sword"
-}
