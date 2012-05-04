@@ -44,7 +44,7 @@ public class Stage : MonoBehaviour {
 		new ParallaxLayerInfo(0.0f, 30, 0.3f)
 	};
 
-	public void Awake() 
+	void Awake() 
 	{
 		this.bgFilePath = "bg/bg0002";
 		
@@ -53,10 +53,9 @@ public class Stage : MonoBehaviour {
 		this.root.Transform.parent = this.transform;
 		Roga2dUtils.applyState(this.transform, state);
 		
-		this.setupStage();
 	}
 	
-	private void setupStage() {
+	void Start() {
 		for (int i = 0; i < LayerNum; i++) {
 			Roga2dNode node = new Roga2dNode();
 			for (int j = 0; j < LayerNodeNum; j++) {
@@ -72,6 +71,8 @@ public class Stage : MonoBehaviour {
 			this.root.AddChild(node);
 			this.parallaxLayers[i] = node;
 		}
+		
+		this.UpdateParallaxEffect(true);
 	}
 	
 	public Roga2dNode GetCharacterLayer() {
@@ -103,7 +104,7 @@ public class Stage : MonoBehaviour {
 		}
 	}
 
-	private void UpdateParallaxEffect()
+	private void UpdateParallaxEffect(bool immediate)
 	{
 		float deviceMoveX = Input.acceleration.y;
 		deviceMoveX = (deviceMoveX < 0.5f) ? deviceMoveX : 0.5f;
@@ -122,7 +123,12 @@ public class Stage : MonoBehaviour {
 				ParallaxLayerInfo layerInfo = layerInfoList[i];
 				float parallaxX = deviceMoveX * layerInfo.moveInfluenceRatio * DeviceParallaxMoveAmount;
 				float parallaxY = deviceMoveY * layerInfo.moveInfluenceRatio * DeviceParallaxMoveAmount;
-				intervals.Add(new Roga2dPositionInterval(this.parallaxLayers[i], this.parallaxLayers[i].LocalPosition, Roga2dUtils.pixelToLocal(new Vector2(parallaxX, parallaxY)), magnitude * 0.5f, true, null));
+				
+				if (immediate) {
+					this.parallaxLayers[i].LocalPixelPosition = new Vector2(parallaxX, parallaxY);
+				} else {
+					intervals.Add(new Roga2dPositionInterval(this.parallaxLayers[i], this.parallaxLayers[i].LocalPosition, Roga2dUtils.pixelToLocal(new Vector2(parallaxX, parallaxY)), magnitude * 0.5f, true, null));
+				}
 			}
 			if (this.parallaxInterval != null) {
 				Roga2dIntervalPlayer.GetInstance().Stop(this.parallaxInterval);
@@ -138,7 +144,7 @@ public class Stage : MonoBehaviour {
 	void Update()
 	{
 		this.UpdateScroll();
-		this.UpdateParallaxEffect();
+		this.UpdateParallaxEffect(false);
 		this.root.Update();
 	}
 }
