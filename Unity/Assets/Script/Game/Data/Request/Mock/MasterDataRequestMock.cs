@@ -12,5 +12,15 @@ namespace TinyQuest.Data.Request {
 			TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
 			callback(txt.text);
 		}
+		
+		public override void GetZone(int id, System.Action<string> callback) {
+			TextAsset txt = (TextAsset)Resources.Load("Data/Zone/" + id, typeof(TextAsset));
+			callback(txt.text);
+		}
+
+		public override void GetLocalizedText(string lang, System.Action<string> callback) {
+			TextAsset txt = (TextAsset)Resources.Load("Data/Localize/" + lang, typeof(TextAsset));
+			callback(txt.text);
+		}
 	}
 }

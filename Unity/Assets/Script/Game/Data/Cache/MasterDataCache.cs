@@ -6,12 +6,10 @@ using TinyQuest.Data;
 namespace TinyQuest.Data.Cache {
 	public class MasterDataCache
 	{
-		public static readonly MasterDataCache Instance = new MasterDataCache();
-		private MasterDataCache(){}
-		private MasterData masterData;
-		private MasterZone zone;
-		private Dictionary<int, MasterWeapon> masterWeaponDictionary;
-		private Dictionary<int, MasterSkill> masterSkillDictionary;
+		protected MasterData masterData;
+		protected MasterZone zone;
+		protected Dictionary<int, MasterWeapon> masterWeaponDictionary;
+		protected Dictionary<int, MasterSkill> masterSkillDictionary;
 		
 		public void Set(string jsonText) {
 			MasterFile masterFile = JsonReader.Deserialize<MasterFile>(jsonText);
@@ -38,15 +36,15 @@ namespace TinyQuest.Data.Cache {
 			return dictionary;
 		}
 
-		public MasterZone GetLoadedZone() {
-			return this.masterData.zone;
+		public virtual MasterZone GetLoadedZone() {
+			return this.zone;
 		}
 		
-		public MasterWeapon GetWeaponByID(int id) {
+		public virtual MasterWeapon GetWeaponByID(int id) {
 			return this.masterWeaponDictionary[id];
 		}
 		
-		public MasterSkill GetSkillByID(int id) {
+		public virtual MasterSkill GetSkillByID(int id) {
 			return this.masterSkillDictionary[id];
 		}
 	}

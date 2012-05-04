@@ -14,7 +14,7 @@ namespace TinyQuest.Data.Request {
 		
 		public MasterDataRequest GetMasterDataRequest() 
 		{
-			if (this.mockEnabled) {
+			if (Config.IsMockEnabled) {
 				return new MasterDataRequestMock();
 			} else {
 				return new MasterDataRequest();
@@ -23,7 +23,7 @@ namespace TinyQuest.Data.Request {
 		
 		public LocalUserDataRequest<T> GetUserDataRequest<LocalUserDataRequest, T>() 
 		{
-			if (this.mockEnabled) {
+			if (Config.IsMockEnabled) {
 				return new LocalUserDataRequestMock<T>();
 			} else {
 				return new LocalUserDataRequest<T>();

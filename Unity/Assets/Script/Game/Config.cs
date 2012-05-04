@@ -2,10 +2,11 @@ using UnityEngine;
 
 namespace TinyQuest {
 	public class Config {
-		public static int PanelWidth = 160;
-		public static int PanelHeight = 120;
-		public static int LogicalWidth = 160;
-		public static int LogicalHeight = 240;
+		public static readonly bool IsMockEnabled = true;
+		public static readonly int PanelWidth = 160;
+		public static readonly int PanelHeight = 120;
+		public static readonly int LogicalWidth = 160;
+		public static readonly int LogicalHeight = 240;
 		
 		private static float actualLogicalRatio = 0.0f;
 		public static float ActualLogicalRatio {

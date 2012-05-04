@@ -1,32 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 using JsonFx.Json;
 using TinyQuest.Data;
 
 namespace TinyQuest.Data.Cache {
 	public class LocalizedTextCache {
-		public enum LocalizeGroupKey{
-			System,
-			Weapon,
-			Skill,
-			Zone,
-			Count
-		};
-		public static readonly LocalizedTextCache Instance = new LocalizedTextCache();
-		private LocalizedTextCache(){}
-		private LocalizedText[] textData = new LocalizedText[(int)LocalizeGroupKey.Count];
-		private bool loaded;
+		protected Dictionary<string, LocalizedText> textData = new Dictionary<string, LocalizedText>();
 		
-		public string Get(LocalizeGroupKey groupKey, string key) {
-			if (!this.loaded) {
-				TextAsset txt = (TextAsset)Resources.Load("Data/Localize/en/" + groupKey.ToString(), typeof(TextAsset));
-				this.textData[(int)groupKey] = JsonReader.Deserialize<LocalizedText>(txt.text);
-				this.loaded = true;
-			}
-			return this.textData[(int)groupKey].data[key];
+		public virtual string Get(string groupKey, string key) {
+			return this.textData[groupKey].data[key];
+		}
+
+		public void Set(string text) {
+			this.textData = JsonReader.Deserialize<Dictionary<string, LocalizedText>>(text);
 		}
 		
-		public void Set(LocalizeGroupKey groupKey, LocalizedText data) {
-			this.textData[(int)groupKey] = data;
+		public void Set(string groupKey, Dictionary<string, string> data) {
+			this.textData[groupKey].data = data;
 		}
 	}
 }

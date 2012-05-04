@@ -19,7 +19,15 @@ public class StartUp : MonoBehaviour {
 			(next) => {
 				masterRequest.GetStartUpData(
 					(string result) => {
-						MasterDataCache.Instance.Set(result);
+						CacheFactory.Instance.GetMasterDataCache().Set(result);
+						next();
+					}
+				);
+			},
+			(next) => {
+				masterRequest.GetLocalizedText("en",
+					(string result) => {
+						CacheFactory.Instance.GetLocalizedTextCache().Set(result);
 						next();
 					}
 				);
@@ -27,7 +35,7 @@ public class StartUp : MonoBehaviour {
 		}, this.FinishLoading);
 
 	}
-
+	
 	private void FinishLoading() {
 		Application.LoadLevel("Home");	
 	}

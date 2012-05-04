@@ -10,7 +10,7 @@ namespace TinyQuest.Factory.Entity {
 		private SkillFactory(){}
 		
 		public SkillEntity Build(int id) {
-			MasterSkill masterSkill = MasterDataCache.Instance.GetSkillByID(id);
+			MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(id);
 			
 			SkillEntity skillEntity = new SkillEntity(masterSkill);
 			return skillEntity;

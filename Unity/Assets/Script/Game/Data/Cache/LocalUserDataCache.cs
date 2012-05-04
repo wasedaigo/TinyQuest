@@ -8,12 +8,10 @@ using Async;
 namespace TinyQuest.Data.Cache {
 	public class LocalUserDataCache
 	{
-		public static readonly LocalUserDataCache Instance = new LocalUserDataCache();
-		private LocalUserDataCache(){}
 		
-		private UserZone userZone;
-		private Dictionary<int, UserWeapon> weaponDictionary;
-		private Dictionary<int, UserZoneProgress> zoneProgressDictionary;
+		protected UserZone userZone;
+		protected Dictionary<int, UserWeapon> weaponDictionary;
+		protected Dictionary<int, UserZoneProgress> zoneProgressDictionary;
 		
 		public string Serialize() {
 			// Need to implement
@@ -42,11 +40,11 @@ namespace TinyQuest.Data.Cache {
 			return dictionary;
 		}
 		
-		public UserWeapon GetWeaponByID(int id) {
+		public virtual UserWeapon GetWeaponByID(int id) {
 			return this.weaponDictionary[id];
 		}
 		
-		public UserZoneProgress GetZoneProgressByID(int id) {
+		public virtual UserZoneProgress GetZoneProgressByID(int id) {
 			return this.zoneProgressDictionary[id];
 		}
 	}
