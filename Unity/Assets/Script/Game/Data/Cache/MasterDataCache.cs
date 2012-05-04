@@ -24,7 +24,6 @@ namespace TinyQuest.Data.Cache {
 		}
 		
 		public void SetZone(string jsonText) {
-			Debug.Log(jsonText);
 			this.masterData.zone = JsonReader.Deserialize<MasterZone>(jsonText);
 			
 		}

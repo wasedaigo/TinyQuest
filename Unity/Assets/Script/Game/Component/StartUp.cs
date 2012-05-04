@@ -6,9 +6,12 @@ using TinyQuest.Data.Request;
 using Async;
 
 public class StartUp : MonoBehaviour {
-
-	void Start () {
+	
+	void Awake () {
 		Application.targetFrameRate = 60;
+	}
+	
+	void Start () {
 		RequestFactory.Instance.EnableMock(true);
 		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
 		

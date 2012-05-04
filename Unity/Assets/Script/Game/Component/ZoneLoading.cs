@@ -17,7 +17,7 @@ public class ZoneLoading : MonoBehaviour {
 			(next) => {
 				userZoneRequest.Get(
 					(string result) => {
-						MasterDataCache.Instance.SetZone(result);
+						//MasterDataCache.Instance.SetZone(result);
 						next();
 					}
 				);

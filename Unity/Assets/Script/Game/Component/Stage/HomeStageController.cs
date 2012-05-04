@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using TinyQuest.Object;
 
 public class HomeStageController : BaseStageController {
+	
+	void Awake () {
+		Application.targetFrameRate = 60;
+	}
 
 	// Use this for initialization
 	protected override void Start() {
