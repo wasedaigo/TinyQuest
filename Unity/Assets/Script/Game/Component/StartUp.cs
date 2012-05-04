@@ -12,8 +12,8 @@ public class StartUp : MonoBehaviour {
 	}
 	
 	void Start () {
-		RequestFactory.Instance.EnableMock(true);
 		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
+		LocalUserDataRequest localUserDataRequest = RequestFactory.Instance.GetUserDataRequest();
 		
 		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
 			(next) => {
@@ -28,6 +28,14 @@ public class StartUp : MonoBehaviour {
 				masterRequest.GetLocalizedText("en",
 					(string result) => {
 						CacheFactory.Instance.GetLocalizedTextCache().Set(result);
+						next();
+					}
+				);
+			},
+			(next) => {
+				localUserDataRequest.Get(
+					(string result) => {
+						CacheFactory.Instance.GetLocalUserDataCache().Set(result);
 						next();
 					}
 				);

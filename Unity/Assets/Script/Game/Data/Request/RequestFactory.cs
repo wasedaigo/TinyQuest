@@ -6,28 +6,35 @@ namespace TinyQuest.Data.Request {
 	public class RequestFactory {
 		public static readonly RequestFactory Instance = new RequestFactory();
 		private RequestFactory(){}
-
-		private bool mockEnabled;
-		public void EnableMock(bool mockEnabled) {
-			this.mockEnabled = mockEnabled;
-		}
+		
+		private MasterDataRequest masterDataRequest;
+		private LocalUserDataRequest localUserDataRequest;
+		
 		
 		public MasterDataRequest GetMasterDataRequest() 
 		{
-			if (Config.IsMockEnabled) {
-				return new MasterDataRequestMock();
-			} else {
-				return new MasterDataRequest();
+			if (this.masterDataRequest == null) {
+				if (Config.IsMockEnabled) {
+					this.masterDataRequest = new MasterDataRequestMock();
+				} else {
+					this.masterDataRequest = new MasterDataRequest();
+				}
 			}
+			
+			return this.masterDataRequest;
 		}
 		
-		public LocalUserDataRequest<T> GetUserDataRequest<LocalUserDataRequest, T>() 
+		public LocalUserDataRequest GetUserDataRequest() 
 		{
-			if (Config.IsMockEnabled) {
-				return new LocalUserDataRequestMock<T>();
-			} else {
-				return new LocalUserDataRequest<T>();
+			if (this.localUserDataRequest == null) {
+				if (Config.IsMockEnabled) {
+					this.localUserDataRequest = new LocalUserDataRequestMock();
+				} else {
+					this.localUserDataRequest = new LocalUserDataRequest();
+				}
 			}
+			
+			return this.localUserDataRequest;
 		}
 	}
 }

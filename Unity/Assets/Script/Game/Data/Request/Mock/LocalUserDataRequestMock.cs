@@ -6,7 +6,7 @@ using TinyQuest.Data;
 using Async;
 
 namespace TinyQuest.Data.Request {
-	public class LocalUserDataRequestMock<T> : LocalUserDataRequest<T>
+	public class LocalUserDataRequestMock : LocalUserDataRequest
 	{
 		public override void Get(System.Action<string> callback) {
 			TextAsset txt = (TextAsset)Resources.Load("Data/LocalUser", typeof(TextAsset));
