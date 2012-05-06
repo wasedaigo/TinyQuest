@@ -7,34 +7,34 @@
          {
             "frameNo" : 0,
             "positionTween" : "linear",
-            "sourcePath" : "combat/sword_swing.ani"
+            "sourcePath" : "Combat/Common/Swing01.ani"
          },
          {
             "frameNo" : 4,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "combat/sword_swing.ani"
+            "sourcePath" : "Combat/Common/Swing01.ani"
          },
          {
-            "frameNo" : 10,
+            "frameNo" : 9,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "combat/battler_base.png",
+            "sourcePath" : "Combat/BattlerBase.png",
             "textureRect" : [ 128, 0, 32, 32 ]
          },
          {
-            "frameNo" : 14,
+            "frameNo" : 13,
             "positionTween" : "linear",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "combat/jump01.ani"
+            "sourcePath" : "Combat/Common/Jump01.ani"
          },
          {
-            "frameNo" : 20,
+            "frameNo" : 19,
             "positionTween" : "fix",
-            "sourcePath" : "combat/jump01.ani"
+            "sourcePath" : "Combat/Common/Jump01.ani"
          }
       ],
       "1" : [
@@ -49,7 +49,7 @@
             "positionType" : "relativeToTarget",
             "rotation" : 45,
             "rotationTween" : "fix",
-            "sourcePath" : "combat/effect_slash01.ani"
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
          }
       ]
    }

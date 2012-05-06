@@ -20,7 +20,10 @@ namespace TinyQuest.Entity {
 			this.userWeapon = userWeapon;
 			this.UpdateLevel();
 		}
-	
+		
+		public string GetName() {
+			return this.masterWeapon.name;
+		}
 		
 		public SkillEntity[] GetSkills() {
 			return this.skills;

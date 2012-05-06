@@ -45,4 +45,8 @@ public class BaseStageController : MonoBehaviour {
 		this.animationPlayer.Update(Time.deltaTime);
 		Roga2dIntervalPlayer.GetInstance().Update();
 	}
+	
+	protected void OnDestroy() {
+		Roga2dResourceManager.freeResources();
+	}
 }

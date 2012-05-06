@@ -256,6 +256,7 @@ end
 # Recursively gather image dependency information
 def retrieveAllDependencies(animation_data, root_id)
     root = animation_data[root_id]
+
     if root["processed"]
         return root["data"]["dependencies"]
     else

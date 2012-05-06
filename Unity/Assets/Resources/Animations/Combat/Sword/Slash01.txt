@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "animations": [
-      "combat/sword_swing",
-      "combat/jump01",
-      "combat/effect_slash01"
+      "Combat/Common/Swing01",
+      "Combat/Common/Jump01",
+      "Combat/Effect/EffectSlash01"
     ],
     "images": [
-      "combat/battler_base",
-      "combat/weapon_sword_base",
-      "combat/effect_slash01"
+      "Combat/BattlerBase",
+      "Combat/WeaponSwordBase",
+      "Combat/EffectSlash01"
     ]
   },
   "events": {
@@ -143,7 +143,7 @@
           "duration": 10,
           "emitter": false,
           "priority": 0.5,
-          "id": "combat/sword_swing",
+          "id": "Combat/Common/Swing01",
           "type": "Animation",
           "frameNo": 0
         },
@@ -154,7 +154,7 @@
             0
           ],
           "priority": 0.5,
-          "id": "combat/battler_base",
+          "id": "Combat/BattlerBase",
           "type": "Image",
           "frameNo": 10,
           "rect": [
@@ -168,7 +168,7 @@
           "duration": 7,
           "emitter": false,
           "priority": 0.5,
-          "id": "combat/jump01",
+          "id": "Combat/Common/Jump01",
           "type": "Animation",
           "frameNo": 14
         }
@@ -246,7 +246,7 @@
           "minEmitSpeed": 0.0,
           "priority": 0.5,
           "minEmitAngle": 0,
-          "id": "combat/effect_slash01",
+          "id": "Combat/Effect/EffectSlash01",
           "maxEmitAngle": 0,
           "type": "Animation",
           "maxEmitSpeed": 0.0,

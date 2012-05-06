@@ -3,55 +3,52 @@
       "0" : [
          {
             "frameNo" : 0,
-            "sourcePath" : "combat/battler_base.png",
+            "sourcePath" : "Combat/BattlerBase.png",
             "textureRect" : [ 32, 0, 32, 32 ]
          },
          {
             "frameNo" : 2,
-            "sourcePath" : "combat/battler_base.png",
+            "sourcePath" : "Combat/BattlerBase.png",
             "textureRect" : [ 96, 0, 32, 32 ]
          },
          {
-            "frameNo" : 10,
+            "frameNo" : 15,
             "isEmpty" : true
          }
       ],
       "1" : [
          {
-            "center" : [ 0.0, 16.0 ],
+            "center" : [ 14.0, 14.0 ],
             "frameNo" : 0,
-            "position" : [ 2, 7 ],
+            "position" : [ -3, 0 ],
             "positionTween" : "linear",
             "priority" : 0.4000000059604645,
-            "rotation" : 30,
+            "rotation" : 90,
             "rotationTween" : "linear",
             "scaleTween" : "fix",
-            "sourcePath" : "combat/weapon_sword_base.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
+            "sourcePath" : "Combat/WeaponSwordBase.png"
          },
          {
-            "center" : [ 0.0, 16.0 ],
-            "frameNo" : 2,
-            "position" : [ 2, 12 ],
+            "center" : [ 14.0, 14.0 ],
+            "frameNo" : 3,
+            "position" : [ -3, 0 ],
             "priority" : 0.6000000238418579,
-            "rotation" : 30,
-            "sourcePath" : "combat/weapon_sword_base.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
+            "rotation" : 90,
+            "sourcePath" : "Combat/WeaponSwordBase.png"
          },
          {
-            "center" : [ 0.0, 16.0 ],
+            "center" : [ 14.0, 14.0 ],
             "frameNo" : 5,
-            "position" : [ -7, 10 ],
+            "position" : [ -5, 12 ],
             "positionTween" : "fix",
             "priority" : 0.6000000238418579,
-            "rotation" : -240,
+            "rotation" : -180,
             "rotationTween" : "fix",
             "scaleTween" : "fix",
-            "sourcePath" : "combat/weapon_sword_base.png",
-            "textureRect" : [ 0, 0, 32, 32 ]
+            "sourcePath" : "Combat/WeaponSwordBase.png"
          },
          {
-            "frameNo" : 10,
+            "frameNo" : 15,
             "isEmpty" : true
          }
       ]

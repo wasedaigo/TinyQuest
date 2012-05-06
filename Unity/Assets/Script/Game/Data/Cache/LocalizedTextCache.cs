@@ -20,4 +20,3 @@ namespace TinyQuest.Data.Cache {
 		}
 	}
 }
-

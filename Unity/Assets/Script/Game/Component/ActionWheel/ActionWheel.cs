@@ -16,10 +16,11 @@ public class ActionWheel : MonoBehaviour {
 	
 
 	public static Vector3 INVALID_TOUCH_POINT = new Vector3(0, 0, 0);
-	public GameObject parent;
+	public UIPanel parent;
 	public UIAtlas atlas;
 	public GameObject rotationNode;
 	public GameObject[] slots;
+	public UITexture[] weaponTextures;
 	public AudioClip matchSound;
 	public int slotCount;
 	public int wheelRadius;
@@ -30,26 +31,34 @@ public class ActionWheel : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		this.rotationNode = new GameObject();
+		this.rotationNode = NGUITools.AddChild(this.gameObject);
 		this.rotationNode.name = "RotationNode";
-		this.rotationNode.transform.parent = parent.transform;
+		this.rotationNode.transform.parent = this.transform;
 		this.rotationNode.transform.localScale = new Vector3(1, 1, 1);
 		this.rotationNode.transform.localPosition = new Vector3(0, 0, 0);
 		
 		// Setup Collide
 		BoxCollider collider = this.transform.gameObject.AddComponent("BoxCollider") as BoxCollider;
 		collider.size = new Vector3(100, 100, 0.1f);
-		
-		// Setup slots
+	
 		this.slots = new GameObject[this.slotCount];
+		this.weaponTextures = new UITexture[this.slotCount];
+			
+		// Setup slots
 		for (int i = 0; i < this.slotCount; i++) {
+			GameObject go = NGUITools.AddChild(this.rotationNode);
+			go.transform.parent = this.rotationNode.transform;
+			go.name = "slot" + i;
 			float x = this.wheelRadius * Mathf.Cos(i * 2 * Mathf.PI / this.slotCount);
 			float y = this.wheelRadius * Mathf.Sin(i * 2 * Mathf.PI / this.slotCount);
-			UISprite sprite = NGUITools.AddSprite(this.rotationNode, atlas, "wheel_icon_1");
-			sprite.name = "slot" + i;
+			UISprite sprite = NGUITools.AddSprite(go, atlas, "wheel_icon_1");
+			sprite.name = "bg";
 			sprite.MakePixelPerfect();
 			sprite.color = new Color(0.1f * i, 0.1f * i, 0.1f * i);
 			sprite.transform.localPosition = new Vector3(x, y, 0);
+			go.transform.localScale = Vector3.one;
+			go.transform.localPosition = Vector3.one;
+			parent.AddWidget(sprite);
 			this.slots[i] = sprite.gameObject;
 		}
 
@@ -59,12 +68,50 @@ public class ActionWheel : MonoBehaviour {
 		this.currentController = this.gameObject.AddComponent("ActionWheelBattleController");
 		
 		this.state = ActionWheelState.Battle;
+		
+		this.SetWeaponAtSlot(0, "UI/Weapon/Sword/BroadSword");
+		this.SetWeaponAtSlot(1, "UI/Weapon/Sword/ShortSword");
 	}
+	
+	void Update() {
+		Debug.Log(this.transform.localEulerAngles);	
+	}
+	
+    void OnDisable()
+    {
+		for (int i = 0; i < this.weaponTextures.Length; i++) {
+			if (this.weaponTextures[i] != null) {
+				NGUITools.Destroy(this.weaponTextures[i].material);	
+				NGUITools.Destroy(this.weaponTextures[i]);	
+			}
+		}
+    }
 	
 	public GameObject GetSlot(int i) {
 		return this.slots[i];
 	}
 	
+	public void SetWeaponAtSlot(int i, string textureId) {
+		if (this.weaponTextures[i] != null) {
+			NGUITools.Destroy(this.weaponTextures[i]);	
+			this.weaponTextures[i] = null;
+		}
+
+		GameObject slot = this.GetSlot(i);
+		
+		UITexture ut = NGUITools.AddWidget<UITexture>(slot.transform.parent.gameObject);
+		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
+		Texture texture = Roga2dResourceManager.getTexture(textureId);
+        ut.material = material;
+		ut.MarkAsChanged();
+		ut.MakePixelPerfect();
+		ut.transform.localScale = new Vector3(ut.transform.localScale.x / 2, ut.transform.localScale.y / 2, ut.transform.localScale.z);
+		ut.transform.localPosition = new Vector3(slot.transform.localPosition.x, slot.transform.localPosition.y, -10);
+		ut.transform.localEulerAngles = Vector3.one;
+		
+		this.weaponTextures[i] = ut;
+	}
+
 	private void transitionToMenu() {
 		if (this.currentController != null) {
 			Object.Destroy(this.currentController);
@@ -162,10 +209,6 @@ public class ActionWheel : MonoBehaviour {
 		return this.rotationNode.transform.localEulerAngles.z + 0.001f; // HACK: Fix floating point error
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void OnActionButtonClick() {
 		if (this.onSlotChanged != null) {

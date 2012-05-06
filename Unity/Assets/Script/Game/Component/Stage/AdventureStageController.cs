@@ -34,10 +34,18 @@ public class AdventureStageController : BaseStageController {
 		BattlerEntity battlerEntity = BattlerFactory.Instance.BuildUserBattler();
 		ZoneEntity zoneEntity = ZoneFactory.Instance.Build(1);
 		zoneEntity.MoveForward();
+		
+		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
+			WeaponEntity weaponEntity = battlerEntity.GetWeapon(i);
+			if (weaponEntity != null) {
+				Debug.Log(i + " - " + weaponEntity.GetName());
+			}
+		}
+	
 		//CacheFactory.Instance.GetLocalUserDataCache().Commit();
 		//CacheFactory.Instance.GetLocalUserDataCache().
 	}
-
+	
 	private void onSlotChanged(int slotNo) {
 		this.playNextAnimation(slotNo);
 	}
@@ -50,14 +58,14 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	static string[] ids = new string[] {
-			"combat/sword_swing",
-			"combat/sword_slash01",
-			"combat/sword_slash01",
-			"combat/sword_slash01",
-			"combat/sword_slash01",
-			"combat/sword_slash01",
-			"combat/sword_slash01",
-			"combat/sword_slash01"
+			"Combat/Sword/MultiSlash",
+			"Combat/Sword/DoubleSlash",
+			"Combat/Sword/Slash",
+			"Combat/Sword/Slash",
+			"Combat/Sword/Slash",
+			"Combat/Sword/Slash",
+			"Combat/Sword/Slash",
+			"Combat/Sword/Slash"
 			//"Battle/Skills/Bow/Shoot",
 			//"Battle/Skills/Sword/LeaveDance",
 			//"Battle/Skills/Spear/SpearAirraid",
@@ -130,9 +138,9 @@ public class AdventureStageController : BaseStageController {
 			battler.Sprite.Hide();
 
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-				{ "combat/battler_base", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
+				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
 				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}},
-				{ "combat/weapon_sword_base", new Roga2dSwapTextureDef() {TextureID = "combat/weapon_sword_base", PixelSize = new Vector2(32, 32),  SrcRect = weapons[no]}}
+				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/Sword/BroadSword", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, this.Stage.GetCharacterLayer(), battler, this.monster, CommandCalled);

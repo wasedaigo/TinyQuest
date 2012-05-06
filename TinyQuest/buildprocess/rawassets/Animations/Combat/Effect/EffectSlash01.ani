@@ -5,29 +5,29 @@
             "frameNo" : 0,
             "position" : [ 0, -40 ],
             "positionTween" : "linear",
-            "sourcePath" : "combat/effect_slash01.png",
+            "sourcePath" : "Combat/EffectSlash01.png",
             "textureRect" : [ 16, 0, 16, 96 ]
          },
          {
             "frameNo" : 1,
-            "sourcePath" : "combat/effect_slash01.png",
+            "sourcePath" : "Combat/EffectSlash01.png",
             "textureRect" : [ 64, 0, 16, 96 ]
          },
          {
             "frameNo" : 2,
-            "sourcePath" : "combat/effect_slash01.png",
+            "sourcePath" : "Combat/EffectSlash01.png",
             "textureRect" : [ 112, 0, 16, 96 ]
          },
          {
             "frameNo" : 3,
-            "sourcePath" : "combat/effect_slash01.png",
+            "sourcePath" : "Combat/EffectSlash01.png",
             "textureRect" : [ 64, 0, 16, 96 ]
          },
          {
             "frameNo" : 4,
             "position" : [ 0, 40 ],
             "positionTween" : "fix",
-            "sourcePath" : "combat/effect_slash01.png",
+            "sourcePath" : "Combat/EffectSlash01.png",
             "textureRect" : [ 16, 0, 16, 96 ]
          }
       ]

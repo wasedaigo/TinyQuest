@@ -8,7 +8,8 @@ public class Roga2dConst {
 
 public enum Roga2dBlendType {
 	Alpha,
-	Add
+	Add,
+	Unlit
 };
 
 public enum Roga2dFacingType {

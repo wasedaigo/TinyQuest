@@ -4,7 +4,7 @@
 
     ],
     "images": [
-      "combat/battler_base"
+      "Combat/BattlerBase"
     ]
   },
   "events": null,
@@ -94,7 +94,7 @@
             0
           ],
           "priority": 0.5,
-          "id": "combat/battler_base",
+          "id": "Combat/BattlerBase",
           "type": "Image",
           "frameNo": 0,
           "rect": [

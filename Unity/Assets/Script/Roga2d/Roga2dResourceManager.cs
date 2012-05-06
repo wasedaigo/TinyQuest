@@ -54,7 +54,7 @@ public class Roga2dResourceManager {
 	}
 	
 	// Material
-	private static Dictionary<string, Material>[] materialDictionary = new Dictionary<string, Material>[] {new Dictionary<string, Material>(), new Dictionary<string, Material>()};
+	private static Dictionary<string, Material>[] materialDictionary = new Dictionary<string, Material>[] {new Dictionary<string, Material>(), new Dictionary<string, Material>(), new Dictionary<string, Material>()};
 	public static Material getSharedMaterial(string key, Roga2dBlendType blendType) {
 		int index = (int)blendType;
 		if (!materialDictionary[index].ContainsKey(key))
@@ -68,16 +68,33 @@ public class Roga2dResourceManager {
 			case Roga2dBlendType.Add:
 				material = new Material(Roga2dResourceManager.getShader("Custom/AlphaAdditive"));
 				break;
+			case Roga2dBlendType.Unlit:
+				material = new Material(Roga2dResourceManager.getShader("Unlit/Transparent Colored"));
+				break;
 			default:
 				Debug.LogError("Invalid BlendType is passed");
 				break;
 			}
-	
+
 			Texture texture = getTexture(key);
 			material.mainTexture = texture;
 			materialDictionary[index].Add(key, material);
 		}
 
 		return materialDictionary[index][key];
+	}
+	
+	public static void freeResources() {
+		for (int i = 0; i < materialDictionary.Length; i++ ){
+			foreach(KeyValuePair<string, Material> pair in materialDictionary[i]) {
+				Object.Destroy(pair.Value);
+			}
+			materialDictionary[i].Clear();
+		}
+		textureDictionary.Clear();
+		animationDictionary.Clear();
+		
+		Resources.UnloadUnusedAssets();
+		System.GC.Collect();
 	}
 }

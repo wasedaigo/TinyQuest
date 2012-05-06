@@ -1,0 +1,124 @@
+{
+   "events" : {
+      "10" : [ "damage:0" ],
+      "12" : [ "damage:0" ],
+      "4" : [ "damage:0" ],
+      "6" : [ "damage:0" ],
+      "8" : [ "damage:0" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/Common/Swing01.ani"
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Common/Swing01.ani"
+         },
+         {
+            "frameNo" : 13,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Common/Jump01.ani"
+         },
+         {
+            "frameNo" : 19,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/Common/Jump01.ani"
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 2,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 0, -20 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+         },
+         {
+            "frameNo" : 3,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 4,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 0, -10 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+         },
+         {
+            "frameNo" : 5,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 6,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+         },
+         {
+            "frameNo" : 7,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 8,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 0, 10 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+         },
+         {
+            "frameNo" : 9,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 10,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 0, 20 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 45,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+         }
+      ]
+   }
+}
