@@ -36,6 +36,7 @@ namespace TinyQuest.Data{
 		public readonly string description;
 		public readonly int power;
 		public readonly int[][] parameters;
+		public readonly int[] skills;
 		
 		public int GetLevel(int exp) {
 			int level = this.parameters.Length;

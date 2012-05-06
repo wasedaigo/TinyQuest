@@ -14,6 +14,9 @@ public class AdventureStageController : BaseStageController {
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	private Ally player;
 	
+	private BattlerEntity userBattlerEntity;
+	private ZoneEntity zoneEntity;
+	
 	// Use this for initialization
 	protected override void Start() {
 		base.Start();
@@ -31,21 +34,24 @@ public class AdventureStageController : BaseStageController {
 		this.Stage.GetCharacterLayer().AddChild(this.player);
 		this.Stage.GetCharacterLayer().AddChild(this.monster);
 		
-		BattlerEntity battlerEntity = BattlerFactory.Instance.BuildUserBattler();
-		ZoneEntity zoneEntity = ZoneFactory.Instance.Build(1);
-		zoneEntity.MoveForward();
+		this.userBattlerEntity = BattlerFactory.Instance.BuildUserBattler();
+		this.zoneEntity = ZoneFactory.Instance.Build(1);
 		
 		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
-			WeaponEntity weaponEntity = battlerEntity.GetWeapon(i);
+			WeaponEntity weaponEntity = this.userBattlerEntity.GetWeapon(i);
 			if (weaponEntity != null) {
-				Debug.Log(i + " - " + weaponEntity.GetName());
+				Debug.Log(i + " - " + weaponEntity.GetMasterWeapon().name);
 			}
 		}
 	
-		//CacheFactory.Instance.GetLocalUserDataCache().Commit();
-		//CacheFactory.Instance.GetLocalUserDataCache().
+		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
+			WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
+			if (weapon != null) {
+				actionWheel.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
+			}
+		}
 	}
-	
+
 	private void onSlotChanged(int slotNo) {
 		this.playNextAnimation(slotNo);
 	}
@@ -133,6 +139,10 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void playNextAnimation(int no) {
+		WeaponEntity weapon = this.userBattlerEntity.GetWeapon(no);
+		if (weapon == null) {
+			return;	
+		}
 		AdventureObject battler = this.battlers[0];
 		if (battler.Sprite.IsVisible) {
 			battler.Sprite.Hide();
@@ -140,11 +150,15 @@ public class AdventureStageController : BaseStageController {
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
 				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}},
-				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/Sword/BroadSword", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
+				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = weapon.GetMasterWeapon().path, PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, this.Stage.GetCharacterLayer(), battler, this.monster, CommandCalled);
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
+			
+			SkillEntity skillEntity = SkillFactory.Instance.Build(weapon.GetMasterWeapon().skills[0]);
+			
+			Debug.Log(skillEntity.Path);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, 1.0f, 0.5f, settings, options);
 			this.AnimationPlayer.Play(battler, null, animation,  AnimationFinished);
 		}	
 	}

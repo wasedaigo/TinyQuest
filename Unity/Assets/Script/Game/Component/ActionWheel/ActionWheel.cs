@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using TinyQuest.Entity;
+using TinyQuest.Factory.Entity;
 
 public class ActionWheel : MonoBehaviour {
 	
@@ -43,14 +45,17 @@ public class ActionWheel : MonoBehaviour {
 	
 		this.slots = new GameObject[this.slotCount];
 		this.weaponTextures = new UITexture[this.slotCount];
-			
+		
+
+		this.singleAngle = 360 / this.slotCount;
 		// Setup slots
 		for (int i = 0; i < this.slotCount; i++) {
 			GameObject go = NGUITools.AddChild(this.rotationNode);
 			go.transform.parent = this.rotationNode.transform;
 			go.name = "slot" + i;
-			float x = this.wheelRadius * Mathf.Cos(i * 2 * Mathf.PI / this.slotCount);
-			float y = this.wheelRadius * Mathf.Sin(i * 2 * Mathf.PI / this.slotCount);
+			float angle = i * 2 * Mathf.PI / this.slotCount + (this.slotCount + 2) * Mathf.PI / this.slotCount;
+			float x = this.wheelRadius * Mathf.Cos(-angle);
+			float y = this.wheelRadius * Mathf.Sin(-angle);
 			UISprite sprite = NGUITools.AddSprite(go, atlas, "wheel_icon_1");
 			sprite.name = "bg";
 			sprite.MakePixelPerfect();
@@ -62,15 +67,11 @@ public class ActionWheel : MonoBehaviour {
 			this.slots[i] = go;
 		}
 
-		this.singleAngle = 360 / this.slotCount;
 
 		// Set up controller
 		this.currentController = this.gameObject.AddComponent("ActionWheelBattleController");
 		
 		this.state = ActionWheelState.Battle;
-		
-		this.SetWeaponAtSlot(0, "UI/Weapon/Sword/BroadSword");
-		this.SetWeaponAtSlot(1, "UI/Weapon/Sword/ShortSword");
 	}
 	
 	public void OnRotate() {

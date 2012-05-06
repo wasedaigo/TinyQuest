@@ -21,8 +21,8 @@ namespace TinyQuest.Entity {
 			this.UpdateLevel();
 		}
 		
-		public string GetName() {
-			return this.masterWeapon.name;
+		public MasterWeapon GetMasterWeapon() {
+			return this.masterWeapon;
 		}
 		
 		public SkillEntity[] GetSkills() {

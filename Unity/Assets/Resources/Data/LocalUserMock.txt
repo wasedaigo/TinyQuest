@@ -11,6 +11,12 @@
             "weaponId": 2,
             "exp": 1,
             "slot": 1
+        },
+        {
+            "weaponId": 2,
+            "exp": 1,
+            "slot": 2,
+            "id": 3
         }
     ],
     "stockWeapons": [
