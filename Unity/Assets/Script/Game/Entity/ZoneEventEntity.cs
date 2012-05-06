@@ -12,9 +12,5 @@ namespace TinyQuest.Entity {
 		public ZoneEventEntity() {
 			
 		}
-		
-		public void SetEnemy(int stepNo, BattlerEntity enemy) {
-			this.enemies.Add(stepNo, enemy);
-		}
 	}
 }

@@ -8,9 +8,10 @@ using Async;
 namespace TinyQuest.Data.Cache {
 	public class LocalUserDataCache
 	{
-		
+		private LocalUserData localUserData;
 		protected UserZone userZone;
-		protected Dictionary<int, UserWeapon> weaponDictionary;
+		protected UserWeapon[] equipWeapons;
+		protected UserWeapon[] stockWeapons;
 		protected Dictionary<int, UserZoneProgress> zoneProgressDictionary;
 		
 		public string Serialize() {
@@ -19,11 +20,12 @@ namespace TinyQuest.Data.Cache {
 		}
 		
 		public void Set(string jsonText) {
-			LocalUserData localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
+			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
 
-			this.userZone = localUserData.zone;
-			this.zoneProgressDictionary = this.GetAsDictionary<UserZoneProgress>(localUserData.zoneProgresses);
-			this.weaponDictionary = this.GetAsDictionary<UserWeapon>(localUserData.weapons);
+			this.userZone = this.localUserData.zone;
+			this.zoneProgressDictionary = this.GetAsDictionary<UserZoneProgress>(this.localUserData.zoneProgresses);
+			this.equipWeapons = this.localUserData.equipWeapons;
+			this.stockWeapons = this.localUserData.stockWeapons;
 		}
 		
 		public void SetZone(string jsonText) {
@@ -39,13 +41,28 @@ namespace TinyQuest.Data.Cache {
 			}
 			return dictionary;
 		}
+
+		public virtual UserZone GetUserZone() {
+			return this.userZone;
+		}
 		
-		public virtual UserWeapon GetWeaponByID(int id) {
-			return this.weaponDictionary[id];
+		public virtual UserWeapon[] GetEquipWeapons() {
+			return this.equipWeapons;
+		}
+	
+		public virtual UserWeapon[] GetStockWeapons() {
+			return this.stockWeapons;
 		}
 		
 		public virtual UserZoneProgress GetZoneProgressByID(int id) {
 			return this.zoneProgressDictionary[id];
+		}
+		
+		public void Commit() {
+			string text = JsonWriter.Serialize(this.localUserData);
+  			StreamWriter writer = new StreamWriter("Assets/Resources/Data/LocalUser.txt"); 
+			writer.Write(text);
+			writer.Close();
 		}
 	}
 }

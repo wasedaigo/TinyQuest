@@ -10,12 +10,12 @@ namespace TinyQuest.Data{
 			Chance2 = 3,
 			Chance3 = 4
 		};
-		public int exp;
-		public int power;
-		public int chance1;
-		public int chance2;
-		public int chance3;
-
+		public readonly int exp;
+		public readonly int power;
+		public readonly int chance1;
+		public readonly int chance2;
+		public readonly int chance3;
+		
 		public MasterWeaponParameter(int[] rawData) {
 			this.exp = rawData[(int)Key.Exp];
 			this.power = rawData[(int)Key.Power];
@@ -27,13 +27,15 @@ namespace TinyQuest.Data{
 	
 	public class MasterWeapon : IDData{
 		public static readonly int MinLevel = 1;
-		public static readonly int MaxLevel = 99;
+		public int MaxLevel {
+			get {return this.parameters.Length;}	
+		}
 
-		public string name;
-		public string path;
-		public string description;
-		public int power;
-		public int[][] parameters;
+		public readonly string name;
+		public readonly string path;
+		public readonly string description;
+		public readonly int power;
+		public readonly int[][] parameters;
 		
 		public int GetLevel(int exp) {
 			int level = this.parameters.Length;
@@ -46,37 +48,45 @@ namespace TinyQuest.Data{
 			return level;
 		}
 		
-		public System.Nullable<MasterWeaponParameter> GetParam(int level) {
-			if (level >= MinLevel && level <= MaxLevel) {
-				return new MasterWeaponParameter(this.parameters[level - MinLevel]);
-			} else {
+		public MasterWeaponParameter GetParam(int level) {
+			if (level < MinLevel || level > MaxLevel) {
 				Debug.LogError(level + " is out of range");
-				return null;
 			}
+			
+			return new MasterWeaponParameter(this.parameters[level - MinLevel]);
+		}
+		
+		public int GetMaxExp() {
+			if (this.parameters.Length == 0) {
+				Debug.LogError(" No parameter is defined");
+			}
+			
+			MasterWeaponParameter param = new MasterWeaponParameter(this.parameters[this.MaxLevel - MinLevel]);
+			return param.exp;
 		}
 	}
 	
 	public class MasterSkill : IDData {
-		public string name;
-		public string path;
+		public readonly string name;
+		public readonly string path;
 	}
 	
 	public class MasterZone : IDData {
-      	public int stepCount;
-		public string path;
-		ZoneEvent[] events;
+      	public readonly int stepCount;
+		public readonly string path;
+		public readonly ZoneEvent[] events;
 		//event
 		//enemy
 	}
 	
 	public class MasterData {
-		public MasterZone zone;
-		public MasterWeapon[] weapons;
-		public MasterSkill[] skills;
+		public readonly MasterZone zone;
+		public readonly MasterWeapon[] weapons;
+		public readonly MasterSkill[] skills;
 	}
 	
 	public class MasterFile {
-		public float version;
-		public MasterData data;
+		public readonly float version;
+		public readonly MasterData data;
 	}
 }

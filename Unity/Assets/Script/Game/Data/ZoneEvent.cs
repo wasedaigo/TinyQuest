@@ -6,30 +6,25 @@ namespace TinyQuest.Data{
 			Treasure
 		}
 		
-		public ZoneCommandType type;
+		public int type;
+		public object content;
+
 	}
 	
-	public class ZoneCommandBattle : ZoneCommand {
+	public class ZoneCommandBattle {
 		public int enemyId;
 	}
 
-	public class ZoneCommandTreasure : ZoneCommand {
+	public class ZoneCommandTreasure {
 		public int treasureId;
 	}
 	
-	public class ZoneCommandMessage : ZoneCommand {
+	public class ZoneCommandMessage {
 		public string key;
 	}
 	
-	public struct ZoneEvent {
-		public enum ZoneEventType {
-			Story,
-			Battle,
-			Boss,
-			Treasure
-		}
-		
-		public ZoneEventType type;
+	public class ZoneEvent {
+		public int step;
 		public ZoneCommand[] commands;
 	}
 }

@@ -7,7 +7,7 @@ namespace TinyQuest.Data.Cache {
 	public class MasterDataCacheMock : MasterDataCache
 	{
 		public override MasterZone GetLoadedZone() {
-			if (this.masterData == null) {
+			if (this.zone == null) {
 				TextAsset txt = (TextAsset)Resources.Load("Data/Zone/" + 1, typeof(TextAsset));
 				this.SetZone(txt.text);
 			}

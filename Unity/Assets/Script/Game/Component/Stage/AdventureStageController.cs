@@ -1,7 +1,10 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using TinyQuest.Data.Cache;
 using TinyQuest.Core;
+using TinyQuest.Entity;
+using TinyQuest.Factory.Entity;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
@@ -14,7 +17,6 @@ public class AdventureStageController : BaseStageController {
 	// Use this for initialization
 	protected override void Start() {
 		base.Start();
-		Shader.WarmupAllShaders() ;
 
 		// animationPlayer
 		this.player = spawnBattler("fighter", Ally.State.Stand, 20, 0);
@@ -28,6 +30,12 @@ public class AdventureStageController : BaseStageController {
 		
 		this.Stage.GetCharacterLayer().AddChild(this.player);
 		this.Stage.GetCharacterLayer().AddChild(this.monster);
+		
+		BattlerEntity battlerEntity = BattlerFactory.Instance.BuildUserBattler();
+		ZoneEntity zoneEntity = ZoneFactory.Instance.Build(1);
+		zoneEntity.MoveForward();
+		//CacheFactory.Instance.GetLocalUserDataCache().Commit();
+		//CacheFactory.Instance.GetLocalUserDataCache().
 	}
 
 	private void onSlotChanged(int slotNo) {

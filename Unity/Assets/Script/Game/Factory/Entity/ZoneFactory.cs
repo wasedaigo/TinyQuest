@@ -9,7 +9,10 @@ namespace TinyQuest.Factory.Entity {
 		private ZoneFactory(){}
 		
 		public ZoneEntity Build(int id) {
-			ZoneEntity zoneEntity = new ZoneEntity();
+			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(id);
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			
+			ZoneEntity zoneEntity = new ZoneEntity(userZoneProgress, userZone);
 			return zoneEntity;
 		}
 	}

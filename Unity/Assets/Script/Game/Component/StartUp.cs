@@ -13,7 +13,7 @@ public class StartUp : MonoBehaviour {
 	
 	void Start () {
 		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
-		LocalUserDataRequest localUserDataRequest = RequestFactory.Instance.GetUserDataRequest();
+		LocalUserDataRequest localUserDataRequest = RequestFactory.Instance.GetLocalUserRequest();
 		
 		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
 			(next) => {

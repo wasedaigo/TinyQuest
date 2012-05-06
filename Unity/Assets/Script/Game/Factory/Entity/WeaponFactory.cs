@@ -16,9 +16,8 @@ namespace TinyQuest.Factory.Entity {
 			return weapon;
 		}
 		
-		public WeaponEntity Build(int weaponId, int userWeaponId) {
-			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(weaponId);
-			UserWeapon userWeapon = CacheFactory.Instance.GetLocalUserDataCache().GetWeaponByID(userWeaponId);
+		public WeaponEntity Build(UserWeapon userWeapon) {
+			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(userWeapon.weaponId);
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, userWeapon, 1);
 			return weapon;
 		}

@@ -36,6 +36,7 @@ public class BaseStageController : MonoBehaviour {
 	
 	// Use this for initialization
 	protected virtual void Start() {
+		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.stage = this.GetComponent<Stage>();
 	}
