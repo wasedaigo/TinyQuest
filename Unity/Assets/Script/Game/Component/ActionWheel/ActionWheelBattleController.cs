@@ -93,6 +93,7 @@ public class ActionWheelBattleController : MonoBehaviour {
 				
 				if (Mathf.Abs(this.effectMagnitude) > 0.00075f) {
 					this.GetWheel().rotationNode.transform.Rotate(new Vector3(0, 0, angularVelocity));
+					this.GetWheel().OnRotate();
 					this.isWheelMoved = true;
 				}
 				Clip(ref this.effectMagnitude, -0.01f, 0.01f);
@@ -131,6 +132,8 @@ public class ActionWheelBattleController : MonoBehaviour {
 						"z", targetAngle, 
 						"easeType", iTween.EaseType.linear, 
 						"time", 0.3f, 
+						"onupdate", "OnRotate",
+						"onupdatetarget", this.GetWheel().gameObject,
 						"oncomplete", "OnWheelRotationComplete",
 						"oncompletetarget", this.gameObject
 					)

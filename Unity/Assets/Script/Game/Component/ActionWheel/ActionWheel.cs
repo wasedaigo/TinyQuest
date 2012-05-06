@@ -55,11 +55,11 @@ public class ActionWheel : MonoBehaviour {
 			sprite.name = "bg";
 			sprite.MakePixelPerfect();
 			sprite.color = new Color(0.1f * i, 0.1f * i, 0.1f * i);
-			sprite.transform.localPosition = new Vector3(x, y, 0);
+			sprite.transform.localPosition = Vector3.one;
 			go.transform.localScale = Vector3.one;
-			go.transform.localPosition = Vector3.one;
+			go.transform.localPosition = new Vector3(x, y, 0);
 			parent.AddWidget(sprite);
-			this.slots[i] = sprite.gameObject;
+			this.slots[i] = go;
 		}
 
 		this.singleAngle = 360 / this.slotCount;
@@ -73,8 +73,11 @@ public class ActionWheel : MonoBehaviour {
 		this.SetWeaponAtSlot(1, "UI/Weapon/Sword/ShortSword");
 	}
 	
-	void Update() {
-		Debug.Log(this.transform.localEulerAngles);	
+	public void OnRotate() {
+		float angle = this.rotationNode.transform.localEulerAngles.z;
+		for (int i = 0; i < this.slotCount; i++) {
+			this.slots[i].transform.localEulerAngles = new Vector3(0, 0, -angle);
+		}
 	}
 	
     void OnDisable()
@@ -99,14 +102,14 @@ public class ActionWheel : MonoBehaviour {
 
 		GameObject slot = this.GetSlot(i);
 		
-		UITexture ut = NGUITools.AddWidget<UITexture>(slot.transform.parent.gameObject);
+		UITexture ut = NGUITools.AddWidget<UITexture>(slot);
 		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
 		Texture texture = Roga2dResourceManager.getTexture(textureId);
         ut.material = material;
 		ut.MarkAsChanged();
 		ut.MakePixelPerfect();
 		ut.transform.localScale = new Vector3(ut.transform.localScale.x / 2, ut.transform.localScale.y / 2, ut.transform.localScale.z);
-		ut.transform.localPosition = new Vector3(slot.transform.localPosition.x, slot.transform.localPosition.y, -10);
+		ut.transform.localPosition = new Vector3(0, 0, -10);
 		ut.transform.localEulerAngles = Vector3.one;
 		
 		this.weaponTextures[i] = ut;
@@ -132,7 +135,6 @@ public class ActionWheel : MonoBehaviour {
 			this.rotationNode,
 			iTween.Hash("x", -37, "y", -44, "islocal", true, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
 		);
-		
 		iTween.RotateTo(
 			this.rotationNode,
 			iTween.Hash( "z", 540, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
