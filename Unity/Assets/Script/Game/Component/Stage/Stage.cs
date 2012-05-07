@@ -17,6 +17,7 @@ public class Stage : MonoBehaviour {
 	private float lastDeviceMoveX;
 	private float lastDeviceMoveY;
 	private Roga2dBaseInterval parallaxInterval;
+	private float scrollDistance;
 
 	public struct ParallaxLayerInfo {
 		public float moveInfluenceRatio;
@@ -79,11 +80,15 @@ public class Stage : MonoBehaviour {
 		return this.parallaxLayers[3];
 	}
 	
+	public void Scroll(float distance) {
+		this.scrollDistance = distance;
+	}
+	
 	private void UpdateScroll()
 	{
 		for (int i = 0; i < LayerNum; i++) {
 			ParallaxLayerInfo layerInfo = layerInfoList[i];
-			float deltaX = layerInfo.autoScrollSpeed * Time.deltaTime;
+			float deltaX = layerInfo.autoScrollSpeed * Time.deltaTime + layerInfo.moveInfluenceRatio * this.scrollDistance;
 			float deltaY = 0;
 
 			for (int j = 0; j < LayerNodeNum; j++) {
@@ -91,17 +96,21 @@ public class Stage : MonoBehaviour {
 				layer.LocalPixelPosition = new Vector2(layer.LocalPixelPosition.x + deltaX, layer.LocalPixelPosition.y + deltaY);
 			}
 			if (this.parallaxLayerNodes[i, 0].LocalPixelPosition.x > LayerNodeWidth) {
-				this.root.RemoveChild(this.parallaxLayerNodes[i, 0]);
+				Roga2dNode updateNode = this.parallaxLayerNodes[i, 0];
+				updateNode.RemoveAllChildren();
+				
 				this.parallaxLayerNodes[i, 0] = this.parallaxLayerNodes[i, 1];
 				this.parallaxLayerNodes[i, 1] = this.parallaxLayerNodes[i, 2];
-
+				this.parallaxLayerNodes[i, 2] = updateNode;
 				Roga2dSprite sprite = new Roga2dSprite(this.bgFilePath, new Vector2(LayerNodeWidth, LayerNodeHeight), new Vector2(0, 0), new Rect(0, i * LayerNodeHeight, LayerNodeWidth, LayerNodeHeight));
-				sprite.LocalPixelPosition = new Vector2(this.parallaxLayerNodes[i, 1].LocalPixelPosition.x - LayerNodeWidth, 0);
-				this.parallaxLayerNodes[i, 2] = sprite;
-				this.root.AddChild(sprite);
+				updateNode.LocalPixelPosition = new Vector2(this.parallaxLayerNodes[i, 1].LocalPixelPosition.x - LayerNodeWidth, 0);
+				updateNode.AddChild(sprite);
+				this.parallaxLayerNodes[i, 2] = updateNode;
 				sprite.LocalPriority = layerInfo.priority;
 			}
 		}
+		
+		this.scrollDistance = 0;
 	}
 
 	private void UpdateParallaxEffect(bool immediate)

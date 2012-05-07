@@ -14,8 +14,11 @@ namespace TinyQuest.Object {
 		public Ally(string name, State state) 
 		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32))
 		{
+			this.SetState(state);
+		}
+		
+		public void SetState(State state) {
 			this.state = state;
-			
 			switch (this.state) {
 				case State.Stand:
 					this.SrcRect = new Rect(32, 0, 32, 32);
@@ -31,7 +34,7 @@ namespace TinyQuest.Object {
 			int[] frames = new int[4]{1, 0, 1, 2};
 			for (int i = 0; i < 4; i++) {
 				Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
-				keyFrame.Rect = new Rect(96 + frames[i] * 32, 0, 32, 32);
+				keyFrame.Rect = new Rect(frames[i] * 32, 0, 32, 32);
 				keyFrame.Id = this.TextureID;
 				keyFrame.Duration = 0.15f;
 				keyFrame.Type = Roga2dAnimationKeyFrameType.Image;
@@ -53,7 +56,8 @@ namespace TinyQuest.Object {
 			if (this.interval != null) {
 				Roga2dIntervalPlayer.GetInstance().Stop(this.interval);
 				this.interval = null;
-				this.sprite.RenderObject.SetSrcRect(new Rect(128, 0, 32, 32));
+				
+				this.SetState(State.Stand);
 			}
 		}
 	}

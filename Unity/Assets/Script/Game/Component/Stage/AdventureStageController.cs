@@ -9,6 +9,10 @@ using TinyQuest.Model;
 using TinyQuest.Object;
 
 public class AdventureStageController : BaseStageController {
+	public enum State {
+		Combat,
+		Progress
+	};
 	
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
@@ -17,6 +21,8 @@ public class AdventureStageController : BaseStageController {
 	private BattlerEntity userBattlerEntity;
 	private ZoneEntity zoneEntity;
 	private ActionWheel actionWheel;
+	private State state;
+	private bool pressed;
 	
 	// Use this for initialization
 	protected override void Start() {
@@ -24,6 +30,7 @@ public class AdventureStageController : BaseStageController {
 
 		// animationPlayer
 		this.player = spawnBattler("fighter", Ally.State.Stand, 20, 0);
+		this.player.LocalPriority = 0.45f;
 		
 		this.battlers.Add(this.player);
 		
@@ -34,10 +41,12 @@ public class AdventureStageController : BaseStageController {
 		
 		this.userBattlerEntity = BattlerFactory.Instance.BuildUserBattler();
 		this.zoneEntity = ZoneFactory.Instance.Build(1);
-		
+		this.zoneEntity.playerMove += this.onPlayerMoved;
 		this.actionWheel = GameObject.Find("ActionWheel").GetComponent<ActionWheel>();
 		this.actionWheel.SetUserBattler(this.userBattlerEntity);
-		this.actionWheel.SetState(ActionWheel.State.Combat);
+		this.actionWheel.SetState(ActionWheel.State.Progress);
+		
+		this.state = State.Progress;
 	}
 	
 	void Update() {
@@ -49,10 +58,12 @@ public class AdventureStageController : BaseStageController {
 				
 			}	
 		}
+		
+		this.OnActionButtonPressing();
 	}
 	
-	private void onScrollFinished() {
-		this.player.stopWalkingAnimation();
+	private void onPlayerMoved(float distance) {
+		this.Stage.Scroll(distance);
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)
@@ -106,6 +117,40 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	public void OnActionButtonClick() {
-		this.playNextAnimation(this.actionWheel.getSlotAt(0));
+		switch (this.state) {
+			case State.Combat:
+				this.playNextAnimation(this.actionWheel.getSlotAt(0));
+				break;
+			case State.Progress:
+				break;
+		}
+	}
+	
+	private void OnActionButtonPressing() {
+		if (this.pressed) {
+			switch (this.state) {
+				case State.Combat:
+					break;
+				case State.Progress:
+					this.zoneEntity.MoveForward();
+					break;
+			}	
+		}
+	}
+	
+	public void OnActionButtonPress() {
+		this.pressed = true;
+		if (this.state == State.Progress) {
+			this.player.startWalkingAnimation();
+		}
+	}
+
+	
+	public void OnActionButtonRelease() {
+		this.pressed = false;
+		
+		if (this.state == State.Progress) {
+			this.player.stopWalkingAnimation();
+		}
 	}
 }
