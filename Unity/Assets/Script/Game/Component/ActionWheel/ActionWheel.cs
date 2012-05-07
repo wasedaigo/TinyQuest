@@ -105,12 +105,11 @@ public class ActionWheel : MonoBehaviour {
 		
 		UITexture ut = NGUITools.AddWidget<UITexture>(slot);
 		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
-		Texture texture = Roga2dResourceManager.getTexture(textureId);
         ut.material = material;
 		ut.MarkAsChanged();
 		ut.MakePixelPerfect();
 		ut.transform.localScale = new Vector3(ut.transform.localScale.x / 2, ut.transform.localScale.y / 2, ut.transform.localScale.z);
-		ut.transform.localPosition = new Vector3(0, 0, -10);
+		ut.transform.localPosition = new Vector3(1, 1, -10);
 		ut.transform.localEulerAngles = Vector3.one;
 		
 		this.weaponTextures[i] = ut;
