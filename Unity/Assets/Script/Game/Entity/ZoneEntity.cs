@@ -8,7 +8,7 @@ namespace TinyQuest.Entity {
 
 	public class ZoneEntity {
 		private static readonly int StepDistance = 100;
-		private static readonly int Speed = 100;
+		private static readonly int Speed = 1;
 		private float moveDistance;
 		public float MoveDistance {
 			get{return this.moveDistance;}

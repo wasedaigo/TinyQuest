@@ -5,18 +5,13 @@ using TinyQuest.Factory.Entity;
 
 public class ActionWheel : MonoBehaviour {
 	
-	public enum ActionWheelState {
-		Battle,
-		Menu
+	public enum State {
+		Combat,
+		Progress
 	};
 	
 	public delegate void SlotClickDelegate(int slotNo);
-	public SlotClickDelegate onSlotChanged;
-
-	public delegate void SubButtonClickDelegate();
-	public SubButtonClickDelegate onSubButtonClicked;
-	
-
+	public SlotClickDelegate onActionButtonClicked;
 	public static Vector3 INVALID_TOUCH_POINT = new Vector3(0, 0, 0);
 	public UIPanel parent;
 	public UIAtlas atlas;
@@ -26,13 +21,26 @@ public class ActionWheel : MonoBehaviour {
 	public AudioClip matchSound;
 	public int slotCount;
 	public int wheelRadius;
-	private ActionWheelState state;
+	
+	private State state;
 	private float singleAngle;
 	private Component currentController;
 	private float savedRotation;
+	private bool isPressed;
+	private int lastSlot;
+	
+	private Vector3 lastTouchPoint;
+	private Vector2 startTouchPoint;
+	private float angularVelocity;
+	private float effectMagnitude;
+	private bool isWheelMoved;
+	private BattlerEntity userBattlerEntity;
 	
 	// Use this for initialization
 	void Start () {
+		
+		this.lastTouchPoint = ActionWheel.INVALID_TOUCH_POINT;
+		
 		this.rotationNode = NGUITools.AddChild(this.gameObject);
 		this.rotationNode.name = "RotationNode";
 		this.rotationNode.transform.parent = this.transform;
@@ -70,10 +78,31 @@ public class ActionWheel : MonoBehaviour {
 
 		// Set up controller
 		this.currentController = this.gameObject.AddComponent("ActionWheelBattleController");
-		
-		this.state = ActionWheelState.Battle;
 	}
 	
+	public void SetUserBattler(BattlerEntity userBattlerEntity) {
+		this.userBattlerEntity = userBattlerEntity;
+		this.UpdateSlots();
+	}
+	
+	public void UpdateSlots() {
+		if (this.userBattlerEntity != null) {
+			for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
+				WeaponEntity weaponEntity = this.userBattlerEntity.GetWeapon(i);
+				if (weaponEntity != null) {
+					Debug.Log(i + " - " + weaponEntity.GetMasterWeapon().name);
+				}
+			}
+		
+			for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
+				WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
+				if (weapon != null) {
+					this.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
+				}
+			}
+		}
+	}
+
 	public void OnRotate() {
 		float angle = this.rotationNode.transform.localEulerAngles.z;
 		for (int i = 0; i < this.slotCount; i++) {
@@ -114,92 +143,138 @@ public class ActionWheel : MonoBehaviour {
 		
 		this.weaponTextures[i] = ut;
 	}
-
-	private void transitionToMenu() {
-		if (this.currentController != null) {
-			Object.Destroy(this.currentController);
-			this.currentController = null;
+	
+	
+	public void Clip(ref float value, float start, float end) {
+		if (value < start) {
+			value = start;
 		}
-		/*
-		Transform button = this.transform.Find("ActionButton");
-		button.gameObject.active = false;
-		UISprite buttonImage = button.Find("Background").gameObject.GetComponent("UISprite") as UISprite;
-		buttonImage.color = new Color(0,0,0,0);
-		iTween.FadeTo(
-			buttonImage,
-			iTween.Hash("alpha", 0, "time", 0.5f)
-		);*/
-		
-		this.savedRotation = this.rotationNode.transform.localEulerAngles.z;
-		iTween.MoveTo(
-			this.rotationNode,
-			iTween.Hash("x", -37, "y", -44, "islocal", true, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
-		iTween.RotateTo(
-			this.rotationNode,
-			iTween.Hash( "z", 540, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
-		
-		iTween.ScaleTo(
-			this.rotationNode,
-			iTween.Hash( "x", 0.666f, "y", 0.666f, "z", 0.75f, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
+		if (value > end) {
+			value = end;
+		}
 	}
 	
-	private void transitionToBattle() {
-		if (this.currentController != null) {
-			Object.Destroy(this.currentController);
-			this.currentController = null;
+	private Vector3 GetTouchPosition(Vector3 pos) {
+		Ray ray = Camera.main.ScreenPointToRay(pos);
+		RaycastHit hitInfo;
+		if (Physics.Raycast( ray, out hitInfo ))
+		{
+			Vector3 point = hitInfo.point - this.transform.position;
+			point.z = 0;
+			float magnitude = point.magnitude;
+			if (1.2 < magnitude && magnitude < 2.5) {
+				return point;
+			} else {
+				return ActionWheel.INVALID_TOUCH_POINT;
+			}
 		}
-		this.currentController = this.gameObject.AddComponent("ActionWheelBattleController");
-		
-		/*
-		Transform button = this.transform.Find("ActionButton");
-		button.gameObject.active = true;
-		UISprite buttonImage = button.Find("Background").gameObject.GetComponent("UISprite") as UISprite;
-		buttonImage.color = new Color(1,1,1,1);
-
-		
-		GameObject buttonImage = button.Find("Background").gameObject;
-		
-		iTween.FadeTo(
-			buttonImage,
-			iTween.Hash("alpha", 1.0, "time", 0.5f)
-		);*/
-		
-		iTween.MoveTo(
-			this.rotationNode,
-			iTween.Hash("x", 0, "y", 0,  "islocal", true, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
-		
-		iTween.RotateTo(
-			this.rotationNode,
-			iTween.Hash( "z", this.savedRotation, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
-		
-		iTween.ScaleTo(
-			this.rotationNode,
-			iTween.Hash( "x", 1.0f, "y", 1.0f, "z", 1.0f, "easeType", iTween.EaseType.easeOutQuad, "time", 0.5f)
-		);
+		return ActionWheel.INVALID_TOUCH_POINT;
 	}
 	
-	public void setState(ActionWheelState state) {
+	public void OnWheelRotationComplete(){
+      this.audio.PlayOneShot(this.matchSound);
+	}
+
+	private void UpdateRotationStart() {
+		if (Input.GetMouseButtonDown(0)) {
+			Vector3 pos = GetTouchPosition(Input.mousePosition);
+			if (this.lastTouchPoint != pos) {
+				this.isPressed = true;
+				iTween.Stop();
+				this.lastSlot = this.getSlotAt(0);
+			}
+		}
+	}
+
+	private bool UpdatePressMove() {
+		bool wheelRotationFinished = false;
+		if (this.isPressed) {
+			this.effectMagnitude *= 0.8f;
+			Vector3 pos = GetTouchPosition(Input.mousePosition);
+			if (this.lastTouchPoint != pos && pos != ActionWheel.INVALID_TOUCH_POINT) {
+				Vector3 deltaVector = (pos - this.lastTouchPoint);
+				Vector3 directionalVector = new Vector3(-pos.y, pos.x, 0);
+				directionalVector.Normalize();
+				float magnitude = Vector3.Dot(directionalVector, deltaVector);
+				
+				Clip(ref magnitude, -0.25f, 0.25f);
+				float angularVelocity = magnitude * 50;
+				this.effectMagnitude += magnitude * Time.deltaTime;
+				
+				if (Mathf.Abs(this.effectMagnitude) > 0.00075f) {
+					this.rotationNode.transform.Rotate(new Vector3(0, 0, angularVelocity));
+					this.OnRotate();
+					this.isWheelMoved = true;
+				}
+				Clip(ref this.effectMagnitude, -0.01f, 0.01f);
+				
+				int slot = this.getSlotAt(0);
+				if (slot != this.lastSlot) {
+					this.audio.PlayOneShot(this.matchSound);
+				}
+				this.lastSlot = slot;
+			}
+
+			if (pos == ActionWheel.INVALID_TOUCH_POINT){
+				wheelRotationFinished = true;
+			}
+			this.lastTouchPoint = pos;
+		}
+		
+		if (Input.GetMouseButtonUp(0)) {
+			wheelRotationFinished = true;
+		}
+
+		return wheelRotationFinished;
+	}
+	
+	private void UpdateRotationFinish() {
+		this.isPressed = false;
+		this.lastTouchPoint = ActionWheel.INVALID_TOUCH_POINT;
+		
+		if (this.isWheelMoved) {
+			int skipNum = Mathf.FloorToInt(this.effectMagnitude * 200);
+
+			skipNum += 1;
+			int num = Mathf.FloorToInt(this.getCurrentAngle() /  this.singleAngle);
+			float targetAngle = (num + skipNum) * this.singleAngle;
+			
+			iTween.RotateTo(
+				this.rotationNode,
+				iTween.Hash(
+					"z", targetAngle, 
+					"easeType", iTween.EaseType.linear, 
+					"time", 0.3f, 
+					"onupdate", "OnRotate",
+					"onupdatetarget", this.gameObject,
+					"oncomplete", "OnWheelRotationComplete",
+					"oncompletetarget", this.gameObject
+				)
+			);
+		}
+		this.effectMagnitude = 0;
+		this.isWheelMoved = false;
+	}
+	
+	public void Update () {		
+		this.UpdateRotationStart();
+		bool wheelRotationFinished = this.UpdatePressMove();
+		if (wheelRotationFinished && this.isPressed) {
+			this.UpdateRotationFinish();
+		}
+	}
+	
+	public void SetState(State state) {
 		if (this.state != state) {
 			switch (state) {
-				case ActionWheelState.Menu:
-					this.transitionToMenu();
+				case State.Combat:
+					this.gameObject.SetActiveRecursively(true);
 				break;
-				case ActionWheelState.Battle:
-					this.transitionToBattle();
+				case State.Progress:
+					this.gameObject.SetActiveRecursively(false);
 				break;
 			}
 			this.state = state;
-		}
-	}
-	
-	public float SingleAngle {
-		get {
-			return this.singleAngle;
 		}
 	}
 	
@@ -211,26 +286,4 @@ public class ActionWheel : MonoBehaviour {
 		return this.rotationNode.transform.localEulerAngles.z + 0.001f; // HACK: Fix floating point error
 	}
 	
-
-	public void OnActionButtonClick() {
-		if (this.onSlotChanged != null) {
-			this.onSlotChanged(this.getSlotAt(0));	
-		}
-	}
-	
-	public void OnMenuButtonClick() {
-		if (this.onSubButtonClicked != null) {
-			this.onSubButtonClicked();
-		}
-		/*
-		switch (this.state) {
-			case ActionWheelState.Menu:
-				this.setState(ActionWheelState.Battle);
-			break;
-			case ActionWheelState.Battle:
-				this.setState(ActionWheelState.Menu);
-			break;
-		}
-		*/
-	}
 }
