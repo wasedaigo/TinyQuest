@@ -31,7 +31,7 @@ namespace TinyQuest.Object {
 
 		private Roga2dBaseInterval buildWalkInterval() {
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
-			int[] frames = new int[4]{1, 0, 1, 2};
+			int[] frames = new int[4]{0, 1, 2, 1};
 			for (int i = 0; i < 4; i++) {
 				Roga2dAnimationKeyFrame keyFrame = new Roga2dAnimationKeyFrame();
 				keyFrame.Rect = new Rect(frames[i] * 32, 0, 32, 32);

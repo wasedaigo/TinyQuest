@@ -14,9 +14,15 @@ public class AdventureStageController : BaseStageController {
 		Progress
 	};
 	
+	
+	public GameObject[] slots;
+	public GameObject CombatPanel;
+	public GameObject ProgressPanel;
+	
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	private Ally player;
+	private UITexture[] weaponTextures;
 
 	private BattlerEntity userBattlerEntity;
 	private ZoneEntity zoneEntity;
@@ -27,26 +33,51 @@ public class AdventureStageController : BaseStageController {
 	// Use this for initialization
 	protected override void Start() {
 		base.Start();
+		
+		this.weaponTextures = new UITexture[6];
 
 		// animationPlayer
-		this.player = spawnBattler("fighter", Ally.State.Stand, 20, 0);
+		this.player = spawnBattler("fighter", Ally.State.Stand, 40, 0);
 		this.player.LocalPriority = 0.45f;
 		
 		this.battlers.Add(this.player);
 		
-		this.monster = spawnMonster("death_wind", -40, 0);
+		
 		
 		this.Stage.GetCharacterLayer().AddChild(this.player);
-		this.Stage.GetCharacterLayer().AddChild(this.monster);
+
 		
 		this.userBattlerEntity = BattlerFactory.Instance.BuildUserBattler();
 		this.zoneEntity = ZoneFactory.Instance.Build(1);
-		this.zoneEntity.playerMove += this.onPlayerMoved;
+		this.zoneEntity.PlayerMove += this.onPlayerMoved;
+		this.zoneEntity.StepProgress += this.OnStepProgressed;
+		/*
 		this.actionWheel = GameObject.Find("ActionWheel").GetComponent<ActionWheel>();
 		this.actionWheel.SetUserBattler(this.userBattlerEntity);
-		this.actionWheel.SetState(ActionWheel.State.Progress);
+		this.actionWheel.SetState(ActionWheel.State.Combat);*/
 		
-		this.state = State.Progress;
+		this.SetState(State.Progress);
+		
+		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
+			WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
+			if (weapon != null) {
+				this.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
+			}
+		}
+	}
+	
+	private void SetState(State state) {
+		this.state = state;
+		this.CombatPanel.SetActiveRecursively(false);
+		this.ProgressPanel.SetActiveRecursively(false);
+		switch (this.state) {
+			case State.Combat:
+				this.CombatPanel.SetActiveRecursively(true);
+				break;
+			case State.Progress:
+				this.ProgressPanel.SetActiveRecursively(true);
+				break;
+		}	
 	}
 	
 	void Update() {
@@ -55,7 +86,8 @@ public class AdventureStageController : BaseStageController {
 			if (this.monster != null && this.monster.IsDead()) {
 				this.Stage.GetCharacterLayer().RemoveChild(this.monster);
 				this.monster = null;
-				
+				this.SetState(State.Progress);
+				//Application.LoadLevel("Home");
 			}	
 		}
 		
@@ -64,6 +96,34 @@ public class AdventureStageController : BaseStageController {
 	
 	private void onPlayerMoved(float distance) {
 		this.Stage.Scroll(distance);
+	}
+	
+	private void OnStepProgressed(int step) {
+		this.monster = spawnMonster("death_wind", -20, 0);
+		this.Stage.GetCharacterLayer().AddChild(this.monster);
+		this.CancelMovement();
+		this.SetState(State.Combat);
+	}
+	
+	
+	public void SetWeaponAtSlot(int i, string textureId) {
+		if (this.weaponTextures[i] != null) {
+			NGUITools.Destroy(this.weaponTextures[i]);	
+			this.weaponTextures[i] = null;
+		}
+
+		GameObject slot = this.slots[i];
+		
+		UITexture ut = NGUITools.AddWidget<UITexture>(slot);
+		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
+        ut.material = material;
+		ut.MarkAsChanged();
+		ut.MakePixelPerfect();
+		ut.transform.localScale = new Vector3(ut.transform.localScale.x * 2, ut.transform.localScale.y * 2, ut.transform.localScale.z);
+		ut.transform.localPosition = new Vector3(1, 1, -10);
+		ut.transform.localEulerAngles = Vector3.one;
+		
+		this.weaponTextures[i] = ut;
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)
@@ -116,10 +176,15 @@ public class AdventureStageController : BaseStageController {
 		}
 	}
 	
+	private void CancelMovement() {
+		this.pressed = false;
+		this.player.stopWalkingAnimation();
+	}
+	
 	public void OnActionButtonClick() {
 		switch (this.state) {
 			case State.Combat:
-				this.playNextAnimation(this.actionWheel.getSlotAt(0));
+				this.playNextAnimation(this.actionWheel.getSlotAt(1));
 				break;
 			case State.Progress:
 				break;
@@ -152,5 +217,29 @@ public class AdventureStageController : BaseStageController {
 		if (this.state == State.Progress) {
 			this.player.stopWalkingAnimation();
 		}
+	}
+	
+	public void OnSlot1Click() {
+		this.playNextAnimation(0);
+	}
+	
+	public void OnSlot2Click() {
+		this.playNextAnimation(1);
+	}
+	
+	public void OnSlot3Click() {
+		this.playNextAnimation(2);
+	}
+	
+	public void OnSlot4Click() {
+		this.playNextAnimation(3);
+	}
+	
+	public void OnSlot5Click() {
+		this.playNextAnimation(4);
+	}
+	
+	public void OnSlot6Click() {
+		this.playNextAnimation(5);
 	}
 }

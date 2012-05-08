@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace TinyQuest.Entity {
 	public class BattlerEntity {
-		public const int WeaponSlotNum = 8;
+		public const int WeaponSlotNum = 6;
 		private int maxHP;
 		public int MaxHP {
 				get {return this.maxHP;}

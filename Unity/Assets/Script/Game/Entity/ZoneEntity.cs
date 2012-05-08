@@ -7,11 +7,11 @@ using TinyQuest.Data.Request;
 namespace TinyQuest.Entity {
 
 	public class ZoneEntity {
-		public System.Action<float> playerMove;
-		public System.Action<int> stepProgress;
+		public System.Action<float> PlayerMove;
+		public System.Action<int> StepProgress;
 		
-		private static readonly int StepDistance = 1000;
-		private static readonly int Speed = 75;
+		private static readonly int StepDistance = 300;
+		private static readonly int Speed = 100;
 		private float moveDistance;
 		public float MoveDistance {
 			get{return this.moveDistance;}
@@ -37,15 +37,15 @@ namespace TinyQuest.Entity {
 				req.ProgressStep(this.stepProgressed);
 			}
 			
-			if (this.playerMove != null) {
-				this.playerMove(delta);
+			if (this.PlayerMove != null) {
+				this.PlayerMove(delta);
 			}
 		}
 
 		private void stepProgressed() {
 			Debug.Log(this.userZoneProgress.progressStep);
-			if (this.stepProgress != null) {
-				this.stepProgress(this.userZoneProgress.progressStep);
+			if (this.StepProgress != null) {
+				this.StepProgress(this.userZoneProgress.progressStep);
 			}
 		}
 

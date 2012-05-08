@@ -24,7 +24,6 @@ public class ActionWheel : MonoBehaviour {
 	
 	private State state;
 	private float singleAngle;
-	private Component currentController;
 	private float savedRotation;
 	private bool isPressed;
 	private int lastSlot;
@@ -74,10 +73,6 @@ public class ActionWheel : MonoBehaviour {
 			parent.AddWidget(sprite);
 			this.slots[i] = go;
 		}
-
-
-		// Set up controller
-		this.currentController = this.gameObject.AddComponent("ActionWheelBattleController");
 	}
 	
 	public void SetUserBattler(BattlerEntity userBattlerEntity) {
@@ -279,7 +274,7 @@ public class ActionWheel : MonoBehaviour {
 	}
 	
 	public int getSlotAt(int no) {
-		return Mathf.FloorToInt(this.getCurrentAngle() / this.singleAngle);
+		return Mathf.FloorToInt((this.getCurrentAngle() + no * this.singleAngle) / this.singleAngle) % this.slotCount;
 	}
 	
 	public float getCurrentAngle() {
