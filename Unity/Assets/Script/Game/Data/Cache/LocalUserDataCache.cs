@@ -60,9 +60,7 @@ namespace TinyQuest.Data.Cache {
 		
 		public void Commit() {
 			string text = JsonWriter.Serialize(this.localUserData);
-  			StreamWriter writer = new StreamWriter("Assets/Resources/Data/LocalUser.txt"); 
-			writer.Write(text);
-			writer.Close();
+			PlayerPrefs.SetString("LocalUser", text);
 		}
 	}
 }

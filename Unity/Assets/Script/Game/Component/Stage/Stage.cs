@@ -42,7 +42,7 @@ public class Stage : MonoBehaviour {
 		new ParallaxLayerInfo(0.5f, 0, 0.03f),
 		new ParallaxLayerInfo(1.0f, 0, 0.04f),
 		new ParallaxLayerInfo(2.0f, 0, 2),
-		new ParallaxLayerInfo(0.0f, 30, 0.3f)
+		new ParallaxLayerInfo(0.3f, 30, 0.3f)
 	};
 
 	void Awake() 
@@ -115,11 +115,11 @@ public class Stage : MonoBehaviour {
 
 	private void UpdateParallaxEffect(bool immediate)
 	{
-		float deviceMoveX = Input.acceleration.y;
+		float deviceMoveX = Input.acceleration.x;
 		deviceMoveX = (deviceMoveX < 0.5f) ? deviceMoveX : 0.5f;
 		deviceMoveX = (deviceMoveX > -0.5f) ? deviceMoveX : -0.5f;
 		
-		float deviceMoveY = Input.acceleration.x + 0.25f;
+		float deviceMoveY = Input.acceleration.y + 0.25f;
 		deviceMoveY = (deviceMoveY < 0.5f) ? deviceMoveY : 0.5f;
 		deviceMoveY = (deviceMoveY > -0.5f) ? deviceMoveY : -0.5f;
 		

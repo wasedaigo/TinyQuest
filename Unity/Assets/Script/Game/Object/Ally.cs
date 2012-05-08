@@ -5,6 +5,7 @@ namespace TinyQuest.Object {
 	public class Ally : AdventureObject {
 		private Roga2dBaseInterval interval;
 		private State state;
+		private bool isWalking;
 		public enum State {
 			Stand,
 			Walk,
@@ -47,8 +48,11 @@ namespace TinyQuest.Object {
 		}
 		
 		public void startWalkingAnimation() {
-			this.interval = this.buildWalkInterval();
-			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+			if (this.interval == null) {
+				this.interval = this.buildWalkInterval();
+				Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+				this.isWalking = true;
+			}
 		}
 		
 		public void stopWalkingAnimation() {
@@ -56,9 +60,12 @@ namespace TinyQuest.Object {
 			if (this.interval != null) {
 				Roga2dIntervalPlayer.GetInstance().Stop(this.interval);
 				this.interval = null;
-				
+				this.isWalking = false;
 				this.SetState(State.Stand);
 			}
+		}
+		public bool IsWalking() {
+			return this.isWalking;	
 		}
 	}
 }

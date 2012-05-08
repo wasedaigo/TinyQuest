@@ -36,6 +36,10 @@ public class Roga2dIntervalPlayer {
 		return false;
 	}
 	
+	public void Clear() {
+		this.intervals.Clear();
+	}
+	
 	public void Update() {
         for (int i = this.intervals.Count - 1; i >= 0; i-- ) {
             Roga2dBaseInterval interval = this.intervals[i];

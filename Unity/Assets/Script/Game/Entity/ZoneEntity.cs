@@ -10,7 +10,7 @@ namespace TinyQuest.Entity {
 		public System.Action<float> PlayerMove;
 		public System.Action<int> StepProgress;
 		
-		private static readonly int StepDistance = 300;
+		private static readonly int StepDistance = 200;
 		private static readonly int Speed = 100;
 		private float moveDistance;
 		public float MoveDistance {

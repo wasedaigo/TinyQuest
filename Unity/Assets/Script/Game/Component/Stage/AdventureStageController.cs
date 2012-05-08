@@ -29,6 +29,8 @@ public class AdventureStageController : BaseStageController {
 	private ActionWheel actionWheel;
 	private State state;
 	private bool pressed;
+	private bool finishZone;
+	private Roga2dBaseInterval interval;
 	
 	// Use this for initialization
 	protected override void Start() {
@@ -64,6 +66,13 @@ public class AdventureStageController : BaseStageController {
 				this.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
 			}
 		}
+
+		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, 0)), Roga2dUtils.pixelToLocal(new Vector2(40, 0)), 1.0f, true, null)
+		});
+			
+			
+		Roga2dIntervalPlayer.GetInstance().Play(this.interval);
 	}
 	
 	private void SetState(State state) {
@@ -73,15 +82,20 @@ public class AdventureStageController : BaseStageController {
 		switch (this.state) {
 			case State.Combat:
 				this.CombatPanel.SetActiveRecursively(true);
+				this.player.stopWalkingAnimation();
 				break;
 			case State.Progress:
-				this.ProgressPanel.SetActiveRecursively(true);
+				//this.ProgressPanel.SetActiveRecursively(true);
+				this.player.startWalkingAnimation();
 				break;
 		}	
 	}
 	
 	void Update() {
 		base.Update();	
+		if (this.interval != null && !this.interval.IsDone()) {
+			return;		
+		}
 		if (!this.AnimationPlayer.HasPlayingAnimations()) {
 			if (this.monster != null && this.monster.IsDead()) {
 				this.Stage.GetCharacterLayer().RemoveChild(this.monster);
@@ -89,6 +103,11 @@ public class AdventureStageController : BaseStageController {
 				this.SetState(State.Progress);
 				//Application.LoadLevel("Home");
 			}	
+		}
+			
+		if (this.finishZone) {
+			Roga2dIntervalPlayer.GetInstance().Clear();
+			Application.LoadLevel("Home");
 		}
 		
 		this.OnActionButtonPressing();
@@ -99,10 +118,21 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void OnStepProgressed(int step) {
-		this.monster = spawnMonster("death_wind", -20, 0);
-		this.Stage.GetCharacterLayer().AddChild(this.monster);
-		this.CancelMovement();
-		this.SetState(State.Combat);
+		if (step == 14) {
+			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
+				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, 0)), Roga2dUtils.pixelToLocal(new Vector2(-100, 0)), 3.0f, true, null),
+				new Roga2dFunc(() => {this.finishZone = true;}),
+			});
+			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+
+		} else {
+			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+			this.monster = spawnMonster("death_wind", -20, 0);
+			this.Stage.GetCharacterLayer().AddChild(this.monster);
+			this.CancelMovement();
+			this.SetState(State.Combat);
+		}
 	}
 	
 	
@@ -192,7 +222,7 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void OnActionButtonPressing() {
-		if (this.pressed) {
+		if (this.player.IsWalking()) {
 			switch (this.state) {
 				case State.Combat:
 					break;
