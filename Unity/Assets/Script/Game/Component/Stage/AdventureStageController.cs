@@ -44,12 +44,14 @@ public class AdventureStageController : BaseStageController {
 		
 		this.battlers.Add(this.player);
 		
-		
-		
 		this.Stage.GetCharacterLayer().AddChild(this.player);
 
 		
 		this.userBattlerEntity = BattlerFactory.Instance.BuildUserBattler();
+
+		this.userBattlerEntity.WeaponUse += this.WeaponUsed;
+		this.userBattlerEntity.UpdateAP  += this.APUpdated;
+
 		this.zoneEntity = ZoneFactory.Instance.Build(1);
 		this.zoneEntity.PlayerMove += this.onPlayerMoved;
 		this.zoneEntity.StepProgress += this.OnStepProgressed;
@@ -181,8 +183,7 @@ public class AdventureStageController : BaseStageController {
 		}
 	}
 	
-	private void playNextAnimation(int no) {
-		WeaponEntity weapon = this.userBattlerEntity.GetWeapon(no);
+	private void playSkillAnimation(WeaponEntity weapon, SkillEntity skillEntity) {
 		if (weapon == null) {
 			return;	
 		}
@@ -197,10 +198,7 @@ public class AdventureStageController : BaseStageController {
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, this.Stage.GetCharacterLayer(), battler, this.monster, CommandCalled);
-			
-			SkillEntity skillEntity = SkillFactory.Instance.Build(weapon.GetMasterWeapon().skills[0]);
-			
-			Debug.Log(skillEntity.Path);
+
 			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, 1.0f, 0.5f, settings, options);
 			this.AnimationPlayer.Play(battler, null, animation,  AnimationFinished);
 		}
@@ -214,7 +212,6 @@ public class AdventureStageController : BaseStageController {
 	public void OnActionButtonClick() {
 		switch (this.state) {
 			case State.Combat:
-				this.playNextAnimation(this.actionWheel.getSlotAt(1));
 				break;
 			case State.Progress:
 				break;
@@ -250,26 +247,34 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	public void OnSlot1Click() {
-		this.playNextAnimation(0);
+		this.userBattlerEntity.UseWeapon(0);
 	}
 	
 	public void OnSlot2Click() {
-		this.playNextAnimation(1);
+		this.userBattlerEntity.UseWeapon(1);
 	}
 	
 	public void OnSlot3Click() {
-		this.playNextAnimation(2);
+		this.userBattlerEntity.UseWeapon(2);
 	}
 	
 	public void OnSlot4Click() {
-		this.playNextAnimation(3);
+		this.userBattlerEntity.UseWeapon(3);
 	}
 	
 	public void OnSlot5Click() {
-		this.playNextAnimation(4);
+		this.userBattlerEntity.UseWeapon(4);
 	}
 	
 	public void OnSlot6Click() {
-		this.playNextAnimation(5);
+		this.userBattlerEntity.UseWeapon(5);
+	}
+	
+	private void WeaponUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
+		this.playSkillAnimation(weaponEntity, skillEntity);
+	}
+	
+	private void APUpdated(int newAP) {
+		Debug.Log("AP Updated = " + newAP);
 	}
 }

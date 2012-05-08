@@ -60,7 +60,18 @@ namespace TinyQuest.Data.Cache {
 		
 		public void Commit() {
 			string text = JsonWriter.Serialize(this.localUserData);
-			PlayerPrefs.SetString("LocalUser", text);
+
+			// make a path
+			string path = Path.Combine(Application.persistentDataPath, "Save/LocalUser.txt");
+			Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Save"));
+			
+			// write some data
+			using (StreamWriter writer = new StreamWriter(File.Create(path)))
+			{
+			    writer.Write(text);
+			}
+			
+			Debug.Log("LocalUser.txt Committed at " + path);
 		}
 	}
 }

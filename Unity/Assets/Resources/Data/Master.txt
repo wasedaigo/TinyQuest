@@ -11,6 +11,11 @@
           "id": 2,
           "name": "Skill_Sword_Double_Slash",
           "path": "Combat/Sword/DoubleSlash"
+        },
+        {
+          "id": 3,
+          "name": "Skill_Sword_Multi_Slash",
+          "path": "Combat/Sword/MultiSlash"
         }
     ],
     "weapons":[
@@ -20,6 +25,8 @@
       "path": "Weapon/Sword/ShortSword",
       "description": "",
       "power": 100,
+      "durability": 20,
+      "ap": 1,
       "parameters": [
           [1000, 20, 60, 40, 0],
           [2000, 40, 50, 50, 0],
@@ -33,12 +40,14 @@
       "path": "Weapon/Sword/BroadSword",
       "description": "",
       "power": 100,
+      "durability": 10,
+      "ap": 2,
       "parameters": [
           [1000, 20, 60, 40, 0],
           [2000, 40, 50, 50, 0],
           [3000, 40, 50, 50, 0]
       ],
-      "skills": [2]
+      "skills": [2, 3]
         }
       ]
     }

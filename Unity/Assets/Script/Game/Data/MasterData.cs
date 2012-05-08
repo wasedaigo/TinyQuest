@@ -35,6 +35,8 @@ namespace TinyQuest.Data{
 		public readonly string path;
 		public readonly string description;
 		public readonly int power;
+		public readonly int durability;
+		public readonly int ap;
 		public readonly int[][] parameters;
 		public readonly int[] skills;
 		

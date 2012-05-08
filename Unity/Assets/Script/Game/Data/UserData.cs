@@ -14,6 +14,8 @@ namespace TinyQuest.Data{
 	public class UserZoneProgress : IDData{
       	public int progressStep;
 		public int clearCount;
+		public int[] weaponDurabilities;
+		public int currentAP;
 	}
 	
 	public class LocalUserData {
