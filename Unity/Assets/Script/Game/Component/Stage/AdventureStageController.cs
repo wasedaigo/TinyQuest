@@ -31,6 +31,7 @@ public class AdventureStageController : BaseStageController {
 	private bool pressed;
 	private bool finishZone;
 	private Roga2dBaseInterval interval;
+	private const float PlayerY = 20;
 	
 	// Use this for initialization
 	protected override void Start() {
@@ -39,7 +40,7 @@ public class AdventureStageController : BaseStageController {
 		this.weaponTextures = new UITexture[6];
 
 		// animationPlayer
-		this.player = spawnBattler("fighter", Ally.State.Stand, 40, 0);
+		this.player = spawnBattler("fighter", Ally.State.Stand, 40, PlayerY);
 		this.player.LocalPriority = 0.45f;
 		
 		this.battlers.Add(this.player);
@@ -70,7 +71,7 @@ public class AdventureStageController : BaseStageController {
 		}
 
 		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, 0)), Roga2dUtils.pixelToLocal(new Vector2(40, 0)), 1.0f, true, null)
+			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), 1.0f, true, null)
 		});
 			
 			
@@ -123,7 +124,7 @@ public class AdventureStageController : BaseStageController {
 		if (step == 14) {
 			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
-				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, 0)), Roga2dUtils.pixelToLocal(new Vector2(-100, 0)), 3.0f, true, null),
+				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(-100, PlayerY)), 3.0f, true, null),
 				new Roga2dFunc(() => {this.finishZone = true;}),
 			});
 			Roga2dIntervalPlayer.GetInstance().Play(this.interval);

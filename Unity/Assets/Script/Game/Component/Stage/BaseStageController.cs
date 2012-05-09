@@ -9,6 +9,8 @@ public class BaseStageController : MonoBehaviour {
 	
 	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;
+	public  BaloonMessageBox baloonMessageBox;
+		
 	public Roga2dAnimationPlayer AnimationPlayer {
 		get {return this.animationPlayer;}	
 	}
@@ -39,6 +41,15 @@ public class BaseStageController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.stage = this.GetComponent<Stage>();
+
+		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
+		box.transform.parent = this.stage.gameObject.transform;
+		box.transform.localScale = new Vector3(0.003f, 0.003f, 1);
+		box.transform.localPosition = new Vector3(0.75f, 0, 0);
+		box.ArrowFaceRight = true;
+		box.Width = 256;
+		box.Height = 64;
+		box.Message = "Hi, Is this your first time playing this game?";
 	}
 
 	protected virtual void Update () {

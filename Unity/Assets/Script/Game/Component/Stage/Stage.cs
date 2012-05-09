@@ -70,7 +70,7 @@ public class Stage : MonoBehaviour {
 			this.parallaxLayers[i] = node;
 		}
 		
-		this.UpdateParallaxEffect(true);
+		//this.UpdateParallaxEffect(true);
 	}
 	
 	public Roga2dNode GetCharacterLayer() {
@@ -150,7 +150,7 @@ public class Stage : MonoBehaviour {
 	void Update()
 	{
 		this.UpdateScroll();
-		this.UpdateParallaxEffect(false);
+		//this.UpdateParallaxEffect(false);
 		this.root.Update();
 	}
 }
