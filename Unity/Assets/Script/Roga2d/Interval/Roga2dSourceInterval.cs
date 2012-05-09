@@ -156,7 +156,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 
 		// No animation node is generaetd yet, let's generate it
 		// If no ID exists, ignore it (Which usually means an empty keyframe)
-		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.5f, this.settings, this.options);
+		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.0f, this.settings, this.options);
 		this.sprite.AddChild(animation.Node);
 		this.interval = animation.Interval;
 		this.interval.Start();

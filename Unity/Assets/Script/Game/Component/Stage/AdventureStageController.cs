@@ -80,7 +80,7 @@ public class AdventureStageController : BaseStageController {
 	private void SetState(State state) {
 		this.state = state;
 		this.CombatPanel.SetActiveRecursively(false);
-		this.ProgressPanel.SetActiveRecursively(false);
+		//this.ProgressPanel.SetActiveRecursively(false);
 		switch (this.state) {
 			case State.Combat:
 				this.CombatPanel.SetActiveRecursively(true);
@@ -152,7 +152,7 @@ public class AdventureStageController : BaseStageController {
 		ut.MarkAsChanged();
 		ut.MakePixelPerfect();
 		ut.transform.localScale = new Vector3(ut.transform.localScale.x * 2, ut.transform.localScale.y * 2, ut.transform.localScale.z);
-		ut.transform.localPosition = new Vector3(1, 1, -10);
+		ut.transform.localPosition = new Vector3(1, 1, -0.1f);
 		ut.transform.localEulerAngles = Vector3.one;
 		
 		this.weaponTextures[i] = ut;
@@ -199,7 +199,7 @@ public class AdventureStageController : BaseStageController {
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, this.Stage.GetCharacterLayer(), battler, this.monster, CommandCalled);
 
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, 1.0f, 0.5f, settings, options);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, 1.0f, 0.0f, settings, options);
 			this.AnimationPlayer.Play(battler, null, animation,  AnimationFinished);
 		}
 	}

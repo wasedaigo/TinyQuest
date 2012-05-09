@@ -53,10 +53,7 @@ public class Stage : MonoBehaviour {
 		this.root = new Roga2dNode();
 		this.root.Transform.parent = this.transform;
 		Roga2dUtils.applyState(this.transform, state);
-		
-	}
-	
-	void Start() {
+
 		for (int i = 0; i < LayerNum; i++) {
 			Roga2dNode node = new Roga2dNode();
 			for (int j = 0; j < LayerNodeNum; j++) {
