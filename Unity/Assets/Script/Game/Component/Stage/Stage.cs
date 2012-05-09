@@ -8,7 +8,7 @@ public class Stage : MonoBehaviour {
 	public const int LayerNum = 6;
 	public const int LayerNodeNum = 3;
 	public const float DeviceMoveErrorThreshold = 0.05f;
-	public const float DeviceParallaxMoveAmount = 16.0f;
+	public const float DeviceParallaxMoveAmount = 8.0f;
 	private Roga2dNode root;
 	private Roga2dRenderObject renderObject;
 	private Roga2dNode[,] parallaxLayerNodes = new Roga2dNode[LayerNum, LayerNodeNum];
