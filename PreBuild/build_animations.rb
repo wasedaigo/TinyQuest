@@ -2,8 +2,8 @@ require 'rubygems'
 require 'json'
 require 'FileUtils'
 
-INPUT_PATH = "buildprocess/rawassets/animations"
-OUTPUT_PATH = "../Unity/Assets/Resources/Animations"
+INPUT_PATH = "PreBuild/RawAssets/Animations"
+OUTPUT_PATH = "Unity/Assets/Resources/Animations"
 
 AnchorData = {
     "bottomLeft" => [-1, 1],
@@ -278,6 +278,7 @@ end
 #----------------------------------------------------------------------------
 animation_data = {}
 list = Dir["#{INPUT_PATH}/**/*.ani"]
+
 list.each do |filename|
     # Convert Splash animation file into lightweight json object
     result = build_animation_file(filename)
@@ -293,7 +294,7 @@ animation_data.keys.each do |id|
     
     # Get output filename
     outputFilename = OUTPUT_PATH + "/" + id + ".txt"
-    
+
     # Create directories
     FileUtils.mkpath File.dirname(outputFilename)
     
