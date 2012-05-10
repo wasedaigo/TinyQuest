@@ -1,7 +1,8 @@
-
+using JsonFx.Json;
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Data.Cache;
+using TinyQuest.Data;
 using TinyQuest.Core;
 using TinyQuest.Entity;
 using TinyQuest.Factory.Entity;
@@ -11,13 +12,16 @@ using TinyQuest.Object;
 public class AdventureStageController : BaseStageController {
 	public enum State {
 		Combat,
-		Progress
+		Moving,
+		Next,
+		Pause
 	};
 	
 	
 	public GameObject[] slots;
 	public GameObject CombatPanel;
-	public GameObject ProgressPanel;
+	public GameObject NextPanel;
+	public GameObject MovingPanel;
 	
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
@@ -56,54 +60,72 @@ public class AdventureStageController : BaseStageController {
 		this.zoneEntity = ZoneFactory.Instance.Build(1);
 		this.zoneEntity.PlayerMove += this.onPlayerMoved;
 		this.zoneEntity.StepProgress += this.OnStepProgressed;
+		this.zoneEntity.CommandExecute += this.OnCommandExecuted;
+		this.zoneEntity.GotoNextStep += this.GotoNextStep;
+		this.zoneEntity.ClearZone += this.ClearZone;
 		/*
 		this.actionWheel = GameObject.Find("ActionWheel").GetComponent<ActionWheel>();
 		this.actionWheel.SetUserBattler(this.userBattlerEntity);
 		this.actionWheel.SetState(ActionWheel.State.Combat);*/
-		
-		this.SetState(State.Progress);
-		
+
+		this.SetState(State.Pause);
+
 		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
 			WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
 			if (weapon != null) {
 				this.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
 			}
 		}
-
-		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), 1.0f, true, null)
-		});
+		
+		if (this.zoneEntity.IsAtStart()) {
+			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
+				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), 1.0f, true, null),
+				new Roga2dFunc(() => {this.zoneEntity.StartAdventure();})
+			});
+			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+		} else {
+			this.player.LocalPixelPosition = new Vector2(40, PlayerY);
+			this.zoneEntity.StartAdventure();
+		}
 			
-			
-		Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+		
 	}
 	
 	private void SetState(State state) {
 		this.state = state;
 		this.CombatPanel.SetActiveRecursively(false);
-		//this.ProgressPanel.SetActiveRecursively(false);
+		this.NextPanel.SetActiveRecursively(false);
+		this.MovingPanel.SetActiveRecursively(false);
 		switch (this.state) {
 			case State.Combat:
 				this.CombatPanel.SetActiveRecursively(true);
 				this.player.stopWalkingAnimation();
 				break;
-			case State.Progress:
-				//this.ProgressPanel.SetActiveRecursively(true);
+			case State.Next:
+				this.NextPanel.SetActiveRecursively(true);
+				this.player.stopWalkingAnimation();
+				break;
+			case State.Moving:
+				this.MovingPanel.SetActiveRecursively(true);
 				this.player.startWalkingAnimation();
+				break;
+			case State.Pause:
+				this.player.stopWalkingAnimation();
 				break;
 		}	
 	}
-	
+
 	void Update() {
 		base.Update();	
 		if (this.interval != null && !this.interval.IsDone()) {
 			return;		
 		}
 		if (!this.AnimationPlayer.HasPlayingAnimations()) {
-			if (this.monster != null && this.monster.IsDead()) {
+			if (this.state == State.Combat && this.monster != null && this.monster.IsDead()) {
 				this.Stage.GetCharacterLayer().RemoveChild(this.monster);
 				this.monster = null;
-				this.SetState(State.Progress);
+				this.zoneEntity.NextCommand();
 				//Application.LoadLevel("Home");
 			}	
 		}
@@ -113,31 +135,62 @@ public class AdventureStageController : BaseStageController {
 			Application.LoadLevel("Home");
 		}
 		
-		this.OnActionButtonPressing();
+		if (this.state == State.Moving) {
+			this.zoneEntity.MoveForward();
+		}
 	}
 	
 	private void onPlayerMoved(float distance) {
 		this.Stage.Scroll(distance);
 	}
 	
-	private void OnStepProgressed(int step) {
-		if (step == 14) {
-			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
-				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(-100, PlayerY)), 3.0f, true, null),
-				new Roga2dFunc(() => {this.finishZone = true;}),
-			});
-			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+	private void OnStepProgressed(int stepIndex, bool hasEvent) {
+	}
+	
+	private void GotoNextStep() {
+		this.SetState(State.Moving);
+	}
+	
+	private void ClearZone() {
+		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+			new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
+			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(-100, PlayerY)), 2.0f, true, null),
+			new Roga2dFunc(() => {this.finishZone = true;})
+		});
+		Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+	}
 
-		} else {
-			Roga2dIntervalPlayer.GetInstance().Play(this.interval);
-			this.monster = spawnMonster("death_wind", -20, 0);
-			this.Stage.GetCharacterLayer().AddChild(this.monster);
-			this.CancelMovement();
-			this.SetState(State.Combat);
+	private void OnCommandExecuted(ZoneCommand command, object zoneCommandState) {
+		switch (command.type) {
+			case (int)ZoneCommand.Type.Battle:
+				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
+				this.HandleBattleCommand(battleCommand.enemyId);
+				break;
+			case (int)ZoneCommand.Type.Message:
+				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
+				this.HandleMessageCommand(messageCommand.text);
+				break;
+			case (int)ZoneCommand.Type.Treasure:
+				ZoneCommandTreasure treasureCommand = JsonReader.Deserialize<ZoneCommandTreasure>(JsonWriter.Serialize(command.content));
+				break;
+			default:
+				Debug.LogError("Undefined type " + command.type + " is passed");
+				break;
 		}
 	}
 	
+	private void HandleMessageCommand(string text) {
+		this.ShowMessage(text);
+		this.SetState(State.Next);
+	}
+	
+	private void HandleBattleCommand(int enemyId) {
+		Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+		this.monster = spawnMonster("death_wind", -20, 0);
+		this.Stage.GetCharacterLayer().AddChild(this.monster);
+		this.CancelMovement();
+		this.SetState(State.Combat);
+	}
 	
 	public void SetWeaponAtSlot(int i, string textureId) {
 		if (this.weaponTextures[i] != null) {
@@ -210,41 +263,10 @@ public class AdventureStageController : BaseStageController {
 		this.player.stopWalkingAnimation();
 	}
 	
-	public void OnActionButtonClick() {
-		switch (this.state) {
-			case State.Combat:
-				break;
-			case State.Progress:
-				break;
-		}
-	}
-	
-	private void OnActionButtonPressing() {
-		if (this.player.IsWalking()) {
-			switch (this.state) {
-				case State.Combat:
-					break;
-				case State.Progress:
-					this.zoneEntity.MoveForward();
-					break;
-			}	
-		}
-	}
-	
-	public void OnActionButtonPress() {
-		this.pressed = true;
-		if (this.state == State.Progress) {
-			this.player.startWalkingAnimation();
-		}
-	}
-
-	
-	public void OnActionButtonRelease() {
-		this.pressed = false;
-		
-		if (this.state == State.Progress) {
-			this.player.stopWalkingAnimation();
-		}
+	public void OnNextButtonClick() {
+		this.HideMessage();
+		this.zoneEntity.NextCommand();
+		Debug.Log("NextButtonClick");
 	}
 	
 	public void OnSlot1Click() {

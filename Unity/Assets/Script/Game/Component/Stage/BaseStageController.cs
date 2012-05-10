@@ -6,10 +6,12 @@ using TinyQuest.Model;
 using TinyQuest.Object;
 
 public class BaseStageController : MonoBehaviour {
+	public  BaloonMessageBox baloonMessageBox;
 	
 	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;
-	public  BaloonMessageBox baloonMessageBox;
+	private BaloonMessageBox visibleMessageBox;
+	
 		
 	public Roga2dAnimationPlayer AnimationPlayer {
 		get {return this.animationPlayer;}	
@@ -41,7 +43,10 @@ public class BaseStageController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.stage = this.GetComponent<Stage>();
-
+	}
+	
+	public void ShowMessage(string message) {
+		this.HideMessage();
 		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
 		box.transform.parent = this.stage.gameObject.transform;
 		box.transform.localScale = new Vector3(0.003f, 0.003f, 1);
@@ -49,7 +54,17 @@ public class BaseStageController : MonoBehaviour {
 		box.ArrowFaceRight = true;
 		box.Width = 256;
 		box.Height = 64;
-		box.Message = "Hi, Is this your first time playing this game?";
+		box.Message = message;
+		
+		this.visibleMessageBox = box;
+	}
+	
+	public void HideMessage() {
+		if (this.visibleMessageBox != null) {
+			this.visibleMessageBox.transform.parent = null;
+			Destroy(this.visibleMessageBox.gameObject);
+			this.visibleMessageBox = null;
+		}
 	}
 
 	protected virtual void Update () {

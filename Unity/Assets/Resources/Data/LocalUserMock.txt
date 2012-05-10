@@ -35,22 +35,29 @@
     ],
     "zone": {
             "zoneId": 1,
-            "events": [
-              {
-                "step":10,
+            "lastStepIndex": 5,
+            "events": {
+              "1": {
                 "commands":[
-                  {"type": 1, "content": {"text":"TEST_KEY"}},
-                  {"type": 0, "content": {"enemyGroup":1022}},
-                  {"type": 1, "content": {"text":"TEST_KEY"}}
+                  {"type": 1, "content": {"text":"敵が現れたぞ！"}},
+                  {"type": 0, "content": {"enemyId":1022}},
+                  {"type": 1, "content": {"text":"やった。たおした！"}}
                 ]
-              }
-            ]
+                },
+              "5": {
+                "commands":[
+                  {"type": 1, "content": {"text":"やったー。ゴールだ。"}}
+                ]
+                }
+             }
     },
     "zoneProgresses": [
         {
             "id": 1,
             "clearCount": 0,
-            "progressStep": 10,
+            "stepIndex": 0,
+            "commandIndex": 0,
+            "commandState": {},
             "weaponDurabilities":[20, 20, 20],
             "currentAP":5
         }

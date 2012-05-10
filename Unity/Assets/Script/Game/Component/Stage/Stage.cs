@@ -89,8 +89,8 @@ public class Stage : MonoBehaviour {
 			float deltaY = 0;
 
 			for (int j = 0; j < LayerNodeNum; j++) {
-				Roga2dNode layeNode = this.parallaxLayerNodes[i, j];
-				layeNode.LocalPixelPosition = new Vector2(layeNode.LocalPixelPosition.x + deltaX, layeNode.LocalPixelPosition.y + deltaY);
+				Roga2dNode layerNode = this.parallaxLayerNodes[i, j];
+				layerNode.LocalPixelPosition = new Vector2(layerNode.LocalPixelPosition.x + deltaX, layerNode.LocalPixelPosition.y + deltaY);
 			}
 			if (this.parallaxLayerNodes[i, 0].LocalPixelPosition.x > LayerNodeWidth) {
 				

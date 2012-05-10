@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace TinyQuest.Data{
 
 	public class UserWeapon : IDData{
@@ -8,11 +9,14 @@ namespace TinyQuest.Data{
 	
 	public class UserZone{
 		public int zoneId;
-		public ZoneEvent[] events;
+		public int lastStepIndex;
+		public Dictionary<string, ZoneEvent> events;
 	}
 	
 	public class UserZoneProgress : IDData{
-      	public int progressStep;
+    public int stepIndex;
+    public int commandIndex;
+		public object commandState;
 		public int clearCount;
 		public int[] weaponDurabilities;
 		public int currentAP;

@@ -14,7 +14,16 @@ namespace TinyQuest.Data.Request {
 		public virtual void ProgressStep(System.Action callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
-			userZoneProgress.progressStep += 1;
+			userZoneProgress.stepIndex += 1;
+			userZoneProgress.commandIndex = 0;
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			callback();
+		}
+		
+		public virtual void ProgressCommand(System.Action callback) {
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
+			userZoneProgress.commandIndex += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback();
 		}
