@@ -20,6 +20,9 @@ namespace TinyQuest.Data{
 		public int turnCount;
 		public int[] buffs;
 		
+		public ZoneCommandBattleState() {
+		}
+		
 		public ZoneCommandBattleState(int enemyHp, bool playerTurn, int turnCount, int[] buffs) {
 		  this.enemyHp = enemyHp;
 		  this.playerTurn = playerTurn;

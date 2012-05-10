@@ -164,7 +164,8 @@ public class AdventureStageController : BaseStageController {
 		switch (command.type) {
 			case (int)ZoneCommand.Type.Battle:
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				this.HandleBattleCommand(battleCommand.enemyId);
+				ZoneCommandBattleState battleState = JsonReader.Deserialize<ZoneCommandBattleState>(JsonWriter.Serialize(zoneCommandState));
+				this.HandleBattleCommand(battleCommand.enemyId, battleState);
 				break;
 			case (int)ZoneCommand.Type.Message:
 				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
@@ -184,8 +185,7 @@ public class AdventureStageController : BaseStageController {
 		this.SetState(State.Next);
 	}
 	
-	private void HandleBattleCommand(int enemyId) {
-		Roga2dIntervalPlayer.GetInstance().Play(this.interval);
+	private void HandleBattleCommand(int enemyId, ZoneCommandBattleState battleState) {
 		this.monster = spawnMonster("death_wind", -20, 0);
 		this.Stage.GetCharacterLayer().AddChild(this.monster);
 		this.CancelMovement();

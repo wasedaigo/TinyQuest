@@ -75,7 +75,6 @@ namespace TinyQuest.Entity {
 		}
 		
 		// Event
-
 		public void NextCommand() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.ProgressCommand(this.OnCommandProgressed);
@@ -92,7 +91,8 @@ namespace TinyQuest.Entity {
 				ZoneCommand[] commands = zoneEvent.commands;
 				if (commandIndex < commands.Length) {
 					ZoneCommand command = commands[commandIndex];
-					this.CommandExecute(command, null);
+					object zoneCommandState = this.userZoneProgress.commandState;
+					this.CommandExecute(command, zoneCommandState);
 					allCommandFinished = false;
 				}
 			}

@@ -16,6 +16,12 @@ namespace TinyQuest.Data.Request {
 			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
 			userZoneProgress.stepIndex += 1;
 			userZoneProgress.commandIndex = 0;
+
+			bool clear = userZoneProgress.stepIndex >= userZone.lastStepIndex;
+			if (clear) {
+					
+			}
+			
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback();
 		}
