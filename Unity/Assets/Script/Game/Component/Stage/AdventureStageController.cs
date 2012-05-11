@@ -161,8 +161,7 @@ public class AdventureStageController : BaseStageController {
 		switch (command.type) {
 			case (int)ZoneCommand.Type.Battle:
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				ZoneCommandBattleState battleState = JsonReader.Deserialize<ZoneCommandBattleState>(JsonWriter.Serialize(zoneCommandState));
-				this.HandleBattleCommand(battleCommand.enemyId, battleState);
+				this.HandleBattleCommand(battleCommand.enemyId);
 				break;
 			case (int)ZoneCommand.Type.Message:
 				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
@@ -182,15 +181,11 @@ public class AdventureStageController : BaseStageController {
 		this.SetState(State.Next);
 	}
 	
-	private void HandleBattleCommand(int enemyId, ZoneCommandBattleState battleState) {
-		if (battleState == null) {
-			
-		} else {
+	private void HandleBattleCommand(int enemyId) {
 			this.monster = spawnMonster("death_wind", -20, 0);
 			this.Stage.GetCharacterLayer().AddChild(this.monster);
 			this.CancelMovement();
 			this.SetState(State.Combat);
-		}
 	}
 	
 	public void SetWeaponAtSlot(int i, string textureId) {

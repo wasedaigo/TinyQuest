@@ -13,6 +13,7 @@ namespace TinyQuest.Entity {
 		public System.Action GotoNextStep;
 		public System.Action ClearZone;
 		
+		
 		private static readonly int StepDistance = 100;
 		private static readonly int Speed = 100;
 		private float moveDistance;

@@ -11,6 +11,7 @@ namespace TinyQuest.Data.Cache {
 		private LocalUserData localUserData;
 		protected UserStatus userStatus;
 		protected UserZone userZone;
+		protected CombatProgress combatProgress;
 		protected UserWeapon[] equipWeapons;
 		protected UserWeapon[] stockWeapons;
 		
@@ -40,6 +41,10 @@ namespace TinyQuest.Data.Cache {
 				dictionary.Add(data[i].id, data[i]);
 			}
 			return dictionary;
+		}
+
+		public virtual CombatProgress GetCombatProgress() {
+			return this.combatProgress;
 		}
 			
 		public virtual UserStatus GetUserStatus() {

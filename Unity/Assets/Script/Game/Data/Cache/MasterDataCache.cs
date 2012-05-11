@@ -9,6 +9,7 @@ namespace TinyQuest.Data.Cache {
 		protected MasterZone zone;
 		protected Dictionary<int, MasterWeapon> masterWeaponDictionary;
 		protected Dictionary<int, MasterSkill> masterSkillDictionary;
+		protected Dictionary<int, MasterEnemy> masterEnemyDictionary;
 		
 		public void Set(string jsonText) {
 			MasterFile masterFile = JsonReader.Deserialize<MasterFile>(jsonText);
@@ -16,6 +17,7 @@ namespace TinyQuest.Data.Cache {
 			this.zone = masterData.zone;
 			this.masterWeaponDictionary = this.GetAsDictionary<MasterWeapon>(masterData.weapons);
 			this.masterSkillDictionary = this.GetAsDictionary<MasterSkill>(masterData.skills);
+			this.masterEnemyDictionary = this.GetAsDictionary<MasterEnemy>(masterData.enemies);
 		}
 		
 		public void SetZone(string jsonText) {
@@ -43,6 +45,10 @@ namespace TinyQuest.Data.Cache {
 		
 		public virtual MasterSkill GetSkillByID(int id) {
 			return this.masterSkillDictionary[id];
+		}
+		
+		public virtual MasterEnemy GetEnemyByID(int id) {
+			return this.masterEnemyDictionary[id];
 		}
 	}
 }

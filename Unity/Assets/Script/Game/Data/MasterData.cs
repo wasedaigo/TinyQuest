@@ -69,6 +69,11 @@ namespace TinyQuest.Data{
 		}
 	}
 	
+	public class MasterEnemy : IDData {
+		public readonly int hp;
+		public readonly int power;
+	}
+		
 	public class MasterSkill : IDData {
 		public readonly string name;
 		public readonly string path;
@@ -86,6 +91,7 @@ namespace TinyQuest.Data{
 		public readonly MasterZone zone;
 		public readonly MasterWeapon[] weapons;
 		public readonly MasterSkill[] skills;
+		public readonly MasterEnemy[] enemies;
 	}
 	
 	public class MasterFile {

@@ -14,20 +14,30 @@ namespace TinyQuest.Data.Cache {
 			return base.GetLoadedZone();
 		}
 		
+		private void LoadMaster() {
+			TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
+			this.Set(txt.text);	
+		}
+		
 		public override MasterWeapon GetWeaponByID(int id) {
 			if (this.masterWeaponDictionary == null) {
-				TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
-				this.Set(txt.text);
+				this.LoadMaster();
 			}
 			return base.GetWeaponByID(id);
 		}
-		
+
 		public override MasterSkill GetSkillByID(int id) {
 			if (this.masterSkillDictionary == null) {
-				TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
-				this.Set(txt.text);
+				this.LoadMaster();
 			}
 			return base.GetSkillByID(id);
+		}
+		
+		public override MasterEnemy GetEnemyByID(int id) {
+			if (this.masterEnemyDictionary == null) {
+				this.LoadMaster();
+			}
+			return base.GetEnemyByID(id);
 		}
 	}
 }

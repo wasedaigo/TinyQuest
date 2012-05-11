@@ -18,6 +18,14 @@
           "path": "Combat/Sword/MultiSlash"
         }
     ],
+    "enemies":[
+        {
+          "id": 1,
+          "name": "Enemy_Goblin",
+          "hp": 100,
+          "power": 20
+        }
+    ],
     "weapons":[
         {
           "id": 1,

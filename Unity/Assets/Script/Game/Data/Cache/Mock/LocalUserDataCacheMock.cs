@@ -26,7 +26,13 @@ namespace TinyQuest.Data.Cache {
 			}
 			return base.GetStockWeapons();
 		}
-		
+
+		public override CombatProgress GetCombatProgress() {
+			if (this.combatProgress == null) {
+				this.LoadLocalUserMock();
+			}
+			return base.GetCombatProgress();
+		}
 		
 		public override UserStatus GetUserStatus() {
 			if (this.userStatus == null) {
