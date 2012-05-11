@@ -10,7 +10,7 @@ namespace TinyQuest.Factory.Entity {
 
 		public BattlerEntity BuildUserBattler() {
 			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
-			BattlerEntity battler = new BattlerEntity(100);
+			BattlerEntity battler = new BattlerEntity(100, 100);
 			
 			for (int i = 0; i < userWeapons.Length; i++) {
 				WeaponEntity weapon = WeaponFactory.Instance.Build(userWeapons[i]);

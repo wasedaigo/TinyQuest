@@ -13,14 +13,8 @@ namespace TinyQuest.Data.Request {
 		
 		public virtual void ProgressStep(System.Action callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
-			userZoneProgress.stepIndex += 1;
-			userZoneProgress.commandIndex = 0;
-
-			bool clear = userZoneProgress.stepIndex >= userZone.lastStepIndex;
-			if (clear) {
-					
-			}
+			userZone.stepIndex += 1;
+			userZone.commandIndex = 0;
 			
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback();
@@ -28,8 +22,7 @@ namespace TinyQuest.Data.Request {
 		
 		public virtual void ProgressCommand(System.Action callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
-			userZoneProgress.commandIndex += 1;
+			userZone.commandIndex += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback();
 		}
@@ -38,18 +31,17 @@ namespace TinyQuest.Data.Request {
 			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
 			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(userWeapons[slot].weaponId);
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
-			userZoneProgress.currentAP -= masterWeapon.ap;
+			userZone.currentAP -= masterWeapon.ap;
 			
 			bool isBroken = true;
-			if (userZoneProgress.weaponDurabilities[slot] > 0) {
+			if (userZone.weaponDurabilities[slot] > 0) {
 				isBroken = false;
-				userZoneProgress.weaponDurabilities[slot] -= 1;
+				userZone.weaponDurabilities[slot] -= 1;
 			}
 			
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			
-			callback(isBroken, userZoneProgress.currentAP);
+			callback(isBroken, userZone.currentAP);
 		}
 		
 	}

@@ -11,13 +11,11 @@ namespace TinyQuest.Data{
 		public int zoneId;
 		public int lastStepIndex;
 		public Dictionary<string, ZoneEvent> events;
-	}
-	
-	public class UserZoneProgress : IDData{
-    public int stepIndex;
-    public int commandIndex;
+
+		public int battlerHP;
+    	public int stepIndex;
+    	public int commandIndex;
 		public object commandState;
-		public int clearCount;
 		public int[] weaponDurabilities;
 		public int currentAP;
 	}
@@ -26,6 +24,5 @@ namespace TinyQuest.Data{
 		public readonly UserZone zone;
 		public readonly UserWeapon[] equipWeapons;
 		public readonly UserWeapon[] stockWeapons;
-		public readonly UserZoneProgress[] zoneProgresses;
 	}
 }

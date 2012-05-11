@@ -21,11 +21,9 @@ namespace TinyQuest.Entity {
 		}
 
 		private Dictionary<int, ZoneEventEntity> events =  new Dictionary<int, ZoneEventEntity>();
-		private UserZoneProgress userZoneProgress;
 		private UserZone userZone;
 		
-		public ZoneEntity(UserZoneProgress userZoneProgress, UserZone userZone) {
-			this.userZoneProgress = userZoneProgress;
+		public ZoneEntity(UserZone userZone) {
 			this.userZone = userZone;
 		}
 		
@@ -34,8 +32,8 @@ namespace TinyQuest.Entity {
 		}
 		
 		public bool IsAtStart() {
-			int stepIndex = this.userZoneProgress.stepIndex;
-			int commandIndex = this.userZoneProgress.commandIndex;
+			int stepIndex = this.userZone.stepIndex;
+			int commandIndex = this.userZone.commandIndex;
 			
 			return stepIndex == 0 && commandIndex == 0;
 		}
@@ -63,10 +61,10 @@ namespace TinyQuest.Entity {
 		}
 		
 		private void OnStepProgressed() {
-			Debug.Log("[StepProgressed] " + this.userZoneProgress.stepIndex);
+			Debug.Log("[StepProgressed] " + this.userZone.stepIndex);
 			bool hasEvent = false;
 			if (this.StepProgress != null) {
-				int stepIndex = this.userZoneProgress.stepIndex;
+				int stepIndex = this.userZone.stepIndex;
 				hasEvent = this.userZone.events.ContainsKey(stepIndex.ToString());
 				this.StepProgress(stepIndex, hasEvent);
 			}
@@ -81,8 +79,8 @@ namespace TinyQuest.Entity {
 		}
 		
 		private void OnCommandProgressed() {
-			int stepIndex = this.userZoneProgress.stepIndex;
-			int commandIndex = this.userZoneProgress.commandIndex;
+			int stepIndex = this.userZone.stepIndex;
+			int commandIndex = this.userZone.commandIndex;
 
 			bool allCommandFinished = true;
 			string key = stepIndex.ToString();
@@ -91,14 +89,14 @@ namespace TinyQuest.Entity {
 				ZoneCommand[] commands = zoneEvent.commands;
 				if (commandIndex < commands.Length) {
 					ZoneCommand command = commands[commandIndex];
-					object zoneCommandState = this.userZoneProgress.commandState;
+					object zoneCommandState = this.userZone.commandState;
 					this.CommandExecute(command, zoneCommandState);
 					allCommandFinished = false;
 				}
 			}
 			
 			if (allCommandFinished) {
-				if (this.userZoneProgress.stepIndex >= this.userZone.lastStepIndex) {
+				if (this.userZone.stepIndex >= this.userZone.lastStepIndex) {
 					this.ClearZone();
 				} else {
 					this.GotoNextStep();

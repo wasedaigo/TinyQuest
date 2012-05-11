@@ -14,7 +14,7 @@ namespace TinyQuest.Entity {
 		private MasterWeapon masterWeapon;
 		private UserWeapon userWeapon;
 		private MasterWeaponParameter parameter;
-		private UserZoneProgress userZoneProgress;
+		private UserZone userZone;
 		
 		public WeaponEntity(MasterWeapon masterWeapon, int level) {
 			this.masterWeapon = masterWeapon;
@@ -24,8 +24,7 @@ namespace TinyQuest.Entity {
 			this.masterWeapon = masterWeapon;
 			this.userWeapon = userWeapon;
 			
-			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			UserZoneProgress userZoneProgress = CacheFactory.Instance.GetLocalUserDataCache().GetZoneProgressByID(userZone.zoneId);
+			this.userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 		}
 		
 		public MasterWeapon GetMasterWeapon() {
@@ -45,7 +44,7 @@ namespace TinyQuest.Entity {
 		}
 
 		public int GetDurability() {
-			return this.userZoneProgress.weaponDurabilities[this.userWeapon.slot];
+			return this.userZone.weaponDurabilities[this.userWeapon.slot];
 		}
 		
 		public int GetLevel() {

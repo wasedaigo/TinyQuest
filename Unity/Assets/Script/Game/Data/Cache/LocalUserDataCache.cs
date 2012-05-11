@@ -12,7 +12,6 @@ namespace TinyQuest.Data.Cache {
 		protected UserZone userZone;
 		protected UserWeapon[] equipWeapons;
 		protected UserWeapon[] stockWeapons;
-		protected Dictionary<int, UserZoneProgress> zoneProgressDictionary;
 		
 		public string Serialize() {
 			// Need to implement
@@ -23,7 +22,6 @@ namespace TinyQuest.Data.Cache {
 			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
 
 			this.userZone = this.localUserData.zone;
-			this.zoneProgressDictionary = this.GetAsDictionary<UserZoneProgress>(this.localUserData.zoneProgresses);
 			this.equipWeapons = this.localUserData.equipWeapons;
 			this.stockWeapons = this.localUserData.stockWeapons;
 		}
@@ -52,10 +50,6 @@ namespace TinyQuest.Data.Cache {
 	
 		public virtual UserWeapon[] GetStockWeapons() {
 			return this.stockWeapons;
-		}
-		
-		public virtual UserZoneProgress GetZoneProgressByID(int id) {
-			return this.zoneProgressDictionary[id];
 		}
 		
 		public void Commit() {

@@ -12,17 +12,17 @@ namespace TinyQuest.Entity {
 		
 		private int maxHP;
 		public int MaxHP {
-				get {return this.maxHP;}
+			get {return this.maxHP;}
 		}
 
 		private int hp;
 		public int HP {
-				get {return this.hp;}
+			get {return this.hp;}
 		}
 		
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
-		public BattlerEntity(int maxHP) {
+		public BattlerEntity(int hp, int maxHP) {
 			this.maxHP = maxHP;
 			this.hp = maxHP;
 		}

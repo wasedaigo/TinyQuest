@@ -88,8 +88,6 @@ public class AdventureStageController : BaseStageController {
 			this.player.LocalPixelPosition = new Vector2(40, PlayerY);
 			this.zoneEntity.StartAdventure();
 		}
-			
-		
 	}
 	
 	private void SetState(State state) {
@@ -186,10 +184,14 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void HandleBattleCommand(int enemyId, ZoneCommandBattleState battleState) {
-		this.monster = spawnMonster("death_wind", -20, 0);
-		this.Stage.GetCharacterLayer().AddChild(this.monster);
-		this.CancelMovement();
-		this.SetState(State.Combat);
+		if (battleState == null) {
+			
+		} else {
+			this.monster = spawnMonster("death_wind", -20, 0);
+			this.Stage.GetCharacterLayer().AddChild(this.monster);
+			this.CancelMovement();
+			this.SetState(State.Combat);
+		}
 	}
 	
 	public void SetWeaponAtSlot(int i, string textureId) {

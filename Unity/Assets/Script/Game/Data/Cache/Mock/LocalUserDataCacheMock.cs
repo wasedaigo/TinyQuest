@@ -27,14 +27,6 @@ namespace TinyQuest.Data.Cache {
 		public override UserZone GetUserZone() {
 			return base.GetUserZone();
 		}
-		
-		public override UserZoneProgress GetZoneProgressByID(int id) {
-			if (this.zoneProgressDictionary == null) {
-				TextAsset txt = (TextAsset)Resources.Load("Data/LocalUserMock", typeof(TextAsset));
-				this.Set(txt.text);
-			}
-			return base.GetZoneProgressByID(id);
-		}
 	}
 }
 

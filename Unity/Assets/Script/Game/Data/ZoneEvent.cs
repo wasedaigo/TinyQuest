@@ -15,7 +15,7 @@ namespace TinyQuest.Data{
 	}
 
 	public class ZoneCommandBattleState {
-		public int enemyHp;
+		public int enemyHP;
 		public bool playerTurn;
 		public int turnCount;
 		public int[] buffs;
@@ -23,8 +23,8 @@ namespace TinyQuest.Data{
 		public ZoneCommandBattleState() {
 		}
 		
-		public ZoneCommandBattleState(int enemyHp, bool playerTurn, int turnCount, int[] buffs) {
-		  this.enemyHp = enemyHp;
+		public ZoneCommandBattleState(int enemyHP, bool playerTurn, int turnCount, int[] buffs) {
+		  this.enemyHP = enemyHP;
 		  this.playerTurn = playerTurn;
 		  this.turnCount = turnCount;
 		  this.buffs = buffs;

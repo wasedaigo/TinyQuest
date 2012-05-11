@@ -37,11 +37,31 @@
             "zoneId": 1,
             "lastStepIndex": 5,
             "events": {
+              "0": {
+                "commands":[
+                  {"type": 1, "content": {"text":"よーし、ぼうけんしよう！"}}
+                ]
+                },
               "1": {
                 "commands":[
-                  {"type": 1, "content": {"text":"敵が現れたぞ！"}},
+                  {"type": 1, "content": {"text":"てきがあらわれたぞ！"}},
                   {"type": 0, "content": {"enemyId":1022}},
                   {"type": 1, "content": {"text":"やった。たおした！"}}
+                ]
+                },
+              "2": {
+                "commands":[
+                  {"type": 1, "content": {"text":"2"}}
+                ]
+                },
+              "3": {
+                "commands":[
+                  {"type": 1, "content": {"text":"3"}}
+                ]
+                },
+              "4": {
+                "commands":[
+                  {"type": 1, "content": {"text":"4"}}
                 ]
                 },
               "5": {
@@ -49,17 +69,17 @@
                   {"type": 1, "content": {"text":"やったー。ゴールだ。"}}
                 ]
                 }
-             }
-    },
-    "zoneProgresses": [
-        {
-            "id": 1,
-            "clearCount": 0,
-            "stepIndex": 0,
+             },
+            "stepIndex" : 0,
             "commandIndex": 0,
-            "commandState": {},
+            "battlerHP" : 200,
+            "commandState": {
+              "enemyHP": 100,
+              "playerTurn": true,
+              "turnCount" : 2,
+              "buffs": []
+            },
             "weaponDurabilities":[20, 20, 20],
             "currentAP":5
-        }
-    ]
+    }
 }
