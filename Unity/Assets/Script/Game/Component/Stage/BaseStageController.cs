@@ -24,7 +24,12 @@ public class BaseStageController : MonoBehaviour {
 	
 	private Stage stage;
 	public Stage Stage {
-		get {return stage;}	
+		get {
+			if (this.stage == null) {
+				this.stage = this.GetComponent<Stage>();	
+			}
+			return this.stage;
+		}	
 	}
 	
 	protected Ally spawnBattler (string name, Ally.State state, float x, float y) {
@@ -48,13 +53,13 @@ public class BaseStageController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.intervalPlayer = new Roga2dIntervalPlayer();
-		this.stage = this.GetComponent<Stage>();
+		
 	}
 	
 	public void ShowMessage(string message) {
 		this.HideMessage();
 		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
-		box.transform.parent = this.stage.gameObject.transform;
+		box.transform.parent = this.Stage.gameObject.transform;
 		box.transform.localScale = new Vector3(0.003f, 0.003f, 1);
 		box.transform.localPosition = new Vector3(0.75f, 0, 0);
 		box.ArrowFaceRight = true;

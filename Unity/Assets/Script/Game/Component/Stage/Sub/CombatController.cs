@@ -8,7 +8,7 @@ using TinyQuest.Object;
 using TinyQuest.Core;
 
 public class CombatController : BaseStageController {
-	public System.Action battleFinish;
+	public System.Action CombatFinish;
 	
 	private BattlerEntity userBattlerEntity;
 	private ZoneEntity zoneEntity;
@@ -19,7 +19,7 @@ public class CombatController : BaseStageController {
 	private GameObject[] slots;
 	
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
 		this.weaponTextures = new UITexture[6];
@@ -41,15 +41,15 @@ public class CombatController : BaseStageController {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () {
 		base.Update();
 		if (!this.AnimationPlayer.HasPlayingAnimations()) {
 			if (this.monster != null && this.monster.IsDead()) {
 				this.stage.GetCharacterLayer().RemoveChild(this.monster);
 				this.monster = null;
 				
-				if (this.battleFinish != null) {
-					this.battleFinish();	
+				if (this.CombatFinish != null) {
+					this.CombatFinish();	
 				}
 			}	
 		}

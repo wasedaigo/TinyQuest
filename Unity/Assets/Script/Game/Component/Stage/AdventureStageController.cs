@@ -28,7 +28,7 @@ public class AdventureStageController : BaseStageController {
 	private bool finishZone;
 	private Roga2dBaseInterval interval;
 	
-	private CombatController combatController;
+	private BaseStageController subController;
 	private ZoneEntity zoneEntity;
 
 	// Use this for initialization
@@ -87,7 +87,7 @@ public class AdventureStageController : BaseStageController {
 		}	
 	}
 
-	void Update() {
+	protected override void Update() {
 		base.Update();
 		
 		if (this.interval != null && !this.interval.IsDone()) {
@@ -140,6 +140,7 @@ public class AdventureStageController : BaseStageController {
 				break;
 			case (int)ZoneCommand.Type.Treasure:
 				ZoneCommandTreasure treasureCommand = JsonReader.Deserialize<ZoneCommandTreasure>(JsonWriter.Serialize(command.content));
+				this.HandleTreasureCommand(treasureCommand.treasureID);
 				break;
 			default:
 				Debug.LogError("Undefined type " + command.type + " is passed");
@@ -148,34 +149,32 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void HandleMessageCommand(string text) {
-		this.ShowMessage(text);
+		MessageBoxController controller = this.gameObject.AddComponent<MessageBoxController>();
+		controller.baloonMessageBox = this.baloonMessageBox;
+		controller.MessageFinish = this.CommandFinished;
+		controller.ShowText(text);
+		this.subController = controller;
+
 		this.SetState(State.Next);
 	}
 	
-	private void HandleBattleCommand(int enemyId) {
-		this.combatController = this.gameObject.AddComponent<CombatController>();
-	
-		this.combatController.baloonMessageBox = this.baloonMessageBox;
-		this.combatController.SetPlayer(this.player);
-		this.combatController.SetSlots(this.slots);
-		this.combatController.battleFinish = this.BattleFinished;
-			
-		this.CancelMovement();
+	private void HandleBattleCommand(int enemyID) {
+		CombatController controller = this.gameObject.AddComponent<CombatController>();
+		controller.baloonMessageBox = this.baloonMessageBox;
+		controller.SetPlayer(this.player);
+		controller.SetSlots(this.slots);
+		controller.CombatFinish = this.CommandFinished;
+		this.subController = controller;
+		
 		this.SetState(State.Combat);
 	}
 	
-	private void BattleFinished() {
-		Destroy(this.combatController);
-		this.zoneEntity.NextCommand();
+	private void HandleTreasureCommand(int treasureID) {
+		// TODO
 	}
 	
-	private void CancelMovement() {
-		this.player.stopWalkingAnimation();
-	}
-	
-	public void OnNextButtonClick() {
-		this.HideMessage();
+	private void CommandFinished() {
+		Destroy(this.subController);
 		this.zoneEntity.NextCommand();
-		Debug.Log("NextButtonClick");
 	}
 }

@@ -46,7 +46,6 @@ namespace TinyQuest.Data.Request {
 		}
 
 		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
-			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			if (combatProgress != null) {
