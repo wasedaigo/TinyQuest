@@ -9,11 +9,12 @@ namespace TinyQuest.Factory.Entity {
 		private ZoneFactory(){}
 		
 		public ZoneEntity Build(int id) {
+			UserStatus userStatus = CacheFactory.Instance.GetLocalUserDataCache().GetUserStatus();
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			ZoneEntity zoneEntity = new ZoneEntity(userZone);
 			
 			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
-			BattlerEntity battler = new BattlerEntity(userZone.playerHP, userZone.playerHP);
+			BattlerEntity battler = new BattlerEntity(userStatus.maxHP, userStatus.maxHP);
 			
 			for (int i = 0; i < userWeapons.Length; i++) {
 				WeaponEntity weapon = WeaponFactory.Instance.Build(userWeapons[i]);

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 namespace TinyQuest.Data{
 	
 	public class UserStatus {
-		int maxHP;	
+		public int maxHP;	
 	}
 	
 	public class UserWeapon : IDData{
