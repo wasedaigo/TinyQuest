@@ -22,6 +22,7 @@ namespace TinyQuest.Entity {
 
 		private Dictionary<int, ZoneEventEntity> events =  new Dictionary<int, ZoneEventEntity>();
 		private UserZone userZone;
+		private BattlerEntity playerBattler;
 		
 		public ZoneEntity(UserZone userZone) {
 			this.userZone = userZone;
@@ -29,6 +30,14 @@ namespace TinyQuest.Entity {
 		
 		public void SetEvent(int stepNo, ZoneEventEntity zoneEvent) {
 			this.events.Add(stepNo, zoneEvent);
+		}
+		
+		public void SetPlayerBattler(BattlerEntity playerBattler) {
+			this.playerBattler = playerBattler;
+		}
+		
+		public BattlerEntity GetPlayerBattler() {
+			return this.playerBattler;
 		}
 		
 		public bool IsAtStart() {

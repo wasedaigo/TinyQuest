@@ -8,14 +8,8 @@ namespace TinyQuest.Factory.Entity {
 		public static readonly BattlerFactory Instance = new BattlerFactory();
 		private BattlerFactory(){}
 
-		public BattlerEntity BuildUserBattler() {
-			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
+		public BattlerEntity BuildEnemy() {
 			BattlerEntity battler = new BattlerEntity(100, 100);
-			
-			for (int i = 0; i < userWeapons.Length; i++) {
-				WeaponEntity weapon = WeaponFactory.Instance.Build(userWeapons[i]);
-				battler.SetWeapon(userWeapons[i].slot, weapon);
-			}
 			return battler;
 		}
 	}

@@ -9,6 +9,7 @@ namespace TinyQuest.Data.Cache {
 	public class LocalUserDataCache
 	{
 		private LocalUserData localUserData;
+		protected UserStatus userStatus;
 		protected UserZone userZone;
 		protected UserWeapon[] equipWeapons;
 		protected UserWeapon[] stockWeapons;
@@ -20,7 +21,8 @@ namespace TinyQuest.Data.Cache {
 		
 		public void Set(string jsonText) {
 			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
-
+			
+			this.userStatus = this.localUserData.status;
 			this.userZone = this.localUserData.zone;
 			this.equipWeapons = this.localUserData.equipWeapons;
 			this.stockWeapons = this.localUserData.stockWeapons;
@@ -39,7 +41,11 @@ namespace TinyQuest.Data.Cache {
 			}
 			return dictionary;
 		}
-
+			
+		public virtual UserStatus GetUserStatus() {
+			return this.userStatus;
+		}
+			
 		public virtual UserZone GetUserZone() {
 			return this.userZone;
 		}

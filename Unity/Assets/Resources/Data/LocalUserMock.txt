@@ -1,4 +1,7 @@
 {
+    "status": {
+      "maxHP": 200
+    },
     "equipWeapons": [
         {
             "id": 1,
@@ -13,10 +16,11 @@
             "slot": 1
         },
         {
+            "id": 3,
             "weaponId": 2,
             "exp": 1,
-            "slot": 2,
-            "id": 3
+            "slot": 2
+            
         }
     ],
     "stockWeapons": [
@@ -72,7 +76,7 @@
              },
             "stepIndex" : 0,
             "commandIndex": 0,
-            "battlerHP" : 200,
+            "playerHP" : 200,
             "commandState": {
               "enemyHP": 100,
               "playerTurn": true,

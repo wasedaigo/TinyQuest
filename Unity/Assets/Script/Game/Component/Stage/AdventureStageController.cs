@@ -51,18 +51,17 @@ public class AdventureStageController : BaseStageController {
 		
 		this.Stage.GetCharacterLayer().AddChild(this.player);
 
-		
-		this.userBattlerEntity = BattlerFactory.Instance.BuildUserBattler();
-
-		this.userBattlerEntity.WeaponUse += this.WeaponUsed;
-		this.userBattlerEntity.UpdateAP  += this.APUpdated;
-
 		this.zoneEntity = ZoneFactory.Instance.Build(1);
 		this.zoneEntity.PlayerMove += this.onPlayerMoved;
 		this.zoneEntity.StepProgress += this.OnStepProgressed;
 		this.zoneEntity.CommandExecute += this.OnCommandExecuted;
 		this.zoneEntity.GotoNextStep += this.GotoNextStep;
 		this.zoneEntity.ClearZone += this.ClearZone;
+		
+		this.userBattlerEntity = this.zoneEntity.GetPlayerBattler();
+		this.userBattlerEntity.WeaponUse += this.WeaponUsed;
+		this.userBattlerEntity.UpdateAP  += this.APUpdated;
+		
 		/*
 		this.actionWheel = GameObject.Find("ActionWheel").GetComponent<ActionWheel>();
 		this.actionWheel.SetUserBattler(this.userBattlerEntity);

@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 namespace TinyQuest.Data{
-
+	
+	public class UserStatus {
+		int maxHP;	
+	}
+	
 	public class UserWeapon : IDData{
 		public int weaponId;
 		public int exp;
@@ -12,15 +16,16 @@ namespace TinyQuest.Data{
 		public int lastStepIndex;
 		public Dictionary<string, ZoneEvent> events;
 
-		public int battlerHP;
+		public int playerHP;
     	public int stepIndex;
     	public int commandIndex;
 		public object commandState;
 		public int[] weaponDurabilities;
 		public int currentAP;
 	}
-	
+
 	public class LocalUserData {
+		public readonly UserStatus status;
 		public readonly UserZone zone;
 		public readonly UserWeapon[] equipWeapons;
 		public readonly UserWeapon[] stockWeapons;
