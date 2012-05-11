@@ -161,7 +161,7 @@ public class AdventureStageController : BaseStageController {
 		switch (command.type) {
 			case (int)ZoneCommand.Type.Battle:
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				this.HandleBattleCommand(battleCommand.enemyId);
+				this.HandleBattleCommand(battleCommand.enemyID);
 				break;
 			case (int)ZoneCommand.Type.Message:
 				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
