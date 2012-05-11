@@ -3,12 +3,32 @@ using System.Collections;
 
 namespace TinyQuest.Entity {
 	public class BattlerEntity {
+		public enum NoType {
+			Player = 1,
+			Enemy = 2
+		};
+		
+		public enum GroupType {
+			Player = 1,
+			Enemy = 2
+		};
+		
 		public const int WeaponSlotNum = 6;
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
 		public System.Action<WeaponEntity, SkillEntity> WeaponUse;
 		public System.Action<int> UpdateAP;
+		
+		private int no;
+		public int No {
+			get {return no;}
+		}
+		
+		private int group;
+		public int Group {
+			get {return group;}
+		}
 		
 		private int maxHP;
 		public int MaxHP {
@@ -22,9 +42,11 @@ namespace TinyQuest.Entity {
 		
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
-		public BattlerEntity(int hp, int maxHP) {
+		public BattlerEntity(int hp, int maxHP, int no, int group) {
 			this.maxHP = maxHP;
 			this.hp = maxHP;
+			this.no = no;
+			this.group = group;
 		}
 
 		public WeaponEntity GetWeapon(int slotIndex) {

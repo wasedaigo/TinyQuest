@@ -42,7 +42,11 @@ namespace TinyQuest.Data.Cache {
 			}
 			return dictionary;
 		}
-
+		
+		public virtual void SetCombatProgress(CombatProgress combatProgress) {
+			this.combatProgress = combatProgress;
+		}
+			
 		public virtual CombatProgress GetCombatProgress() {
 			return this.combatProgress;
 		}

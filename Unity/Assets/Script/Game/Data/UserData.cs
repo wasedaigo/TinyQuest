@@ -24,20 +24,39 @@ namespace TinyQuest.Data{
 		public int currentAP;
 	}
 
-	public class CombatProgress {
-		public int enemyHP;
-		public bool playerTurn;
-		public int turnCount;
+	public class CombatBattler {
+		public int no;
+		public int group;
+		public int hp;
 		public int[] buffs;
 		
-		public CombatProgress() {
+		public CombatBattler(){}
+		public CombatBattler(int no, int group, int hp, int[] buffs) {
+		  this.no = no;
+		  this.group = group;
+		  this.hp = hp;
+		  this.buffs = buffs;
+		}
+	}
+	
+	public class CombatProgress {
+		public int turnCount;
+		public CombatBattler[] battlers;
+
+		public CombatProgress(){}
+		public CombatProgress(int turnCount, CombatBattler[] battlers) {
+		  this.turnCount = turnCount;
+		  this.battlers = battlers;
 		}
 		
-		public CombatProgress(int enemyHP, bool playerTurn, int turnCount, int[] buffs) {
-		  this.enemyHP = enemyHP;
-		  this.playerTurn = playerTurn;
-		  this.turnCount = turnCount;
-		  this.buffs = buffs;
+		public CombatBattler GetCombatBattler(int no, int group) {
+			for (int i = 0; i < this.battlers.Length; i++) {
+				CombatBattler battler = this.battlers[i];
+				if (battler.no == no && battler.group == group) {
+					return battler;
+				}
+			}
+			return null;
 		}
 	}
 

@@ -38,10 +38,21 @@
         }
     ],
     "combatProgress": {
-      "enemyHP": 100,
-      "playerTurn": true,
       "turnCount" : 2,
-      "buffs": []
+      "battlers": [
+        {
+          "no": 1,
+          "group": 1,
+          "hp": 100,
+          "buffs": []
+        },
+        {
+          "no": 2,
+          "group": 2,
+          "hp": 100,
+          "buffs": []
+        }
+      ],
     },
     "zone": {
             "zoneId": 1,

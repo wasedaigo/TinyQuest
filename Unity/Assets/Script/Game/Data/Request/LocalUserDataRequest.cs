@@ -3,6 +3,7 @@ using JsonFx.Json;
 using System.Collections.Generic;
 using System.IO;
 using TinyQuest.Data;
+using TinyQuest.Entity;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data.Request {
@@ -43,6 +44,20 @@ namespace TinyQuest.Data.Request {
 			
 			callback(isBroken, userZone.currentAP);
 		}
-		
+
+		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			if (combatProgress != null) {
+				CombatBattler playerBattlerData = new CombatBattler((int)BattlerEntity.NoType.Player, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
+				CombatBattler enemyBattlerData = new CombatBattler((int)BattlerEntity.NoType.Enemy, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
+				combatProgress = new CombatProgress(1, new CombatBattler[]{playerBattlerData, enemyBattlerData});
+				CacheFactory.Instance.GetLocalUserDataCache().SetCombatProgress(combatProgress);
+			}
+			
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			callback();
+		}
 	}
 }

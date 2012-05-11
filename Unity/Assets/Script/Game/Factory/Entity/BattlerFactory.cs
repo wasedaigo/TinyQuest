@@ -13,9 +13,10 @@ namespace TinyQuest.Factory.Entity {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			BattlerEntity battler = null;
 			if (combatProgress != null) {
-				battler = new BattlerEntity(combatProgress.enemyHP, masterEnemy.hp);
+				CombatBattler combatBattler = combatProgress.GetCombatBattler((int)BattlerEntity.NoType.Enemy, (int)BattlerEntity.NoType.Enemy);
+				battler = new BattlerEntity(combatBattler.hp, masterEnemy.hp, (int)BattlerEntity.NoType.Enemy, (int)BattlerEntity.GroupType.Enemy);
 			} else {
-				battler = new BattlerEntity(masterEnemy.hp, masterEnemy.hp);
+				battler = new BattlerEntity(masterEnemy.hp, masterEnemy.hp, (int)BattlerEntity.NoType.Enemy, (int)BattlerEntity.GroupType.Enemy);
 			}
 			return battler;
 		}
