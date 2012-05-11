@@ -10,6 +10,7 @@ public class AnimationSpawner : MonoBehaviour {
 	private Roga2dNode root;
 	private Monster monster;
 	private Roga2dAnimationPlayer player;
+	private Roga2dIntervalPlayer intervalPlayer;
 	private Roga2dBaseInterval targetInterval;
 
 	private List<AdventureObject> battlers = new List<AdventureObject>();
@@ -40,6 +41,7 @@ public class AnimationSpawner : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 
 		this.player = new Roga2dAnimationPlayer();
+		this.intervalPlayer = new Roga2dIntervalPlayer();
 		this.root = new Roga2dNode("Root");
 		this.root.LocalScale = new Vector2(2.0f, 2.0f);
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.root.Transform);
@@ -90,7 +92,7 @@ public class AnimationSpawner : MonoBehaviour {
 		if (commandData[0] == "damage") {
 			// Flash effect
 			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
-			Roga2dIntervalPlayer.GetInstance().Play(interval);
+			this.intervalPlayer.Play(interval);
 			
 			// Damage pop
 			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
@@ -100,7 +102,7 @@ public class AnimationSpawner : MonoBehaviour {
 	
 	void Update () {
 		
-		Roga2dIntervalPlayer.GetInstance().Update();
+		this.intervalPlayer.Update();
 
 		// Update animations
 		this.player.Update(Time.deltaTime);

@@ -111,6 +111,7 @@ public class Stage : MonoBehaviour {
 
 	private void UpdateParallaxEffect(bool immediate)
 	{
+		/*
 		float deviceMoveX = Input.acceleration.x;
 		deviceMoveX = (deviceMoveX < 0.5f) ? deviceMoveX : 0.5f;
 		deviceMoveX = (deviceMoveX > -0.5f) ? deviceMoveX : -0.5f;
@@ -144,6 +145,7 @@ public class Stage : MonoBehaviour {
 			this.lastDeviceMoveX = deviceMoveX;
 			this.lastDeviceMoveY = deviceMoveY;
 		}
+		*/
 	}
 
 	void Update()

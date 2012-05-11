@@ -10,11 +10,16 @@ public class BaseStageController : MonoBehaviour {
 	
 	private Roga2dNode root;
 	private Roga2dAnimationPlayer animationPlayer;
+	private Roga2dIntervalPlayer intervalPlayer;
 	private BaloonMessageBox visibleMessageBox;
 	
 		
 	public Roga2dAnimationPlayer AnimationPlayer {
 		get {return this.animationPlayer;}	
+	}
+	
+	public Roga2dIntervalPlayer IntervalPlayer {
+		get {return this.intervalPlayer;}	
 	}
 	
 	private Stage stage;
@@ -42,6 +47,7 @@ public class BaseStageController : MonoBehaviour {
 	protected virtual void Start() {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
+		this.intervalPlayer = new Roga2dIntervalPlayer();
 		this.stage = this.GetComponent<Stage>();
 	}
 	
@@ -69,10 +75,6 @@ public class BaseStageController : MonoBehaviour {
 
 	protected virtual void Update () {
 		this.animationPlayer.Update(Time.deltaTime);
-		Roga2dIntervalPlayer.GetInstance().Update();
-	}
-	
-	protected void OnDestroy() {
-		Roga2dResourceManager.freeResources();
+		this.intervalPlayer.Update();
 	}
 }

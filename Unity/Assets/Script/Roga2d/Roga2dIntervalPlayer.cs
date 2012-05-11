@@ -3,17 +3,8 @@ using System.Collections.Generic;
 public class Roga2dIntervalPlayer {
 	private List<Roga2dBaseInterval> stopIntervals;
 	private List<Roga2dBaseInterval> intervals;
-	private static Roga2dIntervalPlayer instance;
 	
-	public static Roga2dIntervalPlayer GetInstance()
-	{
-		if (instance == null) {
-			instance = new Roga2dIntervalPlayer();
-		}
-		return instance;
-	}
-	
-	private Roga2dIntervalPlayer() {
+	public Roga2dIntervalPlayer() {
 		this.intervals = new List<Roga2dBaseInterval>();
 		this.stopIntervals = new List<Roga2dBaseInterval>();
 	}

@@ -8,7 +8,7 @@ namespace TinyQuest.Factory.Entity {
 		public static readonly ZoneFactory Instance = new ZoneFactory();
 		private ZoneFactory(){}
 		
-		public ZoneEntity Build(int id) {
+		public ZoneEntity Build() {
 			UserStatus userStatus = CacheFactory.Instance.GetLocalUserDataCache().GetUserStatus();
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			ZoneEntity zoneEntity = new ZoneEntity(userZone);
