@@ -17,7 +17,6 @@ public class AdventureStageController : BaseStageController {
 		Pause
 	};
 	
-	
 	public GameObject[] slots;
 	public GameObject CombatPanel;
 	public GameObject NextPanel;
@@ -32,7 +31,6 @@ public class AdventureStageController : BaseStageController {
 	private ZoneEntity zoneEntity;
 	private ActionWheel actionWheel;
 	private State state;
-	private bool pressed;
 	private bool finishZone;
 	private Roga2dBaseInterval interval;
 	private const float PlayerY = 20;
@@ -255,7 +253,6 @@ public class AdventureStageController : BaseStageController {
 	}
 	
 	private void CancelMovement() {
-		this.pressed = false;
 		this.player.stopWalkingAnimation();
 	}
 	
