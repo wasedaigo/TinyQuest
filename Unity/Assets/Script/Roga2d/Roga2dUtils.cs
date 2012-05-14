@@ -276,9 +276,9 @@ public class Roga2dUtils {
 		
 		if (conversionMap.ContainsKey(baseFileName)) {
 			Roga2dSwapTextureDef def = conversionMap[baseFileName];
-			//if (def.SwapTextureID) {
+			if (def.SwapTextureID) {
 				keyframe.Id = def.TextureID;
-			//}
+			}
 			if (def.SwapPixelSize) {
 				keyframe.PixelSize = def.PixelSize;
 			}
