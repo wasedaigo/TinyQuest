@@ -118,8 +118,9 @@ public class AnimationSpawner : MonoBehaviour {
 					{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}}
 				};
 
-				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, this.root, battler, this.monster, CommandCalled);
-				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, 1.0f, 0.5f, settings, options);
+				Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.player, true, this.root, battler, this.monster, CommandCalled);
+				Roga2dAnimation animation = Roga2dUtils.LoadAnimation(ids[no], false, battler.Sprite, settings, options);
+				animation.Node.LocalPriority = 10.0f;
 				this.player.Play(battler, null, animation,  AnimationFinished);
 				no +=1;
 				if (no >= ids.Length) {

@@ -5,6 +5,7 @@ public class Roga2dAnimationSettings {
 	private Roga2dNode origin;
 	private Roga2dNode target;
 	private Roga2dNode targetOrigin;
+	private bool reverse;
 	private Roga2dAnimationPlayer player;
 	private Roga2dCommandCallback commandCallBack;
 
@@ -63,12 +64,13 @@ public class Roga2dAnimationSettings {
 		}
 	}
 	
-	public Roga2dAnimationSettings(Roga2dAnimationPlayer player, Roga2dNode root, Roga2dNode origin, Roga2dNode target, Roga2dCommandCallback commandCallBack) 
+	public Roga2dAnimationSettings(Roga2dAnimationPlayer player, bool reverse, Roga2dNode root, Roga2dNode origin, Roga2dNode target, Roga2dCommandCallback commandCallBack) 
 	{
 		this.player = player;
 		this.root = root;
 		this.origin = origin;
 		this.Target = target;
+		this.reverse = reverse;
 		this.commandCallBack = commandCallBack;
 	}
 	

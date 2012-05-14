@@ -109,15 +109,27 @@ public class Roga2dUtils {
 		 return duration / Roga2dConst.AnimationFPS;
 	}
 	
-    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, float baseAlpha, float basePriority, Roga2dAnimationSettings settings, Dictionary<string, Roga2dSwapTextureDef> options) {
+    public static Roga2dAnimation LoadAnimation(string id, bool isSubAnimation, Roga2dNode parent, Roga2dAnimationSettings settings, Dictionary<string, Roga2dSwapTextureDef> options) {
 		Roga2dAnimationData animationData = Roga2dResourceManager.getAnimation(id);
 		
 		List<Roga2dBaseInterval> parallels = new List<Roga2dBaseInterval>();
         Roga2dNode node = new Roga2dNode(id);
-
-        node.LocalAlpha = baseAlpha;
-        node.LocalPriority = basePriority;
+		
+		float baseAlpha = 1.0f;
+		float basePriority = 0.0f;
+		float baseRotation = 0;
+		Vector2 baseAbsPosition = new Vector2();
+		if (parent != null) {
+	        baseAlpha = parent.LocalAlpha;
+	        basePriority = parent.LocalPriority;
+			baseRotation = parent.LocalRotation;
+			baseAbsPosition = parent.Position;
+		}
         
+		node.LocalAlpha = baseAlpha;
+		node.LocalPriority = basePriority;
+		node.LocalRotation = baseRotation;
+		
        foreach (Roga2dIntervalData timeline in animationData.timelines) {
             
             Roga2dSprite sprite = new Roga2dSprite(null);
@@ -174,7 +186,7 @@ public class Roga2dUtils {
 						option.EndPositionType = positionIntervalData.endPositionType;
 		                option.Target = (settings!=null) ? settings.Target : null;
 						option.TargetOrigin = (settings!=null) ? settings.TargetOrigin : null;
-	
+						
 						intervals.Add(new Roga2dPositionInterval(sprite, start, end, CalculateDuration(positionIntervalData.duration), positionIntervalData.tween, option));
 					}
 				}
@@ -185,6 +197,9 @@ public class Roga2dUtils {
 			
 			// Add rotation interval
 			{
+				Roga2dRotationIntervalDataStore dataStore = new Roga2dRotationIntervalDataStore();
+				dataStore.lastRotation = baseRotation;
+				dataStore.lastAbsPosition = baseAbsPosition;
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 				foreach(Roga2dRotationIntervalData rotationIntervalData in timeline.rotation) {
 					if (rotationIntervalData.wait) {
@@ -195,6 +210,7 @@ public class Roga2dUtils {
 						Roga2dRotationIntervalOption option = Roga2dRotationIntervalOption.Build();
 		                option.FacingType = rotationIntervalData.facingOption;
 		                option.Target = (settings!=null) ? settings.Target : null;
+						option.DataStore = dataStore;
 						intervals.Add(new Roga2dRotationInterval(sprite, start, end, CalculateDuration(rotationIntervalData.duration), rotationIntervalData.tween, option));
 					}
 				}
@@ -260,9 +276,9 @@ public class Roga2dUtils {
 		
 		if (conversionMap.ContainsKey(baseFileName)) {
 			Roga2dSwapTextureDef def = conversionMap[baseFileName];
-			if (def.SwapTextureID) {
+			//if (def.SwapTextureID) {
 				keyframe.Id = def.TextureID;
-			}
+			//}
 			if (def.SwapPixelSize) {
 				keyframe.PixelSize = def.PixelSize;
 			}

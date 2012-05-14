@@ -27,7 +27,7 @@ class TestRoga2dEventInterval {
 		events.Add(1, test1);
 		events.Add(5, test2);
 		
-		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(null, null, null, null, CommandCalled);
+		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(null, false, null, null, null, CommandCalled);
 		Roga2dBaseInterval interval = new Roga2dEventInterval(events, settings);
 		
 		interval.Start();

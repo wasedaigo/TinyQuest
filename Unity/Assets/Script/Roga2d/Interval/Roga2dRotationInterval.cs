@@ -10,15 +10,11 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 	{
 		this.node = node;
 		this.option = option;
-		
-		if (this.option.FacingType == Roga2dFacingType.FaceToMov) {
-			this.dataStore = new Roga2dRotationIntervalDataStore();
-		}
 	}
-
+	
 	protected override float[] TweenBeforeFilter(float start, float end) {
 		if (this.option.FacingType != Roga2dFacingType.None) {
-			start = GetDynamicRotation( start, end, this.option, this.option.Target, this.dataStore);
+			start = GetDynamicRotation( start, end, this.option, this.option.Target, this.option.DataStore);
 			end = start;
 		}
 		return new float[2]{start, end};
@@ -28,10 +24,18 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 		this.node.LocalRotation = value;
 	}
 	
+	public override void Start() {
+		if (this.option.DataStore != null) {
+			this.option.DataStore.initialized = false;
+		}
+		base.Start();
+	}
+	
     private float GetDynamicRotation(float start, float end, Roga2dRotationIntervalOption option, Roga2dNode target, Roga2dRotationIntervalDataStore dataStore) {
         float result = start;
 		if (target != null) {
 			Transform root = node.Transform.root.gameObject.transform;
+			bool reverse = node.Parent != null ? node.Parent.IsReversed : false;
             if (this.option.FacingType == Roga2dFacingType.FaceToDir) {
 				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
                 float dx = target.Position.x - node.Position.x;
@@ -42,16 +46,24 @@ public class Roga2dRotationInterval : Roga2dValueInterval<float> {
 				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
                 float dx = node.Position.x - dataStore.lastAbsPosition.x;
                 float dy = node.Position.y - dataStore.lastAbsPosition.y;
+				if (reverse) { dx *= -1; }
                 
-                if (dataStore.ignore) {
-					result += (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
-                    node.LocalAlpha = dataStore.lastAlpha;
-                } else {
-                    dataStore.ignore = true;
-                    dataStore.lastAlpha = node.LocalAlpha;
-                    node.LocalAlpha = 0;
-                }
-                // Extra data for FaceToMov option
+				float rotation = 0;
+				if (dataStore.initialized) {
+					node.Show();
+					if (dx == 0 && dy == 0) {
+						rotation = dataStore.lastRotation;
+					} else {
+						rotation = (Mathf.Atan2(dy,dx) / Mathf.PI)  * 180;
+					}
+				} else {
+					node.Hide();
+					dataStore.initialized = true;
+				}
+
+				result += rotation;
+				
+				dataStore.lastRotation = rotation;
                 dataStore.lastAbsPosition = node.Position;
 				Roga2dUtils.applyState(root, state);
             }

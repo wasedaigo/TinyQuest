@@ -58,7 +58,7 @@ public class AdventureStageController : BaseStageController {
 			});
 			this.IntervalPlayer.Play(this.interval);
 		} else {
-			this.player.LocalPixelPosition = new Vector2(40, PlayerY);
+			this.player.LocalPixelPosition = new Vector2(20, PlayerY);
 			this.zoneEntity.StartAdventure();
 		}
 	}

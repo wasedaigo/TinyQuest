@@ -29,18 +29,17 @@
     "weapons":[
         {
           "id": 1,
-      "name": "Weapon_Sword_ShortSword",
-      "path": "Weapon/Sword/ShortSword",
-      "description": "",
-      "power": 100,
-      "durability": 20,
-      "ap": 1,
-      "parameters": [
-          [1000, 20, 60, 40, 0],
-          [2000, 40, 50, 50, 0],
-          [3000, 40, 50, 50, 0]
-      ],
-      "skills": [1, 2]
+          "name": "Weapon_Sword_ShortSword",
+          "path": "Weapon/Sword/ShortSword",
+          "description": "",
+          "power": 100,
+          "ap": 1,
+          "parameters": [
+              [1000, 20],
+              [2000, 40],
+              [3000, 40]
+          ],
+        "skills": [1, 2]
       },
         {
           "id": 2,
@@ -48,12 +47,11 @@
       "path": "Weapon/Sword/BroadSword",
       "description": "",
       "power": 100,
-      "durability": 10,
       "ap": 2,
       "parameters": [
-          [1000, 20, 60, 40, 0],
-          [2000, 40, 50, 50, 0],
-          [3000, 40, 50, 50, 0]
+          [1000, 20],
+          [2000, 40],
+          [3000, 40]
       ],
       "skills": [2, 3]
         }

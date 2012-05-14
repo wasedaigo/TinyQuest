@@ -97,8 +97,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 	private void EmitAnimation(Roga2dAnimationKeyFrame keyFrame) {
 		this.sprite.UpdatePriority();
         // Emit the new animation (emitted animation won't be controled by this instance anymore)
-        Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, false, this.sprite.Alpha, this.sprite.Priority, this.settings, this.options);
-
+        Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, false, this.sprite, this.settings, this.options);
         // Apply emit velocity
         if (keyFrame.MaxEmitSpeed > 0) {
             float speed = keyFrame.MinEmitSpeed + (keyFrame.MaxEmitSpeed - keyFrame.MinEmitSpeed) * Random.value;
@@ -110,7 +109,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 		if (this.settings.Player == null) {
 			Debug.LogError("No AnimationPlayer is defined in root");	
 		}
-		
+
 		this.settings.Player.Play(this.settings.Root, this.sprite.Transform, animation, null);
 	}
 	
@@ -156,7 +155,7 @@ public class Roga2dSourceInterval : Roga2dBaseInterval {
 
 		// No animation node is generaetd yet, let's generate it
 		// If no ID exists, ignore it (Which usually means an empty keyframe)
-		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, 1.0f, 0.0f, this.settings, this.options);
+		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(keyFrame.Id, true, null, this.settings, this.options);
 		this.sprite.AddChild(animation.Node);
 		this.interval = animation.Interval;
 		this.interval.Start();

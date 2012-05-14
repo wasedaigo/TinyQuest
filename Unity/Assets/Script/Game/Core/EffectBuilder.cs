@@ -20,7 +20,7 @@ namespace TinyQuest.Core {
 			List<uint> digits = Utils.getDigits(value);
 			position.x -= (10 * digits.Count) / 2;
 			node.LocalPixelPosition = position;
-			node.LocalPriority = 1.0f;
+			node.LocalPriority = 2.0f;
 	
 			List<Roga2dBaseInterval> popIntervals = new List<Roga2dBaseInterval>();
 			for (int i = 0; i < digits.Count; i++) {

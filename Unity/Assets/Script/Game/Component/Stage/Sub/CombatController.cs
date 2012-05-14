@@ -14,7 +14,7 @@ public class CombatController : BaseStageController {
 	private ZoneEntity zoneEntity;
 	private UITexture[] weaponTextures;
 	private Stage stage;
-	private Monster monster;
+	private Ally monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	private GameObject[] slots;
 	
@@ -36,13 +36,15 @@ public class CombatController : BaseStageController {
 			}
 		}
 	
-		this.monster = spawnMonster("death_wind", -20, 0);
+		//this.monster = spawnMonster("death_wind", -40, 0);
+		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
+		this.monster.LocalScale = new Vector2(-1, 1);
+		this.monster.LocalPriority = 0.45f;
 		this.stage.GetCharacterLayer().AddChild(this.monster);
 	}
 
 	// Update is called once per frame
 	protected override void Update () {
-		base.Update();
 		if (!this.AnimationPlayer.HasPlayingAnimations()) {
 			if (this.monster != null && this.monster.IsDead()) {
 				this.stage.GetCharacterLayer().RemoveChild(this.monster);
@@ -53,6 +55,8 @@ public class CombatController : BaseStageController {
 				}
 			}	
 		}
+		
+		base.Update();
 	}
 	
 	public void SetPlayer(Ally player) {
@@ -101,31 +105,35 @@ public class CombatController : BaseStageController {
 			
 			// Damage pop
 			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
-			this.AnimationPlayer.Play(settings.Root, null, animation, null);
+			this.AnimationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
 			
 			AdventureObject obj = (AdventureObject)settings.Target;
-			obj.ApplyDamage(damageValue);
+			//obj.ApplyDamage(damageValue);
 		}
 	}
 	
-	private void playSkillAnimation(WeaponEntity weapon, SkillEntity skillEntity) {
+	private void playSkillAnimation(AdventureObject caster, AdventureObject target, WeaponEntity weapon, SkillEntity skillEntity) {
 		if (weapon == null) {
 			return;	
 		}
-		AdventureObject battler = this.battlers[0];
-		if (battler.Sprite.IsVisible) {
-			battler.Sprite.Hide();
+		
+		if (caster.Sprite.IsVisible) {
+			caster.Sprite.Hide();
 
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = battler.TextureID, PixelSize = new Vector2(32, 32)}},
-				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = this.monster.PixelSize,  SrcRect = this.monster.SrcRect}},
+				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = caster.TextureID, PixelSize = new Vector2(32, 32)}},
+				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = target.PixelSize,  SrcRect = target.SrcRect}},
 				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = weapon.GetMasterWeapon().path, PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
-			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, this.stage.GetCharacterLayer(), battler, this.monster, CommandCalled);
-
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, 1.0f, 0.0f, settings, options);
-			this.AnimationPlayer.Play(battler, null, animation,  AnimationFinished);
+			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, null, settings, options);
+			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/Shoot", false, null, settings, options);
+			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Sword/LeaveDance", false, null, settings, options);
+			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/bow_bomb", false, null, settings, options);
+			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Fire/Skill_Flare", false, null, settings, options);
+			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Laser/Skill_Laser01", false, null, settings, options);
+			this.AnimationPlayer.Play(caster,  null, animation,  AnimationFinished);
 		}
 	}
 	
@@ -154,10 +162,11 @@ public class CombatController : BaseStageController {
 	}
 	
 	private void WeaponUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
-		this.playSkillAnimation(weaponEntity, skillEntity);
+		//this.playSkillAnimation(this.monster, this.battlers[0], weaponEntity, skillEntity);
+		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, skillEntity);
 	}
 	
 	private void APUpdated(int newAP) {
-		Debug.Log("AP Updated = " + newAP);
+		//Debug.Log("AP Updated = " + newAP);
 	}
 }

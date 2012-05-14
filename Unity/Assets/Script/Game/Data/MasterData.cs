@@ -5,26 +5,17 @@ namespace TinyQuest.Data{
 	public struct MasterWeaponParameter {
 		public enum Key {
 			Exp = 0,
-			Power = 1,
-			Chance1 = 2,
-			Chance2 = 3,
-			Chance3 = 4
+			Power = 1
 		};
 		public readonly int exp;
 		public readonly int power;
-		public readonly int chance1;
-		public readonly int chance2;
-		public readonly int chance3;
 		
 		public MasterWeaponParameter(int[] rawData) {
 			this.exp = rawData[(int)Key.Exp];
 			this.power = rawData[(int)Key.Power];
-			this.chance1 = rawData[(int)Key.Chance1];
-			this.chance2 = rawData[(int)Key.Chance2];
-			this.chance3 = rawData[(int)Key.Chance3];
 		}
 	}
-	
+
 	public class MasterWeapon : IDData{
 		public static readonly int MinLevel = 1;
 		public int MaxLevel {
@@ -68,6 +59,7 @@ namespace TinyQuest.Data{
 			return param.exp;
 		}
 	}
+
 	
 	public class MasterEnemy : IDData {
 		public readonly int hp;

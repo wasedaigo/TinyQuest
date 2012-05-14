@@ -1,0 +1,753 @@
+{
+  "Recipe": {
+    "1": {
+      "count": 2,
+      "material": 2,
+      "weapon": 5
+    },
+    "2": {
+      "count": 2,
+      "material": 3,
+      "weapon": 5
+    }
+  },
+  "Zone": {
+    "1": {
+      "dependency": 0,
+      "length": 20
+    },
+    "2": {
+      "dependency": 1,
+      "length": 20
+    },
+    "3": {
+      "dependency": 2,
+      "length": 30
+    }
+  },
+  "ZoneMonster": {
+    "5": {
+      "zone": 2,
+      "rate": 20,
+      "monster": 9,
+      "isBoss": false
+    },
+    "11": {
+      "zone": 3,
+      "rate": 35,
+      "monster": 12,
+      "isBoss": false
+    },
+    "6": {
+      "zone": 2,
+      "rate": 20,
+      "monster": 8,
+      "isBoss": false
+    },
+    "12": {
+      "zone": 3,
+      "rate": 5,
+      "monster": 13,
+      "isBoss": false
+    },
+    "1": {
+      "zone": 1,
+      "rate": 80,
+      "monster": 1,
+      "isBoss": false
+    },
+    "7": {
+      "zone": 2,
+      "rate": 10,
+      "monster": 6,
+      "isBoss": false
+    },
+    "2": {
+      "zone": 1,
+      "rate": 20,
+      "monster": 2,
+      "isBoss": false
+    },
+    "8": {
+      "zone": 2,
+      "rate": 0,
+      "monster": 9,
+      "isBoss": true
+    },
+    "3": {
+      "zone": 1,
+      "rate": 0,
+      "monster": 4,
+      "isBoss": true
+    },
+    "9": {
+      "zone": 3,
+      "rate": 10,
+      "monster": 1,
+      "isBoss": false
+    },
+    "4": {
+      "zone": 2,
+      "rate": 50,
+      "monster": 2,
+      "isBoss": false
+    },
+    "10": {
+      "zone": 3,
+      "rate": 50,
+      "monster": 11,
+      "isBoss": false
+    }
+  },
+  "Weapon": {
+    "5": {
+      "category": null,
+      "rarity": 2,
+      "skill1": 4,
+      "atk": 50,
+      "skill2": 5,
+      "skill3": 29,
+      "userType": 0,
+      "growthType": 0
+    },
+    "11": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 12,
+      "atk": 50,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 2,
+      "growthType": 0
+    },
+    "6": {
+      "category": 5,
+      "rarity": 0,
+      "skill1": 17,
+      "atk": 90,
+      "skill2": 18,
+      "skill3": 18,
+      "userType": 0,
+      "growthType": 0
+    },
+    "12": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 12,
+      "atk": 50,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 2,
+      "growthType": 0
+    },
+    "1": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 12,
+      "atk": 100,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 0,
+      "growthType": 0
+    },
+    "7": {
+      "category": 7,
+      "rarity": 0,
+      "skill1": 3,
+      "atk": 20,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 0,
+      "growthType": 0
+    },
+    "2": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 12,
+      "atk": 150,
+      "skill2": 10,
+      "skill3": 0,
+      "userType": 0,
+      "growthType": 0
+    },
+    "8": {
+      "category": 7,
+      "rarity": 0,
+      "skill1": 12,
+      "atk": 50,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 0,
+      "growthType": 1
+    },
+    "3": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 27,
+      "atk": 250,
+      "skill2": 11,
+      "skill3": 0,
+      "userType": 0,
+      "growthType": 0
+    },
+    "9": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 53,
+      "atk": 50,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 2,
+      "growthType": 0
+    },
+    "4": {
+      "category": null,
+      "rarity": 3,
+      "skill1": 25,
+      "atk": 170,
+      "skill2": 27,
+      "skill3": 26,
+      "userType": 0,
+      "growthType": 0
+    },
+    "10": {
+      "category": null,
+      "rarity": 0,
+      "skill1": 53,
+      "atk": 50,
+      "skill2": 0,
+      "skill3": 0,
+      "userType": 2,
+      "growthType": 0
+    }
+  },
+  "Monster": {
+    "5": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 10,
+      "hp": 2000
+    },
+    "11": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 0,
+      "hp": 100
+    },
+    "6": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 11,
+      "hp": 150
+    },
+    "12": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 0,
+      "hp": 200
+    },
+    "1": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 10,
+      "hp": 100
+    },
+    "7": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 10,
+      "hp": 400
+    },
+    "13": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 0,
+      "hp": 500
+    },
+    "2": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 10,
+      "hp": 200
+    },
+    "8": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 25,
+      "hp": 200
+    },
+    "3": {
+      "weapon1": 11,
+      "weapon2": 12,
+      "weapon3": 0,
+      "tp": 20,
+      "hp": 1000
+    },
+    "9": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 15,
+      "hp": 400
+    },
+    "4": {
+      "weapon1": 10,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 15,
+      "hp": 1500
+    },
+    "10": {
+      "weapon1": 9,
+      "weapon2": 0,
+      "weapon3": 0,
+      "tp": 15,
+      "hp": 400
+    }
+  },
+  "Skill": {
+    "49": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 4,
+      "attribute": 4,
+      "element": 0
+    },
+    "38": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "27": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "16": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "5": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "44": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "33": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "22": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "11": {
+      "atk": 190,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "50": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "39": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "28": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "17": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 2,
+      "element": 0
+    },
+    "6": {
+      "atk": 100,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "45": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "34": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "23": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "12": {
+      "atk": 75,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "1": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 0,
+      "element": 0
+    },
+    "51": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "40": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "29": {
+      "atk": 90,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 2,
+      "element": 0
+    },
+    "18": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 2,
+      "element": 0
+    },
+    "7": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "46": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "35": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "24": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "13": {
+      "atk": 210,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "2": {
+      "atk": 300,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 0,
+      "element": 0
+    },
+    "52": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "41": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "30": {
+      "atk": 150,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 2
+    },
+    "19": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 2,
+      "element": 0
+    },
+    "8": {
+      "atk": 75,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "47": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "36": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "25": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "14": {
+      "atk": 320,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "3": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 1
+    },
+    "53": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "42": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "31": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 3
+    },
+    "20": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 2
+    },
+    "9": {
+      "atk": 200,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 2,
+      "element": 0
+    },
+    "48": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "37": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "26": {
+      "atk": 50,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "15": {
+      "atk": 100,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "4": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    },
+    "54": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "43": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 0
+    },
+    "32": {
+      "atk": 300,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 4,
+      "element": 2
+    },
+    "21": {
+      "atk": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 3,
+      "element": 0
+    },
+    "10": {
+      "atk": 220,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 0
+    }
+  },
+  "MonsterDropItem": {
+    "5": {
+      "rate": 1,
+      "monster": 2,
+      "drop": 4,
+      "type": 1
+    },
+    "6": {
+      "rate": 100,
+      "monster": 4,
+      "drop": 2,
+      "type": 1
+    },
+    "1": {
+      "rate": 1,
+      "monster": 1,
+      "drop": 1,
+      "type": 1
+    },
+    "7": {
+      "rate": 10,
+      "monster": 4,
+      "drop": 5,
+      "type": 0
+    },
+    "2": {
+      "rate": 1,
+      "monster": 1,
+      "drop": 3,
+      "type": 1
+    },
+    "3": {
+      "rate": 0.5,
+      "monster": 1,
+      "drop": 1,
+      "type": 0
+    },
+    "4": {
+      "rate": 1,
+      "monster": 2,
+      "drop": 4,
+      "type": 1
+    }
+  },
+  "CompositeSkill": {
+    "1": {
+      "atk": 0,
+      "baseSkill1": 3,
+      "baseSkill2": 12,
+      "baseSkill3": 0,
+      "tp": 1,
+      "buff": 0,
+      "attribute": 1,
+      "element": 1
+    }
+  }
+}

@@ -78,35 +78,10 @@ namespace TinyQuest.Entity {
 			req.UseWeapon(this.userWeapon.slot, this.WeaponUsed);
 		}
 		
-		private int ChooseSkillNo() {
-			MasterWeaponParameter parameter = this.masterWeapon.GetParam(this.GetLevel());
-			int total = parameter.chance1 + parameter.chance2 + parameter.chance3;
-			
-			int rand = Random.Range(0, total);
-			int skillIndex = 0;
-			
-			rand -= parameter.chance1;
-			if (rand < 0) {
-				return skillIndex = 0;
-			}
-			
-			rand -= parameter.chance2;
-			if (rand < 0) {
-				return skillIndex = 1;
-			}
-			
-			rand -= parameter.chance3;
-			if (rand < 0) {
-				return skillIndex = 2;
-			}
-			
-			return skillIndex;
-		}
-		
 		private void WeaponUsed(bool isBroken, int newAP) {
 			int skillIndex = 0;
 			if (!isBroken) {
-				skillIndex = this.ChooseSkillNo();
+				skillIndex = 0;//this.ChooseSkillNo();
 			}
 			
 			if (skillIndex >= this.GetWeaponCount()) {

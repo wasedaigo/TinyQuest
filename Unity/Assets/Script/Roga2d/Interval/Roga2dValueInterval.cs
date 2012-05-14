@@ -28,7 +28,7 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 		this.Start();
 	}
 	
-	public override sealed void Start() {
+	public override void Start() {
 		T[] values = this.TweenBeforeFilter(this.start, this.end);
 		this.SetValue(values[0]);
 	}

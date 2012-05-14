@@ -10,7 +10,41 @@
       		[1, 10],
       		[2, 10],
       		[3, 10]
-      	}
+      	},
+      	"events": {
+              "0": {
+                "commands":[
+                  {"type": 1, "content": {"text":"よーし、ぼうけんしよう！"}}
+                ]
+                },
+              "1": {
+                "commands":[
+                  {"type": 1, "content": {"text":"てきがあらわれたぞ！"}},
+                  {"type": 0, "content": {"enemyID":1}},
+                  {"type": 1, "content": {"text":"やった。たおした！"}}
+                ]
+                },
+              "2": {
+                "commands":[
+                  {"type": 1, "content": {"text":"2"}}
+                ]
+                },
+              "3": {
+                "commands":[
+                  {"type": 1, "content": {"text":"3"}}
+                ]
+                },
+              "4": {
+                "commands":[
+                  {"type": 1, "content": {"text":"4"}}
+                ]
+                },
+              "5": {
+                "commands":[
+                  {"type": 1, "content": {"text":"やったー。ゴールだ。"}}
+                ]
+                }
+        }
       }
     ]
 }

@@ -28,10 +28,13 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 		Vector2 localTargetPosition = offset;
         
 		if (node.Parent != null) {
+			float lossyScaleX = node.Parent != null ? node.Parent.Transform.lossyScale.x : 1;
 			Transform root = node.Transform.root.gameObject.transform;
 	        if (positionType == Roga2dPositionType.RelativeToTarget) {
 				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
 	            Vector2 anchorOffset = Roga2dUtils.pixelToLocal(target.GetOffsetByPositionAnchor(positionAnchor.x, positionAnchor.y));
+				anchorOffset.x *= lossyScaleX;
+
 				Vector2 targetPosition = target.Position + offset + anchorOffset;
 				
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);
@@ -40,6 +43,7 @@ public class Roga2dPositionInterval : Roga2dValueInterval<Vector2> {
 	        } else if (positionType == Roga2dPositionType.RelativeToTargetOrigin) {
 				Roga2dGameObjectState state = Roga2dUtils.stashState(root);
 	            Vector2 anchorOffset = Roga2dUtils.pixelToLocal(target.GetOffsetByPositionAnchor(positionAnchor.x, positionAnchor.y));
+				anchorOffset.x *= lossyScaleX;
 				Vector2 targetPosition = targetOrigin.Position + offset + anchorOffset;
 				
 				localTargetPosition = node.Parent.InverseTransformPoint(targetPosition);

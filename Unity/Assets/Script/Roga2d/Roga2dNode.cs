@@ -47,6 +47,12 @@ public class Roga2dNode {
 		}
 	}
 	
+	public float Rotation {
+		get {
+			return this.transform.eulerAngles.z;
+		}
+	}
+	
 	public Vector2 LocalPosition {
 		get {
 			return this.transform.localPosition;
@@ -69,6 +75,15 @@ public class Roga2dNode {
 		get {
 			return this.transform;	
 		}
+		set {
+			this.transform = value;
+		}
+	}
+	
+	public bool IsReversed {
+		get {
+			return this.transform.lossyScale.x < 0;	
+		}
 	}
 	
 	public bool IsVisible {
@@ -76,14 +91,14 @@ public class Roga2dNode {
 			return !this.isHidden && this.alpha != 0.0f;
 		}
 	}
-	
+
 	public virtual void Hide() {
 		this.isHidden = true;
 		foreach(Roga2dNode node in this.children) {
 			node.Hide();
 		}
 	}
-	
+
 	public virtual void Show() {
 		this.isHidden = false;
 		foreach(Roga2dNode node in this.children) {
@@ -277,9 +292,10 @@ public class Roga2dNode {
 		Vector2 pixelCenter = this.GetPixelCenter();
         float centerX = pixelSize.x / 2 + pixelCenter.x;
         float centerY = pixelSize.y / 2 + pixelCenter.y;
-		offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * this.LocalScale.x;
-		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * this.LocalScale.y;
 
+		offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * Mathf.Abs(this.LocalScale.x);
+		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * Mathf.Abs(this.LocalScale.y);
+		
         return offset;
     }
 }

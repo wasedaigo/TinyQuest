@@ -111,20 +111,23 @@ public class Roga2dPositionIntervalOption {
 public class Roga2dRotationIntervalOption {
 	public Roga2dFacingType FacingType;
 	public Roga2dNode Target;
+	public Roga2dRotationIntervalDataStore DataStore;
 	
 	public static Roga2dRotationIntervalOption Build() {
 		Roga2dRotationIntervalOption option = new Roga2dRotationIntervalOption();
 		option.FacingType = Roga2dFacingType.None;
 		option.Target = null;
-		
+		option.DataStore = null;
+
 		return option;
 	}
 }
 
 public class Roga2dRotationIntervalDataStore {
-	public bool ignore;
+	public bool initialized;
 	public float lastAlpha;
 	public Vector2 lastAbsPosition;
+	public float lastRotation;
 }
 
 public class Roga2dAnimationKeyFrame {
