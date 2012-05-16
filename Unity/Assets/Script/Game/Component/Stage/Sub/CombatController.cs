@@ -6,6 +6,7 @@ using TinyQuest.Entity;
 using TinyQuest.Factory.Entity;
 using TinyQuest.Object;
 using TinyQuest.Core;
+using TinyQuest.Data;
 
 public class CombatController : BaseStageController {
 	public System.Action CombatFinish;
@@ -32,7 +33,7 @@ public class CombatController : BaseStageController {
 		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
 			WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
 			if (weapon != null) {
-				this.SetWeaponAtSlot(i, "UI/" + weapon.GetMasterWeapon().path);
+				this.SetWeaponAtSlot(i, weapon.GetMasterWeapon());
 			}
 		}
 	
@@ -67,7 +68,9 @@ public class CombatController : BaseStageController {
 		this.slots = slots;
 	}
 
-	public void SetWeaponAtSlot(int i, string textureId) {
+	public void SetWeaponAtSlot(int i, MasterWeapon masterWeapon) {
+		
+		string textureId = masterWeapon.GetUIImagePath();
 		if (this.weaponTextures[i] != null) {
 			NGUITools.Destroy(this.weaponTextures[i]);	
 			this.weaponTextures[i] = null;
@@ -112,7 +115,7 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	private void playSkillAnimation(AdventureObject caster, AdventureObject target, WeaponEntity weapon, SkillEntity skillEntity) {
+	private void playSkillAnimation(AdventureObject caster, AdventureObject target, WeaponEntity weapon, MasterSkill masterSkill) {
 		if (weapon == null) {
 			return;	
 		}
@@ -123,11 +126,11 @@ public class CombatController : BaseStageController {
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = caster.TextureID, PixelSize = new Vector2(32, 32)}},
 				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = target.PixelSize,  SrcRect = target.SrcRect}},
-				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = weapon.GetMasterWeapon().path, PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
+				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = weapon.GetMasterWeapon().GetAnimationImagePath(), PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Path, false, null, settings, options);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/Shoot", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Sword/LeaveDance", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/bow_bomb", false, null, settings, options);
@@ -161,9 +164,9 @@ public class CombatController : BaseStageController {
 		this.userBattlerEntity.UseWeapon(5);
 	}
 	
-	private void WeaponUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
+	private void WeaponUsed(WeaponEntity weaponEntity, MasterSkill masterSkill) {
 		//this.playSkillAnimation(this.monster, this.battlers[0], weaponEntity, skillEntity);
-		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, skillEntity);
+		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, masterSkill);
 	}
 	
 	private void APUpdated(int newAP) {

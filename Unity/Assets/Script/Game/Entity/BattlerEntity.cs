@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TinyQuest.Data;
 
 namespace TinyQuest.Entity {
 	public class BattlerEntity {
@@ -17,7 +18,7 @@ namespace TinyQuest.Entity {
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
-		public System.Action<WeaponEntity, SkillEntity> WeaponUse;
+		public System.Action<WeaponEntity, MasterSkill> WeaponUse;
 		public System.Action<int> UpdateAP;
 		
 		private int no;
@@ -65,9 +66,9 @@ namespace TinyQuest.Entity {
 			this.weapons[slotIndex].Use();
 		}
 		
-		private void WeaponUsed(WeaponEntity weaponEntity, SkillEntity skillEntity, int newAP) {
+		private void WeaponUsed(WeaponEntity weaponEntity, MasterSkill masterSkill, int newAP) {
 			if (this.WeaponUse != null) {
-				this.WeaponUse(weaponEntity, skillEntity);
+				this.WeaponUse(weaponEntity, masterSkill);
 			}
 			
 			if (this.UpdateAP != null) {

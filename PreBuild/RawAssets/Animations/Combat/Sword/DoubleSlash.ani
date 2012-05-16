@@ -61,6 +61,7 @@
             "minEmitSpeed" : 0.0,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"
@@ -79,6 +80,7 @@
             "position" : [ 1, 0 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : -45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"

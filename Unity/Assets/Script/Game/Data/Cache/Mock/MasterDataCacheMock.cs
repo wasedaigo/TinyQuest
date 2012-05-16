@@ -33,11 +33,11 @@ namespace TinyQuest.Data.Cache {
 			return base.GetSkillByID(id);
 		}
 		
-		public override MasterEnemy GetEnemyByID(int id) {
-			if (this.masterEnemyDictionary == null) {
+		public override MasterMonster GetMonsterByID(int id) {
+			if (this.masterMonsterDictionary == null) {
 				this.LoadMaster();
 			}
-			return base.GetEnemyByID(id);
+			return base.GetMonsterByID(id);
 		}
 	}
 }

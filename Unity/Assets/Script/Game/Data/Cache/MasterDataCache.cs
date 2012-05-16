@@ -9,15 +9,15 @@ namespace TinyQuest.Data.Cache {
 		protected MasterZone zone;
 		protected Dictionary<int, MasterWeapon> masterWeaponDictionary;
 		protected Dictionary<int, MasterSkill> masterSkillDictionary;
-		protected Dictionary<int, MasterEnemy> masterEnemyDictionary;
+		protected Dictionary<int, MasterMonster> masterMonsterDictionary;
 		
 		public void Set(string jsonText) {
 			MasterFile masterFile = JsonReader.Deserialize<MasterFile>(jsonText);
 			MasterData masterData = masterFile.data;
-			this.zone = masterData.zone;
-			this.masterWeaponDictionary = this.GetAsDictionary<MasterWeapon>(masterData.weapons);
-			this.masterSkillDictionary = this.GetAsDictionary<MasterSkill>(masterData.skills);
-			this.masterEnemyDictionary = this.GetAsDictionary<MasterEnemy>(masterData.enemies);
+			this.zone = masterData.Zone;
+			this.masterWeaponDictionary = this.GetAsDictionary<MasterWeapon>(masterData.Weapons);
+			this.masterSkillDictionary = this.GetAsDictionary<MasterSkill>(masterData.Skills);
+			this.masterMonsterDictionary = this.GetAsDictionary<MasterMonster>(masterData.Monsters);
 		}
 		
 		public void SetZone(string jsonText) {
@@ -44,11 +44,15 @@ namespace TinyQuest.Data.Cache {
 		}
 		
 		public virtual MasterSkill GetSkillByID(int id) {
-			return this.masterSkillDictionary[id];
+			if (this.masterSkillDictionary.ContainsKey(id)) {
+				return this.masterSkillDictionary[id];
+			} else {
+				return null;	
+			}
 		}
 		
-		public virtual MasterEnemy GetEnemyByID(int id) {
-			return this.masterEnemyDictionary[id];
+		public virtual MasterMonster GetMonsterByID(int id) {
+			return this.masterMonsterDictionary[id];
 		}
 	}
 }

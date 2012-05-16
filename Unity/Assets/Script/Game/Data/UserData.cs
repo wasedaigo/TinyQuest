@@ -21,7 +21,7 @@ namespace TinyQuest.Data{
     	public int commandIndex;
 		public object commandState;
 		public int[] weaponDurabilities;
-		public int currentAP;
+		public int currentTP;
 	}
 
 	public class CombatBattler {

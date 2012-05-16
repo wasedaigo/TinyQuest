@@ -19,11 +19,11 @@ namespace TinyQuest.Factory.Entity {
 		public WeaponEntity Build(UserWeapon userWeapon) {
 			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(userWeapon.weaponId);
 			WeaponEntity weapon = new WeaponEntity(masterWeapon, userWeapon, 1);
-			for (int i = 0; i < masterWeapon.skills.Length; i++) {
-				int skillId = masterWeapon.skills[i];
-				SkillEntity skillEntity = SkillFactory.Instance.Build(skillId);
-				weapon.SetSkill(i, skillEntity);
-			}
+
+
+			weapon.SetSkill(0, CacheFactory.Instance.GetMasterDataCache().GetSkillByID(masterWeapon.skill1));
+			weapon.SetSkill(1, CacheFactory.Instance.GetMasterDataCache().GetSkillByID(masterWeapon.skill2));
+			weapon.SetSkill(2, CacheFactory.Instance.GetMasterDataCache().GetSkillByID(masterWeapon.skill3));
 			
 			return weapon;
 		}

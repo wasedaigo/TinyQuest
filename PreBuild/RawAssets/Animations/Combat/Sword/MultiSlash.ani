@@ -44,6 +44,7 @@
             "position" : [ 0, -20 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"
@@ -62,6 +63,7 @@
             "position" : [ 0, -10 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"
@@ -79,6 +81,7 @@
             "minEmitSpeed" : 0.0,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"
@@ -97,6 +100,7 @@
             "position" : [ 0, 10 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"
@@ -115,6 +119,7 @@
             "position" : [ 0, 20 ],
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
+            "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
             "sourcePath" : "Combat/Effect/EffectSlash01.ani"

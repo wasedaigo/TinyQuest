@@ -1,60 +1,953 @@
 {
-  "version":1,
-  "data":{
-    "skills":[
-        {
-          "id": 1,
-          "name": "Skill_Sword_Slash",
-          "path": "Combat/Sword/Slash"
-        },
-        {
-          "id": 2,
-          "name": "Skill_Sword_Double_Slash",
-          "path": "Combat/Sword/DoubleSlash"
-        },
-        {
-          "id": 3,
-          "name": "Skill_Sword_Multi_Slash",
-          "path": "Combat/Sword/MultiSlash"
-        }
+  "data": {
+    "CompositeSkills": [
+      {
+        "atk": 0,
+        "baseSkill1": 3,
+        "id": 1,
+        "baseSkill2": 12,
+        "baseSkill3": 0,
+        "tp": 1,
+        "buff": 0,
+        "attribute": 1,
+        "element": 1
+      }
     ],
-    "enemies":[
-        {
-          "id": 1,
-          "name": "Enemy_Goblin",
-          "hp": 100,
-          "power": 20
-        }
-    ],
-    "weapons":[
-        {
-          "id": 1,
-          "name": "Weapon_Sword_ShortSword",
-          "path": "Weapon/Sword/ShortSword",
-          "description": "",
-          "power": 100,
-          "ap": 1,
-          "parameters": [
-              [1000, 20],
-              [2000, 40],
-              [3000, 40]
-          ],
-        "skills": [1, 2]
+    "Monsters": [
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 1,
+        "growthType": 0,
+        "tp": 10,
+        "hp": 100
       },
-        {
-          "id": 2,
-      "name": "Weapon_Sword_BroadSword",
-      "path": "Weapon/Sword/BroadSword",
-      "description": "",
-      "power": 100,
-      "ap": 2,
-      "parameters": [
-          [1000, 20],
-          [2000, 40],
-          [3000, 40]
-      ],
-      "skills": [2, 3]
-        }
-      ]
-    }
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 2,
+        "growthType": 0,
+        "tp": 10,
+        "hp": 200
+      },
+      {
+        "weapon1": 11,
+        "weapon2": 12,
+        "weapon3": 0,
+        "id": 3,
+        "growthType": 0,
+        "tp": 20,
+        "hp": 1000
+      },
+      {
+        "weapon1": 10,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 4,
+        "growthType": 0,
+        "tp": 15,
+        "hp": 1500
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 5,
+        "growthType": 1,
+        "tp": 10,
+        "hp": 2000
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 6,
+        "growthType": 0,
+        "tp": 11,
+        "hp": 150
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 7,
+        "growthType": 0,
+        "tp": 10,
+        "hp": 400
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 8,
+        "growthType": 0,
+        "tp": 25,
+        "hp": 200
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 9,
+        "growthType": 0,
+        "tp": 15,
+        "hp": 400
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 10,
+        "growthType": 0,
+        "tp": 15,
+        "hp": 400
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 11,
+        "growthType": 0,
+        "tp": 0,
+        "hp": 100
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 12,
+        "growthType": 0,
+        "tp": 0,
+        "hp": 200
+      },
+      {
+        "weapon1": 9,
+        "weapon2": 0,
+        "weapon3": 0,
+        "id": 13,
+        "growthType": 0,
+        "tp": 0,
+        "hp": 500
+      }
+    ],
+    "Materials": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      }
+    ],
+    "MonsterDropItems": [
+      {
+        "rate": 1,
+        "monster": 1,
+        "id": 1,
+        "drop": 1,
+        "type": 1
+      },
+      {
+        "rate": 1,
+        "monster": 1,
+        "id": 2,
+        "drop": 3,
+        "type": 1
+      },
+      {
+        "rate": 0.5,
+        "monster": 1,
+        "id": 3,
+        "drop": 1,
+        "type": 0
+      },
+      {
+        "rate": 1,
+        "monster": 2,
+        "id": 4,
+        "drop": 4,
+        "type": 1
+      },
+      {
+        "rate": 1,
+        "monster": 2,
+        "id": 5,
+        "drop": 4,
+        "type": 1
+      },
+      {
+        "rate": 100,
+        "monster": 4,
+        "id": 6,
+        "drop": 2,
+        "type": 1
+      },
+      {
+        "rate": 10,
+        "monster": 4,
+        "id": 7,
+        "drop": 5,
+        "type": 0
+      }
+    ],
+    "Weapons": [
+      {
+        "durability": 10,
+        "category": 1,
+        "rarity": 0,
+        "skill1": 12,
+        "atk": 100,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 1,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 1,
+        "rarity": 0,
+        "skill1": 10,
+        "atk": 150,
+        "skill2": 10,
+        "skill3": 0,
+        "id": 2,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 2,
+        "rarity": 0,
+        "skill1": 27,
+        "atk": 250,
+        "skill2": 11,
+        "skill3": 0,
+        "id": 3,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 3,
+        "rarity": 3,
+        "skill1": 25,
+        "atk": 170,
+        "skill2": 27,
+        "skill3": 26,
+        "id": 4,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 4,
+        "rarity": 2,
+        "skill1": 4,
+        "atk": 50,
+        "skill2": 5,
+        "skill3": 29,
+        "id": 5,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 5,
+        "rarity": 0,
+        "skill1": 17,
+        "atk": 90,
+        "skill2": 18,
+        "skill3": 18,
+        "id": 6,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 7,
+        "rarity": 0,
+        "skill1": 3,
+        "atk": 20,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 7,
+        "userType": 0,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 7,
+        "rarity": 0,
+        "skill1": 12,
+        "atk": 50,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 8,
+        "userType": 0,
+        "growthType": 1
+      },
+      {
+        "durability": 10,
+        "category": 0,
+        "rarity": 0,
+        "skill1": 53,
+        "atk": 50,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 9,
+        "userType": 2,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 0,
+        "rarity": 0,
+        "skill1": 53,
+        "atk": 50,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 10,
+        "userType": 2,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 0,
+        "rarity": 0,
+        "skill1": 12,
+        "atk": 50,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 11,
+        "userType": 2,
+        "growthType": 0
+      },
+      {
+        "durability": 10,
+        "category": 0,
+        "rarity": 0,
+        "skill1": 12,
+        "atk": 50,
+        "skill2": 0,
+        "skill3": 0,
+        "id": 12,
+        "userType": 2,
+        "growthType": 0
+      }
+    ],
+    "Skills": [
+      {
+        "atk": 0,
+        "id": 1,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 0,
+        "element": 0
+      },
+      {
+        "atk": 300,
+        "id": 2,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 0,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 3,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 1
+      },
+      {
+        "atk": 0,
+        "id": 4,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 5,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 100,
+        "id": 6,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 7,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 75,
+        "id": 8,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 200,
+        "id": 9,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 2,
+        "element": 0
+      },
+      {
+        "atk": 220,
+        "id": 10,
+        "tp": 1,
+        "animation": "Combat/Sword/DoubleSlash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 190,
+        "id": 11,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 75,
+        "id": 12,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 210,
+        "id": 13,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 320,
+        "id": 14,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 100,
+        "id": 15,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 16,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 17,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 2,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 18,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 2,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 19,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 2,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 20,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 2
+      },
+      {
+        "atk": 0,
+        "id": 21,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 22,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 23,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 24,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 25,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 26,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 27,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 50,
+        "id": 28,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 90,
+        "id": 29,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 2,
+        "element": 0
+      },
+      {
+        "atk": 150,
+        "id": 30,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 2
+      },
+      {
+        "atk": 50,
+        "id": 31,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 3
+      },
+      {
+        "atk": 300,
+        "id": 32,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 2
+      },
+      {
+        "atk": 0,
+        "id": 33,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 34,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 35,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 36,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 37,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 38,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 39,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 40,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 41,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 42,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 43,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 44,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 45,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 46,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 47,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 48,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 49,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 4,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 50,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 51,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 52,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 4,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 53,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 0,
+        "id": 54,
+        "tp": 1,
+        "animation": "Combat/Sword/Slash",
+        "buff": 0,
+        "attribute": 3,
+        "element": 0
+      }
+    ],
+    "ZoneMonsters": [
+      {
+        "zone": 1,
+        "rate": 80,
+        "monster": 1,
+        "id": 1,
+        "isBoss": false
+      },
+      {
+        "zone": 1,
+        "rate": 20,
+        "monster": 2,
+        "id": 2,
+        "isBoss": false
+      },
+      {
+        "zone": 1,
+        "rate": 0,
+        "monster": 4,
+        "id": 3,
+        "isBoss": true
+      },
+      {
+        "zone": 2,
+        "rate": 50,
+        "monster": 2,
+        "id": 4,
+        "isBoss": false
+      },
+      {
+        "zone": 2,
+        "rate": 20,
+        "monster": 9,
+        "id": 5,
+        "isBoss": false
+      },
+      {
+        "zone": 2,
+        "rate": 20,
+        "monster": 8,
+        "id": 6,
+        "isBoss": false
+      },
+      {
+        "zone": 2,
+        "rate": 10,
+        "monster": 6,
+        "id": 7,
+        "isBoss": false
+      },
+      {
+        "zone": 2,
+        "rate": 0,
+        "monster": 9,
+        "id": 8,
+        "isBoss": true
+      },
+      {
+        "zone": 3,
+        "rate": 10,
+        "monster": 1,
+        "id": 9,
+        "isBoss": false
+      },
+      {
+        "zone": 3,
+        "rate": 50,
+        "monster": 11,
+        "id": 10,
+        "isBoss": false
+      },
+      {
+        "zone": 3,
+        "rate": 35,
+        "monster": 12,
+        "id": 11,
+        "isBoss": false
+      },
+      {
+        "zone": 3,
+        "rate": 5,
+        "monster": 13,
+        "id": 12,
+        "isBoss": false
+      }
+    ],
+    "Zones": [
+      {
+        "dependency": 0,
+        "id": 1,
+        "length": 20
+      },
+      {
+        "dependency": 1,
+        "id": 2,
+        "length": 20
+      },
+      {
+        "dependency": 2,
+        "id": 3,
+        "length": 30
+      }
+    ],
+    "Recipes": [
+      {
+        "id": 1,
+        "count": 2,
+        "material": 2,
+        "weapon": 5
+      },
+      {
+        "id": 2,
+        "count": 2,
+        "material": 3,
+        "weapon": 5
+      }
+    ]
+  },
+  "version": 1
 }

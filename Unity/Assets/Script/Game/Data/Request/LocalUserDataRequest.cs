@@ -32,7 +32,9 @@ namespace TinyQuest.Data.Request {
 			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
 			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(userWeapons[slot].weaponId);
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			userZone.currentAP -= masterWeapon.ap;
+			
+			MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(masterWeapon.skill1);
+			userZone.currentTP -= masterSkill.tp;
 			
 			bool isBroken = true;
 			if (userZone.weaponDurabilities[slot] > 0) {
@@ -42,7 +44,7 @@ namespace TinyQuest.Data.Request {
 			
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			
-			callback(isBroken, userZone.currentAP);
+			callback(isBroken, userZone.currentTP);
 		}
 
 		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {

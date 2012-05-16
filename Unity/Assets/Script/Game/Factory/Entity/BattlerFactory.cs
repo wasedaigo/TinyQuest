@@ -9,7 +9,7 @@ namespace TinyQuest.Factory.Entity {
 		private BattlerFactory(){}
 
 		public BattlerEntity BuildEnemy(int enemyId) {
-			MasterEnemy masterEnemy = CacheFactory.Instance.GetMasterDataCache().GetEnemyByID(enemyId);
+			MasterMonster masterEnemy = CacheFactory.Instance.GetMasterDataCache().GetMonsterByID(enemyId);
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			BattlerEntity battler = null;
 			if (combatProgress != null) {

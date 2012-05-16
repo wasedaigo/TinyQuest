@@ -95,6 +95,6 @@
             "commandIndex": 1,
             "playerHP" : 200,
             "weaponDurabilities":[20, 20, 20],
-            "currentAP":5
+            "currentTP":5
     }
 }

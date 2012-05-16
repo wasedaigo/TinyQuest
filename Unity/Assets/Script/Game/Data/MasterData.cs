@@ -2,6 +2,74 @@ using UnityEngine;
 using System.Collections.Generic;
 
 namespace TinyQuest.Data{
+	public enum ElementType {
+		None,
+		Fire,
+		Water,
+		Earth,
+		Thunder
+	};
+	
+	public enum AttributeType {
+		None,
+		Slash,
+		Pierce,
+		Smash,
+		Magic
+	};
+	
+	public enum BuffType {
+		None,
+		Poison,
+		StrongPoison,
+		Wet,
+		Freeze,
+		ArmorDown,
+		ArmorUp,
+		AttackDown,
+		AttackUp,
+		Regeneration,
+		Paralyze,
+		LastStand
+	};
+	
+	public enum RarityType {
+		Common,
+		Uncommon,
+		Heroic,
+		Legend,
+		Mythic
+	};
+	
+	public enum UserType {
+		All,
+		Player,
+		Monster
+	};
+	
+	public enum WeaponCategory {
+		Monster,
+		Sword,
+		BigSword,
+		Katana,
+		Knife,
+		Bow,
+		Spear,
+		Rod,
+		Book
+	};
+	
+	public enum GrowthType {
+		Slow,
+		Normal,
+		Fast
+	};
+	
+	public enum ItemType {
+		Weapon,
+		Material
+	};
+	
 	public struct MasterWeaponParameter {
 		public enum Key {
 			Exp = 0,
@@ -15,75 +83,146 @@ namespace TinyQuest.Data{
 			this.power = rawData[(int)Key.Power];
 		}
 	}
+	
+	public class MasterMaterial : IDData{
+		public string GetName() {
+			return "";	
+		}
+		public string GetDescription() {
+			return "";	
+		}
+	}
+	
+	public class MasterRecipe : IDData{
+		int count;
+		int material;
+		int weapon;
+	}
+
+	public class MasterZoneMonster : IDData{
+		int zoneID;
+		float rate;
+		int monster;
+		bool isBoss;
+	}
 
 	public class MasterWeapon : IDData{
 		public static readonly int MinLevel = 1;
 		public int MaxLevel {
-			get {return this.parameters.Length;}	
+			get {return 50;}	
 		}
 
 		public readonly string name;
-		public readonly string path;
-		public readonly string description;
-		public readonly int power;
+		public readonly int category;
+		public readonly int skill1;
+		public readonly int skill2;
+		public readonly int skill3;
+		public readonly int atk;
+		public readonly UserType userType;
+		public readonly GrowthType growthType;
+		public readonly RarityType rarity;
 		public readonly int durability;
-		public readonly int ap;
-		public readonly int[][] parameters;
-		public readonly int[] skills;
+		
+		public string GetUIImagePath() {
+			return "UI/Weapon/" + this.id;	
+		}
+		
+		public string GetAnimationImagePath() {
+			return "Weapon/" + this.id;	
+		}
 		
 		public int GetLevel(int exp) {
+			/*
 			int level = this.parameters.Length;
 			int expKey = (int)MasterWeaponParameter.Key.Exp;
 			for (int i = 0; i < this.parameters.Length; i++) {
 				if (this.parameters[i][expKey] > exp) {
 					level = id + 1;	
 				}
-			}
+			}*/
+			int level = 1;
 			return level;
 		}
-		
+		/*
 		public MasterWeaponParameter GetParam(int level) {
 			if (level < MinLevel || level > MaxLevel) {
 				Debug.LogError(level + " is out of range");
 			}
 			
 			return new MasterWeaponParameter(this.parameters[level - MinLevel]);
-		}
+		}*/
 		
 		public int GetMaxExp() {
+			/*
 			if (this.parameters.Length == 0) {
 				Debug.LogError(" No parameter is defined");
 			}
 			
 			MasterWeaponParameter param = new MasterWeaponParameter(this.parameters[this.MaxLevel - MinLevel]);
-			return param.exp;
+			return param.exp;*/
+			return 1000;
+		}
+		
+		public string GetName() {
+			return "";	
 		}
 	}
 
-	
-	public class MasterEnemy : IDData {
+	public class MasterMonster : IDData {
+		public readonly int weapon1;
+		public readonly int weapon2;
+		public readonly int weapon3;
+		public readonly int tp;
 		public readonly int hp;
-		public readonly int power;
-	}
+		public readonly GrowthType growthType;
 		
+		public string GetName() {
+			return "";	
+		}
+	}
+
 	public class MasterSkill : IDData {
-		public readonly string name;
-		public readonly string path;
+		public readonly int atk;
+		public readonly int tp;
+		public readonly string animation;
+		public readonly BuffType buff;
+		public readonly AttributeType attribute;
+		public readonly ElementType element;
+	}
+	
+	public class MasterCompositeSkill : MasterSkill {
+		public readonly int baseSkill1;
+		public readonly int baseSkill2;
+		public readonly int baseSkill3;
+	}
+	
+	public class MasterMonsterDropItem : IDData {
+		public readonly int rate;
+		public readonly int monster;
+		public readonly int drop;
+		public readonly ItemType type;
 	}
 	
 	public class MasterZone : IDData {
       	public readonly int stepCount;
 		public readonly string path;
 		public readonly ZoneEvent[] events;
-		//event
-		//enemy
+		
+		public string GetName() {
+			return "";	
+		}
 	}
 	
 	public class MasterData {
-		public readonly MasterZone zone;
-		public readonly MasterWeapon[] weapons;
-		public readonly MasterSkill[] skills;
-		public readonly MasterEnemy[] enemies;
+		public readonly MasterZone Zone;
+		public readonly MasterWeapon[] Weapons;
+		public readonly MasterSkill[] Skills;
+		public readonly MasterCompositeSkill[] CompositeSkills;
+		public readonly MasterMonster[] Monsters;
+		public readonly MasterZoneMonster[] ZoneMonsters;
+		public readonly MasterMonsterDropItem[] MonsterDropItems;
+		public readonly MasterRecipe[] Recipes;
+		public readonly MasterMaterial[] Materials;
 	}
 	
 	public class MasterFile {
