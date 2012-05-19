@@ -10,7 +10,7 @@ using TinyQuest.Data;
 
 public class CombatController : BaseStageController {
 	public System.Action CombatFinish;
-	public ZoneData ZoneData;
+	public ZoneSceneData ZoneSceneData;
 	
 	private Stage stage;
 	private Ally monster;
@@ -21,8 +21,8 @@ public class CombatController : BaseStageController {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
 		
-		ZoneData.UserBattlerEntity.WeaponUse += this.WeaponUsed;
-		ZoneData.UserBattlerEntity.UpdateAP  += this.APUpdated;
+		ZoneSceneData.UserBattlerEntity.WeaponUse += this.WeaponUsed;
+		ZoneSceneData.UserBattlerEntity.UpdateAP  += this.APUpdated;
 	
 		//this.monster = spawnMonster("death_wind", -40, 0);
 		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
@@ -111,6 +111,6 @@ public class CombatController : BaseStageController {
 	}
 	
 	public void InvokeCommand(int slotNo) {
-		ZoneData.UserBattlerEntity.UseWeapon(slotNo);
+		ZoneSceneData.UserBattlerEntity.UseWeapon(slotNo);
 	}
 }

@@ -22,7 +22,7 @@ public class ZoneStageController : BaseStageController {
 	public GameObject CombatPanel;
 	public GameObject NextPanel;
 	public GameObject MovingPanel;
-	public ZoneData ZoneData;
+	public ZoneSceneData ZoneSceneData;
 
 	private Ally player;
 	private State state;
@@ -164,7 +164,7 @@ public class ZoneStageController : BaseStageController {
 		controller.baloonMessageBox = this.baloonMessageBox;
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
-		controller.ZoneData = ZoneData;
+		controller.ZoneSceneData = ZoneSceneData;
 		this.subController = controller;
 		
 		this.SetState(State.Combat);

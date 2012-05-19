@@ -3,7 +3,7 @@ using System.Collections;
 using TinyQuest.Entity;
 using TinyQuest.Factory.Entity;
 
-public class ZoneData : MonoBehaviour {
+public class ZoneSceneData : MonoBehaviour {
 	
 	private ZoneEntity zoneEntity;
 	public ZoneEntity ZoneEntity {
