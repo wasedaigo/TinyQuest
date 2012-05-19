@@ -21,8 +21,7 @@ public class CombatController : BaseStageController {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
 		
-		ZoneSceneData.UserBattlerEntity.WeaponUse += this.WeaponUsed;
-		ZoneSceneData.UserBattlerEntity.UpdateAP  += this.APUpdated;
+		ZoneSceneData.UserBattlerEntity.SkillUse += this.SkillUsed;
 	
 		//this.monster = spawnMonster("death_wind", -40, 0);
 		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
@@ -76,7 +75,7 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	private void playSkillAnimation(AdventureObject caster, AdventureObject target, WeaponEntity weapon, MasterSkill masterSkill) {
+	private void playSkillAnimation(AdventureObject caster, AdventureObject target, WeaponEntity weapon, SkillEntity skillEntity) {
 		if (weapon == null) {
 			return;	
 		}
@@ -91,7 +90,7 @@ public class CombatController : BaseStageController {
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Animation, false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/Shoot", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Sword/LeaveDance", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/bow_bomb", false, null, settings, options);
@@ -101,16 +100,12 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	private void WeaponUsed(WeaponEntity weaponEntity, MasterSkill masterSkill) {
-		//this.playSkillAnimation(this.monster, this.battlers[0], weaponEntity, skillEntity);
-		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, masterSkill);
+	private void SkillUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
+		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, skillEntity);
 	}
 	
-	private void APUpdated(int newAP) {
-		//Debug.Log("AP Updated = " + newAP);
-	}
 	
 	public void InvokeCommand(int slotNo) {
-		ZoneSceneData.UserBattlerEntity.UseWeapon(slotNo);
+		ZoneSceneData.UserBattlerEntity.UseSkill(slotNo);
 	}
 }

@@ -8,7 +8,6 @@ namespace TinyQuest.Entity {
 
 	public class WeaponEntity {
 		public static readonly int SkillCount = 3;
-		public System.Action<WeaponEntity, MasterSkill, int> WeaponUse;
 		
 		private MasterSkill[] masterSkills = new MasterSkill[SkillCount];
 		private MasterWeapon masterWeapon;
@@ -37,10 +36,6 @@ namespace TinyQuest.Entity {
 		
 		public void SetSkill(int index, MasterSkill masterSkill) {
 			this.masterSkills[index] = masterSkill;	
-		}
-
-		public int GetDurability() {
-			return this.userZone.weaponDurabilities[this.userWeapon.slot];
 		}
 		
 		public int GetLevel() {
@@ -76,26 +71,6 @@ namespace TinyQuest.Entity {
 				if (updatedLevel > level) {
 					// Level Up Event	
 				}
-			}
-		}
-		
-		public void Use() {
-			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.UseWeapon(this.userWeapon.slot, this.WeaponUsed);
-		}
-		
-		private void WeaponUsed(bool isBroken, int newAP) {
-			int skillIndex = 0;
-			if (!isBroken) {
-				skillIndex = 0;//this.ChooseSkillNo();
-			}
-			
-			if (skillIndex >= this.GetSkillCount()) {
-				Debug.LogError("Invalid skillIndex " + skillIndex + " was chosen.");	
-			}
-			
-			if (this.WeaponUse != null) {
-				this.WeaponUse(this, this.masterSkills[skillIndex], newAP);
 			}
 		}
 	}

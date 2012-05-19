@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TinyQuest.Data;
+using TinyQuest.Factory.Entity;
 
 namespace TinyQuest.Entity {
 	public class BattlerEntity {
@@ -14,12 +15,12 @@ namespace TinyQuest.Entity {
 			Enemy = 2
 		};
 		
-		public const int WeaponSlotNum = 6;
+		public const int MaxHands = 3;
+		public const int WeaponSlotNum = 3;
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
-		public System.Action<WeaponEntity, MasterSkill> WeaponUse;
-		public System.Action<int> UpdateAP;
+		public System.Action<WeaponEntity, SkillEntity> SkillUse;
 		
 		private int no;
 		public int No {
@@ -41,6 +42,8 @@ namespace TinyQuest.Entity {
 			get {return this.hp;}
 		}
 		
+		private SkillEntity[] allSkills = new SkillEntity[WeaponEntity.SkillCount * WeaponSlotNum];
+		private SkillEntity[] handSkills = new SkillEntity[MaxHands];
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
 		public BattlerEntity(int hp, int maxHP, int no, int group) {
@@ -54,27 +57,47 @@ namespace TinyQuest.Entity {
 			return this.weapons[slotIndex];
 		}
 		
-		public void SetWeapon(int slotIndex, WeaponEntity weapon) {
-			if (this.weapons[slotIndex] != null) {
-				Debug.LogError("Weapon is already set at slot "+ slotIndex);
-			}
-			this.weapons[slotIndex] = weapon;
-			this.weapons[slotIndex].WeaponUse += this.WeaponUsed;
-		}
-		
-		public void UseWeapon(int slotIndex) {
-			this.weapons[slotIndex].Use();
-		}
-		
-		private void WeaponUsed(WeaponEntity weaponEntity, MasterSkill masterSkill, int newAP) {
-			if (this.WeaponUse != null) {
-				this.WeaponUse(weaponEntity, masterSkill);
+		public void SetWeapons(WeaponEntity[] weapons) {
+			this.weapons = weapons;
+			int index = 0;
+			for (int i = 0; i < weapons.Length; i++) {
+				MasterSkill[] skills = weapons[i].GetSkills();
+				for (int j = 0; j < skills.Length; j++) {
+					MasterSkill skill = skills[i];
+					if (skill != null) {
+						this.allSkills[index] = SkillFactory.Instance.Build(skill.id);
+					}
+					index++;
+				}
 			}
 			
-			if (this.UpdateAP != null) {
-				this.UpdateAP(newAP);
+			this.DrawSkills();
+		}
+
+		public void UseSkill(int slotIndex) {
+			this.SkillUsed(this.weapons[slotIndex], this.handSkills[slotIndex]);
+		}
+		
+		public SkillEntity[] GetAllSkills() {
+			return this.allSkills;
+		}
+		
+		public void DrawSkills() {
+			for (int i = 0; i < MaxHands; i++) {
+				if (this.weapons[i] != null) {
+					this.handSkills[i] = this.allSkills[i];
+				}
 			}
-			
+		}
+		
+		public SkillEntity[] GetHand() {
+			return this.handSkills;
+		}
+		
+		private void SkillUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
+			if (this.SkillUse != null) {
+				this.SkillUse(weaponEntity, skillEntity);
+			}
 		}
 	}
 }

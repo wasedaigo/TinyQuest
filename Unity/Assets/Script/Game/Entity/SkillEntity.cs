@@ -5,7 +5,7 @@ using TinyQuest.Data;
 namespace TinyQuest.Entity {
 	public class SkillEntity {
 		private MasterSkill masterSkill;
-		public string Path {
+		public string Animation {
 			get { return this.masterSkill.animation; }
 		}
 		public SkillEntity(MasterSkill masterSkill) {
