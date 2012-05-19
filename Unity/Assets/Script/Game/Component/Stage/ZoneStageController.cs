@@ -9,7 +9,7 @@ using TinyQuest.Factory.Entity;
 using TinyQuest.Model;
 using TinyQuest.Object;
 
-public class AdventureStageController : BaseStageController {
+public class ZoneStageController : BaseStageController {
 	public enum State {
 		Combat,
 		Moving,
@@ -22,6 +22,7 @@ public class AdventureStageController : BaseStageController {
 	public GameObject CombatPanel;
 	public GameObject NextPanel;
 	public GameObject MovingPanel;
+	public ZoneData ZoneData;
 
 	private Ally player;
 	private State state;
@@ -162,8 +163,8 @@ public class AdventureStageController : BaseStageController {
 		CombatController controller = this.gameObject.AddComponent<CombatController>();
 		controller.baloonMessageBox = this.baloonMessageBox;
 		controller.SetPlayer(this.player);
-		controller.SetSlots(this.slots);
 		controller.CombatFinish = this.CommandFinished;
+		controller.ZoneData = ZoneData;
 		this.subController = controller;
 		
 		this.SetState(State.Combat);

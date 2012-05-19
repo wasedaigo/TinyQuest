@@ -33,7 +33,6 @@ public class Roga2dResourceManager {
 			if (texture == null){ 
 				return null;
 			}
-			texture.filterMode = FilterMode.Point;
 			textureDictionary.Add(key, texture);
 		}
 

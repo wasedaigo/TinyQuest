@@ -10,32 +10,19 @@ using TinyQuest.Data;
 
 public class CombatController : BaseStageController {
 	public System.Action CombatFinish;
+	public ZoneData ZoneData;
 	
-	private BattlerEntity userBattlerEntity;
-	private ZoneEntity zoneEntity;
-	private UITexture[] weaponTextures;
 	private Stage stage;
 	private Ally monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
-	private GameObject[] slots;
 	
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
-		this.weaponTextures = new UITexture[6];
 		
-		this.zoneEntity = ZoneFactory.Instance.Build();
-		this.userBattlerEntity = this.zoneEntity.GetPlayerBattler();
-		this.userBattlerEntity.WeaponUse += this.WeaponUsed;
-		this.userBattlerEntity.UpdateAP  += this.APUpdated;
-		
-		for (int i = 0; i < BattlerEntity.WeaponSlotNum; i++) {
-			WeaponEntity weapon = this.userBattlerEntity.GetWeapon(i);
-			if (weapon != null) {
-				this.SetWeaponAtSlot(i, weapon.GetMasterWeapon());
-			}
-		}
+		ZoneData.UserBattlerEntity.WeaponUse += this.WeaponUsed;
+		ZoneData.UserBattlerEntity.UpdateAP  += this.APUpdated;
 	
 		//this.monster = spawnMonster("death_wind", -40, 0);
 		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
@@ -62,32 +49,6 @@ public class CombatController : BaseStageController {
 	
 	public void SetPlayer(Ally player) {
 		this.battlers.Add(player);
-	}
-	
-	public void SetSlots(GameObject[] slots) {
-		this.slots = slots;
-	}
-
-	public void SetWeaponAtSlot(int i, MasterWeapon masterWeapon) {
-		
-		string textureId = masterWeapon.GetUIImagePath();
-		if (this.weaponTextures[i] != null) {
-			NGUITools.Destroy(this.weaponTextures[i]);	
-			this.weaponTextures[i] = null;
-		}
-
-		GameObject slot = this.slots[i];
-		
-		UITexture ut = NGUITools.AddWidget<UITexture>(slot);
-		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
-        ut.material = material;
-		ut.MarkAsChanged();
-		ut.MakePixelPerfect();
-		ut.transform.localScale = new Vector3(ut.transform.localScale.x * 2, ut.transform.localScale.y * 2, ut.transform.localScale.z);
-		ut.transform.localPosition = new Vector3(1, 1, -0.1f);
-		ut.transform.localEulerAngles = Vector3.one;
-		
-		this.weaponTextures[i] = ut;
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)
@@ -140,30 +101,6 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	public void OnSlot1Click() {
-		this.userBattlerEntity.UseWeapon(0);
-	}
-	
-	public void OnSlot2Click() {
-		this.userBattlerEntity.UseWeapon(1);
-	}
-	
-	public void OnSlot3Click() {
-		this.userBattlerEntity.UseWeapon(2);
-	}
-	
-	public void OnSlot4Click() {
-		this.userBattlerEntity.UseWeapon(3);
-	}
-	
-	public void OnSlot5Click() {
-		this.userBattlerEntity.UseWeapon(4);
-	}
-	
-	public void OnSlot6Click() {
-		this.userBattlerEntity.UseWeapon(5);
-	}
-	
 	private void WeaponUsed(WeaponEntity weaponEntity, MasterSkill masterSkill) {
 		//this.playSkillAnimation(this.monster, this.battlers[0], weaponEntity, skillEntity);
 		this.playSkillAnimation(this.battlers[0], this.monster, weaponEntity, masterSkill);
@@ -171,5 +108,9 @@ public class CombatController : BaseStageController {
 	
 	private void APUpdated(int newAP) {
 		//Debug.Log("AP Updated = " + newAP);
+	}
+	
+	public void InvokeCommand(int slotNo) {
+		ZoneData.UserBattlerEntity.UseWeapon(slotNo);
 	}
 }

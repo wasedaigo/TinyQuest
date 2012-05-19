@@ -4,13 +4,6 @@
       	"id": 1,
       	"stepCount": 10,
       	"path": "BG/bg0001",
-      	"event": {
-      	},
-      	"enemy": {
-      		[1, 10],
-      		[2, 10],
-      		[3, 10]
-      	},
       	"events": {
               "0": {
                 "commands":[
