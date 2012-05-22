@@ -16,6 +16,7 @@ using System.Collections.Generic;
 /// - OnPress (isDown) is sent when a mouse button gets pressed on the collider.
 /// - OnSelect (selected) is sent when a mouse button is released on the same object as it was pressed on.
 /// - OnClick (int button) is sent with the same conditions as OnSelect, with the added check to see if the mouse has not moved much.
+/// - OnDoubleClick (int button) is sent when the click happens twice within a fourth of a second.
 /// - OnDrag (delta) is sent when a mouse or touch gets pressed on a collider and starts dragging it.
 /// - OnDrop (gameObject) is sent when the mouse or touch get released on a different collider than the one that was being dragged.
 /// - OnInput (text) is sent when typing (after selecting a collider by clicking on it).
@@ -46,14 +47,16 @@ public class UICamera : MonoBehaviour
 
 	public class MouseOrTouch
 	{
-		public Vector2 pos;			// Current position of the mouse or touch event
-		public Vector2 delta;		// Delta since last update
-		public Vector2 totalDelta;	// Delta since the event started being tracked
+		public Vector2 pos;				// Current position of the mouse or touch event
+		public Vector2 delta;			// Delta since last update
+		public Vector2 totalDelta;		// Delta since the event started being tracked
 
-		public Camera pressedCam;	// Camera that the OnPress(true) was fired with
+		public Camera pressedCam;		// Camera that the OnPress(true) was fired with
 
-		public GameObject current;	// The current game object under the touch or mouse
-		public GameObject pressed;	// The last game object to receive OnPress
+		public GameObject current;		// The current game object under the touch or mouse
+		public GameObject pressed;		// The last game object to receive OnPress
+
+		public float clickTime = 0f;	// The last time a click event was sent out
 
 		public ClickNotification clickNotification = ClickNotification.Always;
 	}
@@ -101,6 +104,12 @@ public class UICamera : MonoBehaviour
 	public float tooltipDelay = 1f;
 
 	/// <summary>
+	/// Whether the tooltip will disappear as soon as the mouse moves (false) or only if the mouse moves outside of the widget's area (true).
+	/// </summary>
+
+	public bool stickyTooltip = true;
+
+	/// <summary>
 	/// How far the mouse is allowed to move in pixels before it's no longer considered for click events, if the click notification is based on delta.
 	/// </summary>
 
@@ -135,6 +144,15 @@ public class UICamera : MonoBehaviour
 	/// </summary>
 
 	public string horizontalAxisName = "Horizontal";
+
+	/// <summary>
+	/// Various keys used by the camera.
+	/// </summary>
+
+	public KeyCode submitKey0 = KeyCode.Return;
+	public KeyCode submitKey1 = KeyCode.JoystickButton0;
+	public KeyCode cancelKey0 = KeyCode.Escape;
+	public KeyCode cancelKey1 = KeyCode.JoystickButton1;
 
 	[System.Obsolete("Use UICamera.currentCamera instead")]
 	static public Camera lastCamera { get { return currentCamera; } }
@@ -172,6 +190,12 @@ public class UICamera : MonoBehaviour
 	/// </summary>
 
 	static public MouseOrTouch currentTouch = null;
+
+	/// <summary>
+	/// Whether an input field currently has focus.
+	/// </summary>
+
+	static public bool inputHasFocus = false;
 
 	/// <summary>
 	/// If events don't get handled, they will be forwarded to this game object.
@@ -578,8 +602,9 @@ public class UICamera : MonoBehaviour
 		// Process touch input
 		if (useTouch) ProcessTouches();
 
-		// Clear the selection on escape
-		if (useKeyboard && mSel != null && Input.GetKeyDown(KeyCode.Escape)) selectedObject = null;
+		// Clear the selection on the cancel key, but only if mouse input is allowed
+		if (useMouse && mSel != null && (cancelKey0 != KeyCode.None && Input.GetKeyDown(cancelKey0)) ||
+			(cancelKey1 != KeyCode.None && Input.GetKeyDown(cancelKey1))) selectedObject = null;
 
 		// Forward the input to the selected object
 		if (mSel != null)
@@ -591,13 +616,14 @@ public class UICamera : MonoBehaviour
 
 			if (input.Length > 0)
 			{
-				if (mTooltip != null) ShowTooltip(false);
+				if (!stickyTooltip && mTooltip != null) ShowTooltip(false);
 				mSel.SendMessage("OnInput", input, SendMessageOptions.DontRequireReceiver);
 			}
 
 			// Update the keyboard and joystick events
 			ProcessOthers();
 		}
+		else inputHasFocus = false;
 
 		// If it's time to show a tooltip, inform the object we're hovering over
 		if (useMouse && mHover != null)
@@ -663,11 +689,23 @@ public class UICamera : MonoBehaviour
 			}
 		}
 
-		// If the position changed, reset the tooltip
-		if (posChanged)
+		if (isPressed)
 		{
-			if (mTooltipTime != 0f) mTooltipTime = Time.realtimeSinceStartup + tooltipDelay;
-			else if (mTooltip != null) ShowTooltip(false);
+			// A button was pressed -- cancel the tooltip
+			mTooltipTime = 0f;
+		}
+		else if (posChanged && (!stickyTooltip || mHover != mMouse[0].current))
+		{
+			if (mTooltipTime != 0f)
+			{
+				// Delay the tooltip
+				mTooltipTime = Time.realtimeSinceStartup + tooltipDelay;
+			}
+			else if (mTooltip != null)
+			{
+				// Hide the tooltip
+				ShowTooltip(false);
+			}
 		}
 
 		// The button was released over a different object -- remove the highlight from the previous
@@ -757,21 +795,15 @@ public class UICamera : MonoBehaviour
 		currentTouch = mController;
 
 		// If this is an input field, ignore WASD and Space key presses
-		bool hasInput = (mSel != null && mSel.GetComponent<UIInput>() != null);
+		inputHasFocus = (mSel != null && mSel.GetComponent<UIInput>() != null);
 
-		// Enter key and joystick button 1 keys are treated the same -- as a "click"
-		bool returnKeyDown	= (useKeyboard	 && (Input.GetKeyDown(KeyCode.Return) || (!hasInput && Input.GetKeyDown(KeyCode.Space))));
-		bool buttonKeyDown	= (useController &&  Input.GetKeyDown(KeyCode.JoystickButton0));
-		bool returnKeyUp	= (useKeyboard	 && (Input.GetKeyUp(KeyCode.Return) || (!hasInput && Input.GetKeyUp(KeyCode.Space))));
-		bool buttonKeyUp	= (useController &&  Input.GetKeyUp(KeyCode.JoystickButton0));
+		bool submitKeyDown = (submitKey0 != KeyCode.None && Input.GetKeyDown(submitKey0)) || (submitKey1 != KeyCode.None && Input.GetKeyDown(submitKey1));
+		bool submitKeyUp = (submitKey0 != KeyCode.None && Input.GetKeyUp(submitKey0)) || (submitKey1 != KeyCode.None && Input.GetKeyUp(submitKey1));
 
-		bool down	= returnKeyDown || buttonKeyDown;
-		bool up		= returnKeyUp || buttonKeyUp;
-
-		if (down || up)
+		if (submitKeyDown || submitKeyUp)
 		{
 			currentTouch.current = mSel;
-			ProcessTouch(down, up);
+			ProcessTouch(submitKeyDown, submitKeyUp);
 		}
 
 		int vertical = 0;
@@ -779,7 +811,7 @@ public class UICamera : MonoBehaviour
 
 		if (useKeyboard)
 		{
-			if (hasInput)
+			if (inputHasFocus)
 			{
 				vertical += GetDirection(KeyCode.UpArrow, KeyCode.DownArrow);
 				horizontal += GetDirection(KeyCode.RightArrow, KeyCode.LeftArrow);
@@ -801,7 +833,10 @@ public class UICamera : MonoBehaviour
 		if (vertical != 0) mSel.SendMessage("OnKey", vertical > 0 ? KeyCode.UpArrow : KeyCode.DownArrow, SendMessageOptions.DontRequireReceiver);
 		if (horizontal != 0) mSel.SendMessage("OnKey", horizontal > 0 ? KeyCode.RightArrow : KeyCode.LeftArrow, SendMessageOptions.DontRequireReceiver);
 		if (useKeyboard && Input.GetKeyDown(KeyCode.Tab)) mSel.SendMessage("OnKey", KeyCode.Tab, SendMessageOptions.DontRequireReceiver);
-		if (useController && Input.GetKeyUp(KeyCode.JoystickButton1)) mSel.SendMessage("OnKey", KeyCode.Escape, SendMessageOptions.DontRequireReceiver);
+
+		// Send out the cancel key notification
+		if (cancelKey0 != KeyCode.None && Input.GetKeyDown(cancelKey0)) mSel.SendMessage("OnKey", KeyCode.Escape, SendMessageOptions.DontRequireReceiver);
+		if (cancelKey1 != KeyCode.None && Input.GetKeyDown(cancelKey1)) mSel.SendMessage("OnKey", KeyCode.Escape, SendMessageOptions.DontRequireReceiver);
 
 		currentTouch = null;
 	}
@@ -865,7 +900,7 @@ public class UICamera : MonoBehaviour
 				// Send a hover message to the object, but don't add it to the list of hovered items as it's already present
 				// This happens when the mouse is released over the same button it was pressed on, and since it already had
 				// its 'OnHover' event, it never got Highlight(false), so we simply re-notify it so it can update the visible state.
-				if (currentTouch.pressed == mHover) currentTouch.pressed.SendMessage("OnHover", true, SendMessageOptions.DontRequireReceiver);
+				if (useMouse && currentTouch.pressed == mHover) currentTouch.pressed.SendMessage("OnHover", true, SendMessageOptions.DontRequireReceiver);
 
 				// If the button/touch was released on the same object, consider it a click and select it
 				if (currentTouch.pressed == currentTouch.current)
@@ -883,7 +918,15 @@ public class UICamera : MonoBehaviour
 					// If the touch should consider clicks, send out an OnClick notification
 					if (currentTouch.clickNotification != ClickNotification.None)
 					{
+						float time = Time.realtimeSinceStartup;
+
 						currentTouch.pressed.SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
+
+						if (currentTouch.clickTime + 0.25f > time)
+						{
+							currentTouch.pressed.SendMessage("OnDoubleClick", SendMessageOptions.DontRequireReceiver);
+						}
+						currentTouch.clickTime = time;
 					}
 				}
 				else // The button/touch was released on a different object
@@ -900,7 +943,7 @@ public class UICamera : MonoBehaviour
 	/// Show or hide the tooltip.
 	/// </summary>
 
-	void ShowTooltip (bool val)
+	public void ShowTooltip (bool val)
 	{
 		mTooltipTime = 0f;
 		if (mTooltip != null) mTooltip.SendMessage("OnTooltip", val, SendMessageOptions.DontRequireReceiver);

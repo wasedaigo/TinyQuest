@@ -6,20 +6,35 @@
         {
             "id": 1,
             "weaponId": 1,
-            "exp": 1,
-            "slot": 0
+            "exp": 1
         },
         {
             "id": 2,
             "weaponId": 2,
-            "exp": 1,
-            "slot": 1
+            "exp": 1
         },
         {
             "id": 3,
-            "weaponId": 2,
-            "exp": 1,
-            "slot": 2
+            "weaponId": 3,
+            "exp": 1
+            
+        },
+        {
+            "id": 4,
+            "weaponId": 4,
+            "exp": 1
+            
+        },
+        {
+            "id": 5,
+            "weaponId": 5,
+            "exp": 1
+            
+        },
+        {
+            "id": 6,
+            "weaponId": 6,
+            "exp": 1
             
         }
     ],

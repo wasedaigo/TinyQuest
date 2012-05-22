@@ -90,7 +90,7 @@ public class CombatController : BaseStageController {
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.Animation, false, null, settings, options);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.MasterSkill.animation, false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/Shoot", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Sword/LeaveDance", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/bow_bomb", false, null, settings, options);

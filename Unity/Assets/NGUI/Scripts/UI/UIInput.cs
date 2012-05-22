@@ -12,14 +12,78 @@ using UnityEngine;
 [AddComponentMenu("NGUI/UI/Input (Basic)")]
 public class UIInput : MonoBehaviour
 {
+	public delegate char Validator (string currentText, char nextChar);
+
+	public enum KeyboardType
+	{
+		Default = 0,
+		ASCIICapable = 1,
+		NumbersAndPunctuation = 2,
+		URL = 3,
+		NumberPad = 4,
+		PhonePad = 5,
+		NamePhonePad = 6,
+		EmailAddress = 7,
+	}
+
+	/// <summary>
+	/// Current input, available inside OnSubmit callbacks.
+	/// </summary>
+
 	static public UIInput current;
 
+	/// <summary>
+	/// Text label modified by this input.
+	/// </summary>
+
 	public UILabel label;
+
+	/// <summary>
+	/// Maximum number of characters allowed before input no longer works.
+	/// </summary>
+
 	public int maxChars = 0;
+
+	/// <summary>
+	/// Visual carat character appended to the end of the text when typing.
+	/// </summary>
+
 	public string caratChar = "|";
+
+	/// <summary>
+	/// Delegate used for validation.
+	/// </summary>
+
+	public Validator validator;
+
+	/// <summary>
+	/// Type of the touch screen keyboard used on iOS and Android devices.
+	/// </summary>
+
+	public KeyboardType type = KeyboardType.Default;
+
+	/// <summary>
+	/// Whether this input field should hide its text.
+	/// </summary>
+
 	public bool isPassword = false;
+
+	/// <summary>
+	/// Color of the label when the input field has focus.
+	/// </summary>
+
 	public Color activeColor = Color.white;
+
+	/// <summary>
+	/// Event receiver that will be notified when the input field submits its data (enter gets pressed).
+	/// </summary>
+
 	public GameObject eventReceiver;
+
+	/// <summary>
+	/// Function that will be called on the event receiver when the input field submits its data.
+	/// </summary>
+
 	public string functionName = "OnSubmit";
 
 	string mText = "";
@@ -131,9 +195,9 @@ public class UIInput : MonoBehaviour
 					Application.platform == RuntimePlatform.Android)
 				{
 #if UNITY_3_4
-					mKeyboard = iPhoneKeyboard.Open(mText);
+					mKeyboard = iPhoneKeyboard.Open(mText, (iPhoneKeyboardType)((int)type));
 #else
-					mKeyboard = TouchScreenKeyboard.Open(mText);
+					mKeyboard = TouchScreenKeyboard.Open(mText, (TouchScreenKeyboardType)((int)type));
 #endif
 				}
 				else
@@ -183,7 +247,16 @@ public class UIInput : MonoBehaviour
 
 			if (mText != text)
 			{
-				mText = text;
+				mText = "";
+
+				for (int i = 0; i < text.Length; ++i)
+				{
+					char ch = text[i];
+					if (validator != null) ch = validator(mText, ch);
+					if (ch != 0) mText += ch;
+				}
+
+				if (mText != text) mKeyboard.text = mText;
 				UpdateLabel();
 			}
 
@@ -228,7 +301,11 @@ public class UIInput : MonoBehaviour
 				if (c == '\b')
 				{
 					// Backspace
-					if (mText.Length > 0) mText = mText.Substring(0, mText.Length - 1);
+					if (mText.Length > 0)
+					{
+						mText = mText.Substring(0, mText.Length - 1);
+						SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
+					}
 				}
 				else if (c == '\r' || c == '\n')
 				{
@@ -242,8 +319,15 @@ public class UIInput : MonoBehaviour
 				}
 				else if (c >= ' ')
 				{
-					// All other characters get appended to the text
+					// If we have an input validator, validate the input first
+					if (validator != null) c = validator(mText, c);
+
+					// If the input is invalid, skip it
+					if (c == 0) continue;
+
+					// Append the character and notify the "input changed" listeners.
 					mText += c;
+					SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
 				}
 			}
 
@@ -266,7 +350,8 @@ public class UIInput : MonoBehaviour
 			string processed = selected ? (mText + Input.compositionString + caratChar) : mText;
 
 			// Now wrap this text using the specified line width
-			processed = label.font.WrapText(processed, label.lineWidth / label.cachedTransform.localScale.x, true, false);
+			label.supportEncoding = false;
+			processed = label.font.WrapText(processed, label.lineWidth / label.cachedTransform.localScale.x, true, false, UIFont.SymbolStyle.None);
 
 			if (!label.multiLine)
 			{

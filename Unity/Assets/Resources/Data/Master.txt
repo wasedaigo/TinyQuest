@@ -345,13 +345,13 @@
     ],
     "Skills": [
       {
-        "atk": 0,
+        "atk": 100,
         "id": 1,
         "tp": 1,
         "animation": "Combat/Sword/Slash",
-        "buff": 0,
+        "buff": 5,
         "attribute": 0,
-        "element": 0
+        "element": 2
       },
       {
         "atk": 300,

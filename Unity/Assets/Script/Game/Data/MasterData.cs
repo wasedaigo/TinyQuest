@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data{
 	public enum ElementType {
@@ -188,6 +189,10 @@ namespace TinyQuest.Data{
 		public readonly BuffType buff;
 		public readonly AttributeType attribute;
 		public readonly ElementType element;
+		
+		public string GetName() {
+			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");
+		}
 	}
 	
 	public class MasterCompositeSkill : MasterSkill {

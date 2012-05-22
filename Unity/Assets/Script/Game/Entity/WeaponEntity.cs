@@ -13,7 +13,6 @@ namespace TinyQuest.Entity {
 		private MasterWeapon masterWeapon;
 		private UserWeapon userWeapon;
 		private MasterWeaponParameter parameter;
-		private UserZone userZone;
 		
 		public WeaponEntity(MasterWeapon masterWeapon, int level) {
 			this.masterWeapon = masterWeapon;
@@ -22,12 +21,14 @@ namespace TinyQuest.Entity {
 		public WeaponEntity(MasterWeapon masterWeapon, UserWeapon userWeapon, int level) {
 			this.masterWeapon = masterWeapon;
 			this.userWeapon = userWeapon;
-			
-			this.userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 		}
 		
 		public MasterWeapon GetMasterWeapon() {
 			return this.masterWeapon;
+		}
+		
+		public UserWeapon GetUserWeapon() {
+			return this.userWeapon;
 		}
 		
 		public MasterSkill[] GetSkills() {

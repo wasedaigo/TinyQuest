@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TinyQuest.Data;
 using TinyQuest.Factory.Entity;
 
@@ -16,7 +17,7 @@ namespace TinyQuest.Entity {
 		};
 		
 		public const int MaxHands = 3;
-		public const int WeaponSlotNum = 3;
+		public const int WeaponSlotNum = 6;
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
@@ -42,7 +43,7 @@ namespace TinyQuest.Entity {
 			get {return this.hp;}
 		}
 		
-		private SkillEntity[] allSkills = new SkillEntity[WeaponEntity.SkillCount * WeaponSlotNum];
+		private List<SkillEntity> allSkills = new List<SkillEntity>();
 		private SkillEntity[] handSkills = new SkillEntity[MaxHands];
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
@@ -61,13 +62,13 @@ namespace TinyQuest.Entity {
 			this.weapons = weapons;
 			int index = 0;
 			for (int i = 0; i < weapons.Length; i++) {
-				MasterSkill[] skills = weapons[i].GetSkills();
+				WeaponEntity weapon = weapons[i];
+				MasterSkill[] skills = weapon.GetSkills();
 				for (int j = 0; j < skills.Length; j++) {
-					MasterSkill skill = skills[i];
+					MasterSkill skill = skills[j];
 					if (skill != null) {
-						this.allSkills[index] = SkillFactory.Instance.Build(skill.id);
+						this.allSkills.Add(SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
 					}
-					index++;
 				}
 			}
 			
@@ -78,7 +79,7 @@ namespace TinyQuest.Entity {
 			this.SkillUsed(this.weapons[slotIndex], this.handSkills[slotIndex]);
 		}
 		
-		public SkillEntity[] GetAllSkills() {
+		public List<SkillEntity> GetAllSkills() {
 			return this.allSkills;
 		}
 		

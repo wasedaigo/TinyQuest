@@ -8,7 +8,6 @@ namespace TinyQuest.Data{
 	public class UserWeapon : IDData{
 		public int weaponId;
 		public int exp;
-		public int slot;
 	}
 	
 	public class UserZone{

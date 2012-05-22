@@ -45,7 +45,9 @@ public class UILabelInspector : UIWidgetInspector
 		ComponentSelector.Draw<UIFont>(mLabel.font, OnSelectFont);
 		if (mLabel.font == null) return false;
 
-		string text = EditorGUILayout.TextArea(mLabel.text, GUILayout.Height(100f));
+		GUI.skin.textArea.wordWrap = true;
+		string text = string.IsNullOrEmpty(mLabel.text) ? "" : mLabel.text;
+		text = EditorGUILayout.TextArea(mLabel.text, GUI.skin.textArea, GUILayout.Height(100f));
 		if (!text.Equals(mLabel.text)) { RegisterUndo(); mLabel.text = text; }
 
 		GUILayout.BeginHorizontal();
@@ -59,14 +61,20 @@ public class UILabelInspector : UIWidgetInspector
 		GUILayout.EndHorizontal();
 
 		GUILayout.BeginHorizontal();
-		{
-			bool password = EditorGUILayout.Toggle("Password", mLabel.password, GUILayout.Width(120f));
-			if (password != mLabel.password) { RegisterUndo(); mLabel.password = password; }
 
-			bool encoding = EditorGUILayout.Toggle("Encoding", mLabel.supportEncoding, GUILayout.Width(100f));
-			if (encoding != mLabel.supportEncoding) { RegisterUndo(); mLabel.supportEncoding = encoding; }
-		}
+		bool password = EditorGUILayout.Toggle("Password", mLabel.password, GUILayout.Width(120f));
+		if (password != mLabel.password) { RegisterUndo(); mLabel.password = password; }
+
+		bool encoding = EditorGUILayout.Toggle("Encoding", mLabel.supportEncoding, GUILayout.Width(100f));
+		if (encoding != mLabel.supportEncoding) { RegisterUndo(); mLabel.supportEncoding = encoding; }
+
 		GUILayout.EndHorizontal();
+
+		if (encoding)
+		{
+			UIFont.SymbolStyle sym = (UIFont.SymbolStyle)EditorGUILayout.EnumPopup("Symbols", mLabel.symbolStyle, GUILayout.Width(170f));
+			if (sym != mLabel.symbolStyle) { RegisterUndo(); mLabel.symbolStyle = sym; }
+		}
 
 		GUILayout.BeginHorizontal();
 		{

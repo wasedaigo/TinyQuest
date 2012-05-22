@@ -91,6 +91,12 @@ public abstract class UITweener : IgnoreTimeScale
 	}
 
 	/// <summary>
+	/// Tween factor, 0-1 range.
+	/// </summary>
+
+	public float factor { get { return mFactor; } }
+
+	/// <summary>
 	/// Direction in which the tween is currently playing.
 	/// </summary>
 
@@ -184,10 +190,11 @@ public abstract class UITweener : IgnoreTimeScale
 			}
 			else
 			{
-				// Notify the event listener target
-				GameObject go = eventReceiver;
-				if (go == null) go = gameObject;
-				go.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
+				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
+				{
+					// Notify the event listener target
+					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
+				}
 
 				// Disable this script unless the SendMessage function above changed something
 				if (mFactor == 1f && mAmountPerDelta > 0f || mFactor == 0f && mAmountPerDelta < 0f)

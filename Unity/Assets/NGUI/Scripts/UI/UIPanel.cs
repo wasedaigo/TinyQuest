@@ -45,13 +45,19 @@ public class UIPanel : MonoBehaviour
 
 	public bool depthPass = false;
 
+	/// <summary>
+	/// Whether widgets drawn by this panel are static (won't move). This will improve performance.
+	/// </summary>
+
+	public bool widgetsAreStatic = false;
+
 	// Whether generated geometry is shown or hidden
-	[SerializeField] DebugInfo mDebugInfo = DebugInfo.Gizmos;
+	[HideInInspector][SerializeField] DebugInfo mDebugInfo = DebugInfo.Gizmos;
 
 	// Clipping rectangle
-	[SerializeField] UIDrawCall.Clipping mClipping = UIDrawCall.Clipping.None;
-	[SerializeField] Vector4 mClipRange = Vector4.zero;
-	[SerializeField] Vector2 mClipSoftness = new Vector2(40f, 40f);
+	[HideInInspector][SerializeField] UIDrawCall.Clipping mClipping = UIDrawCall.Clipping.None;
+	[HideInInspector][SerializeField] Vector4 mClipRange = Vector4.zero;
+	[HideInInspector][SerializeField] Vector2 mClipSoftness = new Vector2(40f, 40f);
 
 	// List of managed transforms
 #if UNITY_FLASH
@@ -81,6 +87,7 @@ public class UIPanel : MonoBehaviour
 	int mLayer = -1;
 	bool mDepthChanged = false;
 	bool mRebuildAll = false;
+	bool mChangedLastFrame = false;
 
 	float mMatrixTime = 0f;
 	Matrix4x4 mWorldToLocal = Matrix4x4.identity;
@@ -95,6 +102,8 @@ public class UIPanel : MonoBehaviour
 
 	// Whether the panel should check the visibility of its widgets (set when the clip range changes).
 	bool mCheckVisibility = false;
+	float mCullTime = 0f;
+	bool mCulled = false;
 
 #if UNITY_EDITOR
 	// Screen size, saved for gizmos, since Screen.width and Screen.height returns the Scene view's dimensions in OnDrawGizmos.
@@ -106,6 +115,12 @@ public class UIPanel : MonoBehaviour
 	/// </summary>
 
 	public Transform cachedTransform { get { if (mTrans == null) mTrans = transform; return mTrans; } }
+
+	/// <summary>
+	/// Whether the panel's geometry has changed in the past (or current) frame.
+	/// </summary>
+
+	public bool changedLastFrame { get { return mChangedLastFrame; } }
 
 	/// <summary>
 	/// Whether the panel's generated geometry will be hidden or not.
@@ -177,6 +192,7 @@ public class UIPanel : MonoBehaviour
 		{
 			if (mClipRange != value)
 			{
+				mCullTime = (mCullTime == 0f) ? 0.001f : Time.realtimeSinceStartup + 0.15f;
 				mCheckVisibility = true;
 				mClipRange = value;
 				UpdateDrawcalls();
@@ -301,7 +317,12 @@ public class UIPanel : MonoBehaviour
 		if (mat != null)
 		{
 			if (sort) mDepthChanged = true;
-			if (!mChanged.Contains(mat)) mChanged.Add(mat);
+
+			if (!mChanged.Contains(mat))
+			{
+				mChanged.Add(mat);
+				mChangedLastFrame = true;
+			}
 		}
 	}
 
@@ -387,7 +408,7 @@ public class UIPanel : MonoBehaviour
 		if (w != null)
 		{
 #if UNITY_EDITOR
-			if (Application.isEditor && w.cachedTransform.parent != null)
+			if (w.cachedTransform.parent != null)
 			{
 				UIWidget parentWidget = NGUITools.FindInParents<UIWidget>(w.cachedTransform.parent.gameObject);
 
@@ -424,7 +445,12 @@ public class UIPanel : MonoBehaviour
 				if (!mWidgets.Contains(w))
 				{
 					mWidgets.Add(w);
-					if (!mChanged.Contains(w.material)) mChanged.Add(w.material);
+
+					if (!mChanged.Contains(w.material))
+					{
+						mChanged.Add(w.material);
+						mChangedLastFrame = true;
+					}
 					mDepthChanged = true;
 				}
 			}
@@ -450,7 +476,11 @@ public class UIPanel : MonoBehaviour
 			if (pc != null)
 			{
 				// Mark the material as having been changed
-				if (pc.visibleFlag == 1 && !mChanged.Contains(w.material)) mChanged.Add(w.material);
+				if (pc.visibleFlag == 1 && !mChanged.Contains(w.material))
+				{
+					mChanged.Add(w.material);
+					mChangedLastFrame = true;
+				}
 
 				// Remove this transform
 				RemoveTransform(w.cachedTransform);
@@ -617,42 +647,52 @@ public class UIPanel : MonoBehaviour
 
 	void UpdateTransforms ()
 	{
-		bool transformsChanged = mCheckVisibility;
-
-		// Check to see if something has changed
-#if UNITY_FLASH
-		foreach (KeyValuePair<Transform, UINode> child in mChildren)
-		{
-			UINode node = child.Value;
+		mChangedLastFrame = false;
+		bool transformsChanged = false;
+#if UNITY_EDITOR
+		bool shouldCull = !Application.isPlaying || Time.realtimeSinceStartup > mCullTime;
 #else
-		for (int i = 0, imax = mChildren.Count; i < imax; ++i)
-		{
-			UINode node = (UINode)mChildren[i];
+		bool shouldCull = Time.realtimeSinceStartup > mCullTime;
 #endif
-
-			if (node.trans == null)
+		// Check to see if something has changed
+		if (!widgetsAreStatic || (shouldCull != mCulled))
+		{
+#if UNITY_FLASH
+			foreach (KeyValuePair<Transform, UINode> child in mChildren)
 			{
-				mRemoved.Add(node.trans);
-				continue;
+				UINode node = child.Value;
+#else
+			for (int i = 0, imax = mChildren.Count; i < imax; ++i)
+			{
+				UINode node = (UINode)mChildren[i];
+#endif
+				if (node.trans == null)
+				{
+					mRemoved.Add(node.trans);
+					continue;
+				}
+
+				if (node.HasChanged())
+				{
+					node.changeFlag = 1;
+					transformsChanged = true;
+				}
+				else node.changeFlag = -1;
 			}
 
-			if (node.HasChanged())
-			{
-				node.changeFlag = 1;
-				transformsChanged = true;
-			}
-			else node.changeFlag = -1;
+			// Clean up the deleted transforms
+			for (int i = 0, imax = mRemoved.Count; i < imax; ++i) mChildren.Remove(mRemoved[i]);
+			mRemoved.Clear();
 		}
 
-		// Clean up the deleted transforms
-		for (int i = 0, imax = mRemoved.Count; i < imax; ++i) mChildren.Remove(mRemoved[i]);
-		mRemoved.Clear();
+		// If the children weren't culled but should be, check their visibility
+		if (!mCulled && shouldCull) mCheckVisibility = true;
 
 		// If something has changed, propagate the changes *down* the tree hierarchy (to children).
 		// An alternative (but slower) approach would be to do a pc.trans.GetComponentsInChildren<UIWidget>()
 		// in the loop above, and mark each one as dirty.
 
-		if (transformsChanged || mRebuildAll)
+		if (mCheckVisibility || transformsChanged || mRebuildAll)
 		{
 #if UNITY_FLASH
 			foreach (KeyValuePair<Transform, UINode> child in mChildren)
@@ -663,14 +703,19 @@ public class UIPanel : MonoBehaviour
 			{
 				UINode pc = (UINode)mChildren[i];
 #endif
-
 				if (pc.widget != null)
 				{
-					// If the change flag has not yet been determined...
-					if (pc.changeFlag == -1) pc.changeFlag = GetChangeFlag(pc);
+					int visibleFlag = 1;
 
-					// Is the widget visible?
-					int visibleFlag = (mCheckVisibility || pc.changeFlag == 1) ? (IsVisible(pc.widget) ? 1 : 0) : pc.visibleFlag;
+					// No sense in checking the visibility if we're not culling anything (as the visibility is always 'true')
+					if (shouldCull || transformsChanged)
+					{
+						// If the change flag has not yet been determined...
+						if (pc.changeFlag == -1) pc.changeFlag = GetChangeFlag(pc);
+
+						// Is the widget visible?
+						if (shouldCull) visibleFlag = (mCheckVisibility || pc.changeFlag == 1) ? (IsVisible(pc.widget) ? 1 : 0) : pc.visibleFlag;
+					}
 
 					// If visibility changed, mark the node as changed as well
 					if (pc.visibleFlag != visibleFlag) pc.changeFlag = 1;
@@ -683,11 +728,16 @@ public class UIPanel : MonoBehaviour
 						Material mat = pc.widget.material;
 
 						// Add this material to the list of changed materials
-						if (!mChanged.Contains(mat)) mChanged.Add(mat);
+						if (!mChanged.Contains(mat))
+						{
+							mChanged.Add(mat);
+							mChangedLastFrame = true;
+						}
 					}
 				}
 			}
 		}
+		mCulled = shouldCull;
 		mCheckVisibility = false;
 	}
 
@@ -715,8 +765,10 @@ public class UIPanel : MonoBehaviour
 				if (!mChanged.Contains(w.material))
 				{
 					mChanged.Add(w.material);
+					mChangedLastFrame = true;
 				}
 			}
+			pc.changeFlag = 0;
 		}
 	}
 

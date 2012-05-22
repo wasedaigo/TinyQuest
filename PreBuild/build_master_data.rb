@@ -205,7 +205,7 @@ LANGS.each do |lang|
   result = {}
   
   localized_text.each do |title, content|
-    result[title] = content[lang]
+    result[title] = {"data" => content[lang]}
   end
   
   File.open(LOCALIZE_OUTPUT_PATH + "/#{lang}.txt", 'w') do |f|

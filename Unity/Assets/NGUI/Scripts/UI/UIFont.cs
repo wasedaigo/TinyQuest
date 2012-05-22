@@ -22,13 +22,20 @@ public class UIFont : MonoBehaviour
 		Right,
 	}
 
-	[SerializeField] Material mMat;
-	[SerializeField] Rect mUVRect = new Rect(0f, 0f, 1f, 1f);
-	[SerializeField] BMFont mFont = new BMFont();
-	[SerializeField] int mSpacingX = 0;
-	[SerializeField] int mSpacingY = 0;
-	[SerializeField] UIAtlas mAtlas;
-	[SerializeField] UIFont mReplacement;
+	public enum SymbolStyle
+	{
+		None,
+		Uncolored,
+		Colored,
+	}
+
+	[HideInInspector][SerializeField] Material mMat;
+	[HideInInspector][SerializeField] Rect mUVRect = new Rect(0f, 0f, 1f, 1f);
+	[HideInInspector][SerializeField] BMFont mFont = new BMFont();
+	[HideInInspector][SerializeField] int mSpacingX = 0;
+	[HideInInspector][SerializeField] int mSpacingY = 0;
+	[HideInInspector][SerializeField] UIAtlas mAtlas;
+	[HideInInspector][SerializeField] UIFont mReplacement;
 
 	// Cached value
 	UIAtlas.Sprite mSprite = null;
@@ -400,9 +407,9 @@ public class UIFont : MonoBehaviour
 	/// Get the printed size of the specified string. The returned value is in local coordinates. Multiply by transform's scale to get pixels.
 	/// </summary>
 
-	public Vector2 CalculatePrintedSize (string text, bool encoding)
+	public Vector2 CalculatePrintedSize (string text, bool encoding, SymbolStyle symbolStyle)
 	{
-		if (mReplacement != null) return mReplacement.CalculatePrintedSize(text, encoding);
+		if (mReplacement != null) return mReplacement.CalculatePrintedSize(text, encoding, symbolStyle);
 
 		Vector2 v = Vector2.zero;
 
@@ -410,13 +417,14 @@ public class UIFont : MonoBehaviour
 		{
 			if (encoding) text = NGUITools.StripSymbols(text);
 
+			int length = text.Length;
 			int maxX = 0;
 			int x = 0;
 			int y = 0;
 			int prev = 0;
 			int lineHeight = (mFont.charSize + mSpacingY);
 
-			for (int i = 0, imax = text.Length; i < imax; ++i)
+			for (int i = 0; i < length; ++i)
 			{
 				char c = text[i];
 
@@ -433,12 +441,26 @@ public class UIFont : MonoBehaviour
 				// Skip invalid characters
 				if (c < ' ') { prev = 0; continue; }
 
-				BMGlyph glyph = mFont.GetGlyph(c);
+				// See if there is a symbol matching this text
+				BMSymbol symbol = (encoding && symbolStyle != SymbolStyle.None) ? mFont.MatchSymbol(text, i, length) : null;
 
-				if (glyph != null)
+				if (symbol == null)
 				{
-					x += mSpacingX + ((prev != 0) ? glyph.advance + glyph.GetKerning(prev) : glyph.advance);
-					prev = c;
+					// Get the glyph for this character
+					BMGlyph glyph = mFont.GetGlyph(c);
+
+					if (glyph != null)
+					{
+						x += mSpacingX + ((prev != 0) ? glyph.advance + glyph.GetKerning(prev) : glyph.advance);
+						prev = c;
+					}
+				}
+				else
+				{
+					// Symbol found -- use it
+					x += mSpacingX + symbol.width;
+					i += symbol.length - 1;
+					prev = 0;
 				}
 			}
 
@@ -465,9 +487,9 @@ public class UIFont : MonoBehaviour
 	/// Text wrapping functionality. The 'maxWidth' should be in local coordinates (take pixels and divide them by transform's scale).
 	/// </summary>
 
-	public string WrapText (string text, float maxWidth, bool multiline, bool encoding)
+	public string WrapText (string text, float maxWidth, bool multiline, bool encoding, SymbolStyle symbolStyle)
 	{
-		if (mReplacement != null) return mReplacement.WrapText(text, maxWidth, multiline, encoding);
+		if (mReplacement != null) return mReplacement.WrapText(text, maxWidth, multiline, encoding, symbolStyle);
 
 		// Width of the line in pixels
 		int lineWidth = Mathf.RoundToInt(maxWidth * size);
@@ -529,69 +551,99 @@ public class UIFont : MonoBehaviour
 				}
 			}
 
-			BMGlyph glyph = mFont.GetGlyph(ch);
+			// See if there is a symbol matching this text
+			BMSymbol symbol = (encoding && symbolStyle != SymbolStyle.None) ? mFont.MatchSymbol(text, offset, textLength) : null;
 
-			if (glyph != null)
+			// Find the glyph for this character
+			BMGlyph glyph = (symbol == null) ? mFont.GetGlyph(ch) : null;
+
+			// Calculate how wide this symbol or character is going to be
+			int glyphWidth = mSpacingX;
+
+			if (symbol != null)
 			{
-				int charSize = mSpacingX + ((previousChar != 0) ? glyph.advance + glyph.GetKerning(previousChar) : glyph.advance);
+				glyphWidth += symbol.width;
+			}
+			else if (glyph != null)
+			{
+				glyphWidth += (previousChar != 0) ? glyph.advance + glyph.GetKerning(previousChar) : glyph.advance;
+			}
+			else continue;
 
-				remainingWidth -= charSize;
+			// Remaining width after this glyph gets printed
+			remainingWidth -= glyphWidth;
 
-				// Doesn't fit?
-				if (remainingWidth < 0)
+			// Doesn't fit?
+			if (remainingWidth < 0)
+			{
+				// Can't start a new line
+				if (lineIsEmpty || !multiline)
 				{
-					if (lineIsEmpty || !multiline)
+					// This is the first word on the line -- add it up to the character that fits
+					sb.Append(text.Substring(start, Mathf.Max(0, offset - start)));
+
+					if (!multiline)
 					{
-						// This is the first word on the line -- add it up to the character that fits
-						sb.Append(text.Substring(start, Mathf.Max(0, offset - start)));
+						start = offset;
+						break;
+					}
+					EndLine(ref sb);
 
-						if (!multiline)
-						{
-							start = offset;
-							break;
-						}
-						EndLine(ref sb);
+					// Start a brand-new line
+					lineIsEmpty = true;
 
-						// Start a brand-new line
-						lineIsEmpty = true;
-
-						if (ch == ' ')
-						{
-							start = offset + 1;
-							remainingWidth = lineWidth;
-						}
-						else
-						{
-							start = offset;
-							remainingWidth = lineWidth - charSize;
-						}
-						previousChar = 0;
+					if (ch == ' ')
+					{
+						start = offset + 1;
+						remainingWidth = lineWidth;
 					}
 					else
 					{
-						// Skip all spaces before the word
-						while (start < textLength && text[start] == ' ') ++start;
-
-						// Revert the position to the beginning of the word and reset the line
-						lineIsEmpty = true;
-						remainingWidth = lineWidth;
-						offset = start - 1;
-						previousChar = 0;
-						if (!multiline) break;
-						EndLine(ref sb);
-						continue;
+						start = offset;
+						remainingWidth = lineWidth - glyphWidth;
 					}
+					previousChar = 0;
 				}
 				else
 				{
-					previousChar = ch;
+					// Skip all spaces before the word
+					while (start < textLength && text[start] == ' ') ++start;
+
+					// Revert the position to the beginning of the word and reset the line
+					lineIsEmpty = true;
+					remainingWidth = lineWidth;
+					offset = start - 1;
+					previousChar = 0;
+					if (!multiline) break;
+					EndLine(ref sb);
+					continue;
 				}
+			}
+			else previousChar = ch;
+
+			// Advance the offset past the symbol
+			if (symbol != null)
+			{
+				offset += symbol.length - 1;
+				previousChar = 0;
 			}
 		}
 
 		if (start < offset) sb.Append(text.Substring(start, offset - start));
 		return sb.ToString();
 	}
+
+	/// <summary>
+	/// Text wrapping functionality. Legacy compatibility function.
+	/// </summary>
+
+	public string WrapText (string text, float maxWidth, bool multiline, bool encoding) { return WrapText(text, maxWidth, multiline, encoding, SymbolStyle.None); }
+
+	/// <summary>
+	/// Text wrapping functionality. Legacy compatibility function.
+	/// </summary>
+
+	public string WrapText (string text, float maxWidth, bool multiline) { return WrapText(text, maxWidth, multiline, false, SymbolStyle.None); }
 
 	/// <summary>
 	/// Align the vertices to be right or center-aligned given the specified line width.
@@ -622,11 +674,11 @@ public class UIFont : MonoBehaviour
 	/// </summary>
 
 	public void Print (string text, Color color, BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols,
-		bool encoding, Alignment alignment, int lineWidth)
+		bool encoding, SymbolStyle symbolStyle, Alignment alignment, int lineWidth)
 	{
 		if (mReplacement != null)
 		{
-			mReplacement.Print(text, color, verts, uvs, cols, encoding, alignment, lineWidth);
+			mReplacement.Print(text, color, verts, uvs, cols, encoding, symbolStyle, alignment, lineWidth);
 		}
 		else if (mFont != null && text != null)
 		{
@@ -651,8 +703,9 @@ public class UIFont : MonoBehaviour
 			Vector2 u0 = Vector2.zero, u1 = Vector2.zero;
 			float invX = uvRect.width / mFont.texWidth;
 			float invY = mUVRect.height / mFont.texHeight;
+			int textLength = text.Length;
 
-			for (int i = 0, imax = text.Length; i < imax; ++i)
+			for (int i = 0; i < textLength; ++i)
 			{
 				char c = text[i];
 
@@ -690,44 +743,106 @@ public class UIFont : MonoBehaviour
 					}
 				}
 
-				BMGlyph glyph = mFont.GetGlyph(c);
+				// See if there is a symbol matching this text
+				BMSymbol symbol = (encoding && symbolStyle != SymbolStyle.None) ? mFont.MatchSymbol(text, i, textLength) : null;
 
-				if (glyph != null)
+				if (symbol == null)
 				{
+					BMGlyph glyph = mFont.GetGlyph(c);
+					if (glyph == null) continue;
+
 					if (prev != 0) x += glyph.GetKerning(prev);
 
-					if (c != ' ')
+					if (c == ' ')
 					{
-						v0.x = scale.x * (x + glyph.offsetX);
-						v0.y = -scale.y * (y + glyph.offsetY);
-
-						v1.x = v0.x + scale.x * glyph.width;
-						v1.y = v0.y - scale.y * glyph.height;
-
-						u0.x = mUVRect.xMin + invX * glyph.x;
-						u0.y = mUVRect.yMax - invY * glyph.y;
-
-						u1.x = u0.x + invX * glyph.width;
-						u1.y = u0.y - invY * glyph.height;
-
-						verts.Add(new Vector3(v1.x, v0.y));
-						verts.Add(new Vector3(v1.x, v1.y));
-						verts.Add(new Vector3(v0.x, v1.y));
-						verts.Add(new Vector3(v0.x, v0.y));
-
-						uvs.Add(new Vector2(u1.x, u0.y));
-						uvs.Add(new Vector2(u1.x, u1.y));
-						uvs.Add(new Vector2(u0.x, u1.y));
-						uvs.Add(new Vector2(u0.x, u0.y));
-
-						cols.Add(color);
-						cols.Add(color);
-						cols.Add(color);
-						cols.Add(color);
+						x += mSpacingX + glyph.advance;
+						prev = c;
+						continue;
 					}
+
+					v0.x =  scale.x * (x + glyph.offsetX);
+					v0.y = -scale.y * (y + glyph.offsetY);
+
+					v1.x = v0.x + scale.x * glyph.width;
+					v1.y = v0.y - scale.y * glyph.height;
+
+					u0.x = mUVRect.xMin + invX * glyph.x;
+					u0.y = mUVRect.yMax - invY * glyph.y;
+
+					u1.x = u0.x + invX * glyph.width;
+					u1.y = u0.y - invY * glyph.height;
+
 					x += mSpacingX + glyph.advance;
 					prev = c;
+
+					if (glyph.channel == 0 || glyph.channel == 15)
+					{
+						for (int b = 0; b < 4; ++b) cols.Add(color);
+					}
+					else
+					{
+						// Packed fonts come as alpha masks in each of the RGBA channels.
+						// In order to use it we need to use a special shader.
+						//
+						// Limitations:
+						// - Effects (drop shadow, outline) will not work.
+						// - Should not be a part of the atlas (eastern fonts rarely are anyway).
+						// - Lower color precision
+
+						Color col = color;
+
+						col *= 0.49f;
+
+						switch (glyph.channel)
+						{
+							case 1: col.b += 0.51f; break;
+							case 2: col.g += 0.51f; break;
+							case 4: col.r += 0.51f; break;
+							case 8: col.a += 0.51f; break;
+						}
+
+						for (int b = 0; b < 4; ++b) cols.Add(col);
+					}
 				}
+				else
+				{
+					v0.x =  scale.x * x;
+					v0.y = -scale.y * y;
+
+					v1.x = v0.x + scale.x * symbol.width;
+					v1.y = v0.y - scale.y * symbol.height;
+
+					u0.x = mUVRect.xMin + invX * symbol.x;
+					u0.y = mUVRect.yMax - invY * symbol.y;
+
+					u1.x = u0.x + invX * symbol.width;
+					u1.y = u0.y - invY * symbol.height;
+
+					x += mSpacingX + symbol.width;
+					i += symbol.length - 1;
+					prev = 0;
+
+					if (symbolStyle == SymbolStyle.Colored)
+					{
+						for (int b = 0; b < 4; ++b) cols.Add(color); 
+					}
+					else
+					{
+						Color col = Color.white;
+						col.a = color.a;
+						for (int b = 0; b < 4; ++b) cols.Add(col);
+					}
+				}
+
+				verts.Add(new Vector3(v1.x, v0.y));
+				verts.Add(new Vector3(v1.x, v1.y));
+				verts.Add(new Vector3(v0.x, v1.y));
+				verts.Add(new Vector3(v0.x, v0.y));
+
+				uvs.Add(new Vector2(u1.x, u0.y));
+				uvs.Add(new Vector2(u1.x, u1.y));
+				uvs.Add(new Vector2(u0.x, u1.y));
+				uvs.Add(new Vector2(u0.x, u0.y));
 			}
 
 			if (alignment != Alignment.Left && indexOffset < verts.size)

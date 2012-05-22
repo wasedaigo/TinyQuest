@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
  Copyright © 2011-2012 Tasharen Entertainment
-                Version 1.90
+                Version 2.0.7
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -9,7 +9,7 @@
 Thank you for buying NGUI!
 
 If you have any questions, suggestions, comments or feature requests, please
-drop by the NGUI forum, found here: http://www.tasharen.com/?forum=ngui
+drop by the NGUI forum, found here: http://www.tasharen.com/forum/index.php?board=1.0
 
 --------------------
  How To Update NGUI
@@ -19,8 +19,9 @@ If you have the Professional Edition of NGUI that comes with Git access, just pu
 
 If you have a Standard Edition:
 
-1. Delete the NGUI folder while inside Unity.
-2. Import NGUI from the updated Unity Package.
+1. In Unity, File -> New Scene
+2. Delete the NGUI folder from the Project View.
+3. Import NGUI from the updated Unity Package.
 
 ---------------------------------------
  Support, documentation, and tutorials
@@ -28,11 +29,104 @@ If you have a Standard Edition:
 
 All can be found here: http://www.tasharen.com/?page_id=197
 
-Using NGUI with JavaScript (UnityScript)? Read this first: http://www.tasharen.com/?topic=using-ngui-from-javascript-unityscript
+Using NGUI with JavaScript (UnityScript)? Read this first: http://www.tasharen.com/forum/index.php?topic=6
 
 -----------------
  Version History
 -----------------
+
+2.0.7:
+- NEW: You can now specify what keyboard type will be used on mobile devices.
+- NEW: You can now add input validation to your inputs to exclude certain characters (such as make your input numeric-only).
+- FIX: Packed fonts no longer tie up the alpha channel, and can now be affected by alpha just fine.
+- FIX: Clipped panels will no longer cause the unused material message in the console.
+- FIX: 3D UIs should now be created with a proper anchor offset.
+
+2.0.6:
+- NEW: Added support for fonts packed into separate RGBA channels (read: eastern language fonts can now be 75% smaller).
+- NEW: UITooltip is now a part of NGUI's core rather than being in examples, allowing you to use it freely.
+- NEW: Submit and cancel keys can now be specified on the UICamera (before they were hardcoded to Return and Escape).
+- FIX: Unity should no longer crash when a second widget is added to the same game object.
+- FIX: UIDrawCall no longer updates the index buffer unless it needs to, resulting in increased performance.
+- FIX: UIDrawCall now uses double-buffering, so iOS performance should increase.
+- FIX: You can now specify whether symbols are affected by color or not (or if they're processed for that matter).
+- FIX: Fixed an issue with highlighting not returning to highlighted state after press.
+
+2.0.5:
+- NEW: Added support for custom-defined symbols (emoticons and such) in fonts.
+- NEW: Added NGUI menu -> Make Pixel Perfect (Alt+Shift+P), and NGUI Menu -> Add Collider is now Alt+Shift+C.
+- NEW: Added OnActivate condition to tweens and active animations.
+- NEW: It's now possible to have a UITable position items upwards instead of downwards.
+- NEW: It's now possible to have a "sticky" tooltip specified on UICamera, making it easier for tooltips to show up.
+- NEW: UIInput will now send out OnInputChanged notifications when typing.
+- NEW: Added TweenVolume script you can use to tween AudioSource's volume.
+- FIX: Fixed what was causing the "Cleaning up leaked objects in scene" message to show up.
+
+2.0.4:
+- NEW: Added UIButton -- same as UIButtonColor, but has a disabled state.
+- NEW: Added the OnDoubleClick event. Same as OnClick, just sent on double-click.
+- FIX: UIDraggablePanel should now have noticeably better performance with many widgets.
+- FIX: All private serializable properties will now be hidden from the inspector.
+- FIX: UITooltip is now more robust and automatically uses background border size for padding.
+- FIX: UILabel inspector now uses a word-wrapped textbox.
+- FIX: UIButtonPlayAnimation and UIButtonTween now have an event receiver (on finished).
+- FIX: UIGrid no longer modifies Z of its items on reposition.
+- FIX: Only one Localization class is now allowed to be present.
+- FIX: UILabel should now have a bit better performance in the editor.
+- FIX: UISprite's MakePixelPerfect setting now takes padding into account properly.
+
+2.0.3:
+- NEW: UIButtonSound now allows you to specify pitch in addition to volume.
+- FIX: UIDraggablePanel will now update the scroll bars on start.
+- FIX: UITweenScale will now start with a scale of one instead of zero by default.
+- FIX: UIInput will now ignore all characters lower than space, fixing an issue with mac OS input.
+- FIX: UITexture will no longer lose its material whenever something changes.
+- FIX: Reworked the way the mouse is handled in UICamera, fixing a couple of highlighting issues.
+
+2.0.2:
+- FIX: UIButton series of scripts will now correctly disable and re-enable their selected state when the game object is enabled / disabled.
+- FIX: SpringPanel will now notify the Draggable Panel script on movement, letting it update scroll bars correctly.
+- FIX: UIDraggablePanel will now lose its momentum every frame rather than only when it's being dragged.
+- FIX: UIDraggablePanel will no longer reset the panel's position on start.
+- FIX: UIDraggablePanel.ResetPosition() now functions correctly.
+- FIX: UIDraggablePanel.UpdateScrollbars() will now only adjust the position if the scroll bars aren't being updated (ie: called from a scroll bar).
+- FIX: 3D UIs will now be created with a proper anchor offset.
+
+2.0.1:
+- NEW: UIDraggablePanel will now display the bounds of the draggable widgets as an orange outline in the Scene View.
+- NEW: Added a 'repositionNow' checkbox to UIDraggablePanel that will reset the clipping area using the children widget's current bounds.
+- NEW: It's now possible to specify horizontal and vertical axis names for UICamera.
+- FIX: UICamera will no longer process WASD or Space key events if an Input Field is currently selected.
+- FIX: UIDraggablePanel's 'startingDragAmount' was renamed to 'startingRelativePosition', for clarity.
+- FIX: UICheckbox will now set the checkmark state immediately on start instead of gradually.
+- FIX: UISlider will now always force-set its value value on start.
+- FIX: UIInput.text will now always return its own text rather than that of the label (works better with captions).
+- FIX: Setting UIInput.text now sets the color of the label to the active color.
+
+2.0.0:
+- NEW: Redesigned the way UIDragCamera and UIDragPanelContents work, making them much more straightforward.
+- NEW: New widget has been added: Scroll Bar. It does exactly what you think it does.
+- NEW: UIDraggableCamera script is used on the camera to make it draggable via UIDragCamera.
+- NEW: UIDraggablePanel script is used on the panel to make it draggable via UIDragPanelContents.
+- NEW: UIDraggablePanel natively supports scroll bars with "always show", "fade out if not needed" and "fade in only when dragging" behaviors.
+- NEW: Scroll View (DragPanel) and Quest Log examples have been updated with scroll bars.
+- NEW: Reorganized all examples to be in a more logical order -- starting with the basic, common functionality and going up from there.
+- NEW: Localization will now try to automatically load the language file via Resources.Load if it wasn't found in the local list.
+- NEW: Atlas Maker tool now allows you to turn off trimming of transparent pixels before importing certain sprites.
+- NEW: Atlas Maker tool now allows you to specify how much padding is applied in-between of sprites.
+- FIX: EditorPrefs are now used instead of PlayerPrefs to store editor-related data.
+- FIX: Popup list will no longer try to call SendMessage in edit mode.
+- FIX: UIEventListener.Add is now UIEventListener.Get, making the function make more sense with the -= operator.
+- DEL: Scroll View example that was using UIDragObject has been removed as it's now obsolete.
+
+1.92:
+- NEW: Expanded the Filled Sprite to support radial-based filling. Great for progress indicators, cooldown timers, circular health bars, etc.
+- FIX: Eliminated all runtime uses of 'foreach', seeing as it causes memory leaks on iOS.
+
+1.91:
+- NEW: Added a new example scene showing how to easily implement drag & drop from 2D UI to the 3D world.
+- FIX: UICamera was sending multiple OnDrag events for the mouse. This has now been fixed.
+- FIX: UIAnchor changes in 1.90 had a few adverse effects on two of the examples.
 
 1.90:
 - NEW: You can now specify an option on the UIDragPanelContents that will prevent dragging if the contents already fit.

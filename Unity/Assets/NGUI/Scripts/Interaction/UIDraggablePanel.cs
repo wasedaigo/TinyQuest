@@ -65,7 +65,7 @@ public class UIDraggablePanel : IgnoreTimeScale
 	public float momentumAmount = 35f;
 
 	/// <summary>
-	/// Starting position of the clipped area. (0, 0) means top-left corner, (1, 1) means bottom-right. Only used for quick inspector positioning.
+	/// Starting position of the clipped area. (0, 0) means top-left corner, (1, 1) means bottom-right.
 	/// </summary>
 
 	public Vector2 relativePositionOnReset = Vector2.zero;
@@ -561,6 +561,9 @@ public class UIDraggablePanel : IgnoreTimeScale
 
 	void LateUpdate ()
 	{
+		// If the panel's geometry changed, recalculate the bounds
+		if (mPanel.changedLastFrame) UpdateScrollbars(true);
+
 		// Inspector functionality
 		if (repositionClipping)
 		{
@@ -620,6 +623,7 @@ public class UIDraggablePanel : IgnoreTimeScale
 			}
 			else mScroll = 0f;
 		}
+		else mScroll = 0f;
 
 		// Dampen the momentum
 		NGUIMath.SpringDampen(ref mMomentum, 9f, delta);
