@@ -11,9 +11,6 @@ namespace TinyQuest.Data.Cache {
 				TextAsset txt = (TextAsset)Resources.Load("Data/Localize/en", typeof(TextAsset));
 				base.Set(txt.text);
 			}
-			
-			
-			Debug.Log(JsonFx.Json.JsonWriter.Serialize(this.textData));
 			return this.textData[groupKey].data[key][subKey];
 		}
 	}
