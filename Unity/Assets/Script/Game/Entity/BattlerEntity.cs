@@ -6,14 +6,11 @@ using TinyQuest.Factory.Entity;
 
 namespace TinyQuest.Entity {
 	public class BattlerEntity {
-		public enum NoType {
-			Player = 1,
-			Enemy = 2
-		};
 		
 		public enum GroupType {
-			Player = 1,
-			Enemy = 2
+			Player = 0,
+			Enemy = 1,
+			Count
 		};
 		
 		public const int MaxHands = 3;
@@ -21,6 +18,7 @@ namespace TinyQuest.Entity {
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
+		public System.Action<SkillEntity[]> SkillDraw;
 		public System.Action<WeaponEntity, SkillEntity> SkillUse;
 		
 		private int no;
@@ -28,8 +26,8 @@ namespace TinyQuest.Entity {
 			get {return no;}
 		}
 		
-		private int group;
-		public int Group {
+		private GroupType group;
+		public GroupType Group {
 			get {return group;}
 		}
 		
@@ -43,11 +41,11 @@ namespace TinyQuest.Entity {
 			get {return this.hp;}
 		}
 		
-		private List<SkillEntity> allSkills = new List<SkillEntity>();
+		private List<SkillEntity> librarySkills = new List<SkillEntity>();
 		private SkillEntity[] handSkills = new SkillEntity[MaxHands];
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
-		public BattlerEntity(int hp, int maxHP, int no, int group) {
+		public BattlerEntity(int hp, int maxHP, int no, GroupType group) {
 			this.maxHP = maxHP;
 			this.hp = maxHP;
 			this.no = no;
@@ -60,37 +58,43 @@ namespace TinyQuest.Entity {
 		
 		public void SetWeapons(WeaponEntity[] weapons) {
 			this.weapons = weapons;
-			int index = 0;
 			for (int i = 0; i < weapons.Length; i++) {
 				WeaponEntity weapon = weapons[i];
 				MasterSkill[] skills = weapon.GetSkills();
 				for (int j = 0; j < skills.Length; j++) {
 					MasterSkill skill = skills[j];
 					if (skill != null) {
-						this.allSkills.Add(SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
+						this.librarySkills.Add(SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
 					}
 				}
 			}
-			
-			this.DrawSkills();
 		}
 
 		public void UseSkill(int slotIndex) {
+			if (this.handSkills[slotIndex] == null) {
+				Debug.LogError("No skill exists for slotIndex = " + slotIndex);
+			}
 			this.SkillUsed(this.weapons[slotIndex], this.handSkills[slotIndex]);
+			this.librarySkills.Add(this.handSkills[slotIndex]);
+			this.handSkills[slotIndex] = null;
 		}
-		
-		public List<SkillEntity> GetAllSkills() {
-			return this.allSkills;
-		}
-		
+
 		public void DrawSkills() {
+			SkillEntity[] drawnSkills = new SkillEntity[MaxHands];
 			for (int i = 0; i < MaxHands; i++) {
-				if (this.weapons[i] != null) {
-					this.handSkills[i] = this.allSkills[i];
+				if (this.handSkills[i] == null) {
+					int index = Random.Range(0, this.librarySkills.Count - 1);
+					this.handSkills[i] = this.librarySkills[index];
+					this.librarySkills.RemoveAt(index);
+					drawnSkills[i] = this.handSkills[i];
 				}
 			}
+
+			if (this.SkillDraw != null) {
+				this.SkillDraw(drawnSkills);
+			}
 		}
-		
+
 		public SkillEntity[] GetHand() {
 			return this.handSkills;
 		}

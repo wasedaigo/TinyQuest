@@ -241,7 +241,7 @@
         "skill1": 25,
         "atk": 170,
         "skill2": 27,
-        "skill3": 26,
+        "skill3": 24,
         "id": 4,
         "userType": 0,
         "growthType": 0
@@ -253,7 +253,7 @@
         "skill1": 4,
         "atk": 50,
         "skill2": 5,
-        "skill3": 29,
+        "skill3": 2,
         "id": 5,
         "userType": 0,
         "growthType": 0
@@ -262,10 +262,10 @@
         "durability": 10,
         "category": 5,
         "rarity": 0,
-        "skill1": 17,
+        "skill1": 15,
         "atk": 90,
         "skill2": 18,
-        "skill3": 18,
+        "skill3": 0,
         "id": 6,
         "userType": 0,
         "growthType": 0

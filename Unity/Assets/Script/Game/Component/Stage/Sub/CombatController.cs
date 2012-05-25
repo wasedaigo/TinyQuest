@@ -15,13 +15,12 @@ public class CombatController : BaseStageController {
 	private Stage stage;
 	private Ally monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
+	private CombatEntity combatEntity;
 	
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
-		
-		ZoneSceneData.UserBattlerEntity.SkillUse += this.SkillUsed;
 	
 		//this.monster = spawnMonster("death_wind", -40, 0);
 		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
@@ -46,8 +45,17 @@ public class CombatController : BaseStageController {
 		base.Update();
 	}
 	
+	public void SetCombatEntity(CombatEntity combatEntity) {
+		this.combatEntity = combatEntity;
+		this.combatEntity.SkillUse += this.SkillUsed;
+	}
+	
 	public void SetPlayer(Ally player) {
 		this.battlers.Add(player);
+	}
+	
+	public void StartBattle() {
+		this.combatEntity.ProgressTurn();
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)
@@ -55,6 +63,8 @@ public class CombatController : BaseStageController {
 		animation.settings.Origin.Show();
 		animation.settings.Destroy();
 		animation.settings = null;
+		
+		this.combatEntity.ProgressTurn();
     }
 	
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
@@ -70,7 +80,7 @@ public class CombatController : BaseStageController {
 			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
 			this.AnimationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
 			
-			AdventureObject obj = (AdventureObject)settings.Target;
+			//AdventureObject obj = (AdventureObject)settings.Target;
 			//obj.ApplyDamage(damageValue);
 		}
 	}
@@ -106,6 +116,6 @@ public class CombatController : BaseStageController {
 	
 	
 	public void InvokeCommand(int slotNo) {
-		ZoneSceneData.UserBattlerEntity.UseSkill(slotNo);
+		this.combatEntity.GetActiveBattler().UseSkill(slotNo);
 	}
 }

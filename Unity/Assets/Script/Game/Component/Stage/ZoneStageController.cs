@@ -6,7 +6,6 @@ using TinyQuest.Data;
 using TinyQuest.Core;
 using TinyQuest.Entity;
 using TinyQuest.Factory.Entity;
-using TinyQuest.Model;
 using TinyQuest.Object;
 
 public class ZoneStageController : BaseStageController {
@@ -22,7 +21,7 @@ public class ZoneStageController : BaseStageController {
 	public GameObject CombatPanel;
 	public GameObject NextPanel;
 	public GameObject MovingPanel;
-	public ZoneSceneData ZoneSceneData;
+	public CombatPanelController CombatPanelController;
 
 	private Ally player;
 	private State state;
@@ -162,9 +161,14 @@ public class ZoneStageController : BaseStageController {
 	private void HandleBattleCommand(int enemyID) {
 		CombatController controller = this.gameObject.AddComponent<CombatController>();
 		controller.baloonMessageBox = this.baloonMessageBox;
+		
+		CombatEntity combatEntity = CombatFactory.Instance.Build(enemyID, this.zoneEntity.GetPlayerBattler());
+		controller.SetCombatEntity(combatEntity);
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
-		controller.ZoneSceneData = ZoneSceneData;
+		combatEntity.SkillDraw += this.CombatPanelController.SkillDrawn;
+		controller.StartBattle();
+		
 		this.subController = controller;
 		
 		this.SetState(State.Combat);

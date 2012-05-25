@@ -6,47 +6,30 @@ using TinyQuest.Data;
 using TinyQuest.Core;
 using TinyQuest.Entity;
 using TinyQuest.Factory.Entity;
-using TinyQuest.Model;
 using TinyQuest.Object;
 
 public class CombatPanelController : MonoBehaviour {
 	public GameObject CommandButtonPrefab;
 	public ZoneStageController ZoneStageController;
-
-	private BattlerEntity userBattlerEntity;
+	public GameObject[] Buttons = new GameObject[3];
+	
+	private BoxCollider boxCollider;
 	private ZoneEntity zoneEntity;
-
-	// Use this for initialization
-	void Start() {
-		this.zoneEntity = ZoneFactory.Instance.Build();
-		this.userBattlerEntity = this.zoneEntity.GetPlayerBattler();
-		
-		SkillEntity[] handSkills = this.userBattlerEntity.GetHand();
-		for (int i = 0; i < handSkills.Length; i++) {
-			SkillEntity skill = handSkills[i];
-			this.SetSkillAtSlot(0, i, skill);
-		}
-		
-		for (int i = 0; i < handSkills.Length; i++) {
-			SkillEntity skill = handSkills[i];
-			this.SetSkillAtSlot(320, i, skill);
-		}
-		
-		for (int i = 0; i < handSkills.Length; i++) {
-			SkillEntity skill = handSkills[i];
-			this.SetSkillAtSlot(640, i, skill);
+	
+	public void Start() {
+		this.boxCollider = this.GetComponent<BoxCollider>();	
+	}
+	
+	public void SkillDrawn(SkillEntity[] skillEntities) {
+		for (int i = 0; i < skillEntities.Length; i++) {
+			this.SetSkillAtSlot(i, skillEntities[i]);	
 		}
 	}
-
-	public void SetSkillAtSlot(int x, int slotNo, SkillEntity skillEntity) {
-		//float x = 0;
-		float y = 70 - slotNo * 60;
-		
+	
+	public void SetSkillAtSlot(int slotNo, SkillEntity skillEntity) {
+		if (skillEntity == null) {return;}
 		// Setup button
-		GameObject button = Object.Instantiate(CommandButtonPrefab) as GameObject;
-		button.transform.parent = this.transform;
-		button.transform.localPosition = new Vector3(x, y, 0);
-		button.transform.localScale = new Vector3(3, 3, 1);
+		GameObject button = this.Buttons[slotNo];
 		
 		// Setup button states
 		UIImageButton imageButton = button.GetComponent<UIImageButton>();
@@ -62,6 +45,10 @@ public class CombatPanelController : MonoBehaviour {
 		
 		// Setup weapon icon
 		Transform icon = button.transform.FindChild("Icon");
+		if (icon.GetChildCount() > 0) {
+			Destroy(icon.GetChild(0).gameObject);
+		}
+		icon.DetachChildren();
 		string textureId = skillEntity.OwnerWeapon.GetMasterWeapon().GetUIImagePath();
 		UITexture ut = NGUITools.AddWidget<UITexture>(icon.gameObject);
 		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
@@ -72,15 +59,40 @@ public class CombatPanelController : MonoBehaviour {
 		ut.transform.localScale = new Vector3(ut.transform.localScale.x * scale, ut.transform.localScale.y * scale, ut.transform.localScale.z);
 		ut.transform.localPosition = Vector3.zero;
 		
+		Vector3 pos = button.transform.localPosition;
+		button.transform.localPosition = new Vector3(400, pos.y, pos.z);
+		iTween.MoveTo(button, iTween.Hash("x", 0, "time", 0.5, "easetype",iTween.EaseType.linear, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteDraw"));
 		
-		ObjectClickHandler clickHandler = button.GetComponent<ObjectClickHandler>();
-		clickHandler.Callback = () => {this.click(slotNo);};
+		this.boxCollider.enabled = true;
 	}
 	
-	private void click(int slot) {
+	private void onCompleteDraw() {
+		this.boxCollider.enabled = false;
+	}
+	
+	private void onCompleteDiscard() {
+	}
+	
+	public void Slot0Clicked() {
+		this.click(0);	
+	}
+
+	public void Slot1Clicked() {
+		this.click(1);	
+	}
+	
+	public void Slot2Clicked() {
+		this.click(2);	
+	}
+	
+	private void click(int slotNo) {
+		GameObject button = this.Buttons[slotNo];
+		this.boxCollider.enabled = true;
+		iTween.MoveTo(button, iTween.Hash("x", -2, "time", 0.5, "easetype",iTween.EaseType.linear, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteDiscard"));
+		
 		CombatController controller = this.ZoneStageController.GetComponent<CombatController>();
 		if (controller != null) {
-			controller.InvokeCommand(slot);
+			controller.InvokeCommand(slotNo);
 		}
 	}
 }

@@ -51,8 +51,8 @@ namespace TinyQuest.Data.Request {
 
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			if (combatProgress != null) {
-				CombatBattler playerBattlerData = new CombatBattler((int)BattlerEntity.NoType.Player, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
-				CombatBattler enemyBattlerData = new CombatBattler((int)BattlerEntity.NoType.Enemy, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
+				CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
+				CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
 				combatProgress = new CombatProgress(1, new CombatBattler[]{playerBattlerData, enemyBattlerData});
 				CacheFactory.Instance.GetLocalUserDataCache().SetCombatProgress(combatProgress);
 			}

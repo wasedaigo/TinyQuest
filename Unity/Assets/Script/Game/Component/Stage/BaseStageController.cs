@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TinyQuest.Core;
-using TinyQuest.Model;
 using TinyQuest.Object;
 
 public class BaseStageController : MonoBehaviour {
