@@ -52,23 +52,6 @@
             "slot": -1
         }
     ],
-    "combatProgress": {
-      "turnCount" : 2,
-      "battlers": [
-        {
-          "no": 1,
-          "group": 1,
-          "hp": 100,
-          "buffs": []
-        },
-        {
-          "no": 2,
-          "group": 2,
-          "hp": 100,
-          "buffs": []
-        }
-      ],
-    },
     "zone": {
             "zoneId": 1,
             "lastStepIndex": 5,
@@ -106,8 +89,8 @@
                 ]
                 }
              },
-            "stepIndex" : 1,
-            "commandIndex": 1,
+            "stepIndex" : 0,
+            "commandIndex": 0,
             "playerHP" : 200,
             "weaponDurabilities":[20, 20, 20],
             "currentTP":5

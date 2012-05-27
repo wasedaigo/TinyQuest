@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TinyQuest.Data;
 using TinyQuest.Entity;
+using TinyQuest.Factory.Entity;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data.Request {
@@ -21,44 +22,119 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void ProgressCommand(System.Action callback) {
+		public virtual void GetExecutingCommand(System.Action<ZoneEntity.PostCommandState, ZoneCommand, object> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			userZone.commandIndex += 1;
-			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-			callback();
-		}
-		
-		public virtual void UseWeapon(int slot, System.Action<bool, int> callback) {
-			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
-			MasterWeapon masterWeapon = CacheFactory.Instance.GetMasterDataCache().GetWeaponByID(userWeapons[slot].weaponId);
-			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			int stepIndex = userZone.stepIndex;
+			int commandIndex = userZone.commandIndex;
 			
-			MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(masterWeapon.skill1);
-			userZone.currentTP -= masterSkill.tp;
+			ZoneEntity.PostCommandState postCommandState = ZoneEntity.PostCommandState.None;
+			ZoneCommand command = null;
+			object zoneCommandState = null;
 			
-			bool isBroken = true;
-			if (userZone.weaponDurabilities[slot] > 0) {
-				isBroken = false;
-				userZone.weaponDurabilities[slot] -= 1;
+			bool allCommandFinished = true;
+			string key = stepIndex.ToString();
+			if (userZone.events.ContainsKey(key)) {
+				ZoneEvent zoneEvent = userZone.events[stepIndex.ToString()];
+				ZoneCommand[] commands = zoneEvent.commands;
+				if (commandIndex < commands.Length) {
+					command = commands[commandIndex];
+					zoneCommandState = userZone.commandState;
+					allCommandFinished = false;
+				}
 			}
 			
-			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			if (allCommandFinished) {
+				if (userZone.stepIndex >= userZone.lastStepIndex) {
+					postCommandState = ZoneEntity.PostCommandState.ClearZone;
+				} else {
+					postCommandState = ZoneEntity.PostCommandState.NextStep;
+				}
+			} else {
+				switch((ZoneCommand.Type)command.type) {
+				case ZoneCommand.Type.Battle:
+					CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+					if (combatProgress == null) {
+						CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
+						CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
+						combatProgress = new CombatProgress(1, new CombatBattler[][]{
+							new CombatBattler[]{playerBattlerData},
+							new CombatBattler[]{enemyBattlerData}
+						});
+						CacheFactory.Instance.GetLocalUserDataCache().SetCombatProgress(combatProgress);
+					}
+					break;
+				}
+			}
 			
-			callback(isBroken, userZone.currentTP);
+			callback(postCommandState, command, zoneCommandState);
+		}
+		
+		public virtual void ProgressCommand(System.Action<ZoneEntity.PostCommandState, ZoneCommand, object> callback) {
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			userZone.commandIndex += 1;
+
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
+			
+			this.GetExecutingCommand(callback);
 		}
 
 		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
-
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			if (combatProgress != null) {
+			if (combatProgress == null) {
 				CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
 				CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
-				combatProgress = new CombatProgress(1, new CombatBattler[]{playerBattlerData, enemyBattlerData});
+				combatProgress = new CombatProgress(1, new CombatBattler[][]{
+					new CombatBattler[]{playerBattlerData},
+					new CombatBattler[]{enemyBattlerData}
+				});
 				CacheFactory.Instance.GetLocalUserDataCache().SetCombatProgress(combatProgress);
 			}
 			
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback();
+		}
+		
+		public virtual void UseSkill(int handIndex, BattlerEntity.GroupType groupType, int battlerIndex, System.Action<int> callback) {
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
+			int skillIndex = battler.handSkills[handIndex];
+			battler.handSkills[handIndex] = -1;
+
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			callback(skillIndex);
+		}
+		
+		public virtual void UseCompositeSkill(int id, System.Action callback) {
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			callback();
+		}
+		
+		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, System.Action<int[]> callback) {
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
+			
+			List<int> librarySkillIndexList = allSkillIndexList;
+			int maxHandCount = battler.handSkills.Length;
+			for (int i = 0; i < maxHandCount; i++) {
+				if (battler.handSkills[i] != -1) {
+					librarySkillIndexList.Remove(battler.handSkills[i]);
+				}
+			}
+
+			int[] drawnSkillIndexes = new int[maxHandCount];
+			for (int i = 0; i < maxHandCount; i++) {
+				if (battler.handSkills[i] == -1) {
+					int index = Random.Range(0, librarySkillIndexList.Count - 1);
+					int chosenSkillIndex = librarySkillIndexList[index];
+					battler.handSkills[i] = chosenSkillIndex;
+					drawnSkillIndexes[i] = chosenSkillIndex;
+				} else {
+					drawnSkillIndexes[i] = -1;
+				}
+			}
+
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			callback(drawnSkillIndexes);
 		}
 	}
 }

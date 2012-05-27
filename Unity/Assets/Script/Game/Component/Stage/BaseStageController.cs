@@ -59,7 +59,7 @@ public class BaseStageController : MonoBehaviour {
 		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
 		box.transform.parent = this.Stage.gameObject.transform;
 		box.transform.localScale = new Vector3(0.003f, 0.003f, 1);
-		box.transform.localPosition = new Vector3(0.75f, 0, 0);
+		box.transform.localPosition = new Vector3(0, 0.45f, 0);
 		box.ArrowFaceRight = true;
 		box.Width = 256;
 		box.Height = 64;

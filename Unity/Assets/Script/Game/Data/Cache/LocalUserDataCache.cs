@@ -27,6 +27,7 @@ namespace TinyQuest.Data.Cache {
 			this.userZone = this.localUserData.zone;
 			this.equipWeapons = this.localUserData.equipWeapons;
 			this.stockWeapons = this.localUserData.stockWeapons;
+			this.combatProgress = this.localUserData.combatProgress;
 		}
 		
 		public void SetZone(string jsonText) {

@@ -22,15 +22,20 @@ namespace TinyQuest.Data{
 		public int[] weaponDurabilities;
 		public int currentTP;
 	}
-
+	
 	public class CombatBattler {
+		public const int HandCount = 3;
 		public int no;
 		public int group;
 		public int hp;
 		public int[] buffs;
-		
-		public CombatBattler(){}
+		public int[] handSkills;
+
+		public CombatBattler(){
+			this.handSkills = new int[HandCount]{-1, -1, -1};
+		}
 		public CombatBattler(int no, int group, int hp, int[] buffs) {
+		  this.handSkills = new int[HandCount]{-1, -1, -1};
 		  this.no = no;
 		  this.group = group;
 		  this.hp = hp;
@@ -40,22 +45,16 @@ namespace TinyQuest.Data{
 	
 	public class CombatProgress {
 		public int turnCount;
-		public CombatBattler[] battlers;
-
+		public CombatBattler[][] battlers;
+		
 		public CombatProgress(){}
-		public CombatProgress(int turnCount, CombatBattler[] battlers) {
+		public CombatProgress(int turnCount, CombatBattler[][] battlers) {
 		  this.turnCount = turnCount;
 		  this.battlers = battlers;
 		}
 		
 		public CombatBattler GetCombatBattler(int no, int group) {
-			for (int i = 0; i < this.battlers.Length; i++) {
-				CombatBattler battler = this.battlers[i];
-				if (battler.no == no && battler.group == group) {
-					return battler;
-				}
-			}
-			return null;
+			return this.battlers[group][no];
 		}
 	}
 

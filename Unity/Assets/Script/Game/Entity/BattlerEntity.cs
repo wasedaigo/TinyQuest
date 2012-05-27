@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Request;
 using TinyQuest.Factory.Entity;
 
 namespace TinyQuest.Entity {
@@ -12,14 +13,14 @@ namespace TinyQuest.Entity {
 			Enemy = 1,
 			Count
 		};
-		
+
 		public const int MaxHands = 3;
 		public const int WeaponSlotNum = 6;
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
 		public System.Action<SkillEntity[]> SkillDraw;
-		public System.Action<WeaponEntity, SkillEntity> SkillUse;
+		public System.Action<SkillEntity> SkillUse;
 		
 		private int no;
 		public int No {
@@ -40,9 +41,8 @@ namespace TinyQuest.Entity {
 		public int HP {
 			get {return this.hp;}
 		}
-		
-		private List<SkillEntity> librarySkills = new List<SkillEntity>();
-		private SkillEntity[] handSkills = new SkillEntity[MaxHands];
+
+		private Dictionary<int, SkillEntity> skillIndexMap = new Dictionary<int, SkillEntity>();		
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
 		public BattlerEntity(int hp, int maxHP, int no, GroupType group) {
@@ -57,51 +57,60 @@ namespace TinyQuest.Entity {
 		}
 		
 		public void SetWeapons(WeaponEntity[] weapons) {
+			if (this.skillIndexMap.Count > 0) { 
+				Debug.LogError("Weapons are already set");
+				return;
+			}
+
 			this.weapons = weapons;
+			int index = 0;
 			for (int i = 0; i < weapons.Length; i++) {
 				WeaponEntity weapon = weapons[i];
 				MasterSkill[] skills = weapon.GetSkills();
 				for (int j = 0; j < skills.Length; j++) {
 					MasterSkill skill = skills[j];
 					if (skill != null) {
-						this.librarySkills.Add(SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
+						this.skillIndexMap.Add(index, SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
+						index++;
 					}
 				}
 			}
 		}
 
 		public void UseSkill(int slotIndex) {
-			if (this.handSkills[slotIndex] == null) {
-				Debug.LogError("No skill exists for slotIndex = " + slotIndex);
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.UseSkill(slotIndex, this.group, this.no, this.SkillUsed);
+		}
+		
+		private void SkillUsed(int skillIndex) {
+			if (this.SkillUse != null) {
+				SkillEntity skillEntity = this.skillIndexMap[skillIndex];
+				this.SkillUse(skillEntity);
 			}
-			this.SkillUsed(this.weapons[slotIndex], this.handSkills[slotIndex]);
-			this.librarySkills.Add(this.handSkills[slotIndex]);
-			this.handSkills[slotIndex] = null;
 		}
 
 		public void DrawSkills() {
-			SkillEntity[] drawnSkills = new SkillEntity[MaxHands];
-			for (int i = 0; i < MaxHands; i++) {
-				if (this.handSkills[i] == null) {
-					int index = Random.Range(0, this.librarySkills.Count - 1);
-					this.handSkills[i] = this.librarySkills[index];
-					this.librarySkills.RemoveAt(index);
-					drawnSkills[i] = this.handSkills[i];
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			
+			List<int> allSkillIndexList = new List<int>();
+			for (int i = 0; i < skillIndexMap.Count; i++) {
+				allSkillIndexList.Add(i);
+			}
+			
+			req.DrawSkills(this.group, this.no, allSkillIndexList, this.SkillsDrawn);
+		}
+		
+		public void SkillsDrawn(int[] drawnSkillIndexes) {
+			SkillEntity[] skills = new SkillEntity[MaxHands];
+			for (int i = 0; i < drawnSkillIndexes.Length; i++) {
+				int skillIndex = drawnSkillIndexes[i];
+				if (skillIndex >= 0) {
+					skills[i] = this.skillIndexMap[skillIndex];
 				}
 			}
 
 			if (this.SkillDraw != null) {
-				this.SkillDraw(drawnSkills);
-			}
-		}
-
-		public SkillEntity[] GetHand() {
-			return this.handSkills;
-		}
-		
-		private void SkillUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
-			if (this.SkillUse != null) {
-				this.SkillUse(weaponEntity, skillEntity);
+				this.SkillDraw(skills);
 			}
 		}
 	}

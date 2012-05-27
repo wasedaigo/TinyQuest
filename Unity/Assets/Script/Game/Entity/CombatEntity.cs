@@ -8,7 +8,7 @@ namespace TinyQuest.Entity {
 		
 		public System.Action TurnProgress;
 		public System.Action<SkillEntity[]> SkillDraw;
-		public System.Action<WeaponEntity, SkillEntity> SkillUse;
+		public System.Action<SkillEntity> SkillUse;
 		
 		private int turnNo;
 		private BattlerEntity.GroupType groupType;
@@ -54,9 +54,9 @@ namespace TinyQuest.Entity {
 			this.SkillDraw(skillEntities);
 		}
 		
-		private void SkillUsed(WeaponEntity weaponEntity, SkillEntity skillEntity) {
+		private void SkillUsed( SkillEntity skillEntity) {
 			if (this.SkillUse != null) {
-				this.SkillUse(weaponEntity, skillEntity);
+				this.SkillUse(skillEntity);
 			}
 		}
 	}

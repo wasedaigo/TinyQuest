@@ -7,6 +7,11 @@ using TinyQuest.Data.Request;
 namespace TinyQuest.Entity {
 
 	public class ZoneEntity {
+		public  enum PostCommandState {
+			None,
+			NextStep,
+			ClearZone
+		};
 		public System.Action<float> PlayerMove;
 		public System.Action<int, bool> StepProgress;
 		public System.Action<ZoneCommand, object> CommandExecute;
@@ -49,7 +54,8 @@ namespace TinyQuest.Entity {
 		
 		// Step
 		public void StartAdventure() {
-			this.OnCommandProgressed();
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.GetExecutingCommand(this.OnCommandProgressed);
 		}
 
 		public void MoveForward() {
@@ -78,7 +84,8 @@ namespace TinyQuest.Entity {
 				this.StepProgress(stepIndex, hasEvent);
 			}
 			
-			this.OnCommandProgressed();
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.GetExecutingCommand(this.OnCommandProgressed);
 		}
 		
 		// Event
@@ -86,30 +93,18 @@ namespace TinyQuest.Entity {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.ProgressCommand(this.OnCommandProgressed);
 		}
-		
-		private void OnCommandProgressed() {
-			int stepIndex = this.userZone.stepIndex;
-			int commandIndex = this.userZone.commandIndex;
 
-			bool allCommandFinished = true;
-			string key = stepIndex.ToString();
-			if (this.userZone.events.ContainsKey(key)) {
-				ZoneEvent zoneEvent = this.userZone.events[stepIndex.ToString()];
-				ZoneCommand[] commands = zoneEvent.commands;
-				if (commandIndex < commands.Length) {
-					ZoneCommand command = commands[commandIndex];
-					object zoneCommandState = this.userZone.commandState;
-					this.CommandExecute(command, zoneCommandState);
-					allCommandFinished = false;
-				}
-			}
-			
-			if (allCommandFinished) {
-				if (this.userZone.stepIndex >= this.userZone.lastStepIndex) {
-					this.ClearZone();
-				} else {
-					this.GotoNextStep();
-				}
+		private void OnCommandProgressed(ZoneEntity.PostCommandState postCommandState, ZoneCommand command, object zoneCommandState) {
+			switch (postCommandState) {
+			case PostCommandState.None:
+				this.CommandExecute(command, zoneCommandState);
+				break;
+			case PostCommandState.ClearZone:
+				this.ClearZone();
+				break;
+			case PostCommandState.NextStep:
+				this.GotoNextStep();
+				break;
 			}
 		}
 	}
