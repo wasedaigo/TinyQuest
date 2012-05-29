@@ -13,7 +13,7 @@ public class CombatController : BaseStageController {
 	public ZoneSceneData ZoneSceneData;
 	
 	private Stage stage;
-	private Ally monster;
+	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	private CombatEntity combatEntity;
 	
@@ -22,9 +22,9 @@ public class CombatController : BaseStageController {
 		base.Start();
 		this.stage = this.GetComponent<Stage>();
 	
-		//this.monster = spawnMonster("death_wind", -40, 0);
-		this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
-		this.monster.LocalScale = new Vector2(-1, 1);
+		this.monster = spawnMonster("goblin", -30, -5);
+		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
+		this.monster.LocalScale = new Vector2(1, 1);
 		this.monster.LocalPriority = 0.45f;
 		this.stage.GetCharacterLayer().AddChild(this.monster);
 	}
@@ -55,7 +55,7 @@ public class CombatController : BaseStageController {
 	}
 	
 	public void StartBattle() {
-		this.combatEntity.ProgressTurn();
+		this.combatEntity.Start();
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)

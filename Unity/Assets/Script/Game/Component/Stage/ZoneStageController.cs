@@ -15,7 +15,7 @@ public class ZoneStageController : BaseStageController {
 		Next,
 		Pause
 	};
-	private const float PlayerY = 20;
+	private const float PlayerY = 10;
 
 	public GameObject[] slots;
 	public GameObject CombatPanel;

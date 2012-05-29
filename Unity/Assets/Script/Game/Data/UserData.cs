@@ -59,9 +59,9 @@ namespace TinyQuest.Data{
 	}
 
 	public class LocalUserData {
-		public readonly CombatProgress combatProgress;
+		public CombatProgress combatProgress;
+		public UserZone zone;
 		public readonly UserStatus status;
-		public readonly UserZone zone;
 		public readonly UserWeapon[] equipWeapons;
 		public readonly UserWeapon[] stockWeapons;
 	}

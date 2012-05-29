@@ -77,7 +77,22 @@ namespace TinyQuest.Data.Request {
 			
 			this.GetExecutingCommand(callback);
 		}
-
+		
+		public virtual void StartCombat(System.Action<int[]> callback) {
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			CombatBattler battler = combatProgress.battlers[(int)BattlerEntity.GroupType.Player][0];
+			
+			int maxHandCount = battler.handSkills.Length;
+			int[] drawnSkillIndexes = new int[maxHandCount];
+			for (int i = 0; i < maxHandCount; i++) {
+				if (battler.handSkills[i] >= 0) {
+					drawnSkillIndexes[i] = battler.handSkills[i];
+				}
+			}
+			
+			callback(drawnSkillIndexes);
+		}
+		
 		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			if (combatProgress == null) {

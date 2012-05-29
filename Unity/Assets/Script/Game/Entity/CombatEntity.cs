@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Request;
 
 namespace TinyQuest.Entity {
 	public class CombatEntity {
@@ -9,14 +10,12 @@ namespace TinyQuest.Entity {
 		public System.Action TurnProgress;
 		public System.Action<SkillEntity[]> SkillDraw;
 		public System.Action<SkillEntity> SkillUse;
-		
-		private int turnNo;
+
 		private BattlerEntity.GroupType groupType;
 		private List<BattlerEntity>[] battlerGroup;
 		private BattlerEntity activeBattler;
 			
 		public CombatEntity() {
-			this.turnNo = 0;
 			this.battlerGroup  = new List<BattlerEntity>[(int)BattlerEntity.GroupType.Count];
 			
 			for (int i = 0; i < battlerGroup.Length; i++) {
@@ -24,9 +23,16 @@ namespace TinyQuest.Entity {
 			}
 		}
 		
+		public void Start() {
+			this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.StartCombat(this.activeBattler.SkillsDrawn);
+		}
+		
 		public void SetBattler(BattlerEntity battlerEntity, BattlerEntity.GroupType groupType) {
 			this.battlerGroup[(int)groupType].Add(battlerEntity);
 			battlerEntity.SkillUse += this.SkillUsed;
+			battlerEntity.SkillDraw += this.SkillDrawn;
 		}
 		
 		public BattlerEntity GetActiveBattler() {
@@ -42,12 +48,7 @@ namespace TinyQuest.Entity {
 				this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
 			}
 			
-			this.activeBattler.SkillDraw += this.SkillDrawn;
 			this.activeBattler.DrawSkills();
-
-			if (this.TurnProgress != null) {
-				this.TurnProgress();	
-			}
 		}
 		
 		private void SkillDrawn(SkillEntity[] skillEntities) {
