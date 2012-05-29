@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
 
 namespace TinyQuest.Entity {
@@ -25,8 +26,7 @@ namespace TinyQuest.Entity {
 		
 		public void Start() {
 			this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
-			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.StartCombat(this.activeBattler.SkillsDrawn);
+			this.activeBattler.DrawSkills(true);
 		}
 		
 		public void SetBattler(BattlerEntity battlerEntity, BattlerEntity.GroupType groupType) {
@@ -48,7 +48,7 @@ namespace TinyQuest.Entity {
 				this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
 			}
 			
-			this.activeBattler.DrawSkills();
+			this.activeBattler.DrawSkills(false);
 		}
 		
 		private void SkillDrawn(SkillEntity[] skillEntities) {

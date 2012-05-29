@@ -88,16 +88,21 @@ namespace TinyQuest.Entity {
 				this.SkillUse(skillEntity);
 			}
 		}
-
-		public void DrawSkills() {
-			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			
+		
+		private List<int> GenerateAllSkillIndexList() {
 			List<int> allSkillIndexList = new List<int>();
 			for (int i = 0; i < skillIndexMap.Count; i++) {
 				allSkillIndexList.Add(i);
 			}
 			
-			req.DrawSkills(this.group, this.no, allSkillIndexList, this.SkillsDrawn);
+			return allSkillIndexList;
+		}
+		
+		public void DrawSkills(bool redraw) {
+			List<int> allSkillIndexList = this.GenerateAllSkillIndexList();
+			
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.DrawSkills(this.group, this.no, allSkillIndexList, redraw, this.SkillsDrawn);
 		}
 		
 		public void SkillsDrawn(int[] drawnSkillIndexes) {

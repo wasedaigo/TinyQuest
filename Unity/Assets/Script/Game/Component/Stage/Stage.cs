@@ -42,7 +42,7 @@ public class Stage : MonoBehaviour {
 		new ParallaxLayerInfo(0.5f, 0, 0.03f),
 		new ParallaxLayerInfo(1.0f, 0, 0.04f),
 		new ParallaxLayerInfo(2.0f, 0, 2),
-		new ParallaxLayerInfo(0.3f, -5, 0.3f)
+		new ParallaxLayerInfo(0.3f, 5, 0.3f)
 	};
 
 	void Awake() 

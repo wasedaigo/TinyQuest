@@ -10,6 +10,7 @@ using TinyQuest.Data.Cache;
 namespace TinyQuest.Data.Request {
 	public class LocalUserDataRequest
 	{
+		const int MaxHandCount = 3;
 		public virtual void Get(System.Action<string> callback) {
 		}
 		
@@ -79,14 +80,16 @@ namespace TinyQuest.Data.Request {
 		}
 		
 		public virtual void StartCombat(System.Action<int[]> callback) {
-			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			CombatBattler battler = combatProgress.battlers[(int)BattlerEntity.GroupType.Player][0];
+			int[] drawnSkillIndexes = new int[MaxHandCount]{-1, -1, -1};
 			
-			int maxHandCount = battler.handSkills.Length;
-			int[] drawnSkillIndexes = new int[maxHandCount];
-			for (int i = 0; i < maxHandCount; i++) {
-				if (battler.handSkills[i] >= 0) {
-					drawnSkillIndexes[i] = battler.handSkills[i];
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			if (combatProgress != null) {
+				CombatBattler battler = combatProgress.battlers[(int)BattlerEntity.GroupType.Player][0];
+
+				for (int i = 0; i < MaxHandCount; i++) {
+					if (battler.handSkills[i] >= 0) {
+						drawnSkillIndexes[i] = battler.handSkills[i];
+					}
 				}
 			}
 			
@@ -124,27 +127,30 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, System.Action<int[]> callback) {
+		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, bool redraw, System.Action<int[]> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
 			
 			List<int> librarySkillIndexList = allSkillIndexList;
-			int maxHandCount = battler.handSkills.Length;
-			for (int i = 0; i < maxHandCount; i++) {
+			for (int i = 0; i < MaxHandCount; i++) {
 				if (battler.handSkills[i] != -1) {
 					librarySkillIndexList.Remove(battler.handSkills[i]);
 				}
 			}
 
-			int[] drawnSkillIndexes = new int[maxHandCount];
-			for (int i = 0; i < maxHandCount; i++) {
+			int[] drawnSkillIndexes = new int[MaxHandCount]{-1, -1, -1};
+			for (int i = 0; i < MaxHandCount; i++) {
 				if (battler.handSkills[i] == -1) {
 					int index = Random.Range(0, librarySkillIndexList.Count - 1);
 					int chosenSkillIndex = librarySkillIndexList[index];
 					battler.handSkills[i] = chosenSkillIndex;
 					drawnSkillIndexes[i] = chosenSkillIndex;
 				} else {
-					drawnSkillIndexes[i] = -1;
+					if (redraw) {
+						drawnSkillIndexes[i] = battler.handSkills[i];
+					} else {
+						drawnSkillIndexes[i] = -1;
+					}
 				}
 			}
 
