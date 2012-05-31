@@ -8,9 +8,25 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":76},
 	"sourceSize": {"w":107,"h":76}
 },
+"composite_button.png":
+{
+	"frame": {"x":108,"y":0,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+	"sourceSize": {"w":20,"h":20}
+},
+"composite_button_on.png":
+{
+	"frame": {"x":129,"y":0,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+	"sourceSize": {"w":20,"h":20}
+},
 "double_command_bar.png":
 {
-	"frame": {"x":109,"y":0,"w":107,"h":20},
+	"frame": {"x":0,"y":77,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -18,7 +34,7 @@
 },
 "double_command_bar_on.png":
 {
-	"frame": {"x":0,"y":78,"w":107,"h":20},
+	"frame": {"x":108,"y":77,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -26,7 +42,7 @@
 },
 "hp_bar.png":
 {
-	"frame": {"x":109,"y":78,"w":24,"h":1},
+	"frame": {"x":216,"y":77,"w":24,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":1},
@@ -34,7 +50,7 @@
 },
 "hp_bar_fill.png":
 {
-	"frame": {"x":135,"y":78,"w":24,"h":1},
+	"frame": {"x":0,"y":98,"w":24,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":1},
@@ -42,7 +58,7 @@
 },
 "single_command_bar.png":
 {
-	"frame": {"x":0,"y":100,"w":107,"h":20},
+	"frame": {"x":25,"y":98,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -50,7 +66,7 @@
 },
 "single_command_bar_on.png":
 {
-	"frame": {"x":109,"y":100,"w":107,"h":20},
+	"frame": {"x":133,"y":98,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -58,7 +74,7 @@
 },
 "triple_command_bar.png":
 {
-	"frame": {"x":0,"y":122,"w":107,"h":20},
+	"frame": {"x":0,"y":119,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -66,7 +82,7 @@
 },
 "triple_command_bar_on.png":
 {
-	"frame": {"x":109,"y":122,"w":107,"h":20},
+	"frame": {"x":108,"y":119,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -79,6 +95,6 @@
 	"format": "RGBA8888",
 	"size": {"w":256,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e334abfdc4fa5a91a36d78b24c5a5c5d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:369747bc9a56c5bb1c9d7ad9848ba945$"
 }
 }
