@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
 using TinyQuest.Factory.Entity;
 
@@ -41,7 +42,8 @@ namespace TinyQuest.Entity {
 		public int HP {
 			get {return this.hp;}
 		}
-
+		
+		private int[] handSkills = new int[MaxHands];
 		private Dictionary<int, SkillEntity> skillIndexMap = new Dictionary<int, SkillEntity>();		
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 
@@ -77,14 +79,23 @@ namespace TinyQuest.Entity {
 			}
 		}
 
-		public void UseSkill(int slotIndex) {
+		public void UseSkill(int handIndex) {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.UseSkill(slotIndex, this.group, this.no, this.SkillUsed);
+			req.UseSkill(handIndex, this.group, this.no, this.SkillUsed);
 		}
 		
-		private void SkillUsed(int skillIndex) {
+		public void GetCompositeDataList() {
+			List<CompositeData> compositeDataList = CacheFactory.Instance.GetMasterDataCache().GetCompositeDataList(this.handSkills[0], this.handSkills[1], this.handSkills[2]);
+			foreach (CompositeData data in compositeDataList) {
+				MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(data.Skill);
+				Debug.Log(masterSkill.GetName());
+			}
+		}
+		
+		private void SkillUsed(int handIndex, int skillIndex) {
 			if (this.SkillUse != null) {
 				SkillEntity skillEntity = this.skillIndexMap[skillIndex];
+				this.handSkills[handIndex] = 0;
 				this.SkillUse(skillEntity);
 			}
 		}
@@ -98,25 +109,28 @@ namespace TinyQuest.Entity {
 			return allSkillIndexList;
 		}
 		
-		public void DrawSkills(bool redraw) {
+		public void DrawSkills() {
 			List<int> allSkillIndexList = this.GenerateAllSkillIndexList();
 			
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.DrawSkills(this.group, this.no, allSkillIndexList, redraw, this.SkillsDrawn);
+			req.DrawSkills(this.group, this.no, allSkillIndexList, this.SkillsDrawn);
 		}
 		
 		public void SkillsDrawn(int[] drawnSkillIndexes) {
 			SkillEntity[] skills = new SkillEntity[MaxHands];
 			for (int i = 0; i < drawnSkillIndexes.Length; i++) {
 				int skillIndex = drawnSkillIndexes[i];
-				if (skillIndex >= 0) {
+				if (skillIndex >= 0 && this.handSkills[i] == 0) {
 					skills[i] = this.skillIndexMap[skillIndex];
+					this.handSkills[i] = skills[i].MasterSkill.id;
 				}
 			}
 
 			if (this.SkillDraw != null) {
 				this.SkillDraw(skills);
 			}
+			
+			this.GetCompositeDataList();
 		}
 	}
 }

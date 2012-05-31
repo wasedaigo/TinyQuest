@@ -2,44 +2,32 @@
   "data": {
     "CompositeSkills": [
       {
-        "atk": 200,
         "baseSkill1": 14,
         "id": 1,
         "baseSkill2": 7,
         "baseSkill3": 35,
-        "buff": 0,
-        "attribute": 1,
-        "element": 0
+        "targetSkill": 61
       },
       {
-        "atk": 200,
         "baseSkill1": 14,
         "id": 2,
         "baseSkill2": 27,
         "baseSkill3": 0,
-        "buff": 0,
-        "attribute": 1,
-        "element": 0
+        "targetSkill": 62
       },
       {
-        "atk": 200,
         "baseSkill1": 28,
         "id": 3,
         "baseSkill2": 24,
         "baseSkill3": 0,
-        "buff": 0,
-        "attribute": 0,
-        "element": 2
+        "targetSkill": 63
       },
       {
-        "atk": 200,
         "baseSkill1": 3,
         "id": 4,
         "baseSkill2": 27,
         "baseSkill3": 0,
-        "buff": 0,
-        "attribute": 1,
-        "element": 0
+        "targetSkill": 63
       }
     ],
     "Monsters": [
@@ -642,7 +630,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 39,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -650,7 +638,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 40,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -658,7 +646,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 41,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -666,7 +654,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 42,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -674,7 +662,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 43,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -682,7 +670,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 44,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -690,7 +678,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 45,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -698,7 +686,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 46,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -706,7 +694,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 47,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -714,7 +702,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 48,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -722,7 +710,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 49,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -730,7 +718,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 50,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -738,7 +726,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 51,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -746,7 +734,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 52,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -754,7 +742,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 53,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -762,7 +750,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 54,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -770,7 +758,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 55,
         "animation": "Combat/Sword/Slash",
         "buff": 4,
@@ -778,7 +766,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 56,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -786,7 +774,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 57,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -794,7 +782,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 58,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -802,7 +790,7 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 59,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
@@ -810,11 +798,43 @@
         "element": 0
       },
       {
-        "atk": 0,
+        "atk": 100,
         "id": 60,
         "animation": "Combat/Sword/Slash",
         "buff": 0,
         "attribute": 3,
+        "element": 0
+      },
+      {
+        "atk": 100,
+        "id": 61,
+        "animation": "Combat/Composite/DeathCutter",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 100,
+        "id": 62,
+        "animation": "Combat/Composite/DiceCutter",
+        "buff": 0,
+        "attribute": 1,
+        "element": 0
+      },
+      {
+        "atk": 100,
+        "id": 63,
+        "animation": "Combat/Composite/HealRain",
+        "buff": 0,
+        "attribute": 0,
+        "element": 2
+      },
+      {
+        "atk": 100,
+        "id": 64,
+        "animation": "Combat/Composite/FlameCross",
+        "buff": 0,
+        "attribute": 1,
         "element": 0
       }
     ],

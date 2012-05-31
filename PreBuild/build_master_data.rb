@@ -167,9 +167,7 @@ data["Skill"].each do |value|
 end
 
 data["CompositeSkill"].each do |value|
-  value["element"] = $lookuptable["ENum"]["element"][value["element"]]
-  value["attribute"] = $lookuptable["ENum"]["attribute"][value["attribute"]]
-  value["buff"] = $lookuptable["ENum"]["buff"][value["buff"]]
+  value["targetSkill"] = $lookuptable["Skill"][value["targetSkill"]]
   value["baseSkill1"] = $lookuptable["Skill"][value["baseSkill1"]]
   value["baseSkill2"] = $lookuptable["Skill"][value["baseSkill2"]]
   value["baseSkill3"] = $lookuptable["Skill"][value["baseSkill3"]]

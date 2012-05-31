@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data{
+	public struct CompositeData {
+		public readonly int Skill;
+		public readonly int CommandIndex1;
+		public readonly int CommandIndex2;
+		public readonly int CommandIndex3;
+		
+		public CompositeData(int skill, int index1, int index2, int index3) {
+			this.Skill = skill;
+			this.CommandIndex1 = index1;
+			this.CommandIndex2 = index2;
+			this.CommandIndex3 = index3;
+		}
+	}
+
 	public enum ElementType {
 		None,
 		Fire,
@@ -195,7 +209,8 @@ namespace TinyQuest.Data{
 		}
 	}
 	
-	public class MasterCompositeSkill : MasterSkill {
+	public class MasterCompositeSkill : IDData {
+		public readonly int targetSkill;
 		public readonly int baseSkill1;
 		public readonly int baseSkill2;
 		public readonly int baseSkill3;

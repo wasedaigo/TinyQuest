@@ -12,12 +12,14 @@ public class CombatPanelController : MonoBehaviour {
 	public GameObject CommandButtonPrefab;
 	public ZoneStageController ZoneStageController;
 	public GameObject[] Buttons = new GameObject[3];
-	
+	public GameObject CompositeCommandButton;
+	public GameObject CompositeToggleButton;
+
 	private BoxCollider boxCollider;
 	private ZoneEntity zoneEntity;
 	
 	public void Start() {
-		this.boxCollider = this.GetComponent<BoxCollider>();	
+		this.boxCollider = this.GetComponent<BoxCollider>();
 	}
 	
 	public void SkillDrawn(SkillEntity[] skillEntities) {
@@ -25,20 +27,18 @@ public class CombatPanelController : MonoBehaviour {
 			this.SetSkillAtSlot(i, skillEntities[i]);	
 		}
 	}
-	
-	public void SetSkillAtSlot(int slotNo, SkillEntity skillEntity) {
+
+	public void SetCompositeSkill(int[] commandIndexes, SkillEntity skillEntity) {
+		// Setup Label
+		UILabel label = this.CompositeCommandButton.transform.FindChild("Label").GetComponent<UILabel>();
+		label.text = skillEntity.MasterSkill.GetName();
+	}
+
+	public void SetSkillAtSlot(int commandIndex, SkillEntity skillEntity) {
 		if (skillEntity == null) {return;}
 		// Setup button
-		GameObject button = this.Buttons[slotNo];
+		GameObject button = this.Buttons[commandIndex];
 		
-		// Setup button states
-		UIImageButton imageButton = button.GetComponent<UIImageButton>();
-		string prefix = "single";
-		imageButton.target.spriteName = prefix + "_command_bar";
-		imageButton.normalSprite = prefix + "_command_bar";
-		imageButton.hoverSprite = prefix + "_command_bar";
-		imageButton.pressedSprite = prefix + "_command_bar_on";
-
 		// Setup Label
 		UILabel label = button.transform.FindChild("Label").GetComponent<UILabel>();
 		label.text = skillEntity.MasterSkill.GetName();
@@ -85,14 +85,14 @@ public class CombatPanelController : MonoBehaviour {
 		this.click(2);	
 	}
 	
-	private void click(int slotNo) {
-		GameObject button = this.Buttons[slotNo];
+	private void click(int commandIndex) {
+		GameObject button = this.Buttons[commandIndex];
 		this.boxCollider.enabled = true;
 		iTween.MoveTo(button, iTween.Hash("x", -2, "time", 0.5, "easetype",iTween.EaseType.linear, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteDiscard"));
 		
 		CombatController controller = this.ZoneStageController.GetComponent<CombatController>();
 		if (controller != null) {
-			controller.InvokeCommand(slotNo);
+			controller.InvokeCommand(commandIndex);
 		}
 	}
 }

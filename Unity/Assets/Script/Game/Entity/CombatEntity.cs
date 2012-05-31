@@ -26,7 +26,7 @@ namespace TinyQuest.Entity {
 		
 		public void Start() {
 			this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
-			this.activeBattler.DrawSkills(true);
+			this.activeBattler.DrawSkills();
 		}
 		
 		public void SetBattler(BattlerEntity battlerEntity, BattlerEntity.GroupType groupType) {
@@ -48,7 +48,7 @@ namespace TinyQuest.Entity {
 				this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
 			}
 			
-			this.activeBattler.DrawSkills(false);
+			this.activeBattler.DrawSkills();
 		}
 		
 		private void SkillDrawn(SkillEntity[] skillEntities) {

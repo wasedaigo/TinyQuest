@@ -112,14 +112,14 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void UseSkill(int handIndex, BattlerEntity.GroupType groupType, int battlerIndex, System.Action<int> callback) {
+		public virtual void UseSkill(int handIndex, BattlerEntity.GroupType groupType, int battlerIndex, System.Action<int, int> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
 			int skillIndex = battler.handSkills[handIndex];
 			battler.handSkills[handIndex] = -1;
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-			callback(skillIndex);
+			callback(handIndex, skillIndex);
 		}
 		
 		public virtual void UseCompositeSkill(int id, System.Action callback) {
@@ -127,7 +127,7 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, bool redraw, System.Action<int[]> callback) {
+		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, System.Action<int[]> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
 			
@@ -146,11 +146,7 @@ namespace TinyQuest.Data.Request {
 					battler.handSkills[i] = chosenSkillIndex;
 					drawnSkillIndexes[i] = chosenSkillIndex;
 				} else {
-					if (redraw) {
-						drawnSkillIndexes[i] = battler.handSkills[i];
-					} else {
-						drawnSkillIndexes[i] = -1;
-					}
+					drawnSkillIndexes[i] = battler.handSkills[i];
 				}
 			}
 

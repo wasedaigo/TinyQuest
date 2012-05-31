@@ -48,7 +48,6 @@ namespace TinyQuest.Data.Cache {
 		}
 		
 		public void Commit() {
-			return;
 			string text = JsonWriter.Serialize(this.localUserData);
 
 			// make a path
