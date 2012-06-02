@@ -66,7 +66,7 @@ namespace TinyQuest.Data.Cache {
 			}
 		}
 		
-		public virtual List<CompositeData> GetCompositeDataList(int skill1, int skill2, int skill3) {
+		public virtual CompositeData GetCompositeData(int skill1, int skill2, int skill3) {
 			int[] skills = new int[]{0, skill1, skill2, skill3};
 			List<CompositeData> compositeDataList = new List<CompositeData>();
 
@@ -92,15 +92,14 @@ namespace TinyQuest.Data.Cache {
 				int index2 = indexes[i][1];
 				int index3 = indexes[i][2];
 				SkillTuple tuple = new SkillTuple(skills[index1], skills[index2], skills[index3]);
-				
+				Debug.Log(skills[index1] + " " + skills[index2] + " " + skills[index3]);
 				if (this.masterCompositeSkillDictionary.ContainsKey(tuple)) {
 					MasterCompositeSkill skill = this.masterCompositeSkillDictionary[tuple];
-					CompositeData data = new CompositeData(skill.targetSkill, index1, index2, index3);
-					compositeDataList.Add(data);	
+					return new CompositeData(skill.targetSkill, index1, index2, index3);
 				}
 			}
 			
-			return compositeDataList;
+			return null;
 		}
 		
 		public virtual MasterMonster GetMonsterByID(int id) {

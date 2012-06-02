@@ -87,8 +87,8 @@ namespace TinyQuest.Data.Request {
 				CombatBattler battler = combatProgress.battlers[(int)BattlerEntity.GroupType.Player][0];
 
 				for (int i = 0; i < MaxHandCount; i++) {
-					if (battler.handSkills[i] >= 0) {
-						drawnSkillIndexes[i] = battler.handSkills[i];
+					if (battler.handSkillIndexes[i] >= 0) {
+						drawnSkillIndexes[i] = battler.handSkillIndexes[i];
 					}
 				}
 			}
@@ -115,8 +115,8 @@ namespace TinyQuest.Data.Request {
 		public virtual void UseSkill(int handIndex, BattlerEntity.GroupType groupType, int battlerIndex, System.Action<int, int> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
-			int skillIndex = battler.handSkills[handIndex];
-			battler.handSkills[handIndex] = -1;
+			int skillIndex = battler.handSkillIndexes[handIndex];
+			battler.handSkillIndexes[handIndex] = -1;
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback(handIndex, skillIndex);
@@ -127,31 +127,54 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, List<int> allSkillIndexList, System.Action<int[]> callback) {
+		private List<int> GetLibrarySkillList(CombatBattler battler, Dictionary<int, SkillEntity> skillIndexMap) {
+			List<int> librarySkillIndexList = new List<int>();
+			for (int i = 0; i < skillIndexMap.Count; i++) {
+				librarySkillIndexList.Add(i);
+			}
+
+			for (int i = 0; i < MaxHandCount; i++) {
+				if (battler.handSkillIndexes[i] != -1) {
+					librarySkillIndexList.Remove(battler.handSkillIndexes[i]);
+				}
+			}
+			
+			return librarySkillIndexList;
+		}
+
+		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, Dictionary<int, SkillEntity> skillIndexMap, System.Action<SkillEntity[]> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
-			
-			List<int> librarySkillIndexList = allSkillIndexList;
-			for (int i = 0; i < MaxHandCount; i++) {
-				if (battler.handSkills[i] != -1) {
-					librarySkillIndexList.Remove(battler.handSkills[i]);
-				}
-			}
+			List<int> librarySkillIndexList = this.GetLibrarySkillList(battler, skillIndexMap);
 
-			int[] drawnSkillIndexes = new int[MaxHandCount]{-1, -1, -1};
+			SkillEntity[] drawnSkills = new SkillEntity[MaxHandCount]{null, null, null};
 			for (int i = 0; i < MaxHandCount; i++) {
-				if (battler.handSkills[i] == -1) {
+				if (battler.handSkillIndexes[i] == -1) {
 					int index = Random.Range(0, librarySkillIndexList.Count - 1);
 					int chosenSkillIndex = librarySkillIndexList[index];
-					battler.handSkills[i] = chosenSkillIndex;
-					drawnSkillIndexes[i] = chosenSkillIndex;
+					battler.handSkillIndexes[i] = chosenSkillIndex;
+					drawnSkills[i] = skillIndexMap[chosenSkillIndex];
 				} else {
-					drawnSkillIndexes[i] = battler.handSkills[i];
+					drawnSkills[i] = skillIndexMap[battler.handSkillIndexes[i]];
 				}
 			}
-
+			
+			SkillEntity skill1 = skillIndexMap[battler.handSkillIndexes[0]];
+			SkillEntity skill2 = skillIndexMap[battler.handSkillIndexes[1]];
+			SkillEntity skill3 = skillIndexMap[battler.handSkillIndexes[2]];
+			
+			CompositeData data = CacheFactory.Instance.GetMasterDataCache().GetCompositeData(
+				skill1 != null ? skill1.MasterSkill.id : 0, 
+				skill2 != null ? skill2.MasterSkill.id : 0, 
+				skill3 != null ? skill3.MasterSkill.id : 0
+			);
+			
+			if (data != null) {
+					
+			}
+			Debug.Log(data);	
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-			callback(drawnSkillIndexes);
+			callback(drawnSkills);
 		}
 	}
 }

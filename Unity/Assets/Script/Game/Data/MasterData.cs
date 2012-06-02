@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data{
-	public struct CompositeData {
+	public class CompositeData {
 		public readonly int Skill;
 		public readonly int CommandIndex1;
 		public readonly int CommandIndex2;
