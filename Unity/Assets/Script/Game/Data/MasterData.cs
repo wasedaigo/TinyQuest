@@ -5,16 +5,18 @@ using TinyQuest.Data.Cache;
 namespace TinyQuest.Data{
 	public class CompositeData {
 		public readonly int Skill;
-		public readonly int CommandIndex1;
-		public readonly int CommandIndex2;
-		public readonly int CommandIndex3;
+		public readonly int[] BaseSkills;
 		
-		public CompositeData(int skill, int index1, int index2, int index3) {
+		public CompositeData(int skill, int[] baseSkills) {
 			this.Skill = skill;
-			this.CommandIndex1 = index1;
-			this.CommandIndex2 = index2;
-			this.CommandIndex3 = index3;
+			this.BaseSkills = baseSkills;
 		}
+	}
+	
+	public enum SkillCompositeType {
+		Single,
+		Double,
+		Triple
 	}
 
 	public enum ElementType {

@@ -20,7 +20,7 @@ namespace TinyQuest.Entity {
 		public const int MaxAP = 6;
 		public const int HealAP = 3;
 		
-		public System.Action<SkillEntity[]> SkillDraw;
+		public System.Action<SkillEntity[], CompositeData> SkillDraw;
 		public System.Action<SkillEntity> SkillUse;
 		
 		private int no;
@@ -43,8 +43,6 @@ namespace TinyQuest.Entity {
 			get {return this.hp;}
 		}
 		
-		private bool[] hasHandSkill = new bool[MaxHands];
-		private Dictionary<int, SkillEntity> skillIndexMap = new Dictionary<int, SkillEntity>();		
 		private WeaponEntity[] weapons = new WeaponEntity[WeaponSlotNum];
 		
 		public BattlerEntity(int hp, int maxHP, int no, GroupType group) {
@@ -59,6 +57,7 @@ namespace TinyQuest.Entity {
 		}
 		
 		public void SetWeapons(WeaponEntity[] weapons) {
+			/*
 			if (this.skillIndexMap.Count > 0) { 
 				Debug.LogError("Weapons are already set");
 				return;
@@ -72,11 +71,12 @@ namespace TinyQuest.Entity {
 				for (int j = 0; j < skills.Length; j++) {
 					MasterSkill skill = skills[j];
 					if (skill != null) {
-						this.skillIndexMap.Add(index, SkillFactory.Instance.Build(skill.id, weapon, MaxHands/ weapon.GetSkillCount()));
+						this.skillIndexMap.Add(index, SkillFactory.Instance.Build(skill.id, MaxHands/ weapon.GetSkillCount()));
 						index++;
 					}
 				}
 			}
+			*/
 		}
 
 		public void UseSkill(int handIndex) {
@@ -84,32 +84,23 @@ namespace TinyQuest.Entity {
 			req.UseSkill(handIndex, this.group, this.no, this.SkillUsed);
 		}
 		
-		private void SkillUsed(int handIndex, int skillIndex) {
+		private void SkillUsed(int handIndex, int skillId) {
 			if (this.SkillUse != null) {
-				SkillEntity skillEntity = this.skillIndexMap[skillIndex];
-				this.hasHandSkill[handIndex] = false;
+				SkillEntity skillEntity = SkillFactory.Instance.Build(skillId);
 				this.SkillUse(skillEntity);
 			}
 		}
 		
 		
-		public void DrawSkills() {
+		public void DrawSkills(bool initialDraw) {
 			
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.DrawSkills(this.group, this.no, skillIndexMap, this.SkillsDrawn);
+			req.DrawSkills(this.group, this.no, initialDraw, this.SkillsDrawn);
 		}
 		
-		public void SkillsDrawn(SkillEntity[] drawnSkills) {
-			for (int i = 0; i < drawnSkills.Length; i++) {
-				if (this.hasHandSkill[i]) {
-					drawnSkills[i] = null;
-				} else {
-					this.hasHandSkill[i] = 	true;
-				}
-			}
-			
+		public void SkillsDrawn(SkillEntity[] drawnSkills, CompositeData compositeData) {
 			if (this.SkillDraw != null) {
-				this.SkillDraw(drawnSkills);
+				this.SkillDraw(drawnSkills, compositeData);
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace TinyQuest.Entity {
 	public class CombatEntity {
 		
 		public System.Action TurnProgress;
-		public System.Action<SkillEntity[]> SkillDraw;
+		public System.Action<SkillEntity[], CompositeData> SkillDraw;
 		public System.Action<SkillEntity> SkillUse;
 
 		private BattlerEntity.GroupType groupType;
@@ -26,7 +26,7 @@ namespace TinyQuest.Entity {
 		
 		public void Start() {
 			this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
-			this.activeBattler.DrawSkills();
+			this.activeBattler.DrawSkills(true);
 		}
 		
 		public void SetBattler(BattlerEntity battlerEntity, BattlerEntity.GroupType groupType) {
@@ -48,11 +48,11 @@ namespace TinyQuest.Entity {
 				this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
 			}
 			
-			this.activeBattler.DrawSkills();
+			this.activeBattler.DrawSkills(false);
 		}
 		
-		private void SkillDrawn(SkillEntity[] skillEntities) {
-			this.SkillDraw(skillEntities);
+		private void SkillDrawn(SkillEntity[] skillEntities, CompositeData compositeData) {
+			this.SkillDraw(skillEntities, compositeData);
 		}
 		
 		private void SkillUsed( SkillEntity skillEntity) {

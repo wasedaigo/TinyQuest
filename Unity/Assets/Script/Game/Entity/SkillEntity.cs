@@ -1,29 +1,21 @@
 using UnityEngine;
 using System.Collections;
 using TinyQuest.Data;
+using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Entity {
 	public class SkillEntity {
 		private MasterSkill masterSkill;
-		private WeaponEntity ownerWeapon;
-	
-		public WeaponEntity OwnerWeapon {
-			get { return this.ownerWeapon; }
-		}
-		
 		public MasterSkill MasterSkill {
 			get { return this.masterSkill; }
 		}
-		
-		private float weight;
-		public float Weight {
-			get { return this.weight; }
+
+		public SkillCompositeType GetCompositeType() {
+			return CacheFactory.Instance.GetMasterDataCache().GetCompositeType(this.masterSkill.id);
 		}
-		
-		public SkillEntity(WeaponEntity ownerWeapon, MasterSkill masterSkill, float weight) {
-			this.ownerWeapon = ownerWeapon;
+
+		public SkillEntity(MasterSkill masterSkill) {
 			this.masterSkill = masterSkill;
-			this.weight = weight;
 		}
 	}
 }

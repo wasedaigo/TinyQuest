@@ -29,21 +29,25 @@ namespace TinyQuest.Data{
 		public int group;
 		public int hp;
 		public int[] buffs;
-		public int[] handSkillIndexes;
-		public int[] activeSkills;
+
+		public int[] handSkills;
+		public List<int> librarySkills;
+		public List<int> compositeSkills;
 
 		public CombatBattler(){
-			this.handSkillIndexes = new int[HandCount]{-1, -1, -1};
-			this.activeSkills = new int[HandCount]{-1, -1, -1};
+			this.handSkills = new int[HandCount];
+			this.librarySkills = new List<int>();
+			this.compositeSkills = new List<int>();
 		}
 
 		public CombatBattler(int no, int group, int hp, int[] buffs) {
-		  this.handSkillIndexes = new int[HandCount]{-1, -1, -1};
-		  this.activeSkills = new int[HandCount]{-1, -1, -1};
-		  this.no = no;
-		  this.group = group;
-		  this.hp = hp;
-		  this.buffs = buffs;
+			this.handSkills = new int[HandCount];
+			this.librarySkills = new List<int>();
+			this.compositeSkills = new List<int>();
+			this.no = no;
+			this.group = group;
+			this.hp = hp;
+			this.buffs = buffs;
 		}
 	}
 	

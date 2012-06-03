@@ -95,8 +95,8 @@ public class CombatController : BaseStageController {
 
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = caster.TextureID, PixelSize = new Vector2(32, 32)}},
-				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = target.PixelSize,  SrcRect = target.SrcRect}},
-				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = skillEntity.OwnerWeapon.GetMasterWeapon().GetAnimationImagePath(), PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
+				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = target.PixelSize,  SrcRect = target.SrcRect}}//,
+//				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = skillEntity.OwnerWeapon.GetMasterWeapon().GetAnimationImagePath(), PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);

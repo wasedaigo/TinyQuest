@@ -27,7 +27,7 @@
         "id": 4,
         "baseSkill2": 27,
         "baseSkill3": 0,
-        "targetSkill": 63
+        "targetSkill": 64
       }
     ],
     "Monsters": [
