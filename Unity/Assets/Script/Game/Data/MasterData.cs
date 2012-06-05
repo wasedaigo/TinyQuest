@@ -11,6 +11,20 @@ namespace TinyQuest.Data{
 			this.Skill = skill;
 			this.BaseSkills = baseSkills;
 		}
+		
+		
+		public int GetFirstActiveIndex() {
+			int firstSkillSlot = -1;
+			for (int i = 0; i < this.BaseSkills.Length; i++) {
+				int baseSkill = this.BaseSkills[i];
+				if (baseSkill > 0) {
+					firstSkillSlot = i;
+					break;
+				}
+			}
+			
+			return firstSkillSlot;
+		}
 	}
 	
 	public enum SkillCompositeType {

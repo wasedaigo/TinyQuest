@@ -11,10 +11,9 @@ using TinyQuest.Object;
 public class CombatPanelController : MonoBehaviour {
 	public GameObject CommandButtonPrefab;
 	public ZoneStageController ZoneStageController;
-	public GameObject[] Buttons = new GameObject[3];
+	public GameObject[] Buttons;
+	public GameObject CommandButtonFlash;
 	public float[] StartPositionY = new float[3];
-	public GameObject CompositeCommandButton;
-	public GameObject CompositeToggleButton;
 
 	private BoxCollider boxCollider;
 	private ZoneEntity zoneEntity;
@@ -100,31 +99,50 @@ public class CombatPanelController : MonoBehaviour {
 			this.boxCollider.enabled = false;
 		} else {
 			this.boxCollider.enabled = true;
-			int firstSkillSlot = -1;
-			for (int i = 0; i < this.compositeData.BaseSkills.Length; i++) {
+			int firstSkillSlot = this.compositeData.GetFirstActiveIndex();
+			GameObject dstButton = this.Buttons[firstSkillSlot];
+			Vector3 dstPos = dstButton.transform.position;
+	
+			CommandButtonFlash.GetComponent<UISprite>().alpha = 0.0f;
+			CommandButtonFlash.transform.position = new Vector3(dstPos.x, dstPos.y, CommandButtonFlash.transform.position.z);
+
+			float delay = 0.0f;
+			float incDelay = 0.2f;
+			for (int i = firstSkillSlot + 1; i < this.compositeData.BaseSkills.Length; i++) {
 				int baseSkill = this.compositeData.BaseSkills[i];
+				delay += incDelay;
 				if (baseSkill > 0) {
-					if (firstSkillSlot >= 0) {
-						GameObject srcbutton = this.Buttons[i];
-						GameObject dstButton = this.Buttons[firstSkillSlot];
-						Vector3 pos = dstButton.transform.position;
-						iTween.MoveTo(srcbutton, iTween.Hash("y", pos.y, "time", 0.5, "easetype",iTween.EaseType.linear, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteComposition", "oncompleteparams", i));
-						
-					} else {
-						this.SetSkillAtSlot(i, SkillFactory.Instance.Build(compositeData.Skill));
-						firstSkillSlot = i;
-					}
+					GameObject srcbutton = this.Buttons[i];
+					iTween.MoveTo(srcbutton, iTween.Hash("y", dstPos.y, "time", delay, "easetype",iTween.EaseType.linear, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteCommandMove", "oncompleteparams", i));
 				}
 			}
 			
+			// Start flashing the command
+			TweenColor.Begin(CommandButtonFlash, delay - 0.1f, new Color(1, 1, 1, 1));
+			
+			// Show merge effect after delay
+			iTween.MoveTo(CommandButtonFlash, iTween.Hash("delay", delay, "time", 0, "oncompletetarget", this.gameObject, "oncomplete", "onMerge"));
+			
+			// Show composition completion effect in the end
+			iTween.FadeTo(CommandButtonFlash, iTween.Hash("alpha", 1.0f, "time", 1.0f, "delay", delay, "oncompletetarget", this.gameObject, "oncomplete", "onCompleteComposition"));
 		}
-		this.compositeData = null;
+	}
+
+	private void onMerge() {
+		TweenColor.Begin(CommandButtonFlash, 1.0f, new Color(1, 1, 1, 0));
+		int firstSkillSlot = this.compositeData.GetFirstActiveIndex();
+		this.SetSkillAtSlot(firstSkillSlot, SkillFactory.Instance.Build(compositeData.Skill));
 	}
 	
-	private void onCompleteComposition(int slotIndex) {
+	private void onCompleteComposition() {
+		CommandButtonFlash.transform.localPosition = new Vector3(MoveInStartPositionX, 0, CommandButtonFlash.transform.localPosition.z);	
+		this.compositeData = null;
 		this.boxCollider.enabled = false;
+	}
+	
+	private void onCompleteCommandMove(int slotIndex) {
 		GameObject button = this.Buttons[slotIndex];
-		button.transform.localPosition = new Vector3(MoveInStartPositionX, this.StartPositionY[slotIndex], button.transform.localPosition.z);
+		button.transform.localPosition = new Vector3(MoveInStartPositionX, this.StartPositionY[slotIndex], button.transform.localPosition.z);	
 	}
 	
 	private void onCompleteDiscard() {

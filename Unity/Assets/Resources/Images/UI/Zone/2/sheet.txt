@@ -1,0 +1,20 @@
+{"frames": {
+
+"command_bar_flash.png":
+{
+	"frame": {"x":0,"y":0,"w":107,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
+	"sourceSize": {"w":107,"h":20}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "sheet02.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3d9f284488c493179af38d9daf861d54$"
+}
+}
