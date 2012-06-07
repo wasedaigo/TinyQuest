@@ -47,8 +47,7 @@ public class CombatPanelController : MonoBehaviour {
 		// Setup button
 		GameObject button = this.Buttons[slotIndex];
 		UIImageButton imageButton = button.GetComponent<UIImageButton>();
-		
-		
+
 		UISprite background = button.transform.FindChild("Background").GetComponent<UISprite>();
 		switch (skillEntity.GetCompositeType()) {
 			case(SkillCompositeType.Single):
@@ -75,6 +74,9 @@ public class CombatPanelController : MonoBehaviour {
 		UILabel label = button.transform.FindChild("Label").GetComponent<UILabel>();
 		label.text = skillEntity.MasterSkill.GetName();
 		
+		UILabel tpLabel = button.transform.FindChild("TP").GetComponent<UILabel>();
+		tpLabel.text = 	skillEntity.MasterSkill.tp.ToString();
+
 		// Setup weapon icon
 		Transform icon = button.transform.FindChild("Icon");
 		if (icon.GetChildCount() > 0) {

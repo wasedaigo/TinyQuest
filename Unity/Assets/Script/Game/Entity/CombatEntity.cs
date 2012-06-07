@@ -11,6 +11,7 @@ namespace TinyQuest.Entity {
 		public System.Action TurnProgress;
 		public System.Action<SkillEntity[], CompositeData> SkillDraw;
 		public System.Action<SkillEntity> SkillUse;
+		public System.Action<BattlerEntity, int> UpdateHP;
 
 		private BattlerEntity.GroupType groupType;
 		private List<BattlerEntity>[] battlerGroup;
@@ -23,16 +24,21 @@ namespace TinyQuest.Entity {
 				battlerGroup[i] = new List<BattlerEntity>();
 			}
 		}
-		
+
 		public void Start() {
 			this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];
 			this.activeBattler.DrawSkills(true);
 		}
-		
+
 		public void SetBattler(BattlerEntity battlerEntity, BattlerEntity.GroupType groupType) {
 			this.battlerGroup[(int)groupType].Add(battlerEntity);
 			battlerEntity.SkillUse += this.SkillUsed;
 			battlerEntity.SkillDraw += this.SkillDrawn;
+			battlerEntity.UpdateHP += this.HPUpdated;
+		}
+		
+		public BattlerEntity GetBattler(BattlerEntity.GroupType groupType, int index) {
+			return this.battlerGroup[(int)groupType][index];
 		}
 		
 		public BattlerEntity GetActiveBattler() {
@@ -40,7 +46,6 @@ namespace TinyQuest.Entity {
 		}
 		
 		public void ProgressTurn() {
-			
 			// Switch player & monster each turn
 			if (this.activeBattler == null || this.activeBattler.Group == BattlerEntity.GroupType.Enemy) {
 				this.activeBattler = this.battlerGroup[(int)BattlerEntity.GroupType.Player][0];	
@@ -56,9 +61,11 @@ namespace TinyQuest.Entity {
 		}
 		
 		private void SkillUsed( SkillEntity skillEntity) {
-			if (this.SkillUse != null) {
-				this.SkillUse(skillEntity);
-			}
+			this.SkillUse(skillEntity);
+		}
+		
+		private void HPUpdated(BattlerEntity entity, int value) {
+			this.UpdateHP(entity, value);
 		}
 	}
 }

@@ -10,7 +10,12 @@ using TinyQuest.Data;
 
 public class CombatController : BaseStageController {
 	public System.Action CombatFinish;
-	public ZoneSceneData ZoneSceneData;
+	public GameObject BattlerStatus;
+	
+	public UILabel AllyHP;
+	public UILabel AllyTP;
+	public UILabel EnemyHP;
+	public UILabel EnemyTP;
 	
 	private Stage stage;
 	private Monster monster;
@@ -20,13 +25,7 @@ public class CombatController : BaseStageController {
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
-		this.stage = this.GetComponent<Stage>();
-	
-		this.monster = spawnMonster("goblin", -30, -5);
-		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
-		this.monster.LocalScale = new Vector2(1, 1);
-		this.monster.LocalPriority = 0.45f;
-		this.stage.GetCharacterLayer().AddChild(this.monster);
+		
 	}
 
 	// Update is called once per frame
@@ -48,6 +47,7 @@ public class CombatController : BaseStageController {
 	public void SetCombatEntity(CombatEntity combatEntity) {
 		this.combatEntity = combatEntity;
 		this.combatEntity.SkillUse += this.SkillUsed;
+		this.combatEntity.UpdateHP += this.HPUpdated;
 	}
 	
 	public void SetPlayer(Ally player) {
@@ -55,7 +55,25 @@ public class CombatController : BaseStageController {
 	}
 	
 	public void StartBattle() {
+		this.stage = this.GetComponent<Stage>();
+		this.monster = spawnMonster("goblin", -30, -5);
+		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
+		this.monster.LocalScale = new Vector2(1, 1);
+		this.monster.LocalPriority = 0.45f;
+		this.stage.GetCharacterLayer().AddChild(this.monster);
+
+		BattlerStatus.SetActiveRecursively(true);
+		this.UpdateStatus();
 		this.combatEntity.Start();
+	}
+	
+	private void UpdateStatus() {
+		BattlerEntity ally = this.combatEntity.GetBattler(BattlerEntity.GroupType.Player, 0);
+		BattlerEntity enemy = this.combatEntity.GetBattler(BattlerEntity.GroupType.Enemy, 0);
+		this.AllyHP.text = ally.HP.ToString();
+		this.EnemyHP.text = enemy.HP.ToString();	
+		this.AllyTP.text = ally.TP.ToString();
+		this.EnemyTP.text = enemy.TP.ToString();
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)
@@ -65,6 +83,7 @@ public class CombatController : BaseStageController {
 		animation.settings = null;
 		
 		this.combatEntity.ProgressTurn();
+		this.UpdateStatus();
     }
 	
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
@@ -113,9 +132,13 @@ public class CombatController : BaseStageController {
 	private void SkillUsed(SkillEntity skillEntity) {
 		this.playSkillAnimation(this.battlers[0], this.monster, skillEntity);
 	}
-	
-	
-	public void InvokeCommand(int slotNo) {
-		this.combatEntity.GetActiveBattler().UseSkill(slotNo);
+
+	private void HPUpdated(BattlerEntity entity, int value) {
+
 	}
+
+	public void InvokeCommand(int slotNo) {
+		this.combatEntity.GetActiveBattler().UseSkill(slotNo, this.combatEntity.GetBattler(BattlerEntity.GroupType.Enemy, 0));
+	}
+	
 }

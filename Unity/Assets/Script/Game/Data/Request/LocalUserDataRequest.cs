@@ -55,8 +55,8 @@ namespace TinyQuest.Data.Request {
 				case ZoneCommand.Type.Battle:
 					CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 					if (combatProgress == null) {
-						CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
-						CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
+						CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, 10, new int[]{});
+						CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, 10, new int[]{});
 						combatProgress = new CombatProgress(1, new CombatBattler[][]{
 							new CombatBattler[]{playerBattlerData},
 							new CombatBattler[]{enemyBattlerData}
@@ -82,8 +82,8 @@ namespace TinyQuest.Data.Request {
 		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			if (combatProgress == null) {
-				CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, new int[]{});
-				CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, new int[]{});
+				CombatBattler playerBattlerData = new CombatBattler(0, (int)BattlerEntity.GroupType.Player, 100, 10, new int[]{});
+				CombatBattler enemyBattlerData = new CombatBattler(1, (int)BattlerEntity.GroupType.Enemy, 100, 10, new int[]{});
 				combatProgress = new CombatProgress(1, new CombatBattler[][]{
 					new CombatBattler[]{playerBattlerData},
 					new CombatBattler[]{enemyBattlerData}
@@ -95,26 +95,36 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void UseSkill(int handIndex, BattlerEntity.GroupType groupType, int battlerIndex, System.Action<int, int> callback) {
+		public virtual void UseSkill(int handIndex, BattlerEntity casterEntity, BattlerEntity targetEntity, System.Action<int, int> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
-			int skillId = battler.handSkills[handIndex];
-			battler.handSkills[handIndex] = 0;
+			CombatBattler caster = combatProgress.battlers[(int)casterEntity.Group][casterEntity.No];
+			CombatBattler target = combatProgress.battlers[(int)targetEntity.Group][targetEntity.No];
+	
+			int skillId = caster.handSkills[handIndex];
+			caster.handSkills[handIndex] = 0;
 			
 			MasterCompositeSkill masterCompositeSkill = CacheFactory.Instance.GetMasterDataCache().GetCompositeSkillById(skillId);
 			if (masterCompositeSkill == null) {
-				battler.librarySkills.Add(skillId);
+				caster.librarySkills.Add(skillId);
 			} else {
 				if (masterCompositeSkill.baseSkill1 > 0) {
-					battler.librarySkills.Add(masterCompositeSkill.baseSkill1);
+					caster.librarySkills.Add(masterCompositeSkill.baseSkill1);
 				}
 				if (masterCompositeSkill.baseSkill2 > 0) {
-					battler.librarySkills.Add(masterCompositeSkill.baseSkill2);
+					caster.librarySkills.Add(masterCompositeSkill.baseSkill2);
 				}
 				if (masterCompositeSkill.baseSkill3 > 0) {
-					battler.librarySkills.Add(masterCompositeSkill.baseSkill3);
+					caster.librarySkills.Add(masterCompositeSkill.baseSkill3);
 				}
 			}
+			
+			//caster.tp -= 
+			target.hp -= 1;
+			targetEntity.SetHP(target.hp);
+			
+			SkillEntity skillEntity = SkillFactory.Instance.Build(skillId);
+			caster.tp -= skillEntity.MasterSkill.tp;
+			casterEntity.SetTP(caster.tp);
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback(handIndex, skillId);
@@ -125,9 +135,9 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 
-		public virtual void DrawSkills(BattlerEntity.GroupType groupType, int battlerIndex, bool initialDraw, System.Action<SkillEntity[], CompositeData> callback) {
+		public virtual void DrawSkills(BattlerEntity battlerEntity, bool initialDraw, System.Action<SkillEntity[], CompositeData> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			CombatBattler battler = combatProgress.battlers[(int)groupType][battlerIndex];
+			CombatBattler battler = combatProgress.battlers[(int)battlerEntity.Group][battlerEntity.No];
 
 			SkillEntity[] drawnSkills = new SkillEntity[MaxHandCount]{null, null, null};
 			for (int i = 0; i < MaxHandCount; i++) {
@@ -168,8 +178,15 @@ namespace TinyQuest.Data.Request {
 						}
 					}
 				}
-				
-				
+			}
+			
+			if (!initialDraw) {
+				// Regenerate TP
+				battler.tp += battlerEntity.RegenTP;
+				if (battler.tp > battlerEntity.MaxTP) {
+					battler.tp = battlerEntity.MaxTP;
+				}
+				battlerEntity.SetTP(battler.tp);
 			}
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();

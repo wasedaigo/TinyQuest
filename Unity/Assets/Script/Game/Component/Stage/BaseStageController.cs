@@ -51,7 +51,7 @@ public class BaseStageController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.intervalPlayer = new Roga2dIntervalPlayer();
-		
+		Application.targetFrameRate = 60;
 	}
 	
 	public void ShowMessage(string message) {

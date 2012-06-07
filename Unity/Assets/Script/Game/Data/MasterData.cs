@@ -149,6 +149,7 @@ namespace TinyQuest.Data{
 		public readonly int skill2;
 		public readonly int skill3;
 		public readonly int atk;
+		public readonly int tp;
 		public readonly UserType userType;
 		public readonly GrowthType growthType;
 		public readonly RarityType rarity;

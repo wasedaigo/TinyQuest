@@ -5,7 +5,8 @@ namespace TinyQuest.Object {
 	public class AdventureObject : Roga2dNode {
 		protected Roga2dSprite sprite;
 		private string textureId;
-		private int hp;
+		public int HP;
+		public int TP;
 		
 		public AdventureObject(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect)
 		:base("AdventureObject")
@@ -15,7 +16,8 @@ namespace TinyQuest.Object {
 			this.SetPixelSize(pixelSize);
 			this.SetPixelCenter(pixelCenter);
 			this.AddChild(this.sprite);
-			this.hp = 10000;
+			this.HP = 10000;
+			this.TP = 3;
 		}
 		
 		public Roga2dSprite Sprite {
@@ -52,11 +54,11 @@ namespace TinyQuest.Object {
 		}
 	
 		public bool IsDead() {
-			return this.hp < 0;
+			return this.HP < 0;
 		}
 		
 		public void ApplyDamage(uint value) {
-			this.hp -= (int)value;
+			//this.hp -= (int)value;
 		}
 	}
 }

@@ -14,18 +14,20 @@ namespace TinyQuest.Factory.Entity {
 			BattlerEntity battler = null;
 			if (combatProgress != null) {
 				CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Enemy);
-				battler = new BattlerEntity(combatBattler.hp, masterEnemy.hp, 0, BattlerEntity.GroupType.Enemy);
+				battler = new BattlerEntity(combatBattler.hp, masterEnemy.hp, 2, combatBattler.tp, 0,  BattlerEntity.GroupType.Enemy);
 			} else {
-				battler = new BattlerEntity(masterEnemy.hp, masterEnemy.hp, 0, BattlerEntity.GroupType.Enemy);
+				battler = new BattlerEntity(masterEnemy.hp, masterEnemy.hp, 2, 0, 0, BattlerEntity.GroupType.Enemy);
 			}
 			return battler;
 		}
 		
 		public BattlerEntity BuildPlayer() {
 			UserStatus userStatus = CacheFactory.Instance.GetLocalUserDataCache().GetUserStatus();
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Player);
 			
 			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
-			BattlerEntity battler = new BattlerEntity(userStatus.maxHP, userStatus.maxHP, 0, BattlerEntity.GroupType.Player);
+			BattlerEntity battler = new BattlerEntity(userStatus.maxHP, userStatus.maxHP, 2, combatBattler.tp, 0, BattlerEntity.GroupType.Player);
 
 			WeaponEntity[] weaponEntities = new WeaponEntity[userWeapons.Length];
 			for (int i = 0; i < userWeapons.Length; i++) {

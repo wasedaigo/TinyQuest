@@ -27,7 +27,6 @@ public class ZoneStageController : BaseStageController {
 	private bool finishZone;
 	private Roga2dBaseInterval interval;
 	
-	private BaseStageController subController;
 	private ZoneEntity zoneEntity;
 
 	// Use this for initialization
@@ -148,27 +147,22 @@ public class ZoneStageController : BaseStageController {
 	}
 	
 	private void HandleMessageCommand(string text) {
-		MessageBoxController controller = this.gameObject.AddComponent<MessageBoxController>();
+		MessageBoxController controller = this.gameObject.GetComponent<MessageBoxController>();
 		controller.baloonMessageBox = this.baloonMessageBox;
 		controller.MessageFinish = this.CommandFinished;
 		controller.ShowText(text);
-		this.subController = controller;
 
 		this.SetState(State.Next);
 	}
 	
 	private void HandleBattleCommand(int enemyID) {
-		CombatController controller = this.gameObject.AddComponent<CombatController>();
-		controller.baloonMessageBox = this.baloonMessageBox;
-		
+		CombatController controller = this.gameObject.GetComponent<CombatController>();
 		CombatEntity combatEntity = CombatFactory.Instance.Build(enemyID, this.zoneEntity.GetPlayerBattler());
 		controller.SetCombatEntity(combatEntity);
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
 		combatEntity.SkillDraw += this.CombatPanelController.SkillDrawn;
 		controller.StartBattle();
-		
-		this.subController = controller;
 		
 		this.SetState(State.Combat);
 	}
@@ -178,7 +172,6 @@ public class ZoneStageController : BaseStageController {
 	}
 	
 	private void CommandFinished() {
-		Destroy(this.subController);
 		this.zoneEntity.NextCommand();
 	}
 }
