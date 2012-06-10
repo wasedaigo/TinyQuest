@@ -35,10 +35,10 @@
   "Recipe": {
     "data": null
   },
-  "ZoneMonster": {
+  "ZoneBattler": {
     "data": null
   },
-  "Monster": {
+  "Battler": {
     "data": {
       "5": {
         "name": "ent"
@@ -81,7 +81,7 @@
       }
     }
   },
-  "Weapon": {
+  "Gear": {
     "data": {
       "5": {
         "name": "Heavy Crossbow"
@@ -118,7 +118,7 @@
       }
     }
   },
-  "MonsterDropItem": {
+  "BattlerDropItem": {
     "data": null
   },
   "Skill": {

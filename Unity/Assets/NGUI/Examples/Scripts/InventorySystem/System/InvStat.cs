@@ -97,10 +97,10 @@ public class InvStat
 	}
 
 	/// <summary>
-	/// Comparison function for sorting weapons. Damage value will show up first, followed by armor.
+	/// Comparison function for sorting gears. Damage value will show up first, followed by armor.
 	/// </summary>
 
-	static public int CompareWeapon (InvStat a, InvStat b)
+	static public int CompareGear (InvStat a, InvStat b)
 	{
 		int ia = (int)a.id;
 		int ib = (int)b.id;

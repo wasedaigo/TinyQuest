@@ -56,33 +56,25 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":1},
 	"sourceSize": {"w":24,"h":1}
 },
-"life_icon.png":
-{
-	"frame": {"x":25,"y":98,"w":7,"h":6},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":7,"h":6},
-	"sourceSize": {"w":7,"h":6}
-},
 "papet_btn.png":
 {
-	"frame": {"x":33,"y":98,"w":51,"h":19},
+	"frame": {"x":25,"y":98,"w":51,"h":22},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":19},
-	"sourceSize": {"w":51,"h":19}
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":22},
+	"sourceSize": {"w":51,"h":22}
 },
 "papet_btn_on.png":
 {
-	"frame": {"x":85,"y":98,"w":51,"h":19},
+	"frame": {"x":77,"y":98,"w":51,"h":22},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":19},
-	"sourceSize": {"w":51,"h":19}
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":22},
+	"sourceSize": {"w":51,"h":22}
 },
 "single_command_bar.png":
 {
-	"frame": {"x":137,"y":98,"w":107,"h":20},
+	"frame": {"x":129,"y":98,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -90,7 +82,7 @@
 },
 "single_command_bar_on.png":
 {
-	"frame": {"x":0,"y":119,"w":107,"h":20},
+	"frame": {"x":0,"y":121,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -98,7 +90,7 @@
 },
 "triple_command_bar.png":
 {
-	"frame": {"x":108,"y":119,"w":107,"h":20},
+	"frame": {"x":108,"y":121,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -106,7 +98,7 @@
 },
 "triple_command_bar_on.png":
 {
-	"frame": {"x":0,"y":140,"w":107,"h":20},
+	"frame": {"x":0,"y":142,"w":107,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":20},
@@ -119,6 +111,6 @@
 	"format": "RGBA8888",
 	"size": {"w":256,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:78a6a6bb2b1b5f3ac1e777767753eefb$"
+	"smartupdate": "$TexturePacker:SmartUpdate:27b42436b946e3face404f6e27ccb6fa$"
 }
 }

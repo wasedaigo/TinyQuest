@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
 	"sourceSize": {"w":10,"h":10}
 },
-"icon_mini_categoy_monster_weapon.png":
+"icon_mini_categoy_battler_gear.png":
 {
 	"frame": {"x":44,"y":0,"w":10,"h":10},
 	"rotated": false,

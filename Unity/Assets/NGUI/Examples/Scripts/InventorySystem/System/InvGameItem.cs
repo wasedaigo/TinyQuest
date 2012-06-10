@@ -204,7 +204,7 @@ public class InvGameItem
 				}
 			}
 
-			// This would be the place to determine if it's a weapon or armor and sort stats accordingly
+			// This would be the place to determine if it's a gear or armor and sort stats accordingly
 			stats.Sort(InvStat.CompareArmor);
 		}
 		return stats;

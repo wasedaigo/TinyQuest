@@ -30,107 +30,107 @@
         "targetSkill": 64
       }
     ],
-    "Monsters": [
+    "Battlers": [
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 1,
         "growthType": 0,
         "hp": 100
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 2,
         "growthType": 0,
         "hp": 200
       },
       {
-        "weapon1": 10,
-        "weapon2": 11,
-        "weapon3": 0,
+        "gear1": 10,
+        "gear2": 11,
+        "gear3": 0,
         "id": 3,
         "growthType": 0,
         "hp": 1000
       },
       {
-        "weapon1": 9,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 9,
+        "gear2": 0,
+        "gear3": 0,
         "id": 4,
         "growthType": 0,
         "hp": 1500
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 5,
         "growthType": 1,
         "hp": 2000
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 6,
         "growthType": 0,
         "hp": 150
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 7,
         "growthType": 0,
         "hp": 400
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 8,
         "growthType": 0,
         "hp": 200
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 9,
         "growthType": 0,
         "hp": 400
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 10,
         "growthType": 0,
         "hp": 400
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 11,
         "growthType": 0,
         "hp": 100
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 12,
         "growthType": 0,
         "hp": 200
       },
       {
-        "weapon1": 8,
-        "weapon2": 0,
-        "weapon3": 0,
+        "gear1": 8,
+        "gear2": 0,
+        "gear3": 0,
         "id": 13,
         "growthType": 0,
         "hp": 500
@@ -150,58 +150,58 @@
         "id": 4
       }
     ],
-    "MonsterDropItems": [
+    "BattlerDropItems": [
       {
         "rate": 1,
-        "monster": 1,
+        "battler": 1,
         "id": 1,
         "drop": 1,
         "type": 1
       },
       {
         "rate": 1,
-        "monster": 1,
+        "battler": 1,
         "id": 2,
         "drop": 3,
         "type": 1
       },
       {
         "rate": 0.5,
-        "monster": 1,
+        "battler": 1,
         "id": 3,
         "drop": null,
         "type": 0
       },
       {
         "rate": 1,
-        "monster": 2,
+        "battler": 2,
         "id": 4,
         "drop": 4,
         "type": 1
       },
       {
         "rate": 1,
-        "monster": 2,
+        "battler": 2,
         "id": 5,
         "drop": 4,
         "type": 1
       },
       {
         "rate": 100,
-        "monster": 4,
+        "battler": 4,
         "id": 6,
         "drop": 2,
         "type": 1
       },
       {
         "rate": 10,
-        "monster": 4,
+        "battler": 4,
         "id": 7,
         "drop": 1,
         "type": 0
       }
     ],
-    "Weapons": [
+    "Gears": [
       {
         "category": 4,
         "rarity": 0,
@@ -902,11 +902,11 @@
         "element": 0
       }
     ],
-    "ZoneMonsters": [
+    "ZoneBattlers": [
       {
         "zone": null,
         "rate": 80,
-        "monster": 1,
+        "battler": 1,
         "id": 1,
         "isBoss": false,
         "5": "はじまりの森"
@@ -914,7 +914,7 @@
       {
         "zone": null,
         "rate": 20,
-        "monster": 2,
+        "battler": 2,
         "id": 2,
         "isBoss": false,
         "5": "はじまりの森"
@@ -922,7 +922,7 @@
       {
         "zone": null,
         "rate": 0,
-        "monster": 4,
+        "battler": 4,
         "id": 3,
         "isBoss": true,
         "5": "はじまりの森"
@@ -930,7 +930,7 @@
       {
         "zone": null,
         "rate": 50,
-        "monster": 2,
+        "battler": 2,
         "id": 4,
         "isBoss": false,
         "5": "オークの森"
@@ -938,7 +938,7 @@
       {
         "zone": null,
         "rate": 20,
-        "monster": 9,
+        "battler": 9,
         "id": 5,
         "isBoss": false,
         "5": "オークの森"
@@ -946,7 +946,7 @@
       {
         "zone": null,
         "rate": 20,
-        "monster": 8,
+        "battler": 8,
         "id": 6,
         "isBoss": false,
         "5": "オークの森"
@@ -954,7 +954,7 @@
       {
         "zone": null,
         "rate": 10,
-        "monster": 6,
+        "battler": 6,
         "id": 7,
         "isBoss": false,
         "5": "オークの森"
@@ -962,7 +962,7 @@
       {
         "zone": null,
         "rate": 0,
-        "monster": 9,
+        "battler": 9,
         "id": 8,
         "isBoss": true,
         "5": "オークの森"
@@ -970,7 +970,7 @@
       {
         "zone": null,
         "rate": 10,
-        "monster": 1,
+        "battler": 1,
         "id": 9,
         "isBoss": false,
         "5": "陽光の森"
@@ -978,7 +978,7 @@
       {
         "zone": null,
         "rate": 50,
-        "monster": 11,
+        "battler": 11,
         "id": 10,
         "isBoss": false,
         "5": "陽光の森"
@@ -986,7 +986,7 @@
       {
         "zone": null,
         "rate": 35,
-        "monster": 12,
+        "battler": 12,
         "id": 11,
         "isBoss": false,
         "5": "陽光の森"
@@ -994,7 +994,7 @@
       {
         "zone": null,
         "rate": 5,
-        "monster": 13,
+        "battler": 13,
         "id": 12,
         "isBoss": false,
         "5": "陽光の森"
@@ -1022,13 +1022,13 @@
         "id": 1,
         "count": 2,
         "material": 2,
-        "weapon": 1
+        "gear": 1
       },
       {
         "id": 2,
         "count": 2,
         "material": 3,
-        "weapon": 1
+        "gear": 1
       }
     ]
   },

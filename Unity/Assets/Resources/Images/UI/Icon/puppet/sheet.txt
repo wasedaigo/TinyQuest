@@ -1,0 +1,20 @@
+{"frames": {
+
+"fighter.png":
+{
+	"frame": {"x":0,"y":0,"w":22,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":22},
+	"sourceSize": {"w":22,"h":22}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "sheet.png",
+	"format": "RGBA8888",
+	"size": {"w":32,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9349fe7a4966d96fdb87639a9d7a1440$"
+}
+}
