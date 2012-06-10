@@ -1,13 +1,72 @@
 using System.Collections.Generic;
+using TinyQuest.Data.Cache;
 namespace TinyQuest.Data{
 	
 	public class UserStatus {
 		public int maxHP;	
 	}
 	
-	public class UserWeapon : IDData{
-		public int weaponId;
+	public class UserMaterial : IDData{
+		public int userPuppet;
+		public int gear;
 		public int exp;
+	}
+	
+	public class UserGear : IDData{
+		public int gear;
+		public int exp;
+		
+		public MasterGear GetMasterGear() {
+			return Cache.CacheFactory.Instance.GetMasterDataCache().GetGearByID(this.gear);	
+		}
+		
+		public int GetLevel() {
+			return this.GetMasterGear().GetLevel(this.exp);
+		}
+	}
+	
+	public class UserCore : IDData{
+		public int core;
+		public int[] activeGears;
+		public int[] passiveGears;
+		public int exp;
+		
+		public MasterCore GetMasterCore() {
+			return Cache.CacheFactory.Instance.GetMasterDataCache().GetCoreByID(this.core);
+		}
+		
+		public UserGear[] GetActiveUserGears() {
+			UserGear[] userGears = new UserGear[this.activeGears.Length];
+			for (int i = 0; i < this.activeGears.Length; i++) {
+				userGears[i] = Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserGearByID(this.activeGears[i]);
+			}
+			return userGears;
+		}
+		
+		public UserGear[] GetPassiveUserGears() {
+			UserGear[] userGears = new UserGear[this.activeGears.Length];
+			for (int i = 0; i < this.activeGears.Length; i++) {
+				userGears[i] = Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserGearByID(this.activeGears[i]);
+			}
+			return userGears;
+		}
+	}
+
+	public class UserPuppet : IDData{
+		public int userCore;
+		
+		public UserCore GetUserCore() {
+			return 	Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserCoreByID(this.userCore);
+		}
+	}
+	
+	public class MonsterInstance : IDData{
+		public int monster;
+		public int lv;
+		
+		public MasterMonster GetMasterMonster() {
+			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetMonsterByID(this.monster);
+		}
 	}
 	
 	public class UserZone{
@@ -19,36 +78,26 @@ namespace TinyQuest.Data{
     	public int stepIndex;
     	public int commandIndex;
 		public object commandState;
-		public int[] weaponDurabilities;
-		public int currentTP;
+	}
+	
+	public enum CombatBattlerType {
+		Player,
+		Monster
 	}
 	
 	public class CombatBattler {
-		public const int HandCount = 3;
-		public int no;
-		public int group;
 		public int hp;
-		public int tp;
 		public int[] buffs;
-
-		public int[] handSkills;
-		public List<int> librarySkills;
-		public List<int> compositeSkills;
-
+		public CombatBattlerType battlerType;
+		public int battlerID;
+		
 		public CombatBattler(){
-			this.handSkills = new int[HandCount];
-			this.librarySkills = new List<int>();
-			this.compositeSkills = new List<int>();
 		}
 
-		public CombatBattler(int no, int group, int hp, int tp, int[] buffs) {
-			this.handSkills = new int[HandCount];
-			this.librarySkills = new List<int>();
-			this.compositeSkills = new List<int>();
-			this.no = no;
-			this.group = group;
+		public CombatBattler(CombatBattlerType battlerType, int battlerID, int hp, int[] buffs) {
+			this.battlerID = battlerID;
+			this.battlerType = battlerType;
 			this.hp = hp;
-			this.tp = tp;
 			this.buffs = buffs;
 		}
 	}
@@ -72,7 +121,12 @@ namespace TinyQuest.Data{
 		public CombatProgress combatProgress;
 		public UserZone zone;
 		public readonly UserStatus status;
-		public readonly UserWeapon[] equipWeapons;
-		public readonly UserWeapon[] stockWeapons;
+
+		public readonly int[] party;
+		public readonly UserPuppet[] ownPuppets;
+		public readonly UserGear[] ownGears;
+		public readonly UserCore[] ownCores;
+		public readonly MonsterInstance[] monsterInstances;
+		
 	}
 }

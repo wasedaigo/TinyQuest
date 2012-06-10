@@ -10,10 +10,6 @@ namespace TinyQuest.Entity {
 			get { return this.masterSkill; }
 		}
 
-		public SkillCompositeType GetCompositeType() {
-			return CacheFactory.Instance.GetMasterDataCache().GetCompositeType(this.masterSkill.id);
-		}
-
 		public SkillEntity(MasterSkill masterSkill) {
 			this.masterSkill = masterSkill;
 		}

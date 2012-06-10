@@ -3,36 +3,6 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data{
-	public class CompositeData {
-		public readonly int Skill;
-		public readonly int[] BaseSkills;
-		
-		public CompositeData(int skill, int[] baseSkills) {
-			this.Skill = skill;
-			this.BaseSkills = baseSkills;
-		}
-		
-		
-		public int GetFirstActiveIndex() {
-			int firstSkillSlot = -1;
-			for (int i = 0; i < this.BaseSkills.Length; i++) {
-				int baseSkill = this.BaseSkills[i];
-				if (baseSkill > 0) {
-					firstSkillSlot = i;
-					break;
-				}
-			}
-			
-			return firstSkillSlot;
-		}
-	}
-	
-	public enum SkillCompositeType {
-		Single,
-		Double,
-		Triple
-	}
-
 	public enum ElementType {
 		None,
 		Fire,
@@ -40,7 +10,7 @@ namespace TinyQuest.Data{
 		Earth,
 		Thunder
 	};
-	
+
 	public enum AttributeType {
 		None,
 		Slash,
@@ -72,14 +42,8 @@ namespace TinyQuest.Data{
 		Mythic
 	};
 	
-	public enum UserType {
-		All,
-		Player,
-		Monster
-	};
-	
 	public enum WeaponCategory {
-		Monster,
+		None,
 		Sword,
 		BigSword,
 		Katana,
@@ -97,11 +61,19 @@ namespace TinyQuest.Data{
 	};
 	
 	public enum ItemType {
-		Weapon,
-		Material
+		Core,
+		Gear,
+		Material,
+		Recipe
+	};
+
+	public enum GearSlotType {
+		Magic,
+		Melee,
+		Range
 	};
 	
-	public struct MasterWeaponParameter {
+	public struct MasterGearParameter {
 		public enum Key {
 			Exp = 0,
 			Power = 1
@@ -109,7 +81,7 @@ namespace TinyQuest.Data{
 		public readonly int exp;
 		public readonly int power;
 		
-		public MasterWeaponParameter(int[] rawData) {
+		public MasterGearParameter(int[] rawData) {
 			this.exp = rawData[(int)Key.Exp];
 			this.power = rawData[(int)Key.Power];
 		}
@@ -123,12 +95,6 @@ namespace TinyQuest.Data{
 			return "";	
 		}
 	}
-	
-	public class MasterRecipe : IDData{
-		int count;
-		int material;
-		int weapon;
-	}
 
 	public class MasterZoneMonster : IDData{
 		int zoneID;
@@ -136,75 +102,8 @@ namespace TinyQuest.Data{
 		int monster;
 		bool isBoss;
 	}
-
-	public class MasterWeapon : IDData{
-		public static readonly int MinLevel = 1;
-		public int MaxLevel {
-			get {return 50;}	
-		}
-
-		public readonly string name;
-		public readonly int category;
-		public readonly int skill1;
-		public readonly int skill2;
-		public readonly int skill3;
-		public readonly int atk;
-		public readonly int tp;
-		public readonly UserType userType;
-		public readonly GrowthType growthType;
-		public readonly RarityType rarity;
-		public readonly int durability;
-		
-		public string GetUIImagePath() {
-			return "UI/Weapon/" + this.id;	
-		}
-		
-		public string GetAnimationImagePath() {
-			return "Weapon/" + this.id;	
-		}
-		
-		public int GetLevel(int exp) {
-			/*
-			int level = this.parameters.Length;
-			int expKey = (int)MasterWeaponParameter.Key.Exp;
-			for (int i = 0; i < this.parameters.Length; i++) {
-				if (this.parameters[i][expKey] > exp) {
-					level = id + 1;	
-				}
-			}*/
-			int level = 1;
-			return level;
-		}
-		/*
-		public MasterWeaponParameter GetParam(int level) {
-			if (level < MinLevel || level > MaxLevel) {
-				Debug.LogError(level + " is out of range");
-			}
-			
-			return new MasterWeaponParameter(this.parameters[level - MinLevel]);
-		}*/
-		
-		public int GetMaxExp() {
-			/*
-			if (this.parameters.Length == 0) {
-				Debug.LogError(" No parameter is defined");
-			}
-			
-			MasterWeaponParameter param = new MasterWeaponParameter(this.parameters[this.MaxLevel - MinLevel]);
-			return param.exp;*/
-			return 1000;
-		}
-		
-		public string GetName() {
-			return "";	
-		}
-	}
-
-	public class MasterMonster : IDData {
-		public readonly int weapon1;
-		public readonly int weapon2;
-		public readonly int weapon3;
-		public readonly int tp;
+	
+	public class MasterCoreBase : IDData {
 		public readonly int hp;
 		public readonly GrowthType growthType;
 		
@@ -213,33 +112,79 @@ namespace TinyQuest.Data{
 		}
 	}
 
+	// Puppet core will define the basic feature of the puppet
+	public class MasterCore : MasterCoreBase {
+		public readonly RarityType rarity;
+		
+		public readonly GearSlotType[] activeSlotTypes;
+		public readonly GearSlotType[] passiveSlotTypes;
+		
+		public string GetName() {
+			return "";	
+		}
+	}
+
+	public class MasterGearSetting : MasterCoreBase {
+		public readonly int gear;
+		public readonly int lv;
+	}
+
+	// Define monster data
+	public class MasterMonster : MasterCoreBase {
+		public readonly MasterGearSetting[] activeGears;
+		public readonly MasterGearSetting[] passiveGears;
+	}
+
 	public class MasterSkill : IDData {
 		public readonly int atk;
-		public readonly int tp;
 		public readonly string animation;
 		public readonly BuffType buff;
 		public readonly AttributeType attribute;
 		public readonly ElementType element;
-		
+		public readonly WeaponCategory weaponCategory;
+
 		public string GetName() {
 			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");
 		}
 	}
 	
-	public class MasterCompositeSkill : IDData {
-		public readonly int targetSkill;
-		public readonly int baseSkill1;
-		public readonly int baseSkill2;
-		public readonly int baseSkill3;
+	public class MasterGear : IDData {
+		public readonly int skill;
+		public readonly int exp;
+		public readonly GrowthType growthType;
+
+		public string GetName() {
+			return CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.skill).GetName();
+		}
+		
+		public int GetLevel(int exp) {
+			return 0;
+		}
+		
+		public int GetMaxExp() {
+			return 0;	
+		}
 	}
 	
+	public class MasterRecipe : IDData {
+		public readonly int material1;
+		public readonly int material2;
+		public readonly int material3;
+		public readonly int material1Count;
+		public readonly int material2Count;
+		public readonly int material3Count;
+		public readonly ItemType itemType;
+		public readonly int itemID;
+	}
+	
+	// Define moster item drop table
 	public class MasterMonsterDropItem : IDData {
-		public readonly int rate;
 		public readonly int monster;
+		public readonly int rate;
 		public readonly int drop;
 		public readonly ItemType type;
 	}
-	
+
 	public class MasterZone : IDData {
       	public readonly int stepCount;
 		public readonly string path;
@@ -252,9 +197,9 @@ namespace TinyQuest.Data{
 	
 	public class MasterData {
 		public readonly MasterZone Zone;
-		public readonly MasterWeapon[] Weapons;
+		public readonly MasterGear[] Gears;
 		public readonly MasterSkill[] Skills;
-		public readonly MasterCompositeSkill[] CompositeSkills;
+		public readonly MasterCore[] Cores;
 		public readonly MasterMonster[] Monsters;
 		public readonly MasterZoneMonster[] ZoneMonsters;
 		public readonly MasterMonsterDropItem[] MonsterDropItems;

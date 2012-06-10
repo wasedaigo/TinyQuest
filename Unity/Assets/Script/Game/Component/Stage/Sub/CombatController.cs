@@ -71,9 +71,7 @@ public class CombatController : BaseStageController {
 		BattlerEntity ally = this.combatEntity.GetBattler(BattlerEntity.GroupType.Player, 0);
 		BattlerEntity enemy = this.combatEntity.GetBattler(BattlerEntity.GroupType.Enemy, 0);
 		this.AllyHP.text = ally.HP.ToString();
-		this.EnemyHP.text = enemy.HP.ToString();	
-		this.AllyTP.text = ally.TP.ToString();
-		this.EnemyTP.text = enemy.TP.ToString();
+		this.EnemyHP.text = enemy.HP.ToString();
 	}
 	
     private void AnimationFinished(Roga2dAnimation animation)

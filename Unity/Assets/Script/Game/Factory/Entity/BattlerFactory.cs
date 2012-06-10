@@ -14,28 +14,25 @@ namespace TinyQuest.Factory.Entity {
 			BattlerEntity battler = null;
 			if (combatProgress != null) {
 				CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Enemy);
-				battler = new BattlerEntity(combatBattler.hp, masterEnemy.hp, 2, combatBattler.tp, 0,  BattlerEntity.GroupType.Enemy);
+				MonsterInstance instance = CacheFactory.Instance.GetLocalUserDataCache().GetMonsterInstanceByID(combatBattler.battlerID);
+				CoreEntity core = CoreFactory.Instance.Build(instance.GetMasterMonster().activeGears, instance.GetMasterMonster().passiveGears);
+				battler = new BattlerEntity(core, combatBattler.hp, masterEnemy.hp, 0,  BattlerEntity.GroupType.Enemy);
 			} else {
-				battler = new BattlerEntity(masterEnemy.hp, masterEnemy.hp, 2, 0, 0, BattlerEntity.GroupType.Enemy);
+				CoreEntity core = CoreFactory.Instance.Build(masterEnemy.activeGears, masterEnemy.passiveGears);
+				battler = new BattlerEntity(core, masterEnemy.hp, masterEnemy.hp, 2, BattlerEntity.GroupType.Enemy);
 			}
 			return battler;
 		}
 		
-		public BattlerEntity BuildPlayer() {
+		public BattlerEntity BuildPuppet(int puppetId) {
 			UserStatus userStatus = CacheFactory.Instance.GetLocalUserDataCache().GetUserStatus();
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Player);
 			
-			UserWeapon[] userWeapons = CacheFactory.Instance.GetLocalUserDataCache().GetEquipWeapons();
-			BattlerEntity battler = new BattlerEntity(userStatus.maxHP, userStatus.maxHP, 2, combatBattler.tp, 0, BattlerEntity.GroupType.Player);
+			UserCore userCore = CacheFactory.Instance.GetLocalUserDataCache().GetPuppetByID(puppetId).GetUserCore();
+			CoreEntity core = CoreFactory.Instance.Build(userCore.GetActiveUserGears(), userCore.GetPassiveUserGears());
+			BattlerEntity battler = new BattlerEntity(core, userStatus.maxHP, userStatus.maxHP, 2, BattlerEntity.GroupType.Player);
 
-			WeaponEntity[] weaponEntities = new WeaponEntity[userWeapons.Length];
-			for (int i = 0; i < userWeapons.Length; i++) {
-				WeaponEntity weapon = WeaponFactory.Instance.Build(userWeapons[i]);
-				weaponEntities[i] = weapon;
-			}
-			
-			battler.SetWeapons(weaponEntities);	
 			return battler;
 		}
 	}

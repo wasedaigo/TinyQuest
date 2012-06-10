@@ -161,7 +161,6 @@ public class ZoneStageController : BaseStageController {
 		controller.SetCombatEntity(combatEntity);
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
-		combatEntity.SkillDraw += this.CombatPanelController.SkillDrawn;
 		controller.StartBattle();
 		
 		this.SetState(State.Combat);

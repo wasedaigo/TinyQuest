@@ -13,20 +13,34 @@ namespace TinyQuest.Data.Cache {
 			this.Set(txt.text);	
 		}
 		
-		public override UserWeapon[] GetEquipWeapons() {
+		public override UserGear[] GetOwnGears() {
 			if (this.localUserData == null) {
 				this.LoadLocalUserMock();
 			}
-			return base.GetEquipWeapons();
+			return base.GetOwnGears();
 		}
 
-		public override UserWeapon[] GetStockWeapons() {
+		public override UserCore[] GetOwnCores() {
 			if (this.localUserData == null) {
 				this.LoadLocalUserMock();
 			}
-			return base.GetStockWeapons();
+			return base.GetOwnCores();
+		}
+
+		public override UserPuppet[] GetOwnPuppets() {
+			if (this.localUserData == null) {
+				this.LoadLocalUserMock();
+			}
+			return base.GetOwnPuppets();
 		}
 		
+		public override UserPuppet[] GetParty() {
+			if (this.localUserData == null) {
+				this.LoadLocalUserMock();
+			}
+			return base.GetParty();	
+		}
+	
 		public override CombatProgress GetCombatProgress() {
 			if (this.localUserData == null) {
 				this.LoadLocalUserMock();

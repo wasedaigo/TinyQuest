@@ -19,11 +19,11 @@ namespace TinyQuest.Data.Cache {
 			this.Set(txt.text);	
 		}
 		
-		public override MasterWeapon GetWeaponByID(int id) {
-			if (this.masterWeaponDictionary == null) {
+		public override MasterGear GetGearByID(int id) {
+			if (this.masterGearDictionary == null) {
 				this.LoadMaster();
 			}
-			return base.GetWeaponByID(id);
+			return base.GetGearByID(id);
 		}
 
 		public override MasterSkill GetSkillByID(int id) {
@@ -31,6 +31,13 @@ namespace TinyQuest.Data.Cache {
 				this.LoadMaster();
 			}
 			return base.GetSkillByID(id);
+		}
+		
+		public virtual MasterCore GetCoreByID(int id) {
+			if (this.masterCoreDictionary == null) {
+				this.LoadMaster();
+			}
+			return base.GetCoreByID(id);
 		}
 		
 		public override MasterMonster GetMonsterByID(int id) {
