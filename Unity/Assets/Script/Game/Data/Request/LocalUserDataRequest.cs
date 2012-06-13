@@ -100,10 +100,9 @@ namespace TinyQuest.Data.Request {
 			CombatBattler caster = combatProgress.battlers[(int)casterEntity.Group][casterEntity.No];
 			CombatBattler target = combatProgress.battlers[(int)targetEntity.Group][targetEntity.No];
 	
-			CoreEntity coreEntity = casterEntity.GetCore();
-			GearEntity[] entities = coreEntity.GetActiveGears();
+			PuppetEntity puppetEntity = casterEntity.GetPuppet();
 			
-			int skillId = Mathf.RoundToInt(Random.Range(0, entities.Length - 1));
+			int skillId = Mathf.RoundToInt(Random.Range(0, 2- 1));
 			
 			//caster.tp -= 
 			target.hp -= 1;

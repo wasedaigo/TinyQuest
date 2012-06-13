@@ -12,60 +12,20 @@ namespace TinyQuest.Data{
 		public int exp;
 	}
 	
-	public class UserGear : IDData{
-		public int gear;
-		public int exp;
-		
-		public MasterGear GetMasterGear() {
-			return Cache.CacheFactory.Instance.GetMasterDataCache().GetGearByID(this.gear);	
-		}
-		
-		public int GetLevel() {
-			return this.GetMasterGear().GetLevel(this.exp);
-		}
-	}
-	
-	public class UserCore : IDData{
-		public int core;
-		public int[] activeGears;
-		public int[] passiveGears;
-		public int exp;
-		
-		public MasterCore GetMasterCore() {
-			return Cache.CacheFactory.Instance.GetMasterDataCache().GetCoreByID(this.core);
-		}
-		
-		public UserGear[] GetActiveUserGears() {
-			UserGear[] userGears = new UserGear[this.activeGears.Length];
-			for (int i = 0; i < this.activeGears.Length; i++) {
-				userGears[i] = Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserGearByID(this.activeGears[i]);
-			}
-			return userGears;
-		}
-		
-		public UserGear[] GetPassiveUserGears() {
-			UserGear[] userGears = new UserGear[this.activeGears.Length];
-			for (int i = 0; i < this.activeGears.Length; i++) {
-				userGears[i] = Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserGearByID(this.activeGears[i]);
-			}
-			return userGears;
-		}
-	}
-
 	public class UserPuppet : IDData{
-		public int userCore;
-		
-		public UserCore GetUserCore() {
-			return 	Cache.CacheFactory.Instance.GetLocalUserDataCache().GetUserCoreByID(this.userCore);
+		public int puppet;
+		public int exp;
+		public MasterPuppet GetMasterPuppet() {
+			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(this.puppet);
 		}
 	}
 	
-	public class MonsterInstance : IDData{
-		public int monster;
+	public class PuppetInstance : IDData{
+		public int puppet;
 		public int lv;
 		
-		public MasterMonster GetMasterMonster() {
-			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetMonsterByID(this.monster);
+		public MasterPuppet GetMasterPuppet() {
+			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(this.puppet);
 		}
 	}
 	
@@ -124,9 +84,7 @@ namespace TinyQuest.Data{
 
 		public readonly int[] party;
 		public readonly UserPuppet[] ownPuppets;
-		public readonly UserGear[] ownGears;
-		public readonly UserCore[] ownCores;
-		public readonly MonsterInstance[] monsterInstances;
+		public readonly PuppetInstance[] monsterInstances;
 		
 	}
 }

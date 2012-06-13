@@ -7,32 +7,20 @@ namespace TinyQuest.Factory.Entity {
 	public class BattlerFactory  {
 		public static readonly BattlerFactory Instance = new BattlerFactory();
 		private BattlerFactory(){}
-
-		public BattlerEntity BuildEnemy(int enemyId) {
-			MasterMonster masterEnemy = CacheFactory.Instance.GetMasterDataCache().GetMonsterByID(enemyId);
+		
+		public BattlerEntity BuildPuppet(int puppetId, BattlerEntity.GroupType groupType) {
+			MasterPuppet masterPuppet = CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(puppetId);
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			BattlerEntity battler = null;
 			if (combatProgress != null) {
-				CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Enemy);
-				MonsterInstance instance = CacheFactory.Instance.GetLocalUserDataCache().GetMonsterInstanceByID(combatBattler.battlerID);
-				CoreEntity core = CoreFactory.Instance.Build(instance.GetMasterMonster().activeGears, instance.GetMasterMonster().passiveGears);
-				battler = new BattlerEntity(core, combatBattler.hp, masterEnemy.hp, 0,  BattlerEntity.GroupType.Enemy);
+				CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)groupType);
+				PuppetInstance instance = CacheFactory.Instance.GetLocalUserDataCache().GetPuppetInstanceByID(combatBattler.battlerID);
+				PuppetEntity puppet = PuppetFactory.Instance.Build();
+				battler = new BattlerEntity(puppet, combatBattler.hp, masterPuppet.hp, 0,  groupType);
 			} else {
-				CoreEntity core = CoreFactory.Instance.Build(masterEnemy.activeGears, masterEnemy.passiveGears);
-				battler = new BattlerEntity(core, masterEnemy.hp, masterEnemy.hp, 2, BattlerEntity.GroupType.Enemy);
+				PuppetEntity puppet = PuppetFactory.Instance.Build();
+				battler = new BattlerEntity(puppet, masterPuppet.hp, masterPuppet.hp, 2, groupType);
 			}
-			return battler;
-		}
-		
-		public BattlerEntity BuildPuppet(int puppetId) {
-			UserStatus userStatus = CacheFactory.Instance.GetLocalUserDataCache().GetUserStatus();
-			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)BattlerEntity.GroupType.Player);
-			
-			UserCore userCore = CacheFactory.Instance.GetLocalUserDataCache().GetPuppetByID(puppetId).GetUserCore();
-			CoreEntity core = CoreFactory.Instance.Build(userCore.GetActiveUserGears(), userCore.GetPassiveUserGears());
-			BattlerEntity battler = new BattlerEntity(core, userStatus.maxHP, userStatus.maxHP, 2, BattlerEntity.GroupType.Player);
-
 			return battler;
 		}
 	}

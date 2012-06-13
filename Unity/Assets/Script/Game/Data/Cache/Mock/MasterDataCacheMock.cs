@@ -18,13 +18,6 @@ namespace TinyQuest.Data.Cache {
 			TextAsset txt = (TextAsset)Resources.Load("Data/Master", typeof(TextAsset));
 			this.Set(txt.text);	
 		}
-		
-		public override MasterGear GetGearByID(int id) {
-			if (this.masterGearDictionary == null) {
-				this.LoadMaster();
-			}
-			return base.GetGearByID(id);
-		}
 
 		public override MasterSkill GetSkillByID(int id) {
 			if (this.masterSkillDictionary == null) {
@@ -33,18 +26,12 @@ namespace TinyQuest.Data.Cache {
 			return base.GetSkillByID(id);
 		}
 		
-		public virtual MasterCore GetCoreByID(int id) {
-			if (this.masterCoreDictionary == null) {
+		public override MasterPuppet GetPuppetByID(int id) {
+			if (this.masterPuppetDictionary == null) {
 				this.LoadMaster();
 			}
-			return base.GetCoreByID(id);
+			return base.GetPuppetByID(id);
 		}
 		
-		public override MasterMonster GetMonsterByID(int id) {
-			if (this.masterMonsterDictionary == null) {
-				this.LoadMaster();
-			}
-			return base.GetMonsterByID(id);
-		}
 	}
 }

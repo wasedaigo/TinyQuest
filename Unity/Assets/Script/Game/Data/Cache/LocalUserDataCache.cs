@@ -9,10 +9,8 @@ namespace TinyQuest.Data.Cache {
 	public class LocalUserDataCache
 	{
 		protected LocalUserData localUserData;
-		protected Dictionary<int, UserCore> userCoreDictionary;
 		protected Dictionary<int, UserPuppet> userPuppetDictionary;
-		protected Dictionary<int, MonsterInstance> monsterInstanceDictionary;
-		protected Dictionary<int, UserGear> userGearDictionary;
+		protected Dictionary<int, PuppetInstance> monsterInstanceDictionary;
 		
 		public string Serialize() {
 			// Need to implement
@@ -22,9 +20,8 @@ namespace TinyQuest.Data.Cache {
 		public void Set(string jsonText) {
 			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
 			this.userPuppetDictionary = this.GetAsDictionary<UserPuppet>(this.localUserData.ownPuppets);
-			this.monsterInstanceDictionary = this.GetAsDictionary<MonsterInstance>(this.localUserData.monsterInstances);
-			this.userCoreDictionary = this.GetAsDictionary<UserCore>(this.localUserData.ownCores);
-			this.userGearDictionary = this.GetAsDictionary<UserGear>(this.localUserData.ownGears);
+			this.monsterInstanceDictionary = this.GetAsDictionary<PuppetInstance>(this.localUserData.monsterInstances);
+			this.userPuppetDictionary = this.GetAsDictionary<UserPuppet>(this.localUserData.ownPuppets);
 		}
 		
 		private Dictionary<int, T> GetAsDictionary<T>(T[] data) 
@@ -56,14 +53,6 @@ namespace TinyQuest.Data.Cache {
 		public virtual UserZone GetUserZone() {
 			return this.localUserData.zone;
 		}
-		
-		public virtual UserGear[] GetOwnGears() {
-			return this.localUserData.ownGears;
-		}
-	
-		public virtual UserCore[] GetOwnCores() {
-			return this.localUserData.ownCores;
-		}
 
 		public virtual UserPuppet[] GetOwnPuppets() {
 			return this.localUserData.ownPuppets;
@@ -82,15 +71,11 @@ namespace TinyQuest.Data.Cache {
 			return this.userPuppetDictionary[id];
 		}
 		
-		public virtual UserCore GetUserCoreByID(int id) {
-			return this.userCoreDictionary[id];
+		public virtual UserPuppet GetUserPuppetByID(int id) {
+			return this.userPuppetDictionary[id];
 		}
 		
-		public virtual UserGear GetUserGearByID(int id) {
-			return this.userGearDictionary[id];
-		}
-		
-		public virtual MonsterInstance GetMonsterInstanceByID(int id) {
+		public virtual PuppetInstance GetPuppetInstanceByID(int id) {
 			return this.monsterInstanceDictionary[id];
 		}
 		

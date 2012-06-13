@@ -9,7 +9,7 @@ namespace TinyQuest.Factory.Entity {
 		private ZoneFactory(){}
 		
 		public ZoneEntity Build() {
-			BattlerEntity battlerEntity = BattlerFactory.Instance.BuildPuppet(0); // TODO
+			BattlerEntity battlerEntity = BattlerFactory.Instance.BuildPuppet(0, BattlerEntity.GroupType.Player); // TODO
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			ZoneEntity zoneEntity = new ZoneEntity(userZone);
 			zoneEntity.SetPlayerBattler(battlerEntity);

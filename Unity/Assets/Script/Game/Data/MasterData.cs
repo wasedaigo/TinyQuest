@@ -34,6 +34,11 @@ namespace TinyQuest.Data{
 		LastStand
 	};
 	
+	public enum SkillType {
+		Active,
+		Passive
+	};
+	
 	public enum RarityType {
 		Common,
 		Uncommon,
@@ -66,7 +71,12 @@ namespace TinyQuest.Data{
 		Material,
 		Recipe
 	};
-
+	
+	public enum PuppetLookType {
+		Dynamic,
+		Static
+	};
+	
 	public enum GearSlotType {
 		Magic,
 		Melee,
@@ -103,36 +113,24 @@ namespace TinyQuest.Data{
 		bool isBoss;
 	}
 	
-	public class MasterCoreBase : IDData {
-		public readonly int hp;
+	public class MasterPuppet : IDData {
 		public readonly GrowthType growthType;
-		
-		public string GetName() {
-			return "";	
-		}
-	}
-
-	// Puppet core will define the basic feature of the puppet
-	public class MasterCore : MasterCoreBase {
+		public readonly int unitType;
+		public readonly int exp;
+		public readonly int hp;
+		public readonly int power;
+		public readonly int def;
+		public readonly int mdef;
+		public readonly int speed;
+		public readonly string lookCode;
+		public readonly PuppetLookType lookType;
 		public readonly RarityType rarity;
-		
-		public readonly GearSlotType[] activeSlotTypes;
-		public readonly GearSlotType[] passiveSlotTypes;
+		public readonly MasterSkill[] activeSkills;
+		public readonly MasterSkill[] passiveSkills;
 		
 		public string GetName() {
 			return "";	
 		}
-	}
-
-	public class MasterGearSetting : MasterCoreBase {
-		public readonly int gear;
-		public readonly int lv;
-	}
-
-	// Define monster data
-	public class MasterMonster : MasterCoreBase {
-		public readonly MasterGearSetting[] activeGears;
-		public readonly MasterGearSetting[] passiveGears;
 	}
 
 	public class MasterSkill : IDData {
@@ -142,27 +140,12 @@ namespace TinyQuest.Data{
 		public readonly AttributeType attribute;
 		public readonly ElementType element;
 		public readonly WeaponCategory weaponCategory;
+		public readonly float chance;
+		public readonly int effect;
+		public readonly SkillType type;
 
 		public string GetName() {
 			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");
-		}
-	}
-	
-	public class MasterGear : IDData {
-		public readonly int skill;
-		public readonly int exp;
-		public readonly GrowthType growthType;
-
-		public string GetName() {
-			return CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.skill).GetName();
-		}
-		
-		public int GetLevel(int exp) {
-			return 0;
-		}
-		
-		public int GetMaxExp() {
-			return 0;	
 		}
 	}
 	
@@ -197,10 +180,8 @@ namespace TinyQuest.Data{
 	
 	public class MasterData {
 		public readonly MasterZone Zone;
-		public readonly MasterGear[] Gears;
+		public readonly MasterPuppet[] Puppets;
 		public readonly MasterSkill[] Skills;
-		public readonly MasterCore[] Cores;
-		public readonly MasterMonster[] Monsters;
 		public readonly MasterZoneMonster[] ZoneMonsters;
 		public readonly MasterMonsterDropItem[] MonsterDropItems;
 		public readonly MasterRecipe[] Recipes;

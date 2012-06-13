@@ -12,20 +12,6 @@ namespace TinyQuest.Data.Cache {
 			TextAsset txt = (TextAsset)Resources.Load("Data/LocalUserMock", typeof(TextAsset));
 			this.Set(txt.text);	
 		}
-		
-		public override UserGear[] GetOwnGears() {
-			if (this.localUserData == null) {
-				this.LoadLocalUserMock();
-			}
-			return base.GetOwnGears();
-		}
-
-		public override UserCore[] GetOwnCores() {
-			if (this.localUserData == null) {
-				this.LoadLocalUserMock();
-			}
-			return base.GetOwnCores();
-		}
 
 		public override UserPuppet[] GetOwnPuppets() {
 			if (this.localUserData == null) {
