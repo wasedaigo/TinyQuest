@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using TinyQuest.Data;
 using TinyQuest.Data.Request;
 
-namespace TinyQuest.Entity {
+namespace TinyQuest.Model {
 
-	public class ZoneEntity {
+	public class ZoneModel {
 		public  enum PostCommandState {
 			None,
 			NextStep,
@@ -25,23 +25,23 @@ namespace TinyQuest.Entity {
 			get{return this.moveDistance;}
 		}
 
-		private Dictionary<int, ZoneEventEntity> events =  new Dictionary<int, ZoneEventEntity>();
+		private Dictionary<int, ZoneEventModel> events =  new Dictionary<int, ZoneEventModel>();
 		private UserZone userZone;
-		private BattlerEntity playerBattler;
+		private BattlerModel playerBattler;
 		
-		public ZoneEntity(UserZone userZone) {
+		public ZoneModel(UserZone userZone) {
 			this.userZone = userZone;
 		}
 		
-		public void SetEvent(int stepNo, ZoneEventEntity zoneEvent) {
+		public void SetEvent(int stepNo, ZoneEventModel zoneEvent) {
 			this.events.Add(stepNo, zoneEvent);
 		}
 		
-		public void SetPlayerBattler(BattlerEntity playerBattler) {
+		public void SetPlayerBattler(BattlerModel playerBattler) {
 			this.playerBattler = playerBattler;
 		}
 		
-		public BattlerEntity GetPlayerBattler() {
+		public BattlerModel GetPlayerBattler() {
 			return this.playerBattler;
 		}
 		
@@ -94,7 +94,7 @@ namespace TinyQuest.Entity {
 			req.ProgressCommand(this.OnCommandProgressed);
 		}
 
-		private void OnCommandProgressed(ZoneEntity.PostCommandState postCommandState, ZoneCommand command, object zoneCommandState) {
+		private void OnCommandProgressed(ZoneModel.PostCommandState postCommandState, ZoneCommand command, object zoneCommandState) {
 			switch (postCommandState) {
 			case PostCommandState.None:
 				this.CommandExecute(command, zoneCommandState);

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data;
 using TinyQuest.Core;
-using TinyQuest.Entity;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Model;
+using TinyQuest.Factory.Model;
 using TinyQuest.Object;
 
 public class ZoneStageController : BaseStageController {
@@ -27,7 +27,7 @@ public class ZoneStageController : BaseStageController {
 	private bool finishZone;
 	private Roga2dBaseInterval interval;
 	
-	private ZoneEntity zoneEntity;
+	private ZoneModel zoneModel;
 
 	// Use this for initialization
 	protected override void Start() {
@@ -39,25 +39,25 @@ public class ZoneStageController : BaseStageController {
 		
 		this.Stage.GetCharacterLayer().AddChild(this.player);
 
-		this.zoneEntity = ZoneFactory.Instance.Build();
-		this.zoneEntity.PlayerMove += this.onPlayerMoved;
-		this.zoneEntity.StepProgress += this.OnStepProgressed;
-		this.zoneEntity.CommandExecute += this.OnCommandExecuted;
-		this.zoneEntity.GotoNextStep += this.GotoNextStep;
-		this.zoneEntity.ClearZone += this.ClearZone;
+		this.zoneModel = ZoneFactory.Instance.Build();
+		this.zoneModel.PlayerMove += this.onPlayerMoved;
+		this.zoneModel.StepProgress += this.OnStepProgressed;
+		this.zoneModel.CommandExecute += this.OnCommandExecuted;
+		this.zoneModel.GotoNextStep += this.GotoNextStep;
+		this.zoneModel.ClearZone += this.ClearZone;
 
 		this.SetState(State.Pause);
 
-		if (this.zoneEntity.IsAtStart()) {
+		if (this.zoneModel.IsAtStart()) {
 			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
 				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), 1.0f, true, null),
-				new Roga2dFunc(() => {this.zoneEntity.StartAdventure();})
+				new Roga2dFunc(() => {this.zoneModel.StartAdventure();})
 			});
 			this.IntervalPlayer.Play(this.interval);
 		} else {
 			this.player.LocalPixelPosition = new Vector2(20, PlayerY);
-			this.zoneEntity.StartAdventure();
+			this.zoneModel.StartAdventure();
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class ZoneStageController : BaseStageController {
 		}
 		
 		if (this.state == State.Moving) {
-			this.zoneEntity.MoveForward();
+			this.zoneModel.MoveForward();
 		}
 	}
 	
@@ -157,8 +157,8 @@ public class ZoneStageController : BaseStageController {
 	
 	private void HandleBattleCommand(int enemyID) {
 		CombatController controller = this.gameObject.GetComponent<CombatController>();
-		CombatEntity combatEntity = CombatFactory.Instance.Build(enemyID, this.zoneEntity.GetPlayerBattler());
-		controller.SetCombatEntity(combatEntity);
+		CombatModel combatModel = CombatFactory.Instance.Build(enemyID, this.zoneModel.GetPlayerBattler());
+		controller.SetCombatModel(combatModel);
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
 		controller.StartBattle();
@@ -171,6 +171,6 @@ public class ZoneStageController : BaseStageController {
 	}
 	
 	private void CommandFinished() {
-		this.zoneEntity.NextCommand();
+		this.zoneModel.NextCommand();
 	}
 }

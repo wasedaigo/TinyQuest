@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
 using TinyQuest.Data.Cache;
-using TinyQuest.Entity;
+using TinyQuest.Model;
 using TinyQuest.Data.Request;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Factory.Model;
 
-namespace TinyQuest.Entity {
-	public class BattlerEntity {
+namespace TinyQuest.Model {
+	public class BattlerModel {
 		
 		public enum GroupType {
 			Player = 0,
@@ -16,8 +16,8 @@ namespace TinyQuest.Entity {
 			Count
 		};
 
-		public System.Action<SkillEntity> SkillUse;
-		public System.Action<BattlerEntity, int> UpdateHP;
+		public System.Action<SkillModel> SkillUse;
+		public System.Action<BattlerModel, int> UpdateHP;
 		
 		private int no;
 		public int No {
@@ -47,7 +47,7 @@ namespace TinyQuest.Entity {
 		private MasterUnit unit;
 
 		
-		public BattlerEntity(MasterUnit unit, int hp, int no, GroupType group) {
+		public BattlerModel(MasterUnit unit, int hp, int no, GroupType group) {
 			this.unit = unit;
 			this.maxHP = unit.hpTable.GetValue(1);
 			this.hp = unit.hpTable.GetValue(1);
@@ -55,15 +55,15 @@ namespace TinyQuest.Entity {
 			this.group = group;
 		}
 
-		public void UseSkill(int handIndex, BattlerEntity targetEntity) {
+		public void UseSkill(int handIndex, BattlerModel targetModel) {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.UseSkill(this, targetEntity, this.SkillUsed);
+			req.UseSkill(this, targetModel, this.SkillUsed);
 		}
 		
 		private void SkillUsed(int skillId) {
 			if (this.SkillUse != null) {
-				SkillEntity skillEntity = SkillFactory.Instance.Build(skillId);
-				this.SkillUse(skillEntity);
+				SkillModel skillModel = SkillFactory.Instance.Build(skillId);
+				this.SkillUse(skillModel);
 			}
 		}
 	}

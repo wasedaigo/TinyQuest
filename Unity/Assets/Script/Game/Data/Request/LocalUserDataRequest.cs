@@ -3,8 +3,8 @@ using JsonFx.Json;
 using System.Collections.Generic;
 using System.IO;
 using TinyQuest.Data;
-using TinyQuest.Entity;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Model;
+using TinyQuest.Factory.Model;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data.Request {
@@ -23,12 +23,12 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void GetExecutingCommand(System.Action<ZoneEntity.PostCommandState, ZoneCommand, object> callback) {
+		public virtual void GetExecutingCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			int stepIndex = userZone.stepIndex;
 			int commandIndex = userZone.commandIndex;
 			
-			ZoneEntity.PostCommandState postCommandState = ZoneEntity.PostCommandState.None;
+			ZoneModel.PostCommandState postCommandState = ZoneModel.PostCommandState.None;
 			ZoneCommand command = null;
 			object zoneCommandState = null;
 			
@@ -46,9 +46,9 @@ namespace TinyQuest.Data.Request {
 			
 			if (allCommandFinished) {
 				if (userZone.stepIndex >= userZone.lastStepIndex) {
-					postCommandState = ZoneEntity.PostCommandState.ClearZone;
+					postCommandState = ZoneModel.PostCommandState.ClearZone;
 				} else {
-					postCommandState = ZoneEntity.PostCommandState.NextStep;
+					postCommandState = ZoneModel.PostCommandState.NextStep;
 				}
 			} else {
 				switch((ZoneCommand.Type)command.type) {
@@ -70,7 +70,7 @@ namespace TinyQuest.Data.Request {
 			callback(postCommandState, command, zoneCommandState);
 		}
 		
-		public virtual void ProgressCommand(System.Action<ZoneEntity.PostCommandState, ZoneCommand, object> callback) {
+		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			userZone.commandIndex += 1;
 
@@ -79,7 +79,7 @@ namespace TinyQuest.Data.Request {
 			this.GetExecutingCommand(callback);
 		}
 		
-		public virtual void ProcessCombat(BattlerEntity caster, BattlerEntity target, System.Action callback) {
+		public virtual void ProcessCombat(BattlerModel caster, BattlerModel target, System.Action callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			if (combatProgress == null) {
 				CombatBattler playerBattlerData = new CombatBattler(CombatBattlerType.Player, 100, 10, new int[]{});
@@ -95,18 +95,18 @@ namespace TinyQuest.Data.Request {
 			callback();
 		}
 		
-		public virtual void UseSkill(BattlerEntity casterEntity, BattlerEntity targetEntity, System.Action<int> callback) {
+		public virtual void UseSkill(BattlerModel casterModel, BattlerModel targetModel, System.Action<int> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			CombatBattler caster = combatProgress.battlers[(int)casterEntity.Group][casterEntity.No];
-			CombatBattler target = combatProgress.battlers[(int)targetEntity.Group][targetEntity.No];
+			CombatBattler caster = combatProgress.battlers[(int)casterModel.Group][casterModel.No];
+			CombatBattler target = combatProgress.battlers[(int)targetModel.Group][targetModel.No];
 			
 			int skillId = 1;
 			
 			//caster.tp -= 
 			target.hp -= 1;
-			targetEntity.SetHP(target.hp);
+			targetModel.SetHP(target.hp);
 			
-			SkillEntity skillEntity = SkillFactory.Instance.Build(skillId);
+			SkillModel skillModel = SkillFactory.Instance.Build(skillId);
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback(skillId);

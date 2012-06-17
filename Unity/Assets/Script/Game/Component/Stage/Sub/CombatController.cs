@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-using TinyQuest.Entity;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Model;
+using TinyQuest.Factory.Model;
 using TinyQuest.Object;
 using TinyQuest.Core;
 using TinyQuest.Data;
@@ -19,7 +19,7 @@ public class CombatController : BaseStageController {
 	
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
-	private CombatEntity combatEntity;
+	private CombatModel combatModel;
 	
 	// Use this for initialization
 	protected override void Start () {
@@ -43,10 +43,10 @@ public class CombatController : BaseStageController {
 		base.Update();
 	}
 	
-	public void SetCombatEntity(CombatEntity combatEntity) {
-		this.combatEntity = combatEntity;
-		this.combatEntity.SkillUse += this.SkillUsed;
-		this.combatEntity.UpdateHP += this.HPUpdated;
+	public void SetCombatModel(CombatModel combatModel) {
+		this.combatModel = combatModel;
+		this.combatModel.SkillUse += this.SkillUsed;
+		this.combatModel.UpdateHP += this.HPUpdated;
 	}
 	
 	public void SetPlayer(Ally player) {
@@ -62,12 +62,12 @@ public class CombatController : BaseStageController {
 
 		BattlerStatus.SetActiveRecursively(true);
 		this.UpdateStatus();
-		this.combatEntity.Start();
+		this.combatModel.Start();
 	}
 	
 	private void UpdateStatus() {
-		BattlerEntity ally = this.combatEntity.GetBattler(BattlerEntity.GroupType.Player, 0);
-		BattlerEntity enemy = this.combatEntity.GetBattler(BattlerEntity.GroupType.Enemy, 0);
+		BattlerModel ally = this.combatModel.GetBattler(BattlerModel.GroupType.Player, 0);
+		BattlerModel enemy = this.combatModel.GetBattler(BattlerModel.GroupType.Enemy, 0);
 		this.AllyHP.text = ally.HP.ToString();
 		this.EnemyHP.text = enemy.HP.ToString();
 	}
@@ -78,7 +78,7 @@ public class CombatController : BaseStageController {
 		animation.settings.Destroy();
 		animation.settings = null;
 		
-		this.combatEntity.ProgressTurn();
+		this.combatModel.ProgressTurn();
 		this.UpdateStatus();
     }
 	
@@ -100,8 +100,8 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	private void playSkillAnimation(AdventureObject caster, AdventureObject target, SkillEntity skillEntity) {
-		if (skillEntity == null) {
+	private void playSkillAnimation(AdventureObject caster, AdventureObject target, SkillModel skillModel) {
+		if (skillModel == null) {
 			return;	
 		}
 		
@@ -111,11 +111,11 @@ public class CombatController : BaseStageController {
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = caster.TextureID, PixelSize = new Vector2(32, 32)}},
 				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = target.PixelSize,  SrcRect = target.SrcRect}}//,
-//				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = skillEntity.OwnerWeapon.GetMasterWeapon().GetAnimationImagePath(), PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
+//				{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = skillModel.OwnerWeapon.GetMasterWeapon().GetAnimationImagePath(), PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 			};
 
 			Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.AnimationPlayer, false, caster, caster, target, CommandCalled);
-			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillEntity.MasterSkill.animation, false, null, settings, options);
+			Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + skillModel.MasterSkill.animation, false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/Shoot", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Sword/LeaveDance", false, null, settings, options);
 			//Roga2dAnimation animation = Roga2dUtils.LoadAnimation("Battle/Skills/Bow/bow_bomb", false, null, settings, options);
@@ -125,16 +125,16 @@ public class CombatController : BaseStageController {
 		}
 	}
 	
-	private void SkillUsed(SkillEntity skillEntity) {
-		this.playSkillAnimation(this.battlers[0], this.monster, skillEntity);
+	private void SkillUsed(SkillModel skillModel) {
+		this.playSkillAnimation(this.battlers[0], this.monster, skillModel);
 	}
 
-	private void HPUpdated(BattlerEntity entity, int value) {
+	private void HPUpdated(BattlerModel entity, int value) {
 
 	}
 
 	public void InvokeCommand(int slotNo) {
-		this.combatEntity.GetActiveBattler().UseSkill(slotNo, this.combatEntity.GetBattler(BattlerEntity.GroupType.Enemy, 0));
+		this.combatModel.GetActiveBattler().UseSkill(slotNo, this.combatModel.GetBattler(BattlerModel.GroupType.Enemy, 0));
 	}
 	
 }

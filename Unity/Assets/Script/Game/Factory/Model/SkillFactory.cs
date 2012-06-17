@@ -1,18 +1,18 @@
 using UnityEngine;
 using TinyQuest.Data;
-using TinyQuest.Entity;
+using TinyQuest.Model;
 using TinyQuest.Data.Cache;
 
-namespace TinyQuest.Factory.Entity {
+namespace TinyQuest.Factory.Model {
 	public class SkillFactory {
 		
 		public static readonly SkillFactory Instance = new SkillFactory();
 		private SkillFactory(){}
 		
-		public SkillEntity Build(int id) {
+		public SkillModel Build(int id) {
 			MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(id);	
-			SkillEntity skillEntity = new SkillEntity(masterSkill);
-			return skillEntity;
+			SkillModel skillModel = new SkillModel(masterSkill);
+			return skillModel;
 		}
 	}
 }

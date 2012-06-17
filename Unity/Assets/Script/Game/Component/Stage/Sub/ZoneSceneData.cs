@@ -1,22 +1,22 @@
 using UnityEngine;
 using System.Collections;
-using TinyQuest.Entity;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Model;
+using TinyQuest.Factory.Model;
 
 public class ZoneSceneData : MonoBehaviour {
 	
-	private ZoneEntity zoneEntity;
-	public ZoneEntity ZoneEntity {
-		get { return this.zoneEntity;}
+	private ZoneModel zoneModel;
+	public ZoneModel ZoneModel {
+		get { return this.zoneModel;}
 	}
 	
-	private BattlerEntity userBattlerEntity;
-	public BattlerEntity UserBattlerEntity {
-		get { return this.userBattlerEntity;}
+	private BattlerModel userBattlerModel;
+	public BattlerModel UserBattlerModel {
+		get { return this.userBattlerModel;}
 	}
 	
 	void Awake () {
-		this.zoneEntity = ZoneFactory.Instance.Build();
-		this.userBattlerEntity = this.zoneEntity.GetPlayerBattler();
+		this.zoneModel = ZoneFactory.Instance.Build();
+		this.userBattlerModel = this.zoneModel.GetPlayerBattler();
 	}
 }

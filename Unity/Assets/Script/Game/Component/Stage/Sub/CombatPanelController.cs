@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data;
 using TinyQuest.Core;
-using TinyQuest.Entity;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Model;
+using TinyQuest.Factory.Model;
 using TinyQuest.Object;
 
 public class CombatPanelController : MonoBehaviour {

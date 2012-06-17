@@ -3,10 +3,10 @@ using System.Collections;
 using TinyQuest.Data;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
-using TinyQuest.Factory.Entity;
+using TinyQuest.Factory.Model;
 
-namespace TinyQuest.Entity {
+namespace TinyQuest.Model {
 
-	public class UnitEntity {
+	public class UnitModel {
 	}
 }
