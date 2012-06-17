@@ -10,6 +10,7 @@ using TinyQuest.Object;
 
 public class CombatPanelController : MonoBehaviour {
 	public GameObject[] Slots;
+	public ZoneStageController ZoneStageController;
 
 	public void Slot0Clicked() {
 		this.click(0);	
@@ -36,10 +37,9 @@ public class CombatPanelController : MonoBehaviour {
 	}
 	
 	private void click(int slotIndex) {
-		/*
 		CombatController controller = this.ZoneStageController.GetComponent<CombatController>();
 		if (controller != null) {
 			controller.InvokeCommand(slotIndex);
-		}*/
+		}
 	}
 }
