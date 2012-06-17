@@ -13,19 +13,19 @@ namespace TinyQuest.Data.Cache {
 			this.Set(txt.text);	
 		}
 
-		public override UserPuppet[] GetOwnPuppets() {
+		public override UserUnit[] GetOwnUnits() {
 			if (this.localUserData == null) {
 				this.LoadLocalUserMock();
 			}
-			return base.GetOwnPuppets();
+			return base.GetOwnUnits();
 		}
-		
-		public override UserPuppet[] GetParty() {
+		/*
+		public override UserUnit[] GetParty() {
 			if (this.localUserData == null) {
 				this.LoadLocalUserMock();
 			}
 			return base.GetParty();	
-		}
+		}*/
 	
 		public override CombatProgress GetCombatProgress() {
 			if (this.localUserData == null) {

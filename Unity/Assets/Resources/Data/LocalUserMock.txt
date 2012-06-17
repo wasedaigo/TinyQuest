@@ -1,5 +1,5 @@
 {
-    "combatProgress": {
+    "CombatProgress": {
         "turnCount": 1,
         "battlers": [
             [
@@ -20,7 +20,7 @@
             ]
         ]
     },
-    "zone": {
+    "Zone": {
         "zoneId": 1,
         "lastStepIndex": 5,
         "events": {
@@ -103,49 +103,49 @@
         "commandState": null,
         "currentTP": 5
     },
-    "status": {
+    "Status": {
         "maxHP": 200
     },
-    "party": [
+    "Party": [
         {
-            "puppetId": 1,
+            "unit": 1,
             "exp": 1,
             "id": 1
         },
         {
-            "puppetId": 2,
+            "unit": 2,
             "exp": 1,
             "id": 2
         },
         {
-            "puppetId": 3,
+            "unit": 3,
             "exp": 1,
             "id": 3
         },
         {
-            "puppetId": 4,
+            "unit": 4,
             "exp": 1,
             "id": 4
         },
         {
-            "puppetId": 5,
+            "unit": 5,
             "exp": 1,
             "id": 5
         },
         {
-            "puppetId": 6,
+            "unit": 6,
             "exp": 1,
             "id": 6
         }
     ],
-    "stockPuppets": [
+    "StockUnits": [
         {
-            "puppetId": 3,
+            "unit": 3,
             "exp": 1,
             "id": 3
         },
         {
-            "puppetId": 4,
+            "unit": 4,
             "exp": 1,
             "id": 4
         }

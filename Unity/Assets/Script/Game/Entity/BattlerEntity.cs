@@ -44,19 +44,15 @@ namespace TinyQuest.Entity {
 			this.UpdateHP(this, this.hp);
 		}
 		
-		private PuppetEntity puppet;
+		private MasterUnit unit;
 
 		
-		public BattlerEntity(PuppetEntity puppet, int hp, int maxHP,  int no, GroupType group) {
-			this.puppet = puppet;
-			this.maxHP = maxHP;
-			this.hp = maxHP;
+		public BattlerEntity(MasterUnit unit, int hp, int no, GroupType group) {
+			this.unit = unit;
+			this.maxHP = unit.hpTable.GetValue(1);
+			this.hp = unit.hpTable.GetValue(1);
 			this.no = no;
 			this.group = group;
-		}
-
-		public PuppetEntity GetPuppet() {
-			return this.puppet;
 		}
 
 		public void UseSkill(int handIndex, BattlerEntity targetEntity) {

@@ -8,21 +8,20 @@ namespace TinyQuest.Data.Cache {
 	{
 		protected MasterZone zone;
 		protected Dictionary<int, MasterSkill> masterSkillDictionary;
-		protected Dictionary<int, MasterPuppet> masterPuppetDictionary;
+		protected Dictionary<int, MasterUnit> masterUnitDictionary;
 		
 		public void Set(string jsonText) {
 			MasterFile masterFile = JsonReader.Deserialize<MasterFile>(jsonText);
 			MasterData masterData = masterFile.data;
-			this.zone = masterData.Zone;
 			this.masterSkillDictionary = this.GetAsDictionary<MasterSkill>(masterData.Skills);
-			this.masterPuppetDictionary = this.GetAsDictionary<MasterPuppet>(masterData.Puppets);
+			this.masterUnitDictionary = this.GetAsDictionary<MasterUnit>(masterData.Units);
 		}
-		
+
 		public void SetZone(string jsonText) {
 			this.zone = JsonReader.Deserialize<MasterZone>(jsonText);
 			
 		}
-		
+
 		private Dictionary<int, T> GetAsDictionary<T>(T[] data) 
 			where T : IDData
 		{
@@ -45,9 +44,9 @@ namespace TinyQuest.Data.Cache {
 			}
 		}
 		
-		public virtual MasterPuppet GetPuppetByID(int id) {
-			if (this.masterPuppetDictionary.ContainsKey(id)) {
-				return this.masterPuppetDictionary[id];
+		public virtual MasterUnit GetUnitByID(int id) {
+			if (this.masterUnitDictionary.ContainsKey(id)) {
+				return this.masterUnitDictionary[id];
 			} else {
 				return null;	
 			}

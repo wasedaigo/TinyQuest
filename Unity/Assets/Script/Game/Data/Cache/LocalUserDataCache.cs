@@ -9,8 +9,8 @@ namespace TinyQuest.Data.Cache {
 	public class LocalUserDataCache
 	{
 		protected LocalUserData localUserData;
-		protected Dictionary<int, UserPuppet> userPuppetDictionary;
-		protected Dictionary<int, PuppetInstance> monsterInstanceDictionary;
+		protected Dictionary<int, UserUnit> userUnitDictionary;
+		//protected Dictionary<int, UnitInstance> unitInstanceDictionary;
 		
 		public string Serialize() {
 			// Need to implement
@@ -19,9 +19,8 @@ namespace TinyQuest.Data.Cache {
 		
 		public void Set(string jsonText) {
 			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
-			this.userPuppetDictionary = this.GetAsDictionary<UserPuppet>(this.localUserData.ownPuppets);
-			this.monsterInstanceDictionary = this.GetAsDictionary<PuppetInstance>(this.localUserData.monsterInstances);
-			this.userPuppetDictionary = this.GetAsDictionary<UserPuppet>(this.localUserData.ownPuppets);
+			//this.userUnitDictionary = this.GetAsDictionary<UserUnit>(this.localUserData.OwnUnits);
+			//this.unitInstanceDictionary = this.GetAsDictionary<UnitInstance>(this.localUserData.unitInstances);
 		}
 		
 		private Dictionary<int, T> GetAsDictionary<T>(T[] data) 
@@ -35,49 +34,49 @@ namespace TinyQuest.Data.Cache {
 		}
 		
 		public void SetZone(string jsonText) {
-			this.localUserData.zone = JsonReader.Deserialize<UserZone>(jsonText);
+			this.localUserData.Zone = JsonReader.Deserialize<UserZone>(jsonText);
 		}
 		
 		public virtual void SetCombatProgress(CombatProgress combatProgress) {
-			this.localUserData.combatProgress = combatProgress;
+			this.localUserData.CombatProgress = combatProgress;
 		}
 			
 		public virtual CombatProgress GetCombatProgress() {
-			return this.localUserData.combatProgress;
+			return this.localUserData.CombatProgress;
 		}
 			
 		public virtual UserStatus GetUserStatus() {
-			return this.localUserData.status;
+			return this.localUserData.Status;
 		}
 			
 		public virtual UserZone GetUserZone() {
-			return this.localUserData.zone;
+			return this.localUserData.Zone;
 		}
 
-		public virtual UserPuppet[] GetOwnPuppets() {
-			return this.localUserData.ownPuppets;
+		public virtual UserUnit[] GetOwnUnits() {
+			return this.localUserData.OwnUnits;
 		}
-		
-		public virtual UserPuppet[] GetParty() {
+		/*
+		public virtual UserUnit[] GetParty() {
 			int[] party = this.localUserData.party;
-			UserPuppet[] puppets = new UserPuppet[party.Length];
+			UserUnit[] units = new UserUnit[party.Length];
 			for (int i = 0; i < party.Length; i++) {
-				puppets[i] = this.GetPuppetByID(party[i]);
+				units[i] = this.GetUnitByID(party[i]);
 			}
-			return puppets;
+			return units;
+		}*/
+		
+		public virtual UserUnit GetUnitByID(int id) {
+			return this.userUnitDictionary[id];
 		}
 		
-		public virtual UserPuppet GetPuppetByID(int id) {
-			return this.userPuppetDictionary[id];
+		public virtual UserUnit GetUserUnitByID(int id) {
+			return this.userUnitDictionary[id];
 		}
-		
-		public virtual UserPuppet GetUserPuppetByID(int id) {
-			return this.userPuppetDictionary[id];
-		}
-		
-		public virtual PuppetInstance GetPuppetInstanceByID(int id) {
-			return this.monsterInstanceDictionary[id];
-		}
+		/*
+		public virtual UnitInstance GetUnitInstanceByID(int id) {
+			return this.unitInstanceDictionary[id];
+		}*/
 		
 		public void Commit() {
 			string text = JsonWriter.Serialize(this.localUserData);

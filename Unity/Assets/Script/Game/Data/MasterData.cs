@@ -3,40 +3,31 @@ using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data{
-	public enum ElementType {
+
+	public enum AttributeType {
 		None,
 		Fire,
 		Water,
 		Earth,
-		Thunder
-	};
-
-	public enum AttributeType {
-		None,
+		Thunder,
+		Dark,
+		Light,
 		Slash,
 		Pierce,
-		Smash,
-		Magic
-	};
-	
-	public enum BuffType {
-		None,
-		Poison,
-		StrongPoison,
-		Wet,
-		Freeze,
-		ArmorDown,
-		ArmorUp,
-		AttackDown,
-		AttackUp,
-		Regeneration,
-		Paralyze,
-		LastStand
+		Smash
 	};
 	
 	public enum SkillType {
 		Active,
 		Passive
+	};
+	
+
+	public enum UnitType {
+		None,
+		Melee,
+		Magic,
+		Range
 	};
 	
 	public enum RarityType {
@@ -47,24 +38,6 @@ namespace TinyQuest.Data{
 		Mythic
 	};
 	
-	public enum WeaponCategory {
-		None,
-		Sword,
-		BigSword,
-		Katana,
-		Knife,
-		Bow,
-		Spear,
-		Rod,
-		Book
-	};
-	
-	public enum GrowthType {
-		Slow,
-		Normal,
-		Fast
-	};
-	
 	public enum ItemType {
 		Core,
 		Gear,
@@ -72,61 +45,97 @@ namespace TinyQuest.Data{
 		Recipe
 	};
 	
-	public enum PuppetLookType {
-		Dynamic,
-		Static
+	public enum UnitLookType {
+		Static,
+		Unit
 	};
 	
-	public enum GearSlotType {
-		Magic,
-		Melee,
-		Range
-	};
-	
-	public struct MasterGearParameter {
-		public enum Key {
-			Exp = 0,
-			Power = 1
-		};
-		public readonly int exp;
-		public readonly int power;
-		
-		public MasterGearParameter(int[] rawData) {
-			this.exp = rawData[(int)Key.Exp];
-			this.power = rawData[(int)Key.Power];
-		}
-	}
-	
-	public class MasterMaterial : IDData{
-		public string GetName() {
-			return "";	
-		}
-		public string GetDescription() {
-			return "";	
-		}
-	}
+	public enum CastTiming {
+		OnZoneStart,
+		OnTurnStart,		
 
-	public class MasterZoneMonster : IDData{
-		int zoneID;
-		float rate;
-		int monster;
-		bool isBoss;
-	}
+		OnReady,
+		OnTarget,
+		OnDamage,
+		OnFinish,
+		
+		OnTargetted,
+		OnDamaged,
+		OnDead,
+		
+		OnTurnEnd,
+		OnZoneEnd
+	};
+
+	public enum BuffType {
+		FireResistUp,
+		WaterResistUp,		
+		WindResistUp,
+		EarthResistUp,
+		LightResistUp,
+		DarkResistUp,
+		FireResistDown,
+		WaterResistDown,		
+		WindResistDown,
+		EarthResistDown,
+		LightResistDown,
+		DarkResistDown,
+
+		PowerUp,
+		PowerDown,
+		SpeedUp,
+		SpeedDown,
+		DefUp,
+		DefDown,
+		RegenUp,
+		RegenDown,
+		
+		Heal,
+		Poison,
+		Stun,
+		Paralyze,
+		Revive,
+	};
 	
-	public class MasterPuppet : IDData {
+	public enum BuffLifeTimeType {
+		OneTurn,
+		TwoTurn,
+		ThreeTurn,
+		Zone,
+		Action
+	};
+	
+	public enum GrowthType {
+		Slow,
+		Normal,
+		Fast
+	};
+
+	public class GrowthTable {
+		public readonly int baseValue;
 		public readonly GrowthType growthType;
+		
+		public int GetValue(int lv) {
+			return baseValue;	
+		}
+	};
+	
+	public class MasterUnit : IDData {
 		public readonly int unitType;
-		public readonly int exp;
-		public readonly int hp;
-		public readonly int power;
-		public readonly int def;
-		public readonly int mdef;
-		public readonly int speed;
-		public readonly string lookCode;
-		public readonly PuppetLookType lookType;
+		public readonly int lv;
+		public readonly int skillExp;
+		public readonly GrowthTable hpTable;
+		public readonly GrowthTable powerTable;
+		public readonly GrowthTable regenTable;
+		public readonly GrowthTable defTable;
+		public readonly GrowthTable speedTable;
+
+		public readonly AttributeType[] weakPoints;
+		
+		public readonly int weapon;
+		public readonly UnitLookType lookType;
 		public readonly RarityType rarity;
-		public readonly MasterSkill[] activeSkills;
-		public readonly MasterSkill[] passiveSkills;
+		public readonly int[] skills;
 		
 		public string GetName() {
 			return "";	
@@ -134,39 +143,41 @@ namespace TinyQuest.Data{
 	}
 
 	public class MasterSkill : IDData {
-		public readonly int atk;
-		public readonly string animation;
-		public readonly BuffType buff;
-		public readonly AttributeType attribute;
-		public readonly ElementType element;
-		public readonly WeaponCategory weaponCategory;
-		public readonly float chance;
-		public readonly int effect;
+		public readonly CastTiming castTiming;
 		public readonly SkillType type;
+
+		public readonly string animation;
+		public readonly int buff;
+		public readonly int buffEffect;
+		public readonly BuffLifeTimeType buffLifeTime;
+		public readonly int buffRate;
+		
+		public readonly AttributeType attribute;
+		public readonly int chance;
 
 		public string GetName() {
 			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");
 		}
 	}
 	
-	public class MasterRecipe : IDData {
-		public readonly int material1;
-		public readonly int material2;
-		public readonly int material3;
-		public readonly int material1Count;
-		public readonly int material2Count;
-		public readonly int material3Count;
-		public readonly ItemType itemType;
-		public readonly int itemID;
+	public class MasterBuff : IDData {
+		public readonly BuffType type;
+		public readonly int probability;
 	}
-	
+
+	public class MasterCore : IDData {
+		public readonly Dictionary<string, Dictionary<string,int>[]> recipe;
+		public readonly int masterUnit;
+	}
+
 	// Define moster item drop table
+	/*
 	public class MasterMonsterDropItem : IDData {
 		public readonly int monster;
 		public readonly int rate;
 		public readonly int drop;
 		public readonly ItemType type;
-	}
+	}*/
 
 	public class MasterZone : IDData {
       	public readonly int stepCount;
@@ -179,13 +190,10 @@ namespace TinyQuest.Data{
 	}
 	
 	public class MasterData {
-		public readonly MasterZone Zone;
-		public readonly MasterPuppet[] Puppets;
+		public readonly MasterUnit[] Units;
+		public readonly MasterBuff[] Buffs;
 		public readonly MasterSkill[] Skills;
-		public readonly MasterZoneMonster[] ZoneMonsters;
-		public readonly MasterMonsterDropItem[] MonsterDropItems;
-		public readonly MasterRecipe[] Recipes;
-		public readonly MasterMaterial[] Materials;
+		public readonly MasterCore[] Cores;
 	}
 	
 	public class MasterFile {

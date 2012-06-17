@@ -8,18 +8,16 @@ namespace TinyQuest.Factory.Entity {
 		public static readonly BattlerFactory Instance = new BattlerFactory();
 		private BattlerFactory(){}
 		
-		public BattlerEntity BuildPuppet(int puppetId, BattlerEntity.GroupType groupType) {
-			MasterPuppet masterPuppet = CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(puppetId);
+		public BattlerEntity BuildUnit(int unitId, BattlerEntity.GroupType groupType) {
+			MasterUnit masterUnit = CacheFactory.Instance.GetMasterDataCache().GetUnitByID(unitId);
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			BattlerEntity battler = null;
 			if (combatProgress != null) {
 				CombatBattler combatBattler = combatProgress.GetCombatBattler(0, (int)groupType);
-				PuppetInstance instance = CacheFactory.Instance.GetLocalUserDataCache().GetPuppetInstanceByID(combatBattler.battlerID);
-				PuppetEntity puppet = PuppetFactory.Instance.Build();
-				battler = new BattlerEntity(puppet, combatBattler.hp, masterPuppet.hp, 0,  groupType);
+				//UnitInstance instance = CacheFactory.Instance.GetLocalUserDataCache().GetUnitInstanceByID(combatBattler.battlerID);
+				battler = new BattlerEntity(masterUnit, combatBattler.hp, 0,  groupType);
 			} else {
-				PuppetEntity puppet = PuppetFactory.Instance.Build();
-				battler = new BattlerEntity(puppet, masterPuppet.hp, masterPuppet.hp, 2, groupType);
+				battler = new BattlerEntity(masterUnit, masterUnit.hpTable.GetValue(1), 2, groupType);
 			}
 			return battler;
 		}

@@ -99,8 +99,6 @@ namespace TinyQuest.Data.Request {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 			CombatBattler caster = combatProgress.battlers[(int)casterEntity.Group][casterEntity.No];
 			CombatBattler target = combatProgress.battlers[(int)targetEntity.Group][targetEntity.No];
-	
-			PuppetEntity puppetEntity = casterEntity.GetPuppet();
 			
 			int skillId = Mathf.RoundToInt(Random.Range(0, 2- 1));
 			

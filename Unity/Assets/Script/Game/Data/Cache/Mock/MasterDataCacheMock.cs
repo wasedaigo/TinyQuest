@@ -26,11 +26,11 @@ namespace TinyQuest.Data.Cache {
 			return base.GetSkillByID(id);
 		}
 		
-		public override MasterPuppet GetPuppetByID(int id) {
-			if (this.masterPuppetDictionary == null) {
+		public override MasterUnit GetUnitByID(int id) {
+			if (this.masterUnitDictionary == null) {
 				this.LoadMaster();
 			}
-			return base.GetPuppetByID(id);
+			return base.GetUnitByID(id);
 		}
 		
 	}

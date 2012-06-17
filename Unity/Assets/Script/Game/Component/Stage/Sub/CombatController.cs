@@ -17,7 +17,6 @@ public class CombatController : BaseStageController {
 	public UILabel EnemyHP;
 	public UILabel EnemyTP;
 	
-	private Stage stage;
 	private Monster monster;
 	private List<AdventureObject> battlers = new List<AdventureObject>();
 	private CombatEntity combatEntity;
@@ -32,7 +31,7 @@ public class CombatController : BaseStageController {
 	protected override void Update () {
 		if (!this.AnimationPlayer.HasPlayingAnimations()) {
 			if (this.monster != null && this.monster.IsDead()) {
-				this.stage.GetCharacterLayer().RemoveChild(this.monster);
+				this.Stage.GetCharacterLayer().RemoveChild(this.monster);
 				this.monster = null;
 				
 				if (this.CombatFinish != null) {
@@ -55,12 +54,11 @@ public class CombatController : BaseStageController {
 	}
 	
 	public void StartBattle() {
-		this.stage = this.GetComponent<Stage>();
 		this.monster = spawnMonster("goblin", -30, -5);
 		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
 		this.monster.LocalScale = new Vector2(1, 1);
 		this.monster.LocalPriority = 0.45f;
-		this.stage.GetCharacterLayer().AddChild(this.monster);
+		this.Stage.GetCharacterLayer().AddChild(this.monster);
 
 		BattlerStatus.SetActiveRecursively(true);
 		this.UpdateStatus();
@@ -95,7 +93,7 @@ public class CombatController : BaseStageController {
 			
 			// Damage pop
 			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
-			this.AnimationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
+			this.AnimationPlayer.Play(this.Stage.GetCharacterLayer(), null, animation, null);
 			
 			//AdventureObject obj = (AdventureObject)settings.Target;
 			//obj.ApplyDamage(damageValue);

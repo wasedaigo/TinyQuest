@@ -7,25 +7,25 @@ namespace TinyQuest.Data{
 	}
 	
 	public class UserMaterial : IDData{
-		public int userPuppet;
+		public int userUnit;
 		public int gear;
 		public int exp;
 	}
 	
-	public class UserPuppet : IDData{
-		public int puppet;
+	public class UserUnit : IDData{
+		public int unit;
 		public int exp;
-		public MasterPuppet GetMasterPuppet() {
-			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(this.puppet);
+		public MasterUnit GetMasterUnit() {
+			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetUnitByID(this.unit);
 		}
 	}
 	
-	public class PuppetInstance : IDData{
-		public int puppet;
+	public class UnitInstance : IDData{
+		public int unit;
 		public int lv;
 		
-		public MasterPuppet GetMasterPuppet() {
-			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetPuppetByID(this.puppet);
+		public MasterUnit GetMasterUnit() {
+			return 	Cache.CacheFactory.Instance.GetMasterDataCache().GetUnitByID(this.unit);
 		}
 	}
 	
@@ -78,13 +78,12 @@ namespace TinyQuest.Data{
 	}
 
 	public class LocalUserData {
-		public CombatProgress combatProgress;
-		public UserZone zone;
-		public readonly UserStatus status;
+		public CombatProgress CombatProgress;
+		public UserZone Zone;
+		public readonly UserStatus Status;
 
-		public readonly int[] party;
-		public readonly UserPuppet[] ownPuppets;
-		public readonly PuppetInstance[] monsterInstances;
+		public readonly UserUnit[] OwnUnits;
+		//public readonly UnitInstance[] unitInstances;
 		
 	}
 }
