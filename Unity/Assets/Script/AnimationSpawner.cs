@@ -8,28 +8,28 @@ public class AnimationSpawner : MonoBehaviour {
 	public GameObject roga2dRoot;
 	
 	private Roga2dNode root;
-	private Monster monster;
+	private Actor monster;
 	private Roga2dAnimationPlayer player;
 	private Roga2dIntervalPlayer intervalPlayer;
 	private Roga2dBaseInterval targetInterval;
 
-	private List<AdventureObject> battlers = new List<AdventureObject>();
+	private List<Actor> battlers = new List<Actor>();
 	
 	void Awake () {
 		Application.targetFrameRate = 30;
 		Time.captureFramerate = 30;
 	}
 	
-	Ally spawnBattler (string name, float x, float y) {
-		Ally battler = new Ally(name, Ally.State.Stand);
+	Actor spawnBattler (string name, float x, float y) {
+		Actor battler = new PuppetActor(name, PuppetActor.State.Stand);
 		battler.Sprite.LocalPriority = 0.1f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		this.battlers.Add(battler);
 		return battler;
 	}
 	
-	Monster spawnMonster (string name, float x, float y) {
-		Monster battler = new Monster(name);
+	Actor spawnMonster (string name, float x, float y) {
+		Actor battler = new MonsterActor(name);
 		battler.Sprite.LocalPriority = 0.45f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		//this.battlers.Add(battler);
@@ -109,7 +109,7 @@ public class AnimationSpawner : MonoBehaviour {
 		this.root.Update();
 
 		if (Input.GetMouseButtonDown(0)) {
-			AdventureObject battler = this.battlers[no % 5];
+			Actor battler = this.battlers[no % 5];
 			if (battler.Sprite.IsVisible) {
 				battler.Sprite.Hide();
 

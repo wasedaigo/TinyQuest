@@ -46,8 +46,8 @@ namespace TinyQuest.Data{
 	};
 	
 	public enum UnitLookType {
-		Static,
-		Unit
+		Puppet,
+		Monster
 	};
 	
 	public enum CastTiming {
@@ -112,18 +112,18 @@ namespace TinyQuest.Data{
 	};
 
 	public class GrowthTable {
-		public readonly int baseValue;
+		public readonly int startValue;
+		public readonly int maxValue;
 		public readonly GrowthType growthType;
 		
-		public int GetValue(int lv) {
-			return baseValue;	
+		public int GetValue(int keyValue) {
+			return startValue;	
 		}
 	};
 	
 	public class MasterUnit : IDData {
 		public readonly int unitType;
-		public readonly int lv;
-		public readonly int skillExp;
+		public readonly GrowthTable lvTable;
 		public readonly GrowthTable hpTable;
 		public readonly GrowthTable powerTable;
 		public readonly GrowthTable regenTable;

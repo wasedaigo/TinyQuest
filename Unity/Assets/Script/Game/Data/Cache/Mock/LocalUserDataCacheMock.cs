@@ -13,12 +13,6 @@ namespace TinyQuest.Data.Cache {
 			this.Set(txt.text);	
 		}
 
-		public override UserUnit[] GetOwnUnits() {
-			if (this.localUserData == null) {
-				this.LoadLocalUserMock();
-			}
-			return base.GetOwnUnits();
-		}
 		/*
 		public override UserUnit[] GetParty() {
 			if (this.localUserData == null) {

@@ -1,26 +1,6 @@
 {
-    "CombatProgress": {
-        "turnCount": 1,
-        "battlers": [
-            [
-                {
-                    "no": 0,
-                    "group": 0,
-                    "hp": 100,
-                    "buffs": []
-                }
-            ],
-            [
-                {
-                    "no": 1,
-                    "group": 1,
-                    "hp": 100,
-                    "buffs": []
-                }
-            ]
-        ]
-    },
-    "Zone": {
+    "combatProgress": null,
+    "zone": {
         "zoneId": 1,
         "lastStepIndex": 5,
         "events": {
@@ -100,54 +80,57 @@
         "playerHP": 200,
         "stepIndex": 1,
         "commandIndex": 1,
-        "commandState": null,
-        "currentTP": 5
+        "commandState": null
     },
-    "Status": {
+    "status": {
         "maxHP": 200
     },
-    "Party": [
-        {
-            "unit": 1,
-            "exp": 1,
-            "id": 1
-        },
-        {
-            "unit": 2,
-            "exp": 1,
-            "id": 2
-        },
-        {
-            "unit": 3,
-            "exp": 1,
-            "id": 3
-        },
-        {
-            "unit": 4,
-            "exp": 1,
-            "id": 4
-        },
-        {
-            "unit": 5,
-            "exp": 1,
-            "id": 5
-        },
-        {
-            "unit": 6,
-            "exp": 1,
-            "id": 6
-        }
+    "ownUnits": [
+      {
+        "id": 1,
+        "unit": 1,
+        "exp": 1,
+        "skillExp": 1
+      },
+      {
+        "id": 2,
+        "unit": 2,
+        "exp": 1,
+        "skillExp": 1
+      },
+      {
+        "id": 3,
+        "unit": 3,
+        "exp": 1,
+        "skillExp": 1
+      },
+      {
+        "id": 4,
+        "unit": 4,
+        "exp": 1,
+        "skillExp": 1
+      },
+      {
+        "id": 5,
+        "unit": 5,
+        "exp": 1,
+        "skillExp": 1
+      },
+      {
+        "id": 6,
+        "unit": 6,
+        "exp": 1,
+        "skillExp": 1
+      }
     ],
-    "StockUnits": [
-        {
-            "unit": 3,
-            "exp": 1,
-            "id": 3
-        },
-        {
-            "unit": 4,
-            "exp": 1,
-            "id": 4
-        }
-    ]
+    "zoneUnits": [
+      {
+        "id": 1,
+        "unit": 10001,
+        "exp": 1,
+        "skillExp": 1
+      }
+    ],
+    "maxZoneUnitId": 10001,
+    "maxOwnUnitId": 1
 }
