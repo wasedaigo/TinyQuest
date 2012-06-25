@@ -23,7 +23,7 @@ public class CombatController : MonoBehaviour {
 	public void SetModels(CombatModel combatModel) {
 		this.combatModel = combatModel;
 		this.combatModel.StartBattle += this.BattleStarted;
-		this.combatModel.SkillUse += this.SkillUsed;
+		this.combatModel.ExecuteAction += this.ActionExecuted;
 	}
 	
 	public void StartBattle() {
@@ -31,9 +31,11 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void BattleStarted() {
-		List<CombatUnit> combatUnits = this.combatModel.GetCombatUnits();
-		foreach (CombatUnit combatUnit in combatUnits) {
-			this.SendMessage("SpawnActor", combatUnit.GetUserUnit());
+		List<CombatUnit>[] combatUnits = this.combatModel.GetCombatUnits();
+		foreach (List<CombatUnit> combatUnitGroup in combatUnits) {
+			foreach (CombatUnit combatUnit in combatUnitGroup) {
+				this.SendMessage("SpawnActor", combatUnit.GetUserUnit());
+			}
 		}
 		
 		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
@@ -41,18 +43,18 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	protected void AnimationFinished() {
-		this.combatModel.ProgressTurn();
+		this.combatModel.ExecuteNextAction();
 	}
 	
-	public void SkillUsed(MasterSkill masterSkill, CombatUnit casterUnit, CombatUnit targetUnit) {
+	public void ActionExecuted(CombatAction action) {
 		SendMessage(
 			"PlaySkillAnimation", 
-			new SkillAnimationParams(casterUnit.GetUserUnit(), targetUnit.GetUserUnit(), masterSkill)
-		);
+			new SkillAnimationParams(action.caster, action.target, action.skill)
+		);	
 	}
 
 	public void InvokeSkill(int slotNo) {
-		this.combatModel.UseSkill(slotNo);
+		this.combatModel.ProgressTurn(slotNo);
 	}
 	
 }

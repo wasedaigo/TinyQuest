@@ -7,10 +7,6 @@ using Async;
 
 public class StartUp : MonoBehaviour {
 	
-	void Awake () {
-		Application.targetFrameRate = 60;
-	}
-	
 	void Start () {
 		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
 		LocalUserDataRequest localUserDataRequest = RequestFactory.Instance.GetLocalUserRequest();

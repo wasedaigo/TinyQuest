@@ -6,6 +6,7 @@ public class CombatScene : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		
 		CombatModel combatModel = new CombatModel();
 		
 		ControlPanelController controlPanelController = this.gameObject.GetComponent<ControlPanelController>();
@@ -14,5 +15,6 @@ public class CombatScene : MonoBehaviour {
 		CombatController combatController = this.gameObject.GetComponent<CombatController>();
 		combatController.SetModels(combatModel);
 		combatController.StartBattle();
+		Application.targetFrameRate = 60;
 	}
 }

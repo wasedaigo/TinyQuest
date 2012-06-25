@@ -135,6 +135,7 @@ namespace TinyQuest.Data{
 		public readonly int weapon;
 		public readonly UnitLookType lookType;
 		public readonly RarityType rarity;
+		public readonly int normalAttack;
 		public readonly int[] skills;
 		
 		public string GetName() {
@@ -154,7 +155,7 @@ namespace TinyQuest.Data{
 		
 		public readonly AttributeType attribute;
 		public readonly int chance;
-
+		
 		public string GetName() {
 			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");
 		}

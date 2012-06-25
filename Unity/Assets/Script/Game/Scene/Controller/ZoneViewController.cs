@@ -19,7 +19,6 @@ public class ZoneViewController : MonoBehaviour {
 	
     private void OnAnimationFinished(Roga2dAnimation animation)
     {
-		animation.settings.Origin.Show();
 		animation.settings.Destroy();
 		animation.settings = null;
 		
@@ -33,8 +32,6 @@ public class ZoneViewController : MonoBehaviour {
 		Actor targetActor = this.actors[skillAnimationParams.Target];
 		MasterSkill masterSkill = skillAnimationParams.MasterSkill;
 		if (casterActor.Sprite.IsVisible) {
-			casterActor.Sprite.Hide();
-
 			Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 				{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = new Vector2(32, 32)}},
 				{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = targetActor.PixelSize,  SrcRect = targetActor.SrcRect}},
@@ -49,19 +46,27 @@ public class ZoneViewController : MonoBehaviour {
 
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
 	{
+		Actor actor = null;
 		string[] commandData = command.Split(':');
-		if (commandData[0] == "damage") {
-			uint damageValue = 2750;
-			// Flash effect
-			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
-			this.intervalPlayer.Play(interval);
-			
-			// Damage pop
-			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
-			this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
-			
-			//AdventureObject obj = (AdventureObject)settings.Target;
-			//obj.ApplyDamage(damageValue);
+		switch(commandData[0]) {
+			case "damage":
+				uint damageValue = 2750;
+				// Flash effect
+				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
+				this.intervalPlayer.Play(interval);
+				
+				// Damage pop
+				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
+				this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
+				break;
+			case "hide":
+				actor = settings.Root as Actor;
+				actor.Sprite.Hide();
+				break;
+			case "show":
+				actor = settings.Root as Actor;
+				actor.Sprite.Show();
+				break;
 		}
 	}
 
@@ -138,10 +143,14 @@ public class ZoneViewController : MonoBehaviour {
 	}
 
 	protected void Update() {
-		this.stage.UpdateView();
+		/*foreach (KeyValuePair<UserUnit, Actor> pair in this.actors) {
+			pair.Value.Update();
+		}*/
+		
 		
 		this.animationPlayer.Update(Time.deltaTime);
 		this.intervalPlayer.Update();
+		this.stage.UpdateView();
 	}
 
 	protected void OnDestroy() {

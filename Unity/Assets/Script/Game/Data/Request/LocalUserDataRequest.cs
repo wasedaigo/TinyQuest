@@ -70,26 +70,31 @@ namespace TinyQuest.Data.Request {
 			
 			callback(postCommandState, command, zoneCommandState);
 		}
-
-		public virtual void StartBattle(System.Action<List<CombatUnit>> callback) {
+		
+		
+		public virtual void StartBattle(System.Action<List<CombatUnit>[]> callback) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			CombatProgress combatProgress = data.combatProgress;
 			if (combatProgress == null) {
-				List<CombatUnit> combatUnits = new List<CombatUnit>();
+				List<CombatUnit>[] combatUnitGroups = new List<CombatUnit>[2];
+				for (int i = 0; i < combatUnitGroups.Length; i++) {
+					combatUnitGroups[i] = new List<CombatUnit>();
+				}
+
 				for (int i = 0; i < data.ownUnits.Count; i++) {
 					UserUnit playerUnit = data.ownUnits[i];
-					combatUnits.Add(new CombatUnit(playerUnit.id, 0, i, 100, new int[]{})); // Player	
+					combatUnitGroups[0].Add(new CombatUnit(playerUnit.id, 0, i, 100, new int[]{})); // Player	
 				}
 				
 				UserUnit enemyUnit = data.zoneUnits[0];
-				combatUnits.Add(new CombatUnit(enemyUnit.id, 1, 0, 200, new int[]{})); // Enemy
+				combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, 0, 200, new int[]{})); // Enemy
 				
-				data.combatProgress = new CombatProgress(combatUnits);
+				data.combatProgress = new CombatProgress(combatUnitGroups);
 			}
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
 			
-			callback(data.combatProgress.combatUnits);
+			callback(data.combatProgress.combatUnitGroups);
 		}
 		
 		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
@@ -100,19 +105,26 @@ namespace TinyQuest.Data.Request {
 			
 			this.GetExecutingCommand(callback);
 		}
-		
-		public virtual void UseSkill(CombatUnit casterUnit, CombatUnit targetUnit, System.Action<MasterSkill, CombatUnit, CombatUnit> callback) {
+
+		public virtual void ProgressTurn(int casterIndex, System.Action<List<CombatAction>> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 
-			int skillId = 1;
-
+			CombatUnit casterUnit = combatProgress.combatUnitGroups[0][casterIndex];
+			MasterSkill skill1 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(casterUnit.GetUserUnit().Unit.normalAttack);
+			
+			CombatUnit targetUnit = combatProgress.combatUnitGroups[1][0];
+			MasterSkill skill2 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(targetUnit.GetUserUnit().Unit.normalAttack);
+			
+			List<CombatAction> combatActions = new List<CombatAction>();
+			
+			combatActions.Add(new CombatAction(casterUnit.GetUserUnit(), targetUnit.GetUserUnit(), skill1));
+			combatActions.Add(new CombatAction(targetUnit.GetUserUnit(), casterUnit.GetUserUnit(), skill2));
 			//caster.tp -= 
 			//targetUnit.hp -= 1;
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-			
-			MasterSkill masterSkill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(skillId);
-			callback(masterSkill, casterUnit, targetUnit);
+
+			callback(combatActions);
 		}
 	}
 }

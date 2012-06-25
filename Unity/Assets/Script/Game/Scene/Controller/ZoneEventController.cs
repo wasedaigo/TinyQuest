@@ -26,7 +26,6 @@ public class ZoneEventController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.intervalPlayer = new Roga2dIntervalPlayer();
-		Application.targetFrameRate = 60;
 
 		this.SetState(ZoneState.Pause);
 	}

@@ -9,68 +9,66 @@ namespace TinyQuest.Scene.Model {
 	public class CombatModel {
 		public const int GroupCount = 2;
 		public System.Action TurnProgress;
-		public System.Action<MasterSkill, CombatUnit, CombatUnit> SkillUse;
 		public System.Action<UserUnit, int> UpdateHP;
 		public System.Action StartBattle;
+		public System.Action<CombatAction> ExecuteAction;
 
-		private int groupType;
-		private List<CombatUnit> combatUnits;
+		private List<CombatUnit>[] combatUnits;
 		private UserUnit targetUnit;
 		private int combatUnitCount;
+		
+		private List<CombatAction> combatActionList;
+		private int actionIndex;
 		
 		public void Start() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.StartBattle(this.OnStarted);
 		}
 		
-		private void OnStarted(List<CombatUnit> combatUnits) {
-			int count = 0;
-			foreach (CombatUnit combatUnit in combatUnits) {
-				if (combatUnit.groupType == groupType) {
-					count++;
-				}
-			}
-			this.combatUnitCount = count;
+		private void OnStarted(List<CombatUnit>[] combatUnits) {
 			this.combatUnits = combatUnits;
 			this.StartBattle();
 		}
 		
-		public List<CombatUnit> GetCombatUnits() {
+		public List<CombatUnit>[] GetCombatUnits() {
 			return this.combatUnits;
 		}
 
-		public int GetCombatUnitCount(int groupType) {
-			return this.combatUnitCount;
-		}
-
 		public CombatUnit GetCombatUnit(int groupType, int index) {
-			CombatUnit result = null;
-			foreach (CombatUnit combatUnit in this.combatUnits) {
-				if (combatUnit.groupType == groupType && combatUnit.index == index) {
-					result = combatUnit;
-					break;
-				}
-			}
-			return result;
+			return this.combatUnits[groupType][index];
 		}
 
 		public MasterSkill GetMasterSkillById(int id) {
 			return CacheFactory.Instance.GetMasterDataCache().GetSkillByID(id);
 		}
 		
-		public void ProgressTurn() {
-		}
-		
-		public void UseSkill(int index) {
-			CombatUnit casterUnit = this.GetCombatUnit(0, index);
-			CombatUnit targetUnit = this.GetCombatUnit(1, 0);
-			
-			RequestFactory.Instance.GetLocalUserRequest().UseSkill(casterUnit, targetUnit, this.SkillUsed);
+		public void ProgressTurn(int slotIndex) {
+			if (!IsExecutingAction()) {
+				RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(slotIndex, this.TurnProgressed);
+			}
 		}
 
-		private void SkillUsed(MasterSkill masterSkill, CombatUnit casterUnit, CombatUnit targetUnit) {
-			this.SkillUse(masterSkill, casterUnit, targetUnit);
+		private void TurnProgressed(List<CombatAction> combatActionList) {
+			this.actionIndex = 0;
+			this.combatActionList = combatActionList;
+			this.ExecuteNextAction();
 		}
+		
+		public void ExecuteNextAction() {
+			if (this.combatActionList.Count > actionIndex) {
+				this.ExecuteAction(this.combatActionList[actionIndex]);
+				this.actionIndex++;
+			} else {
+				// Terminate action	
+				this.actionIndex = 0;
+				this.combatActionList = null;
+			}
+		}
+		
+		public bool IsExecutingAction(){
+			return this.actionIndex > 0;
+		}
+
 		
 		private void HPUpdated(UserUnit entity, int value) {
 			this.UpdateHP(entity, value);

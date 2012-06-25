@@ -53,7 +53,7 @@ public class Roga2dSprite : Roga2dNode {
 	public override void Hide() {
 		base.Hide();
 		if (this.renderObject != null) {
-			this.renderObject.Renderer.enabled = this.IsVisible;
+			//this.renderObject.Renderer.enabled = this.IsVisible;
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class Roga2dSprite : Roga2dNode {
 	public override void Show() {
 		base.Show();
 		if (this.renderObject != null) {
-			this.renderObject.Renderer.enabled = this.IsVisible;
+			//this.renderObject.Renderer.enabled = this.IsVisible;
 		}
 	}
 	
