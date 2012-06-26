@@ -48,7 +48,7 @@ public class ZoneViewController : MonoBehaviour {
 		if (skillAnimationParams.Caster.Unit.lookType == UnitLookType.Monster) {
 			// Monster should display attack effect first
 			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[skillAnimationParams.Caster]),
+				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[skillAnimationParams.Caster].Sprite),
 				new Roga2dFunc(() => {
 					this.PlaySkillAnimation(skillAnimationParams);
 				})
@@ -83,7 +83,8 @@ public class ZoneViewController : MonoBehaviour {
 			case "damage":
 				uint damageValue = 2750;
 				// Flash effect
-				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(settings.Target);
+				actor = settings.Target as Actor;
+				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
 				this.intervalPlayer.Play(interval);
 				
 				// Damage pop
