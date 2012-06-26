@@ -1,0 +1,169 @@
+{
+  "dependencies": {
+    "animations": [
+      "Combat/Sub/Jump01"
+    ],
+    "images": [
+      "Combat/BattlerBase"
+    ]
+  },
+  "events": {
+    "12": [
+      "show"
+    ],
+    "0": [
+      "hide"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 4,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 6,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": true,
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 4,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 2,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 10,
+          "startPositionType": "RelativeToTarget"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 12,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 4,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 8,
+          "emitter": false,
+          "priority": 0.5,
+          "id": "Combat/Sub/Jump01",
+          "type": "Animation",
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "type": "Image",
+          "frameNo": 12,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

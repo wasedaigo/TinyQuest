@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "animations": [
-      "Combat/Common/Swing01",
-      "Combat/Common/Jump01",
-      "Combat/Effect/EffectSlash01"
+      "Combat/Sub/Swing01",
+      "Combat/Sub/Jump01",
+      "Combat/Sub/EffectSlash01"
     ],
     "images": [
       "Combat/BattlerBase",
@@ -149,7 +149,7 @@
           "duration": 9,
           "emitter": false,
           "priority": 0.5,
-          "id": "Combat/Common/Swing01",
+          "id": "Combat/Sub/Swing01",
           "type": "Animation",
           "frameNo": 0
         },
@@ -174,7 +174,7 @@
           "duration": 7,
           "emitter": false,
           "priority": 0.5,
-          "id": "Combat/Common/Jump01",
+          "id": "Combat/Sub/Jump01",
           "type": "Animation",
           "frameNo": 13
         }
@@ -252,7 +252,7 @@
           "minEmitSpeed": 0.0,
           "priority": 1.0,
           "minEmitAngle": 0,
-          "id": "Combat/Effect/EffectSlash01",
+          "id": "Combat/Sub/EffectSlash01",
           "maxEmitAngle": 0,
           "type": "Animation",
           "maxEmitSpeed": 0.0,

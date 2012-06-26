@@ -11,7 +11,7 @@ public class Roga2dAnimationPlayer {
 		return animations.Count > 0;
 	}
 	
-	public void Play(Roga2dNode root, Transform spawnTransform, Roga2dAnimation animation, Roga2dAnimationFinishCallback finishCallback) {
+	public void Play(Roga2dNode root, Transform spawnTransform, Roga2dAnimation animation, System.Action<Roga2dAnimation> finishCallback) {
 		if (root != null) {
 			root.AddChild(animation.Node);
 		}
@@ -36,6 +36,9 @@ public class Roga2dAnimationPlayer {
 						animation.Node.Parent.RemoveChild(animation.Node);
 					}
 					this.animations.RemoveAt(i);
+					if (animation.settings != null) {
+						animation.settings.Destroy();
+					}
 					if (animation.finishCallback != null) {
 						animation.finishCallback(animation);
 					}

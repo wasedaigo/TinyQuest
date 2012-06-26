@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TinyQuest.Data;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
@@ -11,7 +12,7 @@ public class StartUp : MonoBehaviour {
 		MasterDataRequest masterRequest = RequestFactory.Instance.GetMasterDataRequest();
 		LocalUserDataRequest localUserDataRequest = RequestFactory.Instance.GetLocalUserRequest();
 		
-		Async.Async.Instance.Parallel(new System.Action<System.Action>[] {
+		Async.Async.Instance.Parallel(new List<System.Action<System.Action>> {
 			(next) => {
 				masterRequest.GetStartUpData(
 					(string result) => {

@@ -4,9 +4,10 @@ public class Roga2dAnimation {
 	public Roga2dBaseInterval Interval;
 	public Roga2dNode Node;
 	public Roga2dAnimationSettings settings;
-	public Roga2dAnimationFinishCallback finishCallback;
+	public System.Action<Roga2dAnimation> finishCallback;
 	public bool IsStarted;
 	public GameObject Root;
+	public Object Data;
 	
 	public static Roga2dAnimation Build(Roga2dNode node,  Roga2dBaseInterval interval) {
 		return Build(node, interval, null);
@@ -22,4 +23,3 @@ public class Roga2dAnimation {
 		return animation;
 	}
 }
-public delegate void Roga2dAnimationFinishCallback(Roga2dAnimation animation);

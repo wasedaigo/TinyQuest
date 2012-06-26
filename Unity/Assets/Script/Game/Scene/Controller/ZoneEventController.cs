@@ -40,7 +40,7 @@ public class ZoneEventController : MonoBehaviour {
 
 	private void SetState(ZoneState state) {
 		if (this.state != state) {
-			this.SendMessage("OnStateChanged", ZoneState.Pause);	
+			//this.SendMessage("OnStateChanged", ZoneState.Pause);	
 		}
 	}
 	

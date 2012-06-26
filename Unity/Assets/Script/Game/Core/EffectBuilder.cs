@@ -56,9 +56,32 @@ namespace TinyQuest.Core {
 		
 		// Build interval for red-flash
 		public Roga2dBaseInterval BuildDamageInterval(Roga2dNode target) {
+			List<Roga2dBaseInterval> flashList = new List<Roga2dBaseInterval>();
+			flashList.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(100, -100, -100), 0.075f, true));
+			flashList.Add(new Roga2dHueInterval(target, new Roga2dHue(100, -100, -100), new Roga2dHue(0, 0, 0), 0.075f, true));
+			
+			List<Roga2dBaseInterval> shakeList = new List<Roga2dBaseInterval>();
+			Vector2 pos = target.LocalPosition;
+			Vector2 pixelPos = target.LocalPixelPosition;
+			for (int i = 0; i < 6; i++) {
+				int dx = (2 * (i % 2) - 1) * 2;
+				int dy = 0;
+				shakeList.Add(new Roga2dPositionInterval(target, pos, Roga2dUtils.pixelToLocal(new Vector2(pixelPos.x + dx, pixelPos.y + dy)), 0.03f, true, null));
+			}
+			shakeList.Add(new Roga2dPositionInterval(target, pos, pos, 0.03f, true, null));
+			
+			return new Roga2dParallel(new List<Roga2dBaseInterval>(){new Roga2dSequence(flashList), new Roga2dSequence(shakeList)});
+		}
+		
+		// Build interval for whilte-flash
+		public Roga2dBaseInterval BuildAttackFlashInterval(Roga2dNode target) {
 			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(100, -100, -100), 0.075f, true));
-			list.Add(new Roga2dHueInterval(target, new Roga2dHue(100, -100, -100), new Roga2dHue(0, 0, 0), 0.075f, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(255, 255, 255), 0.015f, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(255, 255, 255), new Roga2dHue(0, 0, 0), 0.015f, true));
+			list.Add(new Roga2dWait(0.1f));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(0, 0, 0), new Roga2dHue(255, 255, 255), 0.015f, true));
+			list.Add(new Roga2dHueInterval(target, new Roga2dHue(255, 255, 255), new Roga2dHue(0, 0, 0), 0.015f, true));
+			list.Add(new Roga2dWait(0.1f));
 			return new Roga2dSequence(list);
 		}
 	}

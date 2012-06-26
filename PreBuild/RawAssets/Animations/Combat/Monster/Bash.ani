@@ -9,7 +9,7 @@
             "frameNo" : 0,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
-            "sourcePath" : "Effect/Bash01.ani"
+            "sourcePath" : "Combat/Sub/Bash01.ani"
          },
          {
             "frameNo" : 5,

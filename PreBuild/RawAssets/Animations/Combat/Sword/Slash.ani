@@ -9,14 +9,14 @@
          {
             "frameNo" : 0,
             "positionTween" : "linear",
-            "sourcePath" : "Combat/Common/Swing01.ani"
+            "sourcePath" : "Combat/Sub/Swing01.ani"
          },
          {
             "frameNo" : 4,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "Combat/Common/Swing01.ani"
+            "sourcePath" : "Combat/Sub/Swing01.ani"
          },
          {
             "frameNo" : 9,
@@ -31,12 +31,12 @@
             "positionTween" : "linear",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "Combat/Common/Jump01.ani"
+            "sourcePath" : "Combat/Sub/Jump01.ani"
          },
          {
             "frameNo" : 19,
             "positionTween" : "fix",
-            "sourcePath" : "Combat/Common/Jump01.ani"
+            "sourcePath" : "Combat/Sub/Jump01.ani"
          }
       ],
       "1" : [
@@ -52,7 +52,7 @@
             "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
-            "sourcePath" : "Combat/Effect/EffectSlash01.ani"
+            "sourcePath" : "Combat/Sub/EffectSlash01.ani"
          }
       ]
    }

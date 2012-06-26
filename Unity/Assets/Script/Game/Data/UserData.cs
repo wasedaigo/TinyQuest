@@ -54,6 +54,7 @@ namespace TinyQuest.Data{
 	public class CombatProgress {
 		public int turnCount;
 		public List<CombatUnit>[] combatUnitGroups;
+		public int[] activeUnitIndexes;
 		
 		public CombatProgress(List<CombatUnit>[] combatUnitGroups) {
 			this.combatUnitGroups = combatUnitGroups;

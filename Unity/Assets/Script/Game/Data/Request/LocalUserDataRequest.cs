@@ -106,25 +106,37 @@ namespace TinyQuest.Data.Request {
 			this.GetExecutingCommand(callback);
 		}
 
-		public virtual void ProgressTurn(int casterIndex, System.Action<List<CombatAction>> callback) {
+		public virtual void ProgressTurn(int casterIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
 
 			CombatUnit casterUnit = combatProgress.combatUnitGroups[0][casterIndex];
 			MasterSkill skill1 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(casterUnit.GetUserUnit().Unit.normalAttack);
 			
-			CombatUnit targetUnit = combatProgress.combatUnitGroups[1][0];
+			int targetIndex = 0;
+			CombatUnit targetUnit = combatProgress.combatUnitGroups[1][targetIndex];
 			MasterSkill skill2 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(targetUnit.GetUserUnit().Unit.normalAttack);
 			
 			List<CombatAction> combatActions = new List<CombatAction>();
-			
-			combatActions.Add(new CombatAction(casterUnit.GetUserUnit(), targetUnit.GetUserUnit(), skill1));
-			combatActions.Add(new CombatAction(targetUnit.GetUserUnit(), casterUnit.GetUserUnit(), skill2));
+			if (combatProgress.activeUnitIndexes == null) {
+				combatProgress.activeUnitIndexes = new int[2]{casterIndex, targetIndex};
+			} else {
+				//if (combatProgress.activeUnitIndexes[0] == casterIndex) {
+					combatActions.Add(new CombatAction(casterUnit.GetUserUnit(), targetUnit.GetUserUnit(), skill1));
+				//}
+				combatProgress.activeUnitIndexes[0] = casterIndex;
+				
+				//if (combatProgress.activeUnitIndexes[1] == targetIndex) {
+					combatActions.Add(new CombatAction(targetUnit.GetUserUnit(), casterUnit.GetUserUnit(), skill2));
+				//}
+				combatProgress.activeUnitIndexes[1] = targetIndex;
+				
+			}
 			//caster.tp -= 
 			//targetUnit.hp -= 1;
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 
-			callback(combatActions);
+			callback(casterUnit, targetUnit, combatActions);
 		}
 	}
 }

@@ -24,6 +24,7 @@ public class CombatController : MonoBehaviour {
 		this.combatModel = combatModel;
 		this.combatModel.StartBattle += this.BattleStarted;
 		this.combatModel.ExecuteAction += this.ActionExecuted;
+		this.combatModel.SelectUnit += this.UnitSelected;
 	}
 	
 	public void StartBattle() {
@@ -34,7 +35,7 @@ public class CombatController : MonoBehaviour {
 		List<CombatUnit>[] combatUnits = this.combatModel.GetCombatUnits();
 		foreach (List<CombatUnit> combatUnitGroup in combatUnits) {
 			foreach (CombatUnit combatUnit in combatUnitGroup) {
-				this.SendMessage("SpawnActor", combatUnit.GetUserUnit());
+				this.SendMessage("SpawnActor", combatUnit);
 			}
 		}
 		
@@ -42,15 +43,19 @@ public class CombatController : MonoBehaviour {
 		this.SendMessage("UpdateStatus");
 	}
 	
-	protected void AnimationFinished() {
+	protected void ExecuteNextAction() {
 		this.combatModel.ExecuteNextAction();
 	}
 	
 	public void ActionExecuted(CombatAction action) {
 		SendMessage(
-			"PlaySkillAnimation", 
+			"CombatAction", 
 			new SkillAnimationParams(action.caster, action.target, action.skill)
 		);	
+	}
+	
+	public void UnitSelected(CombatUnit caster, CombatUnit target) {
+		SendMessage("SelectActor", new CombatUnit[]{caster, target});
 	}
 
 	public void InvokeSkill(int slotNo) {

@@ -12,6 +12,7 @@ namespace TinyQuest.Scene.Model {
 		public System.Action<UserUnit, int> UpdateHP;
 		public System.Action StartBattle;
 		public System.Action<CombatAction> ExecuteAction;
+		public System.Action<CombatUnit, CombatUnit> SelectUnit;
 
 		private List<CombatUnit>[] combatUnits;
 		private UserUnit targetUnit;
@@ -48,10 +49,10 @@ namespace TinyQuest.Scene.Model {
 			}
 		}
 
-		private void TurnProgressed(List<CombatAction> combatActionList) {
+		private void TurnProgressed(CombatUnit caster, CombatUnit target, List<CombatAction> combatActionList) {
 			this.actionIndex = 0;
 			this.combatActionList = combatActionList;
-			this.ExecuteNextAction();
+			this.SelectUnit(caster, target);
 		}
 		
 		public void ExecuteNextAction() {
