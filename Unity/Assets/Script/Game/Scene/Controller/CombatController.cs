@@ -26,7 +26,7 @@ public class CombatController : MonoBehaviour {
 		this.combatModel.ExecuteAction += this.ActionExecuted;
 		this.combatModel.SelectUnit += this.UnitSelected;
 	}
-	
+
 	public void StartBattle() {
 		this.combatModel.Start();
 	}

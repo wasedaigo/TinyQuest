@@ -6,8 +6,13 @@ public class ControlPanelController : MonoBehaviour {
 	public GameObject[] Slots;
 	public const int GroupType = 0;
 	private CombatModel combatModel;
+	private SkillButtonView[] views;
 	public void SetModels(CombatModel combatModel) {
 		this.combatModel = combatModel;
+		this.views = new SkillButtonView[Slots.Length];
+		for (int i = 0; i < Slots.Length; i++) {
+			this.views[i] = Slots[i].GetComponent<SkillButtonView>();
+		}
 	}
 	
 	public void Slot1Clicked() {
@@ -38,11 +43,16 @@ public class ControlPanelController : MonoBehaviour {
 		this.SendMessage("InvokeSkill", slotNo);
 	}
 	
+	protected void ChangeActorStatus(CombatActionResult result) {
+		if (result.combatUnit.groupType != GroupType) { return; }
+		
+		this.views[result.combatUnit.index].SetLife(result.life, result.maxLife);
+	}
+	
 	protected void UpdateStatus() {
 		for (int i = 0; i < Slots.Length; i++) {
-			SkillButtonView view = Slots[i].GetComponent<SkillButtonView>();
 			CombatUnit combatUnit = this.combatModel.GetCombatUnit(GroupType, i);
-			view.UpdateStatus(combatUnit);
+			this.views[i].UpdateStatus(combatUnit);
 		}
 	}
 }

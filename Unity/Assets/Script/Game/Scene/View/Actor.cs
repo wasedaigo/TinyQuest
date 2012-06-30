@@ -16,6 +16,10 @@ namespace TinyQuest.Object {
 			this.AddChild(this.sprite);
 		}
 		
+		public virtual void SetStatus(int hp, int maxHp) {
+			
+		}
+		
 		public Roga2dSprite Sprite {
 			get {
 				return this.sprite;

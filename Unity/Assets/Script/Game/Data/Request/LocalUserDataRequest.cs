@@ -107,25 +107,31 @@ namespace TinyQuest.Data.Request {
 		}
 		
 		private struct CombatProcessBlock {
-			public UserUnit caster;
-			public UserUnit target;
+			public CombatUnit caster;
+			public CombatUnit target;
 			
-			public CombatProcessBlock(UserUnit caster, UserUnit target) {
+			public CombatProcessBlock(CombatUnit caster, CombatUnit target) {
 				this.caster = caster;
 				this.target = target;
 			}
 			
 			public CombatAction Execute() {
-				if (this.caster.IsDead || this.target.IsDead) { return null; }
-				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.Unit.normalAttack);
+				if (this.caster.GetUserUnit().IsDead || this.target.GetUserUnit().IsDead) { return null; }
+				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.GetUserUnit().Unit.normalAttack);
 				
-				int effect = this.caster.Power * skill.multiplier / 100;
-				this.target.hp -= effect;
-				if (this.target.hp < 0) {
-					this.target.hp = 0;	
+				int effect = this.caster.GetUserUnit().Power * skill.multiplier / 100;
+				this.target.GetUserUnit().hp -= effect;
+				if (this.target.GetUserUnit().hp < 0) {
+					this.target.GetUserUnit().hp = 0;	
 				}
 				
-				return new CombatAction(this.caster, this.target, skill, effect);
+				CombatActionResult targetResult = new CombatActionResult();
+				targetResult.life = this.target.GetUserUnit().hp;
+				targetResult.maxLife = this.target.GetUserUnit().MaxHP;
+				targetResult.effect = effect;
+				targetResult.combatUnit = this.target;
+				
+				return new CombatAction(this.caster, this.target, skill, null, targetResult);
 			}
 		}
 	
@@ -148,11 +154,11 @@ namespace TinyQuest.Data.Request {
 				
 				CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupTypeCount];
 				if (playerUnit.GetUserUnit().Speed >= enemyUnit.GetUserUnit().Speed) {
-					blocks[0] = new CombatProcessBlock(playerUnit.GetUserUnit(), enemyUnit.GetUserUnit());
-					blocks[1] = new CombatProcessBlock(enemyUnit.GetUserUnit(), playerUnit.GetUserUnit());
+					blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
+					blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
 				} else {
-					blocks[0] = new CombatProcessBlock(enemyUnit.GetUserUnit(), playerUnit.GetUserUnit());
-					blocks[1] = new CombatProcessBlock(playerUnit.GetUserUnit(), enemyUnit.GetUserUnit());
+					blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
+					blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
 				}
 
 				for (int i = 0; i < blocks.Length; i++) {

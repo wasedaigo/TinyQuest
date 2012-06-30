@@ -21,7 +21,7 @@ public class AnimationSpawner : MonoBehaviour {
 	}
 	
 	Actor spawnBattler (string name, float x, float y) {
-		Actor battler = new PuppetActor(name, PuppetActor.State.Stand);
+		Actor battler = new PuppetActor(name, PuppetActor.PoseType.Stand);
 		battler.Sprite.LocalPriority = 0.1f;
 		battler.LocalPixelPosition = new Vector2(x, y);
 		this.battlers.Add(battler);

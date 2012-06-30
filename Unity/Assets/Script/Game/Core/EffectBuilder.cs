@@ -15,9 +15,9 @@ namespace TinyQuest.Core {
 		}
 
 		// Build animation for damage pop
-		public Roga2dAnimation BuildDamagePopAnimation(Vector2 position, uint value) {
+		public Roga2dAnimation BuildDamagePopAnimation(Vector2 position, int value) {
 			Roga2dNode node = new Roga2dNode("Damage");
-			List<uint> digits = Utils.getDigits(value);
+			List<uint> digits = Utils.getDigits((uint)value);
 			position.x -= (10 * digits.Count) / 2;
 			node.LocalPixelPosition = position;
 			node.LocalPriority = 2.0f;

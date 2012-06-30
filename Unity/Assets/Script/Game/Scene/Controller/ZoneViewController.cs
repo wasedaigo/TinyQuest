@@ -10,9 +10,6 @@ using TinyQuest.Object;
 using Async;
 
 public class ZoneViewController : MonoBehaviour {
-	private struct SkillAnimationData {
-		public int damage;
-	}
 	
 	private enum TargetPosition {
 		In,
@@ -49,10 +46,10 @@ public class ZoneViewController : MonoBehaviour {
     }
 	
 	private void CombatAction(CombatAction combatAction) {
-		if (combatAction.caster.Unit.lookType == UnitLookType.Monster) {
+		if (combatAction.caster.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
 			// Monster should display attack effect first
 			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[combatAction.caster].Sprite),
+				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[combatAction.caster.GetUserUnit()].Sprite),
 				new Roga2dFunc(() => {
 					this.PlaySkillAnimation(combatAction);
 				})
@@ -65,8 +62,8 @@ public class ZoneViewController : MonoBehaviour {
 	
 	private void PlaySkillAnimation(CombatAction combatAction) 
 	{
-		Actor casterActor = this.actors[combatAction.caster];
-		Actor targetActor = this.actors[combatAction.target];
+		Actor casterActor = this.actors[combatAction.caster.GetUserUnit()];
+		Actor targetActor = this.actors[combatAction.target.GetUserUnit()];
 		MasterSkill masterSkill = combatAction.skill;
 
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
@@ -76,29 +73,42 @@ public class ZoneViewController : MonoBehaviour {
 		};
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetActor, CommandCalled);
 		Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
-		
-		SkillAnimationData data = new SkillAnimationData();
-		data.damage = combatAction.effect;
-		settings.Data = data;
+
+		settings.Data = combatAction;
 		this.animationPlayer.Play(casterActor,  null, animation,  this.OnSkillAnimationFinished);
 	}
 	
+	private void ShowEffect(Actor actor, CombatActionResult result) 
+	{
+		if (actor == null) {return;}
+		if (result == null) {return;}
+
+		int damageValue = result.effect;
+
+		Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
+		this.intervalPlayer.Play(interval);
+		
+		// Damage pop
+		Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(actor.LocalPixelPosition, damageValue);
+		this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
+		
+		this.SendMessage("ChangeActorStatus", result);		
+	}
+
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
 	{
 		Actor actor = null;
 		string[] commandData = command.Split(':');
 		switch(commandData[0]) {
 			case "damage":
-				SkillAnimationData data = (SkillAnimationData)settings.Data;
-				uint damageValue = (uint)data.damage;
-				// Flash effect
-				actor = settings.Target as Actor;
-				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
-				this.intervalPlayer.Play(interval);
-				
-				// Damage pop
-				Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, damageValue);
-				this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
+				CombatAction combatAction = (CombatAction)settings.Data;
+			
+				Actor casterActor = this.actors[combatAction.caster.GetUserUnit()];
+				this.ShowEffect(casterActor, combatAction.casterResult);
+
+				Actor targetActor = this.actors[combatAction.target.GetUserUnit()];
+				this.ShowEffect(targetActor, combatAction.targetResult);
+
 				break;
 			case "hide":
 				actor = settings.Root as Actor;
@@ -111,8 +121,8 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 
-	protected Actor BuildPuppet (string name, PuppetActor.State state, float x, float y) {
-		PuppetActor actor = new PuppetActor(name, state);
+	protected Actor BuildPuppet (string name, PuppetActor.PoseType poseType, float x, float y) {
+		PuppetActor actor = new PuppetActor(name, poseType);
 		actor.LocalPriority = 0.45f;
 		actor.LocalPixelPosition = new Vector2(x, y);
 		actor.UpdatePriority();
@@ -137,7 +147,7 @@ public class ZoneViewController : MonoBehaviour {
 				actor = this.BuildMonster("goblin", TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
 				break;
 			case UnitLookType.Puppet:
-				actor = this.BuildPuppet(userUnit.Unit.id.ToString(), PuppetActor.State.Stand, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
+				actor = this.BuildPuppet(userUnit.Unit.id.ToString(), PuppetActor.PoseType.Stand, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
 				actor.LocalPriority += 0.001f * userUnit.id;
 				break;
 		}
@@ -200,6 +210,13 @@ public class ZoneViewController : MonoBehaviour {
 				this.targetNodes[i, j].LocalPixelPosition = TargetPositions[i, j];
 				this.stage.GetCharacterLayer().AddChild(this.targetNodes[i, j]);
 			}
+		}
+	}
+	
+	protected void ChangeActorStatus(CombatActionResult result) {
+		Actor actor = this.actors[result.combatUnit.GetUserUnit()];
+		if (actor != null) {
+			actor.SetStatus(result.life, result.maxLife);
 		}
 	}
 

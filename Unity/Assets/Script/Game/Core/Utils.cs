@@ -22,5 +22,21 @@ namespace TinyQuest.Core {
 			
 			return result;	
 		}
+		
+		public static ActorHealthState GetHealthState(float ratio) {
+			if (ratio == 1) {
+				return ActorHealthState.Full;
+			}
+			
+			if (ratio == 0) {
+				return ActorHealthState.Dead;
+			} 
+			
+			if (ratio <= 0.25f) {
+				return ActorHealthState.Dying;
+			}
+			
+			return ActorHealthState.Ok;	
+		}
 	}
 }

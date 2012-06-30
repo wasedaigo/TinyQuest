@@ -5,33 +5,62 @@ namespace TinyQuest.Object {
 	public class PuppetActor : Actor {
 		private Roga2dIntervalPlayer intervalPlayer;
 		private Roga2dBaseInterval interval;
-		private State state;
+		private PoseType poseType;
 		private bool isWalking;
-		public enum State {
+		public enum PoseType {
 			Stand,
 			Walk,
-			Sit
+			Sit,
+			Dying,
+			Dead,
+			Attacked
 		};
 
-		public PuppetActor(string name, State state) 
+		public PuppetActor(string name, PoseType poseType) 
 		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32))
 		{
 			this.intervalPlayer = new Roga2dIntervalPlayer();
-			this.SetState(state);
+			this.SetPoseType(poseType);
 		}
 		
-		public void SetState(State state) {
-			this.state = state;
-			switch (this.state) {
-				case State.Stand:
+		public void SetPoseType(PoseType poseType) {
+			this.poseType = poseType;
+			switch (this.poseType) {
+				case PoseType.Stand:
 					this.SrcRect = new Rect(32, 0, 32, 32);
 				break;
-				case State.Sit:
+				case PoseType.Sit:
 					this.SrcRect = new Rect(224, 0, 32, 32);
+				break;
+				case PoseType.Dying:
+					this.SrcRect = new Rect(124, 0, 32, 32);
+				break;
+				case PoseType.Attacked:
+					this.SrcRect = new Rect(156, 0, 32, 32);
+				break;
+				case PoseType.Dead:
+					this.SrcRect = new Rect(188, 0, 32, 32);
 				break;
 			}
 		}
-		
+
+		public override void SetStatus(int hp, int maxHp) {
+			float ratio = hp / (float)maxHp;
+			ActorHealthState state = Core.Utils.GetHealthState(ratio);
+			switch (state) {
+			case ActorHealthState.Full:
+			case ActorHealthState.Ok:
+				this.SetPoseType(PoseType.Stand);
+				break;
+			case ActorHealthState.Dying:
+				this.SetPoseType(PoseType.Dying);
+				break;
+			case ActorHealthState.Dead:
+				this.SetPoseType(PoseType.Dead);
+				break;
+			}
+		}
+
 		public override void Update ()
 		{
 			base.Update ();
@@ -69,7 +98,7 @@ namespace TinyQuest.Object {
 				this.intervalPlayer.Stop(this.interval);
 				this.interval = null;
 				this.isWalking = false;
-				this.SetState(State.Stand);
+				this.SetPoseType(PoseType.Stand);
 			}
 		}
 		public bool IsWalking() {
