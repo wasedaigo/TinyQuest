@@ -8,7 +8,8 @@ public class Roga2dAnimationSettings {
 	private bool reverse;
 	private Roga2dAnimationPlayer player;
 	private Roga2dCommandCallback commandCallBack;
-
+	public object Data;
+	
 	public Roga2dAnimationPlayer Player {
 		get {
 			return player;	

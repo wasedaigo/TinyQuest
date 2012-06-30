@@ -117,10 +117,10 @@
         "skillExp": 0,
         "lvTable": {"baseValue": 200, "growthType":0},
         "hpTable": {"baseValue": 200, "growthType":0},
-        "powerTable": {"baseValue": 200, "growthType":0},
+        "powerTable": {"baseValue": 150, "growthType":0},
         "regenTable": {"baseValue": 200, "growthType":0},
         "defTable": {"baseValue": 200, "growthType":0},
-        "speedTable": {"baseValue": 200, "growthType":0},
+        "speedTable": {"baseValue": 50, "growthType":0},
         "weakPoints": [0, 1],
         "weapon": 0,
         "lookType": 1,
@@ -141,7 +141,8 @@
         "buffLifeTime": 1,
         "buffRate":100,
         "attribute": 0,
-        "element": 2
+        "multiplier": 100,
+        "chanceTable": {"baseValue": 50, "growthType":0}
       },
       {
         "id": 2,
@@ -153,7 +154,8 @@
         "buffLifeTime": 1,
         "buffRate":100,
         "attribute": 0,
-        "element": 2
+        "multiplier": 100,
+        "chanceTable": {"baseValue": 50, "growthType":0}
       },
       {
         "id": 3,
@@ -165,7 +167,8 @@
         "buffLifeTime": 1,
         "buffRate":100,
         "attribute": 0,
-        "element": 2
+        "multiplier": 100,
+        "chanceTable": {"baseValue": 50, "growthType":0}
       }
     ],
 

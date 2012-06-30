@@ -90,37 +90,43 @@
         "id": 1,
         "unit": 1,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":100
       },
       {
         "id": 2,
         "unit": 2,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":100
       },
       {
         "id": 3,
         "unit": 3,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":100
       },
       {
         "id": 4,
         "unit": 4,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":100
       },
       {
         "id": 5,
         "unit": 5,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":100
       },
       {
         "id": 6,
         "unit": 6,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":200
       }
     ],
     "zoneUnits": [
@@ -128,7 +134,8 @@
         "id": 1,
         "unit": 10001,
         "exp": 1,
-        "skillExp": 1
+        "skillExp": 1,
+        "hp":1000
       }
     ],
     "maxZoneUnitId": 10001,

@@ -10,6 +10,10 @@ using TinyQuest.Object;
 using Async;
 
 public class ZoneViewController : MonoBehaviour {
+	private struct SkillAnimationData {
+		public int damage;
+	}
+	
 	private enum TargetPosition {
 		In,
 		Out
@@ -44,26 +48,26 @@ public class ZoneViewController : MonoBehaviour {
 		this.SendMessage("ExecuteNextAction");
     }
 	
-	private void CombatAction(SkillAnimationParams skillAnimationParams) {
-		if (skillAnimationParams.Caster.Unit.lookType == UnitLookType.Monster) {
+	private void CombatAction(CombatAction combatAction) {
+		if (combatAction.caster.Unit.lookType == UnitLookType.Monster) {
 			// Monster should display attack effect first
 			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[skillAnimationParams.Caster].Sprite),
+				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.actors[combatAction.caster].Sprite),
 				new Roga2dFunc(() => {
-					this.PlaySkillAnimation(skillAnimationParams);
+					this.PlaySkillAnimation(combatAction);
 				})
 			});
 			intervalPlayer.Play(interval);
 		} else {
-			this.PlaySkillAnimation(skillAnimationParams);
+			this.PlaySkillAnimation(combatAction);
 		}
 	}
 	
-	private void PlaySkillAnimation(SkillAnimationParams skillAnimationParams) 
+	private void PlaySkillAnimation(CombatAction combatAction) 
 	{
-		Actor casterActor = this.actors[skillAnimationParams.Caster];
-		Actor targetActor = this.actors[skillAnimationParams.Target];
-		MasterSkill masterSkill = skillAnimationParams.MasterSkill;
+		Actor casterActor = this.actors[combatAction.caster];
+		Actor targetActor = this.actors[combatAction.target];
+		MasterSkill masterSkill = combatAction.skill;
 
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = new Vector2(32, 32)}},
@@ -72,6 +76,10 @@ public class ZoneViewController : MonoBehaviour {
 		};
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetActor, CommandCalled);
 		Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
+		
+		SkillAnimationData data = new SkillAnimationData();
+		data.damage = combatAction.effect;
+		settings.Data = data;
 		this.animationPlayer.Play(casterActor,  null, animation,  this.OnSkillAnimationFinished);
 	}
 	
@@ -81,7 +89,8 @@ public class ZoneViewController : MonoBehaviour {
 		string[] commandData = command.Split(':');
 		switch(commandData[0]) {
 			case "damage":
-				uint damageValue = 2750;
+				SkillAnimationData data = (SkillAnimationData)settings.Data;
+				uint damageValue = (uint)data.damage;
 				// Flash effect
 				actor = settings.Target as Actor;
 				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);

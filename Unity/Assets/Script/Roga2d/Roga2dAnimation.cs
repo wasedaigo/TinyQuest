@@ -7,7 +7,6 @@ public class Roga2dAnimation {
 	public System.Action<Roga2dAnimation> finishCallback;
 	public bool IsStarted;
 	public GameObject Root;
-	public Object Data;
 	
 	public static Roga2dAnimation Build(Roga2dNode node,  Roga2dBaseInterval interval) {
 		return Build(node, interval, null);

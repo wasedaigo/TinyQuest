@@ -1,17 +1,19 @@
 using TinyQuest.Data;
 
 class Constant {
-	public static int GroupTypeCount = 2;
+	public const int GroupTypeCount = 2;
 }
 
-public class SkillAnimationParams {
-	public UserUnit Caster;
-	public UserUnit Target;
-	public MasterSkill MasterSkill;
+public class CombatAction {
+	public readonly UserUnit caster;
+	public readonly UserUnit target;
+	public readonly MasterSkill skill;
+	public int effect;
 	
-	public SkillAnimationParams(UserUnit caster, UserUnit target, MasterSkill masterSkill) {
-		this.Caster = caster;
-		this.Target = target;
-		this.MasterSkill = masterSkill;
+	public CombatAction(UserUnit caster, UserUnit target, MasterSkill skill, int effect) {
+		this.caster = caster;
+		this.target = target;
+		this.skill = skill;
+		this.effect = effect;
 	}
 }

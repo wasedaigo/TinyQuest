@@ -112,12 +112,12 @@ namespace TinyQuest.Data{
 	};
 
 	public class GrowthTable {
-		public readonly int startValue;
-		public readonly int maxValue;
+		public readonly float baseValue;
+		public readonly float maxValue;
 		public readonly GrowthType growthType;
 		
-		public int GetValue(int keyValue) {
-			return startValue;	
+		public float GetValue(int keyValue) {
+			return baseValue;	
 		}
 	};
 	
@@ -148,13 +148,15 @@ namespace TinyQuest.Data{
 		public readonly SkillType type;
 
 		public readonly string animation;
+		
+		public readonly int multiplier;
 		public readonly int buff;
 		public readonly int buffEffect;
 		public readonly BuffLifeTimeType buffLifeTime;
 		public readonly int buffRate;
 		
 		public readonly AttributeType attribute;
-		public readonly int chance;
+		public readonly GrowthTable chanceTable;
 		
 		public string GetName() {
 			return CacheFactory.Instance.GetLocalizedTextCache().Get("Skill", this.id.ToString(), "name");

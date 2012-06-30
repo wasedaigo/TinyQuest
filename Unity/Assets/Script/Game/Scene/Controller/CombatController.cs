@@ -48,10 +48,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void ActionExecuted(CombatAction action) {
-		SendMessage(
-			"CombatAction", 
-			new SkillAnimationParams(action.caster, action.target, action.skill)
-		);	
+		SendMessage("CombatAction", action);	
 	}
 	
 	public void UnitSelected(CombatUnit caster, CombatUnit target) {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using TinyQuest.Data.Cache;
 namespace TinyQuest.Data{
 	
@@ -24,30 +25,23 @@ namespace TinyQuest.Data{
 	}
 	
 	public class CombatUnit {
-		private readonly int id;
-		public int hp;
-		public int[] buffs;
+		private readonly int unitId;
 		public int groupType;
 		public int index;
-		
-		public CombatUnit(){
-		}
 		
 		public UserUnit GetUserUnit() {
 			LocalUserData data = Cache.CacheFactory.Instance.GetLocalUserDataCache().Data;
 			if (this.groupType == 0) {
-				return data.GetOwnUnitByID(this.id);
+				return data.GetOwnUnitByID(this.unitId);
 			} else {
-				return data.GetZoneUnitByID(this.id);
+				return data.GetZoneUnitByID(this.unitId);
 			}
 		}
 
-		public CombatUnit(int id,  int groupType, int index, int hp, int[] buffs) {
-			this.id = id;
-			this.hp = hp;
+		public CombatUnit(int unitId,  int groupType, int index) {
+			this.unitId = unitId;
 			this.groupType = groupType;
 			this.index = index;
-			this.buffs = buffs;
 		}
 	}
 	
@@ -66,6 +60,7 @@ namespace TinyQuest.Data{
 		public int unit;
 		public int exp;
 		public int skillExp;
+		public int[] buffs;
 
 		public MasterUnit Unit{
 			get{
@@ -75,20 +70,42 @@ namespace TinyQuest.Data{
 
 		public int Level {
 			get {
-				return this.Unit.lvTable.GetValue(this.exp);
+			
+				return Mathf.FloorToInt(this.Unit.lvTable.GetValue(this.exp));
 			}
 		}
 
 		public int MaxHP {
 			get {
-				return this.Unit.hpTable.GetValue(this.Level);
+				return Mathf.FloorToInt(this.Unit.hpTable.GetValue(this.Level));
 			}
 		}
-
-		private int hp;
-		public int HP {
-			get {return this.hp;}
+		
+		public int Speed {
+			get {
+				return Mathf.FloorToInt(this.Unit.speedTable.GetValue(this.Level));
+			}
 		}
+		
+		public int Power {
+			get {
+				return Mathf.FloorToInt(this.Unit.powerTable.GetValue(this.Level));
+			}
+		}
+		
+		public int Defense {
+			get {
+				return Mathf.FloorToInt(this.Unit.defTable.GetValue(this.Level));
+			}
+		}
+		
+		public int Regen {
+			get {
+				return Mathf.FloorToInt(this.Unit.regenTable.GetValue(this.Level));
+			}
+		}
+		
+		public int hp;
 		
 		public bool IsDead {
 			get {return this.hp <= 0;}

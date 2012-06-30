@@ -83,11 +83,11 @@ namespace TinyQuest.Data.Request {
 
 				for (int i = 0; i < data.ownUnits.Count; i++) {
 					UserUnit playerUnit = data.ownUnits[i];
-					combatUnitGroups[0].Add(new CombatUnit(playerUnit.id, 0, i, 100, new int[]{})); // Player	
+					combatUnitGroups[0].Add(new CombatUnit(playerUnit.id, 0, i)); // Player	
 				}
 				
 				UserUnit enemyUnit = data.zoneUnits[0];
-				combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, 0, 200, new int[]{})); // Enemy
+				combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, 0)); // Enemy
 				
 				data.combatProgress = new CombatProgress(combatUnitGroups);
 			}
@@ -105,38 +105,66 @@ namespace TinyQuest.Data.Request {
 			
 			this.GetExecutingCommand(callback);
 		}
-
-		public virtual void ProgressTurn(int casterIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
+		
+		private struct CombatProcessBlock {
+			public UserUnit caster;
+			public UserUnit target;
+			
+			public CombatProcessBlock(UserUnit caster, UserUnit target) {
+				this.caster = caster;
+				this.target = target;
+			}
+			
+			public CombatAction Execute() {
+				if (this.caster.IsDead || this.target.IsDead) { return null; }
+				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.Unit.normalAttack);
+				
+				int effect = this.caster.Power * skill.multiplier / 100;
+				this.target.hp -= effect;
+				if (this.target.hp < 0) {
+					this.target.hp = 0;	
+				}
+				
+				return new CombatAction(this.caster, this.target, skill, effect);
+			}
+		}
+	
+		public virtual void ProgressTurn(int playerIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
+			int enemyIndex = 0;
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-
-			CombatUnit casterUnit = combatProgress.combatUnitGroups[0][casterIndex];
-			MasterSkill skill1 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(casterUnit.GetUserUnit().Unit.normalAttack);
+	
+			CombatUnit playerUnit = combatProgress.combatUnitGroups[0][playerIndex];
+			CombatUnit enemyUnit = combatProgress.combatUnitGroups[1][enemyIndex];
 			
-			int targetIndex = 0;
-			CombatUnit targetUnit = combatProgress.combatUnitGroups[1][targetIndex];
-			MasterSkill skill2 = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(targetUnit.GetUserUnit().Unit.normalAttack);
-			
+			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();
 			if (combatProgress.activeUnitIndexes == null) {
-				combatProgress.activeUnitIndexes = new int[2]{casterIndex, targetIndex};
+				// The first turn, there is no action
+				combatProgress.activeUnitIndexes = new int[Constant.GroupTypeCount]{playerIndex, enemyIndex};
 			} else {
-				//if (combatProgress.activeUnitIndexes[0] == casterIndex) {
-					combatActions.Add(new CombatAction(casterUnit.GetUserUnit(), targetUnit.GetUserUnit(), skill1));
-				//}
-				combatProgress.activeUnitIndexes[0] = casterIndex;
+				combatProgress.activeUnitIndexes[0] = playerIndex;
+				combatProgress.activeUnitIndexes[1] = enemyIndex;
+
 				
-				//if (combatProgress.activeUnitIndexes[1] == targetIndex) {
-					combatActions.Add(new CombatAction(targetUnit.GetUserUnit(), casterUnit.GetUserUnit(), skill2));
-				//}
-				combatProgress.activeUnitIndexes[1] = targetIndex;
-				
+				CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupTypeCount];
+				if (playerUnit.GetUserUnit().Speed >= enemyUnit.GetUserUnit().Speed) {
+					blocks[0] = new CombatProcessBlock(playerUnit.GetUserUnit(), enemyUnit.GetUserUnit());
+					blocks[1] = new CombatProcessBlock(enemyUnit.GetUserUnit(), playerUnit.GetUserUnit());
+				} else {
+					blocks[0] = new CombatProcessBlock(enemyUnit.GetUserUnit(), playerUnit.GetUserUnit());
+					blocks[1] = new CombatProcessBlock(playerUnit.GetUserUnit(), enemyUnit.GetUserUnit());
+				}
+
+				for (int i = 0; i < blocks.Length; i++) {
+					CombatAction action = blocks[i].Execute();
+					if (action != null) {
+						combatActions.Add(action);
+					}
+				}
 			}
-			//caster.tp -= 
-			//targetUnit.hp -= 1;
 
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-
-			callback(casterUnit, targetUnit, combatActions);
+			callback(playerUnit, enemyUnit, combatActions);
 		}
 	}
 }

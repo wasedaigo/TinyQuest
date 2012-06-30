@@ -36,7 +36,7 @@ public class SkillButtonView : MonoBehaviour {
 	}
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
-		this.SetLife(combatUnit.hp);
+		this.SetLife(combatUnit.GetUserUnit().hp);
 		if (!initialized) {
 			this.SetFaceIcon(combatUnit.GetUserUnit().Unit.id);
 			this.SetName("TEST" + combatUnit.GetUserUnit().Unit.id.ToString());
