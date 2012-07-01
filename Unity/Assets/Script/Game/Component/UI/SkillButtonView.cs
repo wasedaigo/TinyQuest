@@ -8,6 +8,7 @@ public class SkillButtonView : MonoBehaviour {
 	public UILabel lifeLabel;
 	public GameObject faceIcon;
 	public GameObject infoPanel;
+	public UISprite background;
 	
 	private UITexture faceIconTexture;
 	private bool initialized = false;
@@ -58,14 +59,17 @@ public class SkillButtonView : MonoBehaviour {
 		
 		
 		if (life <= 0) {
-			this.infoPanel.SetActiveRecursively(false);
 			this.button.normalSprite = "papet_btn_dead";
+			this.background.spriteName = "papet_btn_dead";
+			this.infoPanel.SetActiveRecursively(false);
 			collider.enabled = false;
 		} else {
-			this.infoPanel.SetActiveRecursively(true);
+			
 			if (this.button != null) {
 				this.button.normalSprite = "papet_btn";
+				this.background.spriteName = "papet_btn";
 			}
+			this.infoPanel.SetActiveRecursively(true);
 			collider.enabled = true;
 		}
 		lifeLabel.text = life.ToString();
