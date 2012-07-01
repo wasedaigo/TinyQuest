@@ -20,8 +20,10 @@ namespace TinyQuest.Scene.Model {
 		
 		private List<CombatAction> combatActionList;
 		private int actionIndex;
+		private bool turnFinished;
 		
 		public void Start() {
+			this.turnFinished = true;
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.StartBattle(this.OnStarted);
 		}
@@ -44,7 +46,8 @@ namespace TinyQuest.Scene.Model {
 		}
 		
 		public void ProgressTurn(int slotIndex) {
-			if (!IsExecutingAction()) {
+			if (this.turnFinished) {
+				this.turnFinished = false;
 				RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(slotIndex, this.TurnProgressed);
 			}
 		}
@@ -65,11 +68,14 @@ namespace TinyQuest.Scene.Model {
 				this.combatActionList = null;
 			}
 		}
-		
+
 		public bool IsExecutingAction(){
 			return this.actionIndex > 0;
 		}
 
+		public void FinishTurn() {
+			this.turnFinished = true;
+		}
 		
 		private void HPUpdated(UserUnit entity, int value) {
 			this.UpdateHP(entity, value);

@@ -45,6 +45,14 @@ public class CombatController : MonoBehaviour {
 	
 	protected void ExecuteNextAction() {
 		this.combatModel.ExecuteNextAction();
+		
+		if (!this.combatModel.IsExecutingAction()) {
+			this.TurnFinished();
+		}
+	}
+	
+	public void TurnFinished() {
+		this.combatModel.FinishTurn();
 	}
 	
 	public void ActionExecuted(CombatAction action) {
