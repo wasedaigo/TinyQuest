@@ -7,10 +7,16 @@ public class SkillButtonView : MonoBehaviour {
 	public UILabel nameLabel;
 	public UILabel lifeLabel;
 	public GameObject faceIcon;
-		
+	public GameObject infoPanel;
+	
 	private UITexture faceIconTexture;
 	private bool initialized = false;
+	private UIImageButton button;
 	
+	public void Start() {
+		this.button 	= this.gameObject.GetComponent<UIImageButton>();
+	}
+
 	public void SetFaceIcon(int puppetId) {
 		string textureId = "UI/Icon/puppet/" + puppetId.ToString();
 		
@@ -50,10 +56,16 @@ public class SkillButtonView : MonoBehaviour {
 			break;
 		}
 		
-		BoxCollider collider = this.gameObject.GetComponent<BoxCollider>();
+		
 		if (life <= 0) {
+			this.infoPanel.SetActiveRecursively(false);
+			this.button.normalSprite = "papet_btn_dead";
 			collider.enabled = false;
 		} else {
+			this.infoPanel.SetActiveRecursively(true);
+			if (this.button != null) {
+				this.button.normalSprite = "papet_btn";
+			}
 			collider.enabled = true;
 		}
 		lifeLabel.text = life.ToString();
