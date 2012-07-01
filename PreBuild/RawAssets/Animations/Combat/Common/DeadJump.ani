@@ -1,0 +1,29 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "8" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 192, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 2,
+            "positionTween" : "linear",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Sub/DeadJump.ani"
+         },
+         {
+            "frameNo" : 8,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Combat/Sub/DeadJump.ani"
+         }
+      ]
+   }
+}

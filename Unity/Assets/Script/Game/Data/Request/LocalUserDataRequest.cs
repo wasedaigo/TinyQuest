@@ -131,6 +131,18 @@ namespace TinyQuest.Data.Request {
 				targetResult.effect = effect;
 				targetResult.combatUnit = this.target;
 				
+				if (targetResult.life == 0) {
+					CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+					
+					List<CombatUnit> combatUnitList = combatProgress.combatUnitGroups[this.target.groupType];
+					foreach (CombatUnit combatUnit in combatUnitList) {
+						if (combatUnit.GetUserUnit().hp > 0) {
+							targetResult.swapUnit = combatUnit;
+							break;
+						}
+					}
+				}
+				
 				return new CombatAction(this.caster, this.target, skill, null, targetResult);
 			}
 		}

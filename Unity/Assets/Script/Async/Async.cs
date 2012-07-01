@@ -6,51 +6,46 @@ namespace Async {
 	public class Async {
 		public static readonly Async Instance = new Async();
 		private Async(){}
-		private int loadCount;
-		private int loadedCount;
-		private System.Action callback;
-		private List<System.Action<System.Action>> actions;
 		
 		public void Parallel(List<System.Action<System.Action>> actions, System.Action callback) {
-			this.actions = actions;
-			this.loadCount = actions.Count;
-			if (this.loadCount == 0) {
+			int loadCount = actions.Count;
+			if (loadCount == 0) {
 				callback();
 			} else {
-				this.loadedCount = 0;
-				this.callback = callback;
+				int loadedCount = 0;
 				for (int i = 0; i < actions.Count; i++) {
-					actions[i](this.parallelCallback);
+				actions[i](
+					()=>{ this.parallelCallback(ref loadedCount, loadCount, callback); }
+				);
 				}
 			}
 		}
 		
-		private void parallelCallback() {
-			this.loadedCount++;
-			if (this.loadedCount == this.loadCount) {
-				this.callback();
+		private void parallelCallback(ref int loadedCount, int loadCount, System.Action callback) {
+			loadedCount++;
+			if (loadedCount == loadCount) {
+				callback();
 			}
 		}
 		
 		public void Waterfall(List<System.Action<System.Action>> actions, System.Action callback) {
-			this.actions = actions;
-			this.loadCount = actions.Count;
-			if (this.loadCount == 0) {
+			if (actions.Count == 0) {
 				callback();
 			} else {
-				this.loadedCount = 0;
-				this.callback = callback;
-				
-				this.actions[0](this.waterfallCallback);
+				actions[0](
+					()=>{ this.waterfallCallback(0, actions, callback); }
+				);
 			}
 		}
 		
-		private void waterfallCallback() {
-			this.loadedCount++;
-			if (this.loadedCount == this.loadCount) {
-				this.callback();
+		private void waterfallCallback(int loadedCount, List<System.Action<System.Action>> actions, System.Action callback) {
+			loadedCount++;
+			if (loadedCount == actions.Count) {
+				callback();
 			} else {
-				this.actions[this.loadedCount](this.waterfallCallback);
+				actions[loadedCount](
+					()=>{ this.waterfallCallback(loadedCount, actions, callback); }
+				);
 			}
 		}
 		

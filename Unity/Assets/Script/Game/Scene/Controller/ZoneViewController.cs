@@ -39,10 +39,22 @@ public class ZoneViewController : MonoBehaviour {
 		this.animationPlayer.Play(casterActor,  null, animation, callback);	
 	}
 	
-    private void OnSkillAnimationFinished(Roga2dAnimation animation)
+    private void OnSkillFinished(Roga2dAnimation animation)
     {
+		CombatAction combatAction = (CombatAction)animation.settings.Data;
+		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+		if (combatAction.casterResult != null && combatAction.casterResult.swapUnit != null) {
+			list.Add((next) => { this.SwapActor(combatAction.casterResult.combatUnit, combatAction.casterResult.swapUnit, next); });
+		}
+		if (combatAction.targetResult != null && combatAction.targetResult.swapUnit != null) {
+			list.Add((next) => { this.SwapActor(combatAction.targetResult.combatUnit, combatAction.targetResult.swapUnit, next); });
+		}
 		
-		this.SendMessage("ExecuteNextAction");
+		Async.Async.Instance.Parallel(list,
+			() => {
+				this.SendMessage("ExecuteNextAction");
+			}
+		);
     }
 	
 	private void CombatAction(CombatAction combatAction) {
@@ -75,7 +87,7 @@ public class ZoneViewController : MonoBehaviour {
 		Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
 
 		settings.Data = combatAction;
-		this.animationPlayer.Play(casterActor,  null, animation,  this.OnSkillAnimationFinished);
+		this.animationPlayer.Play(casterActor,  null, animation,  this.OnSkillFinished);
 	}
 	
 	private void ShowEffect(Actor actor, CombatActionResult result) 
@@ -148,7 +160,6 @@ public class ZoneViewController : MonoBehaviour {
 				break;
 			case UnitLookType.Puppet:
 				actor = this.BuildPuppet(userUnit.Unit.id.ToString(), PuppetActor.PoseType.Stand, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
-				actor.LocalPriority += 0.001f * userUnit.id;
 				break;
 		}
 		
@@ -161,10 +172,12 @@ public class ZoneViewController : MonoBehaviour {
 		this.stage.GetCharacterLayer().AddChild(actor);
 	}
 	
-	private void PlayJumpAnimation(int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
-		this.PlayAnimation(groupNo, targetPosition, actor, "Combat/Common/Jump", (animation) => {
+	private void PlayJumpAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
+		this.PlayAnimation(groupNo, targetPosition, actor, animationName, (animation) => {
 			actor.LocalPixelPosition = this.targetNodes[(int)targetPosition, groupNo].LocalPixelPosition;
-			callback();	
+			if (callback != null) {
+				callback();	
+			}
 		});
 	}
 	
@@ -177,14 +190,14 @@ public class ZoneViewController : MonoBehaviour {
 				if (this.activeActors[t] != null) {
 					list.Add(
 						(next) => {
-							this.PlayJumpAnimation(t, TargetPosition.Out, this.activeActors[t], next);
+							this.PlayJumpAnimation("Combat/Common/Jump", t, TargetPosition.Out, this.activeActors[t], next);
 						}
 				);
 				}
 				list.Add(
 					(next) => {
 						this.activeActors[t] = actor;
-						this.PlayJumpAnimation(t, TargetPosition.In, actor, next);
+						this.PlayJumpAnimation("Combat/Common/Jump", t, TargetPosition.In, actor, next);
 					}
 				);
 			}
@@ -196,7 +209,39 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		);
 	}
+	
+	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
+		int groupType = swappingUnit.groupType;
+		Actor swappedActor = this.actors[swappedUnit.GetUserUnit()];
+		Actor swappingActor = this.actors[swappingUnit.GetUserUnit()];
+		
+		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+		list.Add(
+				(next) => {
+					this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.In, swappingActor, next);
+				}
+		);
+		list.Add(
+			(next) => {
+				this.PlayJumpAnimation("Combat/Common/DeadJump", groupType, TargetPosition.Out, swappedActor, null);
+				this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.Out, swappingActor, next);
+			}
+		);
+		
+		list.Add(
+			(next) => {
+				this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.In, swappingActor, next);
+				this.activeActors[groupType] = swappingActor;
+			}
+		);
 
+		Async.Async.Instance.Waterfall(list,
+			() => {
+				callback();
+			}
+		);
+	}
+	
 	// Use this for initialization
 	protected void Start() {
 		this.animationPlayer = new Roga2dAnimationPlayer();
