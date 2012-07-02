@@ -12,9 +12,9 @@ class TestRoga2dSequence {
 	public static void TestTween() {
 		Roga2dNode node = new Roga2dNode();
 
-		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.1f, 1.0f, 3, true);
+		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.1f, 1.0f, 3, Roga2dTweenType.Linear);
 		Roga2dWait interval2 = new Roga2dWait(2);
-		Roga2dAlphaInterval interval3 = new Roga2dAlphaInterval(node, 0.7f, 0.0f, 2, true);
+		Roga2dAlphaInterval interval3 = new Roga2dAlphaInterval(node, 0.7f, 0.0f, 2, Roga2dTweenType.Linear);
 
 		List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 		intervals.Add(interval1);
@@ -66,10 +66,10 @@ class TestRoga2dSequence {
 	public static void TestMixTween() {
 		Roga2dNode node = new Roga2dNode();
 
-		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 1.0f, 0.5f, 1, false);
-		Roga2dAlphaInterval interval2 = new Roga2dAlphaInterval(node, 0.5f, 0.3f, 1, false);
-		Roga2dAlphaInterval interval3 = new Roga2dAlphaInterval(node, 0.3f, 0.1f, 1, true);
-		Roga2dAlphaInterval interval4 = new Roga2dAlphaInterval(node, 0.1f, 0.1f, 1, true);
+		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 1.0f, 0.5f, 1, Roga2dTweenType.Fix);
+		Roga2dAlphaInterval interval2 = new Roga2dAlphaInterval(node, 0.5f, 0.3f, 1, Roga2dTweenType.Fix);
+		Roga2dAlphaInterval interval3 = new Roga2dAlphaInterval(node, 0.3f, 0.1f, 1, Roga2dTweenType.Linear);
+		Roga2dAlphaInterval interval4 = new Roga2dAlphaInterval(node, 0.1f, 0.1f, 1, Roga2dTweenType.Linear);
 
 		List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 		intervals.Add(interval1);
@@ -105,8 +105,8 @@ class TestRoga2dSequence {
 	public static void TestDeltaTime() {
 		Roga2dNode node = new Roga2dNode();
 
-		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 1.0f, 0.0f, 1.0f, true);
-		Roga2dAlphaInterval interval2 = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 1.0f, true);
+		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 1.0f, 0.0f, 1.0f, Roga2dTweenType.Linear);
+		Roga2dAlphaInterval interval2 = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 1.0f, Roga2dTweenType.Linear);
 
 		List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 		intervals.Add(interval1);

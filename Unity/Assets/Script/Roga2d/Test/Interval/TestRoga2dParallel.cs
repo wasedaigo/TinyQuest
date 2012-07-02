@@ -11,9 +11,9 @@ class TestRoga2dParallel {
 	public static void TestTween () {
 		Roga2dNode node = new Roga2dNode();
 
-		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.1f, 1.0f, 3, true);
+		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.1f, 1.0f, 3, Roga2dTweenType.Linear);
 		Roga2dRotationIntervalOption option = new Roga2dRotationIntervalOption();
-		Roga2dRotationInterval interval2 = new Roga2dRotationInterval(node, 0.0f, 180.0f, 5, true,  option);
+		Roga2dRotationInterval interval2 = new Roga2dRotationInterval(node, 0.0f, 180.0f, 5, Roga2dTweenType.Linear,  option);
 		
 		List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 		intervals.Add(interval1);
@@ -66,9 +66,9 @@ class TestRoga2dParallel {
 public static void TestTweenDelta() {
 		Roga2dNode node = new Roga2dNode();
 
-		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 2, true);
+		Roga2dAlphaInterval interval1 = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 2, Roga2dTweenType.Linear);
 		Roga2dRotationIntervalOption option = new Roga2dRotationIntervalOption();
-		Roga2dRotationInterval interval2 = new Roga2dRotationInterval(node, 0.0f, 180.0f, 5, true,  option);
+		Roga2dRotationInterval interval2 = new Roga2dRotationInterval(node, 0.0f, 180.0f, 5, Roga2dTweenType.Linear,  option);
 		
 		List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
 		intervals.Add(interval1);

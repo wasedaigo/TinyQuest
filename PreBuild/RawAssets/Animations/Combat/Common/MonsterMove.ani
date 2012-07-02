@@ -1,0 +1,21 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "5" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 5,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Combat/MonsterBase.png"
+         }
+      ]
+   }
+}

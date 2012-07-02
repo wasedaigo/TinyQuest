@@ -11,7 +11,7 @@ class TestRoga2dScaleInterval {
 
 		Vector2 start = new Vector2(10.0f, 10.0f);
 		Vector2 end = new Vector2(2.0f, 6.0f);
-		Roga2dScaleInterval interval = new Roga2dScaleInterval(node, start, end, 4, true);
+		Roga2dScaleInterval interval = new Roga2dScaleInterval(node, start, end, 4, Roga2dTweenType.Linear);
 		
 		Tester.Ok(!interval.IsDone());
 		

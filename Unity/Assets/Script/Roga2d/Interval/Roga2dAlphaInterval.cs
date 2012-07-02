@@ -3,7 +3,7 @@ using UnityEngine;
 public class Roga2dAlphaInterval : Roga2dValueInterval<float> {
 	private Roga2dNode node;
 	
-	public Roga2dAlphaInterval(Roga2dNode node, float start, float end, float duration, bool tween) 
+	public Roga2dAlphaInterval(Roga2dNode node, float start, float end, float duration, Roga2dTweenType tween) 
 	: base(start, end, duration, tween) 
 	{
 		this.node = node;

@@ -9,7 +9,7 @@ class TestRoga2dAlphaInterval {
 	
 	public static void TestTween () {
 		Roga2dNode node = new Roga2dNode();
-		Roga2dAlphaInterval interval = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 5, true);
+		Roga2dAlphaInterval interval = new Roga2dAlphaInterval(node, 0.0f, 1.0f, 5, Roga2dTweenType.Linear);
 		
 		Tester.Ok(!interval.IsDone());
 		

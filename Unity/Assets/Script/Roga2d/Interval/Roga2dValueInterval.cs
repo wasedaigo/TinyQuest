@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 	protected T start;
 	protected T end;
-	protected bool tween;
+	protected Roga2dTweenType tween;
 	protected float duration;
 	protected float elapsed;
 	
-	public Roga2dValueInterval (T start, T end, float duration, bool tween) {
+	public Roga2dValueInterval (T start, T end, float duration, Roga2dTweenType tween) {
 		this.start = start;
 		this.end = end;
 		this.duration = duration;
@@ -44,19 +44,20 @@ public abstract class Roga2dValueInterval<T> : Roga2dBaseInterval {
 			this.elapsed += delta;
 			T[] values = this.TweenBeforeFilter(this.start, this.end);
 			
-			if (this.tween) {
-				float t = this.elapsed;
-				if (this.elapsed > this.duration) {
-					t = this.duration;
-				}
-				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], t / this.duration));
-			} else {
+			if (this.tween == Roga2dTweenType.Fix) {
 				// Single frame get its ending value immediately
 				if (this.duration <= 1 && this.IsDone()) {
 					this.SetValue(values[1]);
 				} else {
 					this.SetValue(values[0]);
 				}
+			} else {
+				float t = this.elapsed;
+				if (this.elapsed > this.duration) {
+					t = this.duration;
+				}
+				this.SetValue(Roga2dUtils<T>.Completement(values[0], values[1], t / this.duration));
+
 			}
 		}
 	}

@@ -30,7 +30,8 @@ public class ZoneViewController : MonoBehaviour {
 	
 	private void PlayAnimation(int groupNo, TargetPosition targetPosition, Actor casterActor, string animationName, System.Action<Roga2dAnimation> callback) {
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = new Vector2(32, 32)}},
+			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
+			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = "Monsters/goblin", PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
 			{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}}
 		};
 		
@@ -79,8 +80,8 @@ public class ZoneViewController : MonoBehaviour {
 		MasterSkill masterSkill = combatAction.skill;
 
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = new Vector2(32, 32)}},
-			{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
+			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
+			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = "Monsters/goblin", PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
 			{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/1", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 		};
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetActor, CommandCalled);
@@ -180,24 +181,33 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		});
 	}
-	
+
 	protected void SelectActor(CombatUnit[] combatUnits) {
+		
+		// Play move-in animation for each group
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
 		for (int i = 0; i < Constant.GroupTypeCount; i++) {
 			int t = i;
+			string animation = "Combat/Common/Jump";
+			if (combatUnits[t].GetUserUnit().Unit.lookType == UnitLookType.Monster) {
+				animation = "Combat/Common/MonsterMove";
+			}
+
 			Actor actor = this.actors[combatUnits[t].GetUserUnit()];
 			if (actor != this.activeActors[t]) {
+				
+				// Move-out old active unit on the screen
 				if (this.activeActors[t] != null) {
 					list.Add(
-						(next) => {
-							this.PlayJumpAnimation("Combat/Common/Jump", t, TargetPosition.Out, this.activeActors[t], next);
-						}
-				);
+						(next) => { this.PlayJumpAnimation(animation, t, TargetPosition.Out, this.activeActors[t], next); }
+					);
 				}
+				
+				// Move-in new unit into the screen
 				list.Add(
 					(next) => {
 						this.activeActors[t] = actor;
-						this.PlayJumpAnimation("Combat/Common/Jump", t, TargetPosition.In, actor, next);
+						this.PlayJumpAnimation(animation, t, TargetPosition.In, actor, next);
 					}
 				);
 			}
@@ -209,28 +219,46 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		);
 	}
-	
+
 	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
 		int groupType = swappingUnit.groupType;
 		Actor swappedActor = this.actors[swappedUnit.GetUserUnit()];
 		Actor swappingActor = this.actors[swappingUnit.GetUserUnit()];
 		
+		string swappingUnitAnimation = "Combat/Common/Jump";
+		if (swappingUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
+			swappingUnitAnimation = "Combat/Common/MonsterMove";
+		}
+
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
-		list.Add(
-				(next) => {
-					this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.In, swappingActor, next);
-				}
-		);
-		list.Add(
-			(next) => {
-				this.PlayJumpAnimation("Combat/Common/DeadJump", groupType, TargetPosition.Out, swappedActor, null);
-				this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.Out, swappingActor, next);
-			}
-		);
 		
+		// Play rescue animation if swappedUnit is Puppet
+		if (swappedUnit.GetUserUnit().Unit.lookType == UnitLookType.Puppet) {
+			string swappedUnitAnimation = "Combat/Common/Jump";
+			if (swappedUnit.GetUserUnit().IsDead) {
+				swappedUnitAnimation = "Combat/Common/DeadJump";
+			}
+			
+			// Swapping Unit jump-in for rescue
+			list.Add(
+					(next) => {
+						this.PlayJumpAnimation(swappingUnitAnimation, groupType, TargetPosition.In, swappingActor, next);
+					}
+			);
+			
+			// Swapping Unit move out dead unit from the screen
+			list.Add(
+				(next) => {
+					this.PlayJumpAnimation(swappedUnitAnimation, groupType, TargetPosition.Out, swappedActor, null);
+					this.PlayJumpAnimation(swappingUnitAnimation, groupType, TargetPosition.Out, swappingActor, next);
+				}
+			);
+		}
+		
+		// Move in new unit
 		list.Add(
 			(next) => {
-				this.PlayJumpAnimation("Combat/Common/Jump", groupType, TargetPosition.In, swappingActor, next);
+				this.PlayJumpAnimation(swappingUnitAnimation, groupType, TargetPosition.In, swappingActor, next);
 				this.activeActors[groupType] = swappingActor;
 			}
 		);

@@ -6,6 +6,14 @@ public class Roga2dConst {
 	public static float AnimationFrameTime = 1.0f / AnimationFPS;
 };
 
+public enum Roga2dTweenType {
+	Fix,
+	Linear,
+	EaseIn,
+	EaseOut,
+	EaseInOut
+};
+
 public enum Roga2dBlendType {
 	Alpha,
 	Add,

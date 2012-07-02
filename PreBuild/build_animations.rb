@@ -163,8 +163,8 @@ def createAttributeKey(result, key, keyframe_set, frameNo, defaultValue)
     value = keyframe_set[key]
     tweenType = keyframe_set[key + "Tween"]
 
-    if tweenType == "linear"
-        data["tween"] = true
+    if tweenType && tweenType != "none"
+        data["tween"] = tweenType
     end
 
     if tweenType && tweenType != "none"

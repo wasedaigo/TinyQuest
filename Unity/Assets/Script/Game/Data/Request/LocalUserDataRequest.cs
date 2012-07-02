@@ -86,8 +86,10 @@ namespace TinyQuest.Data.Request {
 					combatUnitGroups[0].Add(new CombatUnit(playerUnit.id, 0, i)); // Player	
 				}
 				
-				UserUnit enemyUnit = data.zoneUnits[0];
-				combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, 0)); // Enemy
+				for (int i = 0; i < data.zoneUnits.Count; i++) {
+					UserUnit enemyUnit = data.zoneUnits[i];
+					combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, i)); // Enemy	
+				}
 				
 				data.combatProgress = new CombatProgress(combatUnitGroups);
 			}
@@ -104,6 +106,18 @@ namespace TinyQuest.Data.Request {
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
 			
 			this.GetExecutingCommand(callback);
+		}
+	
+		public static CombatUnit GetFirstAliveUnit(int groupType) {
+			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			List<CombatUnit> combatUnitList = combatProgress.combatUnitGroups[groupType];
+			foreach (CombatUnit combatUnit in combatUnitList) {
+				if (combatUnit.GetUserUnit().hp > 0) {
+					return combatUnit;
+				}
+			}
+			
+			return null;
 		}
 		
 		private struct CombatProcessBlock {
@@ -132,27 +146,19 @@ namespace TinyQuest.Data.Request {
 				targetResult.combatUnit = this.target;
 				
 				if (targetResult.life == 0) {
-					CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-					
-					List<CombatUnit> combatUnitList = combatProgress.combatUnitGroups[this.target.groupType];
-					foreach (CombatUnit combatUnit in combatUnitList) {
-						if (combatUnit.GetUserUnit().hp > 0) {
-							targetResult.swapUnit = combatUnit;
-							break;
-						}
-					}
+					targetResult.swapUnit = LocalUserDataRequest.GetFirstAliveUnit(this.target.groupType);
 				}
 				
 				return new CombatAction(this.caster, this.target, skill, null, targetResult);
 			}
 		}
-	
+
 		public virtual void ProgressTurn(int playerIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
-			int enemyIndex = 0;
 			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-	
+
 			CombatUnit playerUnit = combatProgress.combatUnitGroups[0][playerIndex];
-			CombatUnit enemyUnit = combatProgress.combatUnitGroups[1][enemyIndex];
+			CombatUnit enemyUnit = GetFirstAliveUnit(1);
+			int enemyIndex = enemyUnit.index;
 			
 			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();

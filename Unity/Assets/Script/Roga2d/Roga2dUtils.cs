@@ -18,8 +18,32 @@ public class Roga2dSourceIntervalData {
 	public Roga2dAnimationKeyFrameType type;
 }
 
-public class Roga2dPositionIntervalData {
-	public bool tween;
+public class Roga2dBaseIntervalData {
+	public string tween;
+	public Roga2dTweenType tweenType {
+		get{
+			Roga2dTweenType result = Roga2dTweenType.Fix;
+			switch(tween) {
+			case "linear":
+				result = Roga2dTweenType.Linear;
+				break;
+			case "easeIn":
+				result = Roga2dTweenType.EaseIn;
+				break;
+			case "easeOut":
+				result = Roga2dTweenType.EaseOut;
+				break;
+			case "easeInOut":
+				result = Roga2dTweenType.EaseInOut;
+				break;
+			}
+			
+			return result;
+		}	
+	}
+}
+
+public class Roga2dPositionIntervalData: Roga2dBaseIntervalData {
 	public int frameNo;
 	public float duration;
 	public float[] startValue;
@@ -31,8 +55,7 @@ public class Roga2dPositionIntervalData {
 	public float[] endPositionAnchor;
 }
 
-public class Roga2dRotationIntervalData {
-	public bool tween;
+public class Roga2dRotationIntervalData: Roga2dBaseIntervalData {
 	public int frameNo;
 	public float duration;
 	public float startValue;
@@ -41,8 +64,7 @@ public class Roga2dRotationIntervalData {
 	public Roga2dFacingType facingOption;
 }
 
-public class Roga2dScaleIntervalData {
-	public bool tween;
+public class Roga2dScaleIntervalData: Roga2dBaseIntervalData {
 	public int frameNo;
 	public float duration;
 	public float[] startValue;
@@ -50,8 +72,7 @@ public class Roga2dScaleIntervalData {
 	public bool wait;
 }
 
-public class Roga2dAlphaIntervalData {
-	public bool tween;
+public class Roga2dAlphaIntervalData: Roga2dBaseIntervalData {
 	public int frameNo;
 	public float duration;
 	public float startValue;
@@ -144,7 +165,7 @@ public class Roga2dUtils {
 					} else {
 						float start = alphaIntervalData.startValue;
 						float end = alphaIntervalData.endValue;
-						Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, CalculateDuration(alphaIntervalData.duration), alphaIntervalData.tween);
+						Roga2dAlphaInterval interval = new Roga2dAlphaInterval(sprite, start, end, CalculateDuration(alphaIntervalData.duration), alphaIntervalData.tweenType);
 						intervals.Add(interval);
 					}
 				}
@@ -162,7 +183,7 @@ public class Roga2dUtils {
 					} else {
 						Vector2 start = new Vector2(scaleIntervalData.startValue[0], scaleIntervalData.startValue[1]);
 						Vector2 end = new Vector2(scaleIntervalData.endValue[0], scaleIntervalData.endValue[1]);
-						intervals.Add(new Roga2dScaleInterval(sprite, start, end, CalculateDuration(scaleIntervalData.duration), scaleIntervalData.tween));
+						intervals.Add(new Roga2dScaleInterval(sprite, start, end, CalculateDuration(scaleIntervalData.duration), scaleIntervalData.tweenType));
 					}
 				}
 				if(intervals.Count > 0) {
@@ -187,7 +208,7 @@ public class Roga2dUtils {
 		                option.Target = (settings!=null) ? settings.Target : null;
 						option.TargetOrigin = (settings!=null) ? settings.TargetOrigin : null;
 						
-						intervals.Add(new Roga2dPositionInterval(sprite, start, end, CalculateDuration(positionIntervalData.duration), positionIntervalData.tween, option));
+						intervals.Add(new Roga2dPositionInterval(sprite, start, end, CalculateDuration(positionIntervalData.duration), positionIntervalData.tweenType, option));
 					}
 				}
 				if(intervals.Count > 0) {
@@ -211,7 +232,7 @@ public class Roga2dUtils {
 		                option.FacingType = rotationIntervalData.facingOption;
 		                option.Target = (settings!=null) ? settings.Target : null;
 						option.DataStore = dataStore;
-						intervals.Add(new Roga2dRotationInterval(sprite, start, end, CalculateDuration(rotationIntervalData.duration), rotationIntervalData.tween, option));
+						intervals.Add(new Roga2dRotationInterval(sprite, start, end, CalculateDuration(rotationIntervalData.duration), rotationIntervalData.tweenType, option));
 					}
 				}
 				if(intervals.Count > 0) {

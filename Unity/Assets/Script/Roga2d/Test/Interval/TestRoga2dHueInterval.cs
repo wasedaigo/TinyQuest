@@ -11,7 +11,7 @@ class TestRoga2dHueInterval {
 
 		Roga2dHue start = new Roga2dHue(10, 10, 10);
 		Roga2dHue end = new Roga2dHue(2, 6, -10);
-		Roga2dHueInterval interval = new Roga2dHueInterval(node, start, end, 4, true);
+		Roga2dHueInterval interval = new Roga2dHueInterval(node, start, end, 4, Roga2dTweenType.Linear);
 		
 		Tester.Ok(!interval.IsDone());
 		

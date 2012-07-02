@@ -66,7 +66,7 @@ class TestRoga2dUtils{
 		Tester.Match(intervaldata.startValue[1], -52);
 		Tester.Match(intervaldata.endValue[0], 1);
 		Tester.Match(intervaldata.endValue[1], 2);
-		Tester.Match(intervaldata.tween, true);
+		Tester.Match(intervaldata.tweenType, Roga2dTweenType.Linear);
 		Tester.Match(intervaldata.frameNo, 0);
 		Tester.Match(intervaldata.wait, false);
 	}
@@ -88,7 +88,7 @@ class TestRoga2dUtils{
 		Tester.Match(intervaldata.facingOption, Roga2dFacingType.FaceToMov);
 		Tester.Match(intervaldata.startValue, 0);
 		Tester.Match(intervaldata.endValue, 315);
-		Tester.Match(intervaldata.tween, true);
+		Tester.Match(intervaldata.tweenType, Roga2dTweenType.Linear);
 		Tester.Match(intervaldata.frameNo, 0);
 		Tester.Match(intervaldata.wait, false);
 	}

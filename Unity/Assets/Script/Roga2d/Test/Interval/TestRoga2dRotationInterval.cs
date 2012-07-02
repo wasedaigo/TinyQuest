@@ -11,7 +11,7 @@ class TestRoga2dRotationInterval {
 	public static void TestTween () {
 		Roga2dNode node = new Roga2dNode();
 		Roga2dRotationIntervalOption option = new Roga2dRotationIntervalOption();
-		Roga2dRotationInterval interval = new Roga2dRotationInterval(node, 360.0f, 0.0f, 3, true, option);
+		Roga2dRotationInterval interval = new Roga2dRotationInterval(node, 360.0f, 0.0f, 3, Roga2dTweenType.Linear, option);
 		
 		Tester.Ok(!interval.IsDone());
 		
@@ -44,7 +44,7 @@ class TestRoga2dRotationInterval {
 	public static void TestTweenDelta () {
 		Roga2dNode node = new Roga2dNode();
 		Roga2dRotationIntervalOption option = new Roga2dRotationIntervalOption();
-		Roga2dRotationInterval interval = new Roga2dRotationInterval(node, 360.0f, 0.0f, 3, true, option);
+		Roga2dRotationInterval interval = new Roga2dRotationInterval(node, 360.0f, 0.0f, 3, Roga2dTweenType.Linear, option);
         
         interval.Start();
 		Tester.Match(node.LocalRotation, 0.0f); // 360.0f = 0.0f

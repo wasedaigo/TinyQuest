@@ -13,7 +13,7 @@ class TestRoga2dPositionInterval {
 		Vector2 start = new Vector2(10.0f, 10.0f);
 		Vector2 end = new Vector2(2.0f, 6.0f);
 		Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
-		Roga2dPositionInterval interval = new Roga2dPositionInterval(node, start, end, 4, true, option);
+		Roga2dPositionInterval interval = new Roga2dPositionInterval(node, start, end, 4, Roga2dTweenType.Linear, option);
 		
 		Tester.Ok(!interval.IsDone());
 		
@@ -53,7 +53,7 @@ class TestRoga2dPositionInterval {
 		Vector2 start = new Vector2(10.0f, 10.0f);
 		Vector2 end = new Vector2(2.0f, 6.0f);
 		Roga2dPositionIntervalOption option = Roga2dPositionIntervalOption.Build();
-		Roga2dPositionInterval interval = new Roga2dPositionInterval(node, start, end, 2, true, option);
+		Roga2dPositionInterval interval = new Roga2dPositionInterval(node, start, end, 2, Roga2dTweenType.Linear, option);
 		
 		Tester.Ok(!interval.IsDone());
 		
