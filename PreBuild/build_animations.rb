@@ -305,6 +305,7 @@ animation_data.keys.each do |id|
     end
 end
 
-File.open(OUTPUT_PATH + "animations.json", 'w') do |f|
-   f.write(animation_data.keys.to_json)
-end
+
+#File.open(OUTPUT_PATH + "animations.json", 'w') do |f|
+#   f.write(animation_data.keys.to_json)
+#end

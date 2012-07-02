@@ -1,0 +1,70 @@
+{
+   "events" : {
+      "0" : [ "hide" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 2,
+            "position" : [ 2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 4,
+            "position" : [ -2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 6,
+            "position" : [ 2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 8,
+            "position" : [ -2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 10,
+            "position" : [ 2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 12,
+            "position" : [ -2, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 14,
+            "position" : [ 1, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "frameNo" : 16,
+            "position" : [ -1, 0 ],
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         },
+         {
+            "alpha" : 0.0,
+            "alphaTween" : "fix",
+            "frameNo" : 19,
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/MonsterBase.png"
+         }
+      ]
+   }
+}

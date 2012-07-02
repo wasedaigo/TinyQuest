@@ -1,0 +1,101 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Combat/MonsterBase"
+    ]
+  },
+  "events": {
+    "0": [
+      "hide"
+    ],
+    "5": [
+      "show"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 5,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 5,
+          "startPositionType": "RelativeToTarget"
+        }
+      ],
+      "scale": [
+
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 6,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/MonsterBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}
