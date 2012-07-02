@@ -41,7 +41,7 @@ class TestRoga2dUtils{
 	            1,
 	            2
 	          ],
-	          ""tween"": true,
+	          ""tween"": ""linear"",
 	          ""startValue"": [
 	            0,
 	            -52
@@ -77,7 +77,7 @@ class TestRoga2dUtils{
 		string jsonText = @"{
           ""duration"": 7,
           ""endValue"": 315,
-          ""tween"": true,
+          ""tween"": ""linear"",
           ""startValue"": 0,
           ""facingOption"": ""FaceToMov"",
           ""frameNo"": 0
