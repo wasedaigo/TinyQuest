@@ -38,6 +38,7 @@
             0,
             20
           ],
+          "tween": "fix",
           "startValue": [
             0,
             20
@@ -167,19 +168,21 @@
         {
           "duration": 15,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 0
         },
         {
           "duration": 5,
           "endValue": 0.0,
-          "tween": true,
+          "tween": "linear",
           "startValue": 1.0,
           "frameNo": 15
         },
         {
           "duration": 1,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 20
         }

@@ -92,6 +92,7 @@
             -12,
             -16
           ],
+          "tween": "fix",
           "startValue": [
             -12,
             -16
@@ -145,6 +146,7 @@
         {
           "duration": 1,
           "endValue": 180,
+          "tween": "fix",
           "startValue": 180,
           "facingOption": "None",
           "frameNo": 2
@@ -190,6 +192,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0

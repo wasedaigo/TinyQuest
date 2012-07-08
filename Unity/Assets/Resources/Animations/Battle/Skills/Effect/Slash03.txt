@@ -26,6 +26,7 @@
             0,
             2
           ],
+          "tween": "fix",
           "startValue": [
             -16,
             6
@@ -48,6 +49,7 @@
             0,
             -2
           ],
+          "tween": "fix",
           "startValue": [
             0,
             2
@@ -70,6 +72,7 @@
             10,
             -14
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -2
@@ -92,6 +95,7 @@
             16,
             -24
           ],
+          "tween": "fix",
           "startValue": [
             10,
             -14
@@ -114,6 +118,7 @@
             16,
             -24
           ],
+          "tween": "fix",
           "startValue": [
             16,
             -24
@@ -133,6 +138,7 @@
             0.25,
             0.25
           ],
+          "tween": "fix",
           "startValue": [
             0.25,
             0.25

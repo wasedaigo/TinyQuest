@@ -22,6 +22,7 @@
             0,
             -10
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -44,6 +45,7 @@
             0,
             -17
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -10
@@ -66,6 +68,7 @@
             0,
             -22
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -17
@@ -88,6 +91,7 @@
             0,
             -25
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -22
@@ -110,6 +114,7 @@
             0,
             -26
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -25
@@ -132,6 +137,7 @@
             0,
             -25
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -26
@@ -154,6 +160,7 @@
             0,
             -22
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -25
@@ -176,6 +183,7 @@
             0,
             -17
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -22
@@ -198,6 +206,7 @@
             0,
             -10
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -17
@@ -220,6 +229,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -10
@@ -242,6 +252,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -283,7 +294,7 @@
         {
           "duration": 10,
           "endValue": 60,
-          "tween": true,
+          "tween": "linear",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -291,6 +302,7 @@
         {
           "duration": 1,
           "endValue": 60,
+          "tween": "fix",
           "startValue": 60,
           "facingOption": "None",
           "frameNo": 10

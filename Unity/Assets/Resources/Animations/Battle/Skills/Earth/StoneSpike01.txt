@@ -88,6 +88,7 @@
             0,
             -10
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -110,6 +111,7 @@
             0,
             -20
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -10
@@ -132,6 +134,7 @@
             0,
             -30
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -20
@@ -154,6 +157,7 @@
             0,
             -20
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -30
@@ -176,6 +180,7 @@
             0,
             -10
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -20
@@ -198,6 +203,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             -10
@@ -220,6 +226,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0

@@ -32,6 +32,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -54,7 +55,7 @@
             -16,
             24
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -77,6 +78,7 @@
             -16,
             24
           ],
+          "tween": "fix",
           "startValue": [
             -16,
             24
@@ -99,7 +101,7 @@
             -16,
             -24
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -16,
             24
@@ -122,6 +124,7 @@
             -16,
             -24
           ],
+          "tween": "fix",
           "startValue": [
             -16,
             -24
@@ -144,6 +147,7 @@
             -16,
             -24
           ],
+          "tween": "fix",
           "startValue": [
             -16,
             -24
@@ -166,7 +170,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -16,
             -24
@@ -189,6 +193,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -302,7 +307,7 @@
             -22,
             -36
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -26,
             14
@@ -325,6 +330,7 @@
             -22,
             -36
           ],
+          "tween": "fix",
           "startValue": [
             -22,
             -36
@@ -383,6 +389,7 @@
         {
           "duration": 6,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 15
@@ -390,6 +397,7 @@
         {
           "duration": 1,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 21

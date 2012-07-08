@@ -30,6 +30,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -52,7 +53,7 @@
             0,
             -48
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -75,7 +76,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             -48
@@ -98,6 +99,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0

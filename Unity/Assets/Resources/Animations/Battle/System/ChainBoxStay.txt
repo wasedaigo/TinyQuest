@@ -22,6 +22,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -66,6 +67,7 @@
         {
           "duration": 1,
           "endValue": 0.5,
+          "tween": "fix",
           "startValue": 0.5,
           "frameNo": 0
         }
@@ -84,6 +86,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -128,6 +131,7 @@
         {
           "duration": 1,
           "endValue": 0.200000002980232,
+          "tween": "fix",
           "startValue": 0.200000002980232,
           "frameNo": 0
         }

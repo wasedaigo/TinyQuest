@@ -45,6 +45,7 @@
             8,
             50
           ],
+          "tween": "fix",
           "startValue": [
             8,
             50

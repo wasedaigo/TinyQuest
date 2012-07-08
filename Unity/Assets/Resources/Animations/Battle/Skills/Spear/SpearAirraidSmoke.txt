@@ -49,7 +49,7 @@
             1,
             1
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -72,6 +72,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -109,6 +110,7 @@
             0.5,
             1.0
           ],
+          "tween": "fix",
           "startValue": [
             0.5,
             1.0
@@ -221,7 +223,7 @@
         {
           "duration": 10,
           "endValue": -405,
-          "tween": true,
+          "tween": "linear",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 11
@@ -229,6 +231,7 @@
         {
           "duration": 8,
           "endValue": -405,
+          "tween": "fix",
           "startValue": -405,
           "facingOption": "None",
           "frameNo": 21
@@ -236,6 +239,7 @@
         {
           "duration": 1,
           "endValue": -405,
+          "tween": "fix",
           "startValue": -405,
           "facingOption": "None",
           "frameNo": 29
@@ -257,36 +261,42 @@
         {
           "duration": 8,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 3
         },
         {
           "duration": 10,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 11
         },
         {
           "duration": 2,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 21
         },
         {
           "duration": 5,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 23
         },
         {
           "duration": 1,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 28
         },
         {
           "duration": 1,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 29
         }

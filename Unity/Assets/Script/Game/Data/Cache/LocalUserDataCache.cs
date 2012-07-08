@@ -45,10 +45,6 @@ namespace TinyQuest.Data.Cache {
 		public void SetZone(string jsonText) {
 			this.localUserData.zone = JsonReader.Deserialize<UserZone>(jsonText);
 		}
-		
-		public virtual void SetCombatProgress(CombatProgress combatProgress) {
-			this.localUserData.combatProgress = combatProgress;
-		}
 			
 		public virtual CombatProgress GetCombatProgress() {
 			return this.localUserData.combatProgress;
@@ -77,6 +73,7 @@ namespace TinyQuest.Data.Cache {
 		}*/
 		
 		public void Commit() {
+			return;
 			string text = JsonWriter.Serialize(this.localUserData);
 
 			// make a path

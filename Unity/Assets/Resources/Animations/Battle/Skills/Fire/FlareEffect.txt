@@ -43,7 +43,7 @@
         {
           "duration": 14,
           "endValue": 1957,
-          "tween": true,
+          "tween": "linear",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -51,6 +51,7 @@
         {
           "duration": 1,
           "endValue": 1957,
+          "tween": "fix",
           "startValue": 1957,
           "facingOption": "None",
           "frameNo": 14
@@ -105,7 +106,7 @@
         {
           "duration": 14,
           "endValue": -503,
-          "tween": true,
+          "tween": "linear",
           "startValue": 1381,
           "facingOption": "None",
           "frameNo": 1
@@ -113,6 +114,7 @@
         {
           "duration": 1,
           "endValue": -503,
+          "tween": "fix",
           "startValue": -503,
           "facingOption": "None",
           "frameNo": 15

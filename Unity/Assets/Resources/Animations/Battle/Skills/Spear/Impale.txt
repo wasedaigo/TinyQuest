@@ -32,6 +32,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -54,7 +55,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -77,6 +78,7 @@
             8,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -99,6 +101,7 @@
             8,
             0
           ],
+          "tween": "fix",
           "startValue": [
             8,
             0
@@ -121,7 +124,7 @@
             -16,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             8,
             0
@@ -144,6 +147,7 @@
             -16,
             0
           ],
+          "tween": "fix",
           "startValue": [
             -16,
             0
@@ -166,7 +170,7 @@
             -24,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -16,
             0
@@ -189,6 +193,7 @@
             -24,
             0
           ],
+          "tween": "fix",
           "startValue": [
             -24,
             0
@@ -211,6 +216,7 @@
             -24,
             0
           ],
+          "tween": "fix",
           "startValue": [
             -24,
             0
@@ -233,7 +239,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -24,
             0
@@ -256,6 +262,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -352,6 +359,7 @@
             -12,
             7
           ],
+          "tween": "fix",
           "startValue": [
             -12,
             7
@@ -374,7 +382,7 @@
             -36,
             7
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -12,
             7
@@ -397,6 +405,7 @@
             -36,
             7
           ],
+          "tween": "fix",
           "startValue": [
             -36,
             7
@@ -419,7 +428,7 @@
             -44,
             7
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -36,
             7
@@ -442,6 +451,7 @@
             -44,
             7
           ],
+          "tween": "fix",
           "startValue": [
             -44,
             7
@@ -464,7 +474,7 @@
             -44,
             7
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -44,
             7
@@ -523,6 +533,7 @@
         {
           "duration": 7,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 25
@@ -530,6 +541,7 @@
         {
           "duration": 3,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 32
@@ -537,6 +549,7 @@
         {
           "duration": 18,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 35
@@ -544,6 +557,7 @@
         {
           "duration": 4,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 53
@@ -551,6 +565,7 @@
         {
           "duration": 5,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 57
@@ -558,6 +573,7 @@
         {
           "duration": 1,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 62
@@ -603,6 +619,7 @@
             -4,
             0
           ],
+          "tween": "fix",
           "startValue": [
             -4,
             0
@@ -679,6 +696,7 @@
             0,
             6
           ],
+          "tween": "fix",
           "startValue": [
             0,
             6
@@ -716,6 +734,7 @@
             2.0,
             2.0
           ],
+          "tween": "fix",
           "startValue": [
             2.0,
             2.0

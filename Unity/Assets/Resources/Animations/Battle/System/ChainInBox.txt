@@ -22,6 +22,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -44,6 +45,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -76,7 +78,7 @@
         {
           "duration": 14,
           "endValue": 90,
-          "tween": true,
+          "tween": "linear",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -84,7 +86,7 @@
         {
           "duration": 1,
           "endValue": 90,
-          "tween": true,
+          "tween": "linear",
           "startValue": 90,
           "facingOption": "None",
           "frameNo": 14
@@ -107,6 +109,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -129,6 +132,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -161,7 +165,7 @@
         {
           "duration": 14,
           "endValue": 180,
-          "tween": true,
+          "tween": "linear",
           "startValue": 90,
           "facingOption": "None",
           "frameNo": 0
@@ -169,7 +173,7 @@
         {
           "duration": 1,
           "endValue": 180,
-          "tween": true,
+          "tween": "linear",
           "startValue": 180,
           "facingOption": "None",
           "frameNo": 14
@@ -192,6 +196,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -214,6 +219,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -246,7 +252,7 @@
         {
           "duration": 14,
           "endValue": 270,
-          "tween": true,
+          "tween": "linear",
           "startValue": 180,
           "facingOption": "None",
           "frameNo": 0
@@ -254,7 +260,7 @@
         {
           "duration": 1,
           "endValue": 270,
-          "tween": true,
+          "tween": "linear",
           "startValue": 270,
           "facingOption": "None",
           "frameNo": 14
@@ -277,6 +283,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -299,6 +306,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -331,7 +339,7 @@
         {
           "duration": 14,
           "endValue": 360,
-          "tween": true,
+          "tween": "linear",
           "startValue": 270,
           "facingOption": "None",
           "frameNo": 0
@@ -339,7 +347,7 @@
         {
           "duration": 1,
           "endValue": 360,
-          "tween": true,
+          "tween": "linear",
           "startValue": 360,
           "facingOption": "None",
           "frameNo": 14

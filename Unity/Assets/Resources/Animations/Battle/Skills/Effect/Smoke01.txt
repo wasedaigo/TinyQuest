@@ -20,7 +20,7 @@
             1.10000002384186,
             1.10000002384186
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0.5,
             0.5
@@ -33,7 +33,7 @@
             1.5,
             1.5
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             1.10000002384186,
             1.10000002384186
@@ -46,6 +46,7 @@
             1.5,
             1.5
           ],
+          "tween": "fix",
           "startValue": [
             1.5,
             1.5
@@ -79,7 +80,7 @@
         {
           "duration": 14,
           "endValue": 30,
-          "tween": true,
+          "tween": "linear",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -87,6 +88,7 @@
         {
           "duration": 1,
           "endValue": 30,
+          "tween": "fix",
           "startValue": 30,
           "facingOption": "None",
           "frameNo": 14
@@ -96,13 +98,14 @@
         {
           "duration": 14,
           "endValue": 0.0,
-          "tween": true,
+          "tween": "linear",
           "startValue": 1.0,
           "frameNo": 0
         },
         {
           "duration": 1,
           "endValue": 0.0,
+          "tween": "fix",
           "startValue": 0.0,
           "frameNo": 14
         }

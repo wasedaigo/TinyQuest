@@ -31,7 +31,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -54,6 +54,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -95,6 +96,7 @@
         {
           "duration": 23,
           "endValue": 0,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "FaceToMov",
           "frameNo": 0
@@ -102,6 +104,7 @@
         {
           "duration": 1,
           "endValue": 0,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 23
@@ -147,6 +150,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0

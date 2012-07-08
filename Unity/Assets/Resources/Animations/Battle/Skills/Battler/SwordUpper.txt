@@ -76,7 +76,7 @@
             -4,
             4
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             8,
             5
@@ -99,6 +99,7 @@
             -4,
             4
           ],
+          "tween": "fix",
           "startValue": [
             -4,
             4
@@ -157,7 +158,7 @@
         {
           "duration": 8,
           "endValue": 330,
-          "tween": true,
+          "tween": "linear",
           "startValue": 140,
           "facingOption": "None",
           "frameNo": 0
@@ -165,6 +166,7 @@
         {
           "duration": 17,
           "endValue": 330,
+          "tween": "fix",
           "startValue": 330,
           "facingOption": "None",
           "frameNo": 8

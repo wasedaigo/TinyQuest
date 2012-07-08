@@ -22,6 +22,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -44,6 +45,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -66,6 +68,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -88,6 +91,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -180,6 +184,7 @@
         {
           "duration": 1,
           "endValue": 0,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -187,6 +192,7 @@
         {
           "duration": 1,
           "endValue": 90,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 1
@@ -194,6 +200,7 @@
         {
           "duration": 1,
           "endValue": 90,
+          "tween": "fix",
           "startValue": 90,
           "facingOption": "None",
           "frameNo": 2
@@ -201,6 +208,7 @@
         {
           "duration": 1,
           "endValue": 90,
+          "tween": "fix",
           "startValue": 90,
           "facingOption": "None",
           "frameNo": 3

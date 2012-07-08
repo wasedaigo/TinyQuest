@@ -23,6 +23,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -45,6 +46,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -67,7 +69,7 @@
             0,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -87,6 +89,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -99,6 +102,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -111,6 +115,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -161,6 +166,7 @@
         {
           "duration": 4,
           "endValue": 0,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 0
@@ -168,6 +174,7 @@
         {
           "duration": 9,
           "endValue": 0,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 4
@@ -175,6 +182,7 @@
         {
           "duration": 1,
           "endValue": 0,
+          "tween": "fix",
           "startValue": 0,
           "facingOption": "None",
           "frameNo": 13
@@ -184,18 +192,21 @@
         {
           "duration": 4,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 0
         },
         {
           "duration": 9,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 4
         },
         {
           "duration": 1,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 13
         }
@@ -214,7 +225,7 @@
             -6,
             9
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             4,
             -5
@@ -237,6 +248,7 @@
             -6,
             9
           ],
+          "tween": "fix",
           "startValue": [
             -6,
             9
@@ -259,6 +271,7 @@
             -6,
             9
           ],
+          "tween": "fix",
           "startValue": [
             -6,
             9
@@ -278,6 +291,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -290,6 +304,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -302,6 +317,7 @@
             1,
             1
           ],
+          "tween": "fix",
           "startValue": [
             1,
             1
@@ -335,7 +351,7 @@
         {
           "duration": 5,
           "endValue": 220,
-          "tween": true,
+          "tween": "linear",
           "startValue": 380,
           "facingOption": "None",
           "frameNo": 0
@@ -343,7 +359,7 @@
         {
           "duration": 8,
           "endValue": 220,
-          "tween": true,
+          "tween": "linear",
           "startValue": 220,
           "facingOption": "None",
           "frameNo": 5
@@ -351,7 +367,7 @@
         {
           "duration": 1,
           "endValue": 220,
-          "tween": true,
+          "tween": "linear",
           "startValue": 220,
           "facingOption": "None",
           "frameNo": 13
@@ -361,18 +377,21 @@
         {
           "duration": 5,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 0
         },
         {
           "duration": 8,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 5
         },
         {
           "duration": 1,
           "endValue": 1.0,
+          "tween": "fix",
           "startValue": 1.0,
           "frameNo": 13
         }

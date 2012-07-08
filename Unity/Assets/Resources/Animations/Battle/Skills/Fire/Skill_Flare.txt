@@ -30,6 +30,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -87,6 +88,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0

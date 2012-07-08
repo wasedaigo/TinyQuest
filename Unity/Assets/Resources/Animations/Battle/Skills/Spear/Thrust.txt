@@ -31,7 +31,7 @@
             -16,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             0,
             0
@@ -54,7 +54,7 @@
             -21,
             0
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -16,
             0
@@ -77,6 +77,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             -21,
             0
@@ -99,6 +100,7 @@
             0,
             0
           ],
+          "tween": "fix",
           "startValue": [
             0,
             0
@@ -195,7 +197,7 @@
             -38,
             10
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -22,
             10
@@ -218,7 +220,7 @@
             -36,
             10
           ],
-          "tween": true,
+          "tween": "linear",
           "startValue": [
             -38,
             10
@@ -241,6 +243,7 @@
             -36,
             10
           ],
+          "tween": "fix",
           "startValue": [
             -36,
             10
@@ -263,6 +266,7 @@
             -36,
             10
           ],
+          "tween": "fix",
           "startValue": [
             -36,
             10
@@ -321,6 +325,7 @@
         {
           "duration": 3,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 12
@@ -328,6 +333,7 @@
         {
           "duration": 5,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 15
@@ -335,6 +341,7 @@
         {
           "duration": 10,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 20
@@ -342,6 +349,7 @@
         {
           "duration": 1,
           "endValue": -90,
+          "tween": "fix",
           "startValue": -90,
           "facingOption": "None",
           "frameNo": 30
@@ -387,6 +395,7 @@
             30,
             0
           ],
+          "tween": "fix",
           "startValue": [
             30,
             0
