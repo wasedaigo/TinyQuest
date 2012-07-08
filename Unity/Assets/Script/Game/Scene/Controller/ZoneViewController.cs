@@ -16,7 +16,7 @@ public class ZoneViewController : MonoBehaviour {
 		Out
 	}
 	private const int TargetPositionCount = 2;
-		
+
 	public Stage stage;
 	private Roga2dBaseInterval interval;
 
@@ -193,11 +193,12 @@ public class ZoneViewController : MonoBehaviour {
 		UserUnit userUnit = result.combatUnit.GetUserUnit();
 		
 		Actor actor = this.actors[userUnit];
-		if (userUnit.Unit.lookType == UnitLookType.Monster) {
+		actor.SetStatus(result.life, result.maxLife);
+		
+		if (userUnit.Unit.lookType == UnitLookType.Monster && userUnit.IsDead) {
 			Roga2dNode targetNode = null;
 			this.PlayAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", (animation) => {callback();});
 		} else {
-			actor.SetStatus(result.life, result.maxLife);
 			callback();
 		}
 	}
@@ -296,7 +297,6 @@ public class ZoneViewController : MonoBehaviour {
 		this.intervalPlayer = new Roga2dIntervalPlayer();
 		
 		this.stage.transform.parent = this.gameObject.transform;
-		
 		for (int i = 0; i < TargetPositionCount; i++) {
 			for (int j = 0; j < Constant.GroupTypeCount; j++) {
 				this.targetNodes[i, j] = new Roga2dNode();

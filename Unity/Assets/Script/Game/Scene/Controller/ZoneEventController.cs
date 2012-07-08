@@ -140,4 +140,8 @@ public class ZoneEventController : MonoBehaviour {
 	private void CommandFinished() {
 		this.zoneModel.NextCommand();
 	}
+	
+	public void OnProgressClicked() {
+		Debug.Log("OnProgressClicked");	
+	}
 }

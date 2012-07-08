@@ -10,12 +10,20 @@ using TinyQuest.Scene;
 
 public class CombatController : MonoBehaviour {
 	
-	public UILabel AllyHP;
-	public UILabel EnemyHP;
-	
 	private int targetId;
 	private CombatModel combatModel;
+	
+	void Start () {
+		CombatModel combatModel = new CombatModel();
+		
+		CombatControlPanelController controlPanelController = this.gameObject.GetComponent<CombatControlPanelController>();
+		controlPanelController.SetModels(combatModel);
 
+		this.SetModels(combatModel);
+		this.StartBattle();
+		Application.targetFrameRate = 60;
+	}
+	
 	protected void CombatFinished() {
 		this.SendMessage("OnCombatFinished");
 	}
@@ -30,7 +38,7 @@ public class CombatController : MonoBehaviour {
 	public void StartBattle() {
 		this.combatModel.Start();
 	}
-	
+
 	public void BattleStarted() {
 		List<CombatUnit>[] combatUnits = this.combatModel.GetCombatUnits();
 		foreach (List<CombatUnit> combatUnitGroup in combatUnits) {
@@ -66,5 +74,4 @@ public class CombatController : MonoBehaviour {
 	public void InvokeSkill(int slotNo) {
 		this.combatModel.ProgressTurn(slotNo);
 	}
-	
 }

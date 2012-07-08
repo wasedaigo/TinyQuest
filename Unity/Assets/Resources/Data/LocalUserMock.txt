@@ -135,7 +135,14 @@
         "unit": 10001,
         "exp": 1,
         "skillExp": 1,
-        "hp":1000
+        "hp":500
+      },
+      {
+        "id": 2,
+        "unit": 10001,
+        "exp": 1,
+        "skillExp": 1,
+        "hp":600
       }
     ],
     "maxZoneUnitId": 10001,

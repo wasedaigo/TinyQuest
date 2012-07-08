@@ -2,7 +2,7 @@ using UnityEngine;
 
 using TinyQuest.Scene.Model;
 using TinyQuest.Data;
-public class ControlPanelController : MonoBehaviour {
+public class CombatControlPanelController : MonoBehaviour {
 	public GameObject[] Slots;
 	public const int GroupType = 0;
 	private CombatModel combatModel;
@@ -18,7 +18,7 @@ public class ControlPanelController : MonoBehaviour {
 	public void Slot1Clicked() {
 		this.click(0);
 	}
-		
+
 	public void Slot2Clicked() {
 		this.click(1);
 	}
