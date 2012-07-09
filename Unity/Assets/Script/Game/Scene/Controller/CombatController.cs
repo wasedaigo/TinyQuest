@@ -40,9 +40,9 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void BattleStarted() {
-		List<CombatUnit>[] combatUnits = this.combatModel.GetCombatUnits();
-		foreach (List<CombatUnit> combatUnitGroup in combatUnits) {
-			foreach (CombatUnit combatUnit in combatUnitGroup) {
+		CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
+		foreach (CombatUnitGroup combatUnitGroup in combatUnitGroups) {
+			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
 				this.SendMessage("SpawnActor", combatUnit);
 			}
 		}

@@ -70,35 +70,31 @@ namespace TinyQuest.Data.Request {
 			
 			callback(postCommandState, command, zoneCommandState);
 		}
-		
-		
-		public virtual void StartBattle(System.Action<List<CombatUnit>[]> callback) {
-			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			CombatProgress combatProgress = data.combatProgress;
-			if (combatProgress == null) {
-				List<CombatUnit>[] combatUnitGroups = new List<CombatUnit>[2];
-				for (int i = 0; i < combatUnitGroups.Length; i++) {
-					combatUnitGroups[i] = new List<CombatUnit>();
-				}
 
-				for (int i = 0; i < data.ownUnits.Count; i++) {
-					UserUnit playerUnit = data.ownUnits[i];
-					combatUnitGroups[0].Add(new CombatUnit(playerUnit.id, 0, i)); // Player	
-				}
-				
-				for (int i = 0; i < data.zoneUnits.Count; i++) {
-					UserUnit enemyUnit = data.zoneUnits[i];
-					combatUnitGroups[1].Add(new CombatUnit(enemyUnit.id, 1, i)); // Enemy	
-				}
-				
-				data.combatProgress = new CombatProgress(combatUnitGroups);
+		public virtual void StartBattle(System.Action<CombatUnitGroup[]> callback) {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+
+			data.combatUnitGroups = new CombatUnitGroup[Constant.GroupTypeCount];
+			for (int i = 0; i < Constant.GroupTypeCount; i++) {
+				data.combatUnitGroups[i] = new CombatUnitGroup();
 			}
 
+			for (int i = 0; i < data.ownUnits.Count; i++) {
+				UserUnit playerUnit = data.ownUnits[i];
+				data.combatUnitGroups[0].combatUnits.Add(new CombatUnit(playerUnit.id, 0, i)); // Player	
+			}
+			
+			for (int i = 0; i < data.zoneEnemies.Count; i++) {
+				UserUnit enemyUnit = data.zoneEnemies[i];
+				data.combatUnitGroups[1].combatUnits.Add(new CombatUnit(enemyUnit.id, 1, i)); // Enemy	
+			}
+			
+			data.combatProgress = new CombatProgress();
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
 			
-			callback(data.combatProgress.combatUnitGroups);
+			callback(data.combatUnitGroups);
 		}
-		
+
 		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			userZone.commandIndex += 1;
@@ -107,10 +103,10 @@ namespace TinyQuest.Data.Request {
 			
 			this.GetExecutingCommand(callback);
 		}
-	
+
 		public static CombatUnit GetFirstAliveUnit(int groupType) {
-			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
-			List<CombatUnit> combatUnitList = combatProgress.combatUnitGroups[groupType];
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			List<CombatUnit> combatUnitList = data.combatUnitGroups[groupType].combatUnits;
 			foreach (CombatUnit combatUnit in combatUnitList) {
 				if (combatUnit.GetUserUnit().hp > 0) {
 					return combatUnit;
@@ -154,21 +150,17 @@ namespace TinyQuest.Data.Request {
 		}
 
 		public virtual void ProgressTurn(int playerIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
-			CombatProgress combatProgress = CacheFactory.Instance.GetLocalUserDataCache().GetCombatProgress();
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 
-			CombatUnit playerUnit = combatProgress.combatUnitGroups[0][playerIndex];
+			CombatUnit playerUnit = data.combatUnitGroups[0].combatUnits[playerIndex];
 			CombatUnit enemyUnit = GetFirstAliveUnit(1);
 			int enemyIndex = enemyUnit.index;
 			
 			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();
-			if (combatProgress.activeUnitIndexes == null) {
-				// The first turn, there is no action
-				combatProgress.activeUnitIndexes = new int[Constant.GroupTypeCount]{playerIndex, enemyIndex};
-			} else {
-				combatProgress.activeUnitIndexes[0] = playerIndex;
-				combatProgress.activeUnitIndexes[1] = enemyIndex;
-
+			if (data.combatProgress.turnCount > 0) {
+				data.combatUnitGroups[0].activeIndex = playerIndex;
+				data.combatUnitGroups[1].activeIndex = enemyIndex;
 				
 				CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupTypeCount];
 				if (playerUnit.GetUserUnit().Speed >= enemyUnit.GetUserUnit().Speed) {
@@ -186,7 +178,8 @@ namespace TinyQuest.Data.Request {
 					}
 				}
 			}
-
+			
+			data.combatProgress.turnCount += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback(playerUnit, enemyUnit, combatActions);
 		}

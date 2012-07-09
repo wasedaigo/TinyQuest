@@ -1,5 +1,6 @@
 {
-    "combatProgress": null,
+    "combatProgress" : null,
+    "combatUnitGroups": [],
     "zone": {
         "zoneId": 1,
         "lastStepIndex": 5,
@@ -129,7 +130,7 @@
         "hp":200
       }
     ],
-    "zoneUnits": [
+    "zoneEnemies": [
       {
         "id": 1,
         "unit": 10001,

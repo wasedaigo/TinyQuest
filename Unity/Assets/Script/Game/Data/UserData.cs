@@ -6,13 +6,13 @@ namespace TinyQuest.Data{
 	public class UserStatus {
 		public int maxHP;	
 	}
-	
+
 	public class UserMaterial : IDData{
 		public int userUnit;
 		public int gear;
 		public int exp;
 	}
-	
+
 	public class UserZone{
 		public int zoneId;
 		public int lastStepIndex;
@@ -23,18 +23,19 @@ namespace TinyQuest.Data{
     	public int commandIndex;
 		public object commandState;
 	}
-	
+
 	public class CombatUnit {
 		private readonly int unitId;
+		public List<int> buffs;
 		public int groupType;
 		public int index;
-		
+
 		public UserUnit GetUserUnit() {
 			LocalUserData data = Cache.CacheFactory.Instance.GetLocalUserDataCache().Data;
 			if (this.groupType == 0) {
 				return data.GetOwnUnitByID(this.unitId);
 			} else {
-				return data.GetZoneUnitByID(this.unitId);
+				return data.GetZoneEnemyByID(this.unitId);
 			}
 		}
 
@@ -42,25 +43,27 @@ namespace TinyQuest.Data{
 			this.unitId = unitId;
 			this.groupType = groupType;
 			this.index = index;
+			this.buffs = new List<int>();
 		}
 	}
 	
+	public class CombatUnitGroup {
+		public List<CombatUnit> combatUnits;
+		public int activeIndex;
+		
+		public CombatUnitGroup() {
+			this.combatUnits = new List<CombatUnit>();
+		}
+	}
+
 	public class CombatProgress {
 		public int turnCount;
-		public List<CombatUnit>[] combatUnitGroups;
-		public int[] activeUnitIndexes;
-		
-		public CombatProgress(List<CombatUnit>[] combatUnitGroups) {
-			this.combatUnitGroups = combatUnitGroups;
-			this.turnCount = 0;
-		}
 	}
 
 	public class UserUnit : IDData{
 		public int unit;
 		public int exp;
 		public int skillExp;
-		public int[] buffs;
 
 		public MasterUnit Unit{
 			get{
@@ -122,13 +125,15 @@ namespace TinyQuest.Data{
 
 	public class LocalUserData {
 		public CombatProgress combatProgress;
+		public CombatUnitGroup[] combatUnitGroups;
+		
 		public UserZone zone;
 		public readonly UserStatus status;
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
 		public int maxZoneUnitId;
-		public List<UserUnit> zoneUnits;
-		
+		public List<UserUnit> zoneEnemies;
+		/*
 		private UserUnit AddUserUnit(int unit, int exp, int skillExp, ref int maxId, ref List<UserUnit> units) {
 			maxId += 1;
 			UserUnit userUnit = new UserUnit(maxId, unit, exp, skillExp);
@@ -140,12 +145,7 @@ namespace TinyQuest.Data{
 			units.Remove(userUnit);
 		}
 		
-		private UserUnit GetUnitByID(int id, ref List<UserUnit> units) {
-			foreach (UserUnit userUnit in units) {
-				if (userUnit.id == id) { return userUnit; }
-			}
-			return null;
-		}
+
 		
 		public UserUnit AddOwnUnit(int unit, int exp, int skillExp) {
 			return this.AddUserUnit(unit, exp, skillExp, ref this.maxOwnUnitId, ref this.ownUnits);
@@ -155,9 +155,7 @@ namespace TinyQuest.Data{
 			this.RemoveUserUnit(userUnit, ref this.ownUnits);
 		}
 		
-		public UserUnit GetOwnUnitByID(int id) {
-			return this.GetUnitByID(id, ref this.ownUnits);
-		}
+
 		
 		public UserUnit AddZoneUnit(int unit, int exp, int skillExp) {
 			return this.AddUserUnit(unit, exp, skillExp, ref this.maxZoneUnitId, ref this.zoneUnits);
@@ -166,9 +164,20 @@ namespace TinyQuest.Data{
 		public void RemoveZoneUnit(UserUnit userUnit) {
 			this.RemoveUserUnit(userUnit, ref this.zoneUnits);
 		}
+		*/
+		private UserUnit GetUnitByID(int id, ref List<UserUnit> units) {
+			foreach (UserUnit userUnit in units) {
+				if (userUnit.id == id) { return userUnit; }
+			}
+			return null;
+		}
 		
-		public UserUnit GetZoneUnitByID(int id) {
-			return this.GetUnitByID(id, ref this.zoneUnits);
+		public UserUnit GetOwnUnitByID(int id) {
+			return this.GetUnitByID(id, ref this.ownUnits);
+		}
+		
+		public UserUnit GetZoneEnemyByID(int id) {
+			return this.GetUnitByID(id, ref this.zoneEnemies);
 		}
 		//public readonly UnitInstance[] unitInstances;
 		

@@ -14,7 +14,7 @@ namespace TinyQuest.Scene.Model {
 		public System.Action<CombatAction> ExecuteAction;
 		public System.Action<CombatUnit, CombatUnit> SelectUnit;
 
-		private List<CombatUnit>[] combatUnits;
+		private CombatUnitGroup[] combatUnitGroups;
 		private UserUnit targetUnit;
 		private int combatUnitCount;
 		
@@ -28,17 +28,17 @@ namespace TinyQuest.Scene.Model {
 			req.StartBattle(this.OnStarted);
 		}
 		
-		private void OnStarted(List<CombatUnit>[] combatUnits) {
-			this.combatUnits = combatUnits;
+		private void OnStarted(CombatUnitGroup[] combatUnitGroups) {
+			this.combatUnitGroups = combatUnitGroups;
 			this.StartBattle();
 		}
 		
-		public List<CombatUnit>[] GetCombatUnits() {
-			return this.combatUnits;
+		public CombatUnitGroup[] GetCombatUnits() {
+			return this.combatUnitGroups;
 		}
 
 		public CombatUnit GetCombatUnit(int groupType, int index) {
-			return this.combatUnits[groupType][index];
+			return this.combatUnitGroups[groupType].combatUnits[index];
 		}
 
 		public MasterSkill GetMasterSkillById(int id) {
