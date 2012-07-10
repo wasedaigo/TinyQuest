@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
 
 namespace TinyQuest.Scene.Model {
@@ -101,6 +102,16 @@ namespace TinyQuest.Scene.Model {
 				this.GotoNextStep();
 				break;
 			}
+		}
+		
+		public CombatUnitGroup[] GetCombatUnits() {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			return data.combatUnitGroups;
+		}
+
+		public CombatUnit GetCombatUnit(int groupType, int index) {
+			CombatUnitGroup[] combatUnitGroups = this.GetCombatUnits();
+			return combatUnitGroups[groupType].combatUnits[index];
 		}
 	}
 }

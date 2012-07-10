@@ -70,8 +70,8 @@ namespace TinyQuest.Data.Request {
 			
 			callback(postCommandState, command, zoneCommandState);
 		}
-
-		public virtual void StartBattle(System.Action<CombatUnitGroup[]> callback) {
+		
+		public virtual void LoadZone(System.Action<CombatUnitGroup[]> callback) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 
 			data.combatUnitGroups = new CombatUnitGroup[Constant.GroupTypeCount];
@@ -94,7 +94,7 @@ namespace TinyQuest.Data.Request {
 			
 			callback(data.combatUnitGroups);
 		}
-
+		
 		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			userZone.commandIndex += 1;

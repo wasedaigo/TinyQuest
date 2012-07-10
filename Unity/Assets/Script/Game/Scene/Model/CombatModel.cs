@@ -22,24 +22,20 @@ namespace TinyQuest.Scene.Model {
 		private int actionIndex;
 		private bool turnFinished;
 		
-		public void Start() {
+		public CombatModel(){
 			this.turnFinished = true;
-			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.StartBattle(this.OnStarted);
-		}
-		
-		private void OnStarted(CombatUnitGroup[] combatUnitGroups) {
-			this.combatUnitGroups = combatUnitGroups;
-			this.StartBattle();
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {
-			return this.combatUnitGroups;
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			return data.combatUnitGroups;
 		}
 
 		public CombatUnit GetCombatUnit(int groupType, int index) {
-			return this.combatUnitGroups[groupType].combatUnits[index];
+			CombatUnitGroup[] combatUnitGroups = this.GetCombatUnits();
+			return combatUnitGroups[groupType].combatUnits[index];
 		}
+
 
 		public MasterSkill GetMasterSkillById(int id) {
 			return CacheFactory.Instance.GetMasterDataCache().GetSkillByID(id);

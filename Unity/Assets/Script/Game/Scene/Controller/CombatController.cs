@@ -12,15 +12,14 @@ public class CombatController : MonoBehaviour {
 	
 	private int targetId;
 	private CombatModel combatModel;
-	
-	void Start () {
+
+	void Awake() {
 		CombatModel combatModel = new CombatModel();
 		
-		CombatControlPanelController controlPanelController = this.gameObject.GetComponent<CombatControlPanelController>();
-		controlPanelController.SetModels(combatModel);
+		CombatControlPanelController combatControlPanelController = this.gameObject.GetComponent<CombatControlPanelController>();
+		combatControlPanelController.SetModels(combatModel);
 
 		this.SetModels(combatModel);
-		this.StartBattle();
 		Application.targetFrameRate = 60;
 	}
 	
@@ -30,27 +29,10 @@ public class CombatController : MonoBehaviour {
 
 	public void SetModels(CombatModel combatModel) {
 		this.combatModel = combatModel;
-		this.combatModel.StartBattle += this.BattleStarted;
 		this.combatModel.ExecuteAction += this.ActionExecuted;
 		this.combatModel.SelectUnit += this.UnitSelected;
 	}
 
-	public void StartBattle() {
-		this.combatModel.Start();
-	}
-
-	public void BattleStarted() {
-		CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
-		foreach (CombatUnitGroup combatUnitGroup in combatUnitGroups) {
-			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
-				this.SendMessage("SpawnActor", combatUnit);
-			}
-		}
-		
-		//this.monster = spawnBattler("fighter", Ally.State.Stand, -40, 0);
-		this.SendMessage("UpdateStatus");
-	}
-	
 	protected void ExecuteNextAction() {
 		this.combatModel.ExecuteNextAction();
 		
