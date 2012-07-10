@@ -179,6 +179,16 @@ public class ZoneViewController : MonoBehaviour {
 		this.stage.GetCharacterLayer().AddChild(actor);
 	}
 	
+	protected void ShowActors(CombatUnit[] combatUnits) {
+		for (int i = 0; i < Constant.GroupTypeCount; i++) {
+			Actor actor = this.actors[combatUnits[i].GetUserUnit()];
+			this.activeActors[i] = actor;
+			actor.Show();
+			Roga2dNode targetNode = this.targetNodes[(int)TargetPosition.In, i];
+			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
+		}
+	}
+	
 	private void PlayJumpAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
 		Roga2dNode targetNode = this.targetNodes[(int)targetPosition, groupNo];
 		this.PlayAnimation(targetNode, actor, animationName, (animation) => {
@@ -202,6 +212,8 @@ public class ZoneViewController : MonoBehaviour {
 			callback();
 		}
 	}
+	
+
 
 	protected void SelectActor(CombatUnit[] combatUnits) {
 		

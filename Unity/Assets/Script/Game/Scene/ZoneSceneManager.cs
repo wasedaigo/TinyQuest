@@ -25,11 +25,16 @@ public class ZoneSceneManager : MonoBehaviour {
 	}
 
 	void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
-		foreach (CombatUnitGroup combatUnitGroup in combatUnitGroups) {
+		CombatUnit[] activeUnits = new CombatUnit[Constant.GroupTypeCount];
+		for (int i = 0; i < Constant.GroupTypeCount; i++) {
+			CombatUnitGroup combatUnitGroup = combatUnitGroups[i];
 			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
-				this.SendMessage("SpawnActor", combatUnit);
+			   this.SendMessage("SpawnActor", combatUnit);
 			}
+			activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
 		}
+		
+		this.SendMessage("ShowActors", activeUnits);
 		this.SendMessage("UpdateStatus");
 	}
 }

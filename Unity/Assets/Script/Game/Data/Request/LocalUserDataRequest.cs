@@ -155,27 +155,25 @@ namespace TinyQuest.Data.Request {
 			CombatUnit playerUnit = data.combatUnitGroups[0].combatUnits[playerIndex];
 			CombatUnit enemyUnit = GetFirstAliveUnit(1);
 			int enemyIndex = enemyUnit.index;
-			
+
 			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();
-			if (data.combatProgress.turnCount > 0) {
-				data.combatUnitGroups[0].activeIndex = playerIndex;
-				data.combatUnitGroups[1].activeIndex = enemyIndex;
-				
-				CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupTypeCount];
-				if (playerUnit.GetUserUnit().Speed >= enemyUnit.GetUserUnit().Speed) {
-					blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
-					blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
-				} else {
-					blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
-					blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
-				}
+			data.combatUnitGroups[0].activeIndex = playerIndex;
+			data.combatUnitGroups[1].activeIndex = enemyIndex;
+			
+			CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupTypeCount];
+			if (playerUnit.GetUserUnit().Speed >= enemyUnit.GetUserUnit().Speed) {
+				blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
+				blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
+			} else {
+				blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
+				blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
+			}
 
-				for (int i = 0; i < blocks.Length; i++) {
-					CombatAction action = blocks[i].Execute();
-					if (action != null) {
-						combatActions.Add(action);
-					}
+			for (int i = 0; i < blocks.Length; i++) {
+				CombatAction action = blocks[i].Execute();
+				if (action != null) {
+					combatActions.Add(action);
 				}
 			}
 			
