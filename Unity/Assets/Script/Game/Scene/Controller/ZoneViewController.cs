@@ -304,15 +304,23 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	// Use this for initialization
-	protected void Start() {
+	protected void Awake() {
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.intervalPlayer = new Roga2dIntervalPlayer();
 		
-		this.stage.transform.parent = this.gameObject.transform;
 		for (int i = 0; i < TargetPositionCount; i++) {
 			for (int j = 0; j < Constant.GroupTypeCount; j++) {
 				this.targetNodes[i, j] = new Roga2dNode();
 				this.targetNodes[i, j].LocalPixelPosition = TargetPositions[i, j];
+			}
+		}
+	}
+	
+	protected void Start() {
+		
+		this.stage.transform.parent = this.gameObject.transform;
+		for (int i = 0; i < TargetPositionCount; i++) {
+			for (int j = 0; j < Constant.GroupTypeCount; j++) {
 				this.stage.GetCharacterLayer().AddChild(this.targetNodes[i, j]);
 			}
 		}
@@ -362,6 +370,16 @@ public class ZoneViewController : MonoBehaviour {
 
 	protected void OnDestroy() {
 		Roga2dResourceManager.freeResources();	
+	}
+	
+	protected void StartWalkAnimation(CombatUnit combatUnit) {
+		PuppetActor puppetActor = this.actors[combatUnit.GetUserUnit()] as PuppetActor;
+		puppetActor.startWalkingAnimation();
+	}
+	
+	protected void StopWalkAnimation(CombatUnit combatUnit) {
+		PuppetActor puppetActor = this.actors[combatUnit.GetUserUnit()] as PuppetActor;
+		puppetActor.stopWalkingAnimation();
 	}
 	
 	protected void OnPlayerMoved(float distance) {

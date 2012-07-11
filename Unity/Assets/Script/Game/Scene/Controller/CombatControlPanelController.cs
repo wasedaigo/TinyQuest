@@ -3,6 +3,7 @@ using UnityEngine;
 using TinyQuest.Scene.Model;
 using TinyQuest.Data;
 public class CombatControlPanelController : MonoBehaviour {
+	public System.Action<int> InvokeSkill;
 	public GameObject[] Slots;
 	public const int GroupType = 0;
 	private CombatModel combatModel;
@@ -40,7 +41,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 		
 	private void click(int slotNo) {
-		this.SendMessage("InvokeSkill", slotNo);
+		this.InvokeSkill(slotNo);
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {
@@ -50,6 +51,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	protected void UpdateStatus() {
+		if (!this.gameObject.active) {return;}
 		for (int i = 0; i < Slots.Length; i++) {
 			CombatUnit combatUnit = this.combatModel.GetCombatUnit(GroupType, i);
 			this.views[i].UpdateStatus(combatUnit);

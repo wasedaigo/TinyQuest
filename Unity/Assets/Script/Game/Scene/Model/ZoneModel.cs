@@ -18,7 +18,7 @@ namespace TinyQuest.Scene.Model {
 		public System.Action GotoNextStep;
 		public System.Action ClearZone;
 
-		private static readonly int StepDistance = 100;
+		private static readonly int StepDistance = 150;
 		private static readonly int Speed = 100;
 		private float moveDistance;
 		public float MoveDistance {
@@ -28,8 +28,9 @@ namespace TinyQuest.Scene.Model {
 		private UserZone userZone;
 		private UserUnit playerBattler;
 		
-		public ZoneModel(UserZone userZone) {
-			this.userZone = userZone;
+		public ZoneModel() {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			this.userZone =  data.zone;
 		}
 		
 		public void SetPlayerBattler(UserUnit playerBattler) {
@@ -70,7 +71,7 @@ namespace TinyQuest.Scene.Model {
 				this.moveDistance = 0;
 
 				LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-				req.ProgressStep(this.OnStepProgressed);
+				req.ProgressStep(this.OnCommandProgressed);
 			}
 			
 			if (this.PlayerMove != null) {
@@ -78,18 +79,29 @@ namespace TinyQuest.Scene.Model {
 			}
 		}
 		
-		private void OnStepProgressed() {
-			Debug.Log("[StepProgressed] " + this.userZone.stepIndex);
-			this.NextCommand();
+		// Check whether it is executing event or not
+		public bool IsCommandExecuting() {
+			// Get UserZone
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			int stepIndex = userZone.stepIndex;
+			int commandIndex = userZone.commandIndex;
+			
+			// Get current zoneEvent
+			ZoneEvent zoneEvent = userZone.events[stepIndex.ToString()];
+			if (zoneEvent == null) {return false;}
+			
+			// Check current command index
+			ZoneCommand[] commands = zoneEvent.commands;
+			return commandIndex < commands.Length;
 		}
 		
-		
-		// Event
+		// Invoke next command
 		public void NextCommand() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.ProgressCommand(this.OnCommandProgressed);
 		}
 
+		// Handle command result
 		private void OnCommandProgressed(ZoneModel.PostCommandState postCommandState, ZoneCommand command, object zoneCommandState) {
 			switch (postCommandState) {
 			case PostCommandState.None:
@@ -102,6 +114,11 @@ namespace TinyQuest.Scene.Model {
 				this.GotoNextStep();
 				break;
 			}
+		}
+		
+		public CombatUnit GetWalkingUnit() {
+			CombatUnitGroup[] combatUnitGroups = this.GetCombatUnits();
+			return combatUnitGroups[0].combatUnits[combatUnitGroups[0].activeIndex];
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {

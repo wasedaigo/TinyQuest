@@ -6,8 +6,8 @@ public class MessageBoxController : MonoBehaviour {
 	public  BaloonMessageBox baloonMessageBox;
 	private BaloonMessageBox visibleMessageBox;
 
-	public void ShowMessageBox(string message) {
-		this.HideMessageBox();
+	public void ShowMessage(string message) {
+		this.HideMessage();
 		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
 		box.transform.parent = this.gameObject.transform;
 		box.transform.localScale = new Vector3(0.003f, 0.003f, 1);
@@ -20,7 +20,7 @@ public class MessageBoxController : MonoBehaviour {
 		this.visibleMessageBox = box;
 	}
 	
-	public void HideMessageBox() {
+	public void HideMessage() {
 		if (this.visibleMessageBox != null) {
 			this.visibleMessageBox.transform.parent = null;
 			Destroy(this.visibleMessageBox.gameObject);

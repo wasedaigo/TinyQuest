@@ -79,8 +79,8 @@
             }
         },
         "playerHP": 200,
-        "stepIndex": 1,
-        "commandIndex": 1,
+        "stepIndex": 0,
+        "commandIndex": 0,
         "commandState": null
     },
     "status": {

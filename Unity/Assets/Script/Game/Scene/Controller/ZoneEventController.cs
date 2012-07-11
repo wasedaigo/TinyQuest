@@ -26,21 +26,31 @@ public class ZoneEventController : MonoBehaviour {
 		Shader.WarmupAllShaders() ;
 		this.animationPlayer = new Roga2dAnimationPlayer();
 		this.intervalPlayer = new Roga2dIntervalPlayer();
-
-		this.SetState(ZoneState.Pause);
 	}
-
+	
+	public void StartAdventure() {
+		this.zoneModel.StartAdventure();
+	}
+	
 	public void SetModels(ZoneModel zoneModel) {
 		this.zoneModel = zoneModel;
 		this.zoneModel.PlayerMove += this._OnPlayerMoved;
 		this.zoneModel.CommandExecute += this.OnCommandExecuted;
 		this.zoneModel.GotoNextStep += this.GotoNextStep;
 		this.zoneModel.ClearZone += this.ClearZone;
+		
 	}
 
 	private void SetState(ZoneState state) {
 		if (this.state != state) {
-			//this.SendMessage("OnStateChanged", ZoneState.Pause);	
+			this.state = state;	
+			
+			CombatUnit walkingUnit = this.zoneModel.GetWalkingUnit();
+			if (this.state == ZoneState.Moving) {
+				this.SendMessage("StartWalkAnimation", walkingUnit);
+			} else {
+				this.SendMessage("StopWalkAnimation", walkingUnit);
+			}
 		}
 	}
 	
@@ -88,7 +98,8 @@ public class ZoneEventController : MonoBehaviour {
 	}
 
 	private void OnCommandExecuted(ZoneCommand command, object zoneCommandState) {
-		/*
+		CombatUnit walkingUnit = this.zoneModel.GetWalkingUnit();	
+		this.SetState(ZoneState.Pause);
 		switch (command.type) {
 			case (int)ZoneCommand.Type.Battle:
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
@@ -106,22 +117,16 @@ public class ZoneEventController : MonoBehaviour {
 				Debug.LogError("Undefined type " + command.type + " is passed");
 				break;
 		}
-		*/
 	}
 	
 	private void HandleMessageCommand(string text) {
-		/*
-		MessageBoxController controller = this.gameObject.GetComponent<MessageBoxController>();
-		controller.baloonMessageBox = this.baloonMessageBox;
-		controller.MessageFinish = this.CommandFinished;
-		controller.ShowText(text);
-
-		this.SetState(State.Next);
-		?/
+		this.SendMessage("ShowMessage", text);
+		this.SetState(ZoneState.Next);
 	}
 	
 	private void HandleBattleCommand(int enemyID) {
-	/*
+		Debug.Log("Battle");
+		/*
 		CombatController controller = this.gameObject.GetComponent<CombatController>();
 		CombatModel combatModel = CombatFactory.Instance.Build(enemyID, this.zoneModel.GetPlayerBattler());
 		controller.SetCombatModel(combatModel);
@@ -129,19 +134,22 @@ public class ZoneEventController : MonoBehaviour {
 		controller.CombatFinish = this.CommandFinished;
 		controller.StartBattle();
 		
-		this.SetState(State.Combat);
+		
 		*/
+		this.SetState(ZoneState.Combat);
 	}
 	
 	private void HandleTreasureCommand(int treasureID) {
 		// TODO
 	}
 	
-	private void CommandFinished() {
-		this.zoneModel.NextCommand();
-	}
-	
 	public void OnProgressClicked() {
-		Debug.Log("OnProgressClicked");	
+		this.SendMessage("HideMessage");
+		
+		if (this.zoneModel.IsCommandExecuting()) {
+			this.zoneModel.NextCommand();
+		} else {
+			this.GotoNextStep();
+		}
 	}
 }

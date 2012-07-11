@@ -12,16 +12,6 @@ public class CombatController : MonoBehaviour {
 	
 	private int targetId;
 	private CombatModel combatModel;
-
-	void Awake() {
-		CombatModel combatModel = new CombatModel();
-		
-		CombatControlPanelController combatControlPanelController = this.gameObject.GetComponent<CombatControlPanelController>();
-		combatControlPanelController.SetModels(combatModel);
-
-		this.SetModels(combatModel);
-		Application.targetFrameRate = 60;
-	}
 	
 	protected void CombatFinished() {
 		this.SendMessage("OnCombatFinished");
