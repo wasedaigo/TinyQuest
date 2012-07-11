@@ -17,18 +17,8 @@ public class ZoneEventController : MonoBehaviour {
 	private Roga2dBaseInterval interval;
 	
 	private ZoneModel zoneModel;
-
-	private Roga2dAnimationPlayer animationPlayer;
-	private Roga2dIntervalPlayer intervalPlayer;
-
-	// Use this for initialization
-	protected void Start() {
-		Shader.WarmupAllShaders() ;
-		this.animationPlayer = new Roga2dAnimationPlayer();
-		this.intervalPlayer = new Roga2dIntervalPlayer();
-	}
 	
-	public void StartAdventure() {
+	public void ResumeAdventure() {
 		this.zoneModel.StartAdventure();
 	}
 	
@@ -69,7 +59,6 @@ public class ZoneEventController : MonoBehaviour {
 	protected void Update() {
 
 		if (this.finishZone) {
-			this.intervalPlayer.Clear();
 			Application.LoadLevel("Home");
 		}
 		
@@ -120,12 +109,14 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	private void HandleMessageCommand(string text) {
+		
+		Debug.Log(text);
 		this.SendMessage("ShowMessage", text);
 		this.SetState(ZoneState.Next);
 	}
 	
 	private void HandleBattleCommand(int enemyID) {
-		Debug.Log("Battle");
+
 		/*
 		CombatController controller = this.gameObject.GetComponent<CombatController>();
 		CombatModel combatModel = CombatFactory.Instance.Build(enemyID, this.zoneModel.GetPlayerBattler());
@@ -133,9 +124,8 @@ public class ZoneEventController : MonoBehaviour {
 		controller.SetPlayer(this.player);
 		controller.CombatFinish = this.CommandFinished;
 		controller.StartBattle();
-		
-		
 		*/
+		this.SendMessage("StartBattle");
 		this.SetState(ZoneState.Combat);
 	}
 	

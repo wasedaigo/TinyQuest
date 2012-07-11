@@ -84,8 +84,6 @@ namespace TinyQuest.Data.Request {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			userZone.commandIndex += 1;
 
-			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
-			
 			this.GetExecutingCommand(callback);
 		}
 
@@ -165,6 +163,13 @@ namespace TinyQuest.Data.Request {
 			data.combatProgress.turnCount += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			callback(playerUnit, enemyUnit, combatActions);
+		}
+		
+		public virtual void FinishCombat(System.Action callback) {
+			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
+			userZone.commandIndex += 1;
+			
+			callback();
 		}
 	}
 }

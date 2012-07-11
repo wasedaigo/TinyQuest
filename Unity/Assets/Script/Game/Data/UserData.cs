@@ -54,6 +54,17 @@ namespace TinyQuest.Data{
 		public CombatUnitGroup() {
 			this.combatUnits = new List<CombatUnit>();
 		}
+		
+		public bool IsAllDead() {
+			for (int i = 0; i < this.combatUnits.Count; i++) {
+				CombatUnit combatUnit = this.combatUnits[i];
+				if (!combatUnit.GetUserUnit().IsDead) {
+					return false;
+				}
+			}
+			
+			return true;
+		}
 	}
 
 	public class CombatProgress {

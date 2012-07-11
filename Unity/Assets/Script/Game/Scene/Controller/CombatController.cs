@@ -21,6 +21,7 @@ public class CombatController : MonoBehaviour {
 		this.combatModel = combatModel;
 		this.combatModel.ExecuteAction += this.ActionExecuted;
 		this.combatModel.SelectUnit += this.UnitSelected;
+		this.combatModel.FinishBattle += this.BattleFinished;
 	}
 
 	protected void ExecuteNextAction() {
@@ -33,6 +34,10 @@ public class CombatController : MonoBehaviour {
 	
 	public void TurnFinished() {
 		this.combatModel.FinishTurn();
+	}
+	
+	public void BattleFinished() {
+		this.SendMessage("FinishBattle");
 	}
 	
 	public void ActionExecuted(CombatAction action) {

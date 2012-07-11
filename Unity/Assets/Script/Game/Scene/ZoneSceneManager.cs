@@ -13,6 +13,9 @@ public class ZoneSceneManager : MonoBehaviour {
 	public GameObject UICombatPanel;
 	public GameObject UIProgressPanel;
 	private ZoneScene zoneScene;
+	private ZoneEventController zoneEventController;
+	private CombatController combatController;
+	private CombatControlPanelController combatControlPanelController;
 	
 	void Awake() {
 		
@@ -20,6 +23,22 @@ public class ZoneSceneManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		ZoneModel zoneModel = new ZoneModel();
+		CombatModel combatModel = new CombatModel();
+		
+		// Get reference
+		this.zoneEventController = this.GetComponent<ZoneEventController>();
+		this.combatController = this.GetComponent<CombatController>();
+		this.combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
+		
+		// Set Models
+		this.zoneEventController.SetModels(zoneModel);
+		this.combatControlPanelController.SetModels(combatModel);
+		this.combatController.SetModels(combatModel);
+		
+		// Delegate
+		this.combatControlPanelController.InvokeSkill += combatController.InvokeSkill;
+
 		LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 		req.LoadZone(this.OnLoaded);
 	}
@@ -30,27 +49,22 @@ public class ZoneSceneManager : MonoBehaviour {
 	}
 	
 	void SetScene(ZoneScene zoneScene) {
+		this.UIProgressPanel.SetActiveRecursively(false);
+		this.UICombatPanel.SetActiveRecursively(false);
+		this.zoneEventController.enabled = false;
+		this.combatController.enabled = false;
+
 		this.zoneScene = zoneScene;
 		switch(zoneScene) {
 			case ZoneScene.Adventure:
-				ZoneEventController zoneEventController = this.gameObject.AddComponent<ZoneEventController>();
+				this.zoneEventController.enabled = true;
 				this.UIProgressPanel.SetActiveRecursively(true);
-			
-				ZoneModel zoneModel = new ZoneModel();
-				zoneEventController.SetModels(zoneModel);
-				zoneEventController.StartAdventure();
+				this.zoneEventController.ResumeAdventure();
 			break;
 			case ZoneScene.Combat:
-				CombatController combatController = this.gameObject.AddComponent<CombatController>();
+				this.combatController.enabled = true;
 
 				this.UICombatPanel.SetActiveRecursively(true);
-				CombatControlPanelController combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
-
-				CombatModel combatModel = new CombatModel();
-				combatControlPanelController.SetModels(combatModel);
-				combatController.SetModels(combatModel);
-				
-				combatControlPanelController.InvokeSkill += combatController.InvokeSkill;
 				combatControlPanelController.SendMessage("UpdateStatus");
 			break;
 		}
@@ -73,5 +87,13 @@ public class ZoneSceneManager : MonoBehaviour {
 	void ChangeActorStatus(CombatActionResult result) {
 		CombatControlPanelController combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
 		combatControlPanelController.SendMessage("ChangeActorStatus", result);
+	}
+	
+	void StartBattle() {
+		this.SetScene(ZoneScene.Combat);
+	}
+
+	void FinishBattle() {
+		this.SetScene(ZoneScene.Adventure);
 	}
 }

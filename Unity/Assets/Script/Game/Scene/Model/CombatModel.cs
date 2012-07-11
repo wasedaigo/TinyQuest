@@ -7,10 +7,17 @@ using TinyQuest.Data.Request;
 
 namespace TinyQuest.Scene.Model {
 	public class CombatModel {
+		public enum CombatResult{
+			OnGoing,
+			Win,
+			Lose
+		}
+		
 		public const int GroupCount = 2;
 		public System.Action TurnProgress;
 		public System.Action<UserUnit, int> UpdateHP;
 		public System.Action StartBattle;
+		public System.Action FinishBattle;
 		public System.Action<CombatAction> ExecuteAction;
 		public System.Action<CombatUnit, CombatUnit> SelectUnit;
 
@@ -41,6 +48,17 @@ namespace TinyQuest.Scene.Model {
 			return CacheFactory.Instance.GetMasterDataCache().GetSkillByID(id);
 		}
 		
+		public CombatResult GetCombatResult() {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			if (data.combatUnitGroups[0].IsAllDead()){
+				return CombatResult.Lose;	
+			}
+			if (data.combatUnitGroups[1].IsAllDead()){
+				return CombatResult.Win;	
+			}
+			return CombatResult.OnGoing;
+		}
+
 		public void ProgressTurn(int slotIndex) {
 			if (this.turnFinished) {
 				this.turnFinished = false;
@@ -70,7 +88,18 @@ namespace TinyQuest.Scene.Model {
 		}
 
 		public void FinishTurn() {
-			this.turnFinished = true;
+			CombatModel.CombatResult combatResult = this.GetCombatResult();
+			switch(combatResult) {
+				case CombatModel.CombatResult.Lose:
+					RequestFactory.Instance.GetLocalUserRequest().FinishCombat(this.FinishBattle);
+				break;
+				case CombatModel.CombatResult.Win:
+					RequestFactory.Instance.GetLocalUserRequest().FinishCombat(this.FinishBattle);
+				break;
+				default:
+					this.turnFinished = true;
+				break;
+			}
 		}
 		
 		private void HPUpdated(UserUnit entity, int value) {

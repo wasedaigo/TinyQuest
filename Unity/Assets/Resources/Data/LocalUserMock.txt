@@ -8,6 +8,12 @@
             "0": {
                 "commands": [
                     {
+                        "type": 0,
+                        "content": {
+                            "enemyID": 1
+                        }
+                    },
+                    {
                         "type": 1,
                         "content": {
                             "text": "よーし、ぼうけんしよう！"
@@ -52,7 +58,13 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "3"
+                            "text": "Again??"
+                        }
+                    },
+                    {
+                        "type": 0,
+                        "content": {
+                            "enemyID": 1
                         }
                     }
                 ]
@@ -136,14 +148,7 @@
         "unit": 10001,
         "exp": 1,
         "skillExp": 1,
-        "hp":500
-      },
-      {
-        "id": 2,
-        "unit": 10001,
-        "exp": 1,
-        "skillExp": 1,
-        "hp":600
+        "hp":100
       }
     ],
     "maxZoneUnitId": 10001,

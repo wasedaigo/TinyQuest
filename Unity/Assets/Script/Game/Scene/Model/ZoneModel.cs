@@ -65,7 +65,6 @@ namespace TinyQuest.Scene.Model {
 		public void MoveForward() {
 			float delta = Speed * Time.deltaTime;
 			this.moveDistance += delta;
-			
 			if (this.moveDistance >= StepDistance) {
 				delta = this.moveDistance - StepDistance;
 				this.moveDistance = 0;
