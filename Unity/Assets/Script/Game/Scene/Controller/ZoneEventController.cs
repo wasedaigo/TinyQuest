@@ -92,7 +92,7 @@ public class ZoneEventController : MonoBehaviour {
 		switch (command.type) {
 			case (int)ZoneCommand.Type.Battle:
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				this.HandleBattleCommand(battleCommand.enemyID);
+				this.HandleBattleCommand(battleCommand.enemyGroupId);
 				break;
 			case (int)ZoneCommand.Type.Message:
 				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
@@ -100,7 +100,7 @@ public class ZoneEventController : MonoBehaviour {
 				break;
 			case (int)ZoneCommand.Type.Treasure:
 				ZoneCommandTreasure treasureCommand = JsonReader.Deserialize<ZoneCommandTreasure>(JsonWriter.Serialize(command.content));
-				this.HandleTreasureCommand(treasureCommand.treasureID);
+				this.HandleTreasureCommand(treasureCommand.treasureId);
 				break;
 			default:
 				Debug.LogError("Undefined type " + command.type + " is passed");
@@ -109,13 +109,11 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	private void HandleMessageCommand(string text) {
-		
-		Debug.Log(text);
 		this.SendMessage("ShowMessage", text);
 		this.SetState(ZoneState.Next);
 	}
 	
-	private void HandleBattleCommand(int enemyID) {
+	private void HandleBattleCommand(int enemyGroupId) {
 
 		/*
 		CombatController controller = this.gameObject.GetComponent<CombatController>();
@@ -125,7 +123,7 @@ public class ZoneEventController : MonoBehaviour {
 		controller.CombatFinish = this.CommandFinished;
 		controller.StartBattle();
 		*/
-		this.SendMessage("StartBattle");
+		this.SendMessage("StartBattle", enemyGroupId);
 		this.SetState(ZoneState.Combat);
 	}
 	

@@ -17,6 +17,8 @@ public class ZoneSceneManager : MonoBehaviour {
 	private CombatController combatController;
 	private CombatControlPanelController combatControlPanelController;
 	
+	private CombatModel combatModel;
+	
 	void Awake() {
 		
 	}
@@ -24,7 +26,7 @@ public class ZoneSceneManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ZoneModel zoneModel = new ZoneModel();
-		CombatModel combatModel = new CombatModel();
+		this.combatModel = new CombatModel();
 		
 		// Get reference
 		this.zoneEventController = this.GetComponent<ZoneEventController>();
@@ -33,8 +35,8 @@ public class ZoneSceneManager : MonoBehaviour {
 		
 		// Set Models
 		this.zoneEventController.SetModels(zoneModel);
-		this.combatControlPanelController.SetModels(combatModel);
-		this.combatController.SetModels(combatModel);
+		this.combatControlPanelController.SetModels(this.combatModel);
+		this.combatController.SetModels(this.combatModel);
 		
 		// Delegate
 		this.combatControlPanelController.InvokeSkill += combatController.InvokeSkill;
@@ -66,6 +68,21 @@ public class ZoneSceneManager : MonoBehaviour {
 
 				this.UICombatPanel.SetActiveRecursively(true);
 				combatControlPanelController.SendMessage("UpdateStatus");
+
+				CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
+
+				CombatUnit[] activeUnits = new CombatUnit[Constant.GroupTypeCount];
+				for (int i = 0; i < Constant.GroupTypeCount; i++) {
+					CombatUnitGroup combatUnitGroup = combatUnitGroups[i];
+					foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
+					   this.SendMessage("SpawnActor", combatUnit);
+					}
+					if (combatUnitGroup.combatUnits.Count > 0) {
+						activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
+					};
+				}
+			
+				this.SendMessage("SelectActors", activeUnits);
 			break;
 		}
 	}
@@ -77,7 +94,9 @@ public class ZoneSceneManager : MonoBehaviour {
 			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
 			   this.SendMessage("SpawnActor", combatUnit);
 			}
-			activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
+			if (combatUnitGroup.combatUnits.Count > 0) {
+				activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
+			}
 		}
 		
 		this.SendMessage("ShowActors", activeUnits);
@@ -89,7 +108,7 @@ public class ZoneSceneManager : MonoBehaviour {
 		combatControlPanelController.SendMessage("ChangeActorStatus", result);
 	}
 	
-	void StartBattle() {
+	void StartBattle(int enemyGroupId) {
 		this.SetScene(ZoneScene.Combat);
 	}
 

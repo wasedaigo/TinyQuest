@@ -45,7 +45,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void UnitSelected(CombatUnit caster, CombatUnit target) {
-		SendMessage("SelectActor", new CombatUnit[]{caster, target});
+		SendMessage("SelectActors", new CombatUnit[]{caster, target});
 	}
 
 	public void InvokeSkill(int slotNo) {

@@ -12,7 +12,7 @@ public class Stage : MonoBehaviour {
 	private Roga2dNode root;
 	private Roga2dRenderObject renderObject;
 	private Roga2dNode[,] parallaxLayerNodes = new Roga2dNode[LayerNum, LayerNodeNum];
-	private Roga2dNode[] parallaxLayers = new Roga2dNode[LayerNum];
+	private Roga2dNode[] parallaxLayers = null;
 	private string bgFilePath;
 	private float lastDeviceMoveX;
 	private float lastDeviceMoveY;
@@ -47,13 +47,21 @@ public class Stage : MonoBehaviour {
 
 	void Awake() 
 	{
+		if (this.parallaxLayers == null) {
+			this.parallaxLayers = this.buildParallaxLayers();
+		}
+	}
+	
+	private Roga2dNode[] buildParallaxLayers() {
+		
+		Roga2dNode[] parallaxLayers = new Roga2dNode[LayerNum];
 		this.bgFilePath = "bg/bg0002";
 		
 		Roga2dGameObjectState state = Roga2dUtils.stashState(this.transform);
 		this.root = new Roga2dNode();
 		this.root.Transform.parent = this.transform;
 		Roga2dUtils.applyState(this.transform, state);
-
+		
 		for (int i = 0; i < LayerNum; i++) {
 			Roga2dNode node = new Roga2dNode();
 			for (int j = 0; j < LayerNodeNum; j++) {
@@ -67,14 +75,23 @@ public class Stage : MonoBehaviour {
 				node.AddChild(sprite);
 			}
 			this.root.AddChild(node);
-			this.parallaxLayers[i] = node;
+			parallaxLayers[i] = node;
 		}
 		
-		//this.UpdateParallaxEffect(true);
+		return parallaxLayers;
+	}
+	
+	private Roga2dNode[] ParallaxLayers {
+		get {
+			if (this.parallaxLayers == null) {
+				this.parallaxLayers = this.buildParallaxLayers();
+			}
+			return this.parallaxLayers;
+		}
 	}
 	
 	public Roga2dNode GetCharacterLayer() {
-		return this.parallaxLayers[3];
+		return this.ParallaxLayers[3];
 	}
 	
 	public void Scroll(float distance) {
@@ -94,13 +111,13 @@ public class Stage : MonoBehaviour {
 			}
 			if (this.parallaxLayerNodes[i, 0].LocalPixelPosition.x > LayerNodeWidth) {
 				
-				this.parallaxLayers[i].RemoveChild(this.parallaxLayerNodes[i, 0]);
+				this.ParallaxLayers[i].RemoveChild(this.parallaxLayerNodes[i, 0]);
 				this.parallaxLayerNodes[i, 0] = this.parallaxLayerNodes[i, 1];
 				this.parallaxLayerNodes[i, 1] = this.parallaxLayerNodes[i, 2];
 	
 				Roga2dSprite sprite = new Roga2dSprite(this.bgFilePath, new Vector2(LayerNodeWidth, LayerNodeHeight), new Vector2(0, 0), new Rect(0, i * LayerNodeHeight, LayerNodeWidth, LayerNodeHeight));
 				sprite.LocalPixelPosition = new Vector2(this.parallaxLayerNodes[i, 1].LocalPixelPosition.x - LayerNodeWidth, 0);
-				this.parallaxLayers[i].AddChild(sprite);
+				this.ParallaxLayers[i].AddChild(sprite);
 				this.parallaxLayerNodes[i, 2] = sprite;
 				sprite.LocalPriority = layerInfo.priority;
 			}

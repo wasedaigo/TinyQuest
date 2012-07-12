@@ -73,7 +73,7 @@ namespace TinyQuest.Scene.Model {
 		}
 		
 		public void ExecuteNextAction() {
-			if (this.combatActionList.Count > actionIndex) {
+			if (this.combatActionList != null && this.combatActionList.Count > actionIndex) {
 				this.ExecuteAction(this.combatActionList[actionIndex]);
 				this.actionIndex++;
 			} else {

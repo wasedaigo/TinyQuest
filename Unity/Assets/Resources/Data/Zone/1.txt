@@ -13,7 +13,7 @@
               "1": {
                 "commands":[
                   {"type": 1, "content": {"text":"てきがあらわれたぞ！"}},
-                  {"type": 0, "content": {"enemyID":1}},
+                  {"type": 0, "content": {"enemyId":1}},
                   {"type": 1, "content": {"text":"やった。たおした！"}}
                 ]
                 },

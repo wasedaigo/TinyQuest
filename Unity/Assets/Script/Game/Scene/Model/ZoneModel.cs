@@ -51,7 +51,7 @@ namespace TinyQuest.Scene.Model {
 		// Step
 		public void StartAdventure() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.GetExecutingCommand(this.OnCommandProgressed);
+			req.ExecuteCommand(this.OnCommandProgressed);
 			/*
 			if (this.zoneModel.IsAtStart()) {
 				this.SendMessage("PlayerMoveIn", false);

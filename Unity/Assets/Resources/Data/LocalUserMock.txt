@@ -10,7 +10,7 @@
                     {
                         "type": 0,
                         "content": {
-                            "enemyID": 1
+                            "enemyGroupId": 1
                         }
                     },
                     {
@@ -32,7 +32,7 @@
                     {
                         "type": 0,
                         "content": {
-                            "enemyID": 1
+                            "enemyGroupId": 2
                         }
                     },
                     {
@@ -64,7 +64,7 @@
                     {
                         "type": 0,
                         "content": {
-                            "enemyID": 1
+                            "enemyGroupId": 1
                         }
                     }
                 ]
@@ -149,6 +149,30 @@
         "exp": 1,
         "skillExp": 1,
         "hp":100
+      },
+      {
+        "id": 2,
+        "unit": 10001,
+        "exp": 1,
+        "skillExp": 1,
+        "hp":200
+      },
+      {
+        "id": 3,
+        "unit": 1,
+        "exp": 1,
+        "skillExp": 1,
+        "hp":50
+      }
+    ],
+    "enemyGroups": [
+      {
+        "id": 1,
+        "zoneEnemyIds": [3, 1],
+      },
+      {
+        "id": 2,
+        "zoneEnemyIds": [3, 2, 3],
       }
     ],
     "maxZoneUnitId": 10001,

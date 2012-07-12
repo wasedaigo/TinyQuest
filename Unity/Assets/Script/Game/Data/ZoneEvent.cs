@@ -11,11 +11,11 @@ namespace TinyQuest.Data{
 	}
 	
 	public class ZoneCommandBattle {
-		public int enemyID;
+		public int enemyGroupId;
 	}
 	
 	public class ZoneCommandTreasure {
-		public int treasureID;
+		public int treasureId;
 	}
 	
 	public class ZoneCommandMessage {

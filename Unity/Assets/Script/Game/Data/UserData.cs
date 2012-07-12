@@ -25,22 +25,17 @@ namespace TinyQuest.Data{
 	}
 
 	public class CombatUnit {
-		private readonly int unitId;
+		private readonly UserUnit userUnit;
 		public List<int> buffs;
 		public int groupType;
 		public int index;
 
 		public UserUnit GetUserUnit() {
-			LocalUserData data = Cache.CacheFactory.Instance.GetLocalUserDataCache().Data;
-			if (this.groupType == 0) {
-				return data.GetOwnUnitByID(this.unitId);
-			} else {
-				return data.GetZoneEnemyByID(this.unitId);
-			}
+			return userUnit;
 		}
 
-		public CombatUnit(int unitId,  int groupType, int index) {
-			this.unitId = unitId;
+		public CombatUnit(UserUnit userUnit,  int groupType, int index) {
+			this.userUnit = userUnit;
 			this.groupType = groupType;
 			this.index = index;
 			this.buffs = new List<int>();
@@ -132,18 +127,41 @@ namespace TinyQuest.Data{
 			this.skillExp = skillExp;
 			this.hp = this.MaxHP;
 		}
+		
+		public UserUnit(UserUnit userUnit) {
+			this.unit = userUnit.unit;
+			this.exp = userUnit.exp;
+			this.skillExp = userUnit.skillExp;
+			this.hp = userUnit.hp;
+		}
+	}
+	
+	public class EnemyGroup : IDData{
+		public int[] zoneEnemyIds;
+		
+		public UserUnit[] GetEnemies() {
+			LocalUserData data = Cache.CacheFactory.Instance.GetLocalUserDataCache().Data;
+			UserUnit[] zoneEnemies = new UserUnit[this.zoneEnemyIds.Length];
+			for (int i = 0; i < this.zoneEnemyIds.Length; i++) {
+				int zoneEnemyId = this.zoneEnemyIds[i];
+				zoneEnemies[i] = new UserUnit(data.GetZoneEnemyByID(zoneEnemyId));
+			}
+			
+			return zoneEnemies;
+		}
 	}
 
 	public class LocalUserData {
 		public CombatProgress combatProgress;
 		public CombatUnitGroup[] combatUnitGroups;
-		
+
 		public UserZone zone;
 		public readonly UserStatus status;
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
 		public int maxZoneUnitId;
 		public List<UserUnit> zoneEnemies;
+		public List<EnemyGroup> enemyGroups;
 		/*
 		private UserUnit AddUserUnit(int unit, int exp, int skillExp, ref int maxId, ref List<UserUnit> units) {
 			maxId += 1;
@@ -189,6 +207,13 @@ namespace TinyQuest.Data{
 		
 		public UserUnit GetZoneEnemyByID(int id) {
 			return this.GetUnitByID(id, ref this.zoneEnemies);
+		}
+		
+		public EnemyGroup GetEnemyGroupById(int id) {
+			foreach (EnemyGroup enemyGroup in enemyGroups) {
+				if (enemyGroup.id == id) { return enemyGroup; }
+			}
+			return null;
 		}
 		//public readonly UnitInstance[] unitInstances;
 		
