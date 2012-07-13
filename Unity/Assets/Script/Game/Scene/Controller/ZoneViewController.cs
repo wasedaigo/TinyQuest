@@ -28,6 +28,10 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dNode[,] targetNodes = new Roga2dNode[TargetPositionCount, Constant.GroupTypeCount];
 	private Actor[] activeActors = new Actor[Constant.GroupTypeCount];
 	
+	private Actor GetPlayer() {
+		return this.activeActors[Constant.PlayerGroupType];
+	}
+	
 	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, System.Action<Roga2dAnimation> callback) {
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
@@ -342,43 +346,40 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 
-	public void PlayerMoveIn(bool immediate) {
-		/*
-		if (immediate) {
-			this.player.LocalPixelPosition = new Vector2(20, PlayerY);
-			this.SendMessage("OnPlayerMovedIn");
-		} else {
-			this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
-				new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(80, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), 1.0f, true, null),
+	public void PlayerMoveIn(bool isStart) {
+		if (isStart) {
+			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+				new Roga2dFunc(() => {this.GetPlayer().startWalkingAnimation();}),
+				new Roga2dPositionInterval(
+					this.GetPlayer(), 
+					this.targetNodes[(int)TargetPosition.Out, Constant.PlayerGroupType].LocalPosition, 
+					this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition, 1.0f, Roga2dTweenType.Linear, null),
 				new Roga2dFunc(() => {
 					this.SendMessage("OnPlayerMovedIn");
 				})
 			});
-			this.IntervalPlayer.Play(this.interval);
+			this.intervalPlayer.Play(interval);
+		} else {
+			this.GetPlayer().LocalPosition = this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition;
+			this.SendMessage("OnPlayerMovedIn");	
 		}
-		*/
 	}
 	
 	public void PlayerMoveOut() {
-		/*
-		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-			new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
-			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(-100, PlayerY)), 2.0f, true, null),
+		Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+			new Roga2dFunc(() => {this.GetPlayer().startWalkingAnimation();}),
+			new Roga2dPositionInterval(
+				this.GetPlayer(),
+				this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition,
+				this.targetNodes[(int)TargetPosition.Out, Constant.EnemyGroupType].LocalPosition, 2.0f, Roga2dTweenType.Linear, null),
 			new Roga2dFunc(() => {
 				this.SendMessage("OnPlayerMovedOut");
 			})
 		});
-		this.IntervalPlayer.Play(this.interval);
-		*/
+		this.intervalPlayer.Play(interval);
 	}
 
 	protected void Update() {
-		/*foreach (KeyValuePair<UserUnit, Actor> pair in this.actors) {
-			pair.Value.Update();
-		}*/
-		
-		
 		this.animationPlayer.Update(Time.deltaTime);
 		this.intervalPlayer.Update();
 		this.stage.UpdateView();

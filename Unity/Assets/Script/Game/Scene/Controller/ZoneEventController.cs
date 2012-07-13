@@ -19,7 +19,7 @@ public class ZoneEventController : MonoBehaviour {
 	private ZoneModel zoneModel;
 	
 	public void ResumeAdventure() {
-		this.zoneModel.StartAdventure();
+		this.SendMessage("PlayerMoveIn", this.zoneModel.IsAtStart());
 	}
 	
 	public void SetModels(ZoneModel zoneModel) {
@@ -28,7 +28,6 @@ public class ZoneEventController : MonoBehaviour {
 		this.zoneModel.CommandExecute += this.OnCommandExecuted;
 		this.zoneModel.GotoNextStep += this.GotoNextStep;
 		this.zoneModel.ClearZone += this.ClearZone;
-		
 	}
 
 	private void SetState(ZoneState state) {
@@ -76,14 +75,7 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	private void ClearZone() {
-		/*
-		this.interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-			new Roga2dFunc(() => {this.player.startWalkingAnimation();}),
-			new Roga2dPositionInterval(this.player, Roga2dUtils.pixelToLocal(new Vector2(40, PlayerY)), Roga2dUtils.pixelToLocal(new Vector2(-100, PlayerY)), 2.0f, true, null),
-			new Roga2dFunc(() => {this.finishZone = true;})
-		});
-		this.IntervalPlayer.Play(this.interval);
-		*/
+		this.SendMessage("PlayerMoveOut");
 	}
 
 	private void OnCommandExecuted(ZoneCommand command, object zoneCommandState) {

@@ -52,5 +52,8 @@ namespace TinyQuest.Object {
 				this.sprite.RenderObject.SetSrcRect(value);
 			}
 		}
+		
+		public virtual void startWalkingAnimation() {}
+		public virtual void stopWalkingAnimation() {}
 	}
 }

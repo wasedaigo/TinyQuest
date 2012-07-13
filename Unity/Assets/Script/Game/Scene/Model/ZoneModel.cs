@@ -52,14 +52,6 @@ namespace TinyQuest.Scene.Model {
 		public void StartAdventure() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.ExecuteCommand(this.OnCommandProgressed);
-			/*
-			if (this.zoneModel.IsAtStart()) {
-				this.SendMessage("PlayerMoveIn", false);
-			} else {
-				this.SendMessage("PlayerMoveIn", true);
-				this.player.LocalPixelPosition = new Vector2(20, PlayerY);
-				this.zoneModel.StartAdventure();
-			}*/
 		}
 
 		public void MoveForward() {

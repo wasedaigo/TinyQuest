@@ -148,7 +148,7 @@
         "unit": 10001,
         "exp": 1,
         "skillExp": 1,
-        "hp":100
+        "hp":350
       },
       {
         "id": 2,
@@ -168,11 +168,11 @@
     "enemyGroups": [
       {
         "id": 1,
-        "zoneEnemyIds": [3, 1],
+        "zoneEnemyIds": [1],
       },
       {
         "id": 2,
-        "zoneEnemyIds": [3, 2, 3],
+        "zoneEnemyIds": [1],
       }
     ],
     "maxZoneUnitId": 10001,

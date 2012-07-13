@@ -84,7 +84,7 @@ namespace TinyQuest.Object {
 			return new Roga2dLoop(new Roga2dSourceInterval(this.Sprite, keyFrames, null, null), 0);
 		}
 		
-		public void startWalkingAnimation() {
+		public override void startWalkingAnimation() {
 			if (this.interval == null) {
 				this.interval = this.buildWalkInterval();
 				this.intervalPlayer.Play(this.interval);
@@ -92,7 +92,7 @@ namespace TinyQuest.Object {
 			}
 		}
 		
-		public void stopWalkingAnimation() {
+		public override void stopWalkingAnimation() {
 			
 			if (this.interval != null) {
 				this.intervalPlayer.Stop(this.interval);
