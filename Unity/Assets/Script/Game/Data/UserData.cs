@@ -151,7 +151,6 @@ namespace TinyQuest.Data{
 		public readonly UserStatus status;
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
-		public int maxZoneUnitId;
 		public List<UserUnit> zoneEnemies;
 		public List<EnemyGroup> enemyGroups;
 		/*

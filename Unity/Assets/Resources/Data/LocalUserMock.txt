@@ -32,7 +32,7 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "てきがあらわれたぞ！"
+                            "text": "つよそうなてきがあらわれたぞ！"
                         }
                     },
                     {
@@ -64,13 +64,13 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "またてきか?"
+                            "text": "てきが2体?"
                         }
                     },
                     {
                         "type": 0,
                         "content": {
-                            "enemyGroupId": 1
+                            "enemyGroupId": 3
                         }
                     }
                 ]
@@ -169,9 +169,12 @@
       },
       {
         "id": 2,
-        "zoneEnemyIds": [1],
+        "zoneEnemyIds": [2],
+      },
+      {
+        "id": 3,
+        "zoneEnemyIds": [1, 2],
       }
     ],
-    "maxZoneUnitId": 10001,
     "maxOwnUnitId": 1
 }

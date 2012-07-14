@@ -17,8 +17,8 @@ namespace TinyQuest.Object {
 		};
 
 		public PuppetActor(string name, PoseType poseType) 
-		: base("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32))
 		{
+			this.SetSprite("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32));
 			this.intervalPlayer = new Roga2dIntervalPlayer();
 			this.SetPoseType(poseType);
 		}
