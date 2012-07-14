@@ -210,7 +210,7 @@ public class ZoneViewController : MonoBehaviour {
 		UserUnit userUnit = combatUnit.GetUserUnit();
 		switch(userUnit.Unit.lookType) {
 			case UnitLookType.Monster:
-				actor = this.BuildMonster("goblin", TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][Constant.EnemyGroupType]);
+				actor = this.BuildMonster(userUnit.Unit.id.ToString(), TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][Constant.EnemyGroupType]);
 				break;
 			case UnitLookType.Puppet:
 				actor = this.BuildPuppet(userUnit.Unit.id.ToString(), PuppetActor.PoseType.Stand, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][Constant.EnemyGroupType]);
@@ -243,7 +243,7 @@ public class ZoneViewController : MonoBehaviour {
 		Actor actor = this.actors[result.combatUnit];
 		actor.SetStatus(result.life, result.maxLife);
 		
-		if (userUnit.Unit.lookType == UnitLookType.Monster && userUnit.IsDead) {
+		if (userUnit.Unit.lookType == UnitLookType.Monster && result.combatUnit.IsDead) {
 			Roga2dNode targetNode = null;
 			this.PlayAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", null, (animation) => { callback(); });
 		} else {
@@ -304,7 +304,7 @@ public class ZoneViewController : MonoBehaviour {
 		// Play rescue animation if swappedUnit is Puppet
 		if (swappedUnit.GetUserUnit().Unit.lookType == UnitLookType.Puppet) {
 			string swappedUnitAnimation = "Combat/Common/Jump";
-			if (swappedUnit.GetUserUnit().IsDead) {
+			if (swappedUnit.IsDead) {
 				swappedUnitAnimation = "Combat/Common/DeadJump";
 			}
 			

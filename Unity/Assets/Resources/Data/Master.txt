@@ -127,6 +127,24 @@
         "rarity": 0,
         "normalAttack": 2,
         "skills": [2]
+      },
+      {
+        "id": 10002,
+        "unitType": 0,
+        "lv": 1,
+        "skillExp": 0,
+        "lvTable": {"baseValue": 200, "growthType":0},
+        "hpTable": {"baseValue": 500, "growthType":0},
+        "powerTable": {"baseValue": 90, "growthType":0},
+        "regenTable": {"baseValue": 200, "growthType":0},
+        "defTable": {"baseValue": 200, "growthType":0},
+        "speedTable": {"baseValue": 50, "growthType":0},
+        "weakPoints": [0, 1],
+        "weapon": 0,
+        "lookType": 1,
+        "rarity": 0,
+        "normalAttack": 2,
+        "skills": [2]
       }
     ],
 

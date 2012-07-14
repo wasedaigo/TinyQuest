@@ -109,43 +109,37 @@
         "id": 1,
         "unit": 1,
         "exp": 1,
-        "skillExp": 1,
-        "hp":100
+        "skillExp": 1
       },
       {
         "id": 2,
         "unit": 2,
         "exp": 1,
-        "skillExp": 1,
-        "hp":100
+        "skillExp": 1
       },
       {
         "id": 3,
         "unit": 3,
         "exp": 1,
-        "skillExp": 1,
-        "hp":100
+        "skillExp": 1
       },
       {
         "id": 4,
         "unit": 4,
         "exp": 1,
-        "skillExp": 1,
-        "hp":100
+        "skillExp": 1
       },
       {
         "id": 5,
         "unit": 5,
         "exp": 1,
-        "skillExp": 1,
-        "hp":100
+        "skillExp": 1
       },
       {
         "id": 6,
         "unit": 6,
         "exp": 1,
-        "skillExp": 1,
-        "hp":200
+        "skillExp": 1
       }
     ],
     "zoneEnemies": [
@@ -153,22 +147,19 @@
         "id": 1,
         "unit": 10001,
         "exp": 1,
-        "skillExp": 1,
-        "hp":30
+        "skillExp": 1
       },
       {
         "id": 2,
-        "unit": 10001,
+        "unit": 10002,
         "exp": 1,
-        "skillExp": 1,
-        "hp":200
+        "skillExp": 1
       },
       {
         "id": 3,
         "unit": 1,
         "exp": 1,
-        "skillExp": 1,
-        "hp":50
+        "skillExp": 1
       }
     ],
     "enemyGroups": [

@@ -59,14 +59,7 @@ namespace TinyQuest.Data.Request {
 				data.combatProgress = new CombatProgress();
 				
 				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				UserUnit[] enemies = data.GetEnemyGroupById(battleCommand.enemyGroupId).GetEnemies();
-
-				data.combatUnitGroups[Constant.EnemyGroupType].combatUnits.Clear();
-				data.combatUnitGroups[Constant.EnemyGroupType].activeIndex = 0;
-				for (int i = 0; i < enemies.Length; i++) {
-					UserUnit enemy = enemies[i];
-					data.combatUnitGroups[Constant.EnemyGroupType].combatUnits.Add(new CombatUnit(enemy, Constant.EnemyGroupType, i));
-				}
+				data.combatUnitGroups[Constant.EnemyGroupType].combatUnits = data.GetEnemyGroupById(battleCommand.enemyGroupId).CreateEnemies();
 			}
 		
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
@@ -109,7 +102,7 @@ namespace TinyQuest.Data.Request {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			List<CombatUnit> combatUnitList = data.combatUnitGroups[groupType].combatUnits;
 			foreach (CombatUnit combatUnit in combatUnitList) {
-				if (combatUnit.GetUserUnit().hp > 0) {
+				if (combatUnit.hp > 0) {
 					return combatUnit;
 				}
 			}
@@ -127,17 +120,17 @@ namespace TinyQuest.Data.Request {
 			}
 			
 			public CombatAction Execute() {
-				if (this.caster.GetUserUnit().IsDead || this.target.GetUserUnit().IsDead) { return null; }
+				if (this.caster.IsDead || this.target.IsDead) { return null; }
 				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.GetUserUnit().Unit.normalAttack);
 				
 				int effect = this.caster.GetUserUnit().Power * skill.multiplier / 100;
-				this.target.GetUserUnit().hp -= effect;
-				if (this.target.GetUserUnit().hp < 0) {
-					this.target.GetUserUnit().hp = 0;	
+				this.target.hp -= effect;
+				if (this.target.hp < 0) {
+					this.target.hp = 0;	
 				}
 				
 				CombatActionResult targetResult = new CombatActionResult();
-				targetResult.life = this.target.GetUserUnit().hp;
+				targetResult.life = this.target.hp;
 				targetResult.maxLife = this.target.GetUserUnit().MaxHP;
 				targetResult.effect = effect;
 				targetResult.combatUnit = this.target;
