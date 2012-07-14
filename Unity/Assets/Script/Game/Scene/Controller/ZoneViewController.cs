@@ -28,32 +28,76 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dNode[,] targetNodes = new Roga2dNode[TargetPositionCount, Constant.GroupTypeCount];
 	private Actor[] activeActors = new Actor[Constant.GroupTypeCount];
 	
+	private void Awake() {
+		this.animationPlayer = new Roga2dAnimationPlayer();
+		this.intervalPlayer = new Roga2dIntervalPlayer();
+		
+		for (int i = 0; i < TargetPositionCount; i++) {
+			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+				this.targetNodes[i, j] = new Roga2dNode();
+				this.targetNodes[i, j].LocalPixelPosition = TargetPositions[i, j];
+			}
+		}
+
+		this.stage.transform.parent = this.gameObject.transform;
+		for (int i = 0; i < TargetPositionCount; i++) {
+			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+				Roga2dNode layer = this.stage.GetCharacterLayer();
+				layer.AddChild(this.targetNodes[i, j]);
+			}
+		}
+	}
+
 	private Actor GetPlayer() {
 		return this.activeActors[Constant.PlayerGroupType];
 	}
 	
-	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, System.Action<Roga2dAnimation> callback) {
+	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, System.Action<Roga2dAnimation> callback) {
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
 			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
-			{ "Battle/Skills/Monster_Base", new Roga2dSwapTextureDef() {TextureID = "death_wind", PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}}
+			{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/1", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 		};
 		
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetNode, CommandCalled);
+		settings.Data = callbackData;
 		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(animationName, false, null, settings, options);
 		this.animationPlayer.Play(casterActor,  null, animation, callback);	
 	}
 	
+	private void PlaySkillAnimation(CombatAction combatAction) 
+	{
+		Actor casterActor = this.actors[combatAction.caster];
+		Actor targetActor = this.actors[combatAction.target];
+		MasterSkill masterSkill = combatAction.skill;
+		
+		this.PlayAnimation(targetActor, casterActor, masterSkill.animation, combatAction, this.OnSkillFinished);
+	}
+	
+	private void PlayJumpAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
+		Roga2dNode targetNode = this.targetNodes[(int)targetPosition, groupNo];
+		this.PlayAnimation(targetNode, actor, animationName, null, (animation) => {
+			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
+			if (callback != null) {
+				callback();	
+			}
+		});
+	}
+
     private void OnSkillFinished(Roga2dAnimation animation)
     {
 		CombatAction combatAction = (CombatAction)animation.settings.Data;
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+		
+		// Process caster status
 		if (combatAction.casterResult != null) {
 			list.Add((next) => { this.ProcessUnitStatus(combatAction.casterResult, next); });
 			if (combatAction.casterResult.swapUnit != null) {
 				list.Add((next) => { this.SwapActor(combatAction.casterResult.combatUnit, combatAction.casterResult.swapUnit, next); });
 			}
 		}
+		
+		// Process target status
 		if (combatAction.targetResult != null) {
 			list.Add((next) => { this.ProcessUnitStatus(combatAction.targetResult, next); });
 			if (combatAction.targetResult.swapUnit != null) {
@@ -83,28 +127,9 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 	
-	private void PlaySkillAnimation(CombatAction combatAction) 
-	{
-		Actor casterActor = this.actors[combatAction.caster];
-		Actor targetActor = this.actors[combatAction.target];
-		MasterSkill masterSkill = combatAction.skill;
-
-		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
-			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
-			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
-			{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/1", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
-		};
-		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetActor, CommandCalled);
-		Roga2dAnimation animation = Roga2dUtils.LoadAnimation("" + masterSkill.animation, false, null, settings, options);
-
-		settings.Data = combatAction;
-		this.animationPlayer.Play(casterActor,  null, animation,  this.OnSkillFinished);
-	}
-	
 	private void ShowEffect(Actor actor, CombatActionResult result) 
 	{
-		if (actor == null) {return;}
-		if (result == null) {return;}
+		if (actor == null || result == null) {return;}
 
 		int damageValue = result.effect;
 
@@ -160,8 +185,8 @@ public class ZoneViewController : MonoBehaviour {
 		
 		return actor;
 	}
-	
-	protected void FinishBattle() {
+
+	protected void OnFinishBattle() {
 		List<CombatUnit> removeList = new List<CombatUnit>();
 		foreach (KeyValuePair<CombatUnit, Actor> pair in this.actors) {
 			CombatUnit combatUnit = pair.Key;
@@ -170,15 +195,15 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		}
 		
-		// Remove not-needed actors from the scene
+		// Remove non-needed actors from the scene
 		foreach (CombatUnit key in removeList) {
 			this.stage.GetCharacterLayer().RemoveChild(this.actors[key]);
 			this.actors.Remove(key);
 		}
 		this.activeActors[Constant.EnemyGroupType] = null;
 	}
-	
-	protected void SpawnActor(CombatUnit combatUnit) {
+
+	protected void SpawnCombatActor(CombatUnit combatUnit) {
 		if (this.actors.ContainsKey(combatUnit)) {return;};
 		Actor actor = null;
 		int groupType = combatUnit.groupType;
@@ -200,8 +225,8 @@ public class ZoneViewController : MonoBehaviour {
 		this.actors[combatUnit] = actor;
 		this.stage.GetCharacterLayer().AddChild(actor);
 	}
-	
-	protected void ShowActors(CombatUnit[] combatUnits) {
+
+	protected void ShowCombatActors(CombatUnit[] combatUnits) {
 		for (int i = 0; i < Constant.GroupTypeCount; i++) {
 			if (combatUnits[i] == null) { continue; }
 			Actor actor = this.actors[combatUnits[i]];
@@ -211,17 +236,7 @@ public class ZoneViewController : MonoBehaviour {
 			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
 		}
 	}
-	
-	private void PlayJumpAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
-		Roga2dNode targetNode = this.targetNodes[(int)targetPosition, groupNo];
-		this.PlayAnimation(targetNode, actor, animationName, (animation) => {
-			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
-			if (callback != null) {
-				callback();	
-			}
-		});
-	}
-	
+
 	private void ProcessUnitStatus(CombatActionResult result, System.Action callback) {
 		UserUnit userUnit = result.combatUnit.GetUserUnit();
 		
@@ -230,14 +245,13 @@ public class ZoneViewController : MonoBehaviour {
 		
 		if (userUnit.Unit.lookType == UnitLookType.Monster && userUnit.IsDead) {
 			Roga2dNode targetNode = null;
-			this.PlayAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", (animation) => { callback(); });
+			this.PlayAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", null, (animation) => { callback(); });
 		} else {
 			callback();
 		}
 	}
 
-	protected void SelectActors(CombatUnit[] combatUnits) {
-		
+	protected void SelectCombatActors(CombatUnit[] combatUnits) {
 		// Play move-in animation for each group
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
 		for (int i = 0; i < Constant.GroupTypeCount; i++) {
@@ -325,27 +339,14 @@ public class ZoneViewController : MonoBehaviour {
 		);
 	}
 	
-	// Use this for initialization
-	protected void Awake() {
-		this.animationPlayer = new Roga2dAnimationPlayer();
-		this.intervalPlayer = new Roga2dIntervalPlayer();
+	public void PopActor() {
 		
-		for (int i = 0; i < TargetPositionCount; i++) {
-			for (int j = 0; j < Constant.GroupTypeCount; j++) {
-				this.targetNodes[i, j] = new Roga2dNode();
-				this.targetNodes[i, j].LocalPixelPosition = TargetPositions[i, j];
-			}
-		}
-		
-		this.stage.transform.parent = this.gameObject.transform;
-		for (int i = 0; i < TargetPositionCount; i++) {
-			for (int j = 0; j < Constant.GroupTypeCount; j++) {
-				Roga2dNode layer = this.stage.GetCharacterLayer();
-				layer.AddChild(this.targetNodes[i, j]);
-			}
-		}
 	}
-
+	
+	public void DepopActor() {
+		
+	}
+	
 	public void PlayerMoveIn(bool isStart) {
 		if (isStart) {
 			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
@@ -390,35 +391,14 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	protected void StartWalkAnimation(CombatUnit combatUnit) {
-		PuppetActor puppetActor = this.actors[combatUnit] as PuppetActor;
-		puppetActor.startWalkingAnimation();
+		this.actors[combatUnit].startWalkingAnimation();
 	}
 	
 	protected void StopWalkAnimation(CombatUnit combatUnit) {
-		PuppetActor puppetActor = this.actors[combatUnit] as PuppetActor;
-		puppetActor.stopWalkingAnimation();
+		this.actors[combatUnit].stopWalkingAnimation();
 	}
 	
 	protected void OnPlayerMoved(float distance) {
 		this.stage.Scroll(distance);
-	}
-
-	public void OnStateChanged(ZoneState state) {
-		/*
-		switch (state) {
-			case ZoneState.Combat:
-				this.player.stopWalkingAnimation();
-				break;
-			case ZoneState.Next:
-				this.player.stopWalkingAnimation();
-				break;
-			case ZoneState.Moving:
-				this.player.startWalkingAnimation();
-				break;
-			case ZoneState.Pause:
-				this.player.stopWalkingAnimation();
-				break;
-		}
-		*/
 	}
 }

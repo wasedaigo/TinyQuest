@@ -37,7 +37,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void BattleFinished() {
-		this.SendMessage("FinishBattle");
+		this.SendMessage("OnFinishBattle");
 	}
 	
 	public void ActionExecuted(CombatAction action) {
@@ -45,7 +45,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void UnitSelected(CombatUnit caster, CombatUnit target) {
-		SendMessage("SelectActors", new CombatUnit[]{caster, target});
+		SendMessage("SelectCombatActors", new CombatUnit[]{caster, target});
 	}
 
 	public void InvokeSkill(int slotNo) {

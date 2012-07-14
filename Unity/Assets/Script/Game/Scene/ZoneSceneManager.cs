@@ -12,22 +12,16 @@ public class ZoneSceneManager : MonoBehaviour {
 	
 	public GameObject UICombatPanel;
 	public GameObject UIProgressPanel;
-	private ZoneScene zoneScene;
 	private ZoneEventController zoneEventController;
 	private CombatController combatController;
 	private CombatControlPanelController combatControlPanelController;
-	
 	private CombatModel combatModel;
-	
-	void Awake() {
-		
-	}
-	
+
 	// Use this for initialization
-	void Start () {
+	private void Start () {
 		ZoneModel zoneModel = new ZoneModel();
 		this.combatModel = new CombatModel();
-		
+
 		// Get reference
 		this.zoneEventController = this.GetComponent<ZoneEventController>();
 		this.combatController = this.GetComponent<CombatController>();
@@ -45,18 +39,12 @@ public class ZoneSceneManager : MonoBehaviour {
 		req.LoadZone(this.OnLoaded);
 	}
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
-	void SetScene(ZoneScene zoneScene) {
+	private void SetScene(ZoneScene zoneScene) {
 		this.UIProgressPanel.SetActiveRecursively(false);
 		this.UICombatPanel.SetActiveRecursively(false);
 		this.zoneEventController.enabled = false;
 		this.combatController.enabled = false;
 
-		this.zoneScene = zoneScene;
 		switch(zoneScene) {
 			case ZoneScene.Adventure:
 				this.zoneEventController.enabled = true;
@@ -75,44 +63,44 @@ public class ZoneSceneManager : MonoBehaviour {
 				for (int i = 0; i < Constant.GroupTypeCount; i++) {
 					CombatUnitGroup combatUnitGroup = combatUnitGroups[i];
 					foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
-					   this.SendMessage("SpawnActor", combatUnit);
+					   this.SendMessage("SpawnCombatActor", combatUnit);
 					}
 					if (combatUnitGroup.combatUnits.Count > 0) {
 						activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
 					};
 				}
-			
-				this.SendMessage("SelectActors", activeUnits);
+
+				this.SendMessage("SelectCombatActors", activeUnits);
 			break;
 		}
 	}
 
-	void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
+	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
 		CombatUnit[] activeUnits = new CombatUnit[Constant.GroupTypeCount];
 		for (int i = 0; i < Constant.GroupTypeCount; i++) {
 			CombatUnitGroup combatUnitGroup = combatUnitGroups[i];
 			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
-			   this.SendMessage("SpawnActor", combatUnit);
+			   this.SendMessage("SpawnCombatActor", combatUnit);
 			}
 			if (combatUnitGroup.combatUnits.Count > 0) {
 				activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
 			}
 		}
 		
-		this.SendMessage("ShowActors", activeUnits);
+		this.SendMessage("ShowCombatActors", activeUnits);
 		this.SetScene(ZoneScene.Adventure);
 	}
-	
-	void ChangeActorStatus(CombatActionResult result) {
+
+	private void ChangeActorStatus(CombatActionResult result) {
 		CombatControlPanelController combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
 		combatControlPanelController.SendMessage("ChangeActorStatus", result);
 	}
 	
-	void StartBattle(int enemyGroupId) {
+	private void StartBattle(int enemyGroupId) {
 		this.SetScene(ZoneScene.Combat);
 	}
 
-	void FinishBattle() {
+	private void OnFinishBattle() {
 		this.SetScene(ZoneScene.Adventure);
 	}
 }
