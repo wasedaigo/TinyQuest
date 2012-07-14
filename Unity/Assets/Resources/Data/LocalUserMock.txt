@@ -8,6 +8,12 @@
             "0": {
                 "commands": [
                     {
+                        "type": 1,
+                        "content": {
+                            "text": "よーし、ぼうけんしよう！"
+                        }
+                    },
+                    {
                         "type": 0,
                         "content": {
                             "enemyGroupId": 1
@@ -16,7 +22,7 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "よーし、ぼうけんしよう！"
+                            "text": "やっつけたぞ"
                         }
                     }
                 ]
@@ -48,7 +54,7 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "2"
+                            "text": "カットシーン[1]"
                         }
                     }
                 ]
@@ -58,7 +64,7 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "Again??"
+                            "text": "またてきか?"
                         }
                     },
                     {
@@ -74,7 +80,7 @@
                     {
                         "type": 1,
                         "content": {
-                            "text": "4"
+                            "text": "カットシーン[2]"
                         }
                     }
                 ]
@@ -148,7 +154,7 @@
         "unit": 10001,
         "exp": 1,
         "skillExp": 1,
-        "hp":350
+        "hp":30
       },
       {
         "id": 2,
