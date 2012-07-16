@@ -1,0 +1,55 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "9" : [ "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "easeIn",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 1,
+            "positionTween" : "linear",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "position" : [ 0, -16 ],
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 5,
+            "position" : [ 0, -16 ],
+            "positionTween" : "linear",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 8,
+            "position" : [ 0, -16 ],
+            "positionTypeOption" : "bottomRight",
+            "scale" : [ -1.0, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 9,
+            "positionTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         }
+      ]
+   }
+}

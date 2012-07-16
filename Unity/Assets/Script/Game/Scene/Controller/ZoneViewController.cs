@@ -411,6 +411,17 @@ public class ZoneViewController : MonoBehaviour {
 		});
 		this.intervalPlayer.Play(interval);
 	}
+	
+	public void ShowBattleWinPose() {
+		Actor actor = this.activeCombatActors[Constant.PlayerGroupType];
+		
+		if (actor is PuppetActor) {
+			PuppetActor puppetActor = actor as PuppetActor;
+			this.PlayAnimation(null, puppetActor, "Combat/Common/WinPose", null, (Roga2dAnimation animation) => {
+				puppetActor.SetPoseType(PuppetActor.PoseType.Attack);
+			});
+		}
+	}
 
 	protected void Update() {
 		this.animationPlayer.Update(Time.deltaTime);

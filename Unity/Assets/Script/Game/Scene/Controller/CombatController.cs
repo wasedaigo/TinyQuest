@@ -41,7 +41,10 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void BattleFinished() {
-		this.SendMessage("OnFinishBattle");
+		this.SendMessage("ShowBattleWinPose");
+		this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Battle Won!",
+			() => {this.SendMessage("OnFinishBattle");}
+		));
 	}
 	
 	public void ActionExecuted(CombatAction action) {

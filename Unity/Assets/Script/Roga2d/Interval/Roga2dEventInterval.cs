@@ -34,6 +34,7 @@ public class Roga2dEventInterval : Roga2dBaseInterval {
 	
 	public override void Start() {
 		this.Reset();
+		this.callCommand(0);
 	}
 	
     public override void Reset() {
@@ -44,20 +45,26 @@ public class Roga2dEventInterval : Roga2dBaseInterval {
 		this.frameNo = Mathf.FloorToInt(this.duration);
 	}
 	
+	private void callCommand(int index) {
+		if (this.events.ContainsKey(index)) {
+			string[] commands = this.events[index];
+			foreach (string command in commands) {
+				if(settings.CommandCallBack != null) {
+					settings.CommandCallBack(settings, command);
+				}
+			}
+		}
+	}
+	
     public override void Update(float delta) {
 		if (!this.IsDone()) {
 			this.elapsed += delta;
 			int temp = Mathf.FloorToInt(this.elapsed * Roga2dConst.AnimationFPS);
 			if (this.frameNo != temp) {
 				
-				for (int i = this.frameNo; i < temp; i++) {
-					if (this.events.ContainsKey(i)) {
-						string[] commands = this.events[i];
-						foreach (string command in commands) {
-							if(settings.CommandCallBack != null) {
-								settings.CommandCallBack(settings, command);
-							}
-						}
+				if (this.frameNo > 0) {
+					for (int i = this.frameNo; i < temp; i++) {
+						this.callCommand(i);
 					}
 				}
 				

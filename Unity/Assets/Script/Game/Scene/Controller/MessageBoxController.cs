@@ -9,10 +9,6 @@ public class MessageBoxController : MonoBehaviour {
 	private BaloonMessageBox visibleMessageBox;
 	
 	
-	public void CreateMessage(ZoneMessageCutScene messageCutScene) {
-		
-	}
-	
 	public void ShowMessage(ZoneMessageCutScene messageCutScene) {
 		this.HideMessage();
 		
@@ -34,7 +30,7 @@ public class MessageBoxController : MonoBehaviour {
 		box.Message = messageCutScene.text;
 		this.visibleMessageBox = box;
 		
-		iTween.ScaleTo(box.gameObject, iTween.Hash("time", 0.25f, "x", targetScale, "y", targetScale,  "easeType", "easeOut", "oncomplete", "onShowMessageComplete", "onCompleteTarget", this.gameObject));
+		iTween.ScaleTo(box.gameObject, iTween.Hash("time", 0.25f, "x", targetScale, "y", targetScale,  "easeType", "easeOutCubic", "oncomplete", "onShowMessageComplete", "onCompleteTarget", this.gameObject));
 	}
 	
 	public void onShowMessageComplete() {

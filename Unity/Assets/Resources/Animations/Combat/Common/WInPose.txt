@@ -1,0 +1,224 @@
+{
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Combat/BattlerBase"
+    ]
+  },
+  "events": {
+    "9": [
+      "show"
+    ],
+    "0": [
+      "hide"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "easeIn",
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 4,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            -16
+          ],
+          "tween": "linear",
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "frameNo": 1,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 4,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startValue": [
+            0,
+            -16
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 5,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "frameNo": 9,
+          "startPositionType": "None"
+        }
+      ],
+      "scale": [
+        {
+          "duration": 8,
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "wait": true,
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 0,
+          "startPositionType": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 8
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 9
+        }
+      ],
+      "hue": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "type": "Image",
+          "frameNo": 0,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 8,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "type": "Image",
+          "frameNo": 1,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ]
+        },
+        {
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "type": "Image",
+          "frameNo": 9,
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ]
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ]
+    }
+  ]
+}

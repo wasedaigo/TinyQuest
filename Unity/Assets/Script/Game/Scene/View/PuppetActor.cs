@@ -13,7 +13,8 @@ namespace TinyQuest.Object {
 			Sit,
 			Dying,
 			Dead,
-			Attacked
+			Attacked,
+			Attack
 		};
 
 		public PuppetActor(string name, PoseType poseType) 
@@ -34,6 +35,9 @@ namespace TinyQuest.Object {
 				break;
 				case PoseType.Dying:
 					this.SrcRect = new Rect(124, 0, 32, 32);
+				break;
+				case PoseType.Attack:
+					this.SrcRect = new Rect(96, 0, 32, 32);
 				break;
 				case PoseType.Attacked:
 					this.SrcRect = new Rect(156, 0, 32, 32);
