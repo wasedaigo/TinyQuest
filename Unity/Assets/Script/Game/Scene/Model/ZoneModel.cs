@@ -14,7 +14,7 @@ namespace TinyQuest.Scene.Model {
 			ClearZone
 		};
 		public System.Action<float> PlayerMove;
-		public System.Action<ZoneCommand, object> CommandExecute;
+		public System.Action<ZoneCommandBase> CommandExecute;
 		public System.Action GotoNextStep;
 		public System.Action ClearZone;
 
@@ -82,7 +82,7 @@ namespace TinyQuest.Scene.Model {
 			if (zoneEvent == null) {return false;}
 			
 			// Check current command index
-			ZoneCommand[] commands = zoneEvent.commands;
+			ZoneCommandBase[] commands = zoneEvent.commands;
 			return commandIndex < commands.Length;
 		}
 		
@@ -93,10 +93,10 @@ namespace TinyQuest.Scene.Model {
 		}
 
 		// Handle command result
-		private void OnCommandProgressed(ZoneModel.PostCommandState postCommandState, ZoneCommand command, object zoneCommandState) {
+		private void OnCommandProgressed(ZoneModel.PostCommandState postCommandState, ZoneCommandBase command) {
 			switch (postCommandState) {
 			case PostCommandState.None:
-				this.CommandExecute(command, zoneCommandState);
+				this.CommandExecute(command);
 				break;
 			case PostCommandState.ClearZone:
 				this.ClearZone();

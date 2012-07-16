@@ -13,7 +13,7 @@ namespace TinyQuest.Data.Request {
 		public virtual void Get(System.Action<string> callback) {
 		}
 		
-		public virtual void ProgressStep(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
+		public virtual void ProgressStep(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
 			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
 			userZone.stepIndex += 1;
 			userZone.commandIndex = 0;
@@ -22,24 +22,22 @@ namespace TinyQuest.Data.Request {
 			this.ExecuteCommand(callback);
 		}
 		
-		public virtual void ExecuteCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
+		public virtual void ExecuteCommand(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			UserZone userZone = data.zone;
 			int stepIndex = userZone.stepIndex;
 			int commandIndex = userZone.commandIndex;
 			
 			ZoneModel.PostCommandState postCommandState = ZoneModel.PostCommandState.None;
-			ZoneCommand command = null;
-			object zoneCommandState = null;
+			ZoneCommandBase command = null;
 			
 			bool allCommandFinished = true;
 			string key = stepIndex.ToString();
 			if (userZone.events.ContainsKey(key)) {
 				ZoneEvent zoneEvent = userZone.events[stepIndex.ToString()];
-				ZoneCommand[] commands = zoneEvent.commands;
+				ZoneCommandBase[] commands = zoneEvent.commands;
 				if (commandIndex < commands.Length) {
 					command = commands[commandIndex];
-					zoneCommandState = userZone.commandState;
 					allCommandFinished = false;
 				}
 			}
@@ -54,17 +52,17 @@ namespace TinyQuest.Data.Request {
 				postCommandState = ZoneModel.PostCommandState.None;
 			}
 			
-			if (command != null && command.type == (int)ZoneCommand.Type.Battle) {
+			if (command != null && (ZoneCommandType)command.command.type == ZoneCommandType.Battle) {
 				// Setup for battle
 				data.combatProgress = new CombatProgress();
 				
-				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
+				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.command.content));
 				data.combatUnitGroups[Constant.EnemyGroupType].combatUnits = data.GetEnemyGroupById(battleCommand.enemyGroupId).CreateEnemies();
 			}
 		
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 
-			callback(postCommandState, command, zoneCommandState);
+			callback(postCommandState, command);
 		}
 		
 		public virtual void LoadZone(System.Action<CombatUnitGroup[]> callback) {
@@ -90,7 +88,7 @@ namespace TinyQuest.Data.Request {
 			callback(data.combatUnitGroups);
 		}
 
-		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommand, object> callback) {
+		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			UserZone userZone =  data.zone;
 			userZone.commandIndex += 1;

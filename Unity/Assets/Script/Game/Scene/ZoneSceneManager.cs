@@ -5,20 +5,31 @@ using TinyQuest.Data.Request;
 using TinyQuest.Scene.Model;
 
 public class ZoneSceneManager : MonoBehaviour {
-	enum ZoneScene {
+	public enum ZoneSceneType {
 		Adventure,
 		Combat
 	};
 	
+	public enum ZonePanelType {
+		None,
+		Combat,
+		Progress,
+		Next
+	};
+	
 	public GameObject UICombatPanel;
 	public GameObject UIProgressPanel;
+	public GameObject UINextPanel;
+
 	private ZoneEventController zoneEventController;
 	private CombatController combatController;
 	private CombatControlPanelController combatControlPanelController;
 	private CombatModel combatModel;
+	private ZoneSceneType currentZoneSceneType;
 
 	// Use this for initialization
 	private void Start () {
+		Application.targetFrameRate = 60;
 		ZoneModel zoneModel = new ZoneModel();
 		this.combatModel = new CombatModel();
 
@@ -39,23 +50,19 @@ public class ZoneSceneManager : MonoBehaviour {
 		req.LoadZone(this.OnLoaded);
 	}
 
-	private void SetScene(ZoneScene zoneScene) {
-		this.UIProgressPanel.SetActiveRecursively(false);
-		this.UICombatPanel.SetActiveRecursively(false);
+	private void SetScene(ZoneSceneType zoneScene) {
+
 		this.zoneEventController.enabled = false;
 		this.combatController.enabled = false;
-
+		
+		this.currentZoneSceneType = zoneScene;
 		switch(zoneScene) {
-			case ZoneScene.Adventure:
+			case ZoneSceneType.Adventure:
 				this.zoneEventController.enabled = true;
-				this.UIProgressPanel.SetActiveRecursively(true);
 				this.zoneEventController.ResumeAdventure();
 			break;
-			case ZoneScene.Combat:
+			case ZoneSceneType.Combat:
 				this.combatController.enabled = true;
-
-				this.UICombatPanel.SetActiveRecursively(true);
-				combatControlPanelController.SendMessage("UpdateStatus");
 
 				CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
 
@@ -75,6 +82,40 @@ public class ZoneSceneManager : MonoBehaviour {
 		}
 	}
 
+	private void ShowPanel(ZonePanelType type) {
+		this.UINextPanel.SetActiveRecursively(false);
+		this.UIProgressPanel.SetActiveRecursively(false);
+		this.UICombatPanel.SetActiveRecursively(false);
+		
+		switch (type) {
+		case ZonePanelType.Combat:
+			this.UICombatPanel.SetActiveRecursively(true);
+			break;
+		case ZonePanelType.Next:
+			this.UINextPanel.SetActiveRecursively(true);
+			break;
+		case ZonePanelType.Progress:
+			this.UIProgressPanel.SetActiveRecursively(true);
+			break;
+		case ZonePanelType.None:
+			break;
+		}
+	}
+	
+	private ZonePanelType GetPanelTypeBySceneType(ZoneSceneType type) {
+		ZonePanelType panelType = ZonePanelType.None;
+		switch (type) {
+			case ZoneSceneType.Adventure:
+				panelType = ZonePanelType.Progress;
+			break;
+			case ZoneSceneType.Combat:
+				panelType = ZonePanelType.Combat;
+			break;
+		}
+		
+		return panelType;
+	}
+
 	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
 		CombatUnit[] activeUnits = new CombatUnit[Constant.GroupTypeCount];
 		for (int i = 0; i < Constant.GroupTypeCount; i++) {
@@ -88,7 +129,8 @@ public class ZoneSceneManager : MonoBehaviour {
 		}
 		
 		this.SendMessage("ShowCombatActors", activeUnits);
-		this.SetScene(ZoneScene.Adventure);
+		this.SetScene(ZoneSceneType.Adventure);
+		//this.ShowPanel(this.GetPanelTypeBySceneType(this.currentZoneSceneType));
 	}
 
 	private void ChangeActorStatus(CombatActionResult result) {
@@ -97,10 +139,19 @@ public class ZoneSceneManager : MonoBehaviour {
 	}
 	
 	private void StartBattle(int enemyGroupId) {
-		this.SetScene(ZoneScene.Combat);
+		this.SetScene(ZoneSceneType.Combat);
 	}
 
 	private void OnFinishBattle() {
-		this.SetScene(ZoneScene.Adventure);
+		this.SetScene(ZoneSceneType.Adventure);
+	}
+
+	private void OnCutSceneFinished() {
+		this.ShowPanel(this.GetPanelTypeBySceneType(this.currentZoneSceneType));
+		if (this.currentZoneSceneType == ZoneSceneType.Combat) {
+			combatControlPanelController.SendMessage("UpdateStatus");
+		} else {
+			this.SendMessage("NextCommand");
+		}
 	}
 }

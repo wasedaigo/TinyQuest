@@ -1,28 +1,83 @@
+using JsonFx.Json;
+using System;
+
 namespace TinyQuest.Data{
-	public class ZoneCommand {
-		public enum Type {
-			Battle = 0,
-			Message = 1,
-			Treasure = 2
-		}
-		
-		public int type;
-		public object content;
+	public enum ZoneCommandType {
+		Empty = 1,
+		Battle = 2,
+		Treasure = 3
 	}
 	
-	public class ZoneCommandBattle {
+	public enum ZoneCutSceneType {
+		Message = 1,
+		Pop = 2,
+		Depop = 3
+	}
+	
+	public enum ZoneCutScenePopAnimationType {
+		SlideIn,
+		JumpIn
+	}
+
+	public enum ZoneCutSceneDepopAnimationType {
+		SlideOut,
+		JumpOut
+	}
+	
+	public class TypeContentData {
+		
+		public readonly int type;
+		public readonly object content;
+		public T GetContent<T>() {
+			return JsonReader.Deserialize<T>(JsonWriter.Serialize(content));
+		}
+	}
+	
+	public class ZoneCommandBase {
+		public readonly TypeContentData command;
+		public TypeContentData[] cutScenes;
+	}
+	
+	public class ZoneCommandEmpty : ZoneCommandBase {
+	}
+	
+	public class ZoneCommandBattle : ZoneCommandBase {
 		public int enemyGroupId;
 	}
 	
-	public class ZoneCommandTreasure {
+	public class ZoneCommandTreasure : ZoneCommandBase {
 		public int treasureId;
 	}
-	
-	public class ZoneCommandMessage {
+
+	// Cut Scenes
+	public class ZoneCutSceneBase {
+		public readonly int type;
+		public ZoneCutSceneType GetCutSceneType() {
+			return (ZoneCutSceneType)type;
+		}
+	}
+
+	public class ZoneMessageCutScene : ZoneCutSceneBase {
+		public int pos;
 		public string text;
+	}
+
+	public class ZonePopCutScene : ZoneCutSceneBase {
+		public int unitId;
+		public readonly int animation;
+		public ZoneCutScenePopAnimationType GetAnimation() {
+			return 	(ZoneCutScenePopAnimationType)animation;
+		}
+	}
+	
+	public class ZoneDepopCutScene : ZoneCutSceneBase {
+		public readonly int animation;
+		public ZoneCutSceneDepopAnimationType GetAnimation() {
+			return 	(ZoneCutSceneDepopAnimationType)animation;
+		}
 	}
 	
 	public class ZoneEvent {
-		public ZoneCommand[] commands;
+		public ZoneCommandBase[] commands;
 	}
 }

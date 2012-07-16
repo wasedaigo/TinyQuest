@@ -18,10 +18,8 @@ namespace TinyQuest.Data{
 		public int lastStepIndex;
 		public Dictionary<string, ZoneEvent> events;
 
-		public int playerHP;
     	public int stepIndex;
     	public int commandIndex;
-		public object commandState;
 	}
 
 	public class CombatUnit {

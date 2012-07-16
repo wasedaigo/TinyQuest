@@ -78,58 +78,38 @@ public class ZoneEventController : MonoBehaviour {
 		this.SendMessage("PlayerMoveOut");
 	}
 
-	private void OnCommandExecuted(ZoneCommand command, object zoneCommandState) {
-		CombatUnit walkingUnit = this.zoneModel.GetWalkingUnit();	
+	private void OnCommandExecuted(ZoneCommandBase command) {
 		this.SetState(ZoneState.Pause);
-		switch (command.type) {
-			case (int)ZoneCommand.Type.Battle:
-				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.content));
-				this.HandleBattleCommand(battleCommand.enemyGroupId);
+		switch ((ZoneCommandType)command.command.type) {
+			case ZoneCommandType.Empty:
 				break;
-			case (int)ZoneCommand.Type.Message:
-				ZoneCommandMessage messageCommand = JsonReader.Deserialize<ZoneCommandMessage>(JsonWriter.Serialize(command.content));
-				this.HandleMessageCommand(messageCommand.text);
+
+			case ZoneCommandType.Battle:
+				ZoneCommandBattle battleCommand = command.command.GetContent<ZoneCommandBattle>();
+				this.SendMessage("StartBattle", battleCommand.enemyGroupId);
+				this.SetState(ZoneState.Combat);
 				break;
-			case (int)ZoneCommand.Type.Treasure:
-				ZoneCommandTreasure treasureCommand = JsonReader.Deserialize<ZoneCommandTreasure>(JsonWriter.Serialize(command.content));
-				this.HandleTreasureCommand(treasureCommand.treasureId);
+
+			case ZoneCommandType.Treasure:
 				break;
+
 			default:
-				Debug.LogError("Undefined type " + command.type + " is passed");
+				Debug.LogError("Undefined type " + command.command.type + " is passed");
 				break;
+		}
+
+		this.SendMessage("StartCutScene", command.cutScenes);
+	}
+
+	public void OnProgressClicked() {
+		if (!this.zoneModel.IsCommandExecuting()) {
+			this.GotoNextStep();
 		}
 	}
 	
-	private void HandleMessageCommand(string text) {
-		this.SendMessage("ShowMessage", text);
-		this.SetState(ZoneState.Next);
-	}
-	
-	private void HandleBattleCommand(int enemyGroupId) {
-
-		/*
-		CombatController controller = this.gameObject.GetComponent<CombatController>();
-		CombatModel combatModel = CombatFactory.Instance.Build(enemyID, this.zoneModel.GetPlayerBattler());
-		controller.SetCombatModel(combatModel);
-		controller.SetPlayer(this.player);
-		controller.CombatFinish = this.CommandFinished;
-		controller.StartBattle();
-		*/
-		this.SendMessage("StartBattle", enemyGroupId);
-		this.SetState(ZoneState.Combat);
-	}
-	
-	private void HandleTreasureCommand(int treasureID) {
-		// TODO
-	}
-	
-	public void OnProgressClicked() {
-		this.SendMessage("HideMessage");
-		
+	public void NextCommand() {
 		if (this.zoneModel.IsCommandExecuting()) {
 			this.zoneModel.NextCommand();
-		} else {
-			this.GotoNextStep();
 		}
 	}
 }
