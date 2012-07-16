@@ -33,7 +33,6 @@ public class ZoneCutSceneController : MonoBehaviour {
 			this.currentCutsceneIndex++;
 			switch((ZoneCutSceneType)typeContentData.type) {
 			case ZoneCutSceneType.Message:
-				this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Next);
 				ZoneMessageCutScene messageCutScene = typeContentData.GetContent<ZoneMessageCutScene>();
 				this.SendMessage("ShowMessage", messageCutScene);
 				break;

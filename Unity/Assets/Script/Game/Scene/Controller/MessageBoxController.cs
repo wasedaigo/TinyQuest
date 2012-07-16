@@ -8,11 +8,18 @@ public class MessageBoxController : MonoBehaviour {
 	public  BaloonMessageBox baloonMessageBox;
 	private BaloonMessageBox visibleMessageBox;
 	
+	
+	public void CreateMessage(ZoneMessageCutScene messageCutScene) {
+		
+	}
+	
 	public void ShowMessage(ZoneMessageCutScene messageCutScene) {
 		this.HideMessage();
+		
+		float targetScale = 0.00415f;
 		BaloonMessageBox box = (BaloonMessageBox)Instantiate(baloonMessageBox, new Vector3 (0, 0, 0), Quaternion.identity);
 		box.transform.parent = UILayer.transform;
-		box.transform.localScale = new Vector3(0.00415f, 0.00415f, 1);
+		box.transform.localScale = new Vector3(0.0001f, 0.0001f, 1);
 		
 		if (messageCutScene.pos == 0) {
 			box.transform.localPosition = new Vector3(-0.1f, 0.55f, 0);
@@ -25,8 +32,13 @@ public class MessageBoxController : MonoBehaviour {
 		box.Width = 256;
 		box.Height = 96;
 		box.Message = messageCutScene.text;
-		
 		this.visibleMessageBox = box;
+		
+		iTween.ScaleTo(box.gameObject, iTween.Hash("time", 0.25f, "x", targetScale, "y", targetScale,  "easeType", "easeOut", "oncomplete", "onShowMessageComplete", "onCompleteTarget", this.gameObject));
+	}
+	
+	public void onShowMessageComplete() {
+		this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Next);
 	}
 	
 	public void HideMessage() {
