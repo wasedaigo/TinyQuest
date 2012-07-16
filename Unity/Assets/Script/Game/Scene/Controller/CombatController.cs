@@ -23,8 +23,12 @@ public class CombatController : MonoBehaviour {
 		this.combatModel.SelectUnit += this.UnitSelected;
 		this.combatModel.FinishBattle += this.BattleFinished;
 	}
-
-	protected void ExecuteNextAction() {
+	
+	private void OnCombatActorSelected() {
+		ExecuteNextAction();
+	}
+	
+	private void ExecuteNextAction() {
 		this.combatModel.ExecuteNextAction();
 		
 		if (!this.combatModel.IsExecutingAction()) {

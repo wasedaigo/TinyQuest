@@ -80,8 +80,11 @@ public class ZoneEventController : MonoBehaviour {
 
 	private void OnCommandExecuted(ZoneCommandBase command) {
 		this.SetState(ZoneState.Pause);
+		
+		this.SendMessage("StartCutScene", command.cutScenes);
 		switch ((ZoneCommandType)command.command.type) {
 			case ZoneCommandType.Empty:
+				this.SendMessage("PlayNextCutScene");
 				break;
 
 			case ZoneCommandType.Battle:
@@ -91,6 +94,7 @@ public class ZoneEventController : MonoBehaviour {
 				break;
 
 			case ZoneCommandType.Treasure:
+				this.SendMessage("PlayNextCutScene");
 				break;
 
 			default:
@@ -98,7 +102,9 @@ public class ZoneEventController : MonoBehaviour {
 				break;
 		}
 
-		this.SendMessage("StartCutScene", command.cutScenes);
+		
+		
+		
 	}
 
 	public void OnProgressClicked() {

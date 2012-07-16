@@ -24,13 +24,15 @@ public class ZoneSceneManager : MonoBehaviour {
 	private ZoneEventController zoneEventController;
 	private CombatController combatController;
 	private CombatControlPanelController combatControlPanelController;
+	private ZoneModel zoneModel;
 	private CombatModel combatModel;
 	private ZoneSceneType currentZoneSceneType;
-
+	private ZonePanelType currentZonePanelType;
+	
 	// Use this for initialization
 	private void Start () {
 		Application.targetFrameRate = 60;
-		ZoneModel zoneModel = new ZoneModel();
+		this.zoneModel = new ZoneModel();
 		this.combatModel = new CombatModel();
 
 		// Get reference
@@ -83,6 +85,9 @@ public class ZoneSceneManager : MonoBehaviour {
 	}
 
 	private void ShowPanel(ZonePanelType type) {
+		if (currentZonePanelType == type) {return;}
+		
+		this.currentZonePanelType = type;
 		this.UINextPanel.SetActiveRecursively(false);
 		this.UIProgressPanel.SetActiveRecursively(false);
 		this.UICombatPanel.SetActiveRecursively(false);
@@ -147,11 +152,16 @@ public class ZoneSceneManager : MonoBehaviour {
 	}
 
 	private void OnCutSceneFinished() {
-		this.ShowPanel(this.GetPanelTypeBySceneType(this.currentZoneSceneType));
 		if (this.currentZoneSceneType == ZoneSceneType.Combat) {
+			this.ShowPanel(ZonePanelType.Combat);
 			combatControlPanelController.SendMessage("UpdateStatus");
 		} else {
-			this.SendMessage("NextCommand");
+			if (this.zoneModel.IsCommandExecuting()) {
+				this.SendMessage("NextCommand");
+			} else {
+				this.ShowPanel(ZonePanelType.Progress);
+			}
+			
 		}
 	}
 }

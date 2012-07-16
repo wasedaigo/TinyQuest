@@ -293,7 +293,7 @@ public class ZoneViewController : MonoBehaviour {
 
 		Async.Async.Instance.Parallel(list,
 			() => {
-				this.SendMessage("ExecuteNextAction");
+				this.SendMessage("OnCombatActorSelected");
 			}
 		);
 	}

@@ -20,14 +20,15 @@ public class ZoneCutSceneController : MonoBehaviour {
 	private void StartCutScene(TypeContentData[] cutScenes) {
 		this.cutScenes = cutScenes;
 		this.currentCutsceneIndex = 0;
-		this.PlayNextCutScene();
 	}
-	
+
 	private void PlayNextCutScene() {
+		this.SendMessage("HideMessage");
 		if (this.currentCutsceneIndex >= this.cutScenes.Length) {
+			this.cutScenes = null;
+			this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.None);
 			this.SendMessage("OnCutSceneFinished");
-		} else {
-			
+		} else {			
 			TypeContentData typeContentData = this.cutScenes[this.currentCutsceneIndex];
 			switch((ZoneCutSceneType)typeContentData.type) {
 			case ZoneCutSceneType.Message:
@@ -49,6 +50,13 @@ public class ZoneCutSceneController : MonoBehaviour {
 			this.currentCutsceneIndex++;
 		}
 	}
+
+	private void OnCombatActorSelected() {
+		// Play next cutscene after enemy moved in
+		if (this.cutScenes != null) {
+			this.PlayNextCutScene();
+		}
+	}
 	
 	private void OnActorPopped() {
 		PlayNextCutScene();
@@ -59,7 +67,6 @@ public class ZoneCutSceneController : MonoBehaviour {
 	}
 
 	public void OnNextClicked() {
-		this.SendMessage("HideMessage");
 		PlayNextCutScene();
 	}
 }
