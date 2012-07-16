@@ -30,6 +30,7 @@ public class ZoneCutSceneController : MonoBehaviour {
 			this.SendMessage("OnCutSceneFinished");
 		} else {			
 			TypeContentData typeContentData = this.cutScenes[this.currentCutsceneIndex];
+			this.currentCutsceneIndex++;
 			switch((ZoneCutSceneType)typeContentData.type) {
 			case ZoneCutSceneType.Message:
 				this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Next);
@@ -47,7 +48,6 @@ public class ZoneCutSceneController : MonoBehaviour {
 				this.SendMessage("DepopActor");
 				break;
 			}
-			this.currentCutsceneIndex++;
 		}
 	}
 

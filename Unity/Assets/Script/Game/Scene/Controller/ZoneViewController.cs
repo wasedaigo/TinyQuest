@@ -356,7 +356,11 @@ public class ZoneViewController : MonoBehaviour {
 			this.SendMessage("OnActorPopped");
 		};
 		
-		this.PlayMoveAnimation("Combat/Monster/MonsterMove001", groupType, TargetPosition.In, this.poppedActor, callback);
+		if (masterUnit.lookType == UnitLookType.Monster) {
+			this.PlayMoveAnimation("Combat/Monster/MonsterMove001", groupType, TargetPosition.In, this.poppedActor, callback);
+		} else {
+			this.PlayMoveAnimation("Combat/Common/Jump", groupType, TargetPosition.In, this.poppedActor, callback);
+		}
 	}
 
 	public void DepopActor() {
@@ -367,7 +371,12 @@ public class ZoneViewController : MonoBehaviour {
 			this.SendMessage("OnActorDepopped");
 		};
 		
-		this.PlayMoveAnimation("Combat/Monster/MonsterMove001", groupType, TargetPosition.Out, this.poppedActor, callback);
+		if (this.poppedActor is MonsterActor) {
+			this.PlayMoveAnimation("Combat/Monster/MonsterMove001", groupType, TargetPosition.Out, this.poppedActor, callback);
+		} else {
+			this.PlayMoveAnimation("Combat/Common/Jump", groupType, TargetPosition.Out, this.poppedActor, callback);
+		}
+		
 	}
 	
 	public void PlayerMoveIn(bool isStart) {
