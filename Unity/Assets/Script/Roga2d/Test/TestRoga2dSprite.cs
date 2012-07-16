@@ -40,7 +40,7 @@ class TestRoga2dSprite {
 		Roga2dSprite sprite = new Roga2dSprite(null);
 		
 		sprite.Update();
-		Tester.Match(sprite.GetOffsetByPositionAnchor(0, 0), new Vector2(0, 0));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(new Vector2(0, 0), 0, 0), new Vector2(0, 0));
 
 		sprite.Destroy();
 	}
@@ -69,15 +69,15 @@ class TestRoga2dSprite {
         sprite.LocalPosition = new Vector2(0, 10);
         sprite.LocalScale = new Vector2(2, 3);
 		
-		Tester.Match(sprite.GetOffsetByPositionAnchor(-1, 1), new Vector2(-40, 15));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(0, 1), new Vector2(-10, 15));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(1, 1), new Vector2(20, 15));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(-1, 0), new Vector2(-40, -60));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(0, 0), new Vector2(-10, -60));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(1, 0), new Vector2(20, -60));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(-1, -1), new Vector2(-40, -135));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(0, -1), new Vector2(-10, -135));
-		Tester.Match(sprite.GetOffsetByPositionAnchor(1, -1), new Vector2(20, -135));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, -1, 1), new Vector2(-40, 15));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 0, 1), new Vector2(-10, 15));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 1, 1), new Vector2(20, 15));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, -1, 0), new Vector2(-40, -60));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 0, 0), new Vector2(-10, -60));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 1, 0), new Vector2(20, -60));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, -1, -1), new Vector2(-40, -135));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 0, -1), new Vector2(-10, -135));
+		Tester.Match(sprite.GetOffsetByPositionAnchor(Vector2.zero, 1, -1), new Vector2(20, -135));
 
 		sprite.Destroy();
 	}

@@ -24,7 +24,7 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dIntervalPlayer intervalPlayer;
 	private Dictionary<CombatUnit, Actor> actors = new Dictionary<CombatUnit, Actor>();
 	
-	private Vector2[,] TargetPositions = new Vector2[,]{{new Vector2(36, 0), new Vector2(-36, 0)}, {new Vector2(80, 0), new Vector2(-80, 0)}};
+	private Vector2[,] TargetPositions = new Vector2[,]{{new Vector2(36, 10), new Vector2(-36, 10)}, {new Vector2(80, 10), new Vector2(-80, 10)}};
 	private Roga2dNode[,] targetNodes = new Roga2dNode[TargetPositionCount, Constant.GroupTypeCount];
 	private Actor[] activeActors = new Actor[Constant.GroupTypeCount];
 	
@@ -60,6 +60,7 @@ public class ZoneViewController : MonoBehaviour {
 		};
 		
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetNode, CommandCalled);
+		settings.CasterPixelSize = new Vector2(32, 32);
 		settings.Data = callbackData;
 		Roga2dAnimation animation = Roga2dUtils.LoadAnimation(animationName, false, null, settings, options);
 		this.animationPlayer.Play(casterActor,  null, animation, callback);	

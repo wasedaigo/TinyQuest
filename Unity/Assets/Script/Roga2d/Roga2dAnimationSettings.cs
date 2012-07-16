@@ -8,6 +8,8 @@ public class Roga2dAnimationSettings {
 	private bool reverse;
 	private Roga2dAnimationPlayer player;
 	private Roga2dCommandCallback commandCallBack;
+	public Vector2 CasterPixelSize;
+
 	public object Data;
 	
 	public Roga2dAnimationPlayer Player {
@@ -72,6 +74,7 @@ public class Roga2dAnimationSettings {
 		this.origin = origin;
 		this.Target = target;
 		this.reverse = reverse;
+		this.CasterPixelSize = new Vector2(0, 0);
 		this.commandCallBack = commandCallBack;
 	}
 	

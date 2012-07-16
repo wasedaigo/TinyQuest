@@ -103,6 +103,7 @@ public class Roga2dPositionIntervalOption {
 	public Vector2 EndPositionAnchor;
 	public Roga2dNode Target;
 	public Roga2dNode TargetOrigin;
+	public Vector2 CasterPixelSize;
 	
 	public static Roga2dPositionIntervalOption Build() {
 		Roga2dPositionIntervalOption option = new Roga2dPositionIntervalOption();
@@ -110,6 +111,7 @@ public class Roga2dPositionIntervalOption {
 		option.StartPositionAnchor = new Vector2(0.0f, 0.0f);
 		option.EndPositionType = Roga2dPositionType.None;
 		option.EndPositionAnchor = new Vector2(0.0f, 0.0f);
+		option.CasterPixelSize = new Vector2(0.0f, 0.0f);
 		option.Target = null;
 		option.TargetOrigin = null;
 		return option;

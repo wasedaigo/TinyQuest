@@ -285,16 +285,16 @@ public class Roga2dNode {
 			return this.transform.InverseTransformPoint(point);
 	}
 	
-	public Vector2 GetOffsetByPositionAnchor(float positionAnchorX, float positionAnchorY) {
+	public Vector2 GetOffsetByPositionAnchor(Vector2 casterPixelSize, float positionAnchorX, float positionAnchorY) {
 		Vector2 offset = new Vector2(0, 0);
-
+		
 		Vector2 pixelSize = this.GetPixelSize();
 		Vector2 pixelCenter = this.GetPixelCenter();
         float centerX = pixelSize.x / 2 + pixelCenter.x;
         float centerY = pixelSize.y / 2 + pixelCenter.y;
-
+		
 		offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * Mathf.Abs(this.LocalScale.x);
-		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2) - centerY) * Mathf.Abs(this.LocalScale.y);
+		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2 - casterPixelSize.y) - centerY) * Mathf.Abs(this.LocalScale.y);
 		
         return offset;
     }
