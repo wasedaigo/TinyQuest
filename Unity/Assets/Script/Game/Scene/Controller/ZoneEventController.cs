@@ -19,7 +19,11 @@ public class ZoneEventController : MonoBehaviour {
 	private ZoneModel zoneModel;
 	
 	public void ResumeAdventure() {
-		this.SendMessage("PlayerMoveIn", this.zoneModel.IsAtStart());
+		if (this.zoneModel.IsAtGoal()) {
+			this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Clear);
+		} else {
+			this.SendMessage("PlayerMoveIn", this.zoneModel.IsAtStart());
+		}
 	}
 	
 	public void SetModels(ZoneModel zoneModel) {
@@ -48,7 +52,7 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	protected void OnPlayerMovedOut() {
-		Application.LoadLevel("Home");
+		this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Clear);
 	}
 	
 	protected void _OnPlayerMoved(float distance) {
@@ -56,10 +60,6 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	protected void Update() {
-
-		if (this.finishZone) {
-			Application.LoadLevel("Home");
-		}
 		
 		if (this.state == ZoneState.Moving) {
 			this.zoneModel.MoveForward();
@@ -101,10 +101,12 @@ public class ZoneEventController : MonoBehaviour {
 				Debug.LogError("Undefined type " + command.command.type + " is passed");
 				break;
 		}
+	}
 
-		
-		
-		
+	public void NextCommand() {
+		if (this.zoneModel.IsCommandExecuting()) {
+			this.zoneModel.NextCommand();
+		}
 	}
 
 	public void OnProgressClicked() {
@@ -113,9 +115,7 @@ public class ZoneEventController : MonoBehaviour {
 		}
 	}
 	
-	public void NextCommand() {
-		if (this.zoneModel.IsCommandExecuting()) {
-			this.zoneModel.NextCommand();
-		}
+	private void OnClearResultOkClicked() {
+		Application.LoadLevel("Home");
 	}
 }

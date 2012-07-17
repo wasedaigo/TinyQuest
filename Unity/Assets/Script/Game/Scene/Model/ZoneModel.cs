@@ -48,6 +48,11 @@ namespace TinyQuest.Scene.Model {
 			return stepIndex == 0 && commandIndex == 0;
 		}
 		
+		public bool IsAtGoal() {
+			int stepIndex = this.userZone.stepIndex;
+			return stepIndex > this.userZone.lastStepIndex;
+		}
+		
 		// Step
 		public void StartAdventure() {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();

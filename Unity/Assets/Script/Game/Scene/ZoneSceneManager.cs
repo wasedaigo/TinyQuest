@@ -14,12 +14,14 @@ public class ZoneSceneManager : MonoBehaviour {
 		None,
 		Combat,
 		Progress,
-		Next
+		Next,
+		Clear
 	};
 	
 	public GameObject UICombatPanel;
 	public GameObject UIProgressPanel;
 	public GameObject UINextPanel;
+	public GameObject UIClearResultPanel;
 
 	private ZoneEventController zoneEventController;
 	private CombatController combatController;
@@ -103,6 +105,9 @@ public class ZoneSceneManager : MonoBehaviour {
 			this.UIProgressPanel.SetActiveRecursively(true);
 			break;
 		case ZonePanelType.None:
+			break;
+		case ZonePanelType.Clear:
+			this.UIClearResultPanel.SetActiveRecursively(true);
 			break;
 		}
 	}
