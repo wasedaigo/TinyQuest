@@ -9,11 +9,11 @@
                 "commands": [
                       {
                           "command": {"type":1, "content":{}},
-                          "cutScenes": [
+                          "cutScenes": [/*
                                 {"type":1, "content":{"pos":1, "text": "あれはなんだ？"}},
                                 {"type":2, "content":{"unitId": 10001, "animation":1}},
                                 {"type":1, "content":{"pos":0, "text": "わたしはおまえのてきだ かくごしておけ"}},
-                                {"type":3, "content":{"animation":1}}
+                                {"type":3, "content":{"animation":1}}*/
                            ]
                       },
                       {

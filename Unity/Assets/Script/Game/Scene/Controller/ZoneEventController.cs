@@ -116,6 +116,6 @@ public class ZoneEventController : MonoBehaviour {
 	}
 	
 	private void OnClearResultOkClicked() {
-		Application.LoadLevel("Home");
+		Application.LoadLevel("Main");
 	}
 }
