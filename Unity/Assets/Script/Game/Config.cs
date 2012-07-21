@@ -3,10 +3,8 @@ using UnityEngine;
 namespace TinyQuest {
 	public class Config {
 		public static readonly bool IsMockEnabled = true;
-		public static readonly int PanelWidth = 160;
-		public static readonly int PanelHeight = 120;
-		public static readonly int LogicalWidth = 160;
-		public static readonly int LogicalHeight = 240;
+		public static readonly int LogicalWidth = 320;
+		public static readonly int LogicalHeight = 480;
 		
 		private static float actualLogicalRatio = 0.0f;
 		public static float ActualLogicalRatio {
