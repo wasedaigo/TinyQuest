@@ -26,7 +26,6 @@ public class ZoneCutSceneController : MonoBehaviour {
 		this.SendMessage("HideMessage");
 		if (this.currentCutsceneIndex >= this.cutScenes.Length) {
 			this.cutScenes = null;
-			this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.None);
 			this.SendMessage("OnCutSceneFinished");
 		} else {			
 			TypeContentData typeContentData = this.cutScenes[this.currentCutsceneIndex];
@@ -37,13 +36,11 @@ public class ZoneCutSceneController : MonoBehaviour {
 				this.SendMessage("ShowMessage", messageCutScene);
 				break;
 			case ZoneCutSceneType.Pop:
-				this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.None);
 				ZonePopCutScene popCutScene = typeContentData.GetContent<ZonePopCutScene>();
 				MasterUnit unit = CacheFactory.Instance.GetMasterDataCache().GetUnitByID(popCutScene.unitId);
 				this.SendMessage("PopActor", unit);
 				break;
 			case ZoneCutSceneType.Depop:
-				this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.None);
 				this.SendMessage("DepopActor");
 				break;
 			}

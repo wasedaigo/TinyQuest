@@ -8,64 +8,8 @@ using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data.Request {
 	public class LocalUserDataRequest
-	{
-		const int MaxHandCount = 3;
-		public virtual void Get(System.Action<string> callback) {
-		}
-		
-		public virtual void ProgressStep(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
-			UserZone userZone = CacheFactory.Instance.GetLocalUserDataCache().GetUserZone();
-			userZone.stepIndex += 1;
-			userZone.commandIndex = 0;
-			
-			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-			this.ExecuteCommand(callback);
-		}
-		
-		public virtual void ExecuteCommand(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
-			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			UserZone userZone = data.zone;
-			int stepIndex = userZone.stepIndex;
-			int commandIndex = userZone.commandIndex;
-			
-			ZoneModel.PostCommandState postCommandState = ZoneModel.PostCommandState.None;
-			ZoneCommandBase command = null;
-			
-			bool allCommandFinished = true;
-			string key = stepIndex.ToString();
-			if (userZone.events.ContainsKey(key)) {
-				ZoneEvent zoneEvent = userZone.events[stepIndex.ToString()];
-				ZoneCommandBase[] commands = zoneEvent.commands;
-				if (commandIndex < commands.Length) {
-					command = commands[commandIndex];
-					allCommandFinished = false;
-				}
-			}
-			
-			if (allCommandFinished) {
-				if (userZone.stepIndex >= userZone.lastStepIndex) {
-					postCommandState = ZoneModel.PostCommandState.ClearZone;
-				} else {
-					postCommandState = ZoneModel.PostCommandState.NextStep;
-				}
-			} else {
-				postCommandState = ZoneModel.PostCommandState.None;
-			}
-			
-			if (command != null && (ZoneCommandType)command.command.type == ZoneCommandType.Battle) {
-				// Setup for battle
-				data.combatProgress = new CombatProgress();
-				
-				ZoneCommandBattle battleCommand = JsonReader.Deserialize<ZoneCommandBattle>(JsonWriter.Serialize(command.command.content));
-				data.combatUnitGroups[Constant.EnemyGroupType].combatUnits = data.GetEnemyGroupById(battleCommand.enemyGroupId).CreateEnemies();
-			}
-		
-			CacheFactory.Instance.GetLocalUserDataCache().Commit();
-
-			callback(postCommandState, command);
-		}
-		
-		public virtual void LoadZone(System.Action<CombatUnitGroup[]> callback) {
+	{	
+		public virtual void StartBattle(System.Action<CombatUnitGroup[]> callback) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 
 			data.combatUnitGroups = new CombatUnitGroup[Constant.GroupTypeCount];
@@ -76,24 +20,13 @@ namespace TinyQuest.Data.Request {
 			for (int i = 0; i < data.ownUnits.Count; i++) {
 				UserUnit playerUnit = data.ownUnits[i];
 				data.combatUnitGroups[0].combatUnits.Add(new CombatUnit(playerUnit, 0, i)); // Player	
+				data.combatUnitGroups[1].combatUnits.Add(new CombatUnit(playerUnit, 1, i)); // Enemy	
 			}
-			/*
-			for (int i = 0; i < data.zoneEnemies.Count; i++) {
-				UserUnit enemyUnit = data.zoneEnemies[i];
-				data.combatUnitGroups[1].combatUnits.Add(new CombatUnit(enemyUnit.id, 1, i)); // Enemy	
-			}
-			*/
+
+
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();			
 			
 			callback(data.combatUnitGroups);
-		}
-
-		public virtual void ProgressCommand(System.Action<ZoneModel.PostCommandState, ZoneCommandBase> callback) {
-			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			UserZone userZone =  data.zone;
-			userZone.commandIndex += 1;
-
-			this.ExecuteCommand(callback);
 		}
 
 		public static CombatUnit GetFirstAliveUnit(int groupType) {
@@ -136,6 +69,9 @@ namespace TinyQuest.Data.Request {
 				if (targetResult.life == 0) {
 					targetResult.swapUnit = LocalUserDataRequest.GetFirstAliveUnit(this.target.groupType);
 				}
+				
+				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+				data.combatProgress = new CombatProgress();
 				
 				return new CombatAction(this.caster, this.target, skill, null, targetResult);
 			}

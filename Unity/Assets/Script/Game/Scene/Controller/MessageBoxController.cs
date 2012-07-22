@@ -33,10 +33,6 @@ public class MessageBoxController : MonoBehaviour {
 		iTween.ScaleTo(box.gameObject, iTween.Hash("time", 0.25f, "x", targetScale, "y", targetScale,  "easeType", "easeOutCubic", "oncomplete", "onShowMessageComplete", "onCompleteTarget", this.gameObject));
 	}
 	
-	public void onShowMessageComplete() {
-		this.SendMessage("ShowPanel", ZoneSceneManager.ZonePanelType.Next);
-	}
-	
 	public void HideMessage() {
 		if (this.visibleMessageBox != null) {
 			this.visibleMessageBox.transform.parent = null;
