@@ -44,7 +44,7 @@ public class ScrollView : MonoBehaviour {
 			if (this.pressedButton == null) {
 					this.pressedButton = this.GetCollideButton(ray);
 					if (this.pressedButton != null) {
-						this.pressedButton.SendMessage("OnPress", true);
+						//this.pressedButton.SendMessage("OnPress", true);
 					}
 			}
 			
@@ -83,7 +83,7 @@ public class ScrollView : MonoBehaviour {
 				}
 
 				this.touchStartTime = float.MaxValue;
-				this.pressedButton.SendMessage("OnPress", false);
+				//this.pressedButton.SendMessage("OnPress", false);
 				
 				this.pressedButton = null;
 			}
