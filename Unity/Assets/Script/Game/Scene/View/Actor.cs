@@ -6,6 +6,24 @@ namespace TinyQuest.Object {
 		protected Roga2dSprite sprite;
 		private string textureId;
 		
+		public enum PoseType {
+			Stand,
+			Walk,
+			Sit,
+			Dying,
+			Dead,
+			Attacked,
+			Attack
+		};
+		
+		public Actor(string name) 
+			:base(name)
+		{
+		}
+		
+		public virtual void SetPoseType(PoseType poseType) {
+		}
+		
 		public virtual void SetSprite(string textureId, Vector2 pixelSize, Vector2 pixelCenter, Rect srcRect) {
 			this.textureId = textureId;
 			this.sprite = new Roga2dSprite(this.textureId, pixelSize, pixelCenter, srcRect);

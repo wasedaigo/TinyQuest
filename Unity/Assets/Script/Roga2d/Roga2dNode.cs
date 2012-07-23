@@ -294,7 +294,7 @@ public class Roga2dNode {
         float centerY = pixelSize.y / 2 + pixelCenter.y;
 		
 		offset.x = centerX + (positionAnchorX * (pixelSize.x / 2) - centerX) * Mathf.Abs(this.LocalScale.x);
-		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2 - casterPixelSize.y) - centerY) * Mathf.Abs(this.LocalScale.y);
+		offset.y = centerY + (positionAnchorY * (pixelSize.y / 2 - casterPixelSize.y / 2) - centerY) * Mathf.Abs(this.LocalScale.y);
 		
         return offset;
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace TinyQuest.Object {
 	public class MonsterActor : Actor {
 		public MonsterActor(string name)
+			:base(name)
 		{
 			string textureId = "Monsters/" + name;
 			Texture texture = Roga2dResourceManager.getTexture(textureId);

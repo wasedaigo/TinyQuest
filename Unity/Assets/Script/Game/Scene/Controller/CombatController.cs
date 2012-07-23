@@ -15,6 +15,8 @@ public class CombatController : MonoBehaviour {
 	
 	private CombatControlPanelController combatControlPanelController;
 	private CombatModel combatModel;
+	private bool firstUnitSelected = false;
+	private CombatUnitGroup[] combatUnitGroups;
 	
 	protected void CombatFinished() {
 		this.SendMessage("OnCombatFinished");
@@ -33,10 +35,10 @@ public class CombatController : MonoBehaviour {
 		
 		// Delegate
 		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
-
+		
 		this.StartBattle();
 	}
-	
+
 	public void ChangeActorStatus(CombatActionResult result){
 		this.combatControlPanelController.SendMessage("ChangeActorStatus", result);
 	}
@@ -45,22 +47,39 @@ public class CombatController : MonoBehaviour {
 		LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 		req.StartBattle(this.OnLoaded);	
 	}
-	
+
 	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
-		CombatUnit[] activeUnits = new CombatUnit[Constant.GroupTypeCount];
-		for (int i = 0; i < Constant.GroupTypeCount; i++) {
-			CombatUnitGroup combatUnitGroup = combatUnitGroups[i];
-			foreach (CombatUnit combatUnit in combatUnitGroup.combatUnits) {
-			   this.SendMessage("SpawnCombatActor", combatUnit);
-			}
-			if (combatUnitGroup.combatUnits.Count > 0) {
-				activeUnits[i] = combatUnitGroup.combatUnits[combatUnitGroup.activeIndex];
-			}
-		}
-
-		this.SendMessage("ShowCombatActors", activeUnits);
-
+		this.combatUnitGroups = combatUnitGroups;
 		combatControlPanelController.SendMessage("UpdateStatus");
+		this.StartCoroutine(this.ShowActors());
+	}
+	
+	public IEnumerator ShowActors() {
+		yield return new WaitForSeconds(0.1f);
+	
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
+				this.SendMessage("SpawnCombatActor", combatUnitGroup.combatUnits[i]);
+				this.SendMessage("MoveActorFront", combatUnitGroup.combatUnits[i]);
+			}
+			
+			yield return new WaitForSeconds(0.1f);
+		}
+		
+		yield return new WaitForSeconds(1);
+	}
+	
+	public IEnumerator HideActors(System.Action callback) {
+		for (int i = 5; i >= 0; i--) {
+			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
+				this.SendMessage("MoveActorBack", combatUnitGroup.combatUnits[i]);
+			}
+			yield return new WaitForSeconds(0.05f);
+		}
+		yield return new WaitForSeconds(0.3f);
+		callback();
 	}
 	
 	public void SetModels(CombatModel combatModel) {
@@ -102,7 +121,17 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void UnitSelected(CombatUnit caster, CombatUnit target) {
-		SendMessage("SelectCombatActors", new CombatUnit[]{caster, target});
+		CombatUnit[] combatUnits = new CombatUnit[]{caster, target};
+		System.Action callback = () => {
+			SendMessage("SelectCombatActors", combatUnits);	
+		};
+		
+		if (this.firstUnitSelected) {
+			callback();
+		} else {
+			this.StartCoroutine(this.HideActors(callback));
+			this.firstUnitSelected = true;
+		}
 	}
 
 	public void InvokeSkill(int slotNo) {

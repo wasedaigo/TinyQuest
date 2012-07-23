@@ -7,24 +7,16 @@ namespace TinyQuest.Object {
 		private Roga2dBaseInterval interval;
 		private PoseType poseType;
 		private bool isWalking;
-		public enum PoseType {
-			Stand,
-			Walk,
-			Sit,
-			Dying,
-			Dead,
-			Attacked,
-			Attack
-		};
 
 		public PuppetActor(string name, PoseType poseType) 
+			:base(name)
 		{
 			this.SetSprite("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32));
 			this.intervalPlayer = new Roga2dIntervalPlayer();
 			this.SetPoseType(poseType);
 		}
 		
-		public void SetPoseType(PoseType poseType) {
+		public override void SetPoseType(PoseType poseType) {
 			this.poseType = poseType;
 			switch (this.poseType) {
 				case PoseType.Stand:
