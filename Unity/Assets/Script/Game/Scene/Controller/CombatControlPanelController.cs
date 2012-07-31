@@ -5,7 +5,7 @@ using TinyQuest.Data;
 public class CombatControlPanelController : MonoBehaviour {
 	public System.Action<int> InvokeSkill;
 	public GameObject[] Slots;
-	public const int GroupType = 0;
+
 	private CombatModel combatModel;
 	private SkillButtonView[] views;
 	public void SetModels(CombatModel combatModel) {
@@ -45,7 +45,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {
-		if (result.combatUnit.groupType != GroupType) { return; }
+		if (result.combatUnit.groupType != CombatGroupInfo.Instance.GetPlayerGroupType(0)) { return; }
 		
 		this.views[result.combatUnit.index].SetLife(result.life, result.maxLife);
 	}
@@ -53,7 +53,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	protected void UpdateStatus() {
 		if (!this.gameObject.active) {return;}
 		for (int i = 0; i < Slots.Length; i++) {
-			CombatUnit combatUnit = this.combatModel.GetCombatUnit(GroupType, i);
+			CombatUnit combatUnit = this.combatModel.GetCombatUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0), i);
 			this.views[i].UpdateStatus(combatUnit);
 		}
 	}

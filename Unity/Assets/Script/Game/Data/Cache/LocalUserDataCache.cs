@@ -13,10 +13,6 @@ namespace TinyQuest.Data.Cache {
 		
 		public LocalUserData Data {
 			get {
-				if (this.localUserData == null) {
-					TextAsset txt = (TextAsset)Resources.Load("Data/LocalUserMock", typeof(TextAsset));
-					this.Set(txt.text);	
-				}
 				return this.localUserData;	
 			}
 		}
@@ -27,9 +23,8 @@ namespace TinyQuest.Data.Cache {
 			return "";	
 		}
 		
-		public void Set(string jsonText) {
+		public void SetData(string jsonText) {
 			this.localUserData = JsonReader.Deserialize<LocalUserData>(jsonText);
-			//this.unitInstanceDictionary = this.GetAsDictionary<UnitInstance>(this.localUserData.unitInstances);
 		}
 		
 		private Dictionary<int, T> GetAsDictionary<T>(List<T> data) 

@@ -14,11 +14,7 @@ namespace TinyQuest.Data.Request {
 		public MasterDataRequest GetMasterDataRequest() 
 		{
 			if (this.masterDataRequest == null) {
-				if (Config.IsMockEnabled) {
-					this.masterDataRequest = new MasterDataRequestMock();
-				} else {
-					this.masterDataRequest = new MasterDataRequest();
-				}
+				this.masterDataRequest = new MasterDataRequestMock();
 			}
 			
 			return this.masterDataRequest;

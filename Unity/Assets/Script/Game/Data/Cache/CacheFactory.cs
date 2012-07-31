@@ -14,11 +14,7 @@ namespace TinyQuest.Data.Cache {
 		public MasterDataCache GetMasterDataCache() 
 		{
 			if (this.masterDataCache == null) {
-				if (Config.IsMockEnabled) {
-					this.masterDataCache = new MasterDataCacheMock();
-				} else {
-					this.masterDataCache = new MasterDataCache();
-				}
+				this.masterDataCache = new MasterDataCacheMock();
 			}
 			
 			return this.masterDataCache;
@@ -28,11 +24,7 @@ namespace TinyQuest.Data.Cache {
 		public LocalUserDataCache GetLocalUserDataCache()
 		{
 			if (this.localUserDataCache == null) {
-				if (Config.IsMockEnabled) {
-					this.localUserDataCache = new LocalUserDataCacheMock();
-				} else {
-					this.localUserDataCache = new LocalUserDataCache();
-				}
+				this.localUserDataCache = new LocalUserDataCache();
 			}
 			
 			return this.localUserDataCache;

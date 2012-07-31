@@ -25,18 +25,18 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dIntervalPlayer intervalPlayer;
 	
 	private Vector2[,] TargetPositions = new Vector2[,]{{new Vector2(36, 10), new Vector2(-36, 10)}, {new Vector2(80, 10), new Vector2(-80, 10)}};
-	private Roga2dNode[,] targetNodes = new Roga2dNode[TargetPositionCount, Constant.GroupTypeCount];
+	private Roga2dNode[,] targetNodes = new Roga2dNode[TargetPositionCount, CombatGroupInfo.Instance.GetGroupCount()];
 
 	private Vector2[,] StartTargetPositions = new Vector2[,]{
 		{new Vector2(12, -16), new Vector2(32, -16), new Vector2(20, 0), new Vector2(40, 0), new Vector2(28, 16), new Vector2(48, 16)}, 
 		{new Vector2(-12, -16), new Vector2(-32, -16), new Vector2(-20, 0), new Vector2(-40, 0), new Vector2(-28, 16), new Vector2(-48, 16)}
 	};
-	private Roga2dNode[,] startTargetNodes = new Roga2dNode[Constant.GroupTypeCount, UnitCount];
+	private Roga2dNode[,] startTargetNodes = new Roga2dNode[CombatGroupInfo.Instance.GetGroupCount(), UnitCount];
 
-	private Actor[] activeCombatActors = new Actor[Constant.GroupTypeCount];
+	private Actor[] activeCombatActors = new Actor[CombatGroupInfo.Instance.GetGroupCount()];
 	private Actor poppedActor;
 	
-	private Actor[,] actors = new Actor[Constant.GroupTypeCount, UnitCount];
+	private Actor[,] actors = new Actor[CombatGroupInfo.Instance.GetGroupCount(), UnitCount];
 	
 	private void Awake() {
 		Roga2dNode layer = this.stage.GetCharacterLayer();
@@ -44,25 +44,20 @@ public class ZoneViewController : MonoBehaviour {
 		this.intervalPlayer = new Roga2dIntervalPlayer();
 		
 		for (int i = 0; i < TargetPositionCount; i++) {
-			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				this.targetNodes[i, j] = new Roga2dNode("Target" + i + ", " + j);
 				this.targetNodes[i, j].LocalPixelPosition = TargetPositions[i, j];
 				layer.AddChild(this.targetNodes[i, j]);
 			}
 		}
 		
-		for (int i = 0; i < Constant.GroupTypeCount; i++) {
+		for (int i = 0; i < CombatGroupInfo.Instance.GetGroupCount(); i++) {
 			for (int j = 0; j < UnitCount; j++) {
 				this.startTargetNodes[i, j] = new Roga2dNode("StartTarget" + i + ", " + j);
 				this.startTargetNodes[i, j].LocalPixelPosition = StartTargetPositions[i, j];
 				layer.AddChild(this.startTargetNodes[i, j]);
 			}
 		}
-		
-	}
-
-	private Actor GetPlayer() {
-		return this.activeCombatActors[Constant.PlayerGroupType];
 	}
 	
 	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, System.Action<Roga2dAnimation> callback) {
@@ -209,8 +204,6 @@ public class ZoneViewController : MonoBehaviour {
 		foreach (Actor actor in this.actors) {
 			this.stage.GetCharacterLayer().RemoveChild(actor);
 		}
-		
-		this.activeCombatActors[Constant.EnemyGroupType] = null;
 	}
 	
 	private Actor BuildActor(int groupType, UnitLookType lookType, int unitId) {
@@ -218,10 +211,10 @@ public class ZoneViewController : MonoBehaviour {
 
 		switch(lookType) {
 			case UnitLookType.Monster:
-				actor = this.BuildMonster(unitId.ToString(), TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][Constant.PlayerGroupType]);
+				actor = this.BuildMonster(unitId.ToString(), TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
 				break;
 			case UnitLookType.Puppet:
-				actor = this.BuildPuppet(unitId.ToString(), PuppetActor.PoseType.Attack, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][Constant.EnemyGroupType]);
+				actor = this.BuildPuppet(unitId.ToString(), PuppetActor.PoseType.Attack, TargetPositions[(int)TargetPosition.Out, groupType][0], TargetPositions[(int)TargetPosition.Out, groupType][1]);
 				break;
 		}
 		
@@ -261,7 +254,6 @@ public class ZoneViewController : MonoBehaviour {
 	
 	private void ProcessUnitStatus(CombatActionResult result, System.Action callback) {
 		UserUnit userUnit = result.combatUnit.GetUserUnit();
-		
 		Actor actor = this.actors[result.combatUnit.groupType, result.combatUnit.index];
 		actor.SetStatus(result.life, result.maxLife);
 		
@@ -276,29 +268,30 @@ public class ZoneViewController : MonoBehaviour {
 	protected void SelectCombatActors(CombatUnit[] combatUnits) {
 		// Play move-in animation for each group
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
-		for (int i = 0; i < Constant.GroupTypeCount; i++) {
+		for (int i = 0; i < CombatGroupInfo.Instance.GetGroupCount(); i++) {
 			if (combatUnits[i] == null) { continue; }
-			int t = i;
+
 			string animation = "Combat/Common/Jump";
-			if (combatUnits[t].GetUserUnit().Unit.lookType == UnitLookType.Monster) {
+			if (combatUnits[i].GetUserUnit().Unit.lookType == UnitLookType.Monster) {
 				animation = "Combat/Monster/MonsterMove001";
 			}
-
-			Actor actor = this.actors[combatUnits[t].groupType, combatUnits[t].index];
-			if (actor != this.activeCombatActors[t]) {
+			
+			CombatUnit combatUnit = combatUnits[CombatGroupInfo.Instance.GetPlayerGroupType(i)];
+			Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
+			if (actor != this.activeCombatActors[combatUnit.groupType]) {
 				
 				// Move-out old active unit on the screen
-				if (this.activeCombatActors[t] != null) {
+				if (this.activeCombatActors[combatUnit.groupType] != null) {
 					list.Add(
-						(next) => { this.PlayMoveAnimation(animation, t, TargetPosition.Out, this.activeCombatActors[t], next); }
+						(next) => { this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.Out, this.activeCombatActors[combatUnit.groupType], next); }
 					);
 				}
 				
 				// Move-in new unit into the screen
 				list.Add(
 					(next) => {
-						this.activeCombatActors[t] = actor;
-						this.PlayMoveAnimation(animation, t, TargetPosition.In, actor, next);
+						this.activeCombatActors[combatUnit.groupType] = actor;
+						this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.In, actor, next);
 					}
 				);
 			}
@@ -392,40 +385,8 @@ public class ZoneViewController : MonoBehaviour {
 		
 	}
 	
-	public void PlayerMoveIn(bool isStart) {
-		if (isStart) {
-			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				new Roga2dFunc(() => {this.GetPlayer().startWalkingAnimation();}),
-				new Roga2dPositionInterval(
-					this.GetPlayer(), 
-					this.targetNodes[(int)TargetPosition.Out, Constant.PlayerGroupType].LocalPosition, 
-					this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition, 1.0f, Roga2dTweenType.Linear, null),
-				new Roga2dFunc(() => {
-					this.SendMessage("OnPlayerMovedIn");
-				})
-			});
-			this.intervalPlayer.Play(interval);
-		} else {
-			this.GetPlayer().LocalPosition = this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition;
-			this.SendMessage("OnPlayerMovedIn");	
-		}
-	}
-	
-	public void PlayerMoveOut() {
-		Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-			new Roga2dFunc(() => {this.GetPlayer().startWalkingAnimation();}),
-			new Roga2dPositionInterval(
-				this.GetPlayer(),
-				this.targetNodes[(int)TargetPosition.In, Constant.PlayerGroupType].LocalPosition,
-				this.targetNodes[(int)TargetPosition.Out, Constant.EnemyGroupType].LocalPosition, 2.0f, Roga2dTweenType.Linear, null),
-			new Roga2dFunc(() => {
-				this.SendMessage("OnPlayerMovedOut");
-			})
-		});
-		this.intervalPlayer.Play(interval);
-	}
-	
 	public void ShowBattleWinPose() {
+		/*
 		Actor actor = this.activeCombatActors[Constant.PlayerGroupType];
 		
 		if (actor is PuppetActor) {
@@ -434,6 +395,7 @@ public class ZoneViewController : MonoBehaviour {
 				puppetActor.SetPoseType(PuppetActor.PoseType.Attack);
 			});
 		}
+		*/
 	}
 
 	protected void Update() {

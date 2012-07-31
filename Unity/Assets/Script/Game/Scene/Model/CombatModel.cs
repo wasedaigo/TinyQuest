@@ -59,10 +59,10 @@ namespace TinyQuest.Scene.Model {
 			return CombatResult.OnGoing;
 		}
 
-		public void ProgressTurn(int slotIndex) {
+		public void ProgressTurn(MonoBehaviour monoBehaviour, int slotIndex) {
 			if (this.turnFinished) {
 				this.turnFinished = false;
-				RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(slotIndex, this.TurnProgressed);
+				RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, slotIndex, this.TurnProgressed);
 			}
 		}
 

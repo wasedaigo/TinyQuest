@@ -1,0 +1,156 @@
+{
+    "combatUnitGroups": [
+        {
+            "combatUnits": [
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 0,
+                    "hp": 120,
+                    "userUnit": {
+                        "id": 1,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 1,
+                    "hp": 100,
+                    "userUnit": {
+                        "id": 2,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 2,
+                    "hp": 60,
+                    "userUnit": {
+                        "id": 2,
+                        "unit": 3,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 3,
+                    "hp": 100,
+                    "userUnit": {
+                        "id": 3,
+                        "unit": 6,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 4,
+                    "hp": 150,
+                    "userUnit": {
+                        "id": 4,
+                        "unit": 6,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 0,
+                    "index": 5,
+                    "hp": 200,
+                    "userUnit": {
+                        "id": 5,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                }
+            ]
+        },
+        {
+            "combatUnits": [
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 0,
+                    "hp": 120,
+                    "userUnit": {
+                        "id": 7,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 1,
+                    "hp": 100,
+                    "userUnit": {
+                        "id": 8,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 2,
+                    "hp": 60,
+                    "userUnit": {
+                        "id": 9,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 3,
+                    "hp": 100,
+                    "userUnit": {
+                        "id": 10,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 4,
+                    "hp": 150,
+                    "userUnit": {
+                        "id": 11,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                },
+                {
+                    "buffs": [],
+                    "groupType": 1,
+                    "index": 5,
+                    "hp": 200,
+                    "userUnit": {
+                        "id": 12,
+                        "unit": 1,
+                        "exp": 1,
+                        "skillExp": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

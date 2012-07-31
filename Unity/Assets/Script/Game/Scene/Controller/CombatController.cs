@@ -21,7 +21,6 @@ public class CombatController : MonoBehaviour {
 	protected void CombatFinished() {
 		this.SendMessage("OnCombatFinished");
 	}
-
 	private void Start () {
 		Application.targetFrameRate = 60;
 		this.combatModel = new CombatModel();
@@ -37,17 +36,18 @@ public class CombatController : MonoBehaviour {
 		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
 		
 		this.StartBattle();
+		
 	}
 
 	public void ChangeActorStatus(CombatActionResult result){
 		this.combatControlPanelController.SendMessage("ChangeActorStatus", result);
 	}
 	
-	public void StartBattle() {
+	public void StartBattle() {		
 		LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-		req.StartBattle(this.OnLoaded);	
-	}
-
+		req.StartBattle(this, this.OnLoaded);
+    }
+	
 	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
 		this.combatUnitGroups = combatUnitGroups;
 		combatControlPanelController.SendMessage("UpdateStatus");
@@ -58,7 +58,7 @@ public class CombatController : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 	
 		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("SpawnCombatActor", combatUnitGroup.combatUnits[i]);
 				this.SendMessage("MoveActorFront", combatUnitGroup.combatUnits[i]);
@@ -72,7 +72,7 @@ public class CombatController : MonoBehaviour {
 	
 	public IEnumerator HideActors(System.Action callback) {
 		for (int i = 5; i >= 0; i--) {
-			for (int j = 0; j < Constant.GroupTypeCount; j++) {
+			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("MoveActorBack", combatUnitGroup.combatUnits[i]);
 			}
@@ -135,6 +135,6 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void InvokeSkill(int slotNo) {
-		this.combatModel.ProgressTurn(slotNo);
+		this.combatModel.ProgressTurn(this, slotNo);
 	}
 }

@@ -23,7 +23,7 @@ namespace TinyQuest.Data{
 	}
 
 	public class CombatUnit {
-		private readonly UserUnit userUnit;
+		public UserUnit userUnit;
 		public List<int> buffs;
 		public int groupType;
 		public int index;
@@ -35,6 +35,9 @@ namespace TinyQuest.Data{
 		
 		public UserUnit GetUserUnit() {
 			return userUnit;
+		}
+		
+		public CombatUnit() {
 		}
 
 		public CombatUnit(UserUnit userUnit,  int groupType, int index) {
@@ -48,7 +51,6 @@ namespace TinyQuest.Data{
 	
 	public class CombatUnitGroup {
 		public List<CombatUnit> combatUnits;
-		public int activeIndex;
 		
 		public CombatUnitGroup() {
 			this.combatUnits = new List<CombatUnit>();
@@ -125,21 +127,6 @@ namespace TinyQuest.Data{
 			this.skillExp = skillExp;
 		}
 	}
-	
-	public class EnemyGroup : IDData{
-		public int[] zoneEnemyIds;
-		
-		public List<CombatUnit> CreateEnemies() {
-			LocalUserData data = Cache.CacheFactory.Instance.GetLocalUserDataCache().Data;
-			List<CombatUnit> zoneEnemies = new List<CombatUnit>();
-			for (int i = 0; i < this.zoneEnemyIds.Length; i++) {
-				int zoneEnemyId = this.zoneEnemyIds[i];
-				zoneEnemies.Add(new CombatUnit(data.GetZoneEnemyByID(zoneEnemyId), Constant.EnemyGroupType, i));
-			}
-			
-			return zoneEnemies;
-		}
-	}
 
 	public class LocalUserData {
 		public CombatProgress combatProgress;
@@ -150,7 +137,7 @@ namespace TinyQuest.Data{
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
 		public List<UserUnit> zoneEnemies;
-		public List<EnemyGroup> enemyGroups;
+
 		/*
 		private UserUnit AddUserUnit(int unit, int exp, int skillExp, ref int maxId, ref List<UserUnit> units) {
 			maxId += 1;
@@ -196,13 +183,6 @@ namespace TinyQuest.Data{
 		
 		public UserUnit GetZoneEnemyByID(int id) {
 			return this.GetUnitByID(id, ref this.zoneEnemies);
-		}
-		
-		public EnemyGroup GetEnemyGroupById(int id) {
-			foreach (EnemyGroup enemyGroup in enemyGroups) {
-				if (enemyGroup.id == id) { return enemyGroup; }
-			}
-			return null;
 		}
 		//public readonly UnitInstance[] unitInstances;
 		

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TinyQuest {
 	public class Config {
-		public static readonly bool IsMockEnabled = true;
+		public static readonly bool IsMockEnabled = false;
 		public static readonly int LogicalWidth = 320;
 		public static readonly int LogicalHeight = 480;
 		
