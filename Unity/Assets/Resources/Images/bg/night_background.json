@@ -1,0 +1,20 @@
+{"frames": {
+
+"night_background.png":
+{
+	"frame": {"x":0,"y":0,"w":108,"h":160},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":160},
+	"sourceSize": {"w":128,"h":256}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "night_background.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":256},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8c94bc9bfa244212c487e5f5371fd5b2$"
+}
+}

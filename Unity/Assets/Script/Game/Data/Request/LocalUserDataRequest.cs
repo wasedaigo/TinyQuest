@@ -9,7 +9,8 @@ using TinyQuest.Data.Cache;
 
 namespace TinyQuest.Data.Request {
 	public class LocalUserDataRequest
-	{		
+	{	
+		private static string APIDomain = "http://1.tiny-quest.appspot.com/api/";
 		private static int turn = 0;
 		private class StartBattleResponse {
 			public readonly int assignedGroupNo;
@@ -33,7 +34,7 @@ namespace TinyQuest.Data.Request {
 		}
 		
 		public virtual void StartBattle(MonoBehaviour monoBehaviour, System.Action<CombatUnitGroup[]> callback) {
-			WWW www = new WWW("http://localhost:8080/api/start_battle"); 
+			WWW www = new WWW(APIDomain + "start_battle"); 
 	        monoBehaviour.StartCoroutine(this.HandleStartBattle(www, callback));
 		}
 		
@@ -113,7 +114,7 @@ namespace TinyQuest.Data.Request {
 			form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
 			form.AddField("playerIndex", playerIndex);
 			form.AddField("turn", turn);
-			WWW www = new WWW("http://localhost:8080/api/progress_turn", form); 
+			WWW www = new WWW(APIDomain + "progress_turn", form); 
 	        monoBehaviour.StartCoroutine(this.HandleProgressTurn(www, playerIndex, callback));
 		}
 
@@ -146,7 +147,7 @@ namespace TinyQuest.Data.Request {
 					form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
 					form.AddField("playerIndex", playerIndex);
 					form.AddField("turn", turn);
-					www = new WWW("http://localhost:8080/api/progress_turn", form); 
+					www = new WWW(APIDomain + "progress_turn", form); 
 
 					yield return www;
 					response = www.text;

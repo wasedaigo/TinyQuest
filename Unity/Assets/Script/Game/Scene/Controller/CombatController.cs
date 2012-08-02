@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 using TinyQuest.Scene.Model;
 using TinyQuest.Object;
 using TinyQuest.Core;
@@ -12,6 +13,8 @@ using TinyQuest.Scene;
 public class CombatController : MonoBehaviour {
 	
 	public GameObject UICombatPanel;
+	public GameObject ConnectingPop;
+	public UICamera UICamera;
 	
 	private CombatControlPanelController combatControlPanelController;
 	private CombatModel combatModel;
@@ -44,13 +47,17 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void StartBattle() {		
+		this.UICombatPanel.SetActiveRecursively(false);
+		
+		UICamera.enabled = false;
+		this.ShowConnectingPop(true);
 		LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 		req.StartBattle(this, this.OnLoaded);
     }
 	
 	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
+		this.ShowConnectingPop(false);
 		this.combatUnitGroups = combatUnitGroups;
-		combatControlPanelController.SendMessage("UpdateStatus");
 		this.StartCoroutine(this.ShowActors());
 	}
 	
@@ -67,7 +74,11 @@ public class CombatController : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 		
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
+		iTween.MoveFrom(this.UICombatPanel, iTween.Hash("time", 0.5f, "y", -10,  "easeType", "easeOutCubic"));
+		this.UICombatPanel.SetActiveRecursively(true);
+		UICamera.enabled = true;
+		combatControlPanelController.SendMessage("UpdateStatus");
 	}
 	
 	public IEnumerator HideActors(System.Action callback) {
@@ -89,11 +100,20 @@ public class CombatController : MonoBehaviour {
 		this.combatModel.FinishBattle += this.BattleFinished;
 	}
 	
+	private void ShowConnectingPop(bool value) {
+		if (value) {
+			this.ConnectingPop.SetActiveRecursively(true);
+		} else {
+			this.ConnectingPop.SetActiveRecursively(false);
+		}
+	}
+	
 	private void OnCombatActorSelected() {
 		ExecuteNextAction();
 	}
 	
 	private void ExecuteNextAction() {
+		
 		this.combatModel.ExecuteNextAction();
 		
 		if (!this.combatModel.IsExecutingAction()) {
@@ -103,6 +123,7 @@ public class CombatController : MonoBehaviour {
 	
 	public void TurnFinished() {
 		this.combatModel.FinishTurn();
+		UICamera.enabled = true;
 	}
 	
 	public void BattleFinished() {
@@ -121,6 +142,8 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void UnitSelected(CombatUnit caster, CombatUnit target) {
+		this.ShowConnectingPop(false);
+		
 		CombatUnit[] combatUnits = new CombatUnit[]{caster, target};
 		System.Action callback = () => {
 			SendMessage("SelectCombatActors", combatUnits);	
@@ -135,6 +158,9 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void InvokeSkill(int slotNo) {
+		this.ShowConnectingPop(true);
+		UICamera.enabled = false;
+		
 		this.combatModel.ProgressTurn(this, slotNo);
 	}
 }

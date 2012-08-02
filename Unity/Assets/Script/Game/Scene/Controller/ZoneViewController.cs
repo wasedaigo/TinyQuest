@@ -20,7 +20,7 @@ public class ZoneViewController : MonoBehaviour {
 
 	public Stage stage;
 	private Roga2dBaseInterval interval;
-
+	
 	private Roga2dAnimationPlayer animationPlayer;
 	private Roga2dIntervalPlayer intervalPlayer;
 	

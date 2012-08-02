@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EpisodePageController : MonoBehaviour {
+public class MatchSelectionController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class EpisodePageController : MonoBehaviour {
 	
 	}
 	
-	void ClickEpisode1() {
+	void StartMatch() {
 		Application.LoadLevel("Zone");
 	}
 }
