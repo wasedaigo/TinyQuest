@@ -1,0 +1,20 @@
+application: tiny-quest
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+  
+- url: /test.*
+  script: gaeunit.py
+
+- url: /static
+  static_dir: static
+
+  
+- url: /api/.* 
+  script: main.py
+
+- url: /crossdomain.xml
+  static_files: crossdomain.xml
+  upload: crossdomain.xml
