@@ -38,5 +38,13 @@ namespace TinyQuest.Core {
 			
 			return ActorHealthState.Ok;	
 		}
+		
+		public static void SetLayerRecursively(Transform obj, int aLayer)
+		{
+		    foreach(Transform T in obj.GetComponentsInChildren<Transform>())
+		    {
+		        T.gameObject.layer = aLayer;
+		    }
+		}
 	}
 }

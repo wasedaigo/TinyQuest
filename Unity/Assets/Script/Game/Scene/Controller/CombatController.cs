@@ -55,10 +55,11 @@ public class CombatController : MonoBehaviour {
 		req.StartBattle(this, this.OnLoaded);
     }
 	
-	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
+	private void OnLoaded(CombatUnitGroup[] combatUnitGroups, int[][] standByUnits) {
 		this.ShowConnectingPop(false);
 		this.combatUnitGroups = combatUnitGroups;
 		this.StartCoroutine(this.ShowActors());
+		combatControlPanelController.UpdateStandByUnits(standByUnits);
 	}
 	
 	public IEnumerator ShowActors() {
@@ -78,7 +79,7 @@ public class CombatController : MonoBehaviour {
 		iTween.MoveFrom(this.UICombatPanel, iTween.Hash("time", 0.5f, "y", -10,  "easeType", "easeOutCubic"));
 		this.UICombatPanel.SetActiveRecursively(true);
 		UICamera.enabled = true;
-		combatControlPanelController.SendMessage("UpdateStatus");
+		combatControlPanelController.UpdateStatus();
 	}
 	
 	public IEnumerator HideActors(System.Action callback) {

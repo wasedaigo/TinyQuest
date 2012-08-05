@@ -2,6 +2,7 @@ using UnityEngine;
 
 using TinyQuest.Data;
 using TinyQuest.Core;
+using TinyQuest.Object;
 
 public class SkillButtonView : MonoBehaviour {
 	public UILabel nameLabel;
@@ -10,7 +11,7 @@ public class SkillButtonView : MonoBehaviour {
 	public GameObject infoPanel;
 	public UISprite background;
 	
-	private UITexture faceIconTexture;
+	private Roga2dNode faceIconNode;
 	private bool initialized = false;
 	private UIImageButton button;
 	
@@ -19,12 +20,23 @@ public class SkillButtonView : MonoBehaviour {
 	}
 
 	public void SetFaceIcon(int puppetId) {
-		string textureId = "UI/Icon/puppet/" + puppetId.ToString();
 		
-		if (this.faceIconTexture != null) {
-			NGUITools.Destroy(this.faceIconTexture);
+		if (this.faceIconNode != null) {
+			this.faceIconNode.Destroy();
+			this.faceIconNode = null;
 		}
-
+		
+		FaceIcon actor = new FaceIcon(puppetId);
+		actor.Transform.parent = faceIcon.transform;
+		actor.Transform.parent = this.gameObject.transform;
+		actor.Transform.localPosition = new Vector3(-15, 1.5f, -0.1f);
+		actor.Transform.localEulerAngles = new Vector3(0, 0, 180);
+		actor.Transform.localScale = new Vector3(-24, 24, 0);
+		
+		Utils.SetLayerRecursively(actor.Transform, 5);
+		this.faceIconNode = actor;
+			
+		/*
 		UITexture ut = NGUITools.AddWidget<UITexture>(faceIcon);
 		Material material = Roga2dResourceManager.getSharedMaterial(textureId, Roga2dBlendType.Unlit);
 	    ut.material = material;
@@ -33,6 +45,7 @@ public class SkillButtonView : MonoBehaviour {
 		ut.transform.localScale = new Vector3(1, 1, 1);
 		ut.transform.localPosition = Vector3.zero;
 		this.faceIconTexture = ut;
+		*/
 	}
 
 	public void SetName(string name) {
