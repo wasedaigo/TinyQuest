@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 using TinyQuest.Scene.Model;
 using TinyQuest.Object;
 using TinyQuest.Core;
@@ -19,7 +18,6 @@ public class CombatController : MonoBehaviour {
 	private CombatControlPanelController combatControlPanelController;
 	private CombatModel combatModel;
 	private bool firstUnitSelected = false;
-	private CombatUnitGroup[] combatUnitGroups;
 	
 	protected void CombatFinished() {
 		this.SendMessage("OnCombatFinished");
@@ -35,12 +33,14 @@ public class CombatController : MonoBehaviour {
 		this.combatControlPanelController.SetModels(this.combatModel);
 		
 		this.combatModel.ExecuteAction += this.ActionExecuted;
-		this.combatModel.SelectUnit += this.UnitSelected;
 		this.combatModel.FinishBattle += this.BattleFinished;
-		this.combatModel.SelectStandByUnit += this.StandByUnitSelected;
-		
+		this.combatModel.SelectStandbyUnit += this.StandbyUnitSelected;
+		this.combatModel.UpdateStatus += this.StatusUpdated;
+		this.combatModel.StartTurn += this.TurnStarted;
 		// Delegate
 		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
+		Vector3 pos = this.UICombatPanel.transform.position;
+		this.UICombatPanel.transform.position = new Vector3(pos.x, -10, pos.y);
 		
 		this.StartBattle();
 		
@@ -55,24 +55,24 @@ public class CombatController : MonoBehaviour {
 		
 		UICamera.enabled = false;
 		this.ShowConnectingPop(true);
-		LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-		req.StartBattle(this, this.OnLoaded);
+		this.combatModel.StartBattle(this);
     }
 	
-	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
-		this.ShowConnectingPop(false);
-		this.combatUnitGroups = combatUnitGroups;
-		this.StartCoroutine(this.ShowActors());
-		this.combatModel.SetStandByUnitBySlot(0);
+	private void StandbyUnitSelected() {
+		CombatUnit combatUnit = this.combatModel.GetStandbyUnit();
+		this.SendMessage("UpdateStandbyUnit", combatUnit.userUnit.unit);
 	}
 	
-	private void StandByUnitSelected(int unitId) {
-		this.SendMessage("UpdateStandByUnit", unitId);
+	public void StatusUpdated() {
+		this.UICombatPanel.SetActiveRecursively(true);
+		combatControlPanelController.UpdateStatus();	
 	}
 	
-	public IEnumerator ShowActors() {
+	public IEnumerator ShowActors(System.Action callback) {
 		yield return new WaitForSeconds(0.1f);
 	
+		CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
+		
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
@@ -84,13 +84,9 @@ public class CombatController : MonoBehaviour {
 		}
 		
 		yield return new WaitForSeconds(0.5f);
-		iTween.MoveFrom(this.UICombatPanel, iTween.Hash("time", 0.5f, "y", -10,  "easeType", "easeOutCubic"));
-		this.UICombatPanel.SetActiveRecursively(true);
+		iTween.MoveTo(this.UICombatPanel, iTween.Hash("time", 0.5f, "y", -0.57f,  "easeType", "easeOutCubic"));
 		UICamera.enabled = true;
-		combatControlPanelController.UpdateStatus();
-	}
-	
-	public IEnumerator HideActors(System.Action callback) {
+		
 		for (int i = 5; i >= 0; i--) {
 			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
@@ -98,7 +94,8 @@ public class CombatController : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(0.05f);
 		}
-		yield return new WaitForSeconds(0.3f);
+		
+		yield return new WaitForSeconds(0.5f);
 		callback();
 	}
 	
@@ -110,10 +107,6 @@ public class CombatController : MonoBehaviour {
 		}
 	}
 	
-	private void OnCombatActorSelected() {
-		ExecuteNextAction();
-	}
-	
 	private void ExecuteNextAction() {
 		
 		this.combatModel.ExecuteNextAction();
@@ -122,19 +115,45 @@ public class CombatController : MonoBehaviour {
 			this.TurnFinished();
 		}
 	}
+
+	public void TurnStarted() {
+		
+		CombatUnit[] combatUnits = new CombatUnit[]{this.combatModel.GetFightingUnit(0), this.combatModel.GetFightingUnit(1)};
+		System.Action callback = () => {
+			this.SendMessage("StartTimer");
+			SendMessage("SelectCombatActors", combatUnits);	
+		};
+
+		if (this.firstUnitSelected) {
+			callback();
+		} else {
+			this.ShowConnectingPop(false);
+			this.combatModel.SetStandbyUnitByIndex(0);
+			this.StartCoroutine(this.ShowActors(callback));
+			this.firstUnitSelected = true;
+		}
+	}		
 	
+	public void InputTimerFinished() {
+		Debug.Log("InputTimerFinished");
+		UICamera.enabled = false;
+		ExecuteNextAction();
+	}
+
 	public void TurnFinished() {
 		this.combatModel.FinishTurn();
 		UICamera.enabled = true;
+		
+		this.combatModel.ProgressTurn(this);
 	}
-	
+
 	public void BattleFinished() {
 		this.SendMessage("ShowBattleWinPose");
 		this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Battle Won!",
 			() => {this.SendMessage("OnFinishBattle");}
 		));
 	}
-	
+
 	protected void OnFinishBattle() {
 		Application.LoadLevel("Zone");	
 	}
@@ -142,25 +161,9 @@ public class CombatController : MonoBehaviour {
 	public void ActionExecuted(CombatAction action) {
 		SendMessage("CombatAction", action);	
 	}
-	
-	public void UnitSelected(CombatUnit caster, CombatUnit target) {
-		this.ShowConnectingPop(false);
-		
-		CombatUnit[] combatUnits = new CombatUnit[]{caster, target};
-		System.Action callback = () => {
-			SendMessage("SelectCombatActors", combatUnits);	
-		};
-		
-		if (this.firstUnitSelected) {
-			callback();
-		} else {
-			this.StartCoroutine(this.HideActors(callback));
-			this.firstUnitSelected = true;
-		}
-	}
 
 	public void InvokeSkill(int slotNo) {
-		this.combatModel.SetStandByUnitBySlot(slotNo);
+		this.combatModel.SetStandbyUnitByIndex(slotNo);
 		
 		//this.ShowConnectingPop(true);
 		//UICamera.enabled = false;

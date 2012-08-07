@@ -11,7 +11,6 @@ namespace TinyQuest.Data.Request {
 	public class LocalUserDataRequest
 	{	
 		private static string APIDomain = "http://1.tiny-quest.appspot.com/api/";
-		private static int turn = 0;
 		private class StartBattleResponse {
 			public readonly int assignedGroupNo;
 			public readonly int gameNo;
@@ -33,12 +32,12 @@ namespace TinyQuest.Data.Request {
 			*/
 		}
 		
-		public virtual void StartBattle(MonoBehaviour monoBehaviour, System.Action<CombatUnitGroup[]> callback) {
+		public virtual void StartBattle(MonoBehaviour monoBehaviour, System.Action callback) {
 			WWW www = new WWW(APIDomain + "start_battle"); 
 	        monoBehaviour.StartCoroutine(this.HandleStartBattle(www, callback));
 		}
 		
-	    private IEnumerator<WWW> HandleStartBattle(WWW www, System.Action<CombatUnitGroup[]> callback)
+	    private IEnumerator<WWW> HandleStartBattle(WWW www, System.Action callback)
 	    {
 	        yield return www;
 
@@ -53,9 +52,8 @@ namespace TinyQuest.Data.Request {
 				
 				CacheFactory.Instance.GetLocalUserDataCache().SetData(response);
 				LocalUserDataCache cache = CacheFactory.Instance.GetLocalUserDataCache();
-				LocalUserData data = cache.Data;
-				callback(data.combatUnitGroups);
-				turn = 1;
+
+				callback();
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);
 	        }    
@@ -73,64 +71,26 @@ namespace TinyQuest.Data.Request {
 			return null;
 		}
 		
-		private struct CombatProcessBlock {
-			public CombatUnit caster;
-			public CombatUnit target;
-			
-			public CombatProcessBlock(CombatUnit caster, CombatUnit target) {
-				this.caster = caster;
-				this.target = target;
-			}
-			
-			public CombatAction Execute() {
-				if (this.caster.IsDead || this.target.IsDead) { return null; }
-				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.GetUserUnit().Unit.normalAttack);
-				
-				int effect = this.caster.GetUserUnit().Power * skill.multiplier / 100;
-				this.target.hp -= effect;
-				if (this.target.hp < 0) {
-					this.target.hp = 0;	
-				}
-				
-				CombatActionResult targetResult = new CombatActionResult();
-				targetResult.life = this.target.hp;
-				targetResult.maxLife = this.target.GetUserUnit().MaxHP;
-				targetResult.effect = effect;
-				targetResult.combatUnit = this.target;
-				
-				if (targetResult.life == 0) {
-					targetResult.swapUnit = LocalUserDataRequest.GetFirstAliveUnit(this.target.groupType);
-				}
-				
-				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-				data.combatProgress = new CombatProgress();
-				
-				return new CombatAction(this.caster, this.target, skill, null, targetResult);
+		
+		private bool _isRequesting;
+		public bool IsRequesting {
+			get {
+				return _isRequesting;	
 			}
 		}
-
-		public virtual void ProgressTurn(MonoBehaviour monoBehaviour, int playerIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback) {
+		
+		public virtual void ProgressTurn(MonoBehaviour monoBehaviour, int playerIndex, int turn) {
+			_isRequesting = true;
 			WWWForm form = new WWWForm();
 			form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
 			form.AddField("playerIndex", playerIndex);
 			form.AddField("turn", turn);
 			WWW www = new WWW(APIDomain + "progress_turn", form); 
-	        monoBehaviour.StartCoroutine(this.HandleProgressTurn(www, playerIndex, callback));
+	        monoBehaviour.StartCoroutine(this.HandleProgressTurn(www, playerIndex, turn));
 		}
 
-		private bool IsPlayerFirst(CombatUnit playerUnit, CombatUnit enemyUnit) {
-			if (playerUnit.GetUserUnit().Speed > enemyUnit.GetUserUnit().Speed) {
-				return true;
-			}
-			
-			if (playerUnit.GetUserUnit().Speed == enemyUnit.GetUserUnit().Speed) {
-				return playerUnit.groupType > enemyUnit.groupType;
-			}
-
-			return false;
-		}
 		
-	    private IEnumerator HandleProgressTurn(WWW www, int playerIndex, System.Action<CombatUnit, CombatUnit, List<CombatAction>> callback)
+	    private IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn)
 	    {
 	        yield return www;
 
@@ -154,43 +114,11 @@ namespace TinyQuest.Data.Request {
 	            	Debug.Log("WWW Ok!: " + response);
 					progressTurnResponse = JsonReader.Deserialize<ProgressTurnResponse>(response);
 				}
-
-
-				int opponentIndex = progressTurnResponse.opponentIndex;
-				
-				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-	
-				CombatUnit playerUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(0)].combatUnits[playerIndex];
-				CombatUnit enemyUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(1)].combatUnits[opponentIndex];
-				Debug.Log("playerIndex:"+playerIndex+" opponentIndex:"+opponentIndex);
-				// Add actions
-				List<CombatAction> combatActions = new List<CombatAction>();
-				
-				CombatProcessBlock[] blocks = new CombatProcessBlock[CombatGroupInfo.Instance.GetGroupCount()];
-				if (this.IsPlayerFirst(playerUnit, enemyUnit)) {
-					blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
-					blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
-				} else {
-					blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
-					blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
-				}
-	
-				for (int i = 0; i < blocks.Length; i++) {
-					CombatAction action = blocks[i].Execute();
-					if (action != null) {
-						combatActions.Add(action);
-					}
-				}
-				
-				data.combatProgress.turnCount += 1;
-				CacheFactory.Instance.GetLocalUserDataCache().Commit();
-				
-				turn++;
-				callback(playerUnit, enemyUnit, combatActions);
-
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);
-	        }    
+	        }   
+			
+			_isRequesting = false;
 	    }
 	
 		

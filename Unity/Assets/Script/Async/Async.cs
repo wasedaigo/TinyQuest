@@ -10,7 +10,9 @@ namespace Async {
 		public void Parallel(List<System.Action<System.Action>> actions, System.Action callback) {
 			int loadCount = actions.Count;
 			if (loadCount == 0) {
-				callback();
+				if (callback != null) {
+					callback();
+				}
 			} else {
 				int loadedCount = 0;
 				for (int i = 0; i < actions.Count; i++) {
@@ -24,7 +26,9 @@ namespace Async {
 		private void parallelCallback(ref int loadedCount, int loadCount, System.Action callback) {
 			loadedCount++;
 			if (loadedCount == loadCount) {
-				callback();
+				if (callback != null) {
+					callback();
+				}
 			}
 		}
 		

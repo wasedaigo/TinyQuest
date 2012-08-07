@@ -320,11 +320,7 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		}
 
-		Async.Async.Instance.Parallel(list,
-			() => {
-				this.SendMessage("OnCombatActorSelected");
-			}
-		);
+		Async.Async.Instance.Parallel(list, null);
 	}
 
 	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {

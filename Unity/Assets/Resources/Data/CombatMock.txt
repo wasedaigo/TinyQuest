@@ -1,4 +1,5 @@
 {
+    "fightingUnits" : [1, 2],
     "combatUnitGroups": [
         {
             "combatUnits": [
@@ -18,7 +19,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 1,
-                    "hp": 100,
+                    "hp": 220,
                     "userUnit": {
                         "id": 2,
                         "unit": 1,
@@ -94,7 +95,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 1,
-                    "hp": 100,
+                    "hp": 300,
                     "userUnit": {
                         "id": 8,
                         "unit": 1,

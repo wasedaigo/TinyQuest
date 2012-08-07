@@ -6,7 +6,44 @@ using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
 
 namespace TinyQuest.Scene.Model {
+
 	public class CombatModel {
+		private struct CombatProcessBlock {
+			public CombatUnit caster;
+			public CombatUnit target;
+			
+			public CombatProcessBlock(CombatUnit caster, CombatUnit target) {
+				this.caster = caster;
+				this.target = target;
+			}
+			
+			public CombatAction Execute() {
+				if (this.caster.IsDead || this.target.IsDead) { return null; }
+				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.GetUserUnit().Unit.normalAttack);
+				
+				int effect = this.caster.GetUserUnit().Power * skill.multiplier / 100;
+				this.target.hp -= effect;
+				if (this.target.hp < 0) {
+					this.target.hp = 0;	
+				}
+				
+				CombatActionResult targetResult = new CombatActionResult();
+				targetResult.life = this.target.hp;
+				targetResult.maxLife = this.target.GetUserUnit().MaxHP;
+				targetResult.effect = effect;
+				targetResult.combatUnit = this.target;
+				
+				if (targetResult.life == 0) {
+					targetResult.swapUnit = LocalUserDataRequest.GetFirstAliveUnit(this.target.groupType);
+				}
+				
+				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+				data.combatProgress = new CombatProgress();
+				
+				return new CombatAction(this.caster, this.target, skill, null, targetResult);
+			}
+		}
+
 		public enum CombatResult{
 			OnGoing,
 			Win,
@@ -16,12 +53,12 @@ namespace TinyQuest.Scene.Model {
 		public const int GroupCount = 2;
 		public System.Action TurnProgress;
 		public System.Action<UserUnit, int> UpdateHP;
-		public System.Action StartBattle;
 		public System.Action FinishBattle;
-		public System.Action<int> SelectStandByUnit;
+		public System.Action SelectStandbyUnit;
+		public System.Action UpdateStatus;
+		public System.Action StartTurn;
 		
 		public System.Action<CombatAction> ExecuteAction;
-		public System.Action<CombatUnit, CombatUnit> SelectUnit;
 
 		private CombatUnitGroup[] combatUnitGroups;
 		private UserUnit targetUnit;
@@ -30,26 +67,35 @@ namespace TinyQuest.Scene.Model {
 		private List<CombatAction> combatActionList;
 		private int actionIndex;
 		private bool turnFinished;
-		private int standByUnit;
+		private int standbyUnitIndex;
+		private int turn;
 		
 		public CombatModel(){
 			this.turnFinished = true;
+			this.turn = 1;
 		}
 		
-		public int GetStandByUnit() {
-			return standByUnit;
-		}
-		
-		public void SetStandByUnitBySlot(int slotNo) {
-			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
-			CombatUnit unit = combatUnitGroup.combatUnits[slotNo];
+		public CombatUnit GetFightingUnit(int groupNo) {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			
-			this.SetStandByUnit(unit.userUnit.unit);
+			int fightingUnitIndex = data.fightingUnits[groupNo];
+			CombatUnitGroup combatUnitGroup = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(groupNo)];
+			CombatUnit unit = combatUnitGroup.combatUnits[fightingUnitIndex];
+			
+			return unit;
 		}
 		
-		private void SetStandByUnit(int unitId) {
-			this.standByUnit = unitId;
-			this.SelectStandByUnit(unitId);
+		public CombatUnit GetStandbyUnit() {
+			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
+			return combatUnitGroup.combatUnits[this.standbyUnitIndex];
+		}
+		
+		public void SetStandbyUnitByIndex(int index) {
+			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
+			CombatUnit unit = combatUnitGroup.combatUnits[index];
+			
+			this.standbyUnitIndex = index;
+			this.SelectStandbyUnit();
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {
@@ -77,18 +123,82 @@ namespace TinyQuest.Scene.Model {
 			}
 			return CombatResult.OnGoing;
 		}
+		
+		private bool IsPlayerFirst(CombatUnit playerUnit, CombatUnit enemyUnit) {
+			if (playerUnit.GetUserUnit().Speed > enemyUnit.GetUserUnit().Speed) {
+				return true;
+			}
+			
+			if (playerUnit.GetUserUnit().Speed == enemyUnit.GetUserUnit().Speed) {
+				return playerUnit.groupType > enemyUnit.groupType;
+			}
 
-		public void ProgressTurn(MonoBehaviour monoBehaviour, int slotIndex) {
+			return false;
+		}
+		
+		public virtual void ProcessActions(int playerIndex) {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			
+			CombatUnit playerUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(0)].combatUnits[data.fightingUnits[0]];
+			CombatUnit enemyUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(1)].combatUnits[data.fightingUnits[1]];
+
+			// Add actions
+			List<CombatAction> combatActions = new List<CombatAction>();
+			
+			CombatProcessBlock[] blocks = new CombatProcessBlock[CombatGroupInfo.Instance.GetGroupCount()];
+			if (this.IsPlayerFirst(playerUnit, enemyUnit)) {
+				blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
+				blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
+			} else {
+				blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
+				blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
+			}
+
+			for (int i = 0; i < blocks.Length; i++) {
+				CombatAction action = blocks[i].Execute();
+				if (action != null) {
+					combatActions.Add(action);
+				}
+			}
+			
+			data.combatProgress.turnCount += 1;
+			CacheFactory.Instance.GetLocalUserDataCache().Commit();
+			
+			turn++;
+			TurnProgressed(playerUnit, enemyUnit, combatActions);			
+		}
+		
+		public void StartBattle(MonoBehaviour monoBehavior) {
+			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
+			req.StartBattle(monoBehavior,
+				() => {
+					this.UpdateStatus();
+					this.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+					this.ProcessActions(this.standbyUnitIndex);
+				}
+			);
+		}
+		
+		public void ProgressTurn(MonoBehaviour monoBehaviour) {
 			if (this.turnFinished) {
 				this.turnFinished = false;
-				RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, slotIndex, this.TurnProgressed);
+				monoBehaviour.StartCoroutine(this.ProcessProgressTurn(monoBehaviour));
 			}
+		}
+		
+		private IEnumerator ProcessProgressTurn(MonoBehaviour monoBehaviour) {
+			while(!RequestFactory.Instance.GetLocalUserRequest().IsRequesting) {
+				yield return new WaitForSeconds(0.1f);
+			}
+
+			this.ProcessActions(this.standbyUnitIndex);
+			RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, this.standbyUnitIndex, this.turn);
 		}
 
 		private void TurnProgressed(CombatUnit caster, CombatUnit target, List<CombatAction> combatActionList) {
 			this.actionIndex = 0;
 			this.combatActionList = combatActionList;
-			this.SelectUnit(caster, target);
+			this.StartTurn();
 		}
 		
 		public void ExecuteNextAction() {
