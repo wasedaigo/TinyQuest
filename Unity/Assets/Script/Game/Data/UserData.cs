@@ -131,7 +131,6 @@ namespace TinyQuest.Data{
 	public class LocalUserData {
 		public CombatProgress combatProgress;
 		public CombatUnitGroup[] combatUnitGroups;
-		public int[][] standByUnits;
 		public UserZone zone;
 		public readonly UserStatus status;
 		public int maxOwnUnitId;

@@ -18,6 +18,8 @@ namespace TinyQuest.Scene.Model {
 		public System.Action<UserUnit, int> UpdateHP;
 		public System.Action StartBattle;
 		public System.Action FinishBattle;
+		public System.Action<int> SelectStandByUnit;
+		
 		public System.Action<CombatAction> ExecuteAction;
 		public System.Action<CombatUnit, CombatUnit> SelectUnit;
 
@@ -28,9 +30,26 @@ namespace TinyQuest.Scene.Model {
 		private List<CombatAction> combatActionList;
 		private int actionIndex;
 		private bool turnFinished;
+		private int standByUnit;
 		
 		public CombatModel(){
 			this.turnFinished = true;
+		}
+		
+		public int GetStandByUnit() {
+			return standByUnit;
+		}
+		
+		public void SetStandByUnitBySlot(int slotNo) {
+			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
+			CombatUnit unit = combatUnitGroup.combatUnits[slotNo];
+			
+			this.SetStandByUnit(unit.userUnit.unit);
+		}
+		
+		private void SetStandByUnit(int unitId) {
+			this.standByUnit = unitId;
+			this.SelectStandByUnit(unitId);
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {

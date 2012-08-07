@@ -30,10 +30,14 @@ public class CombatController : MonoBehaviour {
 
 		// Get reference
 		this.combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
-		this.combatControlPanelController.SetModels(this.combatModel);
+
 		// Set Models
 		this.combatControlPanelController.SetModels(this.combatModel);
-		this.SetModels(this.combatModel);
+		
+		this.combatModel.ExecuteAction += this.ActionExecuted;
+		this.combatModel.SelectUnit += this.UnitSelected;
+		this.combatModel.FinishBattle += this.BattleFinished;
+		this.combatModel.SelectStandByUnit += this.StandByUnitSelected;
 		
 		// Delegate
 		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
@@ -55,11 +59,15 @@ public class CombatController : MonoBehaviour {
 		req.StartBattle(this, this.OnLoaded);
     }
 	
-	private void OnLoaded(CombatUnitGroup[] combatUnitGroups, int[][] standByUnits) {
+	private void OnLoaded(CombatUnitGroup[] combatUnitGroups) {
 		this.ShowConnectingPop(false);
 		this.combatUnitGroups = combatUnitGroups;
 		this.StartCoroutine(this.ShowActors());
-		combatControlPanelController.UpdateStandByUnits(standByUnits);
+		this.combatModel.SetStandByUnitBySlot(0);
+	}
+	
+	private void StandByUnitSelected(int unitId) {
+		this.SendMessage("UpdateStandByUnit", unitId);
 	}
 	
 	public IEnumerator ShowActors() {
@@ -92,13 +100,6 @@ public class CombatController : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(0.3f);
 		callback();
-	}
-	
-	public void SetModels(CombatModel combatModel) {
-		this.combatModel = combatModel;
-		this.combatModel.ExecuteAction += this.ActionExecuted;
-		this.combatModel.SelectUnit += this.UnitSelected;
-		this.combatModel.FinishBattle += this.BattleFinished;
 	}
 	
 	private void ShowConnectingPop(bool value) {
@@ -159,9 +160,11 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void InvokeSkill(int slotNo) {
-		this.ShowConnectingPop(true);
-		UICamera.enabled = false;
+		this.combatModel.SetStandByUnitBySlot(slotNo);
 		
-		this.combatModel.ProgressTurn(this, slotNo);
+		//this.ShowConnectingPop(true);
+		//UICamera.enabled = false;
+		
+		//this.combatModel.ProgressTurn(this, slotNo);
 	}
 }

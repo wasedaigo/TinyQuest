@@ -33,12 +33,12 @@ namespace TinyQuest.Data.Request {
 			*/
 		}
 		
-		public virtual void StartBattle(MonoBehaviour monoBehaviour, System.Action<CombatUnitGroup[], int[][]> callback) {
+		public virtual void StartBattle(MonoBehaviour monoBehaviour, System.Action<CombatUnitGroup[]> callback) {
 			WWW www = new WWW(APIDomain + "start_battle"); 
 	        monoBehaviour.StartCoroutine(this.HandleStartBattle(www, callback));
 		}
 		
-	    private IEnumerator<WWW> HandleStartBattle(WWW www, System.Action<CombatUnitGroup[], int[][]> callback)
+	    private IEnumerator<WWW> HandleStartBattle(WWW www, System.Action<CombatUnitGroup[]> callback)
 	    {
 	        yield return www;
 
@@ -54,7 +54,7 @@ namespace TinyQuest.Data.Request {
 				CacheFactory.Instance.GetLocalUserDataCache().SetData(response);
 				LocalUserDataCache cache = CacheFactory.Instance.GetLocalUserDataCache();
 				LocalUserData data = cache.Data;
-				callback(data.combatUnitGroups, new int[][]{new int[]{1,2}, new int[]{2,3}} );
+				callback(data.combatUnitGroups);
 				turn = 1;
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);
