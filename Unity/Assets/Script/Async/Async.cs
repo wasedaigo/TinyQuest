@@ -34,7 +34,9 @@ namespace Async {
 		
 		public void Waterfall(List<System.Action<System.Action>> actions, System.Action callback) {
 			if (actions.Count == 0) {
-				callback();
+				if (callback != null) {
+					callback();
+				}
 			} else {
 				actions[0](
 					()=>{ this.waterfallCallback(0, actions, callback); }
@@ -45,7 +47,9 @@ namespace Async {
 		private void waterfallCallback(int loadedCount, List<System.Action<System.Action>> actions, System.Action callback) {
 			loadedCount++;
 			if (loadedCount == actions.Count) {
-				callback();
+				if (callback != null) {
+					callback();
+				}
 			} else {
 				actions[loadedCount](
 					()=>{ this.waterfallCallback(loadedCount, actions, callback); }

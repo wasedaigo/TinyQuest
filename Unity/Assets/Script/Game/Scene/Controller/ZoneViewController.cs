@@ -288,39 +288,37 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 
-	protected void SelectCombatActors(CombatUnit[] combatUnits) {
+	protected void SelectCombatActor(CombatUnit combatUnit) {
 		// Play move-in animation for each group
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
-		for (int i = 0; i < CombatGroupInfo.Instance.GetGroupCount(); i++) {
-			if (combatUnits[i] == null) { continue; }
 
-			string animation = "Combat/Common/Jump";
-			if (combatUnits[i].GetUserUnit().Unit.lookType == UnitLookType.Monster) {
-				animation = "Combat/Monster/MonsterMove001";
-			}
-			
-			CombatUnit combatUnit = combatUnits[CombatGroupInfo.Instance.GetPlayerGroupType(i)];
-			Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
-			if (actor != this.activeCombatActors[combatUnit.groupType]) {
-				
-				// Move-out old active unit on the screen
-				if (this.activeCombatActors[combatUnit.groupType] != null) {
-					list.Add(
-						(next) => { this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.Out, this.activeCombatActors[combatUnit.groupType], next); }
-					);
-				}
-				
-				// Move-in new unit into the screen
-				list.Add(
-					(next) => {
-						this.activeCombatActors[combatUnit.groupType] = actor;
-						this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.In, actor, next);
-					}
-				);
-			}
+		if (combatUnit == null) { return; }
+
+		string animation = "Combat/Common/Jump";
+		if (combatUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
+			animation = "Combat/Monster/MonsterMove001";
 		}
 
-		Async.Async.Instance.Parallel(list, null);
+		Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
+		if (actor != this.activeCombatActors[combatUnit.groupType]) {
+			
+			// Move-out old active unit on the screen
+			if (this.activeCombatActors[combatUnit.groupType] != null) {
+				list.Add(
+					(next) => { this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.Out, this.activeCombatActors[combatUnit.groupType], next); }
+				);
+			}
+			
+			// Move-in new unit into the screen
+			list.Add(
+				(next) => {
+					this.activeCombatActors[combatUnit.groupType] = actor;
+					this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.In, actor, next);
+				}
+			);
+		}
+
+		Async.Async.Instance.Waterfall(list, null);
 	}
 
 	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {

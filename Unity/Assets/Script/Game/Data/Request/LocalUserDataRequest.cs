@@ -15,7 +15,7 @@ namespace TinyQuest.Data.Request {
 			public readonly int assignedGroupNo;
 			public readonly int gameNo;
 			public readonly CombatUnitGroup[] combatUnitGroups;
-			
+			public readonly int[] fightingUnitIndexes;
 		}
 		
 		private class ProgressTurnResponse {
@@ -37,7 +37,7 @@ namespace TinyQuest.Data.Request {
 	        monoBehaviour.StartCoroutine(this.HandleStartBattle(www, callback));
 		}
 		
-	    private IEnumerator<WWW> HandleStartBattle(WWW www, System.Action callback)
+	    protected virtual IEnumerator HandleStartBattle(WWW www, System.Action callback)
 	    {
 	        yield return www;
 
@@ -52,14 +52,18 @@ namespace TinyQuest.Data.Request {
 				
 				CacheFactory.Instance.GetLocalUserDataCache().SetData(response);
 				LocalUserDataCache cache = CacheFactory.Instance.GetLocalUserDataCache();
+				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+				data.fightingUnitIndexes = startBattleResponse.fightingUnitIndexes;
 
 				callback();
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);
-	        }    
+	        } 
+			
+			_isRequesting = false;
 	    }
 	
-		public static CombatUnit GetFirstAliveUnit(int groupType) {
+		public CombatUnit GetFirstAliveUnit(int groupType) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			List<CombatUnit> combatUnitList = data.combatUnitGroups[groupType].combatUnits;
 			foreach (CombatUnit combatUnit in combatUnitList) {
@@ -72,26 +76,28 @@ namespace TinyQuest.Data.Request {
 		}
 		
 		
-		private bool _isRequesting;
+		protected bool _isRequesting;
 		public bool IsRequesting {
 			get {
 				return _isRequesting;	
 			}
 		}
-		
+
 		public virtual void ProgressTurn(MonoBehaviour monoBehaviour, int playerIndex, int turn) {
-			_isRequesting = true;
+			Debug.Log("ProgressTurn");
 			WWWForm form = new WWWForm();
 			form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
 			form.AddField("playerIndex", playerIndex);
 			form.AddField("turn", turn);
 			WWW www = new WWW(APIDomain + "progress_turn", form); 
+			
 	        monoBehaviour.StartCoroutine(this.HandleProgressTurn(www, playerIndex, turn));
 		}
 
 		
-	    private IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn)
+	    protected virtual IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn)
 	    {
+			Debug.Log("HandleProgressTurnA");
 	        yield return www;
 
 	        // check for errors
@@ -100,7 +106,7 @@ namespace TinyQuest.Data.Request {
 				string response = www.text;
 	            Debug.Log("WWW Ok!: " + response);
 				ProgressTurnResponse progressTurnResponse = JsonReader.Deserialize<ProgressTurnResponse>(response);
-				
+
 				while (!progressTurnResponse.valid) {
 					yield return new WaitForSeconds(3.0f); 
 					WWWForm form = new WWWForm();
@@ -113,6 +119,10 @@ namespace TinyQuest.Data.Request {
 					response = www.text;
 	            	Debug.Log("WWW Ok!: " + response);
 					progressTurnResponse = JsonReader.Deserialize<ProgressTurnResponse>(response);
+					
+					LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
+					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = progressTurnResponse.opponentIndex;
 				}
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);

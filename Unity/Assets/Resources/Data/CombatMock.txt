@@ -1,5 +1,5 @@
 {
-    "fightingUnits" : [1, 2],
+    "fightingUnitIndexes" : [1, 2],
     "combatUnitGroups": [
         {
             "combatUnits": [
@@ -21,8 +21,8 @@
                     "index": 1,
                     "hp": 220,
                     "userUnit": {
-                        "id": 2,
-                        "unit": 1,
+                        "id": 1,
+                        "unit": 2,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -46,7 +46,7 @@
                     "hp": 100,
                     "userUnit": {
                         "id": 3,
-                        "unit": 6,
+                        "unit": 4,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -58,7 +58,7 @@
                     "hp": 150,
                     "userUnit": {
                         "id": 4,
-                        "unit": 6,
+                        "unit": 5,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -70,7 +70,7 @@
                     "hp": 200,
                     "userUnit": {
                         "id": 5,
-                        "unit": 1,
+                        "unit": 6,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -86,7 +86,7 @@
                     "hp": 120,
                     "userUnit": {
                         "id": 7,
-                        "unit": 1,
+                        "unit": 6,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -98,7 +98,7 @@
                     "hp": 300,
                     "userUnit": {
                         "id": 8,
-                        "unit": 1,
+                        "unit": 5,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -110,7 +110,7 @@
                     "hp": 60,
                     "userUnit": {
                         "id": 9,
-                        "unit": 1,
+                        "unit": 4,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -122,7 +122,7 @@
                     "hp": 100,
                     "userUnit": {
                         "id": 10,
-                        "unit": 1,
+                        "unit": 3,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -134,7 +134,7 @@
                     "hp": 150,
                     "userUnit": {
                         "id": 11,
-                        "unit": 1,
+                        "unit": 2,
                         "exp": 1,
                         "skillExp": 1
                     }

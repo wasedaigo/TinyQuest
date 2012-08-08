@@ -36,7 +36,7 @@ public class CombatController : MonoBehaviour {
 		this.combatModel.FinishBattle += this.BattleFinished;
 		this.combatModel.SelectStandbyUnit += this.StandbyUnitSelected;
 		this.combatModel.UpdateStatus += this.StatusUpdated;
-		this.combatModel.StartTurn += this.TurnStarted;
+		this.combatModel.StartTurn 	+= this.TurnStarted;
 		// Delegate
 		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
 		Vector3 pos = this.UICombatPanel.transform.position;
@@ -48,6 +48,12 @@ public class CombatController : MonoBehaviour {
 
 	public void ChangeActorStatus(CombatActionResult result){
 		this.combatControlPanelController.SendMessage("ChangeActorStatus", result);
+		
+		// Check if standby unit is killed
+		if (result.combatUnit.IsDead) {
+			CombatUnit nextUnit = this.combatModel.GetStandbyUnit();
+			this.SendMessage("UpdateStandbyUnit", nextUnit);
+		}
 	}
 	
 	public void StartBattle() {		
@@ -60,7 +66,7 @@ public class CombatController : MonoBehaviour {
 	
 	private void StandbyUnitSelected() {
 		CombatUnit combatUnit = this.combatModel.GetStandbyUnit();
-		this.SendMessage("UpdateStandbyUnit", combatUnit.userUnit.unit);
+		this.SendMessage("UpdateStandbyUnit", combatUnit);
 	}
 	
 	public void StatusUpdated() {
@@ -117,34 +123,34 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void TurnStarted() {
-		
-		CombatUnit[] combatUnits = new CombatUnit[]{this.combatModel.GetFightingUnit(0), this.combatModel.GetFightingUnit(1)};
 		System.Action callback = () => {
 			this.SendMessage("StartTimer");
-			SendMessage("SelectCombatActors", combatUnits);	
+			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(0));	
+			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(1));
 		};
 
 		if (this.firstUnitSelected) {
 			callback();
 		} else {
 			this.ShowConnectingPop(false);
-			this.combatModel.SetStandbyUnitByIndex(0);
 			this.StartCoroutine(this.ShowActors(callback));
 			this.firstUnitSelected = true;
 		}
 	}		
 	
 	public void InputTimerFinished() {
-		Debug.Log("InputTimerFinished");
 		UICamera.enabled = false;
 		ExecuteNextAction();
+		
+		// Start asking the server for next turn info
+		this.combatModel.LoadNextTurn(this);
 	}
 
 	public void TurnFinished() {
 		this.combatModel.FinishTurn();
 		UICamera.enabled = true;
 		
-		this.combatModel.ProgressTurn(this);
+		this.combatModel.NextTurn(this);
 	}
 
 	public void BattleFinished() {
