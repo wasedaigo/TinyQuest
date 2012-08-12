@@ -62,7 +62,7 @@ public class Stage : MonoBehaviour {
 		this.root.Transform.parent = this.transform;
 		Roga2dUtils.applyState(this.transform, state);
 		
-		Roga2dSprite sprite = new Roga2dSprite(this.bgFilePath, new Vector2(128, 160), new Vector2(0, 0), new Rect(0, 0, 108, 106));
+		Roga2dSprite sprite = new Roga2dSprite(this.bgFilePath, new Vector2(107, 160), new Vector2(0, 0), new Rect(0, 0, 107, 160));
 		parallaxLayers[3] = sprite;
 		this.root.AddChild(sprite);
 		

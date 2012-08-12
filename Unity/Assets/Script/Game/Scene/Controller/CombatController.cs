@@ -11,11 +11,17 @@ using TinyQuest.Scene;
 
 public class CombatController : MonoBehaviour {
 	
-	public GameObject UICombatPanel;
+	public GameObject UIAllyCombatPanel;
+	public GameObject UIEnemyCombatPanel;
+	
 	public GameObject ConnectingPop;
 	public UICamera UICamera;
 	
-	private CombatControlPanelController combatControlPanelController;
+	private CombatControlPanelController allyCombatControlPanelController;
+	private CombatControlPanelController enemyCombatControlPanelController;
+	private Vector3 allyCombatControlPanelOrigin;
+	private Vector3 enemyCombatControlPanelOrigin;
+	
 	private CombatModel combatModel;
 	private bool firstUnitSelected = false;
 	
@@ -27,28 +33,36 @@ public class CombatController : MonoBehaviour {
 		this.combatModel = new CombatModel();
 
 		// Get reference
-		this.combatControlPanelController = this.UICombatPanel.GetComponent<CombatControlPanelController>();
-
+		this.allyCombatControlPanelController = this.UIAllyCombatPanel.GetComponent<CombatControlPanelController>();
+		this.enemyCombatControlPanelController = this.UIEnemyCombatPanel.GetComponent<CombatControlPanelController>();
+		
 		// Set Models
-		this.combatControlPanelController.SetModels(this.combatModel);
+		this.allyCombatControlPanelController.SetModels(this.combatModel);
+		this.enemyCombatControlPanelController.SetModels(this.combatModel);
 		
 		this.combatModel.ExecuteAction += this.ActionExecuted;
 		this.combatModel.FinishBattle += this.BattleFinished;
 		this.combatModel.SelectStandbyUnit += this.StandbyUnitSelected;
 		this.combatModel.UpdateStatus += this.StatusUpdated;
 		this.combatModel.StartTurn 	+= this.TurnStarted;
+
 		// Delegate
-		this.combatControlPanelController.InvokeSkill += this.InvokeSkill;
-		Vector3 pos = this.UICombatPanel.transform.position;
-		this.UICombatPanel.transform.position = new Vector3(pos.x, -10, pos.y);
+		this.allyCombatControlPanelController.CardClicked += this.CardClicked;
+		this.allyCombatControlPanelOrigin = this.UIAllyCombatPanel.transform.position;
+		this.UIAllyCombatPanel.transform.position = new Vector3(this.allyCombatControlPanelOrigin.x, -10, this.allyCombatControlPanelOrigin.z);
+		this.enemyCombatControlPanelOrigin = this.UIEnemyCombatPanel.transform.position;
+		this.UIEnemyCombatPanel.transform.position = new Vector3(this.enemyCombatControlPanelOrigin.x, 10, this.enemyCombatControlPanelOrigin.z);
 		
 		this.StartBattle();
 		
 	}
 
 	public void ChangeActorStatus(CombatActionResult result){
-		this.combatControlPanelController.SendMessage("ChangeActorStatus", result);
-		
+		if (result.combatUnit.groupType == CombatGroupInfo.Instance.GetPlayerGroupType(0)) {
+			this.allyCombatControlPanelController.SendMessage("ChangeActorStatus", result);
+		} else {
+			this.enemyCombatControlPanelController.SendMessage("ChangeActorStatus", result);
+		}
 		// Check if standby unit is killed
 		if (result.combatUnit.IsDead) {
 			CombatUnit nextUnit = this.combatModel.GetStandbyUnit();
@@ -57,7 +71,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void StartBattle() {		
-		this.UICombatPanel.SetActiveRecursively(false);
+		this.UIAllyCombatPanel.SetActiveRecursively(false);
 		
 		UICamera.enabled = false;
 		this.ShowConnectingPop(true);
@@ -70,8 +84,10 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void StatusUpdated() {
-		this.UICombatPanel.SetActiveRecursively(true);
-		combatControlPanelController.UpdateStatus();	
+		this.UIAllyCombatPanel.SetActiveRecursively(true);
+		
+		this.allyCombatControlPanelController.UpdateStatus(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+		this.enemyCombatControlPanelController.UpdateStatus(CombatGroupInfo.Instance.GetPlayerGroupType(1));
 	}
 	
 	public IEnumerator ShowActors(System.Action callback) {
@@ -79,7 +95,7 @@ public class CombatController : MonoBehaviour {
 	
 		CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
 		
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < Constant.UnitCount; i++) {
 			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("SpawnCombatActor", combatUnitGroup.combatUnits[i]);
@@ -90,10 +106,12 @@ public class CombatController : MonoBehaviour {
 		}
 		
 		yield return new WaitForSeconds(0.5f);
-		iTween.MoveTo(this.UICombatPanel, iTween.Hash("time", 0.5f, "y", -0.57f,  "easeType", "easeOutCubic"));
+		iTween.MoveTo(this.UIAllyCombatPanel, iTween.Hash("time", 0.5f, "y", this.allyCombatControlPanelOrigin.y,  "easeType", "easeOutCubic"));
+		iTween.MoveTo(this.UIEnemyCombatPanel, iTween.Hash("time", 0.5f, "y", this.enemyCombatControlPanelOrigin.y,  "easeType", "easeOutCubic"));
+		
 		UICamera.enabled = true;
 		
-		for (int i = 5; i >= 0; i--) {
+		for (int i = Constant.UnitCount - 1; i >= 0; i--) {
 			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("MoveActorBack", combatUnitGroup.combatUnits[i]);
@@ -168,7 +186,7 @@ public class CombatController : MonoBehaviour {
 		SendMessage("CombatAction", action);	
 	}
 
-	public void InvokeSkill(int slotNo) {
+	public void CardClicked(int slotNo) {
 		this.combatModel.SetStandbyUnitByIndex(slotNo);
 		
 		//this.ShowConnectingPop(true);

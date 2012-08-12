@@ -58,7 +58,7 @@
 },
 "hp_bar_fill.png":
 {
-	"frame": {"x":96,"y":104,"w":24,"h":1},
+	"frame": {"x":0,"y":227,"w":24,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":1},
@@ -74,27 +74,43 @@
 },
 "papet_btn.png":
 {
-	"frame": {"x":0,"y":185,"w":51,"h":19},
+	"frame": {"x":0,"y":186,"w":31,"h":40},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":19},
-	"sourceSize": {"w":51,"h":19}
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":40},
+	"sourceSize": {"w":31,"h":40}
+},
+"papet_btn_attackframe.png":
+{
+	"frame": {"x":96,"y":145,"w":31,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":40},
+	"sourceSize": {"w":31,"h":40}
 },
 "papet_btn_dead.png":
 {
-	"frame": {"x":0,"y":205,"w":51,"h":19},
+	"frame": {"x":64,"y":185,"w":31,"h":40},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":19},
-	"sourceSize": {"w":51,"h":19}
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":40},
+	"sourceSize": {"w":31,"h":40}
+},
+"papet_btn_next_frame.png":
+{
+	"frame": {"x":96,"y":104,"w":31,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":40},
+	"sourceSize": {"w":31,"h":40}
 },
 "papet_btn_on.png":
 {
-	"frame": {"x":52,"y":185,"w":51,"h":19},
+	"frame": {"x":32,"y":186,"w":31,"h":40},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":19},
-	"sourceSize": {"w":51,"h":19}
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":40},
+	"sourceSize": {"w":31,"h":40}
 },
 "roundedbox.png":
 {
@@ -143,6 +159,6 @@
 	"format": "RGBA8888",
 	"size": {"w":128,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ab3ec053f5df6f4464b6e8031c0f9ae6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2cf4fa886426b1ef86de1ca977c3d2a1$"
 }
 }

@@ -16,8 +16,6 @@ public class ZoneViewController : MonoBehaviour {
 		Out
 	}
 	private const int TargetPositionCount = 2;
-	private const int UnitCount = 6;
-
 	public Stage stage;
 	private Roga2dBaseInterval interval;
 	
@@ -47,7 +45,7 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 	
-	private Roga2dNode[,] _startTargetNodes = new Roga2dNode[CombatGroupInfo.Instance.GetGroupCount(), UnitCount];
+	private Roga2dNode[,] _startTargetNodes = new Roga2dNode[CombatGroupInfo.Instance.GetGroupCount(), Constant.UnitCount];
 	private Roga2dNode GetStartTargetNode(int groupNo, int index) {
 		if (CombatGroupInfo.Instance.GetPlayerGroupType(0) == 0) {
 			return this._startTargetNodes[groupNo, index];
@@ -59,7 +57,7 @@ public class ZoneViewController : MonoBehaviour {
 	private Actor[] activeCombatActors = new Actor[CombatGroupInfo.Instance.GetGroupCount()];
 	private Actor poppedActor;
 	
-	private Actor[,] actors = new Actor[CombatGroupInfo.Instance.GetGroupCount(), UnitCount];
+	private Actor[,] actors = new Actor[CombatGroupInfo.Instance.GetGroupCount(), Constant.UnitCount];
 	
 	private void Awake() {
 		Roga2dNode layer = this.stage.GetCharacterLayer();
@@ -75,7 +73,7 @@ public class ZoneViewController : MonoBehaviour {
 		}
 		
 		for (int i = 0; i < CombatGroupInfo.Instance.GetGroupCount(); i++) {
-			for (int j = 0; j < UnitCount; j++) {
+			for (int j = 0; j < Constant.UnitCount; j++) {
 				this._startTargetNodes[i, j] = new Roga2dNode("StartTarget" + i + ", " + j);
 				this._startTargetNodes[i, j].LocalPixelPosition = GetStartTargetPositions(i, j);
 				layer.AddChild(this._startTargetNodes[i, j]);

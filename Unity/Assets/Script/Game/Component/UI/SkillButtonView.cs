@@ -71,14 +71,12 @@ public class SkillButtonView : MonoBehaviour {
 		
 		
 		if (life <= 0) {
-			this.button.normalSprite = "papet_btn_dead";
 			this.background.spriteName = "papet_btn_dead";
 			this.infoPanel.SetActiveRecursively(false);
 			collider.enabled = false;
 		} else {
 			
 			if (this.button != null) {
-				this.button.normalSprite = "papet_btn";
 				this.background.spriteName = "papet_btn";
 			}
 			this.infoPanel.SetActiveRecursively(true);

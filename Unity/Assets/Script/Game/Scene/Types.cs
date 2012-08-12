@@ -1,5 +1,9 @@
 using TinyQuest.Data;
 
+public class Constant {
+	public static int UnitCount = 5;
+}
+
 public class CombatGroupInfo {
 	public static readonly CombatGroupInfo Instance = new CombatGroupInfo();
 	

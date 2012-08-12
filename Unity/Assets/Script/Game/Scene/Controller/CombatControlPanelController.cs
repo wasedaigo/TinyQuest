@@ -6,8 +6,9 @@ using TinyQuest.Core;
 using TinyQuest.Object;
 
 public class CombatControlPanelController : MonoBehaviour {
-	public System.Action<int> InvokeSkill;
-	public GameObject[] Slots;
+	public System.Action<int> CardClicked;
+	public GameObject[] Cards;
+	public float SelectMoveDistance;
 	
 	private CombatModel combatModel;
 	private SkillButtonView[] views;
@@ -17,50 +18,61 @@ public class CombatControlPanelController : MonoBehaviour {
 	
 	public void SetModels(CombatModel combatModel) {
 		this.combatModel = combatModel;
-		this.views = new SkillButtonView[Slots.Length];
-		for (int i = 0; i < Slots.Length; i++) {
-			this.views[i] = Slots[i].GetComponent<SkillButtonView>();
+		this.views = new SkillButtonView[Cards.Length];
+		for (int i = 0; i < Cards.Length; i++) {
+			this.views[i] = Cards[i].GetComponent<SkillButtonView>();
 		}
 	}
 	
-	public void Slot1Clicked() {
+	private void ResetCardPositions() {
+		for (int i = 0; i < Constant.UnitCount; i++) {
+			GameObject card = this.Cards[i];
+			Vector3 pos = card.transform.localPosition;	
+			card.transform.localPosition = new Vector3(pos.x, 0, pos.z);
+		}
+	}
+	
+	public void Card1Clicked() {
 		this.click(0);
 	}
 
-	public void Slot2Clicked() {
+	public void Card2Clicked() {
 		this.click(1);
 	}
 		
-	public void Slot3Clicked() {
+	public void Card3Clicked() {
 		this.click(2);
 	}
 		
-	public void Slot4Clicked() {
+	public void Card4Clicked() {
 		this.click(3);
 	}
 		
-	public void Slot5Clicked() {
+	public void Card5Clicked() {
 		this.click(4);
 	}
 		
-	public void Slot6Clicked() {
+	public void Card6Clicked() {
 		this.click(5);
 	}
 		
-	private void click(int slotNo) {
-		this.InvokeSkill(slotNo);
+	private void click(int index) {
+		ResetCardPositions();
+		GameObject card = this.Cards[index];
+		Vector3 pos = card.transform.localPosition;
+		card.transform.localPosition = new Vector3(pos.x, SelectMoveDistance, pos.z);
+		
+		this.CardClicked(index);
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {
-		if (result.combatUnit.groupType != CombatGroupInfo.Instance.GetPlayerGroupType(0)) { return; }
-		
 		this.views[result.combatUnit.index].SetLife(result.life, result.maxLife);
 	}
 	
-	public void UpdateStatus() {
+	public void UpdateStatus(int groupNo) {
 		if (!this.gameObject.active) {return;}
-		for (int i = 0; i < Slots.Length; i++) {
-			CombatUnit combatUnit = this.combatModel.GetCombatUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0), i);
+		for (int i = 0; i < Cards.Length; i++) {
+			CombatUnit combatUnit = this.combatModel.GetCombatUnit(groupNo, i);
 			this.views[i].UpdateStatus(combatUnit);
 		}
 	}

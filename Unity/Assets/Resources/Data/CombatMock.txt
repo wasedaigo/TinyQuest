@@ -19,10 +19,10 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 1,
-                    "hp": 220,
+                    "hp": 200,
                     "userUnit": {
-                        "id": 1,
-                        "unit": 2,
+                        "id": 5,
+                        "unit": 6,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -62,18 +62,6 @@
                         "exp": 1,
                         "skillExp": 1
                     }
-                },
-                {
-                    "buffs": [],
-                    "groupType": 0,
-                    "index": 5,
-                    "hp": 200,
-                    "userUnit": {
-                        "id": 5,
-                        "unit": 6,
-                        "exp": 1,
-                        "skillExp": 1
-                    }
                 }
             ]
         },
@@ -95,10 +83,10 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 1,
-                    "hp": 300,
+                    "hp": 200,
                     "userUnit": {
-                        "id": 8,
-                        "unit": 5,
+                        "id": 12,
+                        "unit": 1,
                         "exp": 1,
                         "skillExp": 1
                     }
@@ -135,18 +123,6 @@
                     "userUnit": {
                         "id": 11,
                         "unit": 2,
-                        "exp": 1,
-                        "skillExp": 1
-                    }
-                },
-                {
-                    "buffs": [],
-                    "groupType": 1,
-                    "index": 5,
-                    "hp": 200,
-                    "userUnit": {
-                        "id": 12,
-                        "unit": 1,
                         "exp": 1,
                         "skillExp": 1
                     }
