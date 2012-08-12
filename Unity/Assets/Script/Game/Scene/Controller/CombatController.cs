@@ -54,19 +54,20 @@ public class CombatController : MonoBehaviour {
 		this.UIEnemyCombatPanel.transform.position = new Vector3(this.enemyCombatControlPanelOrigin.x, 10, this.enemyCombatControlPanelOrigin.z);
 		
 		this.StartBattle();
-		
 	}
 
 	public void ChangeActorStatus(CombatActionResult result){
+		CombatControlPanelController controlPanelController;
 		if (result.combatUnit.groupType == CombatGroupInfo.Instance.GetPlayerGroupType(0)) {
-			this.allyCombatControlPanelController.SendMessage("ChangeActorStatus", result);
+			controlPanelController = this.allyCombatControlPanelController;
 		} else {
-			this.enemyCombatControlPanelController.SendMessage("ChangeActorStatus", result);
+			controlPanelController = this.enemyCombatControlPanelController;
 		}
+		controlPanelController.SendMessage("ChangeActorStatus", result);
+		
 		// Check if standby unit is killed
 		if (result.combatUnit.IsDead) {
 			CombatUnit nextUnit = this.combatModel.GetStandbyUnit();
-			this.SendMessage("UpdateStandbyUnit", nextUnit);
 		}
 	}
 	
@@ -79,8 +80,6 @@ public class CombatController : MonoBehaviour {
     }
 	
 	private void StandbyUnitSelected() {
-		CombatUnit combatUnit = this.combatModel.GetStandbyUnit();
-		this.SendMessage("UpdateStandbyUnit", combatUnit);
 	}
 	
 	public void StatusUpdated() {
@@ -143,6 +142,8 @@ public class CombatController : MonoBehaviour {
 	public void TurnStarted() {
 		System.Action callback = () => {
 			this.SendMessage("StartTimer");
+			this.allyCombatControlPanelController.ExecuteCard(this.combatModel.GetFightingUnit(0).index);
+			this.enemyCombatControlPanelController.ExecuteCard(this.combatModel.GetFightingUnit(1).index);
 			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(0));	
 			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(1));
 		};
@@ -154,7 +155,7 @@ public class CombatController : MonoBehaviour {
 			this.StartCoroutine(this.ShowActors(callback));
 			this.firstUnitSelected = true;
 		}
-	}		
+	}
 	
 	public void InputTimerFinished() {
 		UICamera.enabled = false;

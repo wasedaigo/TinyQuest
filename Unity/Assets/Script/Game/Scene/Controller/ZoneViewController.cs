@@ -23,7 +23,7 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dIntervalPlayer intervalPlayer;
 	
 
-	private Vector2[,] _targetPositions = new Vector2[,]{{new Vector2(36, 10), new Vector2(-36, 10)}, {new Vector2(80, 10), new Vector2(-80, 10)}};
+	private Vector2[,] _targetPositions = new Vector2[,]{{new Vector2(36, -10), new Vector2(-36, -10)}, {new Vector2(80, -10), new Vector2(-80, -10)}};
 	private Vector2 GetTargetPositions(int targetPosition, int groupNo) {
 		return this._targetPositions[targetPosition, groupNo];
 	}
