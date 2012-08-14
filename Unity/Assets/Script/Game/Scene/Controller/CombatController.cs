@@ -161,6 +161,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public IEnumerator CombatStarted() {
+		UICamera.enabled = false;
 		this.zoneViewController.SetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1), Actor.PoseType.Attack);
 		yield return new WaitForSeconds(0.2f);
 		this.combatModel.ProcessActions();

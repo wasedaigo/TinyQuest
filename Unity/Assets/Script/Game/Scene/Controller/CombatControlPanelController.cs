@@ -16,6 +16,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	private int selectingCardIndex;
 	private CombatModel combatModel;
 	private SkillButtonView[] views;
+	private bool isEnabled;
 	
 	void Start() {
 	}
@@ -80,15 +81,14 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	private void click(int index) {
+		
 		GameObject card = this.Cards[index];
 		
 		Vector3 pos = card.transform.localPosition;
 		
 		UIImageButton btn = card.GetComponent<UIImageButton>();
-		UIButtonMessage btnMessage = card.GetComponent<UIButtonMessage>();
 		
 		if (this.selectingCardIndex == index) {
-			
 			this.CardExecuted(this.selectingCardIndex);
 		} else {
 			//btnMessage.trigger = UIButtonMessage.Trigger.OnClick;
@@ -110,6 +110,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	public void SetTouchEnabled(bool enabled) {
+		this.isEnabled = enabled;
 		for (int i = 0; i < this.views.Length; i++) {
 			this.views[i].SetTouchEnabled(enabled);
 		}

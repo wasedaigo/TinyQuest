@@ -88,7 +88,6 @@ public class SkillButtonView : MonoBehaviour {
 		if (IsDead()) {
 			this.background.spriteName = "papet_btn_dead";
 			this.infoPanel.SetActiveRecursively(false);
-			collider.enabled = false;
 			
 			this.button.normalSprite = "papet_btn_dead";
 			this.button.hoverSprite = "papet_btn_dead";
@@ -100,7 +99,6 @@ public class SkillButtonView : MonoBehaviour {
 				this.button.hoverSprite = "papet_btn";
 			}
 			this.infoPanel.SetActiveRecursively(true);
-			collider.enabled = true;
 		}
 		lifeLabel.text = life.ToString();
 	}
