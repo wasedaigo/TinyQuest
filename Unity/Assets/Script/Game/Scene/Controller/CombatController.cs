@@ -6,6 +6,7 @@ using TinyQuest.Scene.Model;
 using TinyQuest.Object;
 using TinyQuest.Core;
 using TinyQuest.Data;
+using TinyQuest.Data.Skills;
 using TinyQuest.Data.Request;
 using TinyQuest.Scene;
 
@@ -146,6 +147,11 @@ public class CombatController : MonoBehaviour {
 		UICamera.enabled = true;
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
 		this.SendMessage("StartTimer");
+		
+		CombatUnit combatUnit = this.combatModel.GetPlayerFightingUnit();
+		if (combatUnit != null && !combatUnit.IsDead) {
+			this.ShowPanel(combatUnit.index);
+		}
 	}
 	
 	public void InputTimerFinished() {
@@ -199,16 +205,26 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void CardSelected(int index) {
-		//this.combatModel.SetStandbyUnitByIndex(index);
-		
-		//this.ShowConnectingPop(true);
-		//UICamera.enabled = false;
-		
-		//this.combatModel.ProgressTurn(this, slotNo);
+		this.ShowPanel(index);
 	}
 	
+	private void ShowPanel(int index) {
+		CombatUnit combatUnit = this.combatModel.GetCombatUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0), index);
+		
+		int[] skillIds = combatUnit.GetUserUnit().Unit.skills;
+		BaseSkill[] skills = new BaseSkill[Constant.SkillSlotCount];
+		for (int i = 0; i < skillIds.Length; i++) {
+			skills[i] = SkillFactory.Instance.GetSkill(skillIds[i]);
+		}
+		
+		CombatCardInformation.ShowPanelParams param = new CombatCardInformation.ShowPanelParams(skills[0], skills[1], 0);
+		this.SendMessage("ShowCardInfoPanel", param);
+	}
+
 	public void CardExecuted(int index) {
 		this.SendMessage("CancelTimer");
+		this.SendMessage("HideCardInfoPanel");
+
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		this.combatModel.SetPlayerFightingUnitIndex(index);
 		

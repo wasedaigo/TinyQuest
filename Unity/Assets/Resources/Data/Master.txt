@@ -15,7 +15,8 @@
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1, 2, 3]
+        "skills": [1],
+        "features": [1]
       },
       {
         "id": 2,
@@ -30,7 +31,8 @@
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1, 2, 3]
+        "skills": [2],
+        "features": [1]
       },
       {
         "id": 3,
@@ -38,14 +40,15 @@
         "lv": 1,
         "skillExp": 0,
         "hp": 5,
-        "power": 3,
+        "power": 2,
         "speed": 2,
         "weakPoints": [0, 1],
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1, 2, 3]
+        "skills": [3],
+        "features": [1]
       },
       {
         "id": 4,
@@ -53,14 +56,15 @@
         "lv": 1,
         "skillExp": 0,
         "hp": 5,
-        "power": 3,
+        "power": 1,
         "speed": 3,
         "weakPoints": [0, 1],
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1, 2, 3]
+        "skills": [4],
+        "features": [1]
       },
       {
         "id": 5,
@@ -68,14 +72,15 @@
         "lv": 1,
         "skillExp": 0,
         "hp": 5,
-        "power": 3,
+        "power": 2,
         "speed": 2,
         "weakPoints": [0, 1],
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1]
+        "skills": [5],
+        "features": [1]
       },
       {
         "id": 6,
@@ -83,14 +88,15 @@
         "lv": 1,
         "skillExp": 0,
         "hp": 5,
-        "power": 3,
+        "power": 2,
         "speed": 2,
         "weakPoints": [0, 1],
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
         "normalAttack": 1,
-        "skills": [1, 2, 3]
+        "skills": [5],
+        "features": [1]
       },
       {
         "id": 10001,
@@ -105,7 +111,8 @@
         "lookType": 1,
         "rarity": 0,
         "normalAttack": 2,
-        "skills": [2]
+        "skills": [1, 2],
+        "features": [1]
       },
       {
         "id": 10002,
@@ -120,7 +127,8 @@
         "lookType": 1,
         "rarity": 0,
         "normalAttack": 2,
-        "skills": [2]
+        "skills": [1, 2],
+        "features": [1]
       }
     ],
 
@@ -136,7 +144,7 @@
         "buffRate":100,
         "attribute": 0,
         "multiplier": 100,
-        "chanceTable": {"baseValue": 50, "growthType":0}
+        "chance": 50
       },
       {
         "id": 2,
@@ -149,7 +157,7 @@
         "buffRate":100,
         "attribute": 0,
         "multiplier": 100,
-        "chanceTable": {"baseValue": 50, "growthType":0}
+        "chance": 50
       },
       {
         "id": 3,
@@ -162,7 +170,7 @@
         "buffRate":100,
         "attribute": 0,
         "multiplier": 100,
-        "chanceTable": {"baseValue": 50, "growthType":0}
+        "chance": 50
       }
     ],
 

@@ -80,7 +80,11 @@ namespace TinyQuest.Scene.Model {
 		
 		public CombatUnit GetFightingUnit(int groupNo) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			
 			int fightingUnitIndex = data.fightingUnitIndexes[groupNo];
+			if (fightingUnitIndex < 0) {
+				return null;
+			}
 			CombatUnitGroup combatUnitGroup = data.combatUnitGroups[groupNo];
 			CombatUnit unit = combatUnitGroup.combatUnits[fightingUnitIndex];
 			

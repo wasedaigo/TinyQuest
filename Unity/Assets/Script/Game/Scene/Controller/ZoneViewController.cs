@@ -1,5 +1,6 @@
 using JsonFx.Json;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data;
@@ -175,6 +176,15 @@ public class ZoneViewController : MonoBehaviour {
 		this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
 		
 		this.SendMessage("ChangeActorStatus", result);
+		if (damageValue > 0) {
+			this.StartCoroutine(this.ShowDamagePose(actor));	
+		}
+	}
+	
+	private IEnumerator ShowDamagePose(Actor actor) {
+		actor.SetPoseType(Actor.PoseType.Attacked);
+		yield return new WaitForSeconds(0.3f);
+		actor.ResetPose();
 	}
 
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
@@ -299,9 +309,6 @@ public class ZoneViewController : MonoBehaviour {
 		int groupNo = combatUnit.groupType;
 		
 		CombatUnit activeCombatUnit = this.activeCombatUnits[groupNo];
-		if (activeCombatUnit != null) {
-			Debug.Log(activeCombatUnit.groupType + " : " + activeCombatUnit.IsDead);
-		}
 		if (activeCombatUnit != null && activeCombatUnit.IsDead) {
 			this.SwapActor(activeCombatUnit, combatUnit, callback);
 		} else {
