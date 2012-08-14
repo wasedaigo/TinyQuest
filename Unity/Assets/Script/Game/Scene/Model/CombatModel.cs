@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TinyQuest.Data;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data.Request;
+using TinyQuest.Data.Skills;
 
 namespace TinyQuest.Scene.Model {
 
@@ -19,9 +20,14 @@ namespace TinyQuest.Scene.Model {
 			
 			public CombatAction Execute() {
 				if (this.caster.IsDead || this.target.IsDead) { return null; }
-				MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(this.caster.GetUserUnit().Unit.normalAttack);
 				
-				int effect = this.caster.GetUserUnit().Power * skill.multiplier / 100;
+				int skillId = this.caster.GetUserUnit().Unit.normalAttack;
+				skillId = this.caster.GetUserUnit().Unit.skills[0];
+				//MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(skillId);
+				BaseSkill skill = SkillFactory.Instance.GetSkill(this.caster.GetUserUnit().Unit.skills[0]);
+				BaseSkill.SkillResult result = skill.Calculate(this.caster);
+
+				int effect = result.damage;
 				this.target.hp -= effect;
 				if (this.target.hp < 0) {
 					this.target.hp = 0;	
@@ -40,7 +46,7 @@ namespace TinyQuest.Scene.Model {
 				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 				data.combatProgress = new CombatProgress();
 				
-				return new CombatAction(this.caster, this.target, skill, null, targetResult);
+				return new CombatAction(this.caster, this.target, result, null, targetResult);
 			}
 		}
 		

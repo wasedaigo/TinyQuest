@@ -18,15 +18,15 @@ public class MessageBoxController : MonoBehaviour {
 		box.transform.localScale = new Vector3(0.0001f, 0.0001f, 1);
 		
 		if (messageCutScene.pos == 0) {
-			box.transform.localPosition = new Vector3(-0.1f, 0.55f, 0);
-			box.ArrowFaceRight = false;
-		} else {
-			box.transform.localPosition = new Vector3(0.1f, 0.55f, 0);
+			box.transform.localPosition = new Vector3(0.1f, 0.30f, 0);
 			box.ArrowFaceRight = true;
+		} else {
+			box.transform.localPosition = new Vector3(-0.1f, 0.30f, 0);
+			box.ArrowFaceRight = false;
 		}
 		
-		box.Width = 256;
-		box.Height = 96;
+		box.Width = 200;
+		box.Height = 64;
 		box.Message = messageCutScene.text;
 		this.visibleMessageBox = box;
 		

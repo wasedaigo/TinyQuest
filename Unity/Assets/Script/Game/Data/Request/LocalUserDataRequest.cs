@@ -97,7 +97,6 @@ namespace TinyQuest.Data.Request {
 		
 	    protected virtual IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn, System.Action callback)
 	    {
-			Debug.Log("HandleProgressTurnA");
 	        yield return www;
 
 	        // check for errors

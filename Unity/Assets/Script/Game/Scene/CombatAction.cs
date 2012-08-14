@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TinyQuest.Data;
+using TinyQuest.Data.Skills;
 
 public class CombatActionResult {
 	public CombatUnit combatUnit;
@@ -14,14 +15,14 @@ public class CombatActionResult {
 public class CombatAction {
 	public readonly CombatUnit caster;
 	public readonly CombatUnit target;
-	public readonly MasterSkill skill;
+	public readonly BaseSkill.SkillResult skillResult;
 	public CombatActionResult casterResult;
 	public CombatActionResult targetResult;
 	
-	public CombatAction(CombatUnit caster, CombatUnit target, MasterSkill skill, CombatActionResult casterResult, CombatActionResult targetResult) {
+	public CombatAction(CombatUnit caster, CombatUnit target, BaseSkill.SkillResult skillResult, CombatActionResult casterResult, CombatActionResult targetResult) {
 		this.caster = caster;
 		this.target = target;
-		this.skill = skill;
+		this.skillResult = skillResult;
 		this.casterResult = casterResult;
 		this.targetResult = targetResult;
 	}

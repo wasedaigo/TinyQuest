@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data;
+using TinyQuest.Data.Skills;
 using TinyQuest.Core;
 using TinyQuest.Scene;
 using TinyQuest.Scene.Model;
@@ -106,9 +107,9 @@ public class ZoneViewController : MonoBehaviour {
 	{
 		Actor casterActor = this.actors[combatAction.caster.groupType, combatAction.caster.index];
 		Actor targetActor = this.actors[combatAction.target.groupType, combatAction.target.index];
-		MasterSkill masterSkill = combatAction.skill;
+		BaseSkill.SkillResult skillResult = combatAction.skillResult;
 		
-		this.PlayAnimation(targetActor, casterActor, masterSkill.animation, combatAction, this.OnSkillFinished);
+		this.PlayAnimation(targetActor, casterActor, skillResult.animation, combatAction, this.OnSkillFinished);
 	}
 	
 	private void PlayMoveAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
@@ -148,18 +149,35 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	private void CombatAction(CombatAction combatAction) {
+		Roga2dBaseInterval interval = null;
 		if (combatAction.caster.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
 			// Monster should display attack effect first
-			Roga2dBaseInterval interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+			interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
 				EffectBuilder.GetInstance().BuildAttackFlashInterval(this.GetActorFromCombatUnit(combatAction.caster).Sprite),
 				new Roga2dFunc(() => {
+					this.SendMessage("HideMessage");	
 					this.PlaySkillAnimation(combatAction);
 				})
 			});
-			intervalPlayer.Play(interval);
+			
 		} else {
-			this.PlaySkillAnimation(combatAction);
+			interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
+				new Roga2dFunc(() => {
+					if (combatAction.skillResult.shout != "") {
+						ZoneMessageCutScene cutScene = new ZoneMessageCutScene();
+						cutScene.text = combatAction.skillResult.shout;
+						cutScene.pos = combatAction.caster.groupType;
+						this.SendMessage("ShowMessage", cutScene);	
+					}
+				}),
+				new Roga2dWait(1.0f),
+				new Roga2dFunc(() => {
+					this.SendMessage("HideMessage");	
+					this.PlaySkillAnimation(combatAction);
+				})
+			});
 		}
+		intervalPlayer.Play(interval);
 	}
 	
 	private void ShowEffect(Actor actor, CombatActionResult result) 

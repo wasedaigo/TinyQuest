@@ -1,8 +1,9 @@
 {
    "events" : {
       "0" : [ "hide" ],
-      "19" : [ "show" ],
-      "5" : [ "damage:0" ]
+      "11" : [ "damage:0" ],
+      "22" : [ "show" ],
+      "3" : [ "damage:0" ]
    },
    "keyframes" : {
       "0" : [
@@ -12,29 +13,34 @@
             "sourcePath" : "Combat/Sub/Swing01.ani"
          },
          {
-            "frameNo" : 4,
+            "frameNo" : 6,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
             "sourcePath" : "Combat/Sub/Swing01.ani"
          },
          {
-            "frameNo" : 9,
+            "frameNo" : 7,
+            "position" : [ -47, -18 ],
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 8,
             "positionTween" : "fix",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
-            "sourcePath" : "Combat/BattlerBase.png",
-            "textureRect" : [ 128, 0, 32, 32 ]
+            "sourcePath" : "Combat/Sub/Swing01.ani"
          },
          {
-            "frameNo" : 13,
+            "frameNo" : 16,
             "positionTween" : "linear",
             "positionType" : "relativeToTarget",
             "positionTypeOption" : "bottomRight",
             "sourcePath" : "Combat/Sub/Jump01.ani"
          },
          {
-            "frameNo" : 19,
+            "frameNo" : 22,
             "positionTween" : "fix",
             "sourcePath" : "Combat/Sub/Jump01.ani"
          }
@@ -52,6 +58,25 @@
             "priority" : 1.0,
             "rotation" : 45,
             "rotationTween" : "fix",
+            "sourcePath" : "Combat/Sub/EffectSlash01.ani"
+         },
+         {
+            "frameNo" : 3,
+            "isEmpty" : true
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 10,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "priority" : 1.0,
+            "rotation" : -45,
+            "rotationTween" : "fix",
+            "scale" : [ -1.0, 1.0 ],
             "sourcePath" : "Combat/Sub/EffectSlash01.ani"
          }
       ]
