@@ -21,6 +21,10 @@ namespace TinyQuest.Object {
 		{
 		}
 		
+		public virtual void ResetPose() {
+			
+		}
+		
 		public virtual void SetPoseType(PoseType poseType) {
 		}
 		

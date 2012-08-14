@@ -83,40 +83,21 @@ namespace TinyQuest.Data{
 			}
 		}
 
-		public int Level {
-			get {
-			
-				return Mathf.FloorToInt(this.Unit.lvTable.GetValue(this.exp));
-			}
-		}
-
 		public int MaxHP {
 			get {
-				return Mathf.FloorToInt(this.Unit.hpTable.GetValue(this.Level));
+				return this.Unit.hp;
 			}
 		}
 		
 		public int Speed {
 			get {
-				return Mathf.FloorToInt(this.Unit.speedTable.GetValue(this.Level));
+				return this.Unit.speed;
 			}
 		}
 		
 		public int Power {
 			get {
-				return Mathf.FloorToInt(this.Unit.powerTable.GetValue(this.Level));
-			}
-		}
-		
-		public int Defense {
-			get {
-				return Mathf.FloorToInt(this.Unit.defTable.GetValue(this.Level));
-			}
-		}
-		
-		public int Regen {
-			get {
-				return Mathf.FloorToInt(this.Unit.regenTable.GetValue(this.Level));
+				return this.Unit.power;
 			}
 		}
 		

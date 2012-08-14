@@ -10,7 +10,7 @@ public class PuppetButton : MonoBehaviour {
 	void Start () {
 		PuppetActor actor = new PuppetActor(puppetID.ToString(), Actor.PoseType.Attack);
 		actor.Transform.parent = this.gameObject.transform;
-		Vector3 pos = actor.Transform.localPosition;
+
 		actor.Transform.localPosition = new Vector3(0, 0, 0);
 		actor.Transform.localEulerAngles = new Vector3(0, 0, -180);
 		actor.Transform.localScale = new Vector3(-32, 32, 0);

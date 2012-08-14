@@ -26,7 +26,7 @@ namespace TinyQuest.Data.Request {
 			callback();
 	    }
 			
-	    protected override IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn)
+	    protected override IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn, System.Action callback)
 	    {
 			this._isRequesting = false;
 			yield return true;
@@ -34,7 +34,7 @@ namespace TinyQuest.Data.Request {
 			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
 			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = this.GetFirstAliveUnit(CombatGroupInfo.Instance.GetPlayerGroupType(1)).index;
 			this._isRequesting = false;
-			
+			callback();
 	    }
 	}
 }

@@ -6,12 +6,13 @@ using TinyQuest.Core;
 using TinyQuest.Object;
 
 public class CombatControlPanelController : MonoBehaviour {
-	public System.Action<int> CardClicked;
+	public System.Action<int> CardSelected;
+	public System.Action<int> CardExecuted;
+	
 	public GameObject[] Cards;
 	public bool IsEnemy;
 	
 	private Vector3[] cardOrigins;
-	private int executingCardIndex;
 	private int selectingCardIndex;
 	private CombatModel combatModel;
 	private SkillButtonView[] views;
@@ -28,19 +29,21 @@ public class CombatControlPanelController : MonoBehaviour {
 			this.cardOrigins[i] = Cards[i].transform.position;
 		}
 		
-		this.executingCardIndex = -1;
 		this.selectingCardIndex = -1;
 	}
 	
 	private void ResetCardPositions() {
 		for (int i = 0; i < Constant.UnitCount; i++) {
-			if (i == this.executingCardIndex) {
+			if (i == this.selectingCardIndex) {
 				continue;	
 			}
-			
 			GameObject card = this.Cards[i];
 			Vector3 pos = card.transform.localPosition;	
 			card.transform.localPosition = new Vector3(pos.x, 0, pos.z);
+			UIImageButton btn = card.GetComponent<UIImageButton>();
+			UIButtonMessage btnMessage = card.GetComponent<UIButtonMessage>();
+			btn.pressedSprite = "papet_btn";
+			//btnMessage.trigger = UIButtonMessage.Trigger.OnPress;
 		}
 	}
 	
@@ -77,60 +80,39 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	private void click(int index) {
-		int returnIndex = this.SelectCard(index);
-		this.CardClicked(returnIndex);
-	}
-	
-	public int SelectCard(int index) {
-		
-		ResetCardPositions();
 		GameObject card = this.Cards[index];
+		
 		Vector3 pos = card.transform.localPosition;
 		
+		UIImageButton btn = card.GetComponent<UIImageButton>();
+		UIButtonMessage btnMessage = card.GetComponent<UIButtonMessage>();
+		
 		if (this.selectingCardIndex == index) {
-			card.transform.localPosition = new Vector3(pos.x, 0, pos.z);
-			this.selectingCardIndex = this.executingCardIndex;
+			
+			this.CardExecuted(this.selectingCardIndex);
 		} else {
+			//btnMessage.trigger = UIButtonMessage.Trigger.OnClick;
+			btn.pressedSprite = "papet_btn_on";
 			card.transform.localPosition = new Vector3(pos.x, 16 * GetDir(), pos.z);
 			this.selectingCardIndex = index;
+			ResetCardPositions();
+			this.CardSelected(this.selectingCardIndex);
 		}
-		
-		return this.selectingCardIndex;
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {
+		if (result.life <= 0) {
+			this.selectingCardIndex = -1;
+		}
+		ResetCardPositions();
+		
 		this.views[result.combatUnit.index].SetLife(result.life, result.maxLife);
 	}
 	
-	public void ExecuteCard(int index) {
-		if (this.executingCardIndex == index) {
-			return;	
+	public void SetTouchEnabled(bool enabled) {
+		for (int i = 0; i < this.views.Length; i++) {
+			this.views[i].SetTouchEnabled(enabled);
 		}
-		
-		GameObject card;
-		Vector3 pos;
-		
-		if (this.executingCardIndex >= 0) {
-			card = this.Cards[this.executingCardIndex];
-			pos = card.transform.localPosition;
-			iTween.MoveTo(card, iTween.Hash("time", 0.5f, "x", this.cardOrigins[this.executingCardIndex].x, "y", this.cardOrigins[this.executingCardIndex].y,  "easeType", "easeOutCubic", "oncomplete", "onCardBack", "onCompleteTarget", this.gameObject, "oncompleteparams", index));
-			//iTween.RotateBy(card, iTween.Hash("time", 0.5f, "z", -1,  "easeType", "easeOutCubic"));
-		} else {
-			onCardBack(index);
-		}
-		
-		this.executingCardIndex = index;
-		
-		//iTween.RotateBy(card, iTween.Hash("time", 0.5f, "z", 1,  "easeType", "easeOutCubic"));
-	}
-	
-	protected void onCardBack(int index) {
-		GameObject card = this.Cards[index];
-		Vector3 pos = card.transform.localPosition;
-		iTween.MoveTo(card, iTween.Hash("time", 0.5f, "x", 0.5f * GetDir(), "y", -0.3f,  "easeType", "easeOutCubic", "oncomplete", "onCardExecuted", "onCompleteTarget", this.gameObject, "oncompleteparams", card));
-	}
-	
-	protected void onCardExecuted(GameObject card) {
 	}
 	
 	public void UpdateStatus(int groupNo) {

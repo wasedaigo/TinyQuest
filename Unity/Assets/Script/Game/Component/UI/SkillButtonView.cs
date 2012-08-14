@@ -7,6 +7,9 @@ using TinyQuest.Object;
 public class SkillButtonView : MonoBehaviour {
 	public UILabel nameLabel;
 	public UILabel lifeLabel;
+	public UILabel powerLabel;
+	public UILabel speedLabel;
+	
 	public GameObject faceIcon;
 	public GameObject infoPanel;
 	public UISprite background;
@@ -14,6 +17,7 @@ public class SkillButtonView : MonoBehaviour {
 	private Roga2dNode faceIconNode;
 	private bool initialized = false;
 	private UIImageButton button;
+	private int life;
 	
 	public void Start() {
 		this.button 	= this.gameObject.GetComponent<UIImageButton>();
@@ -51,7 +55,18 @@ public class SkillButtonView : MonoBehaviour {
 		nameLabel.text = name;
 	}
 	
+	public void SetTouchEnabled(bool enabled) {
+		if (IsDead()) {return;}
+		collider.enabled = enabled;
+	}
+	
+	private bool IsDead() {
+		return this.life <= 0;	
+	}
+	
 	public void SetLife(int life, int maxLife) {
+		this.life = life;
+		/*
 		float ratio = life / (float)maxLife;
 		ActorHealthState state = Utils.GetHealthState(ratio);
 		switch (state) {
@@ -67,17 +82,22 @@ public class SkillButtonView : MonoBehaviour {
 		case ActorHealthState.Dead:
 			lifeLabel.color = Color.red;
 			break;
-		}
+		}*/
 		
 		
-		if (life <= 0) {
+		if (IsDead()) {
 			this.background.spriteName = "papet_btn_dead";
 			this.infoPanel.SetActiveRecursively(false);
 			collider.enabled = false;
-		} else {
 			
+			this.button.normalSprite = "papet_btn_dead";
+			this.button.hoverSprite = "papet_btn_dead";
+			this.button.enabled = false;
+		} else {
 			if (this.button != null) {
 				this.background.spriteName = "papet_btn";
+				this.button.normalSprite = "papet_btn";
+				this.button.hoverSprite = "papet_btn";
 			}
 			this.infoPanel.SetActiveRecursively(true);
 			collider.enabled = true;
@@ -86,6 +106,9 @@ public class SkillButtonView : MonoBehaviour {
 	}
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
+		this.powerLabel.text = combatUnit.userUnit.Power.ToString();
+		this.speedLabel.text = combatUnit.userUnit.Speed.ToString();
+		
 		this.SetLife(combatUnit.hp, combatUnit.GetUserUnit().MaxHP);
 		if (!initialized) {
 			this.SetFaceIcon(combatUnit.GetUserUnit().Unit.id);

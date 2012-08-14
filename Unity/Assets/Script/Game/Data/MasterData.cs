@@ -123,12 +123,9 @@ namespace TinyQuest.Data{
 	
 	public class MasterUnit : IDData {
 		public readonly int unitType;
-		public readonly GrowthTable lvTable;
-		public readonly GrowthTable hpTable;
-		public readonly GrowthTable powerTable;
-		public readonly GrowthTable regenTable;
-		public readonly GrowthTable defTable;
-		public readonly GrowthTable speedTable;
+		public readonly int hp;
+		public readonly int power;
+		public readonly int speed;
 
 		public readonly AttributeType[] weakPoints;
 		

@@ -19,6 +19,7 @@ public class CombatController : MonoBehaviour {
 	
 	private CombatControlPanelController allyCombatControlPanelController;
 	private CombatControlPanelController enemyCombatControlPanelController;
+	private ZoneViewController zoneViewController;
 	private Vector3 allyCombatControlPanelOrigin;
 	private Vector3 enemyCombatControlPanelOrigin;
 	
@@ -35,19 +36,21 @@ public class CombatController : MonoBehaviour {
 		// Get reference
 		this.allyCombatControlPanelController = this.UIAllyCombatPanel.GetComponent<CombatControlPanelController>();
 		this.enemyCombatControlPanelController = this.UIEnemyCombatPanel.GetComponent<CombatControlPanelController>();
+		this.zoneViewController = this.GetComponent<ZoneViewController>();
 		
 		// Set Models
 		this.allyCombatControlPanelController.SetModels(this.combatModel);
 		this.enemyCombatControlPanelController.SetModels(this.combatModel);
+		this.zoneViewController.SetModel(this.combatModel);
 		
 		this.combatModel.ExecuteAction += this.ActionExecuted;
 		this.combatModel.FinishBattle += this.BattleFinished;
 		this.combatModel.SelectStandbyUnit += this.StandbyUnitSelected;
 		this.combatModel.UpdateStatus += this.StatusUpdated;
-		this.combatModel.StartTurn 	+= this.TurnStarted;
 
 		// Delegate
-		this.allyCombatControlPanelController.CardClicked += this.CardClicked;
+		this.allyCombatControlPanelController.CardSelected += this.CardSelected;
+		this.allyCombatControlPanelController.CardExecuted += this.CardExecuted;
 		this.allyCombatControlPanelOrigin = this.UIAllyCombatPanel.transform.position;
 		this.UIAllyCombatPanel.transform.position = new Vector3(this.allyCombatControlPanelOrigin.x, -10, this.allyCombatControlPanelOrigin.z);
 		this.enemyCombatControlPanelOrigin = this.UIEnemyCombatPanel.transform.position;
@@ -64,19 +67,22 @@ public class CombatController : MonoBehaviour {
 			controlPanelController = this.enemyCombatControlPanelController;
 		}
 		controlPanelController.SendMessage("ChangeActorStatus", result);
-		
-		// Check if standby unit is killed
-		if (result.combatUnit.IsDead) {
-			CombatUnit nextUnit = this.combatModel.GetStandbyUnit();
-		}
 	}
 	
 	public void StartBattle() {		
 		this.UIAllyCombatPanel.SetActiveRecursively(false);
+		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		
 		UICamera.enabled = false;
 		this.ShowConnectingPop(true);
 		this.combatModel.StartBattle(this);
+		
+		System.Action callback = () => {};
+		
+		this.ShowConnectingPop(false);
+		this.StartCoroutine(this.ShowActors(callback));
+		this.firstUnitSelected = true;
+		this.StartInput();
     }
 	
 	private void StandbyUnitSelected() {
@@ -138,38 +144,36 @@ public class CombatController : MonoBehaviour {
 			this.TurnFinished();
 		}
 	}
-
-	public void TurnStarted() {
-		System.Action callback = () => {
-			this.SendMessage("StartTimer");
-			this.allyCombatControlPanelController.ExecuteCard(this.combatModel.GetFightingUnit(0).index);
-			this.enemyCombatControlPanelController.ExecuteCard(this.combatModel.GetFightingUnit(1).index);
-			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(0));	
-			SendMessage("SelectCombatActor", this.combatModel.GetFightingUnit(1));
-		};
-
-		if (this.firstUnitSelected) {
-			callback();
-		} else {
-			this.ShowConnectingPop(false);
-			this.StartCoroutine(this.ShowActors(callback));
-			this.firstUnitSelected = true;
-		}
+	
+	public void StartInput() {
+		UICamera.enabled = true;
+		this.allyCombatControlPanelController.SetTouchEnabled(true);
 	}
 	
-	public void InputTimerFinished() {
-		UICamera.enabled = false;
-		ExecuteNextAction();
-		
-		// Start asking the server for next turn info
-		this.combatModel.LoadNextTurn(this);
+	public void CombatReady() {
+		this.zoneViewController.SelectCombatActor(
+			this.combatModel.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(1)),
+			() => {
+				this.StartCoroutine(this.CombatStarted());
+			}
+			
+		);
 	}
-
-	public void TurnFinished() {
-		this.combatModel.FinishTurn();
-		UICamera.enabled = true;
+	
+	public IEnumerator CombatStarted() {
+		this.zoneViewController.SetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1), Actor.PoseType.Attack);
+		yield return new WaitForSeconds(0.2f);
+		this.combatModel.ProcessActions();
 		
-		this.combatModel.NextTurn(this);
+		this.ExecuteNextAction();
+	}
+	
+	public void TurnFinished() {
+		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1));
+		this.combatModel.FinishTurn();
+		
+		this.StartInput();
 	}
 
 	public void BattleFinished() {
@@ -187,12 +191,35 @@ public class CombatController : MonoBehaviour {
 		SendMessage("CombatAction", action);	
 	}
 
-	public void CardClicked(int slotNo) {
-		this.combatModel.SetStandbyUnitByIndex(slotNo);
+	public void CardSelected(int index) {
+		//this.combatModel.SetStandbyUnitByIndex(index);
 		
 		//this.ShowConnectingPop(true);
 		//UICamera.enabled = false;
 		
 		//this.combatModel.ProgressTurn(this, slotNo);
+	}
+	
+	public void CardExecuted(int index) {
+		this.allyCombatControlPanelController.SetTouchEnabled(false);
+		this.combatModel.SetPlayerFightingUnitIndex(index);
+		
+		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+		list.Add( 
+			(next) => { this.combatModel.LoadNextTurn(this, next); } 
+		);
+		list.Add( 
+			(next) => {
+				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0)), () =>{
+					this.zoneViewController.SetPose(CombatGroupInfo.Instance.GetPlayerGroupType(0), Actor.PoseType.Attack);
+					next();
+				});
+			} 
+		);
+		
+		Async.Async.Instance.Parallel(list, () => {
+			this.CombatReady();
+		});
+
 	}
 }

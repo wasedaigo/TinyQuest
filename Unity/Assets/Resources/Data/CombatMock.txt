@@ -7,7 +7,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 0,
-                    "hp": 120,
+                    "hp": 5,
                     "userUnit": {
                         "id": 1,
                         "unit": 1,
@@ -19,7 +19,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 1,
-                    "hp": 200,
+                    "hp": 4,
                     "userUnit": {
                         "id": 5,
                         "unit": 6,
@@ -31,7 +31,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 2,
-                    "hp": 60,
+                    "hp": 3,
                     "userUnit": {
                         "id": 2,
                         "unit": 3,
@@ -43,7 +43,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 3,
-                    "hp": 100,
+                    "hp": 6,
                     "userUnit": {
                         "id": 3,
                         "unit": 4,
@@ -55,7 +55,7 @@
                     "buffs": [],
                     "groupType": 0,
                     "index": 4,
-                    "hp": 150,
+                    "hp": 3,
                     "userUnit": {
                         "id": 4,
                         "unit": 5,
@@ -71,7 +71,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 0,
-                    "hp": 120,
+                    "hp": 3,
                     "userUnit": {
                         "id": 7,
                         "unit": 6,
@@ -83,7 +83,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 1,
-                    "hp": 200,
+                    "hp": 4,
                     "userUnit": {
                         "id": 12,
                         "unit": 1,
@@ -95,7 +95,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 2,
-                    "hp": 60,
+                    "hp": 3,
                     "userUnit": {
                         "id": 9,
                         "unit": 4,
@@ -107,7 +107,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 3,
-                    "hp": 100,
+                    "hp": 2,
                     "userUnit": {
                         "id": 10,
                         "unit": 3,
@@ -119,7 +119,7 @@
                     "buffs": [],
                     "groupType": 1,
                     "index": 4,
-                    "hp": 150,
+                    "hp": 4,
                     "userUnit": {
                         "id": 11,
                         "unit": 2,

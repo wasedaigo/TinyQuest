@@ -7,6 +7,8 @@ namespace TinyQuest.Object {
 		private Roga2dBaseInterval interval;
 		private PoseType poseType;
 		private bool isWalking;
+		private int hp;
+		private int maxHp;
 
 		public PuppetActor(string name, PoseType poseType) 
 			:base(name)
@@ -39,9 +41,9 @@ namespace TinyQuest.Object {
 				break;
 			}
 		}
-
-		public override void SetStatus(int hp, int maxHp) {
-			float ratio = hp / (float)maxHp;
+		
+		public override void ResetPose() {
+			float ratio = this.hp / (float)this.maxHp;
 			ActorHealthState state = Core.Utils.GetHealthState(ratio);
 			switch (state) {
 			case ActorHealthState.Full:
@@ -55,6 +57,12 @@ namespace TinyQuest.Object {
 				this.SetPoseType(PoseType.Dead);
 				break;
 			}
+		}
+		
+		public override void SetStatus(int hp, int maxHp) {
+			this.hp = hp;
+			this.maxHp = maxHp;
+			ResetPose();
 		}
 
 		public override void Update ()

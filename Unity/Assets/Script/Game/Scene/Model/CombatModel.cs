@@ -56,7 +56,6 @@ namespace TinyQuest.Scene.Model {
 		public System.Action FinishBattle;
 		public System.Action SelectStandbyUnit;
 		public System.Action UpdateStatus;
-		public System.Action StartTurn;
 		
 		public System.Action<CombatAction> ExecuteAction;
 
@@ -67,7 +66,6 @@ namespace TinyQuest.Scene.Model {
 		private List<CombatAction> combatActionList;
 		private int actionIndex;
 		private bool turnFinished;
-		private int standbyUnitIndex;
 		private int turn;
 		
 		public CombatModel(){
@@ -84,22 +82,17 @@ namespace TinyQuest.Scene.Model {
 			return unit;
 		}
 		
-		public CombatUnit GetStandbyUnit() {
-			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
-			
-			if (this.standbyUnitIndex < 0) {
-				return null;
-			} else {
-				return combatUnitGroup.combatUnits[this.standbyUnitIndex];
-			}
+		private void SetFightingUnitIndex(int groupNo, int index) {
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = index;
 		}
 		
-		public void SetStandbyUnitByIndex(int index) {
-			CombatUnitGroup combatUnitGroup = this.GetCombatUnits()[CombatGroupInfo.Instance.GetPlayerGroupType(0)];
-			CombatUnit unit = combatUnitGroup.combatUnits[index];
-			
-			this.standbyUnitIndex = index;
-			this.SelectStandbyUnit();
+		public CombatUnit GetPlayerFightingUnit() {
+			return this.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+		}
+		
+		public void SetPlayerFightingUnitIndex(int index) {
+			this.SetFightingUnitIndex(CombatGroupInfo.Instance.GetPlayerGroupType(0), index);
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {
@@ -140,7 +133,7 @@ namespace TinyQuest.Scene.Model {
 			return false;
 		}
 		
-		public virtual void ProcessActions() {
+		public void ProcessActions() {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			
 			int playerGroupNo = CombatGroupInfo.Instance.GetPlayerGroupType(0);
@@ -167,56 +160,29 @@ namespace TinyQuest.Scene.Model {
 				}
 			}
 			
-			if (playerUnit.index == standbyUnitIndex && playerUnit.IsDead) {
-				CombatUnit nextUnit = RequestFactory.Instance.GetLocalUserRequest().GetFirstAliveUnit(playerGroupNo);
-				if (nextUnit == null) {
-					standbyUnitIndex = -1;
-				} else {
-					standbyUnitIndex = nextUnit.index;
-				}
-			}
-			
 			data.combatProgress.turnCount += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			
 			turn++;
-			TurnProgressed(playerUnit, enemyUnit, combatActions);			
+			this.actionIndex = 0;
+			this.combatActionList = combatActions;	
 		}
-		
+
 		public void StartBattle(MonoBehaviour monoBehavior) {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
 			req.StartBattle(monoBehavior,
 				() => {
 					this.UpdateStatus();
-					CombatUnit fightingUnit = this.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
-					this.SetStandbyUnitByIndex(fightingUnit.index);
-				
-					this.ProcessActions();
 				}
 			);
 		}
 
-		public void LoadNextTurn(MonoBehaviour monoBehaviour) {
-			RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, this.standbyUnitIndex, this.turn);
-		}
-		
-		public void NextTurn(MonoBehaviour monoBehaviour) {
-			monoBehaviour.StartCoroutine(this.ProcessNextTurn(monoBehaviour, this.ProcessActions));
-		}
-		
-		private IEnumerator ProcessNextTurn(MonoBehaviour monoBehaviour, System.Action callback) {
-			while(RequestFactory.Instance.GetLocalUserRequest().IsRequesting) {
-				yield return new WaitForSeconds(0.1f);
-			}
-			
-			callback();
+		public void LoadNextTurn(MonoBehaviour monoBehaviour, System.Action callback) {
+			RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, this.GetPlayerFightingUnit().index, this.turn, () => {
+				callback();
+			});
 		}
 
-		private void TurnProgressed(CombatUnit caster, CombatUnit target, List<CombatAction> combatActionList) {
-			this.actionIndex = 0;
-			this.combatActionList = combatActionList;
-			this.StartTurn();
-		}
 		
 		public void ExecuteNextAction() {
 			if (this.combatActionList != null && this.combatActionList.Count > actionIndex) {

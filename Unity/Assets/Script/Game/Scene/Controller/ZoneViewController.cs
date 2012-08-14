@@ -54,10 +54,12 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 	
-	private Actor[] activeCombatActors = new Actor[CombatGroupInfo.Instance.GetGroupCount()];
+	private CombatUnit[] activeCombatUnits = new CombatUnit[CombatGroupInfo.Instance.GetGroupCount()];
+	
 	private Actor poppedActor;
 	
 	private Actor[,] actors = new Actor[CombatGroupInfo.Instance.GetGroupCount(), Constant.UnitCount];
+	private CombatModel combatModel;
 	
 	private void Awake() {
 		Roga2dNode layer = this.stage.GetCharacterLayer();
@@ -79,6 +81,10 @@ public class ZoneViewController : MonoBehaviour {
 				layer.AddChild(this._startTargetNodes[i, j]);
 			}
 		}
+	}
+
+	public void SetModel(CombatModel combatModel) {
+		this.combatModel = combatModel;
 	}
 	
 	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, System.Action<Roga2dAnimation> callback) {
@@ -122,17 +128,11 @@ public class ZoneViewController : MonoBehaviour {
 		// Process caster status
 		if (combatAction.casterResult != null) {
 			list.Add((next) => { this.ProcessUnitStatus(combatAction.casterResult, next); });
-			if (combatAction.casterResult.swapUnit != null) {
-				list.Add((next) => { this.SwapActor(combatAction.casterResult.combatUnit, combatAction.casterResult.swapUnit, next); });
-			}
 		}
 		
 		// Process target status
 		if (combatAction.targetResult != null) {
 			list.Add((next) => { this.ProcessUnitStatus(combatAction.targetResult, next); });
-			if (combatAction.targetResult.swapUnit != null) {
-				list.Add((next) => { this.SwapActor(combatAction.targetResult.combatUnit, combatAction.targetResult.swapUnit, next); });
-			}
 		}
 		
 		Async.Async.Instance.Waterfall(list,
@@ -285,40 +285,64 @@ public class ZoneViewController : MonoBehaviour {
 			callback();
 		}
 	}
-
-	protected void SelectCombatActor(CombatUnit combatUnit) {
-		// Play move-in animation for each group
-		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
-
-		if (combatUnit == null) { return; }
-
-		string animation = "Combat/Common/Jump";
-		if (combatUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
-			animation = "Combat/Monster/MonsterMove001";
+	
+	public Actor GetActiveCombatActor(int groupNo) {
+		CombatUnit combatUnit = this.activeCombatUnits[groupNo];
+		if (combatUnit == null) {
+			return null;
+		} else {
+			return this.actors[combatUnit.groupType, combatUnit.index];
 		}
-
-		Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
-		if (actor != this.activeCombatActors[combatUnit.groupType]) {
-			
-			// Move-out old active unit on the screen
-			if (this.activeCombatActors[combatUnit.groupType] != null) {
-				list.Add(
-					(next) => { this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.Out, this.activeCombatActors[combatUnit.groupType], next); }
-				);
+	}
+	
+	public void SelectCombatActor(CombatUnit combatUnit, System.Action callback) {
+		int groupNo = combatUnit.groupType;
+		
+		CombatUnit activeCombatUnit = this.activeCombatUnits[groupNo];
+		if (activeCombatUnit != null) {
+			Debug.Log(activeCombatUnit.groupType + " : " + activeCombatUnit.IsDead);
+		}
+		if (activeCombatUnit != null && activeCombatUnit.IsDead) {
+			this.SwapActor(activeCombatUnit, combatUnit, callback);
+		} else {
+			// Play move-in animation for each group
+			List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+	
+			if (combatUnit == null) { return; }
+	
+			string animation = "Combat/Common/Jump";
+			if (combatUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
+				animation = "Combat/Monster/MonsterMove001";
 			}
 			
-			// Move-in new unit into the screen
-			list.Add(
-				(next) => {
-					this.activeCombatActors[combatUnit.groupType] = actor;
-					this.PlayMoveAnimation(animation, combatUnit.groupType, TargetPosition.In, actor, next);
+			//this.SwapActor(combatAction.casterResult.combatUnit, combatAction.casterResult.swapUnit, next);
+			
+			Actor actor = this.actors[groupNo, combatUnit.index];
+			Actor activeActor = this.GetActiveCombatActor(groupNo);
+			if (actor != activeActor) {
+				
+				// Move-out old active unit on the screen
+				if (activeActor != null) {
+					list.Add(
+						(next) => { this.PlayMoveAnimation(animation, groupNo, TargetPosition.Out, activeActor, next); }
+					);
 				}
-			);
+				
+				// Move-in new unit into the screen
+				list.Add(
+					(next) => {
+						this.activeCombatUnits[groupNo] = combatUnit;
+						this.PlayMoveAnimation(animation, groupNo, TargetPosition.In, actor, next);
+					}
+				);
+			}
+	
+			Async.Async.Instance.Waterfall(list, () => {
+				callback();
+			});
 		}
-
-		Async.Async.Instance.Waterfall(list, null);
 	}
-
+	
 	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
 		int groupType = swappingUnit.groupType;
 		Actor swappedActor = this.actors[swappedUnit.groupType, swappedUnit.index];
@@ -358,7 +382,7 @@ public class ZoneViewController : MonoBehaviour {
 		list.Add(
 			(next) => {
 				this.PlayMoveAnimation(swappingUnitAnimation, groupType, TargetPosition.In, swappingActor, next);
-				this.activeCombatActors[groupType] = swappingActor;
+				this.activeCombatUnits[groupType] = swappingUnit;
 			}
 		);
 
@@ -368,7 +392,16 @@ public class ZoneViewController : MonoBehaviour {
 			}
 		);
 	}
+	
+	public void ResetPose(int groupNo) {
+		this.GetActiveCombatActor(groupNo).ResetPose();
+	}
+	
+	public void SetPose(int groupNo, PuppetActor.PoseType poseType) {
+		this.GetActiveCombatActor(groupNo).SetPoseType(poseType);
+	}
 
+	/*
 	public void PopActor(MasterUnit masterUnit) {
 		int groupType = 1;
 		this.poppedActor = this.BuildActor(groupType, masterUnit.lookType, masterUnit.id);	
@@ -399,7 +432,7 @@ public class ZoneViewController : MonoBehaviour {
 		}
 		
 	}
-	
+	*/
 	public void ShowBattleWinPose() {
 		/*
 		Actor actor = this.activeCombatActors[Constant.PlayerGroupType];
