@@ -76,13 +76,10 @@ public class CombatController : MonoBehaviour {
 		UICamera.enabled = false;
 		this.ShowConnectingPop(true);
 		this.combatModel.StartBattle(this);
-		
-		System.Action callback = () => {};
-		
+
 		this.ShowConnectingPop(false);
-		this.StartCoroutine(this.ShowActors(callback));
+		this.StartCoroutine(this.ShowActors(this.StartInput));
 		this.firstUnitSelected = true;
-		this.StartInput();
     }
 	
 	private void StandbyUnitSelected() {
@@ -148,6 +145,15 @@ public class CombatController : MonoBehaviour {
 	public void StartInput() {
 		UICamera.enabled = true;
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
+		this.SendMessage("StartTimer");
+	}
+	
+	public void InputTimerFinished() {
+		CombatUnit combatUnit = this.combatModel.GetFirstAliveUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+		if (combatUnit != null) {
+			this.allyCombatControlPanelController.SelectCard(combatUnit.index);
+			this.CardExecuted(combatUnit.index);
+		}
 	}
 	
 	public void CombatReady() {
@@ -172,9 +178,9 @@ public class CombatController : MonoBehaviour {
 	public void TurnFinished() {
 		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(0));
 		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1));
-		this.combatModel.FinishTurn();
-		
-		this.StartInput();
+		if (!this.combatModel.FinishTurn()) {
+			this.StartInput();
+		}
 	}
 
 	public void BattleFinished() {
@@ -202,6 +208,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void CardExecuted(int index) {
+		this.SendMessage("CancelTimer");
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		this.combatModel.SetPlayerFightingUnitIndex(index);
 		

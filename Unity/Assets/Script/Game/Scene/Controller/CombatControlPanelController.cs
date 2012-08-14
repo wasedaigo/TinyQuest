@@ -81,23 +81,22 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	private void click(int index) {
-		
-		GameObject card = this.Cards[index];
-		
-		Vector3 pos = card.transform.localPosition;
-		
-		UIImageButton btn = card.GetComponent<UIImageButton>();
-		
 		if (this.selectingCardIndex == index) {
 			this.CardExecuted(this.selectingCardIndex);
 		} else {
-			//btnMessage.trigger = UIButtonMessage.Trigger.OnClick;
-			btn.pressedSprite = "papet_btn_on";
-			card.transform.localPosition = new Vector3(pos.x, 16 * GetDir(), pos.z);
-			this.selectingCardIndex = index;
-			ResetCardPositions();
-			this.CardSelected(this.selectingCardIndex);
+			this.SelectCard(index);
 		}
+	}
+	
+	public void SelectCard(int index) {
+		GameObject card = this.Cards[index];
+		Vector3 pos = card.transform.localPosition;
+		UIImageButton btn = card.GetComponent<UIImageButton>();
+		btn.pressedSprite = "papet_btn_on";
+		card.transform.localPosition = new Vector3(pos.x, 16 * GetDir(), pos.z);
+		this.selectingCardIndex = index;
+		ResetCardPositions();
+		this.CardSelected(this.selectingCardIndex);
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {

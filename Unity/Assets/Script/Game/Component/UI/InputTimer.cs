@@ -3,25 +3,36 @@ using System.Collections;
 
 
 public class InputTimer : MonoBehaviour {
-	public GameObject Beacon;
+	public GameObject Timer;
+	public int TimerDuration = 5;
+	
+	private int timeLeft;
+	private UILabel label;
+	
 	// Use this for initialization
 	void Start () {
-	
+		this.label = Timer.transform.FindChild("Label").GetComponent<UILabel>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 	
 	void StartTimer() {
-		Vector3 pos = Beacon.transform.localPosition;
-		
-		Beacon.transform.localPosition = new Vector3(-163, pos.y, pos.z);
-		iTween.MoveTo(Beacon, iTween.Hash("time", 5, "x", 0.7f,  "easeType", "linear", "oncomplete", "OnTimerFinished", "oncompletetarget", this.gameObject));
+		this.StartCoroutine("CountDown");
 	}
-
-	void OnTimerFinished() {
+	
+	void CancelTimer() {
+		this.StopCoroutine("CountDown");
+		this.label.text = "";
+	}
+	
+	IEnumerator CountDown() {
+		for (int i = this.TimerDuration; i >= 1; i--) {
+			this.label.text = i.ToString();
+			yield return new WaitForSeconds(1);
+		}
+		this.label.text = "";
 		this.SendMessage("InputTimerFinished");
 	}
 }

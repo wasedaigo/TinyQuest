@@ -43,7 +43,8 @@ namespace TinyQuest.Scene.Model {
 				return new CombatAction(this.caster, this.target, skill, null, targetResult);
 			}
 		}
-
+		
+		
 		public enum CombatResult{
 			OnGoing,
 			Win,
@@ -71,6 +72,10 @@ namespace TinyQuest.Scene.Model {
 		public CombatModel(){
 			this.turnFinished = true;
 			this.turn = 1;
+		}
+		
+		public CombatUnit GetFirstAliveUnit(int groupNo) {
+			return RequestFactory.Instance.GetLocalUserRequest().GetFirstAliveUnit(groupNo);
 		}
 		
 		public CombatUnit GetFightingUnit(int groupNo) {
@@ -199,19 +204,24 @@ namespace TinyQuest.Scene.Model {
 			return this.actionIndex > 0;
 		}
 
-		public void FinishTurn() {
+		public bool FinishTurn() {
+			bool battleFinished = false;
 			CombatModel.CombatResult combatResult = this.GetCombatResult();
 			switch(combatResult) {
 				case CombatModel.CombatResult.Lose:
 					RequestFactory.Instance.GetLocalUserRequest().FinishCombat(this.FinishBattle);
+					battleFinished = true;
 				break;
 				case CombatModel.CombatResult.Win:
 					RequestFactory.Instance.GetLocalUserRequest().FinishCombat(this.FinishBattle);
+					battleFinished = true;
 				break;
 				default:
 					this.turnFinished = true;
 				break;
 			}
+			
+			return battleFinished;
 		}
 		
 		private void HPUpdated(UserUnit entity, int value) {
