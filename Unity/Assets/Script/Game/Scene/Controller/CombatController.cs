@@ -14,6 +14,8 @@ public class CombatController : MonoBehaviour {
 	
 	public GameObject UIAllyCombatPanel;
 	public GameObject UIEnemyCombatPanel;
+	public FighterStatusPanelController FightingStatusPanelAlly;
+	public FighterStatusPanelController FightingStatusPanelEnemy;
 	
 	public GameObject ConnectingPop;
 	public UICamera UICamera;
@@ -64,8 +66,10 @@ public class CombatController : MonoBehaviour {
 		CombatControlPanelController controlPanelController;
 		if (result.combatUnit.groupType == 0) {
 			controlPanelController = this.allyCombatControlPanelController;
+			this.FightingStatusPanelAlly.SendMessage("ShowFighterStatus", result.combatUnit);
 		} else {
 			controlPanelController = this.enemyCombatControlPanelController;
+			this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", result.combatUnit);
 		}
 		controlPanelController.SendMessage("ChangeActorStatus", result);
 	}
@@ -148,11 +152,17 @@ public class CombatController : MonoBehaviour {
 	
 	public void ShowFirstActors() {
 		if (this.combatModel.IsPlayerTurn()) {
+			CombatUnit unit = this.combatModel.GetFightingUnit(1);
 			this.zoneViewController.SelectCombatActor(
-				this.combatModel.GetFightingUnit(1),
-				this.StartInput
+				unit,
+				() => {
+					this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", unit);
+					this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Choose the defender!", null));
+					this.StartInput();
+				}
 			);
 		} else {
+			this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Choose the attacker!", null));
 			this.StartInput();
 		}
 	}
@@ -177,12 +187,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void CombatReady() {
-		this.zoneViewController.SelectCombatActor(
-			this.combatModel.GetFightingUnit(1),
-			() => {
-				this.StartCoroutine(this.CombatStarted());
-			}
-		);
+		this.StartCoroutine(this.CombatStarted());
 	}
 	
 	public IEnumerator CombatStarted() {
@@ -249,13 +254,16 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void SendTurnInput() {
+		this.FightingStatusPanelAlly.SendMessage("HideFighterStatus");
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
 		list.Add( 
 			(next) => { this.combatModel.SendTurnInput(this, next); } 
 		);
 		list.Add( 
 			(next) => {
-				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(0), () =>{
+				CombatUnit unit = this.combatModel.GetFightingUnit(0);
+				this.zoneViewController.SelectCombatActor(unit, () =>{
+					this.FightingStatusPanelAlly.SendMessage("ShowFighterStatus", unit);
 					this.zoneViewController.SetPose(0, Actor.PoseType.Attack);
 					next();
 				});
@@ -274,7 +282,10 @@ public class CombatController : MonoBehaviour {
 		);
 		list.Add( 
 			(next) => {
-				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(1), () =>{
+				this.FightingStatusPanelEnemy.SendMessage("HideFighterStatus");
+				CombatUnit unit = this.combatModel.GetFightingUnit(1);
+				this.zoneViewController.SelectCombatActor(unit, () =>{
+					this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", unit);
 					this.zoneViewController.SetPose(1, Actor.PoseType.Attack);
 					next();
 				});

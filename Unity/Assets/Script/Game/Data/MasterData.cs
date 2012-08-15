@@ -125,7 +125,6 @@ namespace TinyQuest.Data{
 		public readonly int unitType;
 		public readonly int hp;
 		public readonly int power;
-		public readonly int speed;
 
 		public readonly AttributeType[] weakPoints;
 		

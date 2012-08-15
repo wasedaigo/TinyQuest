@@ -105,7 +105,6 @@ public class SkillButtonView : MonoBehaviour {
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
 		this.powerLabel.text = combatUnit.userUnit.Power.ToString();
-		this.speedLabel.text = combatUnit.userUnit.Speed.ToString();
 		
 		this.SetLife(combatUnit.hp, combatUnit.GetUserUnit().MaxHP);
 		if (!initialized) {

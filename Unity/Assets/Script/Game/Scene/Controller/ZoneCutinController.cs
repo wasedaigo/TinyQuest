@@ -36,6 +36,8 @@ public class ZoneCutinController : MonoBehaviour {
 			//Destroy(this.cutIn);
 			this.cutIn = null;
 		}
-		param.callback();
+		if (param.callback != null) {
+			param.callback();
+		}
 	}
 }

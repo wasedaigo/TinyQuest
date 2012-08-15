@@ -86,12 +86,6 @@ namespace TinyQuest.Data{
 			}
 		}
 		
-		public int Speed {
-			get {
-				return this.Unit.speed;
-			}
-		}
-		
 		public int Power {
 			get {
 				return this.Unit.power;
