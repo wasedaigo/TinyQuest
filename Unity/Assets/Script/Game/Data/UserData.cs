@@ -69,10 +69,6 @@ namespace TinyQuest.Data{
 		}
 	}
 
-	public class CombatProgress {
-		public int turnCount;
-	}
-
 	public class UserUnit : IDData{
 		public int unit;
 		public int exp;
@@ -111,7 +107,8 @@ namespace TinyQuest.Data{
 	}
 
 	public class LocalUserData {
-		public CombatProgress combatProgress;
+		public int turnCount;
+		public int currentTurnGroupNo;
 		public CombatUnitGroup[] combatUnitGroups;
 		public UserZone zone;
 		public readonly UserStatus status;

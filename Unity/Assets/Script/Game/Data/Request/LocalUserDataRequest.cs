@@ -89,19 +89,19 @@ namespace TinyQuest.Data.Request {
 			}
 		}
 
-		public virtual void ProgressTurn(MonoBehaviour monoBehaviour, int playerIndex, int turn, System.Action callback) {
-			Debug.Log("ProgressTurn");
+		public virtual void SendTurnInput(MonoBehaviour monoBehaviour, int playerIndex, int turn, System.Action callback) {
+			Debug.Log("SendTurnInput");
 			WWWForm form = new WWWForm();
 			form.AddField("playerGroupType", 0);
 			form.AddField("playerIndex", playerIndex);
 			form.AddField("turn", turn);
 			WWW www = new WWW(APIDomain + "progress_turn", form); 
 			
-	        monoBehaviour.StartCoroutine(this.HandleProgressTurn(www, playerIndex, turn, callback));
+	        monoBehaviour.StartCoroutine(this.HandleSendTurnInput(www, playerIndex, turn, callback));
 		}
 
 		
-	    protected virtual IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn, System.Action callback)
+	    protected virtual IEnumerator HandleSendTurnInput(WWW www, int playerIndex, int turn, System.Action callback)
 	    {
 	        yield return www;
 
@@ -141,6 +141,20 @@ namespace TinyQuest.Data.Request {
 			_isRequesting = false;
 	    }
 	
+		public virtual void ReceiveTurnInput(MonoBehaviour monoBehaviour, int turn, System.Action callback) {
+			WWWForm form = new WWWForm();
+			form.AddField("playerGroupType", 0);
+			form.AddField("turn", turn);
+			WWW www = new WWW(APIDomain + "progress_turn", form); 
+			
+	        monoBehaviour.StartCoroutine(this.HandleReceiveTurnInput(www, callback));
+		}
+		
+	    protected virtual IEnumerator HandleReceiveTurnInput(WWW www, System.Action callback)
+	    {
+	        yield return www;
+			_isRequesting = false;
+	    }
 		
 		public virtual void FinishCombat(System.Action callback) {
 			callback();

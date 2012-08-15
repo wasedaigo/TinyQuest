@@ -22,8 +22,8 @@ namespace TinyQuest.Data.Request {
 			TextAsset txt = (TextAsset)Resources.Load("Data/CombatMock", typeof(TextAsset));
 			Debug.Log("WWW Ok!: " + txt.text);
 			CacheFactory.Instance.GetLocalUserDataCache().SetData(txt.text);
-			
 			LocalUserData data  = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			
 			if (sPlayerGroupNo != 0) {
 				CombatUnitGroup temp = data.combatUnitGroups[0];
 				data.combatUnitGroups[0] = data.combatUnitGroups[1];
@@ -36,21 +36,24 @@ namespace TinyQuest.Data.Request {
 					combatUnit.groupType = i;
 				}
 			}
-			data.combatUnitGroups[0].fightingUnitIndex = -1;
-			data.combatUnitGroups[1].fightingUnitIndex = 0;
+			
+			data.currentTurnGroupNo = 1;
+			data.combatUnitGroups[data.currentTurnGroupNo ].fightingUnitIndex = 3;
 			
 			this._isRequesting = false;
 			callback();
 	    }
-			
-	    protected override IEnumerator HandleProgressTurn(WWW www, int playerIndex, int turn, System.Action callback)
+
+	    protected override IEnumerator HandleSendTurnInput(WWW www, int playerIndex, int turn, System.Action callback)
 	    {
-			this._isRequesting = false;
+			this._isRequesting = true;
 			yield return true;
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			
-			data.combatUnitGroups[0].fightingUnitIndex = playerIndex;
-			data.combatUnitGroups[1].fightingUnitIndex = this.GetFirstAliveUnit(1).index;
+			if (turn > 1) {
+				data.combatUnitGroups[0].fightingUnitIndex = playerIndex;
+				data.currentTurnGroupNo = 0;
+			}
 			
 			data.skillRands = new int[2];
 			for (int i = 0; i < data.skillRands.Length; i++) {
@@ -62,7 +65,28 @@ namespace TinyQuest.Data.Request {
 				data.featureRands[i] = Random.Range(0, 100);
 			}
 			
-			data.turnRand = Random.Range(0, 100);
+			
+			this._isRequesting = false;
+			callback();
+	    }
+		
+	    protected override IEnumerator HandleReceiveTurnInput(WWW www, System.Action callback)
+	    {
+			this._isRequesting = true;
+			yield return new WaitForSeconds(0.5f);
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			data.combatUnitGroups[1].fightingUnitIndex = this.GetFirstAliveUnit(1).index;
+			data.currentTurnGroupNo = 1;
+			
+			data.skillRands = new int[2];
+			for (int i = 0; i < data.skillRands.Length; i++) {
+				data.skillRands[i] = Random.Range(0, 100);
+			}
+			
+			data.featureRands = new int[2];
+			for (int i = 0; i < data.featureRands.Length; i++) {
+				data.featureRands[i] = Random.Range(0, 100);
+			}
 			
 			this._isRequesting = false;
 			callback();

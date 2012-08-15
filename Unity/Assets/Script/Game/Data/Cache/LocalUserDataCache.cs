@@ -41,10 +41,6 @@ namespace TinyQuest.Data.Cache {
 			this.localUserData.zone = JsonReader.Deserialize<UserZone>(jsonText);
 		}
 			
-		public virtual CombatProgress GetCombatProgress() {
-			return this.localUserData.combatProgress;
-		}
-			
 		public virtual UserStatus GetUserStatus() {
 			return this.localUserData.status;
 		}

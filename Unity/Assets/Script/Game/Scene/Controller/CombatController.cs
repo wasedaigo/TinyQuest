@@ -45,8 +45,8 @@ public class CombatController : MonoBehaviour {
 		this.zoneViewController.SetModel(this.combatModel);
 		
 		this.combatModel.ExecuteAction += this.ActionExecuted;
-		this.combatModel.FinishBattle += this.BattleFinished;
-		this.combatModel.SelectStandbyUnit += this.StandbyUnitSelected;
+		this.combatModel.BattleStarted += this.BattleStarted;
+		this.combatModel.FinishBattle += this.BattleFinished;		
 		this.combatModel.UpdateStatus += this.StatusUpdated;
 
 		// Delegate
@@ -79,12 +79,9 @@ public class CombatController : MonoBehaviour {
 		this.combatModel.StartBattle(this);
 
 		this.ShowConnectingPop(false);
-		this.StartCoroutine(this.ShowActors(this.StartInput));
+		
 		this.firstUnitSelected = true;
     }
-	
-	private void StandbyUnitSelected() {
-	}
 	
 	public void StatusUpdated() {
 		this.UIAllyCombatPanel.SetActiveRecursively(true);
@@ -143,6 +140,23 @@ public class CombatController : MonoBehaviour {
 		}
 	}
 	
+	public void BattleStarted() {
+		this.StatusUpdated();
+		this.StartCoroutine(this.ShowActors(this.ShowFirstActors));
+
+	}
+	
+	public void ShowFirstActors() {
+		if (this.combatModel.IsPlayerTurn()) {
+			this.zoneViewController.SelectCombatActor(
+				this.combatModel.GetFightingUnit(1),
+				this.StartInput
+			);
+		} else {
+			this.StartInput();
+		}
+	}
+	
 	public void StartInput() {
 		UICamera.enabled = true;
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
@@ -153,7 +167,7 @@ public class CombatController : MonoBehaviour {
 			this.ShowPanel(combatUnit.index);
 		}
 	}
-	
+
 	public void InputTimerFinished() {
 		CombatUnit combatUnit = this.combatModel.GetFirstAliveUnit(0);
 		if (combatUnit != null) {
@@ -168,7 +182,6 @@ public class CombatController : MonoBehaviour {
 			() => {
 				this.StartCoroutine(this.CombatStarted());
 			}
-			
 		);
 	}
 	
@@ -185,7 +198,11 @@ public class CombatController : MonoBehaviour {
 		this.zoneViewController.ResetPose(0);
 		this.zoneViewController.ResetPose(1);
 		if (!this.combatModel.FinishTurn()) {
-			this.StartInput();
+			if (this.combatModel.IsPlayerTurn()) {
+				this.StartInput();
+			} else {
+				this.ReceiveTurnInput();
+			}
 		}
 	}
 
@@ -228,9 +245,13 @@ public class CombatController : MonoBehaviour {
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		this.combatModel.SetPlayerFightingUnitIndex(index);
 		
+		this.SendTurnInput();
+	}
+	
+	public void SendTurnInput() {
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
 		list.Add( 
-			(next) => { this.combatModel.LoadNextTurn(this, next); } 
+			(next) => { this.combatModel.SendTurnInput(this, next); } 
 		);
 		list.Add( 
 			(next) => {
@@ -243,7 +264,25 @@ public class CombatController : MonoBehaviour {
 		
 		Async.Async.Instance.Parallel(list, () => {
 			this.CombatReady();
-		});
-
+		});		
+	}
+	
+	public void ReceiveTurnInput() {
+		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
+		list.Add( 
+			(next) => { this.combatModel.ReceiveTurnInput(this, next); } 
+		);
+		list.Add( 
+			(next) => {
+				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(1), () =>{
+					this.zoneViewController.SetPose(1, Actor.PoseType.Attack);
+					next();
+				});
+			} 
+		);
+		
+		Async.Async.Instance.Waterfall(list, () => {
+			this.CombatReady();
+		});		
 	}
 }

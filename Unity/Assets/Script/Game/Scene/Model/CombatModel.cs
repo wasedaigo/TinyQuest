@@ -57,10 +57,7 @@ namespace TinyQuest.Scene.Model {
 				if (targetResult.life == 0) {
 					targetResult.swapUnit = RequestFactory.Instance.GetLocalUserRequest().GetFirstAliveUnit(this.target.groupType);
 				}
-				
-				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-				data.combatProgress = new CombatProgress();
-				
+
 				return new CombatAction(this.caster, this.target, result, null, targetResult);
 			}
 		}
@@ -72,11 +69,10 @@ namespace TinyQuest.Scene.Model {
 			Lose
 		}
 		
-		public const int GroupCount = 2;
 		public System.Action TurnProgress;
 		public System.Action<UserUnit, int> UpdateHP;
+		public System.Action BattleStarted;
 		public System.Action FinishBattle;
-		public System.Action SelectStandbyUnit;
 		public System.Action UpdateStatus;
 		
 		public System.Action<CombatAction> ExecuteAction;
@@ -87,12 +83,16 @@ namespace TinyQuest.Scene.Model {
 		
 		private List<CombatAction> combatActionList;
 		private int actionIndex;
-		private bool turnFinished;
 		private int turn;
 		
 		public CombatModel(){
-			this.turnFinished = true;
 			this.turn = 1;
+		}
+		
+		public bool IsPlayerTurn() {
+			// currentTurnGroupNo will be updated when a request is sent
+			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			return data.currentTurnGroupNo == 1;
 		}
 		
 		public CombatUnit GetFirstAliveUnit(int groupNo) {
@@ -150,23 +150,9 @@ namespace TinyQuest.Scene.Model {
 			return CombatResult.OnGoing;
 		}
 		
-		private bool IsPlayerFirst(CombatUnit playerUnit, CombatUnit enemyUnit, int turnRand) {
-			if (playerUnit.GetUserUnit().Speed > enemyUnit.GetUserUnit().Speed) {
-				return true;
-			}
-			
-			if (playerUnit.GetUserUnit().Speed == enemyUnit.GetUserUnit().Speed) {
-				return (turnRand < 50);
-			}
-
-			return false;
-		}
-		
 		public void ProcessActions() {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			
-			int playerGroupNo = 0;
-			int opponentGroupNo = 1;
+
 			CombatUnitGroup playerCombatUnitGroup = data.combatUnitGroups[0];
 			CombatUnitGroup enemyCombatUnitGroup = data.combatUnitGroups[1];
 			CombatUnit playerUnit = playerCombatUnitGroup.combatUnits[playerCombatUnitGroup.fightingUnitIndex];
@@ -175,23 +161,21 @@ namespace TinyQuest.Scene.Model {
 			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();
 			
-			CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupCount];
-			if (this.IsPlayerFirst(playerUnit, enemyUnit, data.turnRand)) {
-				blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
-				blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
+			List<CombatProcessBlock> blocks = new List<CombatProcessBlock>();
+			if (data.currentTurnGroupNo == 0) {
+				blocks.Add(new CombatProcessBlock(playerUnit, enemyUnit));
 			} else {
-				blocks[0] = new CombatProcessBlock(enemyUnit, playerUnit);
-				blocks[1] = new CombatProcessBlock(playerUnit, enemyUnit);
+				blocks.Add(new CombatProcessBlock(enemyUnit, playerUnit));
 			}
 
-			for (int i = 0; i < blocks.Length; i++) {
+			for (int i = 0; i < blocks.Count; i++) {
 				CombatAction action = blocks[i].Execute(data.skillRands[i]);
 				if (action != null) {
 					combatActions.Add(action);
 				}
 			}
 			
-			data.combatProgress.turnCount += 1;
+			data.turnCount += 1;
 			CacheFactory.Instance.GetLocalUserDataCache().Commit();
 			
 			turn++;
@@ -201,20 +185,21 @@ namespace TinyQuest.Scene.Model {
 
 		public void StartBattle(MonoBehaviour monoBehavior) {
 			LocalUserDataRequest req = RequestFactory.Instance.GetLocalUserRequest();
-			req.StartBattle(monoBehavior,
-				() => {
-					this.UpdateStatus();
-				}
-			);
+			req.StartBattle(monoBehavior, this.BattleStarted);
 		}
 
-		public void LoadNextTurn(MonoBehaviour monoBehaviour, System.Action callback) {
-			RequestFactory.Instance.GetLocalUserRequest().ProgressTurn(monoBehaviour, this.GetPlayerFightingUnit().index, this.turn, () => {
+		public void SendTurnInput(MonoBehaviour monoBehaviour, System.Action callback) {
+			RequestFactory.Instance.GetLocalUserRequest().SendTurnInput(monoBehaviour, this.GetPlayerFightingUnit().index, this.turn, () => {
 				callback();
 			});
 		}
 
-		
+		public void ReceiveTurnInput(MonoBehaviour monoBehaviour, System.Action callback) {
+			RequestFactory.Instance.GetLocalUserRequest().ReceiveTurnInput(monoBehaviour, this.turn, () => {
+				callback();
+			});
+		}
+
 		public void ExecuteNextAction() {
 			if (this.combatActionList != null && this.combatActionList.Count > actionIndex) {
 				this.ExecuteAction(this.combatActionList[actionIndex]);
@@ -243,7 +228,6 @@ namespace TinyQuest.Scene.Model {
 					battleFinished = true;
 				break;
 				default:
-					this.turnFinished = true;
 				break;
 			}
 			

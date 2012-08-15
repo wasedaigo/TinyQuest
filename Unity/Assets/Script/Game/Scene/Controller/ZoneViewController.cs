@@ -353,7 +353,7 @@ public class ZoneViewController : MonoBehaviour {
 		
 		CombatUnit activeCombatUnit = this.activeCombatUnits[groupNo];
 		if (activeCombatUnit != null && activeCombatUnit.IsDead) {
-			this.SwapActor(activeCombatUnit, combatUnit, callback);
+			this.SwapCombatActor(activeCombatUnit, combatUnit, callback);
 		} else {
 			// Play move-in animation for each group
 			List<System.Action<System.Action>> list = new List<System.Action<System.Action>>();
@@ -364,9 +364,7 @@ public class ZoneViewController : MonoBehaviour {
 			if (combatUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
 				animation = "Combat/Monster/MonsterMove001";
 			}
-			
-			//this.SwapActor(combatAction.casterResult.combatUnit, combatAction.casterResult.swapUnit, next);
-			
+
 			Actor actor = this.actors[groupNo, combatUnit.index];
 			Actor activeActor = this.GetActiveCombatActor(groupNo);
 			if (actor != activeActor) {
@@ -393,7 +391,7 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 	
-	protected void SwapActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
+	private void SwapCombatActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
 		int groupType = swappingUnit.groupType;
 		Actor swappedActor = this.actors[swappedUnit.groupType, swappedUnit.index];
 		Actor swappingActor = this.actors[swappingUnit.groupType, swappingUnit.index];
