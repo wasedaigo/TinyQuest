@@ -101,12 +101,11 @@ namespace TinyQuest.Scene.Model {
 		
 		public CombatUnit GetFightingUnit(int groupNo) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			
-			int fightingUnitIndex = data.fightingUnitIndexes[groupNo];
+			CombatUnitGroup combatUnitGroup = data.combatUnitGroups[groupNo];
+			int fightingUnitIndex = combatUnitGroup.fightingUnitIndex;
 			if (fightingUnitIndex < 0) {
 				return null;
 			}
-			CombatUnitGroup combatUnitGroup = data.combatUnitGroups[groupNo];
 			CombatUnit unit = combatUnitGroup.combatUnits[fightingUnitIndex];
 			
 			return unit;
@@ -114,15 +113,15 @@ namespace TinyQuest.Scene.Model {
 		
 		private void SetFightingUnitIndex(int groupNo, int index) {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = index;
+			data.combatUnitGroups[0].fightingUnitIndex = index;
 		}
 		
 		public CombatUnit GetPlayerFightingUnit() {
-			return this.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+			return this.GetFightingUnit(0);
 		}
 		
 		public void SetPlayerFightingUnitIndex(int index) {
-			this.SetFightingUnitIndex(CombatGroupInfo.Instance.GetPlayerGroupType(0), index);
+			this.SetFightingUnitIndex(0, index);
 		}
 		
 		public CombatUnitGroup[] GetCombatUnits() {
@@ -166,15 +165,17 @@ namespace TinyQuest.Scene.Model {
 		public void ProcessActions() {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			
-			int playerGroupNo = CombatGroupInfo.Instance.GetPlayerGroupType(0);
-			int opponentGroupNo = CombatGroupInfo.Instance.GetPlayerGroupType(1);
-			CombatUnit playerUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(playerGroupNo)].combatUnits[data.fightingUnitIndexes[playerGroupNo]];
-			CombatUnit enemyUnit = data.combatUnitGroups[CombatGroupInfo.Instance.GetPlayerGroupType(opponentGroupNo)].combatUnits[data.fightingUnitIndexes[opponentGroupNo]];
-
+			int playerGroupNo = 0;
+			int opponentGroupNo = 1;
+			CombatUnitGroup playerCombatUnitGroup = data.combatUnitGroups[0];
+			CombatUnitGroup enemyCombatUnitGroup = data.combatUnitGroups[1];
+			CombatUnit playerUnit = playerCombatUnitGroup.combatUnits[playerCombatUnitGroup.fightingUnitIndex];
+			CombatUnit enemyUnit = enemyCombatUnitGroup.combatUnits[enemyCombatUnitGroup.fightingUnitIndex];
+			
 			// Add actions
 			List<CombatAction> combatActions = new List<CombatAction>();
 			
-			CombatProcessBlock[] blocks = new CombatProcessBlock[CombatGroupInfo.Instance.GetGroupCount()];
+			CombatProcessBlock[] blocks = new CombatProcessBlock[Constant.GroupCount];
 			if (this.IsPlayerFirst(playerUnit, enemyUnit, data.turnRand)) {
 				blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
 				blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);

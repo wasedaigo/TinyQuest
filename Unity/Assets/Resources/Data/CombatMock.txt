@@ -1,5 +1,4 @@
 {
-    "fightingUnitIndexes" : [-1, 0],
     "combatUnitGroups": [
         {
             "combatUnits": [

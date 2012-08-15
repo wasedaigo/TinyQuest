@@ -38,29 +38,21 @@ public class ZoneViewController : MonoBehaviour {
 		return this._startTargetPositions[groupNo, index];
 	}
 	
-	private Roga2dNode[,] _spawnNodes = new Roga2dNode[TargetPositionCount, CombatGroupInfo.Instance.GetGroupCount()];
+	private Roga2dNode[,] _spawnNodes = new Roga2dNode[TargetPositionCount, Constant.GroupCount];
 	private Roga2dNode GetSpawnNode(int targetPosition, int groupNo) {
-		if (CombatGroupInfo.Instance.GetPlayerGroupType(0) == 0) {
-			return this._spawnNodes[targetPosition, groupNo];
-		} else {
-			return this._spawnNodes[targetPosition, 1 - groupNo];
-		}
+		return this._spawnNodes[targetPosition, groupNo];
 	}
 	
-	private Roga2dNode[,] _startTargetNodes = new Roga2dNode[CombatGroupInfo.Instance.GetGroupCount(), Constant.UnitCount];
+	private Roga2dNode[,] _startTargetNodes = new Roga2dNode[Constant.GroupCount, Constant.UnitCount];
 	private Roga2dNode GetStartTargetNode(int groupNo, int index) {
-		if (CombatGroupInfo.Instance.GetPlayerGroupType(0) == 0) {
-			return this._startTargetNodes[groupNo, index];
-		} else {
-			return this._startTargetNodes[1 - groupNo, index];
-		}
+		return this._startTargetNodes[groupNo, index];
 	}
 	
-	private CombatUnit[] activeCombatUnits = new CombatUnit[CombatGroupInfo.Instance.GetGroupCount()];
+	private CombatUnit[] activeCombatUnits = new CombatUnit[Constant.GroupCount];
 	
 	private Actor poppedActor;
 	
-	private Actor[,] actors = new Actor[CombatGroupInfo.Instance.GetGroupCount(), Constant.UnitCount];
+	private Actor[,] actors = new Actor[Constant.GroupCount, Constant.UnitCount];
 	private CombatModel combatModel;
 	
 	private void Awake() {
@@ -69,14 +61,14 @@ public class ZoneViewController : MonoBehaviour {
 		this.intervalPlayer = new Roga2dIntervalPlayer();
 		
 		for (int i = 0; i < TargetPositionCount; i++) {
-			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
+			for (int j = 0; j < Constant.GroupCount; j++) {
 				this._spawnNodes[i, j] = new Roga2dNode("Target" + i + ", " + j);
 				this._spawnNodes[i, j].LocalPixelPosition = GetTargetPositions(i, j);
 				layer.AddChild(this._spawnNodes[i, j]);
 			}
 		}
 		
-		for (int i = 0; i < CombatGroupInfo.Instance.GetGroupCount(); i++) {
+		for (int i = 0; i < Constant.GroupCount; i++) {
 			for (int j = 0; j < Constant.UnitCount; j++) {
 				this._startTargetNodes[i, j] = new Roga2dNode("StartTarget" + i + ", " + j);
 				this._startTargetNodes[i, j].LocalPixelPosition = GetStartTargetPositions(i, j);
@@ -300,7 +292,7 @@ public class ZoneViewController : MonoBehaviour {
 				break;
 		}
 		
-		if (CombatGroupInfo.Instance.GetPlayerGroupType(0) != groupType) {
+		if (0 != groupType) {
 			actor.LocalScale = new Vector2(-1, 1);
 		}
 		

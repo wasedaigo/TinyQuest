@@ -17,11 +17,28 @@ namespace TinyQuest.Data.Request {
 			yield return true;
 			this._isRequesting = true;
 			
-			CombatGroupInfo.Instance.SetPlayerGroupType(0);
+			sPlayerGroupNo = 1;
 
 			TextAsset txt = (TextAsset)Resources.Load("Data/CombatMock", typeof(TextAsset));
 			Debug.Log("WWW Ok!: " + txt.text);
-			CacheFactory.Instance.GetLocalUserDataCache().SetData(txt.text);	
+			CacheFactory.Instance.GetLocalUserDataCache().SetData(txt.text);
+			
+			LocalUserData data  = CacheFactory.Instance.GetLocalUserDataCache().Data;
+			if (sPlayerGroupNo != 0) {
+				CombatUnitGroup temp = data.combatUnitGroups[0];
+				data.combatUnitGroups[0] = data.combatUnitGroups[1];
+				data.combatUnitGroups[1] = temp;
+			}
+			
+			for (int i = 0; i < data.combatUnitGroups.Length; i++) {
+				for (int j = 0; j < data.combatUnitGroups[i].combatUnits.Count; j++) {
+					CombatUnit combatUnit = data.combatUnitGroups[i].combatUnits[j];
+					combatUnit.groupType = i;
+				}
+			}
+			data.combatUnitGroups[0].fightingUnitIndex = -1;
+			data.combatUnitGroups[1].fightingUnitIndex = 0;
+			
 			this._isRequesting = false;
 			callback();
 	    }
@@ -31,8 +48,9 @@ namespace TinyQuest.Data.Request {
 			this._isRequesting = false;
 			yield return true;
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
-			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = this.GetFirstAliveUnit(CombatGroupInfo.Instance.GetPlayerGroupType(1)).index;
+			
+			data.combatUnitGroups[0].fightingUnitIndex = playerIndex;
+			data.combatUnitGroups[1].fightingUnitIndex = this.GetFirstAliveUnit(1).index;
 			
 			data.skillRands = new int[2];
 			for (int i = 0; i < data.skillRands.Length; i++) {

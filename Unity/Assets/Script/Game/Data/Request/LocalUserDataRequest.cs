@@ -10,6 +10,7 @@ using TinyQuest.Data.Cache;
 namespace TinyQuest.Data.Request {
 	public class LocalUserDataRequest
 	{	
+		protected static int sPlayerGroupNo;
 		private static string APIDomain = "http://1.tiny-quest.appspot.com/api/";
 		private class StartBattleResponse {
 			public readonly int assignedGroupNo;
@@ -51,13 +52,15 @@ namespace TinyQuest.Data.Request {
 	            Debug.Log("WWW Ok!: " + response);
 				
 				StartBattleResponse startBattleResponse = JsonReader.Deserialize<StartBattleResponse>(response);	
-				CombatGroupInfo.Instance.SetPlayerGroupType(startBattleResponse.assignedGroupNo);
+				
+				sPlayerGroupNo = startBattleResponse.assignedGroupNo;
 				
 				CacheFactory.Instance.GetLocalUserDataCache().SetData(response);
 				LocalUserDataCache cache = CacheFactory.Instance.GetLocalUserDataCache();
 				LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-				data.fightingUnitIndexes = startBattleResponse.fightingUnitIndexes;
-
+				data.combatUnitGroups[0].fightingUnitIndex = startBattleResponse.fightingUnitIndexes[0];
+				data.combatUnitGroups[1].fightingUnitIndex = startBattleResponse.fightingUnitIndexes[1];
+				
 				callback();
 	        } else {
 	            Debug.Log("WWW Error: "+ www.error);
@@ -89,7 +92,7 @@ namespace TinyQuest.Data.Request {
 		public virtual void ProgressTurn(MonoBehaviour monoBehaviour, int playerIndex, int turn, System.Action callback) {
 			Debug.Log("ProgressTurn");
 			WWWForm form = new WWWForm();
-			form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
+			form.AddField("playerGroupType", 0);
 			form.AddField("playerIndex", playerIndex);
 			form.AddField("turn", turn);
 			WWW www = new WWW(APIDomain + "progress_turn", form); 
@@ -112,7 +115,7 @@ namespace TinyQuest.Data.Request {
 				while (!progressTurnResponse.valid) {
 					yield return new WaitForSeconds(3.0f); 
 					WWWForm form = new WWWForm();
-					form.AddField("playerGroupType", CombatGroupInfo.Instance.GetPlayerGroupType(0));
+					form.AddField("playerGroupType", 0);
 					form.AddField("playerIndex", playerIndex);
 					form.AddField("turn", turn);
 					www = new WWW(APIDomain + "progress_turn", form); 
@@ -123,8 +126,8 @@ namespace TinyQuest.Data.Request {
 					progressTurnResponse = JsonReader.Deserialize<ProgressTurnResponse>(response);
 					
 					LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
-					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = progressTurnResponse.opponentIndex;
+					data.combatUnitGroups[0].fightingUnitIndex = playerIndex;
+					data.combatUnitGroups[1].fightingUnitIndex = progressTurnResponse.opponentIndex;
 					data.featureRands = progressTurnResponse.featureRands;
 					data.skillRands = progressTurnResponse.skillRands;
 					data.turnRand = progressTurnResponse.turnRand;

@@ -62,7 +62,7 @@ public class CombatController : MonoBehaviour {
 
 	public void ChangeActorStatus(CombatActionResult result){
 		CombatControlPanelController controlPanelController;
-		if (result.combatUnit.groupType == CombatGroupInfo.Instance.GetPlayerGroupType(0)) {
+		if (result.combatUnit.groupType == 0) {
 			controlPanelController = this.allyCombatControlPanelController;
 		} else {
 			controlPanelController = this.enemyCombatControlPanelController;
@@ -89,8 +89,8 @@ public class CombatController : MonoBehaviour {
 	public void StatusUpdated() {
 		this.UIAllyCombatPanel.SetActiveRecursively(true);
 		
-		this.allyCombatControlPanelController.UpdateStatus(CombatGroupInfo.Instance.GetPlayerGroupType(0));
-		this.enemyCombatControlPanelController.UpdateStatus(CombatGroupInfo.Instance.GetPlayerGroupType(1));
+		this.allyCombatControlPanelController.UpdateStatus(0);
+		this.enemyCombatControlPanelController.UpdateStatus(1);
 	}
 	
 	public IEnumerator ShowActors(System.Action callback) {
@@ -99,7 +99,7 @@ public class CombatController : MonoBehaviour {
 		CombatUnitGroup[] combatUnitGroups = this.combatModel.GetCombatUnits();
 		
 		for (int i = 0; i < Constant.UnitCount; i++) {
-			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
+			for (int j = 0; j < Constant.GroupCount; j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("SpawnCombatActor", combatUnitGroup.combatUnits[i]);
 				this.SendMessage("MoveActorFront", combatUnitGroup.combatUnits[i]);
@@ -115,7 +115,7 @@ public class CombatController : MonoBehaviour {
 		UICamera.enabled = true;
 		
 		for (int i = Constant.UnitCount - 1; i >= 0; i--) {
-			for (int j = 0; j < CombatGroupInfo.Instance.GetGroupCount(); j++) {
+			for (int j = 0; j < Constant.GroupCount; j++) {
 				CombatUnitGroup combatUnitGroup = combatUnitGroups[j];
 				this.SendMessage("MoveActorBack", combatUnitGroup.combatUnits[i]);
 			}
@@ -155,7 +155,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void InputTimerFinished() {
-		CombatUnit combatUnit = this.combatModel.GetFirstAliveUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0));
+		CombatUnit combatUnit = this.combatModel.GetFirstAliveUnit(0);
 		if (combatUnit != null) {
 			this.allyCombatControlPanelController.SelectCard(combatUnit.index);
 			this.CardExecuted(combatUnit.index);
@@ -164,7 +164,7 @@ public class CombatController : MonoBehaviour {
 	
 	public void CombatReady() {
 		this.zoneViewController.SelectCombatActor(
-			this.combatModel.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(1)),
+			this.combatModel.GetFightingUnit(1),
 			() => {
 				this.StartCoroutine(this.CombatStarted());
 			}
@@ -174,7 +174,7 @@ public class CombatController : MonoBehaviour {
 	
 	public IEnumerator CombatStarted() {
 		UICamera.enabled = false;
-		this.zoneViewController.SetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1), Actor.PoseType.Attack);
+		this.zoneViewController.SetPose(1, Actor.PoseType.Attack);
 		yield return new WaitForSeconds(0.2f);
 		this.combatModel.ProcessActions();
 		
@@ -182,8 +182,8 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void TurnFinished() {
-		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(0));
-		this.zoneViewController.ResetPose(CombatGroupInfo.Instance.GetPlayerGroupType(1));
+		this.zoneViewController.ResetPose(0);
+		this.zoneViewController.ResetPose(1);
 		if (!this.combatModel.FinishTurn()) {
 			this.StartInput();
 		}
@@ -209,7 +209,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	private void ShowPanel(int index) {
-		CombatUnit combatUnit = this.combatModel.GetCombatUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0), index);
+		CombatUnit combatUnit = this.combatModel.GetCombatUnit(0, index);
 		
 		int[] skillIds = combatUnit.GetUserUnit().Unit.skills;
 		BaseSkill[] skills = new BaseSkill[Constant.SkillSlotCount];
@@ -234,8 +234,8 @@ public class CombatController : MonoBehaviour {
 		);
 		list.Add( 
 			(next) => {
-				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(CombatGroupInfo.Instance.GetPlayerGroupType(0)), () =>{
-					this.zoneViewController.SetPose(CombatGroupInfo.Instance.GetPlayerGroupType(0), Actor.PoseType.Attack);
+				this.zoneViewController.SelectCombatActor(this.combatModel.GetFightingUnit(0), () =>{
+					this.zoneViewController.SetPose(0, Actor.PoseType.Attack);
 					next();
 				});
 			} 

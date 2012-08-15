@@ -51,6 +51,7 @@ namespace TinyQuest.Data{
 	
 	public class CombatUnitGroup {
 		public List<CombatUnit> combatUnits;
+		public int fightingUnitIndex;
 		
 		public CombatUnitGroup() {
 			this.combatUnits = new List<CombatUnit>();
@@ -117,7 +118,6 @@ namespace TinyQuest.Data{
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
 		public List<UserUnit> zoneEnemies;
-		public int[] fightingUnitIndexes;
 		public int[] featureRands;
 		public int[] skillRands;
 		public int turnRand;

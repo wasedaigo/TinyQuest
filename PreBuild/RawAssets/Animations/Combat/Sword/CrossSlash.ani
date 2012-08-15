@@ -1,9 +1,9 @@
 {
    "events" : {
       "0" : [ "hide" ],
-      "11" : [ "damage:0" ],
+      "11" : [ "target_damage", "target_pop_damage" ],
       "22" : [ "show" ],
-      "3" : [ "damage:0" ]
+      "3" : [ "target_damage" ]
    },
    "keyframes" : {
       "0" : [
