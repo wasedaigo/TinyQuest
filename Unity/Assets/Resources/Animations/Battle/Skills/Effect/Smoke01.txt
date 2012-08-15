@@ -1,4 +1,109 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "alpha": [
+        {
+          "tween": "linear",
+          "endValue": 0.0,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "duration": 14
+        },
+        {
+          "tween": "fix",
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 14,
+          "duration": 1
+        }
+      ],
+      "rotation": [
+        {
+          "tween": "linear",
+          "facingOption": "None",
+          "endValue": 30,
+          "startValue": 0,
+          "frameNo": 0,
+          "duration": 14
+        },
+        {
+          "tween": "fix",
+          "facingOption": "None",
+          "endValue": 30,
+          "startValue": 30,
+          "frameNo": 14,
+          "duration": 1
+        }
+      ],
+      "scale": [
+        {
+          "tween": "linear",
+          "endValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "frameNo": 0,
+          "duration": 5
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            1.5,
+            1.5
+          ],
+          "startValue": [
+            1.10000002384186,
+            1.10000002384186
+          ],
+          "frameNo": 5,
+          "duration": 9
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            1.5,
+            1.5
+          ],
+          "startValue": [
+            1.5,
+            1.5
+          ],
+          "frameNo": 14,
+          "duration": 1
+        }
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Effect_Special01",
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
 
@@ -6,110 +111,5 @@
     "images": [
       "Battle/Skills/Effect_Special01"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-
-      ],
-      "scale": [
-        {
-          "duration": 5,
-          "endValue": [
-            1.10000002384186,
-            1.10000002384186
-          ],
-          "tween": "linear",
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 9,
-          "endValue": [
-            1.5,
-            1.5
-          ],
-          "tween": "linear",
-          "startValue": [
-            1.10000002384186,
-            1.10000002384186
-          ],
-          "frameNo": 5
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1.5,
-            1.5
-          ],
-          "tween": "fix",
-          "startValue": [
-            1.5,
-            1.5
-          ],
-          "frameNo": 14
-        }
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Special01",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ]
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 14,
-          "endValue": 30,
-          "tween": "linear",
-          "startValue": 0,
-          "facingOption": "None",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": 30,
-          "tween": "fix",
-          "startValue": 30,
-          "facingOption": "None",
-          "frameNo": 14
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 14,
-          "endValue": 0.0,
-          "tween": "linear",
-          "startValue": 1.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": 0.0,
-          "tween": "fix",
-          "startValue": 0.0,
-          "frameNo": 14
-        }
-      ]
-    }
-  ]
+  }
 }

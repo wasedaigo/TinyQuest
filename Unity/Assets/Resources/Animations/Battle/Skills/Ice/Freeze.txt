@@ -1,15 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Battler/MagicCasting",
-      "Battle/Skills/Effect/Ice01",
-      "Battle/Skills/Effect/IceOrb"
-    ],
-    "images": [
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Effect_Freeze01"
-    ]
-  },
   "events": {
     "33": [
       "damage:0"
@@ -20,26 +9,30 @@
       "position": [
 
       ],
-      "scale": [
+      "alpha": [
 
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 42,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler/MagicCasting",
-          "type": "Animation",
-          "frameNo": 0
-        }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": true,
+          "id": "Battle/Skills/Effect/Ice01",
+          "minEmitSpeed": 0.0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 1,
+          "minEmitAngle": 0
+        }
+      ],
+      "hue": [
 
       ]
     },
@@ -47,32 +40,39 @@
       "position": [
 
       ],
-      "scale": [
+      "alpha": [
 
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
-          "priority": 0.5,
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Effect/Ice01",
-          "maxEmitAngle": 0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 0
-        }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Battler/MagicCasting",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 42
+        }
+      ],
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/Ice01",
+      "Battle/Skills/Battler/MagicCasting",
+      "Battle/Skills/Effect/IceOrb"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Freeze01",
+      "Battle/Skills/Battler_Base"
+    ]
+  }
 }

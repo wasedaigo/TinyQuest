@@ -1,4 +1,172 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 19,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
+          "frameNo": 19,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+        {
+          "tween": "fix",
+          "endValue": 0.0,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "duration": 18
+        },
+        {
+          "tween": "fix",
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 18,
+          "duration": 1
+        },
+        {
+          "tween": "fix",
+          "endValue": 0.0,
+          "startValue": 0.0,
+          "frameNo": 19,
+          "duration": 1
+        }
+      ],
+      "rotation": [
+        {
+          "tween": "fix",
+          "facingOption": "FaceToMov",
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0,
+          "duration": 19
+        },
+        {
+          "tween": "fix",
+          "facingOption": "FaceToMov",
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 19,
+          "duration": 1
+        }
+      ],
+      "scale": [
+        {
+          "tween": "linear",
+          "endValue": [
+            1.0,
+            0.200000002980232
+          ],
+          "startValue": [
+            1.0,
+            0.200000002980232
+          ],
+          "frameNo": 0,
+          "duration": 1
+        }
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Effect_Special01",
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 18,
+          "center": [
+            0,
+            0
+          ],
+          "blendType": "Add"
+        },
+        {
+          "id": "Battle/Skills/Effect_Special01",
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 18,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "blendType": "Add"
+        },
+        {
+          "id": "Battle/Skills/Effect_Special01",
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 19,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ],
+          "blendType": "Add"
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
 
@@ -6,173 +174,5 @@
     "images": [
       "Battle/Skills/Effect_Special01"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 19,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 19,
-          "startPositionType": "RelativeToTarget"
-        }
-      ],
-      "scale": [
-        {
-          "duration": 1,
-          "endValue": [
-            1.0,
-            0.200000002980232
-          ],
-          "tween": "linear",
-          "startValue": [
-            1.0,
-            0.200000002980232
-          ],
-          "frameNo": 0
-        }
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 18,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add",
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Special01",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            32,
-            0,
-            32,
-            32
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add",
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Special01",
-          "type": "Image",
-          "frameNo": 18,
-          "rect": [
-            32,
-            0,
-            32,
-            32
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add",
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Special01",
-          "type": "Image",
-          "frameNo": 19,
-          "rect": [
-            32,
-            0,
-            32,
-            32
-          ]
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 19,
-          "endValue": 0,
-          "tween": "fix",
-          "startValue": 0,
-          "facingOption": "FaceToMov",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": 0,
-          "tween": "fix",
-          "startValue": 0,
-          "facingOption": "FaceToMov",
-          "frameNo": 19
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 18,
-          "endValue": 0.0,
-          "tween": "fix",
-          "startValue": 1.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": 0.0,
-          "tween": "fix",
-          "startValue": 0.0,
-          "frameNo": 18
-        },
-        {
-          "duration": 1,
-          "endValue": 0.0,
-          "tween": "fix",
-          "startValue": 0.0,
-          "frameNo": 19
-        }
-      ]
-    }
-  ]
+  }
 }

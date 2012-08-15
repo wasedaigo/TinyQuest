@@ -1,180 +1,180 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Weapon_SwordBase"
-    ]
-  },
   "events": null,
   "timelines": [
     {
       "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            -4,
+            4
+          ],
+          "startValue": [
+            8,
+            5
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 8,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            -4,
+            4
+          ],
+          "startValue": [
+            -4,
+            4
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 8,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 17,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
 
+      ],
+      "rotation": [
+        {
+          "tween": "linear",
+          "facingOption": "None",
+          "endValue": 330,
+          "startValue": 140,
+          "frameNo": 0,
+          "duration": 8
+        },
+        {
+          "tween": "fix",
+          "facingOption": "None",
+          "endValue": 330,
+          "startValue": 330,
+          "frameNo": 8,
+          "duration": 17
+        }
       ],
       "scale": [
 
       ],
-      "hue": [
-
-      ],
       "source": [
         {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
-          "frameNo": 0,
+          "id": "Battle/Skills/Weapon_SwordBase",
           "rect": [
-            480,
+            0,
             0,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 0,
+          "duration": 8,
+          "center": [
+            0.0,
+            13.0
           ]
         },
         {
-          "duration": 24,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
-          "frameNo": 1,
+          "id": "Battle/Skills/Weapon_SwordBase",
           "rect": [
-            544,
+            0,
             0,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.400000005960464,
+          "frameNo": 8,
+          "duration": 17,
+          "center": [
+            0.0,
+            13.0
           ]
         }
       ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     },
     {
       "position": [
-        {
-          "duration": 8,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -4,
-            4
-          ],
-          "tween": "linear",
-          "startValue": [
-            8,
-            5
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 17,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -4,
-            4
-          ],
-          "tween": "fix",
-          "startValue": [
-            -4,
-            4
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 8,
-          "startPositionType": "None"
-        }
+
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
       ],
       "scale": [
 
       ],
-      "hue": [
-
-      ],
       "source": [
         {
-          "duration": 8,
-          "center": [
-            0.0,
-            13.0
+          "id": "Battle/Skills/Battler_Base",
+          "rect": [
+            480,
+            0,
+            32,
+            32
           ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Weapon_SwordBase",
           "type": "Image",
+          "priority": 0.5,
           "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ]
-        },
-        {
-          "duration": 17,
+          "duration": 1,
           "center": [
-            0.0,
-            13.0
-          ],
-          "priority": 0.400000005960464,
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "type": "Image",
-          "frameNo": 8,
-          "rect": [
             0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Battler_Base",
+          "rect": [
+            544,
             0,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 1,
+          "duration": 24,
+          "center": [
+            0,
+            0
           ]
         }
       ],
-      "rotation": [
-        {
-          "duration": 8,
-          "endValue": 330,
-          "tween": "linear",
-          "startValue": 140,
-          "facingOption": "None",
-          "frameNo": 0
-        },
-        {
-          "duration": 17,
-          "endValue": 330,
-          "tween": "fix",
-          "startValue": 330,
-          "facingOption": "None",
-          "frameNo": 8
-        }
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Battler_Base"
+    ]
+  }
 }

@@ -1,4 +1,106 @@
 {
+  "events": {
+    "21": [
+      "show"
+    ],
+    "2": [
+      "goto:0"
+    ],
+    "0": [
+      "hide"
+    ]
+  },
+  "timelines": [
+    {
+      "position": [
+
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": true,
+          "id": "Battle/Skills/Earth/EarthCrack",
+          "minEmitSpeed": 0.0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.300000011920929,
+          "frameNo": 0,
+          "duration": 1,
+          "minEmitAngle": 0
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 21,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Battler_Base",
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 21,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Earth/EarthCrack"
@@ -7,107 +109,5 @@
       "Battle/Skills/Battler_Base",
       "Battle/Skills/Earth_Crack"
     ]
-  },
-  "events": {
-    "0": [
-      "hide"
-    ],
-    "2": [
-      "goto:0"
-    ],
-    "21": [
-      "show"
-    ]
-  },
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 21,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 21,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            416,
-            0,
-            32,
-            32
-          ]
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
-          "priority": 0.300000011920929,
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Earth/EarthCrack",
-          "maxEmitAngle": 0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    }
-  ]
+  }
 }

@@ -1,137 +1,137 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Weapon_SpearBase"
-    ]
-  },
   "events": null,
   "timelines": [
     {
       "position": [
         {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
           "tween": "fix",
-          "startValue": [
-            0,
-            0
+          "endValue": [
+            -19,
+            9
           ],
+          "startValue": [
+            -19,
+            9
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "tween": "fix",
+          "facingOption": "None",
+          "endValue": -90,
+          "startValue": -90,
           "frameNo": 0,
-          "startPositionType": "None"
+          "duration": 1
         }
       ],
       "scale": [
 
       ],
-      "hue": [
-
-      ],
       "source": [
         {
+          "id": "Battle/Skills/Weapon_SpearBase",
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
           "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            288,
-            0,
-            32,
-            32
           ]
         }
       ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     },
     {
       "position": [
         {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
+          "tween": "fix",
+          "endValue": [
             0,
             0
           ],
-          "endValue": [
-            -19,
-            9
-          ],
-          "tween": "fix",
           "startValue": [
-            -19,
-            9
+            0,
+            0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
           "duration": 1,
-          "center": [
+          "startPositionAnchor": [
             0,
             0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Weapon_SpearBase",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            32,
-            32
           ]
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 1,
-          "endValue": -90,
-          "tween": "fix",
-          "startValue": -90,
-          "facingOption": "None",
-          "frameNo": 0
         }
       ],
       "alpha": [
 
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Battler_Base",
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
+
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Weapon_SpearBase",
+      "Battle/Skills/Battler_Base"
+    ]
+  }
 }

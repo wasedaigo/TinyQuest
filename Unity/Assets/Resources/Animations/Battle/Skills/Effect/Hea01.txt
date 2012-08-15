@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/HealShining02"
-    ],
-    "images": [
-      "Battle/Skills/Effect_Heal01"
-    ]
-  },
   "events": {
     "0": [
       "snd:MMS/power07"
@@ -17,32 +9,40 @@
       "position": [
 
       ],
-      "scale": [
+      "alpha": [
 
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 5,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
-          "priority": 0.5,
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Effect/HealShining02",
-          "maxEmitAngle": 0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 0
-        }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": true,
+          "id": "Battle/Skills/Effect/HealShining02",
+          "minEmitSpeed": 0.0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 5,
+          "minEmitAngle": 0
+        }
+      ],
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/HealShining02"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Heal01"
+    ]
+  }
 }

@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Monster/DeadlyFang"
-    ],
-    "images": [
-      "Battle/Skills/Monster_Attack1"
-    ]
-  },
   "events": {
     "6": [
       "damage:0"
@@ -19,111 +11,119 @@
     {
       "position": [
         {
-          "duration": 6,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
           "frameNo": 0,
-          "startPositionType": "RelativeToTarget"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
+          "endPositionAnchor": [
             0,
             0
           ],
+          "duration": 6,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
+          "frameNo": 6,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 6,
-          "startPositionType": "RelativeToTarget"
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         },
         {
-          "duration": 2,
-          "endPositionType": "None",
           "wait": true,
+          "endPositionType": "None",
+          "frameNo": 7,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 7
+          "duration": 2
         }
       ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
+      "alpha": [
         {
-          "duration": 7,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
-          "priority": 0.5,
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Monster/DeadlyFang",
-          "maxEmitAngle": 0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 0
+          "tween": "linear",
+          "endValue": 0.5,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "duration": 6
         },
         {
-          "duration": 2,
+          "tween": "fix",
+          "endValue": 0.5,
+          "startValue": 0.5,
+          "frameNo": 6,
+          "duration": 1
+        },
+        {
           "wait": true,
-          "frameNo": 7
+          "frameNo": 7,
+          "duration": 2
         }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
         {
-          "duration": 6,
-          "endValue": 0.5,
-          "tween": "linear",
-          "startValue": 1.0,
-          "frameNo": 0
+          "emitter": true,
+          "id": "Battle/Skills/Monster/DeadlyFang",
+          "minEmitSpeed": 0.0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 7,
+          "minEmitAngle": 0
         },
         {
-          "duration": 1,
-          "endValue": 0.5,
-          "tween": "fix",
-          "startValue": 0.5,
-          "frameNo": 6
-        },
-        {
-          "duration": 2,
           "wait": true,
-          "frameNo": 7
+          "frameNo": 7,
+          "duration": 2
         }
+      ],
+      "hue": [
+
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Monster/DeadlyFang"
+    ],
+    "images": [
+      "Battle/Skills/Monster_Attack1"
+    ]
+  }
 }

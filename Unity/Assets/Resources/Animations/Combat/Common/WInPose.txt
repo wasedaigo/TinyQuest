@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Combat/BattlerBase"
-    ]
-  },
   "events": {
     "9": [
       "show"
@@ -19,206 +11,214 @@
     {
       "position": [
         {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            1,
-            1
-          ],
-          "endValue": [
-            0,
-            0
-          ],
           "tween": "easeIn",
+          "endValue": [
+            0,
+            0
+          ],
           "startValue": [
             0,
             0
           ],
-          "endPositionAnchor": [
-            1,
-            1
-          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
           "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            1,
-            1
-          ],
-          "endValue": [
-            0,
-            -16
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
           "endPositionAnchor": [
             1,
             1
           ],
-          "frameNo": 1,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            1,
-            1
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            -16
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 5,
-          "startPositionType": "None"
-        },
-        {
           "duration": 1,
-          "endPositionType": "None",
           "startPositionAnchor": [
-            0,
-            0
-          ],
+            1,
+            1
+          ]
+        },
+        {
+          "tween": "linear",
           "endValue": [
             0,
-            0
+            -16
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 1,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            -16
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 5,
           "endPositionAnchor": [
             0,
             0
           ],
+          "duration": 4,
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
           "frameNo": 9,
-          "startPositionType": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
       ],
       "scale": [
         {
-          "duration": 8,
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -1.0,
-            1.0
-          ],
           "wait": true,
           "startValue": [
             -1.0,
             1.0
           ],
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startPositionType": "None",
           "frameNo": 0,
-          "startPositionType": "None"
+          "duration": 8,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         },
         {
-          "duration": 1,
+          "tween": "fix",
           "endValue": [
             1,
             1
           ],
-          "tween": "fix",
           "startValue": [
             -1.0,
             1.0
           ],
-          "frameNo": 8
+          "frameNo": 8,
+          "duration": 1
         },
         {
-          "duration": 1,
+          "tween": "fix",
           "endValue": [
             1,
             1
           ],
-          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "frameNo": 9
+          "frameNo": 9,
+          "duration": 1
         }
-      ],
-      "hue": [
-
       ],
       "source": [
         {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
           "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 0,
           "rect": [
             128,
             0,
             32,
             32
-          ]
-        },
-        {
-          "duration": 8,
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 1,
           "rect": [
             32,
             0,
             32,
             32
-          ]
-        },
-        {
-          "duration": 1,
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 1,
+          "duration": 8,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 9,
           "rect": [
             96,
             0,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 9,
+          "duration": 1,
+          "center": [
+            0,
+            0
           ]
         }
       ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Combat/BattlerBase"
+    ]
+  }
 }

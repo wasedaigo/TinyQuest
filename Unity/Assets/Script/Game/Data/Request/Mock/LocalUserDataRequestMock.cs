@@ -17,7 +17,7 @@ namespace TinyQuest.Data.Request {
 			yield return true;
 			this._isRequesting = true;
 			
-			sPlayerGroupNo = 1;
+			sPlayerGroupNo = 0;
 
 			TextAsset txt = (TextAsset)Resources.Load("Data/CombatMock", typeof(TextAsset));
 			Debug.Log("WWW Ok!: " + txt.text);

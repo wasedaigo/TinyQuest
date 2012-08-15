@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Effect_Lightning02"
-    ]
-  },
   "events": {
     "0": [
       "snd:MMS/shoot13"
@@ -16,255 +8,263 @@
     {
       "position": [
         {
-          "duration": 3,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
+          "wait": true,
           "startValue": [
             0,
             -108
           ],
+          "endValue": [
+            0,
+            -108
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
           "duration": 1,
-          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          ]
+        },
+        {
           "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 3,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
-            0
+            -108
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 1,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
           "duration": 4,
-          "center": [
+          "startPositionAnchor": [
             0,
             0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Lightning02",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            384,
-            0,
-            96,
-            96
           ]
         },
         {
-          "duration": 1,
-          "center": [
+          "tween": "linear",
+          "endValue": [
             0,
             0
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Lightning02",
-          "type": "Image",
-          "frameNo": 4,
-          "rect": [
+          "startValue": [
             0,
-            96,
-            96,
-            96
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 5,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
           ]
         }
+      ],
+      "alpha": [
+
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "wait": true,
+          "frameNo": 0,
+          "duration": 1
+        },
+        {
+          "id": "Battle/Skills/Effect_Lightning02",
+          "rect": [
+            96,
+            96,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 1,
+          "duration": 6,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
 
       ]
     },
     {
       "position": [
         {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
+          "tween": "linear",
+          "endValue": [
             0,
             0
           ],
-          "endValue": [
-            0,
-            -108
-          ],
-          "wait": true,
           "startValue": [
             0,
             -108
           ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
           "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            -108
-          ],
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 1,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
+          "duration": 3,
           "startPositionAnchor": [
             0,
             0
-          ],
+          ]
+        },
+        {
+          "tween": "linear",
           "endValue": [
             0,
             0
           ],
-          "tween": "linear",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 3,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 5,
-          "startPositionType": "None"
-        },
-        {
           "duration": 1,
-          "endPositionType": "None",
           "startPositionAnchor": [
             0,
             0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          ]
+        },
+        {
           "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 6,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
           "duration": 1,
-          "wait": true,
-          "frameNo": 0
-        },
-        {
-          "duration": 6,
-          "center": [
+          "startPositionAnchor": [
             0,
             0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Lightning02",
-          "type": "Image",
-          "frameNo": 1,
-          "rect": [
-            96,
-            96,
-            96,
-            96
           ]
         }
+      ],
+      "alpha": [
+
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Effect_Lightning02",
+          "rect": [
+            384,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 4,
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Effect_Lightning02",
+          "rect": [
+            0,
+            96,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 4,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Lightning02"
+    ]
+  }
 }

@@ -1,16 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Fire/FlareEffect",
-      "Battle/Skills/Fire/FlareParticle",
-      "Battle/Skills/Fire/FlareExplosion",
-      "Battle/Skills/Fire/FlareExploder"
-    ],
-    "images": [
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Effect_Slash3"
-    ]
-  },
   "events": {
     "65": [
       "damage:0"
@@ -20,113 +8,125 @@
     {
       "position": [
         {
-          "duration": 73,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 73,
-          "center": [
+          "duration": 1,
+          "startPositionAnchor": [
             0,
             0
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            416,
-            0,
-            32,
-            32
           ]
         }
+      ],
+      "alpha": [
+
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": true,
+          "id": "Battle/Skills/Fire/FlareEffect",
+          "minEmitSpeed": 0.0,
+          "type": "Animation",
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 1,
+          "minEmitAngle": 0
+        }
+      ],
+      "hue": [
 
       ]
     },
     {
       "position": [
         {
-          "duration": 1,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0,
-          "startPositionType": "RelativeToTarget"
+          "duration": 73,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
       ],
-      "scale": [
+      "alpha": [
 
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "emitter": true,
-          "minEmitSpeed": 0.0,
-          "priority": 0.5,
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Fire/FlareEffect",
-          "maxEmitAngle": 0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "frameNo": 0
-        }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Battler_Base",
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 73,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Fire/FlareEffect",
+      "Battle/Skills/Fire/FlareExplosion",
+      "Battle/Skills/Fire/FlareParticle",
+      "Battle/Skills/Fire/FlareExploder"
+    ],
+    "images": [
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Effect_Slash3"
+    ]
+  }
 }

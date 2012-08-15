@@ -1,4 +1,156 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "rect": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 0,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "rect": [
+            96,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 1,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "rect": [
+            192,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 2,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "rect": [
+            288,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 3,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Battle/Skills/Effect_WindSpiral",
+          "rect": [
+            384,
+            0,
+            96,
+            96
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 4,
+          "duration": 1,
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
 
@@ -6,157 +158,5 @@
     "images": [
       "Battle/Skills/Effect_WindSpiral"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Effect_WindSpiral",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Effect_WindSpiral",
-          "type": "Image",
-          "frameNo": 1,
-          "rect": [
-            96,
-            0,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Effect_WindSpiral",
-          "type": "Image",
-          "frameNo": 2,
-          "rect": [
-            192,
-            0,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Effect_WindSpiral",
-          "type": "Image",
-          "frameNo": 3,
-          "rect": [
-            288,
-            0,
-            96,
-            96
-          ]
-        },
-        {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Battle/Skills/Effect_WindSpiral",
-          "type": "Image",
-          "frameNo": 4,
-          "rect": [
-            384,
-            0,
-            96,
-            96
-          ]
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    }
-  ]
+  }
 }

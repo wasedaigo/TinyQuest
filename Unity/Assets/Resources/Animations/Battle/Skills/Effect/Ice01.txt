@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/IceOrb"
-    ],
-    "images": [
-      "Battle/Skills/Effect_Freeze01"
-    ]
-  },
   "events": {
     "4": [
       "snd:MMS/Freeze02"
@@ -17,79 +9,87 @@
       "position": [
 
       ],
-      "scale": [
-        {
-          "duration": 9,
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "linear",
-          "startValue": [
-            0.0,
-            0.0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 20,
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "linear",
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 9
-        },
-        {
-          "duration": 5,
-          "endValue": [
-            0.0,
-            0.0
-          ],
-          "tween": "linear",
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 29
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0.0,
-            0.0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0.0,
-            0.0
-          ],
-          "frameNo": 34
-        }
-      ],
-      "hue": [
+      "alpha": [
 
-      ],
-      "source": [
-        {
-          "duration": 35,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/IceOrb",
-          "type": "Animation",
-          "frameNo": 0
-        }
       ],
       "rotation": [
 
       ],
-      "alpha": [
+      "scale": [
+        {
+          "tween": "linear",
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            0.0,
+            0.0
+          ],
+          "frameNo": 0,
+          "duration": 9
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 9,
+          "duration": 20
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0.0,
+            0.0
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 29,
+          "duration": 5
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0.0,
+            0.0
+          ],
+          "startValue": [
+            0.0,
+            0.0
+          ],
+          "frameNo": 34,
+          "duration": 1
+        }
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/IceOrb",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 35
+        }
+      ],
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Battle/Skills/Effect/IceOrb"
+    ],
+    "images": [
+      "Battle/Skills/Effect_Freeze01"
+    ]
+  }
 }

@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Effect_Weapon05"
-    ]
-  },
   "events": {
     "0": [
       "snd:MMS/chari14_a"
@@ -16,151 +8,159 @@
     {
       "position": [
         {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 0,
-          "startPositionType": "None"
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         },
         {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
+          "tween": "fix",
           "endValue": [
             0,
             0
           ],
-          "tween": "fix",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 4,
-          "startPositionType": "None"
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
       ],
       "scale": [
 
       ],
-      "hue": [
-
-      ],
       "source": [
         {
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
           "id": "Battle/Skills/Effect_Weapon05",
+          "rect": [
+            32,
+            128,
+            32,
+            32
+          ],
           "type": "Image",
+          "priority": 0.5,
           "frameNo": 0,
-          "rect": [
-            32,
-            128,
-            32,
-            32
-          ]
-        },
-        {
           "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Battle/Skills/Effect_Weapon05",
+          "rect": [
+            128,
+            128,
+            32,
+            32
+          ],
           "type": "Image",
+          "priority": 0.5,
           "frameNo": 1,
-          "rect": [
-            128,
-            128,
-            32,
-            32
-          ]
-        },
-        {
           "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "frameNo": 2,
           "rect": [
             224,
             128,
             32,
             32
-          ]
-        },
-        {
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 2,
           "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "frameNo": 3,
           "rect": [
             320,
             128,
             32,
             32
-          ]
-        },
-        {
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 3,
           "duration": 1,
           "center": [
             0,
             0
-          ],
-          "priority": 0.5,
+          ]
+        },
+        {
           "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "frameNo": 4,
           "rect": [
             416,
             128,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 4,
+          "duration": 1,
+          "center": [
+            0,
+            0
           ]
         }
       ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Battle/Skills/Effect_Weapon05"
+    ]
+  }
 }

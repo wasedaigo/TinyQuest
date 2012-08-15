@@ -1,4 +1,583 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            -22,
+            22
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            -22,
+            22
+          ],
+          "startValue": [
+            -22,
+            22
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            22,
+            22
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            22,
+            22
+          ],
+          "startValue": [
+            22,
+            22
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            -22,
+            -22
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            -22,
+            -22
+          ],
+          "startValue": [
+            -22,
+            -22
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            -30,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            -30,
+            0
+          ],
+          "startValue": [
+            -30,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            30,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            30,
+            0
+          ],
+          "startValue": [
+            30,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            22,
+            -22
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            22,
+            -22
+          ],
+          "startValue": [
+            22,
+            -22
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            -30
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            -30
+          ],
+          "startValue": [
+            0,
+            -30
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            30
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            0,
+            30
+          ],
+          "startValue": [
+            0,
+            30
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 11,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Effect/Smoke01",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 15
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/Smoke01"
@@ -6,584 +585,5 @@
     "images": [
       "Battle/Skills/Effect_Special01"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            22,
-            22
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            22,
-            22
-          ],
-          "tween": "fix",
-          "startValue": [
-            22,
-            22
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -22,
-            22
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -22,
-            22
-          ],
-          "tween": "fix",
-          "startValue": [
-            -22,
-            22
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            30
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            30
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            30
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            -30
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            -30
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            -30
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            22,
-            -22
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            22,
-            -22
-          ],
-          "tween": "fix",
-          "startValue": [
-            22,
-            -22
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            30,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            30,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            30,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -30,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -30,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            -30,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "duration": 4,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -22,
-            -22
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 11,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -22,
-            -22
-          ],
-          "tween": "fix",
-          "startValue": [
-            -22,
-            -22
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 4,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Smoke01",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    }
-  ]
+  }
 }

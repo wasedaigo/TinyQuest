@@ -1,12 +1,4 @@
 {
-  "dependencies": {
-    "animations": [
-      "Combat/Sub/DeadJump"
-    ],
-    "images": [
-      "Combat/BattlerBase"
-    ]
-  },
   "events": {
     "8": [
       "show"
@@ -19,114 +11,122 @@
     {
       "position": [
         {
-          "duration": 2,
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionType": "None",
-          "startPositionAnchor": [
-            1,
-            1
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            1,
-            1
-          ],
+          "startPositionType": "None",
           "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 6,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
+          "endPositionAnchor": [
             1,
             1
           ],
+          "duration": 2,
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "tween": "linear",
           "endValue": [
             0,
             0
           ],
-          "tween": "linear",
           "startValue": [
             0,
             0
           ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "None",
+          "frameNo": 2,
           "endPositionAnchor": [
             0,
             0
           ],
-          "frameNo": 2,
-          "startPositionType": "None"
+          "duration": 6,
+          "startPositionAnchor": [
+            1,
+            1
+          ]
         },
         {
-          "duration": 1,
+          "tween": "fix",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
+          "frameNo": 8,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
           "startPositionAnchor": [
             0,
             0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 8,
-          "startPositionType": "RelativeToTarget"
+          ]
         }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
       ],
       "scale": [
 
       ],
-      "hue": [
-
-      ],
       "source": [
         {
-          "duration": 2,
-          "center": [
-            0,
-            0
-          ],
-          "priority": 0.5,
           "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 0,
           "rect": [
             192,
             0,
             32,
             32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 2,
+          "center": [
+            0,
+            0
           ]
         },
         {
-          "duration": 7,
           "emitter": false,
-          "priority": 0.5,
           "id": "Combat/Sub/DeadJump",
           "type": "Animation",
-          "frameNo": 2
+          "priority": 0.5,
+          "frameNo": 2,
+          "duration": 7
         }
       ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+      "Combat/Sub/DeadJump"
+    ],
+    "images": [
+      "Combat/BattlerBase"
+    ]
+  }
 }

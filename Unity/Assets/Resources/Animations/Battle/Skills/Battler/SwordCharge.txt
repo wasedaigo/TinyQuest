@@ -1,87 +1,87 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            -64,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            1
+          ],
+          "duration": 16,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            -64,
+            0
+          ],
+          "startValue": [
+            -64,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startPositionType": "RelativeToTarget",
+          "frameNo": 16,
+          "endPositionAnchor": [
+            0,
+            1
+          ],
+          "duration": 4,
+          "startPositionAnchor": [
+            0,
+            1
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Battler/SwordDashUpper",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 20
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Battler/SwordDashUpper",
       "Battle/Skills/Battler/SwordUpper"
     ],
     "images": [
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Weapon_SwordBase"
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Battler_Base"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 16,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -64,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            1
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 4,
-          "endPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            1
-          ],
-          "endValue": [
-            -64,
-            0
-          ],
-          "tween": "fix",
-          "startValue": [
-            -64,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            1
-          ],
-          "frameNo": 16,
-          "startPositionType": "RelativeToTarget"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 20,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler/SwordDashUpper",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    }
-  ]
+  }
 }

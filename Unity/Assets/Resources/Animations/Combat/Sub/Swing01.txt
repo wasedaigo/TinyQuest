@@ -1,205 +1,205 @@
 {
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Combat/BattlerBase",
-      "Combat/WeaponSwordBase"
-    ]
-  },
   "events": null,
   "timelines": [
     {
       "position": [
-
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
         {
-          "duration": 2,
-          "center": [
+          "tween": "linear",
+          "endValue": [
+            -5,
+            12
+          ],
+          "startValue": [
+            -3,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
             0,
             0
           ],
-          "priority": 0.5,
-          "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 0,
-          "rect": [
-            32,
+          "duration": 5,
+          "startPositionAnchor": [
             0,
-            32,
-            32
+            0
           ]
         },
         {
-          "duration": 13,
-          "center": [
+          "tween": "fix",
+          "endValue": [
+            -5,
+            12
+          ],
+          "startValue": [
+            -5,
+            12
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 5,
+          "endPositionAnchor": [
             0,
             0
           ],
-          "priority": 0.5,
-          "id": "Combat/BattlerBase",
-          "type": "Image",
-          "frameNo": 2,
-          "rect": [
-            96,
+          "duration": 10,
+          "startPositionAnchor": [
             0,
-            32,
-            32
+            0
           ]
         }
       ],
-      "rotation": [
+      "alpha": [
 
       ],
-      "alpha": [
+      "rotation": [
+        {
+          "tween": "linear",
+          "facingOption": "None",
+          "endValue": -180,
+          "startValue": 90,
+          "frameNo": 0,
+          "duration": 5
+        },
+        {
+          "tween": "fix",
+          "facingOption": "None",
+          "endValue": -180,
+          "startValue": -180,
+          "frameNo": 5,
+          "duration": 10
+        }
+      ],
+      "scale": [
+        {
+          "tween": "fix",
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0,
+          "duration": 5
+        },
+        {
+          "tween": "fix",
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 5,
+          "duration": 10
+        }
+      ],
+      "source": [
+        {
+          "id": "Combat/WeaponSwordBase",
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "type": "Image",
+          "priority": 0.400000005960464,
+          "frameNo": 0,
+          "duration": 3,
+          "center": [
+            14.0,
+            14.0
+          ]
+        },
+        {
+          "id": "Combat/WeaponSwordBase",
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "frameNo": 3,
+          "duration": 12,
+          "center": [
+            14.0,
+            14.0
+          ]
+        }
+      ],
+      "hue": [
 
       ]
     },
     {
       "position": [
-        {
-          "duration": 5,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -5,
-            12
-          ],
-          "tween": "linear",
-          "startValue": [
-            -3,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 10,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -5,
-            12
-          ],
-          "tween": "fix",
-          "startValue": [
-            -5,
-            12
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 5,
-          "startPositionType": "None"
-        }
+
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
       ],
       "scale": [
-        {
-          "duration": 5,
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 10,
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 5
-        }
-      ],
-      "hue": [
 
       ],
       "source": [
         {
-          "duration": 3,
-          "center": [
-            14.0,
-            14.0
+          "id": "Combat/BattlerBase",
+          "rect": [
+            32,
+            0,
+            32,
+            32
           ],
-          "priority": 0.400000005960464,
-          "id": "Combat/WeaponSwordBase",
           "type": "Image",
+          "priority": 0.5,
           "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 12,
+          "duration": 2,
           "center": [
-            14.0,
-            14.0
-          ],
-          "priority": 0.600000023841858,
-          "id": "Combat/WeaponSwordBase",
-          "type": "Image",
-          "frameNo": 3,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Combat/BattlerBase",
           "rect": [
+            96,
             0,
-            0,
+            32,
+            32
+          ],
+          "type": "Image",
+          "priority": 0.5,
+          "frameNo": 2,
+          "duration": 13,
+          "center": [
             0,
             0
           ]
         }
       ],
-      "rotation": [
-        {
-          "duration": 5,
-          "endValue": -180,
-          "tween": "linear",
-          "startValue": 90,
-          "facingOption": "None",
-          "frameNo": 0
-        },
-        {
-          "duration": 10,
-          "endValue": -180,
-          "tween": "fix",
-          "startValue": -180,
-          "facingOption": "None",
-          "frameNo": 5
-        }
-      ],
-      "alpha": [
+      "hue": [
 
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "animations": [
+
+    ],
+    "images": [
+      "Combat/WeaponSwordBase",
+      "Combat/BattlerBase"
+    ]
+  }
 }

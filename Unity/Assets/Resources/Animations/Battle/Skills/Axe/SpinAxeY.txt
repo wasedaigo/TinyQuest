@@ -1,4 +1,148 @@
 {
+  "events": null,
+  "timelines": [
+    {
+      "position": [
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            -36
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 7,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            2
+          ],
+          "startValue": [
+            0,
+            -36
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 7,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 7,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            40
+          ],
+          "startValue": [
+            0,
+            2
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 14,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 10,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            40
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 24,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 10,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "tween": "linear",
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startPositionType": "None",
+          "frameNo": 34,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "duration": 1,
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "emitter": false,
+          "id": "Battle/Skills/Axe/SingleSpinAxe",
+          "type": "Animation",
+          "priority": 0.5,
+          "frameNo": 0,
+          "duration": 35
+        }
+      ],
+      "hue": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Axe/SingleSpinAxe"
@@ -6,149 +150,5 @@
     "images": [
       "Battle/Skills/Weapon_AxeBase"
     ]
-  },
-  "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "duration": 7,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            -36
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 0,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 7,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            2
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            -36
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 7,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 10,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            40
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            2
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 14,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 10,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            40
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 24,
-          "startPositionType": "None"
-        },
-        {
-          "duration": 1,
-          "endPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "frameNo": 34,
-          "startPositionType": "None"
-        }
-      ],
-      "scale": [
-
-      ],
-      "hue": [
-
-      ],
-      "source": [
-        {
-          "duration": 35,
-          "emitter": false,
-          "priority": 0.5,
-          "id": "Battle/Skills/Axe/SingleSpinAxe",
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ]
-    }
-  ]
+  }
 }
