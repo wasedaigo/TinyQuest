@@ -180,21 +180,13 @@ public class ZoneViewController : MonoBehaviour {
 		intervalPlayer.Play(interval);
 	}
 	
-	private void ShowEffect(Actor actor, CombatActionResult result) 
+	private void ShowDamageEffect(Actor actor, CombatActionResult result) 
 	{
 		if (actor == null || result == null) {return;}
-
 		int damageValue = result.effect;
-
-		Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
-		this.intervalPlayer.Play(interval);
-		
-		// Damage pop
-		Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(actor.LocalPixelPosition, damageValue);
-		this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
-		
-		this.SendMessage("ChangeActorStatus", result);
 		if (damageValue > 0) {
+			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
+			this.intervalPlayer.Play(interval);
 			this.StartCoroutine(this.ShowDamagePose(actor));	
 		}
 	}
@@ -205,20 +197,49 @@ public class ZoneViewController : MonoBehaviour {
 		actor.ResetPose();
 	}
 
+	private void PopDamage(Actor actor, CombatActionResult result) 
+	{
+		if (actor == null || result == null) {return;}
+		
+		int damageValue = result.effect;
+		Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(actor.LocalPixelPosition, damageValue);
+		this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
+		this.SendMessage("ChangeActorStatus", result);
+	}
+
 	private void CommandCalled(Roga2dAnimationSettings settings, string command) 
 	{
 		Actor actor = null;
 		string[] commandData = command.Split(':');
 		switch(commandData[0]) {
-			case "damage":
+			case "target_pop_damage":
+				{
 				CombatAction combatAction = (CombatAction)settings.Data;
-			
-				Actor casterActor = this.GetActorFromCombatUnit(combatAction.caster);
-				this.ShowEffect(casterActor, combatAction.casterResult);
-
 				Actor targetActor = this.GetActorFromCombatUnit(combatAction.target);
-				this.ShowEffect(targetActor, combatAction.targetResult);
+				this.PopDamage(targetActor, combatAction.targetResult);
+				}
 
+				break;
+			case "caster_pop_damage":
+				{
+				CombatAction combatAction = (CombatAction)settings.Data;
+				Actor casterActor = this.GetActorFromCombatUnit(combatAction.caster);
+				this.PopDamage(casterActor, combatAction.casterResult);
+				}
+				break;
+			case "target_damage":
+				{
+				CombatAction combatAction = (CombatAction)settings.Data;
+				Actor targetActor = this.GetActorFromCombatUnit(combatAction.target);
+				this.ShowDamageEffect(targetActor, combatAction.targetResult);
+				}
+				break;
+			case "caster_damage":
+				{
+				CombatAction combatAction = (CombatAction)settings.Data;
+				Actor casterActor = this.GetActorFromCombatUnit(combatAction.caster);
+				this.ShowDamageEffect(casterActor, combatAction.casterResult);
+				}
 				break;
 			case "hide":
 				actor = settings.Root as Actor;
