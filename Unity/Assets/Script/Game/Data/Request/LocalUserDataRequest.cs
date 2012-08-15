@@ -21,6 +21,9 @@ namespace TinyQuest.Data.Request {
 		private class ProgressTurnResponse {
 			public readonly bool valid;
 			public readonly int opponentIndex;
+			public readonly int[] skillRands;
+			public readonly int[] featureRands;
+			public readonly int turnRand;
 		}
 		
 		public LocalUserDataRequest() {
@@ -122,6 +125,10 @@ namespace TinyQuest.Data.Request {
 					LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
 					data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = progressTurnResponse.opponentIndex;
+					data.featureRands = progressTurnResponse.featureRands;
+					data.skillRands = progressTurnResponse.skillRands;
+					data.turnRand = progressTurnResponse.turnRand;
+					
 					callback();
 				}
 	        } else {

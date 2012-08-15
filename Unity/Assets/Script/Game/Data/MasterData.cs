@@ -132,7 +132,7 @@ namespace TinyQuest.Data{
 		public readonly int weapon;
 		public readonly UnitLookType lookType;
 		public readonly RarityType rarity;
-		public readonly int normalAttack;
+		public readonly string normalAttack;
 		public readonly int[] skills;
 		public readonly int[] features;
 		

@@ -118,7 +118,10 @@ namespace TinyQuest.Data{
 		public List<UserUnit> ownUnits;
 		public List<UserUnit> zoneEnemies;
 		public int[] fightingUnitIndexes;
-
+		public int[] featureRands;
+		public int[] skillRands;
+		public int turnRand;
+		
 		/*
 		private UserUnit AddUserUnit(int unit, int exp, int skillExp, ref int maxId, ref List<UserUnit> units) {
 			maxId += 1;

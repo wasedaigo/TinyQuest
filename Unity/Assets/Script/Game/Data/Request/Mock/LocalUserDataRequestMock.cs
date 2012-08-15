@@ -33,6 +33,19 @@ namespace TinyQuest.Data.Request {
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
 			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(0)] = playerIndex;
 			data.fightingUnitIndexes[CombatGroupInfo.Instance.GetPlayerGroupType(1)] = this.GetFirstAliveUnit(CombatGroupInfo.Instance.GetPlayerGroupType(1)).index;
+			
+			data.skillRands = new int[2];
+			for (int i = 0; i < data.skillRands.Length; i++) {
+				data.skillRands[i] = Random.Range(0, 100);
+			}
+			
+			data.featureRands = new int[2];
+			for (int i = 0; i < data.featureRands.Length; i++) {
+				data.featureRands[i] = Random.Range(0, 100);
+			}
+			
+			data.turnRand = Random.Range(0, 100);
+			
 			this._isRequesting = false;
 			callback();
 	    }

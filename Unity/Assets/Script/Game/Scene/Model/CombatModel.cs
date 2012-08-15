@@ -18,13 +18,28 @@ namespace TinyQuest.Scene.Model {
 				this.target = target;
 			}
 			
-			public CombatAction Execute() {
-				if (this.caster.IsDead || this.target.IsDead) { return null; }
+			private BaseSkill ChooseSkill(int rand){
+				BaseSkill skill = null;
+				for (int i = 0; i < this.caster.GetUserUnit().Unit.skills.Length; i++) {
+					skill = SkillFactory.Instance.GetSkill(this.caster.GetUserUnit().Unit.skills[i]);
+					if (rand <= skill.GetChance()) {
+						break;
+					}
+					rand -= skill.GetChance();
+					skill = null;
+				}
 				
-				int skillId = this.caster.GetUserUnit().Unit.normalAttack;
-				skillId = this.caster.GetUserUnit().Unit.skills[0];
-				//MasterSkill skill = CacheFactory.Instance.GetMasterDataCache().GetSkillByID(skillId);
-				BaseSkill skill = SkillFactory.Instance.GetSkill(this.caster.GetUserUnit().Unit.skills[0]);
+				return skill;
+			}
+			
+			public CombatAction Execute(int rand) {
+				if (this.caster.IsDead || this.target.IsDead) { return null; }
+
+				BaseSkill skill = this.ChooseSkill(rand);
+				if (skill == null) {
+					skill = SkillFactory.Instance.GetNormalAttack(this.caster.GetUserUnit().Unit.normalAttack);
+				}
+				
 				BaseSkill.SkillResult result = skill.Calculate(this.caster);
 
 				int effect = result.damage;
@@ -136,13 +151,13 @@ namespace TinyQuest.Scene.Model {
 			return CombatResult.OnGoing;
 		}
 		
-		private bool IsPlayerFirst(CombatUnit playerUnit, CombatUnit enemyUnit) {
+		private bool IsPlayerFirst(CombatUnit playerUnit, CombatUnit enemyUnit, int turnRand) {
 			if (playerUnit.GetUserUnit().Speed > enemyUnit.GetUserUnit().Speed) {
 				return true;
 			}
 			
 			if (playerUnit.GetUserUnit().Speed == enemyUnit.GetUserUnit().Speed) {
-				return playerUnit.groupType > enemyUnit.groupType;
+				return (turnRand < 50);
 			}
 
 			return false;
@@ -160,7 +175,7 @@ namespace TinyQuest.Scene.Model {
 			List<CombatAction> combatActions = new List<CombatAction>();
 			
 			CombatProcessBlock[] blocks = new CombatProcessBlock[CombatGroupInfo.Instance.GetGroupCount()];
-			if (this.IsPlayerFirst(playerUnit, enemyUnit)) {
+			if (this.IsPlayerFirst(playerUnit, enemyUnit, data.turnRand)) {
 				blocks[0] = new CombatProcessBlock(playerUnit, enemyUnit);
 				blocks[1] = new CombatProcessBlock(enemyUnit, playerUnit);
 			} else {
@@ -169,7 +184,7 @@ namespace TinyQuest.Scene.Model {
 			}
 
 			for (int i = 0; i < blocks.Length; i++) {
-				CombatAction action = blocks[i].Execute();
+				CombatAction action = blocks[i].Execute(data.skillRands[i]);
 				if (action != null) {
 					combatActions.Add(action);
 				}

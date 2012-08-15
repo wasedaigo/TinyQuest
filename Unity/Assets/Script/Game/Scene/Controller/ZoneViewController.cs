@@ -161,21 +161,33 @@ public class ZoneViewController : MonoBehaviour {
 			});
 			
 		} else {
-			interval = new Roga2dSequence(new List<Roga2dBaseInterval> {
-				new Roga2dFunc(() => {
-					if (combatAction.skillResult.shout != "") {
-						ZoneMessageCutScene cutScene = new ZoneMessageCutScene();
-						cutScene.text = combatAction.skillResult.shout;
-						cutScene.pos = combatAction.caster.groupType;
-						this.SendMessage("ShowMessage", cutScene);	
-					}
-				}),
-				new Roga2dWait(1.0f),
+			List<Roga2dBaseInterval> list = new List<Roga2dBaseInterval>();
+			
+			// Show shouting sequence for skills
+			if (combatAction.skillResult.shout != "") {
+				list.Add(
+					new Roga2dFunc(() => {
+						if (combatAction.skillResult.shout != "") {
+							ZoneMessageCutScene cutScene = new ZoneMessageCutScene();
+							cutScene.text = combatAction.skillResult.shout;
+							cutScene.pos = combatAction.caster.groupType;
+							this.SendMessage("ShowMessage", cutScene);	
+						}
+					})
+				);
+				list.Add(
+					new Roga2dWait(1.0f)
+				);
+			}
+			
+			// Execute action
+			list.Add(
 				new Roga2dFunc(() => {
 					this.SendMessage("HideMessage");	
 					this.PlaySkillAnimation(combatAction);
 				})
-			});
+			);
+			interval = new Roga2dSequence(list);
 		}
 		intervalPlayer.Play(interval);
 	}

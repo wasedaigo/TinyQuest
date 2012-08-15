@@ -14,7 +14,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [1],
         "features": [1]
       },
@@ -30,7 +30,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [2],
         "features": [1]
       },
@@ -46,7 +46,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [3],
         "features": [1]
       },
@@ -62,7 +62,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [4],
         "features": [1]
       },
@@ -78,7 +78,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [5],
         "features": [1]
       },
@@ -94,7 +94,7 @@
         "weapon": 1,
         "lookType": 0,
         "rarity": 0,
-        "normalAttack": 1,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [5],
         "features": [1]
       },
@@ -110,7 +110,7 @@
         "weapon": 0,
         "lookType": 1,
         "rarity": 0,
-        "normalAttack": 2,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [1, 2],
         "features": [1]
       },
@@ -126,7 +126,7 @@
         "weapon": 0,
         "lookType": 1,
         "rarity": 0,
-        "normalAttack": 2,
+        "normalAttack": "Combat/Sword/Slash",
         "skills": [1, 2],
         "features": [1]
       }
