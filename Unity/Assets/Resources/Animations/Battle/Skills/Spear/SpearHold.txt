@@ -1,130 +1,5 @@
 {
   "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            -19,
-            9
-          ],
-          "startValue": [
-            -19,
-            9
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": -90,
-          "startValue": -90,
-          "frameNo": 0,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Weapon_SpearBase",
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Battler_Base",
-          "rect": [
-            288,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -133,5 +8,130 @@
       "Battle/Skills/Weapon_SpearBase",
       "Battle/Skills/Battler_Base"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -19,
+            9
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -19,
+            9
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_SpearBase",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": -90,
+          "endValue": -90,
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

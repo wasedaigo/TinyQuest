@@ -4,104 +4,6 @@
       "snd:MMS/Arrow01"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "linear",
-          "endValue": [
-            10,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            10,
-            0
-          ],
-          "startValue": [
-            10,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "tween": "fix",
-          "facingOption": "FaceToMov",
-          "endValue": -90,
-          "startValue": -90,
-          "frameNo": 0,
-          "duration": 4
-        },
-        {
-          "tween": "fix",
-          "facingOption": "FaceToMov",
-          "endValue": -90,
-          "startValue": -90,
-          "frameNo": 4,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Weapon_BowBase",
-          "rect": [
-            160,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 5,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -109,5 +11,103 @@
     "images": [
       "Battle/Skills/Weapon_BowBase"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            10,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            10,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            10,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 4
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_BowBase",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 4,
+          "facingOption": "FaceToMov",
+          "startValue": -90,
+          "endValue": -90,
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "FaceToMov",
+          "startValue": -90,
+          "endValue": -90,
+          "tween": "fix",
+          "frameNo": 4
+        }
+      ]
+    }
+  ]
 }

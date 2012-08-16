@@ -4,39 +4,6 @@
       "snd:MMS/power07"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/HealShining02",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 5,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/HealShining02"
@@ -44,5 +11,38 @@
     "images": [
       "Battle/Skills/Effect_Heal01"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/HealShining02",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

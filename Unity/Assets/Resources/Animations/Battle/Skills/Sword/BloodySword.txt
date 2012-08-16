@@ -7,225 +7,6 @@
       "goto:12"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 13,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 13,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 13
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/Blood02",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 13,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            -12,
-            -16
-          ],
-          "endValue": [
-            -12,
-            -16
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -12,
-            -16
-          ],
-          "startValue": [
-            -12,
-            -16
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "wait": true,
-          "startValue": 180,
-          "endValue": 180,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 180,
-          "startValue": 180,
-          "frameNo": 2,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 2
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/Slash01",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 2,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Battler_Base",
-          "rect": [
-            320,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 45,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/Blood02",
@@ -237,5 +18,219 @@
       "Battle/Skills/Effect_Blood",
       "Battle/Skills/Effect_Slash"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 13,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 13
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 13,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/Blood02",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 13
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -12,
+            -16
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -12,
+            -16
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -12,
+            -16
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -12,
+            -16
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/Slash01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 2
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 2,
+          "startValue": 180,
+          "wait": true,
+          "endValue": 180,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 180,
+          "endValue": 180,
+          "tween": "fix",
+          "frameNo": 2
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 45,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

@@ -18,7 +18,7 @@ public class Roga2dAnimationPlayer {
 		if (spawnTransform != null) {
 			animation.Node.Transform.position = spawnTransform.position;
 			animation.Node.Transform.rotation = spawnTransform.rotation;
-			//animation.Node.Transform.localScale = spawnTransform.localScale;
+			animation.Node.Transform.localScale = spawnTransform.localScale;
 		}
 		animation.finishCallback = finishCallback;
         this.animations.Add(animation);

@@ -7,126 +7,6 @@
       "hide"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            32,
-            0
-          ],
-          "startValue": [
-            32,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 8,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            32,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 23,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 27,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/Jump",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 28
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Battler/Jump"
@@ -134,5 +14,125 @@
     "images": [
       "Battle/Skills/Battler_Base"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 8,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            32,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            32,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            32,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 8
+        },
+        {
+          "duration": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 23
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 27
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 28,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Jump",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

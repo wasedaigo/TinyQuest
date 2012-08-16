@@ -1,299 +1,5 @@
 {
   "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            -30,
-            7
-          ],
-          "startValue": [
-            -30,
-            7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 41,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -30,
-            7
-          ],
-          "startValue": [
-            -30,
-            7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 41,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 1.0,
-          "startValue": 0.0,
-          "frameNo": 0,
-          "duration": 7
-        },
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 7,
-          "duration": 21
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 28,
-          "duration": 13
-        },
-        {
-          "tween": "fix",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 41,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Effect/WindSpiralTop",
-          "type": "Animation",
-          "priority": 0.600000023841858,
-          "frameNo": 0,
-          "duration": 7
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Effect/WindSpiralBottom",
-          "type": "Animation",
-          "priority": 0.600000023841858,
-          "frameNo": 7,
-          "duration": 21
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Effect/WindSpiralTop",
-          "type": "Animation",
-          "priority": 0.600000023841858,
-          "frameNo": 28,
-          "duration": 14
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 41,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 41,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Spear/SpearHold",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 42
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            -30,
-            7
-          ],
-          "startValue": [
-            -30,
-            7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 41,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -30,
-            7
-          ],
-          "startValue": [
-            -30,
-            7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 41,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 1.0,
-          "startValue": 0.0,
-          "frameNo": 0,
-          "duration": 7
-        },
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 7,
-          "duration": 21
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 28,
-          "duration": 13
-        },
-        {
-          "tween": "fix",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 41,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Effect/WindSpiralBottom",
-          "type": "Animation",
-          "priority": 0.400000005960464,
-          "frameNo": 0,
-          "duration": 42
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/WindSpiralTop",
@@ -305,5 +11,299 @@
       "Battle/Skills/Weapon_SpearBase",
       "Battle/Skills/Battler_Base"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 41,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -30,
+            7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -30,
+            7
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -30,
+            7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -30,
+            7
+          ],
+          "tween": "fix",
+          "frameNo": 41
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/WindSpiralTop",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 21,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/WindSpiralBottom",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 7
+        },
+        {
+          "duration": 14,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/WindSpiralTop",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 28
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 7,
+          "startValue": 0.0,
+          "endValue": 1.0,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 21,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 7
+        },
+        {
+          "duration": 13,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 28
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "fix",
+          "frameNo": 41
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 41,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 41
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 42,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "linear",
+          "frameNo": 0
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 41,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -30,
+            7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -30,
+            7
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -30,
+            7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -30,
+            7
+          ],
+          "tween": "fix",
+          "frameNo": 41
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 42,
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Effect/WindSpiralBottom",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 7,
+          "startValue": 0.0,
+          "endValue": 1.0,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 21,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 7
+        },
+        {
+          "duration": 13,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 28
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "fix",
+          "frameNo": 41
+        }
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

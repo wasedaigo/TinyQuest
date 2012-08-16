@@ -1,831 +1,5 @@
 {
   "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 120,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 120,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 120,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 120,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 105,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 105,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 105,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 105,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 90,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 90,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 90,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 90,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 75,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 75,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 75,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 75,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 5.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 80,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 80,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 5.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 80,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 80,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 45,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 45,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 45,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 45,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 30,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 30,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 30,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 30,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 0,
-          "blendType": "Add"
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 10.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 70,
-          "priority": 0.5,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 70,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Laser/StraightLaserBullet"
@@ -833,5 +7,1034 @@
     "images": [
       "Battle/Skills/Effect_Special01"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.0,
+            0.800000011920929,
+            0.699999988079071
+          ],
+          "endValue": [
+            0.0,
+            0.800000011920929,
+            0.699999988079071
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.0,
+            0.800000011920929,
+            0.699999988079071
+          ],
+          "endValue": [
+            0.0,
+            0.800000011920929,
+            0.699999988079071
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 120,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 120,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 120,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 120,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.800000011920929,
+            0.0,
+            0.899999976158142
+          ],
+          "endValue": [
+            0.800000011920929,
+            0.0,
+            0.899999976158142
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.800000011920929,
+            0.0,
+            0.899999976158142
+          ],
+          "endValue": [
+            0.800000011920929,
+            0.0,
+            0.899999976158142
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 105,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 105,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 105,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 105,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.0,
+            0.800000011920929,
+            0.899999976158142
+          ],
+          "endValue": [
+            0.0,
+            0.800000011920929,
+            0.899999976158142
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.0,
+            0.800000011920929,
+            0.899999976158142
+          ],
+          "endValue": [
+            0.0,
+            0.800000011920929,
+            0.899999976158142
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 90,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 90,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 90,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 90,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.800000011920929,
+            0.899999976158142,
+            0.0
+          ],
+          "endValue": [
+            0.800000011920929,
+            0.899999976158142,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.800000011920929,
+            0.899999976158142,
+            0.0
+          ],
+          "endValue": [
+            0.800000011920929,
+            0.899999976158142,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 75,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 75,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 75,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 75,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "endValue": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "endValue": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 80,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 80,
+          "minEmitSpeed": 5.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 80,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 80,
+          "minEmitSpeed": 5.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "endValue": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "endValue": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 45,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 45,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 45,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 45,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 15,
+          "startValue": [
+            0.200000002980232,
+            0.0,
+            0.0
+          ],
+          "endValue": [
+            0.200000002980232,
+            0.0,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.200000002980232,
+            0.0,
+            0.0
+          ],
+          "endValue": [
+            0.200000002980232,
+            0.0,
+            0.0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 30,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 30,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 30,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 30,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 0,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 70,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 70,
+          "minEmitSpeed": 10.0,
+          "frameNo": 15
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 15,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 15
+        }
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

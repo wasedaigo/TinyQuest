@@ -1,229 +1,5 @@
 {
   "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 25,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 25,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 25
-        },
-        {
-          "id": "Battle/Skills/Effect_Sub02",
-          "rect": [
-            32,
-            128,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 25,
-          "duration": 2,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Sub02",
-          "rect": [
-            128,
-            128,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 27,
-          "duration": 2,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Sub02",
-          "rect": [
-            192,
-            96,
-            96,
-            96
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 29,
-          "duration": 2,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Sub02",
-          "rect": [
-            288,
-            96,
-            96,
-            96
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 31,
-          "duration": 2,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Sub02",
-          "rect": [
-            384,
-            96,
-            96,
-            96
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 33,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 31
-        },
-        {
-          "id": "Battle/Skills/Battler_Base",
-          "rect": [
-            128,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 31,
-          "duration": 8,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/knife/Skill_Stab",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 31
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/knife/Skill_Stab"
@@ -233,5 +9,229 @@
       "Battle/Skills/Battler_Base",
       "Battle/Skills/Weapon_KnifeBase"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 25,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 25
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 25,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 2,
+          "rect": [
+            32,
+            128,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Sub02",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 25
+        },
+        {
+          "duration": 2,
+          "rect": [
+            128,
+            128,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Sub02",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 27
+        },
+        {
+          "duration": 2,
+          "rect": [
+            192,
+            96,
+            96,
+            96
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Sub02",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 29
+        },
+        {
+          "duration": 2,
+          "rect": [
+            288,
+            96,
+            96,
+            96
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Sub02",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 31
+        },
+        {
+          "duration": 1,
+          "rect": [
+            384,
+            96,
+            96,
+            96
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Sub02",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 33
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 31,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 31
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 31,
+          "priority": 0.5,
+          "id": "Battle/Skills/knife/Skill_Stab",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

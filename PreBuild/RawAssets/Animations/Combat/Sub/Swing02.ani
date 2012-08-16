@@ -1,0 +1,56 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 3,
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 11,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "center" : [ 14.0, 14.0 ],
+            "frameNo" : 0,
+            "position" : [ -3, 8 ],
+            "positionTween" : "linear",
+            "rotation" : -220,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/WeaponSwordBase.png"
+         },
+         {
+            "center" : [ 14.0, 14.0 ],
+            "frameNo" : 3,
+            "position" : [ -3, 8 ],
+            "positionTween" : "linear",
+            "rotation" : -80,
+            "rotationTween" : "linear",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/WeaponSwordBase.png"
+         },
+         {
+            "center" : [ 14.0, 14.0 ],
+            "frameNo" : 5,
+            "position" : [ -5, 7 ],
+            "positionTween" : "fix",
+            "priority" : 0.4000000059604645,
+            "rotationTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/WeaponSwordBase.png"
+         },
+         {
+            "frameNo" : 11,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

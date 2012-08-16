@@ -4,286 +4,6 @@
       "hide"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "linear",
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 10,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            1,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 12,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            -1,
-            0
-          ],
-          "startValue": [
-            1,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            -1,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 3,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 19,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.0,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 19
-        },
-        {
-          "tween": "fix",
-          "endValue": 0.0,
-          "startValue": 0.0,
-          "frameNo": 19,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Combat/MonsterBase",
-          "rect": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 20,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -291,5 +11,285 @@
     "images": [
       "Combat/MonsterBase"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 2
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 4
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 6
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 8
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -2,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 10
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 12
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            1,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -1,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 14
+        },
+        {
+          "duration": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -1,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 19
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 20,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "priority": 0.5,
+          "id": "Combat/MonsterBase",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 19,
+          "startValue": 1.0,
+          "endValue": 0.0,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.0,
+          "endValue": 0.0,
+          "tween": "fix",
+          "frameNo": 19
+        }
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

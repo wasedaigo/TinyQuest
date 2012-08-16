@@ -5,12 +5,12 @@ namespace TinyQuest.Data.Skills {
 	public class Fireball : BaseSkill {
 		public Fireball(int id) : base(id) {}
 		public override int GetChance() {
-			return 30;
+			return 100;
 		}
 		public override SkillResult Calculate(CombatUnit combatUnit) {
 			SkillResult result;
 			result.damage = 2;
-			result.animation = "Combat/Sword/MultiSlash";
+			result.animation = "Combat/Mage/Skill_Flare";
 			result.shout = this.GetName();
 			
 			return result;

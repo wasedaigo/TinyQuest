@@ -1,294 +1,5 @@
 {
   "events": null,
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -3
-          ],
-          "startValue": [
-            -2,
-            -5
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -2,
-            -5
-          ],
-          "startValue": [
-            0,
-            -3
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -2
-          ],
-          "startValue": [
-            -2,
-            -5
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -2
-          ],
-          "startValue": [
-            0,
-            -2
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 1,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 2,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 3,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 0,
-          "startValue": 0,
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 0,
-          "startValue": 0,
-          "frameNo": 1,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 0,
-          "startValue": 0,
-          "frameNo": 2,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 0,
-          "startValue": 0,
-          "frameNo": 3,
-          "duration": 1
-        }
-      ],
-      "scale": [
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 1,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 2,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 3,
-          "duration": 1
-        }
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Effect_Blood",
-          "rect": [
-            0,
-            0,
-            48,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Blood",
-          "rect": [
-            48,
-            0,
-            48,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 1,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Blood",
-          "rect": [
-            96,
-            0,
-            48,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 2,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Blood",
-          "rect": [
-            144,
-            0,
-            48,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 3,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -296,5 +7,294 @@
     "images": [
       "Battle/Skills/Effect_Blood"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -2,
+            -5
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -3
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -3
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -2,
+            -5
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -2,
+            -5
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -2
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -2
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -2
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        }
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "rect": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "rect": [
+            48,
+            0,
+            48,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "rect": [
+            96,
+            0,
+            48,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "rect": [
+            144,
+            0,
+            48,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 3
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "fix",
+          "frameNo": 3
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 0,
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 0,
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 0,
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 0,
+          "tween": "fix",
+          "frameNo": 3
+        }
+      ]
+    }
+  ]
 }

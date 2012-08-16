@@ -4,523 +4,6 @@
       "snd:MMS/bosu22"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 2.0,
-          "type": "Animation",
-          "maxEmitSpeed": 5.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/StoneMove01",
-          "minEmitSpeed": 5.0,
-          "type": "Animation",
-          "maxEmitSpeed": 10.0,
-          "maxEmitAngle": 180,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -10
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -20
-          ],
-          "startValue": [
-            0,
-            -10
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -30
-          ],
-          "startValue": [
-            0,
-            -20
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -20
-          ],
-          "startValue": [
-            0,
-            -30
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 16,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            -10
-          ],
-          "startValue": [
-            0,
-            -20
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 19,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            -10
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 20,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 21,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            16
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 1,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 2,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            64
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 3,
-          "duration": 16,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            48
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 19,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 20,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "id": "Battle/Skills/Effect_Stone01",
-          "rect": [
-            224,
-            224,
-            32,
-            16
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 21,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/StoneMove01"
@@ -528,5 +11,522 @@
     "images": [
       "Battle/Skills/Effect_Stone01"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 5.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 2.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "maxEmitSpeed": 10.0,
+          "maxEmitAngle": 180,
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect/StoneMove01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 5.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -10
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -10
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -20
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -20
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -30
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 16,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -30
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -20
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -20
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            -10
+          ],
+          "tween": "fix",
+          "frameNo": 19
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -10
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 20
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 21
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            16
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "duration": 16,
+          "rect": [
+            224,
+            224,
+            32,
+            64
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            48
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 19
+        },
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            32
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 20
+        },
+        {
+          "duration": 1,
+          "rect": [
+            224,
+            224,
+            32,
+            16
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Stone01",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 21
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

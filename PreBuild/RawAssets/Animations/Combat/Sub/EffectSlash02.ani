@@ -1,0 +1,33 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/EffectWeapon01.png",
+            "textureRect" : [ 288, 0, 96, 96 ]
+         },
+         {
+            "frameNo" : 1,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/EffectWeapon01.png",
+            "textureRect" : [ 384, 0, 96, 96 ]
+         },
+         {
+            "alphaTween" : "linear",
+            "frameNo" : 2,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/EffectWeapon01.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         },
+         {
+            "alpha" : 0.1000000014901161,
+            "alphaTween" : "fix",
+            "frameNo" : 5,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/EffectWeapon01.png",
+            "textureRect" : [ 0, 96, 96, 96 ]
+         }
+      ]
+   }
+}

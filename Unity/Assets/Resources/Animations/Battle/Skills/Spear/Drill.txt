@@ -34,196 +34,6 @@
       "damage:0"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "linear",
-          "endValue": [
-            30,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 17,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            30,
-            0
-          ],
-          "startValue": [
-            30,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 17,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 34,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            30,
-            0
-          ],
-          "startValue": [
-            30,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 51,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 6,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            30,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 57,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 17,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 74,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 2,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 76,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/Running",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 7
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Spear/SpearHold",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 7,
-          "duration": 2
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Spear/DrillAction",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 9,
-          "duration": 42
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/Jump",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 51,
-          "duration": 26
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Battler/Running",
@@ -238,5 +48,195 @@
       "Battle/Skills/Weapon_SpearBase",
       "Battle/Skills/Effect_WindSpiral"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 17,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            30,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 34,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            30,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            30,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 17
+        },
+        {
+          "duration": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            30,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            30,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 51
+        },
+        {
+          "duration": 17,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            30,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 57
+        },
+        {
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 74
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 76
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Running",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 2,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/SpearHold",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 7
+        },
+        {
+          "duration": 42,
+          "priority": 0.5,
+          "id": "Battle/Skills/Spear/DrillAction",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 9
+        },
+        {
+          "duration": 26,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Jump",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 51
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

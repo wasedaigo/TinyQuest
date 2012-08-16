@@ -7,233 +7,6 @@
       "snd:MMS/power03"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            -16,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 43,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 43,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Battler_Base",
-          "rect": [
-            416,
-            0,
-            32,
-            32
-          ],
-          "type": "Image",
-          "priority": 0.400000005960464,
-          "frameNo": 0,
-          "duration": 43,
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SmallBack",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 43,
-          "duration": 15
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-        {
-          "wait": true,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 1,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "minEmitSpeed": 20.0,
-          "type": "Animation",
-          "maxEmitSpeed": 20.0,
-          "maxEmitAngle": -45,
-          "priority": 0.5,
-          "frameNo": 1,
-          "duration": 1,
-          "minEmitAngle": -45,
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 24,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 24,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 24
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/LightBom",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 24,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Battler/SmallBack",
@@ -247,5 +20,227 @@
       "Battle/Skills/Effect_Special01",
       "Battle/Skills/Effect_Light"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 43,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -16,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 43
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 43,
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ],
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Battler_Base",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 15,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SmallBack",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 43
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 20.0,
+          "maxEmitAngle": -45,
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": -45,
+          "minEmitSpeed": 20.0,
+          "frameNo": 1
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "wait": true,
+          "endValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 1.0,
+          "endValue": 1.0,
+          "tween": "linear",
+          "frameNo": 1
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 24,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 24
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 24,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/LightBom",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 24
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

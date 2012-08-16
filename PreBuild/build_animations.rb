@@ -54,7 +54,7 @@ def parse_timeline(timeline, dependencies)
         "position" => [],
         "rotation" => [],
         "scale" => [],
-        "hue" => [],
+        "color" => [],
         "source" => []
     }
 
@@ -99,8 +99,10 @@ def setup_tweens(result, latestSourceData)
                         
                         unless prev_keyframe.has_key?("startValue")
                            prev_keyframe["startValue"] = prev_keyframe["endValue"]
-                           prev_keyframe["startPositionType"] = "None"
-                           prev_keyframe["startPositionAnchor"] = AnchorData["center"]
+                           if key == "position"
+                             prev_keyframe["startPositionType"] = "None"
+                             prev_keyframe["startPositionAnchor"] = AnchorData["center"]
+                           end
                         end
                         
                         prev_keyframe["startValue"] = prev_keyframe["endValue"] unless prev_keyframe.has_key?("startValue")
@@ -151,7 +153,7 @@ def parse_keyframes(latestSourceData, keyframe_set, result, dependencies)
         createAttributeKey(result, "position", keyframe_set, frameNo, [0, 0])
         createAttributeKey(result, "rotation", keyframe_set, frameNo, 0)
         createAttributeKey(result, "scale", keyframe_set, frameNo, [1, 1])
-        createAttributeKey(result, "hue", keyframe_set, frameNo, [0, 0, 0])
+        createAttributeKey(result, "color", keyframe_set, frameNo, [0, 0, 0])
         createSourceKey(result, keyframe_set, frameNo, latestSourceData, dependencies);
     end
 end

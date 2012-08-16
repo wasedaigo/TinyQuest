@@ -81,13 +81,17 @@ public class ZoneViewController : MonoBehaviour {
 		this.combatModel = combatModel;
 	}
 	
-	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, System.Action<Roga2dAnimation> callback) {
+	private void PlayBattlerAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, System.Action<Roga2dAnimation> callback) {
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
 			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
 			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
 			{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/1", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
 		};
 		
+		this.PlayAnimation(targetNode, casterActor, animationName, callbackData, options, callback);
+	}
+	
+	private void PlayAnimation(Roga2dNode targetNode, Actor casterActor, string animationName, object callbackData, Dictionary<string, Roga2dSwapTextureDef> options, System.Action<Roga2dAnimation> callback) {
 		Roga2dAnimationSettings settings = new Roga2dAnimationSettings(this.animationPlayer, false, casterActor, casterActor, targetNode, CommandCalled);
 		settings.CasterPixelSize = new Vector2(32, 32);
 		settings.Data = callbackData;
@@ -101,12 +105,19 @@ public class ZoneViewController : MonoBehaviour {
 		Actor targetActor = this.actors[combatAction.target.groupType, combatAction.target.index];
 		BaseSkill.SkillResult skillResult = combatAction.skillResult;
 		
-		this.PlayAnimation(targetActor, casterActor, skillResult.animation, combatAction, this.OnSkillFinished);
+		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
+			{ "Combat/TargetBase", new Roga2dSwapTextureDef() {TextureID = targetActor.TextureID, PixelSize = targetActor.PixelSize}},
+			{ "Combat/BattlerBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize}},
+			{ "Combat/MonsterBase", new Roga2dSwapTextureDef() {TextureID = casterActor.TextureID, PixelSize = casterActor.PixelSize,  SrcRect = casterActor.SrcRect}},
+			{ "Combat/WeaponSwordBase", new Roga2dSwapTextureDef() {TextureID = "Weapon/1", PixelSize = new Vector2(32, 32),  SrcRect = new Rect(0, 0, 32, 32)}}
+		};
+
+		this.PlayAnimation(targetActor, casterActor, skillResult.animation, combatAction, options, this.OnSkillFinished);
 	}
 	
 	private void PlayMoveAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
 		Roga2dNode targetNode = this.GetSpawnNode((int)targetPosition, groupNo);
-		this.PlayAnimation(targetNode, actor, animationName, null, (animation) => {
+		this.PlayBattlerAnimation(targetNode, actor, animationName, null, (animation) => {
 			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
 			if (callback != null) {
 				callback();	
@@ -253,6 +264,14 @@ public class ZoneViewController : MonoBehaviour {
 				actor = settings.Root as Actor;
 				actor.Sprite.Show();
 				break;
+			case "hide_target":
+				actor = settings.Target as Actor;
+				actor.Sprite.Hide();
+				break;
+			case "show_target":
+				actor = settings.Target as Actor;
+				actor.Sprite.Show();
+				break;
 		}
 	}
 
@@ -308,7 +327,7 @@ public class ZoneViewController : MonoBehaviour {
 	
 	private void MoveActor(Actor actor, Roga2dNode targetNode) {
 		string animationName = "Combat/Common/Jump";
-		this.PlayAnimation(targetNode, actor, animationName, null, (animation) => {
+		this.PlayBattlerAnimation(targetNode, actor, animationName, null, (animation) => {
 			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
 		});
 	}
@@ -333,7 +352,7 @@ public class ZoneViewController : MonoBehaviour {
 		
 		if (userUnit.Unit.lookType == UnitLookType.Monster && result.combatUnit.IsDead) {
 			Roga2dNode targetNode = null;
-			this.PlayAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", null, (animation) => { callback(); });
+			this.PlayBattlerAnimation(targetNode, actor, "Combat/Monster/MonsterDie001", null, (animation) => { callback(); });
 		} else {
 			callback();
 		}

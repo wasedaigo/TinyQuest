@@ -1,0 +1,67 @@
+{
+   "events" : {
+      "0" : [ "hide" ],
+      "30" : [ "hide_target" ],
+      "65" : [ "target_pop_damage" ],
+      "72" : [ "show_target", "show" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "swapTargetType" : "character",
+            "textureRect" : [ 96, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 73,
+            "isEmpty" : true
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "sourcePath" : "Battle/Skills/Fire/FlareEffect.ani"
+         }
+      ],
+      "7" : [
+         {
+            "color" : [ 0.6000000238418579, -0.3000000119209290, -0.3000000119209290 ],
+            "colorTween" : "fix",
+            "frameNo" : 30,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "scale" : [ -1.0, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "color" : [ 0.6000000238418579, -0.3000000119209290, -0.3000000119209290 ],
+            "colorTween" : "linear",
+            "frameNo" : 51,
+            "position" : [ -15, -7 ],
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "colorTween" : "fix",
+            "frameNo" : 72,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "scale" : [ -1.0, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         }
+      ]
+   }
+}

@@ -1,0 +1,35 @@
+{
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/EffectExplosion01.png",
+            "textureRect" : [ 320, 0, 160, 80 ]
+         },
+         {
+            "frameNo" : 1,
+            "sourcePath" : "Combat/EffectExplosion01.png",
+            "textureRect" : [ 160, 80, 160, 80 ]
+         },
+         {
+            "frameNo" : 2,
+            "sourcePath" : "Combat/EffectExplosion01.png",
+            "textureRect" : [ 480, 80, 160, 80 ]
+         },
+         {
+            "frameNo" : 3,
+            "sourcePath" : "Combat/EffectExplosion01.png",
+            "textureRect" : [ 160, 160, 160, 80 ]
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/EffectExplosion01.png",
+            "textureRect" : [ 160, 240, 160, 80 ]
+         }
+      ]
+   }
+}

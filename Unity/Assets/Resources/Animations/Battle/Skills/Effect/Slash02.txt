@@ -4,182 +4,6 @@
       "snd:MMS/hit_s07_c"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            20
-          ],
-          "startValue": [
-            0,
-            -52
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 5,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            60
-          ],
-          "startValue": [
-            0,
-            20
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            60
-          ],
-          "startValue": [
-            0,
-            60
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 9,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "wait": true,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 5,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.0,
-          "startValue": 1.0,
-          "frameNo": 5,
-          "duration": 4
-        },
-        {
-          "tween": "fix",
-          "endValue": 0.0,
-          "startValue": 0.0,
-          "frameNo": 9,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 0,
-          "startValue": 0,
-          "frameNo": 0,
-          "duration": 1
-        }
-      ],
-      "scale": [
-        {
-          "tween": "linear",
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1.0,
-            0.300000011920929
-          ],
-          "frameNo": 0,
-          "duration": 5
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            1.0,
-            0.300000011920929
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 5,
-          "duration": 4
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1.0,
-            0.300000011920929
-          ],
-          "startValue": [
-            1.0,
-            0.300000011920929
-          ],
-          "frameNo": 9,
-          "duration": 1
-        }
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Effect_Slash2",
-          "rect": [
-            646,
-            1216,
-            44,
-            98
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 10,
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -187,5 +11,176 @@
     "images": [
       "Battle/Skills/Effect_Slash2"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 5,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            -52
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            20
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            20
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            60
+          ],
+          "tween": "linear",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            60
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            60
+          ],
+          "tween": "fix",
+          "frameNo": 9
+        }
+      ],
+      "scale": [
+        {
+          "duration": 5,
+          "startValue": [
+            1.0,
+            0.300000011920929
+          ],
+          "endValue": [
+            1,
+            1
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            1.0,
+            0.300000011920929
+          ],
+          "tween": "linear",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            1.0,
+            0.300000011920929
+          ],
+          "endValue": [
+            1.0,
+            0.300000011920929
+          ],
+          "tween": "fix",
+          "frameNo": 9
+        }
+      ],
+      "source": [
+        {
+          "duration": 10,
+          "rect": [
+            646,
+            1216,
+            44,
+            98
+          ],
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash2",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 5,
+          "startValue": 1.0,
+          "wait": true,
+          "endValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "startValue": 1.0,
+          "endValue": 0.0,
+          "tween": "linear",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "startValue": 0.0,
+          "endValue": 0.0,
+          "tween": "fix",
+          "frameNo": 9
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 0,
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,64 @@
+{
+   "events" : {
+      "0" : [ "snd:MMS/mecha20" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "emitter" : true,
+            "frameNo" : 0,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Fire/FlareParticle.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 14,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "rotation" : 1957,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareParticle.ani"
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 1,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "rotation" : 1381,
+            "rotationTween" : "linear",
+            "sourcePath" : "Battle/Skills/Fire/FlareParticle.ani"
+         },
+         {
+            "emitter" : true,
+            "frameNo" : 15,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "rotation" : -503,
+            "rotationTween" : "fix",
+            "sourcePath" : "Battle/Skills/Fire/FlareParticle.ani"
+         }
+      ],
+      "2" : [
+         {
+            "frameNo" : 27,
+            "sourcePath" : "Battle/Skills/Fire/FlareExplosion.ani"
+         },
+         {
+            "frameNo" : 53,
+            "isEmpty" : true
+         }
+      ]
+   }
+}

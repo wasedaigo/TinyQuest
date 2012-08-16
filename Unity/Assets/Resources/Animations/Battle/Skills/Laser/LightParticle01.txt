@@ -4,199 +4,6 @@
       ""
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-        {
-          "wait": true,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 4,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.0,
-          "startValue": 1.0,
-          "frameNo": 4,
-          "duration": 4
-        },
-        {
-          "tween": "fix",
-          "endValue": 0.0,
-          "startValue": 0.0,
-          "frameNo": 8,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-        {
-          "tween": "linear",
-          "endValue": [
-            4.0,
-            4.0
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 0,
-          "duration": 8
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            4.0,
-            4.0
-          ],
-          "startValue": [
-            4.0,
-            4.0
-          ],
-          "frameNo": 8,
-          "duration": 1
-        }
-      ],
-      "source": [
-        {
-          "id": "Battle/Skills/Effect_Light",
-          "rect": [
-            0,
-            0,
-            64,
-            64
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 4,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add"
-        },
-        {
-          "id": "Battle/Skills/Effect_Light",
-          "rect": [
-            0,
-            0,
-            64,
-            64
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 4,
-          "duration": 4,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add"
-        },
-        {
-          "id": "Battle/Skills/Effect_Light",
-          "rect": [
-            0,
-            0,
-            64,
-            64
-          ],
-          "type": "Image",
-          "priority": 0.5,
-          "frameNo": 8,
-          "duration": 1,
-          "center": [
-            0,
-            0
-          ],
-          "blendType": "Add"
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
 
@@ -204,5 +11,193 @@
     "images": [
       "Battle/Skills/Effect_Light"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 8
+        }
+      ],
+      "scale": [
+        {
+          "duration": 8,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            4.0,
+            4.0
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            4.0,
+            4.0
+          ],
+          "endValue": [
+            4.0,
+            4.0
+          ],
+          "tween": "linear",
+          "frameNo": 8
+        }
+      ],
+      "source": [
+        {
+          "duration": 4,
+          "rect": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Light",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "rect": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Light",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "rect": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "blendType": "Add",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Light",
+          "type": "Image",
+          "center": [
+            0,
+            0
+          ],
+          "frameNo": 8
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 4,
+          "startValue": 1.0,
+          "wait": true,
+          "endValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 4,
+          "startValue": 1.0,
+          "endValue": 0.0,
+          "tween": "linear",
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "startValue": 0.0,
+          "endValue": 0.0,
+          "tween": "fix",
+          "frameNo": 8
+        }
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

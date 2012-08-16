@@ -4,361 +4,6 @@
       "snd:MMS/hit14"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "tween": "linear",
-          "endValue": [
-            3,
-            -16
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -14,
-            -7
-          ],
-          "startValue": [
-            3,
-            -16
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            7,
-            15
-          ],
-          "startValue": [
-            -14,
-            -7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -5,
-            12
-          ],
-          "startValue": [
-            7,
-            15
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            -9,
-            -14
-          ],
-          "startValue": [
-            -5,
-            12
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            8,
-            -7
-          ],
-          "startValue": [
-            -9,
-            -14
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            12
-          ],
-          "startValue": [
-            8,
-            -7
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            0
-          ],
-          "startValue": [
-            1,
-            12
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 7,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            1,
-            0
-          ],
-          "startValue": [
-            1,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-        {
-          "tween": "fix",
-          "endValue": [
-            0.5,
-            0.5
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.5,
-            0.5
-          ],
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 1,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.5,
-            0.5
-          ],
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 2,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.400000005960464,
-            0.400000005960464
-          ],
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 3,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.5,
-            0.5
-          ],
-          "startValue": [
-            0.400000005960464,
-            0.400000005960464
-          ],
-          "frameNo": 4,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 5,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.5,
-            0.5
-          ],
-          "startValue": [
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "frameNo": 6,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "startValue": [
-            0.5,
-            0.5
-          ],
-          "frameNo": 7,
-          "duration": 1
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "startValue": [
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "frameNo": 8,
-          "duration": 1
-        }
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Laser/LightParticle01",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 9,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Laser/LightParticle01"
@@ -366,5 +11,360 @@
     "images": [
       "Battle/Skills/Effect_Light"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            3,
+            -16
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            3,
+            -16
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -14,
+            -7
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -14,
+            -7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            7,
+            15
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            7,
+            15
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -5,
+            12
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -5,
+            12
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            -9,
+            -14
+          ],
+          "tween": "fix",
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            -9,
+            -14
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            8,
+            -7
+          ],
+          "tween": "fix",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            8,
+            -7
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            12
+          ],
+          "tween": "fix",
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            1,
+            12
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            1,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            1,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 8
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "startValue": [
+            1,
+            1
+          ],
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "endValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 4
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "tween": "fix",
+          "frameNo": 5
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "endValue": [
+            0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 6
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.5,
+            0.5
+          ],
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "tween": "fix",
+          "frameNo": 7
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "endValue": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "tween": "fix",
+          "frameNo": 8
+        }
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Laser/LightParticle01",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

@@ -1,0 +1,201 @@
+{
+   "events" : {
+      "0" : [ "hide", "hide_target" ],
+      "24" : [ "target_pop_damage" ],
+      "35" : [ "show", "show_target" ]
+   },
+   "keyframes" : {
+      "0" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "linear",
+            "sourcePath" : "Combat/Sub/Swing02.ani"
+         },
+         {
+            "frameNo" : 4,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Sub/Swing02.ani"
+         },
+         {
+            "frameNo" : 9,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 11,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "rotationTween" : "linear",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 15,
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "rotation" : -360,
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/Sub/Jump01.ani"
+         },
+         {
+            "frameNo" : 16,
+            "position" : [ 0, -48 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Sub/Swing01.ani"
+         },
+         {
+            "frameNo" : 22,
+            "position" : [ 0, -62 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 26,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 28,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 128, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 29,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "positionTypeOption" : "bottomRight",
+            "sourcePath" : "Combat/Sub/Jump01.ani"
+         },
+         {
+            "frameNo" : 35,
+            "positionTween" : "fix",
+            "sourcePath" : "Combat/BattlerBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         }
+      ],
+      "1" : [
+         {
+            "emitter" : true,
+            "frameNo" : 18,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "position" : [ 10, -50 ],
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "rotation" : 40,
+            "rotationTween" : "fix",
+            "scale" : [ 0.4000000059604645, 0.4000000059604645 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/Sub/EffectExplosion01.ani"
+         }
+      ],
+      "6" : [
+         {
+            "emitter" : true,
+            "frameNo" : 3,
+            "maxEmitAngle" : 0,
+            "maxEmitSpeed" : 0.0,
+            "minEmitAngle" : 0,
+            "minEmitSpeed" : 0.0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "priority" : 0.6000000238418579,
+            "scale" : [ 0.50, -0.50 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/Sub/EffectSlash02.ani"
+         }
+      ],
+      "7" : [
+         {
+            "frameNo" : 0,
+            "positionTween" : "fix",
+            "positionType" : "relativeToTarget",
+            "scale" : [ -1.0, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "color" : [ 0.50, -0.3000000119209290, -0.3000000119209290 ],
+            "colorTween" : "linear",
+            "frameNo" : 6,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "linear",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "colorTween" : "fix",
+            "frameNo" : 11,
+            "position" : [ 0, -36 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotation" : 210,
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 160, 0, 32, 32 ]
+         },
+         {
+            "color" : [ 0.50, -0.3000000119209290, -0.3000000119209290 ],
+            "colorTween" : "linear",
+            "frameNo" : 18,
+            "position" : [ 0, -32 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotation" : 180,
+            "rotationTween" : "linear",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 19,
+            "position" : [ 0, -32 ],
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotation" : -360,
+            "rotationTween" : "linear",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 32, 0, 32, 32 ]
+         },
+         {
+            "colorTween" : "fix",
+            "frameNo" : 24,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "fix",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 192, 0, 32, 32 ]
+         },
+         {
+            "frameNo" : 32,
+            "positionTween" : "linear",
+            "positionType" : "relativeToTarget",
+            "rotationTween" : "linear",
+            "scale" : [ -1.0, 1.0 ],
+            "scaleTween" : "fix",
+            "sourcePath" : "Combat/TargetBase.png",
+            "textureRect" : [ 192, 0, 32, 32 ]
+         }
+      ]
+   }
+}

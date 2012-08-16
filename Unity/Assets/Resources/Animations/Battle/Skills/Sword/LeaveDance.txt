@@ -19,811 +19,6 @@
       "snd:Other/Slash01"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 25,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 26,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 35,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "wait": true,
-          "startValue": 45,
-          "endValue": 45,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 45,
-          "startValue": 45,
-          "frameNo": 15,
-          "duration": 1
-        },
-        {
-          "wait": true,
-          "startValue": -45,
-          "endValue": -45,
-          "startPositionType": "None",
-          "frameNo": 16,
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": -45,
-          "startValue": -45,
-          "frameNo": 25,
-          "duration": 1
-        },
-        {
-          "wait": true,
-          "startValue": 45,
-          "endValue": 45,
-          "startPositionType": "None",
-          "frameNo": 26,
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 45,
-          "startValue": 45,
-          "frameNo": 35,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutBottom",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.400000005960464,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 0
-        },
-        {
-          "wait": true,
-          "frameNo": 16,
-          "duration": 9
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutBottom",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.400000005960464,
-          "frameNo": 25,
-          "duration": 1,
-          "minEmitAngle": 0
-        },
-        {
-          "wait": true,
-          "frameNo": 26,
-          "duration": 9
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutBottom",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.400000005960464,
-          "frameNo": 35,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 15,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 25,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 26,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 35,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "wait": true,
-          "startValue": 45,
-          "endValue": 45,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 15,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 45,
-          "startValue": 45,
-          "frameNo": 15,
-          "duration": 1
-        },
-        {
-          "wait": true,
-          "startValue": -45,
-          "endValue": -45,
-          "startPositionType": "None",
-          "frameNo": 16,
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": -45,
-          "startValue": -45,
-          "frameNo": 25,
-          "duration": 1
-        },
-        {
-          "wait": true,
-          "startValue": 45,
-          "endValue": 45,
-          "startPositionType": "None",
-          "frameNo": 26,
-          "duration": 9,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 45,
-          "startValue": 45,
-          "frameNo": 35,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 15
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutTop",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.600000023841858,
-          "frameNo": 15,
-          "duration": 1,
-          "minEmitAngle": 0
-        },
-        {
-          "wait": true,
-          "frameNo": 16,
-          "duration": 9
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutTop",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.600000023841858,
-          "frameNo": 25,
-          "duration": 1,
-          "minEmitAngle": 0
-        },
-        {
-          "wait": true,
-          "frameNo": 26,
-          "duration": 9
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Effect/PlaneCutTop",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.600000023841858,
-          "frameNo": 35,
-          "duration": 1,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "frameNo": 0,
-          "duration": 7
-        },
-        {
-          "tween": "linear",
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "frameNo": 7,
-          "duration": 1
-        }
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Battler/SwordDash",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 8,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-        {
-          "wait": true,
-          "startValue": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "duration": 11,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            -80
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 11,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "duration": 28,
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            -80
-          ],
-          "endPositionType": "RelativeToTargetOrigin",
-          "startPositionType": "RelativeToTarget",
-          "frameNo": 39,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "duration": 10,
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTargetOrigin",
-          "startPositionType": "RelativeToTargetOrigin",
-          "frameNo": 49,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "duration": 7,
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "tween": "linear",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "RelativeToTargetOrigin",
-          "frameNo": 56,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 16,
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 72,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 3,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "fix",
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startPositionType": "None",
-          "frameNo": 75,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SwordDash",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 11
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SwordUpper",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 11,
-          "duration": 10
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SwordDown",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 21,
-          "duration": 9
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SwordUpper",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 30,
-          "duration": 9
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/SwordDown",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 39,
-          "duration": 10
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Battler/Jump",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 49,
-          "duration": 27
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Effect/PlaneCutBottom",
@@ -838,5 +33,809 @@
       "Battle/Skills/Weapon_SwordBase",
       "Battle/Skills/Battler_Base"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 35
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Effect/PlaneCutBottom",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Effect/PlaneCutBottom",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Effect/PlaneCutBottom",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 35
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 15,
+          "startValue": 45,
+          "wait": true,
+          "endValue": 45,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 45,
+          "endValue": 45,
+          "tween": "fix",
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "startValue": -45,
+          "wait": true,
+          "endValue": -45,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": -45,
+          "endValue": -45,
+          "tween": "fix",
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "startValue": 45,
+          "wait": true,
+          "endValue": 45,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 45,
+          "endValue": 45,
+          "tween": "fix",
+          "frameNo": 35
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 35
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/PlaneCutTop",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "wait": true,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/PlaneCutTop",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "wait": true,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Effect/PlaneCutTop",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 35
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 15,
+          "startValue": 45,
+          "wait": true,
+          "endValue": 45,
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 45,
+          "endValue": 45,
+          "tween": "fix",
+          "frameNo": 15
+        },
+        {
+          "duration": 9,
+          "startValue": -45,
+          "wait": true,
+          "endValue": -45,
+          "frameNo": 16
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": -45,
+          "endValue": -45,
+          "tween": "fix",
+          "frameNo": 25
+        },
+        {
+          "duration": 9,
+          "startValue": 45,
+          "wait": true,
+          "endValue": 45,
+          "frameNo": 26
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 45,
+          "endValue": 45,
+          "tween": "fix",
+          "frameNo": 35
+        }
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 7,
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "endValue": [
+            -0.600000023841858,
+            -0.600000023841858,
+            0.600000023841858
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": [
+            -0.600000023841858,
+            -0.600000023841858,
+            0.600000023841858
+          ],
+          "endValue": [
+            -0.600000023841858,
+            -0.600000023841858,
+            0.600000023841858
+          ],
+          "tween": "fix",
+          "frameNo": 7
+        }
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 8,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordDash",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 7,
+          "startValue": 1.0,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "startValue": 0.100000001490116,
+          "endValue": 0.100000001490116,
+          "tween": "linear",
+          "frameNo": 7
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+        {
+          "duration": 11,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "duration": 28,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "endPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            -80
+          ],
+          "tween": "linear",
+          "frameNo": 11
+        },
+        {
+          "duration": 10,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "endPositionType": "RelativeToTargetOrigin",
+          "startValue": [
+            0,
+            -80
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 39
+        },
+        {
+          "duration": 7,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "endPositionType": "RelativeToTargetOrigin",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTargetOrigin",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 49
+        },
+        {
+          "duration": 16,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTargetOrigin",
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 56
+        },
+        {
+          "duration": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 72
+        },
+        {
+          "duration": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "endValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 75
+        }
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 11,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordDash",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 0
+        },
+        {
+          "duration": 10,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordUpper",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 11
+        },
+        {
+          "duration": 9,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordDown",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 21
+        },
+        {
+          "duration": 9,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordUpper",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 30
+        },
+        {
+          "duration": 10,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordDown",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 39
+        },
+        {
+          "duration": 27,
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler/Jump",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 49
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ]
 }

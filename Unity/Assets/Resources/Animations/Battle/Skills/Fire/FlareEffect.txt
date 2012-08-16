@@ -4,149 +4,6 @@
       "snd:MMS/mecha20"
     ]
   },
-  "timelines": [
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 27
-        },
-        {
-          "emitter": false,
-          "id": "Battle/Skills/Fire/FlareExplosion",
-          "type": "Animation",
-          "priority": 0.5,
-          "frameNo": 27,
-          "duration": 26
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "wait": true,
-          "startValue": 1381,
-          "endValue": 1381,
-          "startPositionType": "None",
-          "frameNo": 0,
-          "duration": 1,
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "tween": "linear",
-          "facingOption": "None",
-          "endValue": -503,
-          "startValue": 1381,
-          "frameNo": 1,
-          "duration": 14
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": -503,
-          "startValue": -503,
-          "frameNo": 15,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "wait": true,
-          "frameNo": 0,
-          "duration": 1
-        },
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Fire/FlareParticle",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 1,
-          "duration": 15,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    },
-    {
-      "position": [
-
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "tween": "linear",
-          "facingOption": "None",
-          "endValue": 1957,
-          "startValue": 0,
-          "frameNo": 0,
-          "duration": 14
-        },
-        {
-          "tween": "fix",
-          "facingOption": "None",
-          "endValue": 1957,
-          "startValue": 1957,
-          "frameNo": 14,
-          "duration": 1
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "emitter": true,
-          "id": "Battle/Skills/Fire/FlareParticle",
-          "minEmitSpeed": 0.0,
-          "type": "Animation",
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "frameNo": 0,
-          "duration": 15,
-          "minEmitAngle": 0
-        }
-      ],
-      "hue": [
-
-      ]
-    }
-  ],
   "dependencies": {
     "animations": [
       "Battle/Skills/Fire/FlareExplosion",
@@ -156,5 +13,143 @@
     "images": [
       "Battle/Skills/Effect_Slash3"
     ]
-  }
+  },
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 27,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 26,
+          "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareExplosion",
+          "emitter": false,
+          "type": "Animation",
+          "frameNo": 27
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "wait": true,
+          "frameNo": 0
+        },
+        {
+          "duration": 15,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareParticle",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 1
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "startValue": 1381,
+          "wait": true,
+          "endValue": 1381,
+          "frameNo": 0
+        },
+        {
+          "duration": 14,
+          "facingOption": "None",
+          "startValue": 1381,
+          "endValue": -503,
+          "tween": "linear",
+          "frameNo": 1
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": -503,
+          "endValue": -503,
+          "tween": "fix",
+          "frameNo": 15
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "position": [
+
+      ],
+      "scale": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "maxEmitSpeed": 0.0,
+          "maxEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareParticle",
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "minEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 14,
+          "facingOption": "None",
+          "startValue": 0,
+          "endValue": 1957,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "facingOption": "None",
+          "startValue": 1957,
+          "endValue": 1957,
+          "tween": "fix",
+          "frameNo": 14
+        }
+      ]
+    }
+  ]
 }

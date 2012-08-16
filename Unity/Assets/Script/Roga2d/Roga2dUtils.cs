@@ -80,11 +80,21 @@ public class Roga2dAlphaIntervalData: Roga2dBaseIntervalData {
 	public bool wait;
 }
 
+public class Roga2dHueIntervalData: Roga2dBaseIntervalData {
+	public int frameNo;
+	public float duration;
+	public float[] startValue;
+	public float[] endValue;
+	public bool wait;
+}
+
+
 public class Roga2dIntervalData {
 	public Roga2dPositionIntervalData[] position;
 	public Roga2dRotationIntervalData[] rotation;
 	public Roga2dScaleIntervalData[] scale;
 	public Roga2dAlphaIntervalData[] alpha;
+	public Roga2dHueIntervalData[] color;
 	public Roga2dSourceIntervalData[] source;
 }
 
@@ -190,7 +200,32 @@ public class Roga2dUtils {
 					sequences.Add(new Roga2dSequence(intervals));
 				}
 			}
-
+			
+			// Add hue interval
+			{
+				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
+				foreach(Roga2dHueIntervalData hueIntervalData in timeline.color) {
+					if (hueIntervalData.wait) {
+						intervals.Add(new Roga2dWait(CalculateDuration(hueIntervalData.duration)));
+					} else {
+						Roga2dHue start = new Roga2dHue(
+							Mathf.RoundToInt(255 * hueIntervalData.startValue[0]), 
+							Mathf.RoundToInt(255 * hueIntervalData.startValue[1]),
+							Mathf.RoundToInt(255 * hueIntervalData.startValue[2])
+						);
+						Roga2dHue end = new Roga2dHue(
+							Mathf.RoundToInt(255 * hueIntervalData.endValue[0]), 
+							Mathf.RoundToInt(255 * hueIntervalData.endValue[1]),
+							Mathf.RoundToInt(255 * hueIntervalData.endValue[2])
+						);						
+						intervals.Add(new Roga2dHueInterval(sprite, start, end, CalculateDuration(hueIntervalData.duration), hueIntervalData.tweenType));
+					}
+				}
+				if(intervals.Count > 0) {
+					sequences.Add(new Roga2dSequence(intervals));
+				}
+			}
+			
 			// Add position interval
 			{
 				List<Roga2dBaseInterval> intervals = new List<Roga2dBaseInterval>();
@@ -240,7 +275,7 @@ public class Roga2dUtils {
 					sequences.Add(new Roga2dSequence(intervals));
 				}
 			}
-
+			
 			// Add source interval
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
 			foreach(Roga2dSourceIntervalData sourceIntervalData in timeline.source) {
