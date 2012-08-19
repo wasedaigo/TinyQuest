@@ -104,8 +104,7 @@ public class CombatControlPanelController : MonoBehaviour {
 			}
 			
 			//if (AttackMark != null) {
-				GameObject card = this.Cards[index];
-				iTween.ScaleTo(card.gameObject, iTween.Hash("x", 3, "y", 3, "time", 0.3f));
+				iTween.ScaleTo(this.Cards[index].gameObject, iTween.Hash("x", 3, "y", 3, "time", 0.3f));
 			//}
 			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}
