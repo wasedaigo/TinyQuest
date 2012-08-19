@@ -213,6 +213,7 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void CardSelected(int index) {
+	
 	}
 
 	public void SendTurnInput() {

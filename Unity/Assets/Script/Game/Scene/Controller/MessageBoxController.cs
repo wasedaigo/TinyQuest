@@ -18,10 +18,10 @@ public class MessageBoxController : MonoBehaviour {
 		box.transform.localScale = new Vector3(0.0001f, 0.0001f, 1);
 		
 		if (messageCutScene.pos == 0) {
-			box.transform.localPosition = new Vector3(0.1f, 0.0f, 0);
+			box.transform.localPosition = new Vector3(0.1f, -0.2f, 0);
 			box.ArrowFaceRight = true;
 		} else {
-			box.transform.localPosition = new Vector3(-0.1f, 0.0f, 0);
+			box.transform.localPosition = new Vector3(-0.1f, -0.2f, 0);
 			box.ArrowFaceRight = false;
 		}
 		

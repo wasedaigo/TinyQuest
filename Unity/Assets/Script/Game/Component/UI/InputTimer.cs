@@ -26,6 +26,7 @@ public class InputTimer : MonoBehaviour {
 	}
 	
 	void StartTimer() {
+		return;
 		this.active = true;
 		this.startTime = Time.time;
 		this.panel.SetActiveRecursively(true);
@@ -40,8 +41,8 @@ public class InputTimer : MonoBehaviour {
 	}
 	
 	public void StopLine() {
-		//this.SendMessage("InputTimerFinished");
-		//this.FinishTimer();
+		this.SendMessage("InputTimerFinished");
+		this.FinishTimer();
 	}
 	
 	private void OnInputFinished() {
