@@ -29,7 +29,7 @@ public class SkillButtonView : MonoBehaviour {
 		
 		FaceIcon actor = new FaceIcon(puppetId);
 		actor.Transform.parent = faceIcon.transform;
-		actor.Transform.localPosition = new Vector3(-15, 1.5f, -0.1f);
+		actor.Transform.localPosition = new Vector3(0, 0, -0.1f);
 		actor.Transform.localEulerAngles = new Vector3(0, 0, 180);
 		actor.Transform.localScale = new Vector3(-24, 24, 0);
 		

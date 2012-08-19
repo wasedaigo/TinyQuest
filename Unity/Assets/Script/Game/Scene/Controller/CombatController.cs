@@ -14,8 +14,6 @@ public class CombatController : MonoBehaviour {
 	
 	public GameObject UIAllyCombatPanel;
 	public GameObject UIEnemyCombatPanel;
-	public FighterStatusPanelController FightingStatusPanelAlly;
-	public FighterStatusPanelController FightingStatusPanelEnemy;
 	public GameObject ConnectingPop;
 	public GameObject SwapButton;
 	public GameObject StopButton;
@@ -68,11 +66,9 @@ public class CombatController : MonoBehaviour {
 		CombatControlPanelController controlPanelController;
 		if (result.combatUnit.groupNo == 0) {
 			controlPanelController = this.allyCombatControlPanelController;
-			this.FightingStatusPanelAlly.SendMessage("ShowFighterStatus", result.combatUnit);
 			this.allyCombatControlPanelController.SelectCard(this.combatModel.GetStandByUnitIndex(0));
 		} else {
 			controlPanelController = this.enemyCombatControlPanelController;
-			this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", result.combatUnit);
 		}
 		controlPanelController.SendMessage("ChangeActorStatus", result);
 		
@@ -160,8 +156,6 @@ public class CombatController : MonoBehaviour {
 		
 		this.allyCombatControlPanelController.SelectCard(this.combatModel.GetStandByUnitIndex(0));
 		Async.Async.Instance.Parallel(list, () => {
-			this.FightingStatusPanelAlly.SendMessage("ShowFighterStatus", unit1);
-			this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", unit2);
 			
 			if (this.firstTurnFinished) {
 				this.StartInput();
@@ -178,11 +172,6 @@ public class CombatController : MonoBehaviour {
 		
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
 		this.SendMessage("StartTimer");
-		
-		CombatUnit combatUnit = this.combatModel.GetFightingUnit(0);
-		if (combatUnit != null && !combatUnit.IsDead) {
-			this.FightingStatusPanelAlly.ShowFighterStatus(combatUnit);
-		}
 	}
 
 	public void InputTimerFinished() {
@@ -257,7 +246,7 @@ public class CombatController : MonoBehaviour {
 	}
 	
 	public void StopLine() {
-		this.SetControlVisible(false);
+		this.SwapButton.SetActiveRecursively(false);
 	}
 	
 	private void SetControlVisible(bool visible) {

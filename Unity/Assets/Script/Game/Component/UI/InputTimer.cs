@@ -15,7 +15,7 @@ public class InputTimer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.panel = Timer.transform.FindChild("Panel").gameObject;
-		this.line = this.panel.transform.FindChild("Line").gameObject;
+		this.line = this.panel.transform.FindChild("Cursor").gameObject;
 		this.panel.SetActiveRecursively(false);
 	}
 	
@@ -40,8 +40,8 @@ public class InputTimer : MonoBehaviour {
 	}
 	
 	public void StopLine() {
-		this.SendMessage("InputTimerFinished");
-		this.FinishTimer();
+		//this.SendMessage("InputTimerFinished");
+		//this.FinishTimer();
 	}
 	
 	private void OnInputFinished() {
