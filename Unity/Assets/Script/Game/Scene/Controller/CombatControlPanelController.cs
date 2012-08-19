@@ -8,7 +8,8 @@ using TinyQuest.Object;
 public class CombatControlPanelController : MonoBehaviour {
 	public System.Action<int> CardSelected;
 	
-	public GameObject NextFrame;
+	public GameObject AttackMark;
+	public GameObject StandByMark;
 	public GameObject[] Cards;
 	public bool IsEnemy;
 	
@@ -72,6 +73,11 @@ public class CombatControlPanelController : MonoBehaviour {
 	
 	private void click(int index) {
 		this.SelectCard(index);
+		if (!this.cardFlags[index]) {
+			GameObject card = this.Cards[index];
+			Vector3 pos = card.transform.localPosition;
+			StandByMark.transform.localPosition = new Vector3(pos.x, pos.y, -1);
+		}
 	}
 	
 	private float GetCardDelta() {
@@ -85,14 +91,20 @@ public class CombatControlPanelController : MonoBehaviour {
 	public void HideCard(int index) {
 		if (!this.cardFlags[index]) {
 			this.cardFlags[index] = true;
-			iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
+			
+			if (AttackMark != null) {
+				GameObject card = this.Cards[index];
+				Vector3 pos = card.transform.localPosition;
+				AttackMark.transform.localPosition = new Vector3(pos.x, pos.y, -1);
+			}
+			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}
 	}
 
 	public void ShowCard(int index) {
 		if (this.cardFlags[index]) {
 			this.cardFlags[index] = false;
-			iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y",-GetCardDelta(), "easeType", "linear", "time", 0.2f));
+			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y",-GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}
 	}
 	
@@ -100,13 +112,9 @@ public class CombatControlPanelController : MonoBehaviour {
 		this.selectingCardIndex = index;
 		if (index < 0) {
 			this.selectingCardIndex = -1;
-			NextFrame.transform.localPosition = new Vector3(-1000, 0, -1);
+			StandByMark.transform.localPosition = new Vector3(-1000, 0, -1);
 		} else {
 			if (!this.cardFlags[index]) {
-				GameObject card = this.Cards[index];
-				Vector3 pos = card.transform.localPosition;
-				
-				NextFrame.transform.localPosition = new Vector3(pos.x, pos.y, -1);
 				this.CardSelected(this.selectingCardIndex);
 			}
 		}
@@ -122,7 +130,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	
 	public void SetTouchEnabled(bool enabled) {
 		for (int i = 0; i < this.views.Length; i++) {
-			this.views[i].SetTouchEnabled(enabled);
+			//this.views[i].SetTouchEnabled(enabled);
 		}
 	}
 	

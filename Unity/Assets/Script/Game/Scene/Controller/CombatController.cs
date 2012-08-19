@@ -17,7 +17,6 @@ public class CombatController : MonoBehaviour {
 	public FighterStatusPanelController FightingStatusPanelAlly;
 	public FighterStatusPanelController FightingStatusPanelEnemy;
 	public GameObject ConnectingPop;
-	public UICamera UICamera;
 	public GameObject SwapButton;
 	
 	private CombatControlPanelController allyCombatControlPanelController;
@@ -83,7 +82,6 @@ public class CombatController : MonoBehaviour {
 		this.UIAllyCombatPanel.SetActiveRecursively(false);
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		
-		UICamera.enabled = false;
 		this.ShowConnectingPop(true);
 		this.combatModel.StartBattle(this);
 
@@ -115,8 +113,6 @@ public class CombatController : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		iTween.MoveTo(this.UIAllyCombatPanel, iTween.Hash("time", 0.5f, "y", this.allyCombatControlPanelOrigin.y,  "easeType", "easeOutCubic"));
 		iTween.MoveTo(this.UIEnemyCombatPanel, iTween.Hash("time", 0.5f, "y", this.enemyCombatControlPanelOrigin.y,  "easeType", "easeOutCubic"));
-		
-		UICamera.enabled = true;
 		
 		for (int i = Constant.UnitCount - 1; i >= 0; i--) {
 			for (int j = 0; j < Constant.GroupCount; j++) {
@@ -177,7 +173,6 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void StartInput() {
-		UICamera.enabled = true;
 		SwapButton.SetActiveRecursively(true);
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
 		this.SendMessage("StartTimer");
@@ -193,7 +188,6 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void CombatReady(CombatUnit playerUnit, CombatUnit opponentUnit) {
-		Debug.Log("INDEX = " + playerUnit.index);
 		List<System.Action<System.Action>> list = new List<System.Action<System.Action>>() {
 			(next) => { this.zoneViewController.SelectCombatActor(playerUnit, next); },
 			(next) => { this.zoneViewController.SelectCombatActor(opponentUnit, next); } 
@@ -231,7 +225,6 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void SendTurnInput() {
-		UICamera.enabled = false;
 		SwapButton.SetActiveRecursively(false);
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		this.combatModel.SendTurnInput(this, this.allyCombatControlPanelController.GetSelectingCardIndex());

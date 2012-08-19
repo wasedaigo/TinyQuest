@@ -10,7 +10,7 @@ namespace TinyQuest.Data.Skills {
 		
 		public override SkillResult Calculate(CombatUnit combatUnit) {
 			SkillResult result;
-			result.damage = combatUnit.GetUserUnit().Power * 2;
+			result.damage = combatUnit.GetUserUnit().Power;
 			result.animation = "Combat/Sword/CrossSlash";
 			result.shout = this.GetName() + "!!";
 			return result;

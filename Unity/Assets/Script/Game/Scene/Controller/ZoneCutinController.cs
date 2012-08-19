@@ -26,8 +26,8 @@ public class ZoneCutinController : MonoBehaviour {
 		this.cutIn.transform.parent = UILayer.transform;
 		
 		cutIn.transform.localPosition = new Vector3(2, cutIn.transform.localPosition.y, cutIn.transform.localPosition.z);
-		iTween.MoveTo(cutIn.gameObject, iTween.Hash("time", 0.5f, "x", 0,  "easeType", "easeOutCubic"));
-		iTween.MoveTo(cutIn.gameObject, iTween.Hash("time", 0.5f, "delay", 1, "x", -2,  "easeType", "easeInCubic", "oncomplete", "OnCutinFinished", "oncompletetarget", this.gameObject, "oncompleteparams", param));
+		iTween.MoveTo(cutIn.gameObject, iTween.Hash("time", 0.3f, "x", 0,  "easeType", "easeOutCubic"));
+		iTween.MoveTo(cutIn.gameObject, iTween.Hash("time", 0.3f, "delay", 0.75f, "x", -2,  "easeType", "easeInCubic", "oncomplete", "OnCutinFinished", "oncompletetarget", this.gameObject, "oncompleteparams", param));
 		UILabel label = cutIn.transform.FindChild("Label").GetComponent<UILabel>();
 		label.text = param.message;
 		UICamera.enabled = false;

@@ -6,8 +6,7 @@ using TinyQuest.Object;
 
 public class SkillButtonView : MonoBehaviour {
 	public UILabel nameLabel;
-	public UILabel lifeLabel;
-	
+	public GameObject lifeBarImage;
 	public GameObject faceIcon;
 	public GameObject infoPanel;
 	public UISprite background;
@@ -53,7 +52,7 @@ public class SkillButtonView : MonoBehaviour {
 	
 	public void SetLife(int life, int maxLife) {
 		this.life = life;
-		lifeLabel.text = life.ToString();
+		lifeBarImage.transform.localScale = new Vector3(life / (float)maxLife, 1, 1);
 	}
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
