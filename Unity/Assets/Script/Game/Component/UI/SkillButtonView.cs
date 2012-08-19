@@ -9,15 +9,15 @@ public class SkillButtonView : MonoBehaviour {
 	public GameObject lifeBarImage;
 	public GameObject faceIcon;
 	public GameObject infoPanel;
+	public GameObject deadSign;
 	public UISprite background;
 	
 	private Roga2dNode faceIconNode;
 	private bool initialized = false;
-	private UIImageButton button;
 	private int life;
 	
 	public void Start() {
-		this.button 	= this.gameObject.GetComponent<UIImageButton>();
+		this.deadSign.SetActiveRecursively(false);
 	}
 
 	public void SetFaceIcon(int puppetId) {
@@ -51,8 +51,14 @@ public class SkillButtonView : MonoBehaviour {
 	}
 	
 	public void SetLife(int life, int maxLife) {
+		
+		if (life < this.life) {
+			iTween.ShakePosition(this.gameObject, iTween.Hash("x", 0.02f, "y", 0.02f,"time", 0.2f));
+		}
 		this.life = life;
+		
 		lifeBarImage.transform.localScale = new Vector3(life / (float)maxLife, 1, 1);
+		deadSign.SetActiveRecursively(IsDead());
 	}
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
