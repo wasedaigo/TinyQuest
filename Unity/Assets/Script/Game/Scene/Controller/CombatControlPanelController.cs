@@ -87,21 +87,31 @@ public class CombatControlPanelController : MonoBehaviour {
 			return -0.4f;
 		}	
 	}
-	
-	public void HideCard(int index) {
+
+	public void ChooseAttackingCard(int index) {
 		if (!this.cardFlags[index]) {
 			this.cardFlags[index] = true;
-			
-			if (AttackMark != null) {
-				GameObject card = this.Cards[index];
+				
+			for (int i = 0; i < Cards.Length; i++) {
+				int delta = i - index;
+				
+				GameObject card = Cards[i];
 				Vector3 pos = card.transform.localPosition;
-				AttackMark.transform.localPosition = new Vector3(pos.x, pos.y, -1);
+				//card.transform.localPosition = new Vector3(pos.x + delta, pos.y, pos.z);
+				if (delta != 0) {
+					iTween.ScaleTo(card.gameObject, iTween.Hash("x", 2, "y", 2, "time", 0.3f));
+				}
 			}
+			
+			//if (AttackMark != null) {
+				GameObject card = this.Cards[index];
+				iTween.ScaleTo(card.gameObject, iTween.Hash("x", 3, "y", 3, "time", 0.3f));
+			//}
 			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}
 	}
 
-	public void ShowCard(int index) {
+	public void BackAttackingCard(int index) {
 		if (this.cardFlags[index]) {
 			this.cardFlags[index] = false;
 			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y",-GetCardDelta(), "easeType", "linear", "time", 0.2f));

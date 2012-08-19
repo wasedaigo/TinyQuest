@@ -160,7 +160,7 @@ public class CombatController : MonoBehaviour {
 			if (this.firstTurnFinished) {
 				this.StartInput();
 			} else {
-				this.allyCombatControlPanelController.HideCard(unit1.index);
+				this.allyCombatControlPanelController.ChooseAttackingCard(unit1.index);
 				this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Ready...", this.StartInput));
 				this.firstTurnFinished = true;
 			}
@@ -224,17 +224,17 @@ public class CombatController : MonoBehaviour {
 	
 	public void CombatUnitMoveOut(CombatUnit unit) {
 		if (unit.groupNo == 0) {
-			this.allyCombatControlPanelController.ShowCard(unit.index);
+			this.allyCombatControlPanelController.BackAttackingCard(unit.index);
 		} else {
-			this.enemyCombatControlPanelController.ShowCard(unit.index);	
+			this.enemyCombatControlPanelController.BackAttackingCard(unit.index);	
 		}
 	}
 	
 	public void CombatUnitMoveIn(CombatUnit unit) {
 		if (unit.groupNo == 0) {
-			this.allyCombatControlPanelController.HideCard(unit.index);
+			this.allyCombatControlPanelController.ChooseAttackingCard(unit.index);
 		} else {
-			this.enemyCombatControlPanelController.HideCard(unit.index);	
+			this.enemyCombatControlPanelController.ChooseAttackingCard(unit.index);	
 		}
 	}
 
