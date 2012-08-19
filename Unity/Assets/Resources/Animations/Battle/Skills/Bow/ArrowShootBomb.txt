@@ -1,4 +1,438 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 24,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 24,
+          "rect": [
+            336,
+            0,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 25,
+          "rect": [
+            496,
+            0,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 26,
+          "rect": [
+            16,
+            80,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 27,
+          "rect": [
+            176,
+            80,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 28,
+          "rect": [
+            336,
+            80,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 29,
+          "rect": [
+            496,
+            80,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 30,
+          "rect": [
+            16,
+            160,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 31,
+          "rect": [
+            176,
+            160,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 32,
+          "rect": [
+            336,
+            160,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 33,
+          "rect": [
+            496,
+            160,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 34,
+          "rect": [
+            16,
+            240,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 35,
+          "rect": [
+            176,
+            240,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 36,
+          "rect": [
+            336,
+            240,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Explosion01",
+          "priority": 0.5,
+          "frameNo": 37,
+          "rect": [
+            496,
+            240,
+            128,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 24,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 14,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 24,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+        {
+          "duration": 23,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "tween": "linear",
+          "frameNo": 23
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 23,
+          "endValue": 0,
+          "startValue": -90,
+          "tween": "fix",
+          "frameNo": 0,
+          "facingOption": "FaceToMov"
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 23,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 24,
+          "type": "Image",
+          "id": "Battle/Skills/Weapon_BowBase",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 23,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 23,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "24": [
       "snd:MMS/bom10",
@@ -9,446 +443,12 @@
     ]
   },
   "dependencies": {
-    "animations": [
-
-    ],
     "images": [
       "Battle/Skills/Effect_Explosion01",
       "Battle/Skills/Weapon_BowBase"
+    ],
+    "animations": [
+
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 24,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 24
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 24,
-          "wait": true,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "rect": [
-            336,
-            0,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 24
-        },
-        {
-          "duration": 1,
-          "rect": [
-            496,
-            0,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 25
-        },
-        {
-          "duration": 1,
-          "rect": [
-            16,
-            80,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 26
-        },
-        {
-          "duration": 1,
-          "rect": [
-            176,
-            80,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 27
-        },
-        {
-          "duration": 1,
-          "rect": [
-            336,
-            80,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 28
-        },
-        {
-          "duration": 1,
-          "rect": [
-            496,
-            80,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 29
-        },
-        {
-          "duration": 1,
-          "rect": [
-            16,
-            160,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 30
-        },
-        {
-          "duration": 1,
-          "rect": [
-            176,
-            160,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 31
-        },
-        {
-          "duration": 1,
-          "rect": [
-            336,
-            160,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 32
-        },
-        {
-          "duration": 1,
-          "rect": [
-            496,
-            160,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 33
-        },
-        {
-          "duration": 1,
-          "rect": [
-            16,
-            240,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 34
-        },
-        {
-          "duration": 1,
-          "rect": [
-            176,
-            240,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 35
-        },
-        {
-          "duration": 1,
-          "rect": [
-            336,
-            240,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 36
-        },
-        {
-          "duration": 1,
-          "rect": [
-            496,
-            240,
-            128,
-            80
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Explosion01",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 37
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    },
-    {
-      "color": [
-        {
-          "duration": 23,
-          "startValue": [
-            0,
-            0,
-            0
-          ],
-          "wait": true,
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": [
-            0,
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 23
-        }
-      ],
-      "position": [
-        {
-          "duration": 23,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 23
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 24,
-          "rect": [
-            160,
-            0,
-            32,
-            32
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Weapon_BowBase",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 0
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-        {
-          "duration": 23,
-          "facingOption": "FaceToMov",
-          "startValue": -90,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 23
-        }
-      ]
-    }
-  ]
+  }
 }

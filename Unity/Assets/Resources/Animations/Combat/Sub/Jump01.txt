@@ -1,117 +1,117 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Combat/BattlerBase"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 3,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            -32
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            -32
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            1,
-            1
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 3
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 6
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 7,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             32,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "Combat/BattlerBase",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            -32
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            -32
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Combat/BattlerBase"
+    ],
+    "animations": [
+
+    ]
+  }
 }

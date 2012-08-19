@@ -1,4 +1,95 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 5,
+          "endValue": 0.100000001490116,
+          "startValue": 0.75,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
+          "tween": "fix",
+          "frameNo": 5
+        }
+      ],
+      "source": [
+        {
+          "duration": 6,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/System/ChainInBox",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 5,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "0": [
       "snd:MMS/power03",
@@ -6,103 +97,12 @@
     ]
   },
   "dependencies": {
+    "images": [
+      "UI/UI_ChainLine"
+    ],
     "animations": [
       "Battle/System/ChainInBox",
       "Battle/System/ChainInLine"
-    ],
-    "images": [
-      "UI/UI_ChainLine"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 5
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 6,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/System/ChainInBox",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 5,
-          "startValue": 0.75,
-          "endValue": 0.100000001490116,
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": 0.100000001490116,
-          "endValue": 0.100000001490116,
-          "tween": "fix",
-          "frameNo": 5
-        }
-      ],
-      "rotation": [
-
-      ]
-    }
-  ]
+  }
 }

@@ -1,71 +1,71 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Enemies/death_wind"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Enemies/death_wind",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             0,
             0,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Enemies/death_wind",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Enemies/death_wind"
+    ],
+    "animations": [
+
+    ]
+  }
 }

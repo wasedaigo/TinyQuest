@@ -1,125 +1,125 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Battler/SmallJump"
-    ],
-    "images": [
-      "Battle/Skills/Battler_Base"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 12,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -16,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -16,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -16,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 12
-        },
-        {
-          "duration": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -16,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -16,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 14
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 14,
-          "priority": 0.5,
+          "type": "Animation",
           "id": "Battle/Skills/Battler/SmallJump",
           "emitter": false,
-          "type": "Animation",
+          "priority": 0.5,
           "frameNo": 0
         },
         {
           "duration": 5,
+          "type": "Image",
+          "id": "Battle/Skills/Battler_Base",
+          "priority": 0.5,
+          "frameNo": 14,
           "rect": [
             288,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 14
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 12,
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            -16,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 12,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            -16,
+            0
+          ],
+          "startValue": [
+            -16,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 14,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Battler_Base"
+    ],
+    "animations": [
+      "Battle/Skills/Battler/SmallJump"
+    ]
+  }
 }

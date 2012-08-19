@@ -1,222 +1,222 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Effect_Weapon05"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 0,
+          "startValue": 0,
           "tween": "fix",
-          "frameNo": 0
+          "frameNo": 0,
+          "facingOption": "None"
         },
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 90,
+          "startValue": 0,
           "tween": "fix",
-          "frameNo": 1
+          "frameNo": 1,
+          "facingOption": "None"
         },
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 90,
+          "startValue": 90,
           "tween": "fix",
-          "frameNo": 2
+          "frameNo": 2,
+          "facingOption": "None"
         },
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 90,
+          "startValue": 90,
           "tween": "fix",
-          "frameNo": 3
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "rect": [
-            0,
-            0,
-            96,
-            96
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "rect": [
-            96,
-            0,
-            96,
-            96
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "rect": [
-            0,
-            0,
-            96,
-            96
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 2
-        },
-        {
-          "duration": 1,
-          "rect": [
-            96,
-            0,
-            96,
-            96
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect_Weapon05",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 3
+          "frameNo": 3,
+          "facingOption": "None"
         }
       ],
       "alpha": [
 
       ],
-      "rotation": [
+      "source": [
         {
           "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 0
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Weapon05",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "center": [
+            0,
+            0
+          ]
         },
         {
           "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 90,
-          "tween": "fix",
-          "frameNo": 1
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Weapon05",
+          "priority": 0.5,
+          "frameNo": 1,
+          "rect": [
+            96,
+            0,
+            96,
+            96
+          ],
+          "center": [
+            0,
+            0
+          ]
         },
         {
           "duration": 1,
-          "facingOption": "None",
-          "startValue": 90,
-          "endValue": 90,
-          "tween": "fix",
-          "frameNo": 2
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Weapon05",
+          "priority": 0.5,
+          "frameNo": 2,
+          "rect": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "center": [
+            0,
+            0
+          ]
         },
         {
           "duration": 1,
-          "facingOption": "None",
-          "startValue": 90,
-          "endValue": 90,
+          "type": "Image",
+          "id": "Battle/Skills/Effect_Weapon05",
+          "priority": 0.5,
+          "frameNo": 3,
+          "rect": [
+            96,
+            0,
+            96,
+            96
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "tween": "fix",
-          "frameNo": 3
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Effect_Weapon05"
+    ],
+    "animations": [
+
+    ]
+  }
 }

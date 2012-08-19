@@ -1,193 +1,193 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Monster_Attack1"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 4
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
         {
-          "duration": 4,
-          "startValue": [
-            -0.5,
-            0.5
-          ],
-          "endValue": [
-            -0.5,
-            0.5
-          ],
+          "duration": 5,
+          "endValue": 1.0,
+          "startValue": 1.0,
           "tween": "fix",
           "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": [
-            -0.5,
-            0.5
-          ],
-          "endValue": [
-            -0.5,
-            0.5
-          ],
-          "tween": "fix",
-          "frameNo": 4
         }
       ],
       "source": [
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             0,
             96,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 1,
           "rect": [
             96,
             96,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 1
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 2,
           "rect": [
             192,
             96,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 2
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 3,
           "rect": [
             288,
             96,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 3
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 4,
           "rect": [
             384,
             96,
             96,
             96
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
           "center": [
             0,
             0
+          ]
+        }
+      ],
+      "scale": [
+        {
+          "duration": 4,
+          "endValue": [
+            -0.5,
+            0.5
           ],
+          "startValue": [
+            -0.5,
+            0.5
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -0.5,
+            0.5
+          ],
+          "startValue": [
+            -0.5,
+            0.5
+          ],
+          "tween": "fix",
           "frameNo": 4
         }
       ],
-      "alpha": [
+      "position": [
         {
-          "duration": 5,
-          "startValue": 1.0,
-          "endValue": 1.0,
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "tween": "fix",
-          "frameNo": 0
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
-      ],
-      "rotation": [
-
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Monster_Attack1"
+    ],
+    "animations": [
+
+    ]
+  }
 }

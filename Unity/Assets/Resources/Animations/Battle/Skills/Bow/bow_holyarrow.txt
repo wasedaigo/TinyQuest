@@ -1,272 +1,272 @@
 {
-  "events": {
-    "21": [
-      "damage:0"
-    ]
-  },
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Laser/LightBom",
-      "Battle/Skills/Laser/StraightLaserBullet",
-      "Battle/Skills/Laser/LightParticle01"
-    ],
-    "images": [
-      "Battle/Skills/Weapon_BowBase",
-      "Battle/Skills/Battler_Base",
-      "Battle/Skills/Effect_Light",
-      "Battle/Skills/Effect_Special01"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 22,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 22
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 22,
-          "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "wait": true
         },
         {
           "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
+          "type": "Animation",
+          "minEmitAngle": 0,
           "id": "Battle/Skills/Laser/LightBom",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
           "minEmitSpeed": 0.0,
-          "frameNo": 22
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
+          "emitter": true,
           "priority": 0.5,
-          "id": "Battle/Skills/Laser/StraightLaserBullet",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
+          "maxEmitAngle": 0,
+          "frameNo": 22,
+          "maxEmitSpeed": 0.0
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 22,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 22,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     },
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
         {
-          "duration": 19,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -12,
-            4
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -12,
-            4
-          ],
-          "tween": "fix",
-          "frameNo": 0
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Laser/StraightLaserBullet",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
         }
       ],
       "scale": [
 
       ],
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
       "source": [
         {
           "duration": 19,
+          "type": "Image",
+          "id": "Battle/Skills/Weapon_BowBase",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             96,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Weapon_BowBase",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 19,
+          "endValue": [
+            -12,
+            4
+          ],
+          "startValue": [
+            -12,
+            4
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     },
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 34,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 34,
+          "type": "Image",
+          "id": "Battle/Skills/Battler_Base",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             288,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler_Base",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 34,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "events": {
+    "21": [
+      "damage:0"
+    ]
+  },
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Weapon_BowBase",
+      "Battle/Skills/Battler_Base",
+      "Battle/Skills/Effect_Light",
+      "Battle/Skills/Effect_Special01"
+    ],
+    "animations": [
+      "Battle/Skills/Laser/LightBom",
+      "Battle/Skills/Laser/StraightLaserBullet",
+      "Battle/Skills/Laser/LightParticle01"
+    ]
+  }
 }

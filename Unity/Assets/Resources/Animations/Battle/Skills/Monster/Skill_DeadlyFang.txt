@@ -1,4 +1,149 @@
 {
+  "timelines": [
+    {
+      "color": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0.200000002980232,
+            0.0,
+            0.0
+          ],
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 6
+        },
+        {
+          "duration": 2,
+          "frameNo": 7,
+          "wait": true
+        }
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+        {
+          "duration": 6,
+          "endValue": 0.5,
+          "startValue": 1.0,
+          "tween": "linear",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": 0.5,
+          "startValue": 0.5,
+          "tween": "fix",
+          "frameNo": 6
+        },
+        {
+          "duration": 2,
+          "frameNo": 7,
+          "wait": true
+        }
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Monster/DeadlyFang",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 2,
+          "frameNo": 7,
+          "wait": true
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 2,
+          "endPositionType": "None",
+          "frameNo": 7,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        }
+      ]
+    }
+  ],
   "events": {
     "6": [
       "damage:0"
@@ -8,156 +153,11 @@
     ]
   },
   "dependencies": {
-    "animations": [
-      "Battle/Skills/Monster/DeadlyFang"
-    ],
     "images": [
       "Battle/Skills/Monster_Attack1"
+    ],
+    "animations": [
+      "Battle/Skills/Monster/DeadlyFang"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-        {
-          "duration": 6,
-          "startValue": [
-            0.200000002980232,
-            0.0,
-            0.0
-          ],
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": [
-            0,
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 6
-        },
-        {
-          "duration": 2,
-          "wait": true,
-          "frameNo": 7
-        }
-      ],
-      "position": [
-        {
-          "duration": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 6
-        },
-        {
-          "duration": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "wait": true,
-          "frameNo": 7
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 7,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster/DeadlyFang",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 2,
-          "wait": true,
-          "frameNo": 7
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 6,
-          "startValue": 1.0,
-          "endValue": 0.5,
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": 0.5,
-          "endValue": 0.5,
-          "tween": "fix",
-          "frameNo": 6
-        },
-        {
-          "duration": 2,
-          "wait": true,
-          "frameNo": 7
-        }
-      ],
-      "rotation": [
-
-      ]
-    }
-  ]
+  }
 }

@@ -1,141 +1,141 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "UI/UI_ChainBox"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
+
+      ],
+      "alpha": [
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 0.200000002980232,
+          "startValue": 0.200000002980232,
           "tween": "fix",
           "frameNo": 0
         }
       ],
-      "scale": [
-
-      ],
       "source": [
         {
           "duration": 1,
+          "type": "Image",
+          "id": "UI/UI_ChainBox",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             32,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "UI/UI_ChainBox",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "position": [
         {
           "duration": 1,
-          "startValue": 0.200000002980232,
-          "endValue": 0.200000002980232,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "tween": "fix",
-          "frameNo": 0
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
-      ],
-      "rotation": [
-
       ]
     },
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
+
+      ],
+      "alpha": [
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 0.5,
+          "startValue": 0.5,
           "tween": "fix",
           "frameNo": 0
         }
       ],
-      "scale": [
-
-      ],
       "source": [
         {
           "duration": 1,
+          "type": "Image",
+          "id": "UI/UI_ChainBox",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             0,
             0,
             32,
             32
           ],
-          "priority": 0.5,
-          "id": "UI/UI_ChainBox",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
+
+      ],
+      "position": [
         {
           "duration": 1,
-          "startValue": 0.5,
-          "endValue": 0.5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "tween": "fix",
-          "frameNo": 0
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
-      ],
-      "rotation": [
-
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "UI/UI_ChainBox"
+    ],
+    "animations": [
+
+    ]
+  }
 }

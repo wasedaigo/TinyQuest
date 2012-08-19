@@ -1,49 +1,33 @@
 {
-  "events": {
-    "33": [
-      "damage:0"
-    ]
-  },
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/Ice01",
-      "Battle/Skills/Battler/MagicCasting",
-      "Battle/Skills/Effect/IceOrb"
-    ],
-    "images": [
-      "Battle/Skills/Effect_Freeze01",
-      "Battle/Skills/Battler_Base"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
 
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Ice01",
-          "emitter": true,
           "type": "Animation",
           "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Ice01",
           "minEmitSpeed": 0.0,
-          "frameNo": 0
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
+      "position": [
 
       ]
     },
@@ -51,28 +35,44 @@
       "color": [
 
       ],
-      "position": [
+      "rotation": [
 
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 42,
-          "priority": 0.5,
+          "type": "Animation",
           "id": "Battle/Skills/Battler/MagicCasting",
           "emitter": false,
-          "type": "Animation",
+          "priority": 0.5,
           "frameNo": 0
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
+      "position": [
 
       ]
     }
-  ]
+  ],
+  "events": {
+    "33": [
+      "damage:0"
+    ]
+  },
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Effect_Freeze01",
+      "Battle/Skills/Battler_Base"
+    ],
+    "animations": [
+      "Battle/Skills/Effect/Ice01",
+      "Battle/Skills/Battler/MagicCasting",
+      "Battle/Skills/Effect/IceOrb"
+    ]
+  }
 }

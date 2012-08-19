@@ -1,4 +1,55 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "type": "Animation",
+          "id": "Combat/Sub/Bash01",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "4": [
       "damage:0"
@@ -8,62 +59,11 @@
     ]
   },
   "dependencies": {
-    "animations": [
-      "Combat/Sub/Bash01"
-    ],
     "images": [
       "Battle/Skills/Effect_Weapon07"
+    ],
+    "animations": [
+      "Combat/Sub/Bash01"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 5,
-          "priority": 0.5,
-          "id": "Combat/Sub/Bash01",
-          "emitter": false,
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    }
-  ]
+  }
 }

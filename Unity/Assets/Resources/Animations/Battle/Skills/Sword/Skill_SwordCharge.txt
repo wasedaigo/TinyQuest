@@ -1,59 +1,34 @@
 {
-  "events": {
-    "0": [
-      "hide"
-    ],
-    "47": [
-      "show"
-    ],
-    "16": [
-      "damage:0"
-    ]
-  },
-  "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/Slash03",
-      "Battle/Skills/Battler/SwordCharge",
-      "Battle/Skills/Battler/Jump",
-      "Battle/Skills/Battler/SwordDashUpper",
-      "Battle/Skills/Battler/SwordUpper"
-    ],
-    "images": [
-      "Battle/Skills/Effect_Slash2",
-      "Battle/Skills/Weapon_SwordBase",
-      "Battle/Skills/Battler_Base"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
+      "rotation": [
 
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 13,
-          "wait": true,
-          "frameNo": 0
+          "frameNo": 0,
+          "wait": true
         },
         {
           "duration": 7,
-          "priority": 0.5,
+          "type": "Animation",
           "id": "Battle/Skills/Effect/Slash03",
           "emitter": false,
-          "type": "Animation",
+          "priority": 0.5,
           "frameNo": 13
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
+      "position": [
 
       ]
     },
@@ -61,27 +36,27 @@
       "color": [
         {
           "duration": 4,
-          "startValue": [
-            0,
-            0,
-            0
-          ],
           "endValue": [
             -0.600000023841858,
             -0.600000023841858,
             0.600000023841858
+          ],
+          "startValue": [
+            0,
+            0,
+            0
           ],
           "tween": "linear",
           "frameNo": 0
         },
         {
           "duration": 1,
-          "startValue": [
+          "endValue": [
             -0.600000023841858,
             -0.600000023841858,
             0.600000023841858
           ],
-          "endValue": [
+          "startValue": [
             -0.600000023841858,
             -0.600000023841858,
             0.600000023841858
@@ -90,186 +65,211 @@
           "frameNo": 4
         }
       ],
-      "position": [
+      "rotation": [
+
+      ],
+      "alpha": [
         {
-          "duration": 21,
-          "endPositionAnchor": [
-            0,
-            1
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -64,
-            0
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -64,
-            0
-          ],
+          "duration": 4,
+          "endValue": 0.100000001490116,
+          "startValue": 1.0,
+          "tween": "linear",
           "frameNo": 0
         },
         {
-          "duration": 7,
-          "endPositionAnchor": [
-            0,
-            1
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -64,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            1
-          ],
-          "endValue": [
-            -64,
-            0
-          ],
+          "duration": 1,
+          "endValue": 0.100000001490116,
+          "startValue": 0.100000001490116,
           "tween": "fix",
-          "frameNo": 21
+          "frameNo": 4
         },
         {
           "duration": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -64,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            1
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 28
-        },
-        {
-          "duration": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 44
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 5,
+          "wait": true
         },
         {
           "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
+          "endValue": 1.0,
+          "startValue": 1.0,
           "tween": "fix",
-          "frameNo": 46
+          "frameNo": 21
+        }
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Battler/SwordCharge",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 16,
+          "frameNo": 5,
+          "wait": true
+        },
+        {
+          "duration": 26,
+          "type": "Animation",
+          "id": "Battle/Skills/Battler/Jump",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 21
         }
       ],
       "scale": [
 
       ],
-      "source": [
+      "position": [
         {
-          "duration": 5,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler/SwordCharge",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
+          "duration": 21,
+          "endValue": [
+            -64,
+            0
+          ],
+          "startValue": [
+            -64,
+            0
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            -64,
+            0
+          ],
+          "startValue": [
+            -64,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 21,
+          "endPositionAnchor": [
+            0,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            1
+          ]
         },
         {
           "duration": 16,
-          "wait": true,
-          "frameNo": 5
-        },
-        {
-          "duration": 26,
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler/Jump",
-          "emitter": false,
-          "type": "Animation",
-          "frameNo": 21
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 4,
-          "startValue": 1.0,
-          "endValue": 0.100000001490116,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            -64,
+            0
+          ],
           "tween": "linear",
-          "frameNo": 0
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "None",
+          "frameNo": 28,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            1
+          ]
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 44,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         },
         {
           "duration": 1,
-          "startValue": 0.100000001490116,
-          "endValue": 0.100000001490116,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
           "tween": "fix",
-          "frameNo": 4
-        },
-        {
-          "duration": 16,
-          "startValue": 1.0,
-          "wait": true,
-          "endValue": 1.0,
-          "frameNo": 5
-        },
-        {
-          "duration": 1,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "tween": "fix",
-          "frameNo": 21
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 46,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
         }
-      ],
-      "rotation": [
-
       ]
     }
-  ]
+  ],
+  "events": {
+    "47": [
+      "show"
+    ],
+    "0": [
+      "hide"
+    ],
+    "16": [
+      "damage:0"
+    ]
+  },
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Effect_Slash2",
+      "Battle/Skills/Weapon_SwordBase",
+      "Battle/Skills/Battler_Base"
+    ],
+    "animations": [
+      "Battle/Skills/Effect/Slash03",
+      "Battle/Skills/Battler/SwordCharge",
+      "Battle/Skills/Battler/Jump",
+      "Battle/Skills/Battler/SwordDashUpper",
+      "Battle/Skills/Battler/SwordUpper"
+    ]
+  }
 }

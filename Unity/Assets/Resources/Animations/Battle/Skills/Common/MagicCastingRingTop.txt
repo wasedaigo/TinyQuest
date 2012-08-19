@@ -1,570 +1,570 @@
 {
-  "events": null,
-  "dependencies": {
-    "animations": [
-
-    ],
-    "images": [
-      "Battle/Skills/Magic_CastingEffectRingTop"
-    ]
-  },
   "timelines": [
     {
       "color": [
 
       ],
-      "position": [
-        {
-          "duration": 28,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 28
-        }
+      "rotation": [
+
       ],
-      "scale": [
+      "alpha": [
 
       ],
       "source": [
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 0,
           "rect": [
             0,
             0,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 0
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 1,
           "rect": [
             160,
             0,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 1
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 2,
           "rect": [
             480,
             0,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 2
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 3,
           "rect": [
             0,
             80,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 3
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 4,
           "rect": [
             160,
             80,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 4
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 5,
           "rect": [
             320,
             80,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 5
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 6,
           "rect": [
             480,
             80,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 6
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 7,
           "rect": [
             0,
             160,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 7
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 8,
           "rect": [
             160,
             160,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 8
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 9,
           "rect": [
             320,
             160,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 9
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 10,
           "rect": [
             480,
             160,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 10
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 11,
           "rect": [
             0,
             240,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 11
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 12,
           "rect": [
             160,
             240,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 12
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 13,
           "rect": [
             320,
             240,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 13
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 14,
           "rect": [
             480,
             240,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 14
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 15,
           "rect": [
             0,
             320,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 15
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 16,
           "rect": [
             160,
             320,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 16
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 17,
           "rect": [
             320,
             320,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 17
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 18,
           "rect": [
             480,
             320,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 18
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 19,
           "rect": [
             0,
             400,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 19
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 20,
           "rect": [
             160,
             400,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 20
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 21,
           "rect": [
             320,
             400,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 21
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 22,
           "rect": [
             480,
             400,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 22
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 23,
           "rect": [
             0,
             480,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 23
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 24,
           "rect": [
             160,
             480,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 24
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 25,
           "rect": [
             320,
             480,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 25
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 26,
           "rect": [
             480,
             480,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 26
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 27,
           "rect": [
             0,
             560,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 27
+          ]
         },
         {
           "duration": 1,
+          "type": "Image",
+          "id": "Battle/Skills/Magic_CastingEffectRingTop",
+          "priority": 0.5,
+          "frameNo": 28,
           "rect": [
             160,
             560,
             160,
             80
           ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Magic_CastingEffectRingTop",
-          "type": "Image",
           "center": [
             0,
             0
-          ],
-          "frameNo": 28
+          ]
         }
       ],
-      "alpha": [
+      "scale": [
 
       ],
-      "rotation": [
-
+      "position": [
+        {
+          "duration": 28,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 28,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Battle/Skills/Magic_CastingEffectRingTop"
+    ],
+    "animations": [
+
+    ]
+  }
 }

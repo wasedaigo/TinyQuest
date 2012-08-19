@@ -1,4 +1,815 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 1,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 2,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 3,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 4,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 5,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 6,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 7,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 8,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 9,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 10,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 11,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 12,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 13,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 14,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 15,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 16,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 17,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 18,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 19,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 20,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 21,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 22,
+          "maxEmitSpeed": 0.0
+        },
+        {
+          "duration": 1,
+          "frameNo": 23,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Fire/FlareExploder",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 24,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            8,
+            -12
+          ],
+          "startValue": [
+            8,
+            -12
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -27,
+            -1
+          ],
+          "startValue": [
+            -27,
+            -1
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -27,
+            -1
+          ],
+          "startValue": [
+            -27,
+            -1
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            23,
+            15
+          ],
+          "startValue": [
+            23,
+            15
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            23,
+            15
+          ],
+          "startValue": [
+            23,
+            15
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -3,
+            -21
+          ],
+          "startValue": [
+            -3,
+            -21
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 5,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -3,
+            -21
+          ],
+          "startValue": [
+            -3,
+            -21
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -19,
+            24
+          ],
+          "startValue": [
+            -19,
+            24
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 7,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -19,
+            24
+          ],
+          "startValue": [
+            -19,
+            24
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 8,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -7,
+            -5
+          ],
+          "startValue": [
+            -7,
+            -5
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 9,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -7,
+            -5
+          ],
+          "startValue": [
+            -7,
+            -5
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 10,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            2,
+            36
+          ],
+          "startValue": [
+            2,
+            36
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 11,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            2,
+            36
+          ],
+          "startValue": [
+            2,
+            36
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 12,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            16,
+            -23
+          ],
+          "startValue": [
+            16,
+            -23
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 13,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            16,
+            -23
+          ],
+          "startValue": [
+            16,
+            -23
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 14,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            36,
+            4
+          ],
+          "startValue": [
+            36,
+            4
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 15,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            36,
+            4
+          ],
+          "startValue": [
+            36,
+            4
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 16,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -8,
+            -1
+          ],
+          "startValue": [
+            -8,
+            -1
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 17,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -8,
+            -1
+          ],
+          "startValue": [
+            -8,
+            -1
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 18,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            4,
+            -16
+          ],
+          "startValue": [
+            4,
+            -16
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 19,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            4,
+            -16
+          ],
+          "startValue": [
+            4,
+            -16
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 20,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -23,
+            25
+          ],
+          "startValue": [
+            -23,
+            25
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 21,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -23,
+            25
+          ],
+          "startValue": [
+            -23,
+            25
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 22,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -26,
+            -20
+          ],
+          "startValue": [
+            -26,
+            -20
+          ],
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 23,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -26,
+            -20
+          ],
+          "startValue": [
+            -26,
+            -20
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 24,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "24": [
       "snd:MMS/bosu12"
@@ -23,822 +834,11 @@
     ]
   },
   "dependencies": {
-    "animations": [
-      "Battle/Skills/Fire/FlareExploder"
-    ],
     "images": [
       "Battle/Skills/Effect_Slash3"
+    ],
+    "animations": [
+      "Battle/Skills/Fire/FlareExploder"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            8,
-            -12
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            8,
-            -12
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -27,
-            -1
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -27,
-            -1
-          ],
-          "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -27,
-            -1
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -27,
-            -1
-          ],
-          "tween": "fix",
-          "frameNo": 2
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            23,
-            15
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            23,
-            15
-          ],
-          "frameNo": 3
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            23,
-            15
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            23,
-            15
-          ],
-          "tween": "fix",
-          "frameNo": 4
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -3,
-            -21
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -3,
-            -21
-          ],
-          "frameNo": 5
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -3,
-            -21
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -3,
-            -21
-          ],
-          "tween": "fix",
-          "frameNo": 6
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -19,
-            24
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -19,
-            24
-          ],
-          "frameNo": 7
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -19,
-            24
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -19,
-            24
-          ],
-          "tween": "fix",
-          "frameNo": 8
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -7,
-            -5
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -7,
-            -5
-          ],
-          "frameNo": 9
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -7,
-            -5
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -7,
-            -5
-          ],
-          "tween": "fix",
-          "frameNo": 10
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            2,
-            36
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            2,
-            36
-          ],
-          "frameNo": 11
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            2,
-            36
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            2,
-            36
-          ],
-          "tween": "fix",
-          "frameNo": 12
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            16,
-            -23
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            16,
-            -23
-          ],
-          "frameNo": 13
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            16,
-            -23
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            16,
-            -23
-          ],
-          "tween": "fix",
-          "frameNo": 14
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            36,
-            4
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            36,
-            4
-          ],
-          "frameNo": 15
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            36,
-            4
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            36,
-            4
-          ],
-          "tween": "fix",
-          "frameNo": 16
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -8,
-            -1
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -8,
-            -1
-          ],
-          "frameNo": 17
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -8,
-            -1
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -8,
-            -1
-          ],
-          "tween": "fix",
-          "frameNo": 18
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            4,
-            -16
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            4,
-            -16
-          ],
-          "frameNo": 19
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            4,
-            -16
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            4,
-            -16
-          ],
-          "tween": "fix",
-          "frameNo": 20
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -23,
-            25
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -23,
-            25
-          ],
-          "frameNo": 21
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -23,
-            25
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -23,
-            25
-          ],
-          "tween": "fix",
-          "frameNo": 22
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -26,
-            -20
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -26,
-            -20
-          ],
-          "frameNo": 23
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "None",
-          "startValue": [
-            -26,
-            -20
-          ],
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -26,
-            -20
-          ],
-          "tween": "fix",
-          "frameNo": 24
-        }
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 2
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 3
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 4
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 5
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 6
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 7
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 8
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 9
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 10
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 11
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 12
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 13
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 14
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 15
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 16
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 17
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 18
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 19
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 20
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 21
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 22
-        },
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 23
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Fire/FlareExploder",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 24
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    }
-  ]
+  }
 }

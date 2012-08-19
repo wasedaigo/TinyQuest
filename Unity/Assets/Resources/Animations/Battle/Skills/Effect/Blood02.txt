@@ -1,361 +1,361 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 2,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 2,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 2,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "tween": "fix",
+          "frameNo": 2
+        }
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 2,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 2,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 2
+        }
+      ],
+      "position": [
+        {
+          "duration": 2,
+          "endValue": [
+            -17,
+            -7
+          ],
+          "startValue": [
+            -17,
+            -7
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -17,
+            -7
+          ],
+          "startValue": [
+            -17,
+            -7
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 1,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "tween": "fix",
+          "frameNo": 1
+        }
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 1,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 1
+        }
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -18,
+            -23
+          ],
+          "startValue": [
+            -18,
+            -23
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -18,
+            -23
+          ],
+          "startValue": [
+            -18,
+            -23
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 1,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 0,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 1,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Blood01",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 0,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "position": [
+        {
+          "duration": 1,
+          "endValue": [
+            -14,
+            -37
+          ],
+          "startValue": [
+            -14,
+            -37
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "0": [
       "snd:Other/Slash03"
     ]
   },
   "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/Blood01"
-    ],
     "images": [
       "Battle/Skills/Effect_Blood"
+    ],
+    "animations": [
+      "Battle/Skills/Effect/Blood01"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -17,
-            -7
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -17,
-            -7
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -17,
-            -7
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -17,
-            -7
-          ],
-          "tween": "fix",
-          "frameNo": 2
-        }
-      ],
-      "scale": [
-        {
-          "duration": 2,
-          "startValue": [
-            1,
-            1
-          ],
-          "wait": true,
-          "endValue": [
-            1,
-            1
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": [
-            1,
-            1
-          ],
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 2
-        }
-      ],
-      "source": [
-        {
-          "duration": 2,
-          "wait": true,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Blood01",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 2
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 2,
-          "startValue": 1.0,
-          "wait": true,
-          "endValue": 1.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "tween": "fix",
-          "frameNo": 2
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 2,
-          "startValue": 0,
-          "wait": true,
-          "endValue": 0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 2
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -18,
-            -23
-          ],
-          "wait": true,
-          "startPositionType": "None",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -18,
-            -23
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -18,
-            -23
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -18,
-            -23
-          ],
-          "tween": "fix",
-          "frameNo": 1
-        }
-      ],
-      "scale": [
-        {
-          "duration": 1,
-          "startValue": [
-            1,
-            1
-          ],
-          "wait": true,
-          "endValue": [
-            1,
-            1
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": [
-            1,
-            1
-          ],
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 1
-        }
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "wait": true,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Blood01",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 1
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 1,
-          "startValue": 1.0,
-          "wait": true,
-          "endValue": 1.0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "tween": "fix",
-          "frameNo": 1
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 1,
-          "startValue": 0,
-          "wait": true,
-          "endValue": 0,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 1
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -14,
-            -37
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            -14,
-            -37
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "scale": [
-        {
-          "duration": 1,
-          "startValue": [
-            1,
-            1
-          ],
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Blood01",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 0
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 1,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 1,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ]
-    }
-  ]
+  }
 }

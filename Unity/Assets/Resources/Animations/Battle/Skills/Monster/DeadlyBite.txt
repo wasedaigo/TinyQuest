@@ -1,4 +1,160 @@
 {
+  "timelines": [
+    {
+      "color": [
+        {
+          "duration": 18,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 18,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 0,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+        {
+          "duration": 18,
+          "endValue": 1.0,
+          "startValue": 1.0,
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            0,
+            48,
+            48,
+            48
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 3,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 3,
+          "rect": [
+            48,
+            48,
+            48,
+            48
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 12,
+          "type": "Image",
+          "id": "Battle/Skills/Monster_Attack1",
+          "priority": 0.5,
+          "frameNo": 6,
+          "rect": [
+            96,
+            48,
+            48,
+            48
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+        {
+          "duration": 18,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        }
+      ],
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            -56,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 12,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
   "events": {
     "9": [
       "damage:0"
@@ -8,167 +164,11 @@
     ]
   },
   "dependencies": {
-    "animations": [
-
-    ],
     "images": [
       "Battle/Skills/Monster_Attack1"
+    ],
+    "animations": [
+
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-        {
-          "duration": 18,
-          "startValue": [
-            0,
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "position": [
-        {
-          "duration": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            -56,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 12,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "endPositionType": "RelativeToTarget",
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "RelativeToTarget",
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "endValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "frameNo": 6
-        }
-      ],
-      "scale": [
-        {
-          "duration": 18,
-          "startValue": [
-            1,
-            1
-          ],
-          "endValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "source": [
-        {
-          "duration": 3,
-          "rect": [
-            0,
-            48,
-            48,
-            48
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 0
-        },
-        {
-          "duration": 3,
-          "rect": [
-            48,
-            48,
-            48,
-            48
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 3
-        },
-        {
-          "duration": 12,
-          "rect": [
-            96,
-            48,
-            48,
-            48
-          ],
-          "priority": 0.5,
-          "id": "Battle/Skills/Monster_Attack1",
-          "type": "Image",
-          "center": [
-            0,
-            0
-          ],
-          "frameNo": 6
-        }
-      ],
-      "alpha": [
-        {
-          "duration": 18,
-          "startValue": 1.0,
-          "endValue": 1.0,
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ],
-      "rotation": [
-        {
-          "duration": 18,
-          "facingOption": "None",
-          "startValue": 0,
-          "endValue": 0,
-          "tween": "fix",
-          "frameNo": 0
-        }
-      ]
-    }
-  ]
+  }
 }

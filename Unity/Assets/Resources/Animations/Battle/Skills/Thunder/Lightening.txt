@@ -1,4 +1,69 @@
 {
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Battle/Skills/Effect/Lit01",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 2,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 25,
+          "type": "Animation",
+          "id": "Battle/Skills/Battler/MagicCasting",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 0
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+
+      ]
+    }
+  ],
   "events": {
     "7": [
       "goto:2"
@@ -8,78 +73,13 @@
     ]
   },
   "dependencies": {
-    "animations": [
-      "Battle/Skills/Effect/Lit01",
-      "Battle/Skills/Battler/MagicCasting"
-    ],
     "images": [
       "Battle/Skills/Effect_Lightning02",
       "Battle/Skills/Battler_Base"
+    ],
+    "animations": [
+      "Battle/Skills/Effect/Lit01",
+      "Battle/Skills/Battler/MagicCasting"
     ]
-  },
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "position": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 2,
-          "wait": true,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "maxEmitSpeed": 0.0,
-          "maxEmitAngle": 0,
-          "priority": 0.5,
-          "id": "Battle/Skills/Effect/Lit01",
-          "emitter": true,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "minEmitSpeed": 0.0,
-          "frameNo": 2
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "position": [
-
-      ],
-      "scale": [
-
-      ],
-      "source": [
-        {
-          "duration": 25,
-          "priority": 0.5,
-          "id": "Battle/Skills/Battler/MagicCasting",
-          "emitter": false,
-          "type": "Animation",
-          "frameNo": 0
-        }
-      ],
-      "alpha": [
-
-      ],
-      "rotation": [
-
-      ]
-    }
-  ]
+  }
 }
