@@ -1,0 +1,1046 @@
+{
+  "timelines": [
+    {
+      "color": [
+        {
+          "duration": 6,
+          "endValue": [
+            0.5,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "startValue": [
+            0.5,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0.5,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "tween": "linear",
+          "frameNo": 6
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            0.5,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 11
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0.5,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "tween": "linear",
+          "frameNo": 18
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "tween": "fix",
+          "frameNo": 24
+        }
+      ],
+      "rotation": [
+        {
+          "duration": 6,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 12,
+          "endValue": 180,
+          "startValue": 0,
+          "tween": "linear",
+          "frameNo": 6,
+          "facingOption": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": -360,
+          "startValue": 180,
+          "tween": "linear",
+          "frameNo": 18,
+          "facingOption": "None"
+        },
+        {
+          "duration": 5,
+          "endValue": 0,
+          "startValue": -360,
+          "tween": "linear",
+          "frameNo": 19,
+          "facingOption": "None"
+        },
+        {
+          "duration": 11,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 24,
+          "facingOption": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "linear",
+          "frameNo": 35,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 6,
+          "type": "Image",
+          "id": "Combat/TargetBase",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 12,
+          "type": "Image",
+          "id": "Combat/TargetBase",
+          "priority": 0.5,
+          "frameNo": 6,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 6,
+          "type": "Image",
+          "id": "Combat/TargetBase",
+          "priority": 0.5,
+          "frameNo": 18,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 12,
+          "type": "Image",
+          "id": "Combat/TargetBase",
+          "priority": 0.5,
+          "frameNo": 24,
+          "rect": [
+            192,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+        {
+          "duration": 35,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "tween": "fix",
+          "frameNo": 35
+        }
+      ],
+      "position": [
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            -36
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 6,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 7,
+          "endValue": [
+            0,
+            -32
+          ],
+          "startValue": [
+            0,
+            -36
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 11,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            -32
+          ],
+          "startValue": [
+            0,
+            -32
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 18,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            -32
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 19,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 11,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 24,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 35,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Combat/Sub/EffectSlash02",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.600000023841858,
+          "maxEmitAngle": 0,
+          "frameNo": 3,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 3,
+          "endValue": [
+            0.5,
+            -0.5
+          ],
+          "startValue": [
+            0.5,
+            -0.5
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.5,
+            -0.5
+          ],
+          "startValue": [
+            0.5,
+            -0.5
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        }
+      ],
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 18,
+          "endValue": 40,
+          "startValue": 40,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": 40,
+          "startValue": 40,
+          "tween": "fix",
+          "frameNo": 18,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 18,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "id": "Combat/Sub/EffectExplosion01",
+          "minEmitSpeed": 0.0,
+          "emitter": true,
+          "priority": 0.5,
+          "maxEmitAngle": 0,
+          "frameNo": 18,
+          "maxEmitSpeed": 0.0
+        }
+      ],
+      "scale": [
+        {
+          "duration": 18,
+          "endValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "startValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "startValue": [
+            0.400000005960464,
+            0.400000005960464
+          ],
+          "tween": "fix",
+          "frameNo": 18
+        }
+      ],
+      "position": [
+        {
+          "duration": 18,
+          "endValue": [
+            10,
+            -50
+          ],
+          "startValue": [
+            10,
+            -50
+          ],
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "wait": true
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            10,
+            -50
+          ],
+          "startValue": [
+            10,
+            -50
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 18,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 11,
+          "endValue": 0,
+          "startValue": 0,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "duration": 4,
+          "endValue": -360,
+          "startValue": 0,
+          "tween": "linear",
+          "frameNo": 11,
+          "facingOption": "None"
+        },
+        {
+          "duration": 11,
+          "endValue": 0,
+          "startValue": -360,
+          "tween": "fix",
+          "frameNo": 15,
+          "facingOption": "None"
+        },
+        {
+          "duration": 1,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 26,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 9,
+          "type": "Animation",
+          "id": "Combat/Sub/Swing02",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 0
+        },
+        {
+          "duration": 2,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 9,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 4,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 11,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Animation",
+          "id": "Combat/Sub/Jump01",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 15
+        },
+        {
+          "duration": 6,
+          "type": "Animation",
+          "id": "Combat/Sub/Swing01",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 16
+        },
+        {
+          "duration": 4,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 22,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 3,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 26,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 6,
+          "type": "Animation",
+          "id": "Combat/Sub/Jump01",
+          "emitter": false,
+          "priority": 0.5,
+          "frameNo": 29
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 35,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 9,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 5,
+          "endValue": [
+            0,
+            -48
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 11,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            -62
+          ],
+          "startValue": [
+            0,
+            -48
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 16,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            -62
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 22,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 26,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "RelativeToTarget",
+          "frameNo": 28,
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "linear",
+          "startPositionType": "RelativeToTarget",
+          "endPositionType": "None",
+          "frameNo": 29,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 35,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "24": [
+      "target_pop_damage"
+    ],
+    "0": [
+      "hide",
+      "hide_target"
+    ],
+    "35": [
+      "show",
+      "show_target"
+    ]
+  },
+  "dependencies": {
+    "images": [
+      "Combat/TargetBase",
+      "Combat/BattlerBase",
+      "Combat/EffectWeapon01",
+      "Combat/EffectExplosion01",
+      "Combat/WeaponSwordBase"
+    ],
+    "animations": [
+      "Combat/Sub/EffectSlash02",
+      "Combat/Sub/EffectExplosion01",
+      "Combat/Sub/Swing02",
+      "Combat/Sub/Jump01",
+      "Combat/Sub/Swing01"
+    ]
+  }
+}

@@ -7,8 +7,8 @@ using TinyQuest.Object;
 
 public class CombatControlPanelController : MonoBehaviour {
 	public System.Action<int> CardSelected;
-	public System.Action<int> CardExecuted;
 	
+	public GameObject NextFrame;
 	public GameObject[] Cards;
 	public bool IsEnemy;
 	
@@ -16,7 +16,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	private int selectingCardIndex;
 	private CombatModel combatModel;
 	private SkillButtonView[] views;
-	private bool isEnabled;
+	private bool[] cardFlags;
 	
 	void Start() {
 	}
@@ -25,6 +25,7 @@ public class CombatControlPanelController : MonoBehaviour {
 		this.combatModel = combatModel;
 		this.views = new SkillButtonView[Cards.Length];
 		this.cardOrigins = new Vector3[Cards.Length];
+		this.cardFlags = new bool[Cards.Length];
 		for (int i = 0; i < Cards.Length; i++) {
 			this.views[i] = Cards[i].GetComponent<SkillButtonView>();
 			this.cardOrigins[i] = Cards[i].transform.position;
@@ -33,19 +34,8 @@ public class CombatControlPanelController : MonoBehaviour {
 		this.selectingCardIndex = -1;
 	}
 	
-	private void ResetCardPositions() {
-		for (int i = 0; i < Constant.UnitCount; i++) {
-			if (i == this.selectingCardIndex) {
-				continue;	
-			}
-			GameObject card = this.Cards[i];
-			Vector3 pos = card.transform.localPosition;	
-			card.transform.localPosition = new Vector3(pos.x, 0, pos.z);
-			UIImageButton btn = card.GetComponent<UIImageButton>();
-			UIButtonMessage btnMessage = card.GetComponent<UIButtonMessage>();
-			btn.pressedSprite = "papet_btn";
-			//btnMessage.trigger = UIButtonMessage.Trigger.OnPress;
-		}
+	public int GetSelectingCardIndex() {
+		return this.selectingCardIndex;	
 	}
 	
 	public void Card1Clicked() {
@@ -81,35 +71,56 @@ public class CombatControlPanelController : MonoBehaviour {
 	}
 	
 	private void click(int index) {
-		if (this.selectingCardIndex == index) {
-			this.CardExecuted(this.selectingCardIndex);
+		this.SelectCard(index);
+	}
+	
+	private float GetCardDelta() {
+		if (IsEnemy) {
+			return 0.4f;
 		} else {
-			this.SelectCard(index);
+			return -0.4f;
+		}	
+	}
+	
+	public void HideCard(int index) {
+		if (!this.cardFlags[index]) {
+			this.cardFlags[index] = true;
+			iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
+		}
+	}
+
+	public void ShowCard(int index) {
+		if (this.cardFlags[index]) {
+			this.cardFlags[index] = false;
+			iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y",-GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}
 	}
 	
 	public void SelectCard(int index) {
-		GameObject card = this.Cards[index];
-		Vector3 pos = card.transform.localPosition;
-		UIImageButton btn = card.GetComponent<UIImageButton>();
-		btn.pressedSprite = "papet_btn_on";
-		card.transform.localPosition = new Vector3(pos.x, 16 * GetDir(), pos.z);
 		this.selectingCardIndex = index;
-		ResetCardPositions();
-		this.CardSelected(this.selectingCardIndex);
+		if (index < 0) {
+			this.selectingCardIndex = -1;
+			NextFrame.transform.localPosition = new Vector3(-1000, 0, -1);
+		} else {
+			if (!this.cardFlags[index]) {
+				GameObject card = this.Cards[index];
+				Vector3 pos = card.transform.localPosition;
+				
+				NextFrame.transform.localPosition = new Vector3(pos.x, pos.y, -1);
+				this.CardSelected(this.selectingCardIndex);
+			}
+		}
 	}
 	
 	protected void ChangeActorStatus(CombatActionResult result) {
 		if (result.life <= 0) {
 			this.selectingCardIndex = -1;
 		}
-		ResetCardPositions();
 		
 		this.views[result.combatUnit.index].SetLife(result.life, result.maxLife);
 	}
 	
 	public void SetTouchEnabled(bool enabled) {
-		this.isEnabled = enabled;
 		for (int i = 0; i < this.views.Length; i++) {
 			this.views[i].SetTouchEnabled(enabled);
 		}

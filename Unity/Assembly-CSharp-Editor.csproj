@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_5_0;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_WEBPLAYER;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_3;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_WEBPLAYER;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -111,10 +111,13 @@
      <None Include="Assets\Resources\Animations\Battle\System\ChainSuccess.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareParticle.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Resources\Images\UI\Common\2\sheet.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Axe\ArmorBreaker.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Laser\StraightLaserBullet.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Axe\Slash.txt" />
      <None Include="Assets\Resources\Images\UI\Icon\puppet\sheet.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Sword\MeteorSmash.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Sub\EffectExplosion01.txt" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Running.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Earth\Skill_EarthCrack.txt" />
@@ -139,6 +142,7 @@
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Hea01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareExploder.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\Skill_Flare.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Bow\ArrowShootBomb.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnifeGo.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\knife\SingleDancingKnife.txt" />
@@ -149,7 +153,9 @@
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\MagicCasting.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTest.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\Implode.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillMove.txt" />
+     <None Include="Assets\Resources\Data\CombatMock.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordUpper.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Fire\Skill_Flare.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_CrossSlash.txt" />
@@ -158,12 +164,14 @@
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\Jump.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Ice01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\SwordDashUpper.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Common\WInPose.txt" />
      <None Include="Assets\Resources\Animations\Battle\System\ChainInBox.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\WindSpiralTop.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\TestSwordUpper.txt" />
      <None Include="Assets\Resources\Animations\Combat\Monster\MonsterMove001.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Earth\StoneSpike01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Axe\CycloneAxe.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\FlareParticle.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Laser\LightParticle01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Fire\FlareEffect.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Test.txt" />
@@ -189,6 +197,7 @@
      <None Include="Assets\Resources\Animations\Battle\Skills\Laser\RainbowCycron.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_PoisonStab.txt" />
      <None Include="Assets\NGUI\Examples\Other\English.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Sub\Swing02.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Battler\RollBack.txt" />
      <None Include="Assets\NGUI\Examples\Other\French.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood03.txt" />
@@ -212,6 +221,8 @@
      <None Include="Assets\Resources\Animations\Battle\Skills\Monster\SpikeWave.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\PlaneCutTop.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Thunder\Lightening.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\FlareExplosion.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\FlareExploder.txt" />
      <None Include="Assets\Resources\Shaders\TintAlphaBlended.shader" />
      <None Include="Assets\Resources\Animations\Battle\Skills\knife\Skill_Stab.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\HealShining02.txt" />
@@ -229,10 +240,12 @@
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Spear\DrillAction.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Mage\FlareEffect.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Common\MagicCasting.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Sword\LeaveDance.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Slash.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Sub\EffectSlash02.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Laser\Skill_Laser01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Sword\Skill_SwordCharge.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Spear\SpearHold.txt" />
@@ -244,6 +257,7 @@
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Smoke01.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Bash01.txt" />
      <None Include="Assets\Resources\Animations\Combat\Sub\Jump01.txt" />
+     <None Include="Assets\Resources\Animations\Combat\Sub\EffectExplosion.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\Resources\Animations\Combat\Sword\Slash.txt" />
      <None Include="Assets\Resources\Animations\Battle\Skills\Effect\Blood02.txt" />

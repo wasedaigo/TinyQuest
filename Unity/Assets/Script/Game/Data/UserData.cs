@@ -25,7 +25,7 @@ namespace TinyQuest.Data{
 	public class CombatUnit {
 		public UserUnit userUnit;
 		public List<int> buffs;
-		public int groupType;
+		public int groupNo;
 		public int index;
 		public int hp;
 		
@@ -42,7 +42,7 @@ namespace TinyQuest.Data{
 
 		public CombatUnit(UserUnit userUnit,  int groupType, int index) {
 			this.userUnit = userUnit;
-			this.groupType = groupType;
+			this.groupNo = groupType;
 			this.index = index;
 			this.buffs = new List<int>();
 			this.hp = this.userUnit.MaxHP;
@@ -52,6 +52,7 @@ namespace TinyQuest.Data{
 	public class CombatUnitGroup {
 		public List<CombatUnit> combatUnits;
 		public int fightingUnitIndex;
+		public int standByUnitIndex;
 		
 		public CombatUnitGroup() {
 			this.combatUnits = new List<CombatUnit>();
@@ -102,16 +103,12 @@ namespace TinyQuest.Data{
 
 	public class LocalUserData {
 		public int turnCount;
-		public int currentTurnGroupNo;
 		public CombatUnitGroup[] combatUnitGroups;
 		public UserZone zone;
 		public readonly UserStatus status;
 		public int maxOwnUnitId;
 		public List<UserUnit> ownUnits;
 		public List<UserUnit> zoneEnemies;
-		public int[] featureRands;
-		public int[] skillRands;
-		public int turnRand;
 		
 		/*
 		private UserUnit AddUserUnit(int unit, int exp, int skillExp, ref int maxId, ref List<UserUnit> units) {

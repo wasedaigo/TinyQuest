@@ -4,6 +4,7 @@ using System.Collections;
 public class ZoneCutinController : MonoBehaviour {
 	public GameObject ZoneCutinPrefab;
 	public GameObject UILayer;
+	public UICamera UICamera;
 	
 	public struct CutinParam {
 		public string message;
@@ -29,6 +30,7 @@ public class ZoneCutinController : MonoBehaviour {
 		iTween.MoveTo(cutIn.gameObject, iTween.Hash("time", 0.5f, "delay", 1, "x", -2,  "easeType", "easeInCubic", "oncomplete", "OnCutinFinished", "oncompletetarget", this.gameObject, "oncompleteparams", param));
 		UILabel label = cutIn.transform.FindChild("Label").GetComponent<UILabel>();
 		label.text = param.message;
+		UICamera.enabled = false;
 	}
 	
 	private void OnCutinFinished(CutinParam param) {
@@ -39,5 +41,6 @@ public class ZoneCutinController : MonoBehaviour {
 		if (param.callback != null) {
 			param.callback();
 		}
+		UICamera.enabled = true;
 	}
 }

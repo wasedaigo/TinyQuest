@@ -17,6 +17,7 @@ public class ZoneViewController : MonoBehaviour {
 		In,
 		Out
 	}
+	private const int UnitPosY = 10;
 	private const int TargetPositionCount = 2;
 	public Stage stage;
 	private Roga2dBaseInterval interval;
@@ -25,7 +26,7 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dIntervalPlayer intervalPlayer;
 	
 
-	private Vector2[,] _targetPositions = new Vector2[,]{{new Vector2(36, -10), new Vector2(-36, -10)}, {new Vector2(80, -10), new Vector2(-80, -10)}};
+	private Vector2[,] _targetPositions = new Vector2[,]{{new Vector2(36, UnitPosY), new Vector2(-36, UnitPosY)}, {new Vector2(80, UnitPosY), new Vector2(-80, UnitPosY)}};
 	private Vector2 GetTargetPositions(int targetPosition, int groupNo) {
 		return this._targetPositions[targetPosition, groupNo];
 	}
@@ -101,8 +102,8 @@ public class ZoneViewController : MonoBehaviour {
 	
 	private void PlaySkillAnimation(CombatAction combatAction) 
 	{
-		Actor casterActor = this.actors[combatAction.caster.groupType, combatAction.caster.index];
-		Actor targetActor = this.actors[combatAction.target.groupType, combatAction.target.index];
+		Actor casterActor = this.actors[combatAction.caster.groupNo, combatAction.caster.index];
+		Actor targetActor = this.actors[combatAction.target.groupNo, combatAction.target.index];
 		BaseSkill.SkillResult skillResult = combatAction.skillResult;
 		
 		Dictionary<string, Roga2dSwapTextureDef> options = new Dictionary<string, Roga2dSwapTextureDef>() {
@@ -148,7 +149,7 @@ public class ZoneViewController : MonoBehaviour {
     }
 	
 	private Actor GetActorFromCombatUnit(CombatUnit combatUnit) {
-		return this.actors[combatUnit.groupType, combatUnit.index];
+		return this.actors[combatUnit.groupNo, combatUnit.index];
 	}
 	
 	private void CombatAction(CombatAction combatAction) {
@@ -173,7 +174,7 @@ public class ZoneViewController : MonoBehaviour {
 						if (combatAction.skillResult.shout != "") {
 							ZoneMessageCutScene cutScene = new ZoneMessageCutScene();
 							cutScene.text = combatAction.skillResult.shout;
-							cutScene.pos = combatAction.caster.groupType;
+							cutScene.pos = combatAction.caster.groupNo;
 							this.SendMessage("ShowMessage", cutScene);	
 						}
 					})
@@ -320,8 +321,8 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	protected void SpawnCombatActor(CombatUnit combatUnit) {
-		Actor actor = this.BuildActor(combatUnit.groupType, combatUnit.GetUserUnit().Unit.lookType, combatUnit.GetUserUnit().Unit.id);
-		this.actors[combatUnit.groupType, combatUnit.index] = actor;
+		Actor actor = this.BuildActor(combatUnit.groupNo, combatUnit.GetUserUnit().Unit.lookType, combatUnit.GetUserUnit().Unit.id);
+		this.actors[combatUnit.groupNo, combatUnit.index] = actor;
 		actor.LocalPriority += combatUnit.index * 0.01f;
 	}
 	
@@ -333,21 +334,21 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	protected void MoveActorFront(CombatUnit combatUnit) {
-		Roga2dNode targetNode = this.GetStartTargetNode(combatUnit.groupType, combatUnit.index);
-		Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
+		Roga2dNode targetNode = this.GetStartTargetNode(combatUnit.groupNo, combatUnit.index);
+		Actor actor = this.actors[combatUnit.groupNo, combatUnit.index];
 		this.MoveActor(actor, targetNode);
 	}
 	
 	protected void MoveActorBack(CombatUnit combatUnit) {
-		Roga2dNode targetNode = this.GetSpawnNode((int)TargetPosition.Out, combatUnit.groupType);
-		Actor actor = this.actors[combatUnit.groupType, combatUnit.index];
+		Roga2dNode targetNode = this.GetSpawnNode((int)TargetPosition.Out, combatUnit.groupNo);
+		Actor actor = this.actors[combatUnit.groupNo, combatUnit.index];
 		actor.SetPoseType(Actor.PoseType.Stand);
 		this.MoveActor(actor, targetNode);
 	}
 	
 	private void ProcessUnitStatus(CombatActionResult result, System.Action callback) {
 		UserUnit userUnit = result.combatUnit.GetUserUnit();
-		Actor actor = this.actors[result.combatUnit.groupType, result.combatUnit.index];
+		Actor actor = this.actors[result.combatUnit.groupNo, result.combatUnit.index];
 		actor.SetStatus(result.life, result.maxLife);
 		
 		if (userUnit.Unit.lookType == UnitLookType.Monster && result.combatUnit.IsDead) {
@@ -358,19 +359,23 @@ public class ZoneViewController : MonoBehaviour {
 		}
 	}
 	
+	public CombatUnit GetActiveCombatUnit(int groupNo) {
+		return this.activeCombatUnits[groupNo];
+	}
+	
 	public Actor GetActiveCombatActor(int groupNo) {
-		CombatUnit combatUnit = this.activeCombatUnits[groupNo];
+		CombatUnit combatUnit = this.GetActiveCombatUnit(groupNo);
 		if (combatUnit == null) {
 			return null;
 		} else {
-			return this.actors[combatUnit.groupType, combatUnit.index];
+			return this.actors[combatUnit.groupNo, combatUnit.index];
 		}
 	}
 	
 	public void SelectCombatActor(CombatUnit combatUnit, System.Action callback) {
-		int groupNo = combatUnit.groupType;
+		int groupNo = combatUnit.groupNo;
 		
-		CombatUnit activeCombatUnit = this.activeCombatUnits[groupNo];
+		CombatUnit activeCombatUnit = this.GetActiveCombatUnit(groupNo);
 		if (activeCombatUnit != null && activeCombatUnit.IsDead) {
 			this.SwapCombatActor(activeCombatUnit, combatUnit, callback);
 		} else {
@@ -391,13 +396,17 @@ public class ZoneViewController : MonoBehaviour {
 				// Move-out old active unit on the screen
 				if (activeActor != null) {
 					list.Add(
-						(next) => { this.PlayMoveAnimation(animation, groupNo, TargetPosition.Out, activeActor, next); }
+						(next) => {
+							this.SendMessage("CombatUnitMoveOut", activeCombatUnit);
+							this.PlayMoveAnimation(animation, groupNo, TargetPosition.Out, activeActor, next); 
+						}
 					);
 				}
 				
 				// Move-in new unit into the screen
 				list.Add(
 					(next) => {
+						this.SendMessage("CombatUnitMoveIn", combatUnit);
 						this.activeCombatUnits[groupNo] = combatUnit;
 						this.PlayMoveAnimation(animation, groupNo, TargetPosition.In, actor, next);
 					}
@@ -411,9 +420,14 @@ public class ZoneViewController : MonoBehaviour {
 	}
 	
 	private void SwapCombatActor(CombatUnit swappedUnit, CombatUnit swappingUnit, System.Action callback) {
-		int groupType = swappingUnit.groupType;
-		Actor swappedActor = this.actors[swappedUnit.groupType, swappedUnit.index];
-		Actor swappingActor = this.actors[swappingUnit.groupType, swappingUnit.index];
+		int groupType = swappingUnit.groupNo;
+		Actor swappedActor = this.actors[swappedUnit.groupNo, swappedUnit.index];
+		Actor swappingActor = this.actors[swappingUnit.groupNo, swappingUnit.index];
+		
+		if (swappedActor == swappingActor) {
+			callback();
+			return;
+		}
 		
 		string swappingUnitAnimation = "Combat/Common/Jump";
 		if (swappingUnit.GetUserUnit().Unit.lookType == UnitLookType.Monster) {
@@ -439,6 +453,7 @@ public class ZoneViewController : MonoBehaviour {
 			// Swapping Unit move out dead unit from the screen
 			list.Add(
 				(next) => {
+					this.SendMessage("CombatUnitMoveOut", swappedUnit);
 					this.PlayMoveAnimation(swappedUnitAnimation, groupType, TargetPosition.Out, swappedActor, null);
 					this.PlayMoveAnimation(swappingUnitAnimation, groupType, TargetPosition.Out, swappingActor, next);
 				}
@@ -448,6 +463,7 @@ public class ZoneViewController : MonoBehaviour {
 		// Move in new unit
 		list.Add(
 			(next) => {
+				this.SendMessage("CombatUnitMoveIn", swappingUnit);
 				this.PlayMoveAnimation(swappingUnitAnimation, groupType, TargetPosition.In, swappingActor, next);
 				this.activeCombatUnits[groupType] = swappingUnit;
 			}

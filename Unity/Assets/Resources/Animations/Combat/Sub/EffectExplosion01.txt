@@ -1,0 +1,187 @@
+{
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/EffectExplosion01",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            320,
+            0,
+            160,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/EffectExplosion01",
+          "priority": 0.5,
+          "frameNo": 1,
+          "rect": [
+            160,
+            80,
+            160,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/EffectExplosion01",
+          "priority": 0.5,
+          "frameNo": 2,
+          "rect": [
+            480,
+            80,
+            160,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/EffectExplosion01",
+          "priority": 0.5,
+          "frameNo": 3,
+          "rect": [
+            160,
+            160,
+            160,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "type": "Image",
+          "id": "Combat/EffectExplosion01",
+          "priority": 0.5,
+          "frameNo": 4,
+          "rect": [
+            160,
+            240,
+            160,
+            80
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+        {
+          "duration": 4,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 4
+        }
+      ],
+      "position": [
+        {
+          "duration": 4,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 1,
+          "endValue": [
+            0,
+            0
+          ],
+          "startValue": [
+            0,
+            0
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 4,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Combat/EffectExplosion01"
+    ],
+    "animations": [
+
+    ]
+  }
+}

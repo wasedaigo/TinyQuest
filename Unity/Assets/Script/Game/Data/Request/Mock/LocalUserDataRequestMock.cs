@@ -33,63 +33,40 @@ namespace TinyQuest.Data.Request {
 			for (int i = 0; i < data.combatUnitGroups.Length; i++) {
 				for (int j = 0; j < data.combatUnitGroups[i].combatUnits.Count; j++) {
 					CombatUnit combatUnit = data.combatUnitGroups[i].combatUnits[j];
-					combatUnit.groupType = i;
+					combatUnit.groupNo = i;
 				}
 			}
-			
-			data.currentTurnGroupNo = 1;
-			data.combatUnitGroups[data.currentTurnGroupNo ].fightingUnitIndex = 3;
+
+			data.combatUnitGroups[0].fightingUnitIndex = 0;
+			data.combatUnitGroups[1].fightingUnitIndex = 0;
+			data.combatUnitGroups[0].standByUnitIndex = 1;
+			data.combatUnitGroups[1].standByUnitIndex = 1;
 			
 			this._isRequesting = false;
 			callback();
 	    }
 
-	    protected override IEnumerator HandleSendTurnInput(WWW www, int playerIndex, int turn, System.Action callback)
-	    {
-			this._isRequesting = true;
-			yield return true;
-			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			
-			if (turn > 1) {
-				data.combatUnitGroups[0].fightingUnitIndex = playerIndex;
-				data.currentTurnGroupNo = 0;
-			}
-			
-			data.skillRands = new int[2];
-			for (int i = 0; i < data.skillRands.Length; i++) {
-				data.skillRands[i] = Random.Range(0, 100);
-			}
-			
-			data.featureRands = new int[2];
-			for (int i = 0; i < data.featureRands.Length; i++) {
-				data.featureRands[i] = Random.Range(0, 100);
-			}
-			
-			
-			this._isRequesting = false;
-			callback();
-	    }
-		
-	    protected override IEnumerator HandleReceiveTurnInput(WWW www, System.Action callback)
+	    protected override IEnumerator HandleSendTurnInput(WWW www, int standByUnitIndex, bool forceSwap, System.Action<ActionResult> callback)
 	    {
 			this._isRequesting = true;
 			yield return new WaitForSeconds(0.5f);
 			LocalUserData data = CacheFactory.Instance.GetLocalUserDataCache().Data;
-			data.combatUnitGroups[1].fightingUnitIndex = this.GetFirstAliveUnit(1).index;
-			data.currentTurnGroupNo = 1;
 			
-			data.skillRands = new int[2];
-			for (int i = 0; i < data.skillRands.Length; i++) {
-				data.skillRands[i] = Random.Range(0, 100);
+			data.combatUnitGroups[0].standByUnitIndex = standByUnitIndex;
+			data.combatUnitGroups[1].standByUnitIndex = this.GetFirstAliveStandByUnitIndex(1);
+			
+			TurnCommand[] turnCommands = new TurnCommand[2];
+			for (int i = 0; i < turnCommands.Length; i++) {
+				turnCommands[i] = new TurnCommand();
+				turnCommands[i].skillIndex = 0;
+				turnCommands[i].forceSwap = false;
 			}
+			turnCommands[0].forceSwap = forceSwap;
 			
-			data.featureRands = new int[2];
-			for (int i = 0; i < data.featureRands.Length; i++) {
-				data.featureRands[i] = Random.Range(0, 100);
-			}
-			
-			this._isRequesting = false;
-			callback();
+			this.ProcessActions(turnCommands, (ActionResult actionResult)=>{
+				this._isRequesting = false;
+				callback(actionResult);
+			});
 	    }
 	}
 }

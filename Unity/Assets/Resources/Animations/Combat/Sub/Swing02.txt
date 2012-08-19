@@ -1,0 +1,249 @@
+{
+  "timelines": [
+    {
+      "color": [
+
+      ],
+      "rotation": [
+        {
+          "duration": 3,
+          "endValue": -80,
+          "startValue": -220,
+          "tween": "linear",
+          "frameNo": 0,
+          "facingOption": "None"
+        },
+        {
+          "duration": 2,
+          "endValue": 0,
+          "startValue": -80,
+          "tween": "linear",
+          "frameNo": 3,
+          "facingOption": "None"
+        },
+        {
+          "duration": 6,
+          "endValue": 0,
+          "startValue": 0,
+          "tween": "fix",
+          "frameNo": 5,
+          "facingOption": "None"
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "type": "Image",
+          "id": "Combat/WeaponSwordBase",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "center": [
+            14.0,
+            14.0
+          ]
+        },
+        {
+          "duration": 6,
+          "type": "Image",
+          "id": "Combat/WeaponSwordBase",
+          "priority": 0.400000005960464,
+          "frameNo": 5,
+          "rect": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "center": [
+            14.0,
+            14.0
+          ]
+        }
+      ],
+      "scale": [
+        {
+          "duration": 3,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 0
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 3
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            1,
+            1
+          ],
+          "startValue": [
+            1,
+            1
+          ],
+          "tween": "fix",
+          "frameNo": 5
+        }
+      ],
+      "position": [
+        {
+          "duration": 3,
+          "endValue": [
+            -3,
+            8
+          ],
+          "startValue": [
+            -3,
+            8
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 0,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 2,
+          "endValue": [
+            -5,
+            7
+          ],
+          "startValue": [
+            -3,
+            8
+          ],
+          "tween": "linear",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 3,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 6,
+          "endValue": [
+            -5,
+            7
+          ],
+          "startValue": [
+            -5,
+            7
+          ],
+          "tween": "fix",
+          "startPositionType": "None",
+          "endPositionType": "None",
+          "frameNo": 5,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "color": [
+
+      ],
+      "rotation": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 3,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 0,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        },
+        {
+          "duration": 8,
+          "type": "Image",
+          "id": "Combat/BattlerBase",
+          "priority": 0.5,
+          "frameNo": 3,
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ],
+          "center": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scale": [
+
+      ],
+      "position": [
+
+      ]
+    }
+  ],
+  "events": null,
+  "dependencies": {
+    "images": [
+      "Combat/WeaponSwordBase",
+      "Combat/BattlerBase"
+    ],
+    "animations": [
+
+    ]
+  }
+}

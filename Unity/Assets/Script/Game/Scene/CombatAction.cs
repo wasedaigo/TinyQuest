@@ -4,7 +4,6 @@ using TinyQuest.Data.Skills;
 
 public class CombatActionResult {
 	public CombatUnit combatUnit;
-	public CombatUnit swapUnit;
 	public int[] activatedBuffs;
 	public int[] expiredBuffs;
 	public int effect;
