@@ -18,6 +18,7 @@ public class CombatController : MonoBehaviour {
 	public FighterStatusPanelController FightingStatusPanelEnemy;
 	public GameObject ConnectingPop;
 	public GameObject SwapButton;
+	public GameObject StopButton;
 	
 	private CombatControlPanelController allyCombatControlPanelController;
 	private CombatControlPanelController enemyCombatControlPanelController;
@@ -35,7 +36,7 @@ public class CombatController : MonoBehaviour {
 		Application.targetFrameRate = 60;
 		this.combatModel = new CombatModel();
 		
-		SwapButton.SetActiveRecursively(false);
+		this.SetControlVisible(false);
 
 		// Get reference
 		this.allyCombatControlPanelController = this.UIAllyCombatPanel.GetComponent<CombatControlPanelController>();
@@ -163,7 +164,7 @@ public class CombatController : MonoBehaviour {
 			this.FightingStatusPanelEnemy.SendMessage("ShowFighterStatus", unit2);
 			
 			if (this.firstTurnFinished) {
-				this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Turn " + this.combatModel.GetCurrentTurn(), this.StartInput));
+				this.StartInput();
 			} else {
 				this.allyCombatControlPanelController.HideCard(unit1.index);
 				this.SendMessage("ShowZoneCutin", new ZoneCutinController.CutinParam("Ready...", this.StartInput));
@@ -173,7 +174,8 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void StartInput() {
-		SwapButton.SetActiveRecursively(true);
+		this.SetControlVisible(true);
+		
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
 		this.SendMessage("StartTimer");
 		
@@ -225,7 +227,8 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void SendTurnInput() {
-		SwapButton.SetActiveRecursively(false);
+		this.SetControlVisible(false);
+			
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
 		this.combatModel.SendTurnInput(this, this.allyCombatControlPanelController.GetSelectingCardIndex());
 	}
@@ -245,10 +248,20 @@ public class CombatController : MonoBehaviour {
 			this.enemyCombatControlPanelController.HideCard(unit.index);	
 		}
 	}
-	
+
 	public void ForceSwap() {
+		this.SetControlVisible(false);
 		this.SendMessage("CancelTimer");
 		this.combatModel.ForceSwap();
 		this.SendTurnInput();
+	}
+	
+	public void StopLine() {
+		this.SetControlVisible(false);
+	}
+	
+	private void SetControlVisible(bool visible) {
+		StopButton.SetActiveRecursively(visible);
+		SwapButton.SetActiveRecursively(visible);
 	}
 }

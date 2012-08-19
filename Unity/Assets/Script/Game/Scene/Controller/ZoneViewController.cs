@@ -17,7 +17,7 @@ public class ZoneViewController : MonoBehaviour {
 		In,
 		Out
 	}
-	private const int UnitPosY = 10;
+	private const int UnitPosY = 30;
 	private const int TargetPositionCount = 2;
 	public Stage stage;
 	private Roga2dBaseInterval interval;
