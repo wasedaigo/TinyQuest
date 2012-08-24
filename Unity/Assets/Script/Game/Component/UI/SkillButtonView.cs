@@ -6,7 +6,7 @@ using TinyQuest.Object;
 
 public class SkillButtonView : MonoBehaviour {
 	public UILabel nameLabel;
-	public GameObject lifeBarImage;
+	public UISprite lifeBarImage;
 	public GameObject faceIcon;
 	public GameObject infoPanel;
 	public UISprite background;
@@ -65,7 +65,19 @@ public class SkillButtonView : MonoBehaviour {
 		}
 		this.life = life;
 		
-		lifeBarImage.transform.localScale = new Vector3(life / (float)maxLife, 1, 1);
+		float ratio = life / (float)maxLife;
+		
+		
+		lifeBarImage.transform.localScale = new Vector3(ratio, 1, 1);
+		if (ratio > 0.5f) {
+			lifeBarImage.color = new Color(0.4f, 0.7f, 0.3f);
+		} else {
+			if (ratio > 0.25f) {
+				lifeBarImage.color = new Color(0.8f, 0.6f, 0.2f);
+			} else {
+				lifeBarImage.color = new Color(0.8f, 0.2f, 0.2f);
+			}
+		}
 		
 		this.SetDefaultColor();
 	}
