@@ -169,9 +169,7 @@ public class CombatController : MonoBehaviour {
 
 	public void StartInput() {
 		this.SetControlVisible(true);
-		
 		this.allyCombatControlPanelController.SetTouchEnabled(true);
-		this.SendMessage("StartTimer");
 	}
 
 	public void InputTimerFinished() {
@@ -214,7 +212,6 @@ public class CombatController : MonoBehaviour {
 
 	public void CardSelected(int index) {
 		this.SetControlVisible(false);
-		this.SendMessage("CancelTimer");
 		this.combatModel.ForceSwap();
 		this.SendTurnInput();
 	}
