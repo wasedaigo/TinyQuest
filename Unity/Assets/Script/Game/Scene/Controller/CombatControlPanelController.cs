@@ -74,9 +74,7 @@ public class CombatControlPanelController : MonoBehaviour {
 	private void click(int index) {
 		this.SelectCard(index);
 		if (!this.cardFlags[index]) {
-			GameObject card = this.Cards[index];
-			Vector3 pos = card.transform.localPosition;
-			StandByMark.transform.localPosition = new Vector3(pos.x, pos.y, -1);
+			this.CardSelected(this.selectingCardIndex);
 		}
 	}
 	
@@ -124,7 +122,7 @@ public class CombatControlPanelController : MonoBehaviour {
 			StandByMark.transform.localPosition = new Vector3(-1000, 0, -1);
 		} else {
 			if (!this.cardFlags[index]) {
-				this.CardSelected(this.selectingCardIndex);
+				//this.CardSelected(this.selectingCardIndex);
 			}
 		}
 	}

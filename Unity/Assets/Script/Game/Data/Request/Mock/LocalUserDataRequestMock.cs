@@ -38,7 +38,11 @@ namespace TinyQuest.Data.Request {
 			}
 
 			data.combatUnitGroups[0].fightingUnitIndex = 0;
-			data.combatUnitGroups[1].fightingUnitIndex = 0;
+			data.combatUnitGroups[0].combatUnits[0].revealed = true;
+			
+			data.combatUnitGroups[1].fightingUnitIndex = 4;
+			data.combatUnitGroups[1].combatUnits[4].revealed = true;
+			
 			data.combatUnitGroups[0].standByUnitIndex = 1;
 			data.combatUnitGroups[1].standByUnitIndex = 1;
 			

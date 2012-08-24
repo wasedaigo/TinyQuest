@@ -121,6 +121,9 @@ namespace TinyQuest.Data.Request {
 				if (fightingUnit.IsDead) {
 					if (group.fightingUnitIndex != group.standByUnitIndex) {
 						group.fightingUnitIndex = group.standByUnitIndex;
+						if (group.fightingUnitIndex >= 0) {
+							group.combatUnits[group.fightingUnitIndex].revealed = true;
+						}
 						group.standByUnitIndex = RequestFactory.Instance.GetLocalUserRequest().GetFirstAliveStandByUnitIndex(i);
 					}
 				}

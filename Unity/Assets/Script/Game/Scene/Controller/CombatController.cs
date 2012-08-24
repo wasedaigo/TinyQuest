@@ -15,7 +15,6 @@ public class CombatController : MonoBehaviour {
 	public GameObject UIAllyCombatPanel;
 	public GameObject UIEnemyCombatPanel;
 	public GameObject ConnectingPop;
-	public GameObject SwapButton;
 	public GameObject StopButton;
 	
 	private CombatControlPanelController allyCombatControlPanelController;
@@ -146,6 +145,7 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void StartSetUpPhase() {
+		this.StatusUpdated();
 		CombatUnit unit1 = this.combatModel.GetFightingUnit(0);
 		CombatUnit unit2 = this.combatModel.GetFightingUnit(1);
 
@@ -213,6 +213,10 @@ public class CombatController : MonoBehaviour {
 	}
 
 	public void CardSelected(int index) {
+		this.SetControlVisible(false);
+		this.SendMessage("CancelTimer");
+		this.combatModel.ForceSwap();
+		this.SendTurnInput();
 	}
 
 	public void SendTurnInput() {
@@ -237,20 +241,11 @@ public class CombatController : MonoBehaviour {
 			this.enemyCombatControlPanelController.ChooseAttackingCard(unit.index);	
 		}
 	}
-
-	public void ForceSwap() {
-		this.SetControlVisible(false);
-		this.SendMessage("CancelTimer");
-		this.combatModel.ForceSwap();
-		this.SendTurnInput();
-	}
-	
 	public void StopLine() {
-		this.SwapButton.SetActiveRecursively(false);
+		this.SendTurnInput();
 	}
 	
 	private void SetControlVisible(bool visible) {
 		StopButton.SetActiveRecursively(visible);
-		SwapButton.SetActiveRecursively(visible);
 	}
 }

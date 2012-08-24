@@ -28,6 +28,7 @@ namespace TinyQuest.Data{
 		public int groupNo;
 		public int index;
 		public int hp;
+		public bool revealed;
 		
 		public bool IsDead {
 			get {return this.hp <= 0;}

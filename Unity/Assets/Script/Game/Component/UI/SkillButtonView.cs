@@ -13,15 +13,20 @@ public class SkillButtonView : MonoBehaviour {
 	public UISprite background;
 	
 	private Roga2dNode faceIconNode;
-	private bool initialized = false;
 	private int life;
+	private int revealedId;
 	
 	public void Start() {
 		this.deadSign.SetActiveRecursively(false);
+		this.revealedId = -1;
 	}
 
 	public void SetFaceIcon(int puppetId) {
+		if (this.revealedId == puppetId) {
+			return;	
+		}
 		
+		this.revealedId = puppetId;
 		if (this.faceIconNode != null) {
 			this.faceIconNode.Destroy();
 			this.faceIconNode = null;
@@ -63,9 +68,13 @@ public class SkillButtonView : MonoBehaviour {
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
 		this.SetLife(combatUnit.hp, combatUnit.GetUserUnit().MaxHP);
-		if (!initialized) {
+
+		bool isRevealed = (combatUnit.groupNo == 0 || combatUnit.revealed);
+		
+		if (isRevealed) {
 			this.SetFaceIcon(combatUnit.GetUserUnit().Unit.id);
-			this.initialized = true;
+		} else {
+			this.SetFaceIcon(0);
 		}
 	}
 }
