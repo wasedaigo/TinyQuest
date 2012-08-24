@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace TinyQuest.Object {
 	public class PuppetActor : Actor {
-		private Roga2dIntervalPlayer intervalPlayer;
 		private Roga2dBaseInterval interval;
 		private PoseType poseType;
 		private bool isWalking;
@@ -14,7 +13,6 @@ namespace TinyQuest.Object {
 			:base(name)
 		{
 			this.SetSprite("Characters/" + name, new Vector2(32, 32), new Vector2(0, 0), new Rect(32, 0, 32, 32));
-			this.intervalPlayer = new Roga2dIntervalPlayer();
 			this.SetPoseType(poseType);
 		}
 		
@@ -64,12 +62,6 @@ namespace TinyQuest.Object {
 			this.maxHp = maxHp;
 			ResetPose();
 		}
-
-		public override void Update ()
-		{
-			base.Update ();
-			this.intervalPlayer.Update();
-		}
 		
 		private Roga2dBaseInterval buildWalkInterval() {
 			List<Roga2dAnimationKeyFrame> keyFrames = new List<Roga2dAnimationKeyFrame>();
@@ -91,7 +83,7 @@ namespace TinyQuest.Object {
 		public override void startWalkingAnimation() {
 			if (this.interval == null) {
 				this.interval = this.buildWalkInterval();
-				this.intervalPlayer.Play(this.interval);
+				Roga2dIntervalPlayer.Instance.Play(this.interval);
 				this.isWalking = true;
 			}
 		}
@@ -99,7 +91,7 @@ namespace TinyQuest.Object {
 		public override void stopWalkingAnimation() {
 			
 			if (this.interval != null) {
-				this.intervalPlayer.Stop(this.interval);
+				Roga2dIntervalPlayer.Instance.Stop(this.interval);
 				this.interval = null;
 				this.isWalking = false;
 				this.SetPoseType(PoseType.Stand);

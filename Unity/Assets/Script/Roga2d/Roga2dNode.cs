@@ -242,7 +242,7 @@ public class Roga2dNode {
 		UpdateHue();
 		UpdateMovement();
 		UpdatePriority();
-
+		
 		foreach(Roga2dNode node in this.children) {
 			node.Update();
 		}

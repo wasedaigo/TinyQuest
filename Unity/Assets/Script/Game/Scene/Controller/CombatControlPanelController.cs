@@ -103,6 +103,7 @@ public class CombatControlPanelController : MonoBehaviour {
 			
 			//if (AttackMark != null) {
 				iTween.ScaleTo(this.Cards[index].gameObject, iTween.Hash("x", 3, "y", 3, "time", 0.3f));
+				this.views[index].Select();
 			//}
 			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
 		}

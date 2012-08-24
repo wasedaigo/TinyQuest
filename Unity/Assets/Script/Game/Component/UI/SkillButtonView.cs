@@ -9,15 +9,14 @@ public class SkillButtonView : MonoBehaviour {
 	public GameObject lifeBarImage;
 	public GameObject faceIcon;
 	public GameObject infoPanel;
-	public GameObject deadSign;
 	public UISprite background;
 	
 	private Roga2dNode faceIconNode;
 	private int life;
 	private int revealedId;
+	private bool isRevealed;
 	
 	public void Start() {
-		this.deadSign.SetActiveRecursively(false);
 		this.revealedId = -1;
 	}
 
@@ -31,12 +30,12 @@ public class SkillButtonView : MonoBehaviour {
 			this.faceIconNode.Destroy();
 			this.faceIconNode = null;
 		}
-		
+
 		FaceIcon actor = new FaceIcon(puppetId);
 		actor.Transform.parent = faceIcon.transform;
-		actor.Transform.localPosition = new Vector3(0, 0, -0.1f);
-		actor.Transform.localEulerAngles = new Vector3(0, 0, 180);
-		actor.Transform.localScale = new Vector3(-24, 24, 0);
+		actor.LocalPosition = new Vector2(0, 0);
+		actor.LocalRotation = 180.0f;
+		actor.LocalScale = new Vector2(-24, 24);
 		
 		Utils.SetLayerRecursively(actor.Transform, 5);
 		this.faceIconNode = actor;
@@ -59,22 +58,49 @@ public class SkillButtonView : MonoBehaviour {
 		
 		if (life < this.life) {
 			iTween.ShakePosition(this.gameObject, iTween.Hash("x", 0.02f, "y", 0.02f,"time", 0.2f));
+			if (this.faceIconNode != null) {
+				Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(this.faceIconNode);
+				Roga2dIntervalPlayer.Instance.Play(interval);
+			}
 		}
 		this.life = life;
 		
 		lifeBarImage.transform.localScale = new Vector3(life / (float)maxLife, 1, 1);
-		deadSign.SetActiveRecursively(IsDead());
+		
+		this.SetDefaultColor();
+	}
+	
+	public void SetDefaultColor() {
+		if (this.IsDead()) {
+			this.faceIconNode.LocalHue = new Roga2dHue(80, -80, -80);
+		} else {
+			if (this.isRevealed) {
+				this.faceIconNode.LocalHue = new Roga2dHue(0, 0, 0);
+			} else {
+				this.faceIconNode.LocalHue = new Roga2dHue(-75, -75, -75);
+			}
+		}
+	}
+	
+	public void Select() {
+		this.isRevealed = true;
+		this.SetDefaultColor();
+	}
+	
+	public void Update() {
+		if (this.faceIconNode != null) {
+			this.faceIconNode.Update();	
+		}
 	}
 	
 	public void UpdateStatus(CombatUnit combatUnit) {
-		this.SetLife(combatUnit.hp, combatUnit.GetUserUnit().MaxHP);
-
-		bool isRevealed = (combatUnit.groupNo == 0 || combatUnit.revealed);
-		
-		if (isRevealed) {
+		bool show = (combatUnit.groupNo == 0 || combatUnit.revealed);
+		if (show) {
 			this.SetFaceIcon(combatUnit.GetUserUnit().Unit.id);
 		} else {
 			this.SetFaceIcon(0);
 		}
+
+		this.SetLife(combatUnit.hp, combatUnit.GetUserUnit().MaxHP);
 	}
 }

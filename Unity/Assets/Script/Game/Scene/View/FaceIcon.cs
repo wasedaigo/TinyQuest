@@ -9,11 +9,7 @@ namespace TinyQuest.Object {
 		public FaceIcon(int puppetId) 
 			:base(puppetId.ToString())
 		{
-			if (puppetId == 0) {
-				this.SetSprite("Characters/0", new Vector2(32, 21), new Vector2(0, 0), new Rect(0, 0, 32, 21));
-			} else {
-				this.SetSprite("Characters/" + puppetId, new Vector2(32, 21), new Vector2(0, 0), new Rect(32, 0, 32, 21));
-			}
+			this.SetSprite("Characters/" + puppetId, new Vector2(32, 21), new Vector2(0, 0), new Rect(32, 0, 32, 21));
 		}
 		
 		

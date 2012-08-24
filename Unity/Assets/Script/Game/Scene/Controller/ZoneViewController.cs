@@ -23,7 +23,6 @@ public class ZoneViewController : MonoBehaviour {
 	private Roga2dBaseInterval interval;
 	
 	private Roga2dAnimationPlayer animationPlayer;
-	private Roga2dIntervalPlayer intervalPlayer;
 	
 
 	private Vector2[,] _targetPositions = new Vector2[,]{{new Vector2(36, UnitPosY), new Vector2(-36, UnitPosY)}, {new Vector2(80, UnitPosY), new Vector2(-80, UnitPosY)}};
@@ -59,7 +58,6 @@ public class ZoneViewController : MonoBehaviour {
 	private void Awake() {
 		Roga2dNode layer = this.stage.GetCharacterLayer();
 		this.animationPlayer = new Roga2dAnimationPlayer();
-		this.intervalPlayer = new Roga2dIntervalPlayer();
 		
 		for (int i = 0; i < TargetPositionCount; i++) {
 			for (int j = 0; j < Constant.GroupCount; j++) {
@@ -193,7 +191,7 @@ public class ZoneViewController : MonoBehaviour {
 			);
 			interval = new Roga2dSequence(list);
 		}
-		intervalPlayer.Play(interval);
+		Roga2dIntervalPlayer.Instance.Play(interval);
 	}
 	
 	private void ShowDamageEffect(Actor actor, CombatActionResult result) 
@@ -202,7 +200,7 @@ public class ZoneViewController : MonoBehaviour {
 		int damageValue = result.effect;
 		if (damageValue > 0) {
 			Roga2dBaseInterval interval = EffectBuilder.GetInstance().BuildDamageInterval(actor.Sprite);
-			this.intervalPlayer.Play(interval);
+			Roga2dIntervalPlayer.Instance.Play(interval);
 			this.StartCoroutine(this.ShowDamagePose(actor));	
 		}
 	}
@@ -531,7 +529,7 @@ public class ZoneViewController : MonoBehaviour {
 
 	protected void Update() {
 		this.animationPlayer.Update(Time.deltaTime);
-		this.intervalPlayer.Update();
+		Roga2dIntervalPlayer.Instance.Update();
 		this.stage.UpdateView();
 	}
 

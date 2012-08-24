@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 public class Roga2dIntervalPlayer {
+	
+	public static readonly Roga2dIntervalPlayer Instance = new Roga2dIntervalPlayer();
+	
 	private List<Roga2dBaseInterval> stopIntervals;
 	private List<Roga2dBaseInterval> intervals;
 	
-	public Roga2dIntervalPlayer() {
+	private Roga2dIntervalPlayer() {
 		this.intervals = new List<Roga2dBaseInterval>();
 		this.stopIntervals = new List<Roga2dBaseInterval>();
 	}
