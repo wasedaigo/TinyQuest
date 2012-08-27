@@ -7,9 +7,6 @@ using TinyQuest.Object;
 
 public class CombatControlPanelController : MonoBehaviour {
 	public System.Action<int> CardSelected;
-	
-	public GameObject AttackMark;
-	public GameObject StandByMark;
 	public GameObject[] Cards;
 	public bool IsEnemy;
 	
@@ -94,15 +91,14 @@ public class CombatControlPanelController : MonoBehaviour {
 				int delta = i - index;
 				
 				GameObject card = Cards[i];
-				Vector3 pos = card.transform.localPosition;
 				//card.transform.localPosition = new Vector3(pos.x + delta, pos.y, pos.z);
 				if (delta != 0) {
-					iTween.ScaleTo(card.gameObject, iTween.Hash("x", 2, "y", 2, "time", 0.3f));
+					iTween.ScaleTo(card.gameObject, iTween.Hash("x", 1, "y", 1, "time", 0.3f));
 				}
 			}
 			
 			//if (AttackMark != null) {
-				iTween.ScaleTo(this.Cards[index].gameObject, iTween.Hash("x", 3, "y", 3, "time", 0.3f));
+				iTween.ScaleTo(this.Cards[index].gameObject, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
 				this.views[index].Select();
 			//}
 			//iTween.MoveBy(this.Cards[index].gameObject, iTween.Hash("y", GetCardDelta(), "easeType", "linear", "time", 0.2f));
@@ -120,7 +116,6 @@ public class CombatControlPanelController : MonoBehaviour {
 		this.selectingCardIndex = index;
 		if (index < 0) {
 			this.selectingCardIndex = -1;
-			StandByMark.transform.localPosition = new Vector3(-1000, 0, -1);
 		} else {
 			if (!this.cardFlags[index]) {
 				//this.CardSelected(this.selectingCardIndex);
