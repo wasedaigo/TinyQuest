@@ -14,8 +14,6 @@ public class CombatController : MonoBehaviour {
 	
 	public GameObject UIAllyCombatPanel;
 	public GameObject UIEnemyCombatPanel;
-	public GameObject ConnectingPop;
-	public GameObject StopButton;
 	
 	private CombatControlPanelController allyCombatControlPanelController;
 	private CombatControlPanelController enemyCombatControlPanelController;
@@ -77,11 +75,7 @@ public class CombatController : MonoBehaviour {
 	public void StartBattle() {		
 		this.UIAllyCombatPanel.SetActiveRecursively(false);
 		this.allyCombatControlPanelController.SetTouchEnabled(false);
-		
-		this.ShowConnectingPop(true);
 		this.combatModel.StartBattle(this);
-
-		this.ShowConnectingPop(false);
     }
 	
 	public void StatusUpdated() {
@@ -120,14 +114,6 @@ public class CombatController : MonoBehaviour {
 		
 		yield return new WaitForSeconds(0.5f);
 		callback();
-	}
-	
-	private void ShowConnectingPop(bool value) {
-		if (value) {
-			this.ConnectingPop.SetActiveRecursively(true);
-		} else {
-			this.ConnectingPop.SetActiveRecursively(false);
-		}
 	}
 	
 	private void ExecuteNextAction() {
@@ -238,11 +224,10 @@ public class CombatController : MonoBehaviour {
 			this.enemyCombatControlPanelController.ChooseAttackingCard(unit.index);	
 		}
 	}
-	public void StopLine() {
+	public void OnAttackClicked() {
 		this.SendTurnInput();
 	}
 	
 	private void SetControlVisible(bool visible) {
-		StopButton.SetActiveRecursively(visible);
 	}
 }
