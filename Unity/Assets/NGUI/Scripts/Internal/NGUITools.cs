@@ -15,6 +15,48 @@ static public class NGUITools
 {
 	static AudioListener mListener;
 
+	static bool mLoaded = false;
+	static float mGlobalVolume = 1f;
+
+	/// <summary>
+	/// Globally accessible volume affecting all music.
+	/// </summary>
+
+	static public float soundVolume
+	{
+		get
+		{
+			if (!mLoaded)
+			{
+				mLoaded = true;
+				mGlobalVolume = PlayerPrefs.GetFloat("Sound", 1f);
+			}
+			return mGlobalVolume;
+		}
+		set
+		{
+			if (mGlobalVolume != value)
+			{
+				mLoaded = true;
+				mGlobalVolume = value;
+				PlayerPrefs.SetFloat("Sound", value);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Helper function -- whether the disk access is allowed.
+	/// </summary>
+
+	static public bool fileAccess
+	{
+		get
+		{
+			return Application.platform != RuntimePlatform.WindowsWebPlayer &&
+				Application.platform != RuntimePlatform.OSXWebPlayer;
+		}
+	}
+
 	/// <summary>
 	/// Play the specified audio clip.
 	/// </summary>
@@ -33,7 +75,9 @@ static public class NGUITools
 
 	static public AudioSource PlaySound (AudioClip clip, float volume, float pitch)
 	{
-		if (clip != null)
+		volume *= soundVolume;
+
+		if (clip != null && volume > 0.01f)
 		{
 			if (mListener == null)
 			{
@@ -52,6 +96,7 @@ static public class NGUITools
 				AudioSource source = mListener.audio;
 				if (source == null) source = mListener.gameObject.AddComponent<AudioSource>();
 				source.pitch = pitch;
+				source.priority = 255;
 				source.PlayOneShot(clip, volume);
 				return source;
 			}
@@ -158,6 +203,10 @@ static public class NGUITools
 					if (colors != null)
 					{
 						Color c = ParseColor(text, index + 1);
+
+						if (EncodeColor(c) != text.Substring(index + 1, 6).ToUpper())
+							return 0;
+
 						c.a = colors[colors.Count - 1].a;
 						colors.Add(c);
 					}
@@ -260,54 +309,6 @@ static public class NGUITools
 			return box;
 		}
 		return null;
-	}
-
-	/// <summary>
-	/// Want to swap a low-res atlas for a hi-res one? Just use this function.
-	/// </summary>
-
-	[Obsolete("Use UIAtlas.replacement instead")]
-	static public void ReplaceAtlas (UIAtlas before, UIAtlas after)
-	{
-		UISprite[] sprites = NGUITools.FindActive<UISprite>();
-
-		for (int i = 0, imax = sprites.Length; i < imax; ++i)
-		{
-			UISprite sprite = sprites[i];
-
-			if (sprite.atlas == before)
-			{
-				sprite.atlas = after;
-			}
-		}
-
-		UILabel[] labels = NGUITools.FindActive<UILabel>();
-
-		for (int i = 0, imax = labels.Length; i < imax; ++i)
-		{
-			UILabel lbl = labels[i];
-
-			if (lbl.font != null && lbl.font.atlas == before)
-			{
-				lbl.font.atlas = after;
-			}
-		}
-	}
-
-	/// <summary>
-	/// Want to swap a low-res font for a hi-res one? This is the way.
-	/// </summary>
-
-	[Obsolete("Use UIFont.replacement instead")]
-	static public void ReplaceFont (UIFont before, UIFont after)
-	{
-		UILabel[] labels = NGUITools.FindActive<UILabel>();
-
-		for (int i = 0, imax = labels.Length; i < imax; ++i)
-		{
-			UILabel lbl = labels[i];
-			if (lbl.font == before) lbl.font = after;
-		}
 	}
 
 	/// <summary>
@@ -510,7 +511,7 @@ static public class NGUITools
 
 	static void Activate (Transform t)
 	{
-		t.gameObject.active = true;
+		SetActiveSelf(t.gameObject, true);
 
 		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
 		{
@@ -530,7 +531,7 @@ static public class NGUITools
 			Transform child = t.GetChild(i);
 			Deactivate(child);
 		}
-		t.gameObject.active = false;
+		SetActiveSelf(t.gameObject, false);
 	}
 
 	/// <summary>
@@ -546,6 +547,85 @@ static public class NGUITools
 		else
 		{
 			Deactivate(go.transform);
+		}
+	}
+
+	/// <summary>
+	/// Unity4 has changed .active to .activeself to clean up the code check here
+	/// </summary>
+
+	static public bool GetActive(GameObject go)
+	{
+#if UNITY_3_5
+		return go.active;
+#else
+		return go.activeSelf;
+#endif
+	}
+
+	/// <summary>
+	/// Unity4 has changed .active to SetActive to clean up the code check here
+	/// </summary>
+
+	static public void SetActiveSelf(GameObject go, bool state)
+	{
+#if UNITY_3_5
+		go.active = state;
+#else
+		go.SetActive(state);
+#endif
+	}
+
+	/// <summary>
+	/// Recursively set the game object's layer.
+	/// </summary>
+
+	static public void SetLayer (GameObject go, int layer)
+	{
+		go.layer = layer;
+
+		Transform t = go.transform;
+		
+		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+		{
+			Transform child = t.GetChild(i);
+			SetLayer(child.gameObject, layer);
+		}
+	}
+
+	/// <summary>
+	/// Helper function used to make the vector use integer numbers.
+	/// </summary>
+
+	static public Vector3 Round (Vector3 v)
+	{
+		v.x = Mathf.Round(v.x);
+		v.y = Mathf.Round(v.y);
+		v.z = Mathf.Round(v.z);
+		return v;
+	}
+
+	/// <summary>
+	/// Make the specified selection pixel-perfect.
+	/// </summary>
+
+	static public void MakePixelPerfect (Transform t)
+	{
+		UIWidget w = t.GetComponent<UIWidget>();
+
+		if (w != null)
+		{
+			w.MakePixelPerfect();
+		}
+		else
+		{
+			t.localPosition = Round(t.localPosition);
+			t.localScale = Round(t.localScale);
+
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
+			{
+				MakePixelPerfect(t.GetChild(i));
+			}
 		}
 	}
 }

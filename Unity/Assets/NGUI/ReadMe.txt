@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
  Copyright © 2011-2012 Tasharen Entertainment
-                Version 2.0.7
+                Version 2.1.6
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -35,12 +35,109 @@ Using NGUI with JavaScript (UnityScript)? Read this first: http://www.tasharen.c
  Version History
 -----------------
 
+2.1.6:
+- NEW: UISavedOption now works on a popup list as well.
+- FIX: Replaced ifdefs for Unity 4 with a new helper functions for cleaner code (NGUITools.GetActive and NGUITools.SetActiveSelf).
+- FIX: UITable was not properly keeping the contents within the draggable panel.
+- FIX: UIDraggablePanel.UpdateScrollbars was not considering soft clipping properly, resulting in some jitterness.
+- FIX: SpringPanel was not setting position / clipping when it finished, resulting in floating-point drifting errors.
+- FIX: UIInput's "not selected" text can now be localized using UILocalize.
+
+2.1.5:
+- NEW: Added support for Unity 4.
+- NEW: NGUI now uses Unity 3.5.5's newly-added Color32 for colors instead of Color, reducing the memory bandwidth a bit.
+- NEW: UIStretch can now stretch to another widget's bounds, not just the screen.
+- FIX: UIImageButton will no longer add a box collider if a non-box collider is present.
+- FIX: NGUITools.ParseSymbol will now check to see if the symbol is valid.
+- FIX: UITexture-related tweaks to UIWidget.
+- FIX: UIAnchor can now anchor to labels.
+- FIX: UISlicedSprite no longer uses padding.
+
+2.1.4:
+- NEW: UIInput now supports multi-line input if its label is multi-line. Hold Ctrl when hitting Enter.
+- FIX: UICheckboxControlledComponent will now use delegates by default.
+- FIX: UITexture should now work properly again.
+
+2.1.3:
+- NEW: Seeing as it was an often-asked question, the Scroll View example now features a toggle that makes the scrolled list center on items.
+- NEW: UIAnchor can now anchor to sides of other widgets and panels.
+- NEW: UICamera now has "drag threshold" properties. Drag events will only be sent after this threshold has been exceeded.
+- NEW: You no longer have to create a material for the UITexture.
+- NEW: You can now specify a UV rect for the UITexture if you only wish to display a part of it.
+- NEW: All event senders, tweens and animation components now have a delegate callback you can use instead of the SendMessage-based event receiver.
+- NEW: Added UICamera.current and UIPopupList.current.
+- NEW: SpringPosition now has "on finished" event notifications (both event receiver and delegate).
+- NEW: Added a new script that can be used to change the alpha of an entire panel worth of widgets at once: UIPanelAlpha.
+- FIX: Replaced most usages of List with BetterList instead in order to significantly reduce memory allocation.
+- FIX: Custom texture packer now respects padding correctly.
+
+2.1.2:
+- NEW: Selected widgets now show their panel's bounding rect, which is the screen's rect if the panel isn't clipped.
+- FIX: Tweens that have not been added dynamically will start playing correctly.
+- FIX: Texture packer should now have better packing logic.
+
+2.1.1:
+- NEW: New texture packer, alternative to using Unity's built-in one. Default is still Unity for backwards compatibilty.
+- NEW: Added a different line wrapping functionality for input fields contributed by MightyM.
+- NEW: UILocalize now has a "Localize" function you can trigger to make it force-localize whatever it's on.
+- NEW: UITweener now has an option to not ignore timeScale.
+- FIX: Fixed a "drifting panel" issue introduced in the last update.
+- FIX: Added a warning for slider thumb used with radially filled sliders (not supported).
+- FIX: ActiveAnimation will now clear its event receiver and callback on Play.
+- FIX: UISpriteAnimation.isDone is now UISpriteAnimation.isPlaying, and is no longer backwards.
+
+2.1.0:
+- NEW: Now maintained under Unity 3.5.3.
+- NEW: BetterList now has Insert and Contains functions.
+- NEW: UITweener now has bounce style tweening methods.
+- NEW: UITweener's OnUpdate function now has "isFinished" parameter that's set to 'true' if it's the last update.
+- NEW: TweenTransform is now capable of re-parenting the object when finished.
+- NEW: Added TweenVolume that can tween an audio source's volume.
+- NEW: UICamera now has a new property: "Generic Event Handler". If set, this object will receive a copy of all events regardless of where they go.
+- NEW: Widget Wizard now lets you specify an initial pivot point for sprites.
+- NEW: UISpriteAnimation now has an option to not loop the animation anymore, and can tell you how many frames it has.
+- NEW: Added TweenFOV that can be used to tween camera's field of view.
+- NEW: Added a UISoundVolume script that can change the volume of the sounds used by NGUITools.PlaySound when attached to a slider.
+- FIX: UIInput will now bring up a proper password keyboard on touch-based devices.
+- FIX: UIImageButton will now set the correct sprite when it's enabled while highlighted.
+- FIX: DragDropItem example script will now work on touch-based devices.
+- FIX: UIButtonPlayAnimation will now clear the event receiver if none was specified.
+- FIX: Various changes to UICamera, making it more touch-device friendly.
+- FIX: UIPanels marked as static will now update their geometry when new widgets get added.
+- FIX: Shaders no longer use "fixed" data type as it seems to have issues on certain devices.
+- DEL: Removed old deprecated functions in order to clean up the code.
+
+2.0.9:
+- NEW: UITable can now return its list of children (in sorted order) via UITable.children.
+- FIX: UISpriteAnimation can now be paused with FPS of 0.
+- FIX: UITweener's delay should now work properly.
+- FIX: UIPanel should now create draw calls with "dont destroy on load" flag instead of hideflags at run time, resolving a rare warning.
+- FIX: Tweaks to how multi-touches are handled when they're disabled.
+- FIX: Removed the "#pragma fragmentoption ARB_precision_hint_fastest" which was causing issues due to no support on android, mac mini's and possibly other devices.
+- FIX: UIInput carat should be removed upon leaving the field on iOS.
+- FIX: UIInput default text should be removed OnSelect on iOS.
+- FIX: Inventory example should no longer have its own menu, but will instead be under NGUI.
+
+2.0.8:
+- NEW: Packed fonts now have clipped version of shaders, making them work with clipped panels.
+- NEW: You can now specify the maximum number of lines on UILabel instead of just multiline / single line option.
+- NEW: UIButton's disabled color can now be specified explicitly.
+- NEW: Tweens and animations now have OnDoubleClick and OnSelect events to work with as well.
+- NEW: It's now possible to control the volume used by all UI sounds: NGUITools.soundVolume.
+- NEW: You can now delay a tween by specifying a start time delay.
+- NEW: You can now disable multi-touch on UICamera, making all touches be treated as one.
+- NEW: MakePixelPerfect is now in NGUITools, not NGUIMenu.
+- FIX: UIImageButton won't switch images anymore if the script is disabled.
+- FIX: Starting value in Localization will no longer overwrite the explicitly switched languages.
+
 2.0.7:
 - NEW: You can now specify what keyboard type will be used on mobile devices.
 - NEW: You can now add input validation to your inputs to exclude certain characters (such as make your input numeric-only).
 - FIX: Packed fonts no longer tie up the alpha channel, and can now be affected by alpha just fine.
 - FIX: Clipped panels will no longer cause the unused material message in the console.
 - FIX: 3D UIs should now be created with a proper anchor offset.
+- FIX: UISliderColors will now work for more than 3 colors.
+- FIX: UIPanel will no longer cause a null exception at run time.
 
 2.0.6:
 - NEW: Added support for fonts packed into separate RGBA channels (read: eastern language fonts can now be 75% smaller).

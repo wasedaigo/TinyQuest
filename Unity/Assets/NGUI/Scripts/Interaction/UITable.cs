@@ -36,12 +36,38 @@ public class UITable : MonoBehaviour
 	UIPanel mPanel;
 	UIDraggablePanel mDrag;
 	bool mStarted = false;
+	List<Transform> mChildren = new List<Transform>();
 
 	/// <summary>
 	/// Function that sorts items by name.
 	/// </summary>
 
 	static public int SortByName (Transform a, Transform b) { return string.Compare(a.name, b.name); }
+
+	/// <summary>
+	/// Returns the list of table's children, sorted alphabetically if necessary.
+	/// </summary>
+
+	public List<Transform> children
+	{
+		get
+		{
+			if (mChildren.Count == 0)
+			{
+				Transform myTrans = transform;
+				mChildren.Clear();
+
+				for (int i = 0; i < myTrans.childCount; ++i)
+				{
+					Transform child = myTrans.GetChild(i);
+
+					if (child && (!hideInactive || NGUITools.GetActive(child.gameObject))) mChildren.Add(child);
+				}
+				if (sorted) mChildren.Sort(SortByName);
+			}
+			return mChildren;
+		}
+	}
 
 	/// <summary>
 	/// Positions the grid items, taking their own size into consideration.
@@ -130,17 +156,20 @@ public class UITable : MonoBehaviour
 		if (mStarted)
 		{
 			Transform myTrans = transform;
-			List<Transform> children = new List<Transform>();
+			mChildren.Clear();
+			List<Transform> ch = children;
+			if (ch.Count > 0) RepositionVariableSize(ch);
 
-			for (int i = 0; i < myTrans.childCount; ++i)
+			if (mDrag != null)
 			{
-				Transform child = myTrans.GetChild(i);
-				if (child && (!hideInactive || child.gameObject.active)) children.Add(child);
+				mDrag.UpdateScrollbars(true);
+				mDrag.RestrictWithinBounds(true);
 			}
-			if (sorted) children.Sort(SortByName);
-			if (children.Count > 0) RepositionVariableSize(children);
-			if (mPanel != null && mDrag == null) mPanel.ConstrainTargetToBounds(myTrans, true);
-			if (mDrag != null) mDrag.UpdateScrollbars(true);
+			else if (mPanel != null)
+			{
+				mPanel.ConstrainTargetToBounds(myTrans, true);
+			}
+			if (onReposition != null) onReposition();
 		}
 		else repositionNow = true;
 	}
@@ -171,7 +200,6 @@ public class UITable : MonoBehaviour
 		{
 			repositionNow = false;
 			Reposition();
-			if (onReposition != null) onReposition();
 		}
 	}
 }

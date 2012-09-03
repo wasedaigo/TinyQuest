@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 [ExecuteInEditMode]
 [AddComponentMenu("NGUI/UI/Label")]
@@ -21,7 +22,7 @@ public class UILabel : UIWidget
 	[HideInInspector][SerializeField] string mText = "";
 	[HideInInspector][SerializeField] int mMaxLineWidth = 0;
 	[HideInInspector][SerializeField] bool mEncoding = true;
-	[HideInInspector][SerializeField] bool mMultiline = true;
+	[HideInInspector][SerializeField] int mMaxLineCount = 0; // 0 denotes unlimited
 	[HideInInspector][SerializeField] bool mPassword = false;
 	[HideInInspector][SerializeField] bool mShowLastChar = false;
 	[HideInInspector][SerializeField] Effect mEffectStyle = Effect.None;
@@ -34,6 +35,12 @@ public class UILabel : UIWidget
 
 	[HideInInspector][SerializeField] float mLineWidth = 0;
 
+	/// <summary>
+	/// Obsolete, do not use. Use 'mMaxLineCount' instead
+	/// </summary>
+
+	[HideInInspector][SerializeField]bool mMultiline = true;
+
 	bool mShouldBeProcessed = true;
 	string mProcessedText = null;
 
@@ -42,11 +49,10 @@ public class UILabel : UIWidget
 	string mLastText = "";
 	int mLastWidth = 0;
 	bool mLastEncoding = true;
-	bool mLastMulti = true;
+	int mLastCount = 0;
 	bool mLastPass = false;
 	bool mLastShow = false;
 	Effect mLastEffect = Effect.None;
-	Color mLastColor = Color.black;
 	Vector3 mSize = Vector3.zero;
 
 	/// <summary>
@@ -61,11 +67,10 @@ public class UILabel : UIWidget
 				mLastText		!= text ||
 				mLastWidth		!= mMaxLineWidth ||
 				mLastEncoding	!= mEncoding ||
-				mLastMulti		!= mMultiline ||
+				mLastCount		!= mMaxLineCount ||
 				mLastPass		!= mPassword ||
 				mLastShow		!= mShowLastChar ||
-				mLastEffect		!= mEffectStyle ||
-				mLastColor		!= mEffectColor;
+				mLastEffect		!= mEffectStyle;
 		}
 		set
 		{
@@ -80,11 +85,10 @@ public class UILabel : UIWidget
 				mLastText			= text;
 				mLastWidth			= mMaxLineWidth;
 				mLastEncoding		= mEncoding;
-				mLastMulti			= mMultiline;
+				mLastCount			= mMaxLineCount;
 				mLastPass			= mPassword;
 				mLastShow			= mShowLastChar;
 				mLastEffect			= mEffectStyle;
-				mLastColor			= mEffectColor;
 			}
 		}
 	}
@@ -196,20 +200,41 @@ public class UILabel : UIWidget
 	/// <summary>
 	/// Whether the label supports multiple lines.
 	/// </summary>
-
+	
 	public bool multiLine
 	{
 		get
 		{
-			return mMultiline;
+			return mMaxLineCount != 1;
 		}
 		set
 		{
-			if (mMultiline != value)
+			if ((mMaxLineCount != 1) != value)
 			{
-				mMultiline = value;
+				mMaxLineCount = (value ? 0 : 1);
 				hasChanged = true;
 				if (value) mPassword = false;
+			}
+		}
+	}
+
+	/// <summary>
+	/// The max number of lines to be displayed for the label
+	/// </summary>
+
+	public int maxLineCount
+	{
+		get
+		{
+			return mMaxLineCount;
+		}
+		set
+		{
+			if (mMaxLineCount != value)
+			{
+				mMaxLineCount = Mathf.Max(value, 0);
+				hasChanged = true;
+				if (value == 1) mPassword = false;
 			}
 		}
 	}
@@ -228,10 +253,10 @@ public class UILabel : UIWidget
 		{
 			if (mPassword != value)
 			{
-				mPassword	= value;
-				mMultiline	= false;
-				mEncoding	= false;
-				hasChanged	= true;
+				mPassword		= value;
+				mMaxLineCount	= 1;
+				mEncoding		= false;
+				hasChanged		= true;
 			}
 		}
 	}
@@ -288,7 +313,7 @@ public class UILabel : UIWidget
 		}
 		set
 		{
-			if (mEffectColor != value)
+			if (!mEffectColor.Equals(value))
 			{
 				mEffectColor = value;
 				if (mEffectStyle != Effect.None) hasChanged = true;
@@ -360,6 +385,12 @@ public class UILabel : UIWidget
 			mMaxLineWidth = Mathf.RoundToInt(mLineWidth);
 			mLineWidth = 0f;
 		}
+
+		if (!mMultiline)
+		{
+			mMaxLineCount = 1;
+			mMultiline = true;
+		}
 	}
 
 	/// <summary>
@@ -385,7 +416,7 @@ public class UILabel : UIWidget
 
 		if (mPassword)
 		{
-			mProcessedText = mFont.WrapText(mProcessedText, 100000f, false, false, UIFont.SymbolStyle.None);
+			mProcessedText = mFont.WrapText(mProcessedText, 100000f, 1, false, UIFont.SymbolStyle.None);
 
 			string hidden = "";
 
@@ -402,11 +433,11 @@ public class UILabel : UIWidget
 		}
 		else if (mMaxLineWidth > 0)
 		{
-			mProcessedText = mFont.WrapText(mProcessedText, mMaxLineWidth / cachedTransform.localScale.x, mMultiline, mEncoding, mSymbols);
+			mProcessedText = mFont.WrapText(mProcessedText, mMaxLineWidth / cachedTransform.localScale.x, mMaxLineCount, mEncoding, mSymbols);
 		}
-		else if (!mMultiline)
+		else if (mMaxLineCount > 0)
 		{
-			mProcessedText = mFont.WrapText(mProcessedText, 100000f, false, mEncoding, mSymbols);
+			mProcessedText = mFont.WrapText(mProcessedText, 100000f, mMaxLineCount, mEncoding, mSymbols);
 		}
 
 		mSize = !string.IsNullOrEmpty(mProcessedText) ? mFont.CalculatePrintedSize(mProcessedText, mEncoding, mSymbols) : Vector2.one;
@@ -492,11 +523,21 @@ public class UILabel : UIWidget
 	/// Apply a shadow effect to the buffer.
 	/// </summary>
 
+#if UNITY_3_5_4
 	void ApplyShadow (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols, int start, int end, float x, float y)
+#else
+	void ApplyShadow (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color32> cols, int start, int end, float x, float y)
+#endif
 	{
+#if UNITY_3_5_4
 		Color c = mEffectColor;
-		c.a *= color.a;
-
+		c.a = c.a * color.a;
+		Color col = c;
+#else
+		Color c = mEffectColor;
+		c.a = c.a * color.a;
+		Color32 col = c;
+#endif
 		for (int i = start; i < end; ++i)
 		{
 			verts.Add(verts.buffer[i]);
@@ -507,7 +548,7 @@ public class UILabel : UIWidget
 			v.x += x;
 			v.y += y;
 			verts.buffer[i] = v;
-			cols.buffer[i] = c;
+			cols.buffer[i] = col;
 		}
 	}
 
@@ -515,7 +556,11 @@ public class UILabel : UIWidget
 	/// Draw the label.
 	/// </summary>
 
+#if UNITY_3_5_4
 	public override void OnFill (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols)
+#else
+	public override void OnFill (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color32> cols)
+#endif
 	{
 		if (mFont == null) return;
 		MakePositionPerfect();

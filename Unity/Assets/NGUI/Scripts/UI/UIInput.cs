@@ -26,6 +26,8 @@ public class UIInput : MonoBehaviour
 		EmailAddress = 7,
 	}
 
+	public delegate void OnSubmit (string inputString);
+
 	/// <summary>
 	/// Current input, available inside OnSubmit callbacks.
 	/// </summary>
@@ -86,9 +88,17 @@ public class UIInput : MonoBehaviour
 
 	public string functionName = "OnSubmit";
 
+	/// <summary>
+	/// Delegate that will be notified when the input field submits its data (by default that's when Enter gets pressed).
+	/// </summary>
+
+	public OnSubmit onSubmit;
+
 	string mText = "";
 	string mDefaultText = "";
 	Color mDefaultColor = Color.white;
+	UIWidget.Pivot mPivot = UIWidget.Pivot.Left;
+	float mPosition = 0f;
 
 #if UNITY_IPHONE || UNITY_ANDROID
 #if UNITY_3_4
@@ -112,6 +122,7 @@ public class UIInput : MonoBehaviour
 		}
 		set
 		{
+			if (mDoInit) Init();
 			mText = value;
 
 			if (label != null)
@@ -149,20 +160,24 @@ public class UIInput : MonoBehaviour
 
 	protected void Init ()
 	{
-		if (label == null) label = GetComponentInChildren<UILabel>();
-		if (label != null)
+		if (mDoInit)
 		{
-			mDefaultText = label.text;
-			mDefaultColor = label.color;
-			label.supportEncoding = false;
+			mDoInit = false;
+			if (label == null) label = GetComponentInChildren<UILabel>();
+
+			if (label != null)
+			{
+				mDefaultText = label.text;
+				mDefaultColor = label.color;
+				label.supportEncoding = false;
+				mPivot = label.pivot;
+				mPosition = label.cachedTransform.localPosition.x;
+			}
+			else enabled = false;
 		}
 	}
 
-	/// <summary>
-	/// Initialize everything on awake.
-	/// </summary>
-
-	void Awake () { Init(); }
+	bool mDoInit = true;
 
 	/// <summary>
 	/// If the object is currently highlighted, it should also be selected.
@@ -182,7 +197,9 @@ public class UIInput : MonoBehaviour
 
 	void OnSelect (bool isSelected)
 	{
-		if (label != null && enabled && gameObject.active)
+		if (mDoInit) Init();
+
+		if (label != null && enabled && NGUITools.GetActive(gameObject))
 		{
 			if (isSelected)
 			{
@@ -197,7 +214,14 @@ public class UIInput : MonoBehaviour
 #if UNITY_3_4
 					mKeyboard = iPhoneKeyboard.Open(mText, (iPhoneKeyboardType)((int)type));
 #else
-					mKeyboard = TouchScreenKeyboard.Open(mText, (TouchScreenKeyboardType)((int)type));
+					if (isPassword)
+					{
+						mKeyboard = TouchScreenKeyboard.Open(mText, TouchScreenKeyboardType.Default, false, false, true);
+					}
+					else
+					{
+						mKeyboard = TouchScreenKeyboard.Open(mText, (TouchScreenKeyboardType)((int)type));
+					}
 #endif
 				}
 				else
@@ -209,17 +233,17 @@ public class UIInput : MonoBehaviour
 					offset.y += label.relativeSize.y;
 					offset = t.TransformPoint(offset);
 					Input.compositionCursorPos = UICamera.currentCamera.WorldToScreenPoint(offset);
-					UpdateLabel();
 				}
+				UpdateLabel();
 			}
-#if UNITY_IPHONE || UNITY_ANDROID
-			else if (mKeyboard != null)
-			{
-				mKeyboard.active = false;
-			}
-#endif
 			else
 			{
+#if UNITY_IPHONE || UNITY_ANDROID
+				if (mKeyboard != null)
+				{
+					mKeyboard.active = false;
+				}
+#endif
 				if (string.IsNullOrEmpty(mText))
 				{
 					label.text = mDefaultText;
@@ -230,6 +254,7 @@ public class UIInput : MonoBehaviour
 
 				label.showLastPasswordChar = false;
 				Input.imeCompositionMode = IMECompositionMode.Off;
+				RestoreLabel();
 			}
 		}
 	}
@@ -264,8 +289,9 @@ public class UIInput : MonoBehaviour
 			{
 				mKeyboard = null;
 				current = this;
+				if (onSubmit != null) onSubmit(mText);
 				if (eventReceiver == null) eventReceiver = gameObject;
-				eventReceiver.SendMessage(functionName, SendMessageOptions.DontRequireReceiver);
+				eventReceiver.SendMessage(functionName, mText, SendMessageOptions.DontRequireReceiver);
 				current = null;
 				selected = false;
 			}
@@ -274,7 +300,7 @@ public class UIInput : MonoBehaviour
 #else
 	void Update ()
 	{
-		if (mLastIME != Input.compositionString)
+		if (selected && mLastIME != Input.compositionString)
 		{
 			mLastIME = Input.compositionString;
 			UpdateLabel();
@@ -288,7 +314,9 @@ public class UIInput : MonoBehaviour
 
 	void OnInput (string input)
 	{
-		if (selected && enabled && gameObject.active)
+		if (mDoInit) Init();
+
+		if (selected && enabled && NGUITools.GetActive(gameObject))
 		{
 			// Mobile devices handle input in Update()
 			if (Application.platform == RuntimePlatform.Android) return;
@@ -309,13 +337,37 @@ public class UIInput : MonoBehaviour
 				}
 				else if (c == '\r' || c == '\n')
 				{
-					// Enter
-					current = this;
-					if (eventReceiver == null) eventReceiver = gameObject;
-					eventReceiver.SendMessage(functionName, SendMessageOptions.DontRequireReceiver);
-					current = null;
-					selected = false;
-					return;
+					if (UICamera.current.submitKey0 == KeyCode.Return || UICamera.current.submitKey1 == KeyCode.Return)
+					{
+						// Not multi-line input, or control isn't held
+						if (!label.multiLine || (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl)))
+						{
+							// Enter
+							current = this;
+							if (onSubmit != null) onSubmit(mText);
+							if (eventReceiver == null) eventReceiver = gameObject;
+							eventReceiver.SendMessage(functionName, mText, SendMessageOptions.DontRequireReceiver);
+							current = null;
+							selected = false;
+							return;
+						}
+					}
+
+					// If we have an input validator, validate the input first
+					if (validator != null) c = validator(mText, c);
+
+					// If the input is invalid, skip it
+					if (c == 0) continue;
+
+					// Append the character
+					if (c == '\n' || c == '\r')
+					{
+						if (label.multiLine) mText += "\n";
+					}
+					else mText += c;
+
+					// Notify the listeners
+					SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
 				}
 				else if (c >= ' ')
 				{
@@ -342,6 +394,7 @@ public class UIInput : MonoBehaviour
 
 	void UpdateLabel ()
 	{
+		if (mDoInit) Init();
 		if (maxChars > 0 && mText.Length > maxChars) mText = mText.Substring(0, maxChars);
 
 		if (label.font != null)
@@ -351,19 +404,47 @@ public class UIInput : MonoBehaviour
 
 			// Now wrap this text using the specified line width
 			label.supportEncoding = false;
-			processed = label.font.WrapText(processed, label.lineWidth / label.cachedTransform.localScale.x, true, false, UIFont.SymbolStyle.None);
 
-			if (!label.multiLine)
+			if (label.multiLine)
 			{
-				// Split it up into lines
-				string[] lines = processed.Split(new char[] { '\n' });
-
-				// Only the last line should be visible
-				processed = (lines.Length > 0) ? lines[lines.Length - 1] : "";
+				processed = label.font.WrapText(processed, label.lineWidth / label.cachedTransform.localScale.x, 0, false, UIFont.SymbolStyle.None);
 			}
+			else
+			{
+				string fit = label.font.GetEndOfLineThatFits(processed, label.lineWidth / label.cachedTransform.localScale.x, false, UIFont.SymbolStyle.None);
+
+				if (fit != processed)
+				{
+					processed = fit;
+					Vector3 pos = label.cachedTransform.localPosition;
+					pos.x = mPosition + label.lineWidth;
+					label.cachedTransform.localPosition = pos;
+
+					if (mPivot == UIWidget.Pivot.Left) label.pivot = UIWidget.Pivot.Right;
+					else if (mPivot == UIWidget.Pivot.TopLeft) label.pivot = UIWidget.Pivot.TopRight;
+					else if (mPivot == UIWidget.Pivot.BottomLeft) label.pivot = UIWidget.Pivot.BottomLeft;
+				}
+				else RestoreLabel();
+			}
+
 			// Update the label's visible text
 			label.text = processed;
 			label.showLastPasswordChar = selected;
+		}
+	}
+
+	/// <summary>
+	/// Restore the input label's pivot point and position.
+	/// </summary>
+
+	void RestoreLabel ()
+	{
+		if (label != null)
+		{
+			label.pivot = mPivot;
+			Vector3 pos = label.cachedTransform.localPosition;
+			pos.x = mPosition;
+			label.cachedTransform.localPosition = pos;
 		}
 	}
 }

@@ -393,8 +393,8 @@ public class UIFont : MonoBehaviour
 		for (int i = 0, imax = labels.Length; i < imax; ++i)
 		{
 			UILabel lbl = labels[i];
-
-			if (lbl.enabled && lbl.gameObject.active && CheckIfRelated(this, lbl.font))
+			
+			if (lbl.enabled && NGUITools.GetActive(lbl.gameObject) && CheckIfRelated(this, lbl.font))
 			{
 				UIFont fnt = lbl.font;
 				lbl.font = null;
@@ -484,12 +484,65 @@ public class UIFont : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Different line wrapping functionality -- contributed by MightyM.
+	/// http://www.tasharen.com/forum/index.php?topic=1049.0
+	/// </summary>
+
+	public string GetEndOfLineThatFits (string text, float maxWidth, bool encoding, SymbolStyle symbolStyle)
+	{
+		if (mReplacement != null) return mReplacement.GetEndOfLineThatFits(text, maxWidth, encoding, symbolStyle);
+
+		int lineWidth = Mathf.RoundToInt(maxWidth * size);
+		if (lineWidth < 1) return text;
+
+		int textLength = text.Length;
+		int remainingWidth = lineWidth;
+		BMGlyph followingGlyph = null;
+		int currentCharacterIndex = textLength;
+
+		while (currentCharacterIndex > 0 && remainingWidth > 0)
+		{
+			char currentCharacter = text[--currentCharacterIndex];
+
+			// See if there is a symbol matching this text
+			BMSymbol symbol = (encoding && symbolStyle != SymbolStyle.None) ? mFont.MatchSymbol(text, currentCharacterIndex, textLength) : null;
+
+			// Find the glyph for this character
+			BMGlyph glyph = (symbol == null) ? mFont.GetGlyph(currentCharacter) : null;
+
+			// Calculate how wide this symbol or character is going to be
+			int glyphWidth = mSpacingX;
+
+			if (symbol != null)
+			{
+				glyphWidth += symbol.width;
+			}
+			else if (glyph != null)
+			{
+				glyphWidth += glyph.advance + ((followingGlyph == null) ? 0 : followingGlyph.GetKerning(currentCharacter));
+				followingGlyph = glyph;
+			}
+			else
+			{
+				followingGlyph = null;
+				continue;
+			}
+
+			// Remaining width after this glyph gets printed
+			remainingWidth -= glyphWidth;
+		}
+		if (remainingWidth < 0) ++currentCharacterIndex;
+		return text.Substring(currentCharacterIndex, textLength - currentCharacterIndex);
+	}
+
+
+	/// <summary>
 	/// Text wrapping functionality. The 'maxWidth' should be in local coordinates (take pixels and divide them by transform's scale).
 	/// </summary>
 
-	public string WrapText (string text, float maxWidth, bool multiline, bool encoding, SymbolStyle symbolStyle)
+	public string WrapText(string text, float maxWidth, int maxLineCount, bool encoding, SymbolStyle symbolStyle)
 	{
-		if (mReplacement != null) return mReplacement.WrapText(text, maxWidth, multiline, encoding, symbolStyle);
+		if (mReplacement != null) return mReplacement.WrapText(text, maxWidth, maxLineCount, encoding, symbolStyle);
 
 		// Width of the line in pixels
 		int lineWidth = Mathf.RoundToInt(maxWidth * size);
@@ -502,6 +555,8 @@ public class UIFont : MonoBehaviour
 		int start = 0;
 		int offset = 0;
 		bool lineIsEmpty = true;
+		bool multiline = (maxLineCount != 1);
+		int lineCount = 1;
 
 		// Run through all characters
 		for (; offset < textLength; ++offset)
@@ -511,7 +566,7 @@ public class UIFont : MonoBehaviour
 			// New line character -- start a new line
 			if (ch == '\n')
 			{
-				if (!multiline) break;
+				if (!multiline || lineCount == maxLineCount ) break;
 				remainingWidth = lineWidth;
 
 				// Add the previous word to the final string
@@ -519,6 +574,7 @@ public class UIFont : MonoBehaviour
 				else sb.Append(ch);
 
 				lineIsEmpty = true;
+				++lineCount;
 				start = offset + 1;
 				previousChar = 0;
 				continue;
@@ -545,8 +601,11 @@ public class UIFont : MonoBehaviour
 					}
 					else if (offset + 7 < textLength && text[offset + 7] == ']')
 					{
-						offset += 7;
-						continue;
+						if (NGUITools.EncodeColor(NGUITools.ParseColor(text, offset + 1)) == text.Substring(offset + 1, 6).ToUpper())
+						{
+							offset += 7;
+							continue;
+						}
 					}
 				}
 			}
@@ -577,12 +636,12 @@ public class UIFont : MonoBehaviour
 			if (remainingWidth < 0)
 			{
 				// Can't start a new line
-				if (lineIsEmpty || !multiline)
+				if (lineIsEmpty || !multiline || lineCount == maxLineCount)
 				{
 					// This is the first word on the line -- add it up to the character that fits
 					sb.Append(text.Substring(start, Mathf.Max(0, offset - start)));
 
-					if (!multiline)
+					if (!multiline || lineCount == maxLineCount)
 					{
 						start = offset;
 						break;
@@ -591,6 +650,7 @@ public class UIFont : MonoBehaviour
 
 					// Start a brand-new line
 					lineIsEmpty = true;
+					++lineCount;
 
 					if (ch == ' ')
 					{
@@ -614,7 +674,8 @@ public class UIFont : MonoBehaviour
 					remainingWidth = lineWidth;
 					offset = start - 1;
 					previousChar = 0;
-					if (!multiline) break;
+					if (!multiline || lineCount == maxLineCount) break;
+					++lineCount;
 					EndLine(ref sb);
 					continue;
 				}
@@ -637,13 +698,13 @@ public class UIFont : MonoBehaviour
 	/// Text wrapping functionality. Legacy compatibility function.
 	/// </summary>
 
-	public string WrapText (string text, float maxWidth, bool multiline, bool encoding) { return WrapText(text, maxWidth, multiline, encoding, SymbolStyle.None); }
+	public string WrapText(string text, float maxWidth, int maxLineCount, bool encoding) { return WrapText(text, maxWidth, maxLineCount, encoding, SymbolStyle.None); }
 
 	/// <summary>
 	/// Text wrapping functionality. Legacy compatibility function.
 	/// </summary>
 
-	public string WrapText (string text, float maxWidth, bool multiline) { return WrapText(text, maxWidth, multiline, false, SymbolStyle.None); }
+	public string WrapText(string text, float maxWidth, int maxLineCount) { return WrapText(text, maxWidth, maxLineCount, false, SymbolStyle.None); }
 
 	/// <summary>
 	/// Align the vertices to be right or center-aligned given the specified line width.
@@ -673,8 +734,13 @@ public class UIFont : MonoBehaviour
 	/// Note: 'lineWidth' parameter should be in pixels.
 	/// </summary>
 
-	public void Print (string text, Color color, BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols,
+#if UNITY_3_5_4
+	public void Print (string text, Color32 color, BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols,
 		bool encoding, SymbolStyle symbolStyle, Alignment alignment, int lineWidth)
+#else
+	public void Print (string text, Color32 color, BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color32> cols,
+		bool encoding, SymbolStyle symbolStyle, Alignment alignment, int lineWidth)
+#endif
 	{
 		if (mReplacement != null)
 		{
@@ -828,7 +894,7 @@ public class UIFont : MonoBehaviour
 					}
 					else
 					{
-						Color col = Color.white;
+						Color32 col = Color.white;
 						col.a = color.a;
 						for (int b = 0; b < 4; ++b) cols.Add(col);
 					}

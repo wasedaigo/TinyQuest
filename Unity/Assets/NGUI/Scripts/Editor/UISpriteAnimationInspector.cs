@@ -24,7 +24,7 @@ public class UISpriteAnimationInspector : Editor
 		UISpriteAnimation anim = target as UISpriteAnimation;
 
 		int fps = EditorGUILayout.IntField("Framerate", anim.framesPerSecond);
-		fps = Mathf.Clamp(fps, 1, 60);
+		fps = Mathf.Clamp(fps, 0, 60);
 
 		if (anim.framesPerSecond != fps)
 		{
@@ -39,6 +39,15 @@ public class UISpriteAnimationInspector : Editor
 		{
 			NGUIEditorTools.RegisterUndo("Sprite Animation Change", anim);
 			anim.namePrefix = namePrefix;
+			EditorUtility.SetDirty(anim);
+		}
+
+		bool loop = EditorGUILayout.Toggle("Loop", anim.loop);
+
+		if (anim.loop != loop)
+		{
+			NGUIEditorTools.RegisterUndo("Sprite Animation Change", anim);
+			anim.loop = loop;
 			EditorUtility.SetDirty(anim);
 		}
 	}

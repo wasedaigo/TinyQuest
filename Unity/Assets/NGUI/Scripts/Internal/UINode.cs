@@ -64,7 +64,7 @@ public class UINode
 
 	public bool HasChanged ()
 	{
-		bool isActive = mGo.active && (widget == null || (widget.enabled && widget.color.a > 0.001f));
+		bool isActive = NGUITools.GetActive(mGo) && (widget == null || (widget.enabled && widget.color.a > 0.001f));
 
 		if (lastActive != isActive || (isActive &&
 			(lastPos != trans.localPosition ||

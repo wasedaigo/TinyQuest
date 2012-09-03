@@ -86,7 +86,7 @@ public class UpdateManager : MonoBehaviour
 				}
 
 				// If the monobehaviour or its game object are disabled, move on to the next entry
-				if (!ent.mb.enabled || !ent.mb.gameObject.active) continue;
+				if (!ent.mb.enabled || !NGUITools.GetActive(ent.mb.gameObject)) continue;
 			}
 
 			// Call the function

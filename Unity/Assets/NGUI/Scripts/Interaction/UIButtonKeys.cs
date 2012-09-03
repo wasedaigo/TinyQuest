@@ -15,18 +15,18 @@ public class UIButtonKeys : MonoBehaviour
 	public UIButtonKeys selectOnDown;
 	public UIButtonKeys selectOnLeft;
 	public UIButtonKeys selectOnRight;
-
+	
 	void Start ()
 	{
-		if (startsSelected && (UICamera.selectedObject == null || !UICamera.selectedObject.active))
+		if (startsSelected && (UICamera.selectedObject == null || !NGUITools.GetActive(UICamera.selectedObject)))
 		{
 			UICamera.selectedObject = gameObject;
 		}
 	}
-
+	 
 	void OnKey (KeyCode key)
 	{
-		if (enabled && gameObject.active)
+		if (enabled && NGUITools.GetActive(gameObject))
 		{
 			switch (key)
 			{

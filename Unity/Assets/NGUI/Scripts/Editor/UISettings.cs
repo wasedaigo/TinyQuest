@@ -12,17 +12,19 @@ using System.Collections.Generic;
 /// is to store the references in EditorPrefs -- retrieve them at start, and save them whenever something changes.
 /// </summary>
 
-public class UISettings
+public class NGUISettings
 {
 	static bool mLoaded = false;
 	static UIFont mFont;
 	static UIAtlas mAtlas;
+	static UIWidget.Pivot mPivot = UIWidget.Pivot.Center;
 	static TextAsset mFontData;
 	static Texture2D mFontTexture;
 	static string mFontName = "New Font";
 	static string mAtlasName = "New Atlas";
 	static int mAtlasPadding = 1;
 	static public bool mAtlasTrimming = true;
+	static bool mUnityPacking = true;
 	static bool mPreview = true;
 
 	static Object GetObject (string name)
@@ -43,6 +45,8 @@ public class UISettings
 		mPreview		= EditorPrefs.GetInt("NGUI Preview") == 0;
 		mAtlasPadding	= EditorPrefs.GetInt("NGUI Atlas Padding", 1);
 		mAtlasTrimming	= EditorPrefs.GetBool("NGUI Atlas Trimming", true);
+		mUnityPacking	= EditorPrefs.GetBool("NGUI Unity Packing", true);
+		mPivot			= (UIWidget.Pivot)EditorPrefs.GetInt("NGUI Pivot", (int)mPivot);
 	}
 
 	static void Save ()
@@ -56,6 +60,8 @@ public class UISettings
 		EditorPrefs.SetInt("NGUI Preview", mPreview ? 0 : 1);
 		EditorPrefs.SetInt("NGUI Atlas Padding", mAtlasPadding);
 		EditorPrefs.SetBool("NGUI Atlas Trimming", mAtlasTrimming);
+		EditorPrefs.SetBool("NGUI Unity Packing", mUnityPacking);
+		EditorPrefs.SetInt("NGUI Pivot", (int)mPivot);
 	}
 
 	/// <summary>
@@ -103,6 +109,27 @@ public class UISettings
 	}
 
 	/// <summary>
+	/// Default pivot point used by sprites.
+	/// </summary>
+
+	static public UIWidget.Pivot pivot
+	{
+		get
+		{
+			if (!mLoaded) Load();
+			return mPivot;
+		}
+		set
+		{
+			if (mPivot != value)
+			{
+				mPivot = value;
+				Save();
+			}
+		}
+	}
+
+	/// <summary>
 	/// Name of the font, used by the Font Maker.
 	/// </summary>
 
@@ -143,4 +170,10 @@ public class UISettings
 	/// </summary>
 
 	static public bool atlasTrimming { get { if (!mLoaded) Load(); return mAtlasTrimming; } set { if (mAtlasTrimming != value) { mAtlasTrimming = value; Save(); } } }
+
+	/// <summary>
+	/// Whether Unity's method or MaxRectBinPack will be used when creating an atlas
+	/// </summary>
+
+	static public bool unityPacking { get { if (!mLoaded) Load(); return mUnityPacking; } set { if (mUnityPacking != value) { mUnityPacking = value; Save(); } } }
 }

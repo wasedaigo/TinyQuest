@@ -17,18 +17,22 @@ public class UIRoot : MonoBehaviour
 {
 	static List<UIRoot> mRoots = new List<UIRoot>();
 
+	/// <summary>
+	/// List of all UIRoots present in the scene.
+	/// </summary>
+
+	static public List<UIRoot> list { get { return mRoots; } }
+
 	public bool automatic = true;
 	public int manualHeight = 800;
 
 	Transform mTrans;
 
-	void Awake () { mRoots.Add(this); }
+	void Awake () { mTrans = transform; mRoots.Add(this); }
 	void OnDestroy () { mRoots.Remove(this); }
 
 	void Start ()
 	{
-		mTrans = transform;
-
 		UIOrthoCamera oc = GetComponentInChildren<UIOrthoCamera>();
 		
 		if (oc != null)
@@ -47,9 +51,9 @@ public class UIRoot : MonoBehaviour
 		float size = 2f / manualHeight;
 		Vector3 ls = mTrans.localScale;
 
-		if (!Mathf.Approximately(ls.x, size) ||
-			!Mathf.Approximately(ls.y, size) ||
-			!Mathf.Approximately(ls.z, size))
+		if (!(Mathf.Abs(ls.x - size) <= float.Epsilon) ||
+			!(Mathf.Abs(ls.y - size) <= float.Epsilon) ||
+			!(Mathf.Abs(ls.z - size) <= float.Epsilon))
 		{
 			mTrans.localScale = new Vector3(size, size, size);
 		}

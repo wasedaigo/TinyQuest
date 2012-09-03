@@ -460,7 +460,7 @@ public class NGUIEditorTools
 		GameObject go = Selection.activeGameObject;
 
 		// Only use active objects
-		if (go != null && !go.active) go = null;
+		if (go != null && !NGUITools.GetActive(go)) go = null;
 
 		// Try to find a panel
 		UIPanel p = (go != null) ? NGUITools.FindInParents<UIPanel>(go) : null;
@@ -539,7 +539,7 @@ public class NGUIEditorTools
 			settings.mipmapEnabled = false;
 			settings.readable = true;
 			settings.maxTextureSize = 4096;
-			settings.textureFormat = TextureImporterFormat.RGBA32;
+			settings.textureFormat = TextureImporterFormat.ARGB32;
 			settings.filterMode = FilterMode.Point;
 			settings.wrapMode = TextureWrapMode.Clamp;
 			settings.npotScale = TextureImporterNPOTScale.None;
@@ -569,7 +569,7 @@ public class NGUIEditorTools
 			settings.wrapMode != TextureWrapMode.Clamp ||
 			settings.npotScale != TextureImporterNPOTScale.ToNearest)
 		{
-			settings.mipmapEnabled = true;
+			//settings.mipmapEnabled = true;
 			settings.readable = false;
 			settings.maxTextureSize = 4096;
 			settings.textureFormat = TextureImporterFormat.RGBA32;

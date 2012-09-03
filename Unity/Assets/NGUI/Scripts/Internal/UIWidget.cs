@@ -27,12 +27,11 @@ public abstract class UIWidget : MonoBehaviour
 
 	// Cached and saved values
 	[HideInInspector][SerializeField] Material mMat;
+	[HideInInspector][SerializeField] Texture mTex;
 	[HideInInspector][SerializeField] Color mColor = Color.white;
 	[HideInInspector][SerializeField] Pivot mPivot = Pivot.Center;
 	[HideInInspector][SerializeField] int mDepth = 0;
-
 	Transform mTrans;
-	Texture mTex;
 	UIPanel mPanel;
 
 	protected bool mChanged = true;
@@ -50,7 +49,7 @@ public abstract class UIWidget : MonoBehaviour
 	/// Color used by the widget.
 	/// </summary>
 
-	public Color color { get { return mColor; } set { if (mColor != value) { mColor = value; mChanged = true; } } }
+	public Color color { get { return mColor; } set { if (!mColor.Equals(value)) { mColor = value; mChanged = true; } } }
 
 	/// <summary>
 	/// Widget's alpha -- a convenience method.
@@ -105,16 +104,49 @@ public abstract class UIWidget : MonoBehaviour
 	/// Returns the texture used to draw this widget.
 	/// </summary>
 
-	public Texture mainTexture
+	public virtual Texture mainTexture
 	{
 		get
 		{
-			if (mTex == null)
+			// If the material has a texture, always use it instead of 'mTex'.
+			Material mat = material;
+			
+			if (mat != null)
 			{
-				Material mat = material;
-				if (mat != null) mTex = mat.mainTexture;
+				if (mat.mainTexture != null)
+				{
+					mTex = mat.mainTexture;
+				}
+				else if (mTex != null)
+				{
+					// The material has no texture, but we have a saved texture
+					if (mPanel != null) mPanel.RemoveWidget(this);
+
+					// Set the material's texture to the saved value
+					mPanel = null;
+					mMat.mainTexture = mTex;
+
+					// Ensure this widget gets added to the panel
+					if (enabled) CreatePanel();
+				}
 			}
 			return mTex;
+		}
+		set
+		{
+			if (mainTexture != value)
+			{
+				if (mPanel != null) mPanel.RemoveWidget(this);
+
+				mPanel = null;
+				mTex = value;
+
+				if (mMat != null)
+				{
+					mMat.mainTexture = value;
+					if (enabled) CreatePanel();
+				}
+			}
 		}
 	}
 
@@ -150,7 +182,7 @@ public abstract class UIWidget : MonoBehaviour
 		mChanged = true;
 
 		// If we're in the editor, update the panel right away so its geometry gets updated.
-		if (mPanel != null && enabled && gameObject.active && !Application.isPlaying && material != null)
+		if (mPanel != null && enabled && NGUITools.GetActive(gameObject) && !Application.isPlaying && material != null)
 		{
 			mPanel.AddWidget(this);
 			CheckLayer();
@@ -167,7 +199,7 @@ public abstract class UIWidget : MonoBehaviour
 
 	void CreatePanel ()
 	{
-		if (mPanel == null && enabled && gameObject.active && material != null)
+		if (mPanel == null && enabled && NGUITools.GetActive(gameObject) && material != null)
 		{
 			mPanel = UIPanel.Find(cachedTransform);
 
@@ -184,7 +216,7 @@ public abstract class UIWidget : MonoBehaviour
 	/// Check to ensure that the widget resides on the same layer as its panel.
 	/// </summary>
 
-	void CheckLayer ()
+	public void CheckLayer ()
 	{
 		if (mPanel != null && mPanel.gameObject.layer != gameObject.layer)
 		{
@@ -198,7 +230,7 @@ public abstract class UIWidget : MonoBehaviour
 	/// Checks to ensure that the widget is still parented to the right panel.
 	/// </summary>
 
-	void CheckParent ()
+	public void CheckParent ()
 	{
 		if (mPanel != null)
 		{
@@ -228,7 +260,7 @@ public abstract class UIWidget : MonoBehaviour
 	/// Remember whether we're in play mode.
 	/// </summary>
 
-	void Awake () { mPlayMode = Application.isPlaying; }
+	protected virtual void Awake() { mPlayMode = Application.isPlaying; }
 
 	/// <summary>
 	/// Mark the widget and the panel as having been changed.
@@ -252,9 +284,7 @@ public abstract class UIWidget : MonoBehaviour
 				mMat = null;
 				mTex = null;
 			}
-
-			// If we have a panel and a material to work with, mark the material as changed
-			if (mPanel != null && material != null) mPanel.MarkMaterialAsChanged(mMat, false);
+			mPanel = null;
 		}
 	}
 
@@ -393,7 +423,11 @@ public abstract class UIWidget : MonoBehaviour
 	/// Append the local geometry buffers to the specified ones.
 	/// </summary>
 
+#if UNITY_3_5_4
 	public void WriteToBuffers (BetterList<Vector3> v, BetterList<Vector2> u, BetterList<Color> c, BetterList<Vector3> n, BetterList<Vector4> t)
+#else
+	public void WriteToBuffers (BetterList<Vector3> v, BetterList<Vector2> u, BetterList<Color32> c, BetterList<Vector3> n, BetterList<Vector4> t)
+#endif
 	{
 		mGeom.WriteToBuffers(v, u, c, n, t);
 	}
@@ -459,13 +493,6 @@ public abstract class UIWidget : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Deprecated property.
-	/// </summary>
-
-	[System.Obsolete("Use 'relativeSize' instead")]
-	public Vector2 visibleSize { get { return relativeSize; } }
-
-	/// <summary>
 	/// Visible size of the widget in relative coordinates. In most cases this can remain at (1, 1).
 	/// If you want to figure out the widget's size in pixels, scale this value by cachedTransform.localScale.
 	/// </summary>
@@ -494,5 +521,9 @@ public abstract class UIWidget : MonoBehaviour
 	/// Virtual function called by the UIPanel that fills the buffers.
 	/// </summary>
 
+#if UNITY_3_5_4
 	virtual public void OnFill (BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color> cols) { }
+#else
+	virtual public void OnFill(BetterList<Vector3> verts, BetterList<Vector2> uvs, BetterList<Color32> cols) { }
+#endif
 }

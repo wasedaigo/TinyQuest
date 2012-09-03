@@ -73,6 +73,12 @@ public class UIButtonTween : MonoBehaviour
 
 	public string callWhenFinished;
 
+	/// <summary>
+	/// Delegate to call. Faster than using 'eventReceiver', and allows for multiple receivers.
+	/// </summary>
+
+	public UITweener.OnFinished onFinished;
+
 	UITweener[] mTweens;
 	bool mStarted = false;
 	bool mHighlighted = false;
@@ -113,6 +119,27 @@ public class UIButtonTween : MonoBehaviour
 		if (enabled && trigger == Trigger.OnClick)
 		{
 			Play(true);
+		}
+	}
+
+	void OnDoubleClick ()
+	{
+		if (enabled && trigger == Trigger.OnDoubleClick)
+		{
+			Play(true);
+		}
+	}
+
+	void OnSelect (bool isSelected)
+	{
+		if (enabled)
+		{
+			if (trigger == Trigger.OnSelect ||
+				(trigger == Trigger.OnSelectTrue && isSelected) ||
+				(trigger == Trigger.OnSelectFalse && !isSelected))
+			{
+				Play(true);
+			}
 		}
 	}
 
@@ -167,7 +194,7 @@ public class UIButtonTween : MonoBehaviour
 	{
 		GameObject go = (tweenTarget == null) ? gameObject : tweenTarget;
 
-		if (!go.active)
+		if (!NGUITools.GetActive(go))
 		{
 			// If the object is disabled, don't do anything
 			if (ifDisabledOnPlay != EnableCondition.EnableThenPlay) return;
@@ -198,7 +225,7 @@ public class UIButtonTween : MonoBehaviour
 				if (tw.tweenGroup == tweenGroup)
 				{
 					// Ensure that the game objects are enabled
-					if (!activated && !go.active)
+					if (!activated && !NGUITools.GetActive(go))
 					{
 						activated = true;
 						NGUITools.SetActive(go, true);
@@ -208,6 +235,9 @@ public class UIButtonTween : MonoBehaviour
 					if (playDirection == Direction.Toggle) tw.Toggle();
 					else tw.Play(forward);
 					if (resetOnPlay) tw.Reset();
+
+					// Set the delegate
+					tw.onFinished = onFinished;
 
 					// Copy the event receiver
 					if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))

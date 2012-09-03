@@ -15,6 +15,14 @@ using AnimationOrTween;
 [AddComponentMenu("NGUI/Internal/Active Animation")]
 public class ActiveAnimation : IgnoreTimeScale
 {
+	public delegate void OnFinished (ActiveAnimation anim);
+
+	/// <summary>
+	/// Delegate for subscriptions. Faster than using the 'eventReceiver' and allows for multiple receivers.
+	/// </summary>
+
+	public OnFinished onFinished;
+
 	/// <summary>
 	/// Game object on which to call the callback function.
 	/// </summary>
@@ -55,6 +63,7 @@ public class ActiveAnimation : IgnoreTimeScale
 	void Update ()
 	{
 		float delta = UpdateRealTimeDelta();
+		if (delta == 0f) return;
 
 		if (mAnim != null)
 		{
@@ -87,9 +96,12 @@ public class ActiveAnimation : IgnoreTimeScale
 			{
 				mNotify = false;
 
+				// Notify the delegate
+				if (onFinished != null) onFinished(this);
+
+				// Notify the event listener
 				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 				{
-					// Notify the event listener target
 					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
 				}
 
@@ -121,10 +133,13 @@ public class ActiveAnimation : IgnoreTimeScale
 
 			bool noName = string.IsNullOrEmpty(clipName);
 
-			// Play the animation if it's not already playing
+			// Play the animation if it's not playing already
 			if (noName)
 			{
-				if (!mAnim.isPlaying) mAnim.Play();
+				if (!mAnim.isPlaying)
+				{
+					mAnim.Play();
+				}
 			}
 			else if (!mAnim.IsPlaying(clipName))
 			{
@@ -145,7 +160,7 @@ public class ActiveAnimation : IgnoreTimeScale
 				}
 			}
 
-			// Remember the direction for disable checks in Update() below
+			// Remember the direction for disable checks in Update()
 			mLastDirection = playDirection;
 			mNotify = true;
 		}
@@ -158,7 +173,7 @@ public class ActiveAnimation : IgnoreTimeScale
 	static public ActiveAnimation Play (Animation anim, string clipName, Direction playDirection,
 		EnableCondition enableBeforePlay, DisableCondition disableCondition)
 	{
-		if (!anim.gameObject.active)
+		if (!NGUITools.GetActive(anim.gameObject))
 		{
 			// If the object is disabled, don't do anything
 			if (enableBeforePlay != EnableCondition.EnableThenPlay) return null;
@@ -172,6 +187,9 @@ public class ActiveAnimation : IgnoreTimeScale
 		else aa = anim.gameObject.AddComponent<ActiveAnimation>();
 		aa.mAnim = anim;
 		aa.mDisableDirection = (Direction)(int)disableCondition;
+		aa.eventReceiver = null;
+		aa.callWhenFinished = null;
+		aa.onFinished = null;
 		aa.Play(clipName, playDirection);
 		return aa;
 	}

@@ -80,7 +80,7 @@ public class UIDragObject : IgnoreTimeScale
 
 	void OnPress (bool pressed)
 	{
-		if (enabled && gameObject.active && target != null)
+		if (enabled && NGUITools.GetActive(gameObject) && target != null)
 		{
 			mPressed = pressed;
 
@@ -119,7 +119,7 @@ public class UIDragObject : IgnoreTimeScale
 
 	void OnDrag (Vector2 delta)
 	{
-		if (enabled && gameObject.active && target != null)
+		if (enabled && NGUITools.GetActive(gameObject) && target != null)
 		{
 			UICamera.currentTouch.clickNotification = UICamera.ClickNotification.BasedOnDelta;
 
@@ -140,7 +140,7 @@ public class UIDragObject : IgnoreTimeScale
 				}
 
 				// Adjust the momentum
-				mMomentum = Vector3.Lerp(mMomentum, mMomentum + offset * (0.01f * momentumAmount), 0.67f);
+				if (dragEffect != DragEffect.None) mMomentum = Vector3.Lerp(mMomentum, mMomentum + offset * (0.01f * momentumAmount), 0.67f);
 
 				// We want to constrain the UI to be within bounds
 				if (restrictWithinPanel)
@@ -223,7 +223,7 @@ public class UIDragObject : IgnoreTimeScale
 
 	void OnScroll (float delta)
 	{
-		if (enabled && gameObject.active)
+		if (enabled && NGUITools.GetActive(gameObject))
 		{
 			if (Mathf.Sign(mScroll) != Mathf.Sign(delta)) mScroll = 0f;
 			mScroll += delta * scrollWheelFactor;
