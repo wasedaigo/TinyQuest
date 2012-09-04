@@ -29,6 +29,7 @@ namespace TinyQuest.Data{
 		public int index;
 		public int hp;
 		public bool revealed;
+		public float remainTime;
 		
 		public bool IsDead {
 			get {return this.hp <= 0;}
@@ -75,6 +76,9 @@ namespace TinyQuest.Data{
 		public int unit;
 		public int exp;
 		public int skillExp;
+		public int speed;
+		public int power;
+		public int defense;
 
 		public MasterUnit Unit{
 			get{

@@ -51,7 +51,7 @@ public class Roga2dTiledSprite : Roga2dNode {
 		this.gridHeight = height;
 		this.srcCountX = (int)Mathf.Floor(this.textureWidth / this.gridWidth);
 		this.srcCountY = (int)Mathf.Floor(this.gridHeight / this.gridHeight);
-		this.LocalScale = new Vector3(this.countX * width / Roga2dConst.BasePixelSize, this.countY * height / Roga2dConst.BasePixelSize, 0.1f);
+		this.LocalScale = new Vector3(this.countX * width, this.countY * height, 0.1f);
 	}
 
 	private Mesh GenerateGrid(int countX, int countY) {

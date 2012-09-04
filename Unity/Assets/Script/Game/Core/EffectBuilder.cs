@@ -19,7 +19,7 @@ namespace TinyQuest.Core {
 			Roga2dNode node = new Roga2dNode("Damage");
 			List<uint> digits = Utils.getDigits((uint)value);
 			position.x -= (10 * digits.Count) / 2;
-			node.LocalPixelPosition = position;
+			node.LocalPosition = position;
 			node.LocalPriority = 2.0f;
 	
 			List<Roga2dBaseInterval> popIntervals = new List<Roga2dBaseInterval>();
@@ -62,7 +62,7 @@ namespace TinyQuest.Core {
 			
 			List<Roga2dBaseInterval> shakeList = new List<Roga2dBaseInterval>();
 			Vector2 pos = target.LocalPosition;
-			Vector2 pixelPos = target.LocalPixelPosition;
+			Vector2 pixelPos = target.LocalPosition;
 			for (int i = 0; i < 6; i++) {
 				int dx = (2 * (i % 2) - 1) * 2;
 				int dy = 0;

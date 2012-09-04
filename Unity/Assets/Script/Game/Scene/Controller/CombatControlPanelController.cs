@@ -1,6 +1,5 @@
 using UnityEngine;
 
-using TinyQuest.Scene.Model;
 using TinyQuest.Data;
 using TinyQuest.Core;
 using TinyQuest.Object;

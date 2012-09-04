@@ -22,7 +22,7 @@ public class AnimationSpawner : MonoBehaviour {
 	Actor spawnBattler (string name, float x, float y) {
 		Actor battler = new PuppetActor(name, PuppetActor.PoseType.Stand);
 		battler.Sprite.LocalPriority = 0.1f;
-		battler.LocalPixelPosition = new Vector2(x, y);
+		battler.LocalPosition = new Vector2(x, y);
 		this.battlers.Add(battler);
 		return battler;
 	}
@@ -30,7 +30,7 @@ public class AnimationSpawner : MonoBehaviour {
 	Actor spawnMonster (string name, float x, float y) {
 		Actor battler = new MonsterActor(name);
 		battler.Sprite.LocalPriority = 0.45f;
-		battler.LocalPixelPosition = new Vector2(x, y);
+		battler.LocalPosition = new Vector2(x, y);
 		//this.battlers.Add(battler);
 		return battler;
 	}
@@ -93,7 +93,7 @@ public class AnimationSpawner : MonoBehaviour {
 			Roga2dIntervalPlayer.Instance.Play(interval);
 			
 			// Damage pop
-			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPixelPosition, 2750);
+			Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(settings.Target.LocalPosition, 2750);
 			this.player.Play(settings.Root, null, animation, null);
 		}
 	}

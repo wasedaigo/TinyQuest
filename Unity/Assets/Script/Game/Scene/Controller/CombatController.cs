@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-using TinyQuest.Scene.Model;
 using TinyQuest.Object;
 using TinyQuest.Core;
 using TinyQuest.Data;
@@ -198,7 +197,6 @@ public class CombatController : MonoBehaviour {
 
 	public void CardSelected(int index) {
 		this.SetControlVisible(false);
-		this.combatModel.ForceSwap();
 		this.SendTurnInput();
 	}
 

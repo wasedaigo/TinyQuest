@@ -35,7 +35,7 @@ public class SkillButtonView : MonoBehaviour {
 		actor.Transform.parent = faceIcon.transform;
 		actor.LocalPosition = new Vector2(0, 0);
 		actor.LocalRotation = 180.0f;
-		actor.LocalScale = new Vector2(-24, 24);
+		actor.LocalScale = new Vector2(-1, 1);
 		
 		Utils.SetLayerRecursively(actor.Transform, 5);
 		this.faceIconNode = actor;

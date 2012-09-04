@@ -107,7 +107,7 @@ public class Roga2dRenderObject {
 	}
 
 	public void SetSize(Vector2 pixelSize) {
-		this.transform.localScale = new Vector3(pixelSize.x / Roga2dConst.BasePixelSize, pixelSize.y / Roga2dConst.BasePixelSize, 0.1f);
+		this.transform.localScale = new Vector3(pixelSize.x, pixelSize.y, 0.1f);
 	}
 
 	public void SetSrcRect(Rect srcRect) {
@@ -168,8 +168,8 @@ public class Roga2dRenderObject {
 	
 	public Vector2 Anchor {
 		get {
-			float centerX = this.pixelCenter.x / Roga2dConst.BasePixelSize;
-			float centerY = this.pixelCenter.y / Roga2dConst.BasePixelSize;
+			float centerX = this.pixelCenter.x;
+			float centerY = this.pixelCenter.y;
 
 			return new Vector2(-centerX, -centerY);
 		}

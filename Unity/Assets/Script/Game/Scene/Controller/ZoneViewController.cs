@@ -7,7 +7,6 @@ using TinyQuest.Data;
 using TinyQuest.Data.Skills;
 using TinyQuest.Core;
 using TinyQuest.Scene;
-using TinyQuest.Scene.Model;
 using TinyQuest.Object;
 using Async;
 
@@ -62,7 +61,7 @@ public class ZoneViewController : MonoBehaviour {
 		for (int i = 0; i < TargetPositionCount; i++) {
 			for (int j = 0; j < Constant.GroupCount; j++) {
 				this._spawnNodes[i, j] = new Roga2dNode("Target" + i + ", " + j);
-				this._spawnNodes[i, j].LocalPixelPosition = GetTargetPositions(i, j);
+				this._spawnNodes[i, j].LocalPosition = GetTargetPositions(i, j);
 				layer.AddChild(this._spawnNodes[i, j]);
 			}
 		}
@@ -70,7 +69,7 @@ public class ZoneViewController : MonoBehaviour {
 		for (int i = 0; i < Constant.GroupCount; i++) {
 			for (int j = 0; j < Constant.UnitCount; j++) {
 				this._startTargetNodes[i, j] = new Roga2dNode("StartTarget" + i + ", " + j);
-				this._startTargetNodes[i, j].LocalPixelPosition = GetStartTargetPositions(i, j);
+				this._startTargetNodes[i, j].LocalPosition = GetStartTargetPositions(i, j);
 				layer.AddChild(this._startTargetNodes[i, j]);
 			}
 		}
@@ -117,7 +116,7 @@ public class ZoneViewController : MonoBehaviour {
 	private void PlayMoveAnimation(string animationName, int groupNo, TargetPosition targetPosition, Actor actor, System.Action callback) {
 		Roga2dNode targetNode = this.GetSpawnNode((int)targetPosition, groupNo);
 		this.PlayBattlerAnimation(targetNode, actor, animationName, null, (animation) => {
-			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
+			actor.LocalPosition = targetNode.LocalPosition;
 			if (callback != null) {
 				callback();	
 			}
@@ -216,7 +215,7 @@ public class ZoneViewController : MonoBehaviour {
 		if (actor == null || result == null) {return;}
 		
 		int damageValue = result.effect;
-		Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(actor.LocalPixelPosition, damageValue);
+		Roga2dAnimation animation = EffectBuilder.GetInstance().BuildDamagePopAnimation(actor.LocalPosition, damageValue);
 		this.animationPlayer.Play(this.stage.GetCharacterLayer(), null, animation, null);
 		this.SendMessage("ChangeActorStatus", result);
 	}
@@ -277,7 +276,7 @@ public class ZoneViewController : MonoBehaviour {
 	protected Actor BuildPuppet (string name, PuppetActor.PoseType poseType, float x, float y) {
 		PuppetActor actor = new PuppetActor(name, poseType);
 		actor.LocalPriority = 0.45f;
-		actor.LocalPixelPosition = new Vector2(x, y);
+		actor.LocalPosition = new Vector2(x, y);
 		actor.UpdatePriority();
 		return actor;
 	}
@@ -285,7 +284,7 @@ public class ZoneViewController : MonoBehaviour {
 	protected Actor BuildMonster (string name, float x, float y) {
 		MonsterActor actor = new MonsterActor(name);
 		actor.LocalPriority = 0.45f;
-		actor.LocalPixelPosition = new Vector2(x, y);
+		actor.LocalPosition = new Vector2(x, y);
 		actor.UpdatePriority();
 		
 		return actor;
@@ -300,7 +299,7 @@ public class ZoneViewController : MonoBehaviour {
 	private Actor BuildActor(int groupType, UnitLookType lookType, int unitId) {
 		Actor actor = null;
 		
-		Vector2 pos = GetSpawnNode((int)TargetPosition.Out, groupType).LocalPixelPosition;
+		Vector2 pos = GetSpawnNode((int)TargetPosition.Out, groupType).LocalPosition;
 		switch(lookType) {
 			case UnitLookType.Monster:
 				actor = this.BuildMonster(unitId.ToString(), pos.x, pos.y);
@@ -327,7 +326,7 @@ public class ZoneViewController : MonoBehaviour {
 	private void MoveActor(Actor actor, Roga2dNode targetNode) {
 		string animationName = "Combat/Common/Jump";
 		this.PlayBattlerAnimation(targetNode, actor, animationName, null, (animation) => {
-			actor.LocalPixelPosition = targetNode.LocalPixelPosition;
+			actor.LocalPosition = targetNode.LocalPosition;
 		});
 	}
 	

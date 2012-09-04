@@ -27,16 +27,7 @@ public class Roga2dNode {
 	private bool isHidden;
 	private Vector2 pixelSize;
 	private Vector2 pixelCenter;
-	
-	public Vector2 LocalPixelPosition {
-		get {
-			return Roga2dUtils.localToPixel(this.transform.localPosition);
-		}
-		set {
-			this.LocalPosition = Roga2dUtils.pixelToLocal(value);
-		}
-	}
-	
+
 	public float LocalRotation {
 		get {
 			return this.transform.localEulerAngles.z;

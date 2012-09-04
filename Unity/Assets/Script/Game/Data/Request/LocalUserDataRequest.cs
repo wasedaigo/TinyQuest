@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using JsonFx.Json;
 using System.IO;
 using TinyQuest.Data;
-using TinyQuest.Scene.Model;
 using TinyQuest.Data.Cache;
 using TinyQuest.Data.Skills;
 

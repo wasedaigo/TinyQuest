@@ -349,11 +349,11 @@ public class Roga2dUtils {
 	}
 	
 	public static Vector2 pixelToLocal(Vector2 pixelCoordinate){
-		return new Vector2(pixelCoordinate.x / Roga2dConst.BasePixelSize, pixelCoordinate.y / Roga2dConst.BasePixelSize);
+		return new Vector2(pixelCoordinate.x, pixelCoordinate.y);
 	}
 	
 	public static Vector2 localToPixel(Vector2 localCoordinate){
-		return new Vector2(localCoordinate.x * Roga2dConst.BasePixelSize, localCoordinate.y * Roga2dConst.BasePixelSize);
+		return new Vector2(localCoordinate.x, localCoordinate.y );
 	}
 	
 	public static float limitAnimationDelta(float delta) {
