@@ -1,10 +1,12 @@
 {
+  "events": {
+    "0": [
+      "damage:0"
+    ]
+  },
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
 
       ],
       "alpha": [
@@ -12,36 +14,34 @@
       ],
       "source": [
         {
-          "duration": 1,
-          "type": "Image",
-          "id": "Blank",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             0,
             0,
             0,
             0
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Blank",
+          "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
+      "rotation": [
 
       ]
     }
   ],
-  "events": {
-    "0": [
-      "damage:0"
-    ]
-  },
   "dependencies": {
     "images": [
       "Blank"

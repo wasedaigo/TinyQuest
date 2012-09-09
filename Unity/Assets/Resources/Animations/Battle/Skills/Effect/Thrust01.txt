@@ -1,186 +1,186 @@
 {
+  "events": {
+    "0": [
+      "snd:MMS/swing38"
+    ]
+  },
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
-
+      "position": [
+        {
+          "endValue": [
+            -69,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 3,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            -130,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 3,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -69,
+            0
+          ],
+          "frameNo": 3
+        },
+        {
+          "endValue": [
+            -130,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -130,
+            0
+          ],
+          "frameNo": 6
+        }
       ],
       "alpha": [
         {
-          "duration": 3,
           "endValue": 1.0,
+          "duration": 3,
           "startValue": 1.0,
           "frameNo": 0,
           "wait": true
         },
         {
-          "duration": 3,
           "endValue": 0.200000002980232,
-          "startValue": 1.0,
+          "duration": 3,
           "tween": "linear",
+          "startValue": 1.0,
           "frameNo": 3
         },
         {
-          "duration": 1,
           "endValue": 0.200000002980232,
-          "startValue": 0.200000002980232,
+          "duration": 1,
           "tween": "linear",
+          "startValue": 0.200000002980232,
           "frameNo": 6
         }
       ],
       "source": [
         {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Slash2",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             0,
             112,
             192,
             16
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash2",
+          "frameNo": 0
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Slash2",
-          "priority": 0.5,
-          "frameNo": 1,
+          ],
           "rect": [
             192,
             112,
             192,
             16
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash2",
+          "frameNo": 1
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Slash2",
-          "priority": 0.5,
-          "frameNo": 2,
+          ],
           "rect": [
             384,
             112,
             192,
             16
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash2",
+          "frameNo": 2
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 4,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Slash2",
-          "priority": 0.5,
-          "frameNo": 3,
+          ],
           "rect": [
             0,
             304,
             192,
             16
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 4,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Slash2",
+          "frameNo": 3
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 3,
-          "endValue": [
-            -69,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 3,
-          "endValue": [
-            -130,
-            0
-          ],
-          "startValue": [
-            -69,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            -130,
-            0
-          ],
-          "startValue": [
-            -130,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
+      "rotation": [
+
       ]
     }
   ],
-  "events": {
-    "0": [
-      "snd:MMS/swing38"
-    ]
-  },
   "dependencies": {
     "images": [
       "Battle/Skills/Effect_Slash2"

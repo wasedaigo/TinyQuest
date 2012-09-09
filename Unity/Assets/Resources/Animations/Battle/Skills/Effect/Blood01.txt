@@ -1,294 +1,294 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
+          "endValue": [
+            0,
+            -3
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 0,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -2,
+            -5
+          ],
+          "frameNo": 0
         },
         {
+          "endValue": [
+            -2,
+            -5
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 1,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -3
+          ],
+          "frameNo": 1
         },
         {
+          "endValue": [
+            0,
+            -2
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 2,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -2,
+            -5
+          ],
+          "frameNo": 2
         },
         {
+          "endValue": [
+            0,
+            -2
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 3,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -2
+          ],
+          "frameNo": 3
         }
       ],
       "alpha": [
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 1
         },
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 2
         },
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 3
         }
       ],
       "source": [
         {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Blood",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             0,
             0,
             48,
             48
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "frameNo": 0
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Blood",
-          "priority": 0.5,
-          "frameNo": 1,
+          ],
           "rect": [
             48,
             0,
             48,
             48
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "frameNo": 1
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Blood",
-          "priority": 0.5,
-          "frameNo": 2,
+          ],
           "rect": [
             96,
             0,
             48,
             48
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
+          "frameNo": 2
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Effect_Blood",
-          "priority": 0.5,
-          "frameNo": 3,
+          ],
           "rect": [
             144,
             0,
             48,
             48
           ],
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "scale": [
-        {
           "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 1
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 2
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Effect_Blood",
           "frameNo": 3
         }
       ],
-      "position": [
+      "color": [
+
+      ],
+      "scale": [
         {
-          "duration": 1,
           "endValue": [
-            0,
-            -3
+            1,
+            1
           ],
-          "startValue": [
-            -2,
-            -5
-          ],
+          "duration": 1,
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
+          "startValue": [
+            1,
+            1
           ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": [
-            -2,
-            -5
+            1,
+            1
           ],
-          "startValue": [
-            0,
-            -3
-          ],
+          "duration": 1,
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            0,
-            0
+          "startValue": [
+            1,
+            1
           ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 1
         },
         {
-          "duration": 1,
           "endValue": [
-            0,
-            -2
+            1,
+            1
           ],
-          "startValue": [
-            -2,
-            -5
-          ],
+          "duration": 1,
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
+          "startValue": [
+            1,
+            1
           ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 2
         },
         {
-          "duration": 1,
           "endValue": [
-            0,
-            -2
+            1,
+            1
           ],
-          "startValue": [
-            0,
-            -2
-          ],
+          "duration": 1,
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
+          "startValue": [
+            1,
+            1
           ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 3
+        }
+      ],
+      "rotation": [
+        {
+          "endValue": 0,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 0
+        },
+        {
+          "endValue": 0,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 1
+        },
+        {
+          "endValue": 0,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 2
+        },
+        {
+          "endValue": 0,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 3
         }
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Battle/Skills/Effect_Blood"

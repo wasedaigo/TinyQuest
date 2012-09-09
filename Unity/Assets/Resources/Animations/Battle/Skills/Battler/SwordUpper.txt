@@ -1,107 +1,39 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
-        {
-          "duration": 8,
-          "endValue": 330,
-          "startValue": 140,
-          "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
-        },
-        {
-          "duration": 17,
-          "endValue": 330,
-          "startValue": 330,
-          "tween": "fix",
-          "frameNo": 8,
-          "facingOption": "None"
-        }
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 8,
-          "type": "Image",
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "priority": 0.600000023841858,
-          "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0.0,
-            13.0
-          ]
-        },
-        {
-          "duration": 17,
-          "type": "Image",
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "priority": 0.400000005960464,
-          "frameNo": 8,
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0.0,
-            13.0
-          ]
-        }
-      ],
-      "scale": [
-
-      ],
       "position": [
         {
-          "duration": 8,
           "endValue": [
             -4,
             4
           ],
+          "endPositionType": "None",
+          "duration": 8,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
           "startValue": [
             8,
             5
           ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 0
         },
         {
-          "duration": 17,
           "endValue": [
             -4,
             4
           ],
-          "startValue": [
-            -4,
-            4
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
           "endPositionType": "None",
-          "frameNo": 8,
+          "duration": 17,
+          "tween": "fix",
           "endPositionAnchor": [
             0,
             0
@@ -109,15 +41,81 @@
           "startPositionAnchor": [
             0,
             0
-          ]
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -4,
+            4
+          ],
+          "frameNo": 8
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "center": [
+            0.0,
+            13.0
+          ],
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "duration": 8,
+          "type": "Image",
+          "priority": 0.600000023841858,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "frameNo": 0
+        },
+        {
+          "center": [
+            0.0,
+            13.0
+          ],
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "duration": 17,
+          "type": "Image",
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "frameNo": 8
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+        {
+          "endValue": 330,
+          "duration": 8,
+          "tween": "linear",
+          "facingOption": "None",
+          "startValue": 140,
+          "frameNo": 0
+        },
+        {
+          "endValue": 330,
+          "duration": 17,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 330,
+          "frameNo": 8
         }
       ]
     },
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
 
       ],
       "alpha": [
@@ -125,49 +123,51 @@
       ],
       "source": [
         {
-          "duration": 1,
-          "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             480,
             0,
             32,
             32
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 0
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 24,
-          "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
-          "priority": 0.5,
-          "frameNo": 1,
+          ],
           "rect": [
             544,
             0,
             32,
             32
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 24,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 1
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
+      "rotation": [
 
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Battle/Skills/Weapon_SwordBase",

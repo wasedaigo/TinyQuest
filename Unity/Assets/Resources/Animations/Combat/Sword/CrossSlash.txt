@@ -1,353 +1,4 @@
 {
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "rotation": [
-        {
-          "duration": 2,
-          "endValue": 45,
-          "startValue": 45,
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "endValue": 45,
-          "startValue": 45,
-          "tween": "fix",
-          "frameNo": 2,
-          "facingOption": "None"
-        },
-        {
-          "duration": 7,
-          "endValue": -45,
-          "startValue": -45,
-          "frameNo": 3,
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "endValue": -45,
-          "startValue": -45,
-          "tween": "fix",
-          "frameNo": 10,
-          "facingOption": "None"
-        }
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 2,
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "id": "Combat/Sub/EffectSlash01",
-          "minEmitSpeed": 0.0,
-          "emitter": true,
-          "priority": 1.0,
-          "maxEmitAngle": 0,
-          "frameNo": 2,
-          "maxEmitSpeed": 0.0
-        },
-        {
-          "duration": 7,
-          "frameNo": 3,
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "id": "Combat/Sub/EffectSlash01",
-          "minEmitSpeed": 0.0,
-          "emitter": true,
-          "priority": 1.0,
-          "maxEmitAngle": 0,
-          "frameNo": 10,
-          "maxEmitSpeed": 0.0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 2,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 7,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 3,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 10,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 7,
-          "type": "Animation",
-          "id": "Combat/Sub/Swing01",
-          "emitter": false,
-          "priority": 0.5,
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/BattlerBase",
-          "priority": 0.5,
-          "frameNo": 7,
-          "rect": [
-            32,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 8,
-          "type": "Animation",
-          "id": "Combat/Sub/Swing01",
-          "emitter": false,
-          "priority": 0.5,
-          "frameNo": 8
-        },
-        {
-          "duration": 7,
-          "type": "Animation",
-          "id": "Combat/Sub/Jump01",
-          "emitter": false,
-          "priority": 0.5,
-          "frameNo": 16
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 6,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 8,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 6,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "None",
-          "frameNo": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 22,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    }
-  ],
   "events": {
     "22": [
       "show"
@@ -363,6 +14,355 @@
       "target_pop_damage"
     ]
   },
+  "timelines": [
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 2,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 7,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "wait": true,
+          "frameNo": 3
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 10
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 2,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "maxEmitAngle": 0,
+          "maxEmitSpeed": 0.0,
+          "duration": 1,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "priority": 1.0,
+          "id": "Combat/Sub/EffectSlash01",
+          "minEmitSpeed": 0.0,
+          "frameNo": 2
+        },
+        {
+          "duration": 7,
+          "wait": true,
+          "frameNo": 3
+        },
+        {
+          "maxEmitAngle": 0,
+          "maxEmitSpeed": 0.0,
+          "duration": 1,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "priority": 1.0,
+          "id": "Combat/Sub/EffectSlash01",
+          "minEmitSpeed": 0.0,
+          "frameNo": 10
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+        {
+          "endValue": 45,
+          "duration": 2,
+          "startValue": 45,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": 45,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 45,
+          "frameNo": 2
+        },
+        {
+          "endValue": -45,
+          "duration": 7,
+          "startValue": -45,
+          "wait": true,
+          "frameNo": 3
+        },
+        {
+          "endValue": -45,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": -45,
+          "frameNo": 10
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 6,
+          "tween": "linear",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 2,
+          "tween": "fix",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 6
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 8,
+          "tween": "fix",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 8
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 6,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 16
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 22
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 7,
+          "emitter": false,
+          "type": "Animation",
+          "priority": 0.5,
+          "id": "Combat/Sub/Swing01",
+          "frameNo": 0
+        },
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "frameNo": 7
+        },
+        {
+          "duration": 8,
+          "emitter": false,
+          "type": "Animation",
+          "priority": 0.5,
+          "id": "Combat/Sub/Swing01",
+          "frameNo": 8
+        },
+        {
+          "duration": 7,
+          "emitter": false,
+          "type": "Animation",
+          "priority": 0.5,
+          "id": "Combat/Sub/Jump01",
+          "frameNo": 16
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "images": [
       "Combat/BattlerBase",

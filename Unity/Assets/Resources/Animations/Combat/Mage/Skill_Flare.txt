@@ -1,330 +1,11 @@
 {
-  "timelines": [
-    {
-      "color": [
-        {
-          "duration": 30,
-          "endValue": [
-            0.600000023841858,
-            -0.300000011920929,
-            -0.300000011920929
-          ],
-          "startValue": [
-            0.600000023841858,
-            -0.300000011920929,
-            -0.300000011920929
-          ],
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 21,
-          "endValue": [
-            0.600000023841858,
-            -0.300000011920929,
-            -0.300000011920929
-          ],
-          "startValue": [
-            0.600000023841858,
-            -0.300000011920929,
-            -0.300000011920929
-          ],
-          "tween": "fix",
-          "frameNo": 30
-        },
-        {
-          "duration": 21,
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "startValue": [
-            0.600000023841858,
-            -0.300000011920929,
-            -0.300000011920929
-          ],
-          "tween": "linear",
-          "frameNo": 51
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0,
-            0
-          ],
-          "tween": "fix",
-          "frameNo": 72
-        }
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 30,
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 43,
-          "type": "Image",
-          "id": "Combat/TargetBase",
-          "priority": 0.5,
-          "frameNo": 30,
-          "rect": [
-            160,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "scale": [
-        {
-          "duration": 30,
-          "endValue": [
-            -1.0,
-            1.0
-          ],
-          "startValue": [
-            -1.0,
-            1.0
-          ],
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 42,
-          "endValue": [
-            -1.0,
-            1.0
-          ],
-          "startValue": [
-            -1.0,
-            1.0
-          ],
-          "tween": "fix",
-          "frameNo": 30
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            -1.0,
-            1.0
-          ],
-          "startValue": [
-            -1.0,
-            1.0
-          ],
-          "tween": "fix",
-          "frameNo": 72
-        }
-      ],
-      "position": [
-        {
-          "duration": 30,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "startPositionType": "None",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "wait": true
-        },
-        {
-          "duration": 42,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 30,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 72,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Fire/FlareEffect",
-          "minEmitSpeed": 0.0,
-          "emitter": true,
-          "priority": 0.5,
-          "maxEmitAngle": 0,
-          "frameNo": 0,
-          "maxEmitSpeed": 0.0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 73,
-          "type": "Image",
-          "id": "Combat/BattlerBase",
-          "priority": 0.5,
-          "frameNo": 0,
-          "rect": [
-            96,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 73,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    }
-  ],
   "events": {
+    "0": [
+      "hide"
+    ],
     "72": [
       "show_target",
       "show"
-    ],
-    "0": [
-      "hide"
     ],
     "65": [
       "target_pop_damage"
@@ -333,6 +14,325 @@
       "hide_target"
     ]
   },
+  "timelines": [
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 30,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 42,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 30
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 72
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 30,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "duration": 43,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/TargetBase",
+          "frameNo": 30
+        }
+      ],
+      "color": [
+        {
+          "endValue": [
+            0.600000023841858,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "duration": 30,
+          "startValue": [
+            0.600000023841858,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": [
+            0.600000023841858,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "duration": 21,
+          "tween": "fix",
+          "startValue": [
+            0.600000023841858,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "frameNo": 30
+        },
+        {
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "duration": 21,
+          "tween": "linear",
+          "startValue": [
+            0.600000023841858,
+            -0.300000011920929,
+            -0.300000011920929
+          ],
+          "frameNo": 51
+        },
+        {
+          "endValue": [
+            0,
+            0,
+            0
+          ],
+          "duration": 1,
+          "tween": "fix",
+          "startValue": [
+            0,
+            0,
+            0
+          ],
+          "frameNo": 72
+        }
+      ],
+      "scale": [
+        {
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "duration": 30,
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "duration": 42,
+          "tween": "fix",
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 30
+        },
+        {
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "duration": 1,
+          "tween": "fix",
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 72
+        }
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "maxEmitAngle": 0,
+          "maxEmitSpeed": 0.0,
+          "duration": 1,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareEffect",
+          "minEmitSpeed": 0.0,
+          "frameNo": 0
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 73,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ],
+          "duration": 73,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "frameNo": 0
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "images": [
       "Combat/TargetBase",

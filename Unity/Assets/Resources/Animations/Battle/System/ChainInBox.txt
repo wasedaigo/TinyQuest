@@ -1,25 +1,140 @@
 {
+  "events": null,
   "timelines": [
     {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 14,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 14
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 15,
+          "emitter": false,
+          "type": "Animation",
+          "priority": 0.5,
+          "id": "Battle/System/ChainInLine",
+          "frameNo": 0
+        }
+      ],
       "color": [
+
+      ],
+      "scale": [
 
       ],
       "rotation": [
         {
-          "duration": 14,
           "endValue": 360,
-          "startValue": 270,
+          "duration": 14,
           "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 270,
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": 360,
+          "duration": 1,
+          "tween": "linear",
+          "facingOption": "None",
           "startValue": 360,
-          "tween": "linear",
-          "frameNo": 14,
-          "facingOption": "None"
+          "frameNo": 14
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 14,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 14
         }
       ],
       "alpha": [
@@ -28,85 +143,85 @@
       "source": [
         {
           "duration": 15,
-          "type": "Animation",
-          "id": "Battle/System/ChainInLine",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/System/ChainInLine",
           "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 14,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
       "rotation": [
         {
-          "duration": 14,
           "endValue": 270,
-          "startValue": 180,
+          "duration": 14,
           "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 180,
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": 270,
+          "duration": 1,
+          "tween": "linear",
+          "facingOption": "None",
           "startValue": 270,
-          "tween": "linear",
-          "frameNo": 14,
-          "facingOption": "None"
+          "frameNo": 14
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 14,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 14
         }
       ],
       "alpha": [
@@ -115,172 +230,85 @@
       "source": [
         {
           "duration": 15,
-          "type": "Animation",
-          "id": "Battle/System/ChainInLine",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/System/ChainInLine",
           "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 14,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "color": [
-
-      ],
       "rotation": [
         {
-          "duration": 14,
           "endValue": 180,
-          "startValue": 90,
+          "duration": 14,
           "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 90,
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": 180,
+          "duration": 1,
+          "tween": "linear",
+          "facingOption": "None",
           "startValue": 180,
-          "tween": "linear",
-          "frameNo": 14,
-          "facingOption": "None"
-        }
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "type": "Animation",
-          "id": "Battle/System/ChainInLine",
-          "emitter": false,
-          "priority": 0.5,
-          "frameNo": 0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 14,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "frameNo": 14
         }
       ]
     },
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 14,
-          "endValue": 90,
-          "startValue": 0,
-          "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 90,
-          "startValue": 90,
-          "tween": "linear",
-          "frameNo": 14,
-          "facingOption": "None"
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 14
         }
       ],
       "alpha": [
@@ -289,67 +317,39 @@
       "source": [
         {
           "duration": 15,
-          "type": "Animation",
-          "id": "Battle/System/ChainInLine",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/System/ChainInLine",
           "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
+      "rotation": [
         {
+          "endValue": 90,
           "duration": 14,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "tween": "linear",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 0
         },
         {
+          "endValue": 90,
           "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "tween": "linear",
+          "facingOption": "None",
+          "startValue": 90,
+          "frameNo": 14
         }
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "UI/UI_ChainLine"

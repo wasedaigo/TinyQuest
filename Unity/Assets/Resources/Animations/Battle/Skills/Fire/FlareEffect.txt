@@ -1,10 +1,12 @@
 {
+  "events": {
+    "0": [
+      "snd:MMS/mecha20"
+    ]
+  },
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
 
       ],
       "alpha": [
@@ -18,130 +20,128 @@
         },
         {
           "duration": 26,
-          "type": "Animation",
-          "id": "Battle/Skills/Fire/FlareExplosion",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareExplosion",
           "frameNo": 27
         }
       ],
+      "color": [
+
+      ],
       "scale": [
 
       ],
-      "position": [
+      "rotation": [
 
       ]
     },
     {
+      "position": [
+
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 1,
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "maxEmitAngle": 0,
+          "maxEmitSpeed": 0.0,
+          "duration": 15,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 0,
+          "priority": 0.5,
+          "id": "Battle/Skills/Fire/FlareParticle",
+          "minEmitSpeed": 0.0,
+          "frameNo": 1
+        }
+      ],
       "color": [
+
+      ],
+      "scale": [
 
       ],
       "rotation": [
         {
-          "duration": 1,
           "endValue": 1381,
+          "duration": 1,
           "startValue": 1381,
           "frameNo": 0,
           "wait": true
         },
         {
-          "duration": 14,
           "endValue": -503,
-          "startValue": 1381,
+          "duration": 14,
           "tween": "linear",
-          "frameNo": 1,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 1381,
+          "frameNo": 1
         },
         {
-          "duration": 1,
           "endValue": -503,
-          "startValue": -503,
+          "duration": 1,
           "tween": "fix",
-          "frameNo": 15,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": -503,
+          "frameNo": 15
         }
+      ]
+    },
+    {
+      "position": [
+
       ],
       "alpha": [
 
       ],
       "source": [
         {
-          "duration": 1,
-          "frameNo": 0,
-          "wait": true
-        },
-        {
+          "maxEmitAngle": 0,
+          "maxEmitSpeed": 0.0,
           "duration": 15,
+          "emitter": true,
           "type": "Animation",
           "minEmitAngle": 0,
+          "priority": 0.5,
           "id": "Battle/Skills/Fire/FlareParticle",
           "minEmitSpeed": 0.0,
-          "emitter": true,
-          "priority": 0.5,
-          "maxEmitAngle": 0,
-          "frameNo": 1,
-          "maxEmitSpeed": 0.0
+          "frameNo": 0
         }
       ],
-      "scale": [
+      "color": [
 
       ],
-      "position": [
-
-      ]
-    },
-    {
-      "color": [
+      "scale": [
 
       ],
       "rotation": [
         {
-          "duration": 14,
           "endValue": 1957,
-          "startValue": 0,
+          "duration": 14,
           "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": 1957,
-          "startValue": 1957,
+          "duration": 1,
           "tween": "fix",
-          "frameNo": 14,
-          "facingOption": "None"
+          "facingOption": "None",
+          "startValue": 1957,
+          "frameNo": 14
         }
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 15,
-          "type": "Animation",
-          "minEmitAngle": 0,
-          "id": "Battle/Skills/Fire/FlareParticle",
-          "minEmitSpeed": 0.0,
-          "emitter": true,
-          "priority": 0.5,
-          "maxEmitAngle": 0,
-          "frameNo": 0,
-          "maxEmitSpeed": 0.0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-
       ]
     }
   ],
-  "events": {
-    "0": [
-      "snd:MMS/mecha20"
-    ]
-  },
   "dependencies": {
     "images": [
       "Battle/Skills/Effect_Slash3"

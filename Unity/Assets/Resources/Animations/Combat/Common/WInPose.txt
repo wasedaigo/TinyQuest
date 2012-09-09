@@ -1,205 +1,4 @@
 {
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/BattlerBase",
-          "priority": 0.5,
-          "frameNo": 0,
-          "rect": [
-            128,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 8,
-          "type": "Image",
-          "id": "Combat/BattlerBase",
-          "priority": 0.5,
-          "frameNo": 1,
-          "rect": [
-            32,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/BattlerBase",
-          "priority": 0.5,
-          "frameNo": 9,
-          "rect": [
-            96,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "scale": [
-        {
-          "duration": 8,
-          "endValue": [
-            -1.0,
-            1.0
-          ],
-          "startValue": [
-            -1.0,
-            1.0
-          ],
-          "frameNo": 0,
-          "wait": true
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            -1.0,
-            1.0
-          ],
-          "tween": "fix",
-          "frameNo": 8
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            1,
-            1
-          ],
-          "startValue": [
-            1,
-            1
-          ],
-          "tween": "fix",
-          "frameNo": 9
-        }
-      ],
-      "position": [
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "easeIn",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 4,
-          "endValue": [
-            0,
-            -16
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 4,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            -16
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 9,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    }
-  ],
   "events": {
     "9": [
       "show"
@@ -208,6 +7,207 @@
       "hide"
     ]
   },
+  "timelines": [
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "easeIn",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            -16
+          ],
+          "endPositionType": "None",
+          "duration": 4,
+          "tween": "linear",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 1
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 4,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -16
+          ],
+          "frameNo": 5
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 9
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "frameNo": 0
+        },
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "duration": 8,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "frameNo": 1
+        },
+        {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/BattlerBase",
+          "frameNo": 9
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+        {
+          "endValue": [
+            -1.0,
+            1.0
+          ],
+          "duration": 8,
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 0,
+          "wait": true
+        },
+        {
+          "endValue": [
+            1,
+            1
+          ],
+          "duration": 1,
+          "tween": "fix",
+          "startValue": [
+            -1.0,
+            1.0
+          ],
+          "frameNo": 8
+        },
+        {
+          "endValue": [
+            1,
+            1
+          ],
+          "duration": 1,
+          "tween": "fix",
+          "startValue": [
+            1,
+            1
+          ],
+          "frameNo": 9
+        }
+      ],
+      "rotation": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "images": [
       "Combat/BattlerBase"

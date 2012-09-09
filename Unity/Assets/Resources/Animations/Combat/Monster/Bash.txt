@@ -1,55 +1,4 @@
 {
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 5,
-          "type": "Animation",
-          "id": "Combat/Sub/Bash01",
-          "emitter": false,
-          "priority": 0.5,
-          "frameNo": 0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 5,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    }
-  ],
   "events": {
     "4": [
       "damage:0"
@@ -58,6 +7,57 @@
       "snd:MMS/hit61_a"
     ]
   },
+  "timelines": [
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "RelativeToTarget",
+          "duration": 5,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "duration": 5,
+          "emitter": false,
+          "type": "Animation",
+          "priority": 0.5,
+          "id": "Combat/Sub/Bash01",
+          "frameNo": 0
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "images": [
       "Battle/Skills/Effect_Weapon07"

@@ -1,156 +1,156 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
-
+      "position": [
+        {
+          "endValue": [
+            0,
+            40
+          ],
+          "endPositionType": "None",
+          "duration": 4,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -40
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            40
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            40
+          ],
+          "frameNo": 4
+        }
       ],
       "alpha": [
 
       ],
       "source": [
         {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/EffectSlash01",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             16,
             0,
             16,
             96
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/EffectSlash01",
+          "frameNo": 0
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/EffectSlash01",
-          "priority": 0.5,
-          "frameNo": 1,
+          ],
           "rect": [
             64,
             0,
             16,
             96
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/EffectSlash01",
+          "frameNo": 1
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/EffectSlash01",
-          "priority": 0.5,
-          "frameNo": 2,
+          ],
           "rect": [
             112,
             0,
             16,
             96
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/EffectSlash01",
+          "frameNo": 2
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/EffectSlash01",
-          "priority": 0.5,
-          "frameNo": 3,
+          ],
           "rect": [
             64,
             0,
             16,
             96
           ],
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/EffectSlash01",
+          "frameNo": 3
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 1,
-          "type": "Image",
-          "id": "Combat/EffectSlash01",
-          "priority": 0.5,
-          "frameNo": 4,
+          ],
           "rect": [
             16,
             0,
             16,
             96
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 1,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/EffectSlash01",
+          "frameNo": 4
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 4,
-          "endValue": [
-            0,
-            40
-          ],
-          "startValue": [
-            0,
-            -40
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            40
-          ],
-          "startValue": [
-            0,
-            40
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
+      "rotation": [
+
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Combat/EffectSlash01"

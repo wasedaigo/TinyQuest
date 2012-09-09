@@ -1,59 +1,20 @@
 {
+  "events": {
+    "0": [
+      "swaptex:Battle/Skills/Battler_Base.png,character"
+    ]
+  },
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
-        {
-          "duration": 10,
-          "endValue": 90,
-          "startValue": 90,
-          "tween": "fix",
-          "frameNo": 0,
-          "facingOption": "None"
-        }
-      ],
-      "alpha": [
-
-      ],
-      "source": [
-        {
-          "duration": 10,
-          "type": "Image",
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "priority": 0.5,
-          "frameNo": 0,
-          "rect": [
-            0,
-            0,
-            32,
-            32
-          ],
-          "center": [
-            0,
-            0
-          ]
-        }
-      ],
-      "scale": [
-
-      ],
       "position": [
         {
-          "duration": 10,
           "endValue": [
             14,
             8
           ],
-          "startValue": [
-            14,
-            8
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
           "endPositionType": "None",
-          "frameNo": 0,
+          "duration": 10,
+          "tween": "fix",
           "endPositionAnchor": [
             0,
             0
@@ -61,82 +22,121 @@
           "startPositionAnchor": [
             0,
             0
-          ]
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            14,
+            8
+          ],
+          "frameNo": 0
         }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
       ],
       "alpha": [
 
       ],
       "source": [
         {
+          "center": [
+            0,
+            0
+          ],
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
           "duration": 10,
           "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
           "priority": 0.5,
-          "frameNo": 0,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "frameNo": 0
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+        {
+          "endValue": 90,
+          "duration": 10,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 90,
+          "frameNo": 0
+        }
+      ]
+    },
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 20,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        }
+      ],
+      "alpha": [
+
+      ],
+      "source": [
+        {
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             512,
             0,
             32,
             32
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 10,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 0
         },
         {
           "duration": 10,
-          "type": "Animation",
-          "id": "Battle/Skills/Battler/SwordUpper",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordUpper",
           "frameNo": 10
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 20,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
+      "rotation": [
+
       ]
     }
   ],
-  "events": {
-    "0": [
-      "swaptex:Battle/Skills/Battler_Base.png,character"
-    ]
-  },
   "dependencies": {
     "images": [
       "Battle/Skills/Weapon_SwordBase",

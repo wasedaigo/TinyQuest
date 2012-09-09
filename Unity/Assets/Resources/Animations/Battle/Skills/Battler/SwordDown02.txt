@@ -1,394 +1,394 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
+          "endValue": [
+            -6,
+            9
+          ],
+          "endPositionType": "None",
           "duration": 5,
-          "endValue": 220,
-          "startValue": 380,
           "tween": "linear",
-          "frameNo": 0,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            4,
+            -5
+          ],
+          "frameNo": 0
         },
         {
+          "endValue": [
+            -6,
+            9
+          ],
+          "endPositionType": "None",
           "duration": 8,
-          "endValue": 220,
-          "startValue": 220,
-          "tween": "linear",
-          "frameNo": 5,
-          "facingOption": "None"
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -6,
+            9
+          ],
+          "frameNo": 5
         },
         {
+          "endValue": [
+            -6,
+            9
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 220,
-          "startValue": 220,
-          "tween": "linear",
-          "frameNo": 13,
-          "facingOption": "None"
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -6,
+            9
+          ],
+          "frameNo": 13
         }
       ],
       "alpha": [
         {
-          "duration": 5,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 5,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 0
         },
         {
-          "duration": 8,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 8,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 5
         },
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 13
         }
       ],
       "source": [
         {
-          "duration": 14,
-          "type": "Image",
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "priority": 0.400000005960464,
-          "frameNo": 0,
+          "center": [
+            0.0,
+            11.0
+          ],
           "rect": [
             0,
             0,
             32,
             32
           ],
-          "center": [
-            0.0,
-            11.0
-          ]
+          "duration": 14,
+          "type": "Image",
+          "priority": 0.400000005960464,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
         {
-          "duration": 5,
           "endValue": [
             1,
             1
           ],
+          "duration": 5,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 0
         },
         {
-          "duration": 8,
           "endValue": [
             1,
             1
           ],
+          "duration": 8,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 5
         },
         {
-          "duration": 1,
           "endValue": [
             1,
             1
           ],
+          "duration": 1,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 13
         }
       ],
-      "position": [
+      "rotation": [
         {
+          "endValue": 220,
           "duration": 5,
-          "endValue": [
-            -6,
-            9
-          ],
-          "startValue": [
-            4,
-            -5
-          ],
           "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "facingOption": "None",
+          "startValue": 380,
+          "frameNo": 0
         },
         {
+          "endValue": 220,
           "duration": 8,
-          "endValue": [
-            -6,
-            9
-          ],
-          "startValue": [
-            -6,
-            9
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "tween": "linear",
+          "facingOption": "None",
+          "startValue": 220,
+          "frameNo": 5
         },
         {
+          "endValue": 220,
           "duration": 1,
-          "endValue": [
-            -6,
-            9
-          ],
-          "startValue": [
-            -6,
-            9
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 13,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "tween": "linear",
+          "facingOption": "None",
+          "startValue": 220,
+          "frameNo": 13
         }
       ]
     },
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 4,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 0,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 9,
-          "endValue": 0,
-          "startValue": 0,
           "tween": "fix",
-          "frameNo": 4,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 4
         },
         {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 1,
-          "endValue": 0,
-          "startValue": 0,
-          "tween": "fix",
-          "frameNo": 13,
-          "facingOption": "None"
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 13
         }
       ],
       "alpha": [
         {
-          "duration": 4,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 4,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 0
         },
         {
-          "duration": 9,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 9,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 4
         },
         {
-          "duration": 1,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 13
         }
       ],
       "source": [
         {
-          "duration": 4,
-          "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             320,
             0,
             32,
             32
           ],
+          "duration": 4,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 0
+        },
+        {
           "center": [
             0,
             0
-          ]
-        },
-        {
-          "duration": 10,
-          "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
-          "priority": 0.5,
-          "frameNo": 4,
+          ],
           "rect": [
             288,
             0,
             32,
             32
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 10,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 4
         }
+      ],
+      "color": [
+
       ],
       "scale": [
         {
-          "duration": 4,
           "endValue": [
             1,
             1
           ],
+          "duration": 4,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 0
         },
         {
-          "duration": 9,
           "endValue": [
             1,
             1
           ],
+          "duration": 9,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 4
         },
         {
-          "duration": 1,
           "endValue": [
             1,
             1
           ],
+          "duration": 1,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 13
         }
       ],
-      "position": [
+      "rotation": [
         {
+          "endValue": 0,
           "duration": 4,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 0
         },
         {
+          "endValue": 0,
           "duration": 9,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
           "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 4
         },
         {
+          "endValue": 0,
           "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 13,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 13
         }
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Battle/Skills/Weapon_SwordBase",

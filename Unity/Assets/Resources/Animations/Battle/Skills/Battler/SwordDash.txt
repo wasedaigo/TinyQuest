@@ -1,25 +1,53 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
+          "endValue": [
+            14,
+            8
+          ],
+          "endPositionType": "RelativeToTarget",
           "duration": 10,
-          "endValue": 90,
-          "startValue": 90,
-          "tween": "fix",
-          "frameNo": 0,
-          "facingOption": "None"
+          "tween": "linear",
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            14,
+            8
+          ],
+          "frameNo": 0
         },
         {
+          "endValue": [
+            14,
+            8
+          ],
+          "endPositionType": "RelativeToTarget",
           "duration": 1,
-          "endValue": 90,
-          "startValue": 90,
           "tween": "fix",
-          "frameNo": 10,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionAnchor": [
+            1,
+            1
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            14,
+            8
+          ],
+          "frameNo": 10
         }
       ],
       "alpha": [
@@ -27,41 +55,58 @@
       ],
       "source": [
         {
-          "duration": 11,
-          "type": "Image",
-          "id": "Battle/Skills/Weapon_SwordBase",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             0,
             0,
             32,
             32
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 11,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Weapon_SwordBase",
+          "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
+      "rotation": [
+        {
+          "endValue": 90,
+          "duration": 10,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 90,
+          "frameNo": 0
+        },
+        {
+          "endValue": 90,
+          "duration": 1,
+          "tween": "fix",
+          "facingOption": "None",
+          "startValue": 90,
+          "frameNo": 10
+        }
+      ]
+    },
+    {
       "position": [
         {
-          "duration": 10,
           "endValue": [
-            14,
-            8
+            0,
+            0
           ],
-          "startValue": [
-            14,
-            8
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
           "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
+          "duration": 10,
+          "tween": "linear",
           "endPositionAnchor": [
             1,
             1
@@ -69,22 +114,22 @@
           "startPositionAnchor": [
             0,
             0
-          ]
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
         },
         {
-          "duration": 1,
           "endValue": [
-            14,
-            8
+            0,
+            0
           ],
-          "startValue": [
-            14,
-            8
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
           "endPositionType": "RelativeToTarget",
-          "frameNo": 10,
+          "duration": 1,
+          "tween": "fix",
           "endPositionAnchor": [
             1,
             1
@@ -92,93 +137,48 @@
           "startPositionAnchor": [
             1,
             1
-          ]
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 10
         }
-      ]
-    },
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
       ],
       "alpha": [
 
       ],
       "source": [
         {
-          "duration": 11,
-          "type": "Image",
-          "id": "Battle/Skills/Battler_Base",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             512,
             0,
             32,
             32
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 11,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Battle/Skills/Battler_Base",
+          "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 10,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "RelativeToTarget",
-          "frameNo": 10,
-          "endPositionAnchor": [
-            1,
-            1
-          ],
-          "startPositionAnchor": [
-            1,
-            1
-          ]
-        }
+      "rotation": [
+
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Battle/Skills/Weapon_SwordBase",

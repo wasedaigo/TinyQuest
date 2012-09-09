@@ -1,202 +1,4 @@
 {
-  "timelines": [
-    {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
-        {
-          "duration": 5,
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "tween": "linear",
-          "frameNo": 0
-        },
-        {
-          "duration": 1,
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "tween": "fix",
-          "frameNo": 5
-        },
-        {
-          "duration": 8,
-          "endValue": 1.0,
-          "startValue": 1.0,
-          "frameNo": 6,
-          "wait": true
-        },
-        {
-          "duration": 5,
-          "endValue": 0.100000001490116,
-          "startValue": 1.0,
-          "tween": "linear",
-          "frameNo": 14
-        },
-        {
-          "duration": 1,
-          "endValue": 0.100000001490116,
-          "startValue": 0.100000001490116,
-          "tween": "fix",
-          "frameNo": 19
-        }
-      ],
-      "source": [
-        {
-          "duration": 6,
-          "type": "Animation",
-          "minEmitAngle": 90,
-          "id": "Battle/Skills/knife/SingleDancingKnifeGo",
-          "minEmitSpeed": 10.0,
-          "emitter": true,
-          "priority": 0.5,
-          "maxEmitAngle": 90,
-          "frameNo": 0,
-          "maxEmitSpeed": 10.0
-        },
-        {
-          "duration": 8,
-          "frameNo": 6,
-          "wait": true
-        },
-        {
-          "duration": 6,
-          "type": "Animation",
-          "minEmitAngle": 90,
-          "id": "Battle/Skills/knife/SingleDancingKnifeBack",
-          "minEmitSpeed": 10.0,
-          "emitter": true,
-          "priority": 0.5,
-          "maxEmitAngle": 90,
-          "frameNo": 14,
-          "maxEmitSpeed": 10.0
-        }
-      ],
-      "scale": [
-
-      ],
-      "position": [
-        {
-          "duration": 5,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 5,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 8,
-          "endValue": [
-            0,
-            -140
-          ],
-          "startValue": [
-            0,
-            -140
-          ],
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ],
-          "wait": true
-        },
-        {
-          "duration": 5,
-          "endValue": [
-            0,
-            -140
-          ],
-          "startValue": [
-            0,
-            -140
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            -140
-          ],
-          "startValue": [
-            0,
-            -140
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 19,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
-      ]
-    }
-  ],
   "events": {
     "8": [
       "snd:MMS/swing06"
@@ -214,6 +16,204 @@
       "snd:MMS/swing06"
     ]
   },
+  "timelines": [
+    {
+      "position": [
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 5,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 5
+        },
+        {
+          "endValue": [
+            0,
+            -140
+          ],
+          "endPositionType": "None",
+          "duration": 8,
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -140
+          ],
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "endValue": [
+            0,
+            -140
+          ],
+          "endPositionType": "None",
+          "duration": 5,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -140
+          ],
+          "frameNo": 14
+        },
+        {
+          "endValue": [
+            0,
+            -140
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            -140
+          ],
+          "frameNo": 19
+        }
+      ],
+      "alpha": [
+        {
+          "endValue": 0.100000001490116,
+          "duration": 5,
+          "tween": "linear",
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "endValue": 0.100000001490116,
+          "duration": 1,
+          "tween": "fix",
+          "startValue": 0.100000001490116,
+          "frameNo": 5
+        },
+        {
+          "endValue": 1.0,
+          "duration": 8,
+          "startValue": 1.0,
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "endValue": 0.100000001490116,
+          "duration": 5,
+          "tween": "linear",
+          "startValue": 1.0,
+          "frameNo": 14
+        },
+        {
+          "endValue": 0.100000001490116,
+          "duration": 1,
+          "tween": "fix",
+          "startValue": 0.100000001490116,
+          "frameNo": 19
+        }
+      ],
+      "source": [
+        {
+          "maxEmitAngle": 90,
+          "maxEmitSpeed": 10.0,
+          "duration": 6,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 90,
+          "priority": 0.5,
+          "id": "Battle/Skills/knife/SingleDancingKnifeGo",
+          "minEmitSpeed": 10.0,
+          "frameNo": 0
+        },
+        {
+          "duration": 8,
+          "wait": true,
+          "frameNo": 6
+        },
+        {
+          "maxEmitAngle": 90,
+          "maxEmitSpeed": 10.0,
+          "duration": 6,
+          "emitter": true,
+          "type": "Animation",
+          "minEmitAngle": 90,
+          "priority": 0.5,
+          "id": "Battle/Skills/knife/SingleDancingKnifeBack",
+          "minEmitSpeed": 10.0,
+          "frameNo": 14
+        }
+      ],
+      "color": [
+
+      ],
+      "scale": [
+
+      ],
+      "rotation": [
+
+      ]
+    }
+  ],
   "dependencies": {
     "images": [
       "Battle/Skills/Effect_Weapon05"

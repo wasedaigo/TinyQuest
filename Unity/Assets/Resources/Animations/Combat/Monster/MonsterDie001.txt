@@ -1,289 +1,289 @@
 {
+  "events": {
+    "0": [
+      "hide"
+    ]
+  },
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
-
-      ],
-      "alpha": [
+      "position": [
         {
-          "duration": 19,
-          "endValue": 0.0,
-          "startValue": 1.0,
+          "endValue": [
+            2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
           "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
           "frameNo": 0
         },
         {
+          "endValue": [
+            -2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "frameNo": 2
+        },
+        {
+          "endValue": [
+            2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "frameNo": 4
+        },
+        {
+          "endValue": [
+            -2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "frameNo": 6
+        },
+        {
+          "endValue": [
+            2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "frameNo": 8
+        },
+        {
+          "endValue": [
+            -2,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            2,
+            0
+          ],
+          "frameNo": 10
+        },
+        {
+          "endValue": [
+            1,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -2,
+            0
+          ],
+          "frameNo": 12
+        },
+        {
+          "endValue": [
+            -1,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 2,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            1,
+            0
+          ],
+          "frameNo": 14
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 3,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            -1,
+            0
+          ],
+          "frameNo": 16
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
           "duration": 1,
+          "tween": "linear",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 19
+        }
+      ],
+      "alpha": [
+        {
           "endValue": 0.0,
-          "startValue": 0.0,
+          "duration": 19,
+          "tween": "linear",
+          "startValue": 1.0,
+          "frameNo": 0
+        },
+        {
+          "endValue": 0.0,
+          "duration": 1,
           "tween": "fix",
+          "startValue": 0.0,
           "frameNo": 19
         }
       ],
       "source": [
         {
-          "duration": 20,
-          "type": "Image",
-          "id": "Combat/MonsterBase",
-          "priority": 0.5,
-          "frameNo": 0,
+          "center": [
+            0,
+            0
+          ],
           "rect": [
             0,
             0,
             0,
             0
           ],
-          "center": [
-            0,
-            0
-          ]
+          "duration": 20,
+          "type": "Image",
+          "priority": 0.5,
+          "id": "Combat/MonsterBase",
+          "frameNo": 0
         }
+      ],
+      "color": [
+
       ],
       "scale": [
 
       ],
-      "position": [
-        {
-          "duration": 2,
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 2,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 4,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 6,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            2,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 8,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            -2,
-            0
-          ],
-          "startValue": [
-            2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 10,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            1,
-            0
-          ],
-          "startValue": [
-            -2,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 12,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 2,
-          "endValue": [
-            -1,
-            0
-          ],
-          "startValue": [
-            1,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 14,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 3,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            -1,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 16,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "linear",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 19,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        }
+      "rotation": [
+
       ]
     }
   ],
-  "events": {
-    "0": [
-      "hide"
-    ]
-  },
   "dependencies": {
     "images": [
       "Combat/MonsterBase"

@@ -1,112 +1,112 @@
 {
+  "events": null,
   "timelines": [
     {
-      "color": [
-
-      ],
-      "rotation": [
+      "position": [
         {
-          "duration": 2,
-          "endValue": 0,
-          "startValue": 0,
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
           "tween": "fix",
-          "frameNo": 0,
-          "facingOption": "None"
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "RelativeToTarget",
+          "startValue": [
+            32,
+            0
+          ],
+          "frameNo": 0
+        },
+        {
+          "endValue": [
+            0,
+            0
+          ],
+          "endPositionType": "None",
+          "duration": 1,
+          "tween": "fix",
+          "endPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionAnchor": [
+            0,
+            0
+          ],
+          "startPositionType": "None",
+          "startValue": [
+            0,
+            0
+          ],
+          "frameNo": 1
         }
       ],
       "alpha": [
         {
-          "duration": 2,
           "endValue": 1.0,
-          "startValue": 1.0,
+          "duration": 2,
           "tween": "fix",
+          "startValue": 1.0,
           "frameNo": 0
         }
       ],
       "source": [
         {
           "duration": 1,
-          "type": "Animation",
-          "id": "Battle/Skills/Battler/SwordSwing",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/Skills/Battler/SwordSwing",
           "frameNo": 0
         },
         {
           "duration": 1,
-          "type": "Animation",
-          "id": "Battle/Skills/Battler/Back",
           "emitter": false,
+          "type": "Animation",
           "priority": 0.5,
+          "id": "Battle/Skills/Battler/Back",
           "frameNo": 1
         }
       ],
+      "color": [
+
+      ],
       "scale": [
         {
-          "duration": 2,
           "endValue": [
             1,
             1
           ],
+          "duration": 2,
+          "tween": "fix",
           "startValue": [
             1,
             1
           ],
-          "tween": "fix",
           "frameNo": 0
         }
       ],
-      "position": [
+      "rotation": [
         {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            32,
-            0
-          ],
+          "endValue": 0,
+          "duration": 2,
           "tween": "fix",
-          "startPositionType": "RelativeToTarget",
-          "endPositionType": "None",
-          "frameNo": 0,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
-        },
-        {
-          "duration": 1,
-          "endValue": [
-            0,
-            0
-          ],
-          "startValue": [
-            0,
-            0
-          ],
-          "tween": "fix",
-          "startPositionType": "None",
-          "endPositionType": "None",
-          "frameNo": 1,
-          "endPositionAnchor": [
-            0,
-            0
-          ],
-          "startPositionAnchor": [
-            0,
-            0
-          ]
+          "facingOption": "None",
+          "startValue": 0,
+          "frameNo": 0
         }
       ]
     }
   ],
-  "events": null,
   "dependencies": {
     "images": [
       "Battle/Skills/Weapon_SwordBase",
